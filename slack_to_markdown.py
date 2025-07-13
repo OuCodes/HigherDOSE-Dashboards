@@ -120,8 +120,10 @@ def extract_existing_timestamps(file_path: str) -> Set[str]:
             dt = datetime.strptime(match, '%Y-%m-%d %H:%M:%S')
             timestamps.add(str(dt.timestamp()))
 
-    except Exception as e:
+    except (IOError, OSError) as e:
         print(f"Warning: Could not read existing file {file_path}: {e}")
+    except UnicodeDecodeError as e:
+        print(f"Warning: File {file_path} has invalid encoding: {e}")
 
     return timestamps
 
