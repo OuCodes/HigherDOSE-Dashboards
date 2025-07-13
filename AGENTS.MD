@@ -1,0 +1,3 @@
+- Please give push back if you think we should be doing something differently. 
+- Ask questions if you need clarification. 
+- If you think we should be doing something differently, please let me know. 
