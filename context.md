@@ -167,9 +167,12 @@ HigherDOSE/
 4. **Notification preferences**: How should alerts be delivered?
 
 Would you like me to start with a specific task? I'd recommend beginning with the **performance reporter** since it's foundational for the other tools.
+---
+## 👤 Prompt
 
-# New
 Hey I just exported slack data in json and i need help extracting the user messages to markdown 
+
+## 🤖 Response
 
 I'll help you extract the user messages from your Slack JSON export and convert them to markdown format. Let me create a Python script that parses the JSON and generates clean markdown output.
 
@@ -219,8 +222,11 @@ You can now use the `slack_messages.md` file for documentation, analysis, or any
 
 Would you like me to modify anything about the output format or add any additional features to the script?
 
-# New 
+## 👤 Prompt
+
 Everything that we did is great. It gave me what i wanted. How can i set this up in an automated fashion. I want to grab daily conversations from specific slack channels in an automated fashion please give me details from a high level persion. Lets brain storm before coding 
+
+## 🤖 Response
 
 Great question! Let's brainstorm the architecture for an automated Slack message extraction system. I'll break this down into key components and considerations:
 
@@ -389,12 +395,13 @@ Based on your preferences, I'd recommend:
 4. **Iterate**: Add more channels, features, error handling
 
 What approach appeals to you most? And what's your preference for hosting/deployment?
+---
+## 👤 Prompt
 
-# Email 
-## New Prompt
 in addition to slack this business communicates through gmail often and I want to automate the export of those conversations into markdown. Please explain from a high level and lets brain strom before creating code. 
 
-## Reponse
+## 🤖 Response
+
 I'd be happy to help you automate Gmail conversations into markdown! Looking at your project, I can see you've already done something similar with Slack messages. Let me break down the high-level approaches and considerations for Gmail automation.
 
 ## High-Level Approaches
