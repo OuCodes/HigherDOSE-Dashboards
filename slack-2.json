@@ -1,0 +1,1011 @@
+{
+    "ok": true,
+    "history": {
+        "messages": [
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752272623.419389",
+                "client_msg_id": "0E7637B9-EEBA-4644-8022-BBB0A5A2935B",
+                "text": "Go team ",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "RadCM",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Go team "
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752272613.805259",
+                "client_msg_id": "0712EC18-EDFC-4132-98ED-210F53E5870B",
+                "text": "Yes getting meta right will do soooo much ",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "UD0kr",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Yes getting meta right will do soooo much "
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752271839.786869",
+                "edited": {
+                    "user": "U0913R7KB7E",
+                    "ts": "1752271851.000000"
+                },
+                "client_msg_id": "cd84fbf9-8d17-4d2d-a58b-aaa02521f1b8",
+                "text": "Of course! I want to get this thing turned around asap. Meta can be a lot better which will lift the entire ecosystem and make rev targets at efficiency a bit easier. Seeing these segmented by product is so valuable! Thank you for being behind that push as well",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "3U34M",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Of course! I want to get this thing turned around asap. Meta can be a lot better which will lift the entire ecosystem and make rev targets at efficiency a bit easier. Seeing these segmented by product is so valuable! Thank you for being behind that push as well"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "raised_hands",
+                        "users": [
+                            "U0824M6DHLK"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752271595.635889",
+                "client_msg_id": "AB4BDFB9-C93D-4C50-9DBC-F78E6F397064",
+                "text": "Appreciate you being on top of sharma on those campaigns!",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "Q9JlY",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Appreciate you being on top of sharma on those campaigns!"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "subtype": "thread_broadcast",
+                "user": "U0913R7KB7E",
+                "thread_ts": "1752190783.547069",
+                "root": {
+                    "user": "U0913R7KB7E",
+                    "type": "message",
+                    "ts": "1752190783.547069",
+                    "client_msg_id": "15211bfd-f38c-4e43-9d7f-e1ea1a0b897b",
+                    "text": "Do we want to focus on the Red Light Neck Enhancer?",
+                    "team": "TA97020CV",
+                    "thread_ts": "1752190783.547069",
+                    "reply_count": 10,
+                    "reply_users_count": 2,
+                    "latest_reply": "1752197076.568889",
+                    "reply_users": [
+                        "U0824M6DHLK",
+                        "U0913R7KB7E"
+                    ],
+                    "is_locked": false,
+                    "subscribed": true,
+                    "last_read": "1752197076.568889",
+                    "blocks": [
+                        {
+                            "type": "rich_text",
+                            "block_id": "zfBtY",
+                            "elements": [
+                                {
+                                    "type": "rich_text_section",
+                                    "elements": [
+                                        {
+                                            "type": "text",
+                                            "text": "Do we want to focus on the Red Light Neck Enhancer?"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "type": "message",
+                "ts": "1752196657.126599",
+                "client_msg_id": "7796ce35-d1c1-4f2e-a0fa-23593ce41106",
+                "text": "Okay any interest in Endorphin oil + sweat band, trans mag spray, and press?\n\nThese are lower AOV so i assume keeping it to Red Light, PEMF, and SB to get us back on track would be ideal?",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "xxBGK",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Okay any interest in Endorphin oil + sweat band, trans mag spray, and press?\n\nThese are lower AOV so i assume keeping it to Red Light, PEMF, and SB to get us back on track would be ideal?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752196416.335479",
+                "client_msg_id": "a8843582-13c2-472f-90d1-528920203b09",
+                "text": "thank you",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "oPGX0",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "thank you"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752196415.704449",
+                "client_msg_id": "35335656-5ad4-4b02-9766-5745a4b7f6d3",
+                "text": "Okay sounds good",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "cXyrV",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Okay sounds good"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752196351.408669",
+                "client_msg_id": "15498B64-4D53-44F7-B1B4-563258CB6081",
+                "text": "Then we can add full size and topicals once we prove out the channel on the basics ",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "KGdGp",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Then we can add full size and topicals once we prove out the channel on the basics "
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752196332.852899",
+                "client_msg_id": "02942ECC-4281-4697-9BA6-C7D028180BD1",
+                "text": "I\u2019d start with lifestyle and core 4 to start, it\u2019s a good intro to the brand ",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "X6SfN",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "I\u2019d"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " start with lifestyle and core 4 to start, "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "it\u2019s"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " a good intro to the brand "
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752192205.633279",
+                "client_msg_id": "5a07cfb9-7f51-47a8-bdd6-a8d7db07f7c2",
+                "text": "Laura brought up Full Spectrum Sauna and mentioned Lauren has interest mixing topicals into our efforts  :eyes:",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "xyo5M",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Laura brought up Full Spectrum Sauna and mentioned Lauren has interest mixing topicals into our efforts  "
+                                    },
+                                    {
+                                        "type": "emoji",
+                                        "name": "eyes",
+                                        "unicode": "1f440"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752192152.039109",
+                "client_msg_id": "706c52ce-7b09-4693-b5a5-52a0cee876b9",
+                "text": "What products should we focus on for CTV? I know Core 4 for sure but are there any others we should include?",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "TehfI",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "What products should we focus on for CTV? I know Core 4 for sure but are there any others we should include?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752190783.547069",
+                "client_msg_id": "15211bfd-f38c-4e43-9d7f-e1ea1a0b897b",
+                "text": "Do we want to focus on the Red Light Neck Enhancer?",
+                "team": "TA97020CV",
+                "thread_ts": "1752190783.547069",
+                "reply_count": 10,
+                "reply_users_count": 2,
+                "latest_reply": "1752197076.568889",
+                "reply_users": [
+                    "U0824M6DHLK",
+                    "U0913R7KB7E"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1752197076.568889",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "zfBtY",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Do we want to focus on the Red Light Neck Enhancer?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752190705.557099",
+                "client_msg_id": "a761e555-6303-4310-a408-229fc1be57c7",
+                "text": "however with sales being down we still need resources here to improve efficiency",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "kAg82",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "however with sales being down we still need resources here to improve efficiency"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752190693.505299",
+                "client_msg_id": "2edd4910-6b39-4e30-a673-e5f8a4b0d8d4",
+                "text": "From what Jake shared we\u2019ve got more Blanket and PEMF creative than Red Light",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "0js5X",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "From what Jake shared we\u2019ve got more Blanket and PEMF creative than Red Light"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752190675.528389",
+                "edited": {
+                    "user": "U0913R7KB7E",
+                    "ts": "1752190753.000000"
+                },
+                "client_msg_id": "ad845ac7-b035-4b63-bc07-df5a26d40b3c",
+                "text": "Looks like she tagged me in the brief last night (Im CST right now) but I just got back to her with a reply and added in Red Light Hat to her product mix",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "D3D8i",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Looks like she tagged me in the brief last night (Im CST right now) but I just got back to her with a reply and added in Red Light Hat to her product mix"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "white_check_mark",
+                        "users": [
+                            "U0824M6DHLK"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752190482.142019",
+                "client_msg_id": "21A1A8C2-28B7-40D8-9333-2F3F97EBE74A",
+                "text": "She said you never go back to her?",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "IWO31",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "She said you never go back to her?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752190468.204379",
+                "client_msg_id": "AB25FFF5-4D3E-4F53-BFC1-5C8AFB08D893",
+                "text": "Let\u2019s include everything we need to push these softer comp products ",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "ylyWz",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Let\u2019s include everything we need to push these softer comp products "
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752190451.181319",
+                "client_msg_id": "B3BB498E-E3B7-4D2A-B0B0-359F98591939",
+                "text": "Can you please align with Laura for that creative brief due tomorrow",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "c\/Fhz",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Can you please align with Laura for that creative brief due tomorrow"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752189385.673299",
+                "client_msg_id": "4ccc0c26-0605-46f3-ad72-105140456206",
+                "text": "How do we correct, push harder on Red Light Hat. Seems to be the most efficient product w\/ paid media. This could improve Meta performance and drive more rev. However we need to improve Sauna Blanket and PEMF Mat paid media performance. Could be a creative solution or produce new landing page assets for those products.",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "oCU1y",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "How do we correct, push harder on Red Light Hat. Seems to be the most efficient product w\/ paid media. This could improve Meta performance and drive more rev. However we need to improve Sauna Blanket and PEMF Mat paid media performance. Could be a creative solution or produce new landing page assets for those products."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752188972.362239",
+                "client_msg_id": "f0675b42-4c10-4c5b-943c-0cf1462af3b1",
+                "text": "Surface level, I\u2019m sure you see this too but CVR is down 52%, AOV down 13%, and Return customer down 10%  although sessions are up 132%. Also seeing discounts higher ($52.7k) this month than last year ($38.7k).  <https:\/\/admin.shopify.com\/store\/higherdose\/analytics\/reports\/total_sales_by_product?ql=FROM+sales%0A++SHOW+net_items_sold%2C+gross_sales%2C+discounts%2C+returns%2C+net_sales%2C+taxes%2C%0A++++total_sales%0A++WHERE+product_title+IS+NOT+NULL%0A++GROUP+BY+product_title%2C+product_vendor%2C+product_type+WITH+TOTALS%2C%0A++++PERCENT_CHANGE%0A++SINCE+startOfMonth%280m%29+UNTIL+today%0A++COMPARE+TO+previous_year%0A++ORDER+BY+total_sales+DESC%0A++LIMIT+1000%0AVISUALIZE+total_sales+TYPE+horizontal_bar|Discounts> doesn\u2019t make sense since we didn\u2019t have 4th of July sale.\n\nSessions alone could explain CVR since we\u2019re sending more traffic\n\nSauna Blanket down 32% in Sales Rev but the Kit is up 26% so discrepancy isn\u2019t that large.\nPEMF Pro Mat down 58%\n\nSilver lining, Body Sculptor has 32k in rev which makes up for some of the downtrends from existing products.",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "FyqFb",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Surface level, I\u2019m sure you see this too but CVR is down 52%, AOV down 13%, and Return customer down 10%  although sessions are up 132%. Also seeing discounts higher ($52.7k) this month than last year ($38.7k).  "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/admin.shopify.com\/store\/higherdose\/analytics\/reports\/total_sales_by_product?ql=FROM+sales%0A++SHOW+net_items_sold%2C+gross_sales%2C+discounts%2C+returns%2C+net_sales%2C+taxes%2C%0A++++total_sales%0A++WHERE+product_title+IS+NOT+NULL%0A++GROUP+BY+product_title%2C+product_vendor%2C+product_type+WITH+TOTALS%2C%0A++++PERCENT_CHANGE%0A++SINCE+startOfMonth%280m%29+UNTIL+today%0A++COMPARE+TO+previous_year%0A++ORDER+BY+total_sales+DESC%0A++LIMIT+1000%0AVISUALIZE+total_sales+TYPE+horizontal_bar",
+                                        "text": "Discounts"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " doesn\u2019t make sense since we didn\u2019t have 4th of July sale.\n\nSessions alone could explain CVR since we\u2019re sending more traffic\n\nSauna Blanket down 32% in Sales Rev but the Kit is up 26% so discrepancy isn\u2019t that large.\nPEMF Pro Mat down 58%\n\nSilver lining, Body Sculptor has 32k in rev which makes up for some of the downtrends from existing products."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752188133.739499",
+                "client_msg_id": "22014a75-ad43-4d06-8751-f2f50d023c71",
+                "text": "can you dig in and see where the bleeding is?",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "H2AA3",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "can you dig in and see where the bleeding is?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752188101.117829",
+                "client_msg_id": "317f484a-e03a-47e4-805e-81171535519b",
+                "text": "let's try to move the needle on our YoY growth, down 6% is bad",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "KKF9N",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "let's try to move the needle on our YoY growth, down 6% is bad"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752188047.576809",
+                "client_msg_id": "32afbbc5-2646-42d1-9425-3ceebdd34b9b",
+                "text": "ok cool - i LOVE having this level of product data",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "isNQr",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "ok cool - i LOVE having this level of product data"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752187511.111699",
+                "client_msg_id": "18cea957-02c5-4e49-8f17-213d2d9d6639",
+                "text": "I\u2019d give til end of day 3 to assess",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "rRThJ",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "I\u2019d give til end of day 3 to assess"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752187398.557389",
+                "client_msg_id": "5f8191d9-bf1f-4f06-bb24-443d6560bfb0",
+                "text": "$750\/day budget across each of those campaigns",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "GOsOq",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "$750\/day budget across each of those campaigns"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752187385.537579",
+                "client_msg_id": "b9e82f8e-1169-411e-970a-fd6a3b24d8ee",
+                "text": "and we\u2019re on day 2 so not a lot of data.\n\nHowever Red Light Hat is strongest campaign based on in platform data with 2.83 ROAS and $780 AOV\nRed Light Mask has one purchase a .50 ROAS\nPEMF Mat has one conversion at .9 ROAS\nSauna Blanket has one conversion  at .08 ROAS but low AOV ($70) so i think it tracked a conversion from a different product",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "EPJk2",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "and we\u2019re on day 2 so not a lot of data.\n\nHowever Red Light Hat is strongest campaign based on in platform data with 2.83 ROAS and $780 AOV\nRed Light Mask has one purchase a .50 ROAS\nPEMF Mat has one conversion at .9 ROAS\nSauna Blanket has one conversion  at .08 ROAS but low AOV ($70) so i think it tracked a conversion from a different product"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1752187169.899539",
+                "client_msg_id": "176e49cc-0b41-4e34-b95a-016eb8cdb9c0",
+                "text": "Okay yes i can work on the H1 breakdown",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "+jRwe",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Okay yes i can work on the H1 breakdown"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "white_check_mark",
+                        "users": [
+                            "U0824M6DHLK"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "text": "<https:\/\/docs.google.com\/document\/d\/1bBJ99bHusBaUy0vNqfi2HXU2q4NyUQwW-uoPL8QiZAE\/edit?tab=t.0>",
+                "files": [
+                    {
+                        "id": "F095PA0NAQH",
+                        "created": 1752187147,
+                        "timestamp": 1752187147,
+                        "name": "GS | Weekly Report | 7.7.25",
+                        "title": "GS | Weekly Report | 7.7.25",
+                        "mimetype": "application\/vnd.google-apps.document",
+                        "filetype": "gdoc",
+                        "pretty_type": "Google Docs",
+                        "user": "U0824M6DHLK",
+                        "user_team": "TA97020CV",
+                        "editable": false,
+                        "size": 136361,
+                        "mode": "external",
+                        "is_external": true,
+                        "external_type": "gdrive",
+                        "is_public": false,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "external_id": "1bBJ99bHusBaUy0vNqfi2HXU2q4NyUQwW-uoPL8QiZAE",
+                        "external_url": "https:\/\/docs.google.com\/document\/d\/1bBJ99bHusBaUy0vNqfi2HXU2q4NyUQwW-uoPL8QiZAE\/edit?tab=t.0",
+                        "url_private": "https:\/\/docs.google.com\/document\/d\/1bBJ99bHusBaUy0vNqfi2HXU2q4NyUQwW-uoPL8QiZAE\/edit?tab=t.0",
+                        "media_display_type": "unknown",
+                        "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_64.png",
+                        "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_80.png",
+                        "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_360.png",
+                        "thumb_360_w": 278,
+                        "thumb_360_h": 360,
+                        "thumb_480": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_480.png",
+                        "thumb_480_w": 371,
+                        "thumb_480_h": 480,
+                        "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_160.png",
+                        "thumb_720": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_720.png",
+                        "thumb_720_w": 557,
+                        "thumb_720_h": 720,
+                        "thumb_800": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_800.png",
+                        "thumb_800_w": 800,
+                        "thumb_800_h": 1035,
+                        "thumb_960": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_960.png",
+                        "thumb_960_w": 742,
+                        "thumb_960_h": 960,
+                        "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095PA0NAQH-1a13320438\/gs___weekly_report___7.7_1024.png",
+                        "thumb_1024_w": 791,
+                        "thumb_1024_h": 1024,
+                        "original_w": 800,
+                        "original_h": 1035,
+                        "thumb_tiny": "AwAwACXSJx2J+lJu\/wBlqVulMz7n86AH7uR8ppaZuPpShsmgB1FFFACEZGKTZ70rfWm4OSMmgBdtKFwaTB\/vGgAjv+dADqKKKAEPajuaWjFACetHpS4ooAKKKKAP\/9k=",
+                        "permalink": "https:\/\/higherdosemanagement.slack.com\/files\/U0913R7KB7E\/F095PA0NAQH\/gs___weekly_report___7.7",
+                        "is_starred": false,
+                        "skipped_shares": true,
+                        "app_id": "A6NL8MJ6Q",
+                        "has_rich_preview": true,
+                        "file_access": "visible"
+                    }
+                ],
+                "upload": false,
+                "user": "U0824M6DHLK",
+                "display_as_bot": false,
+                "x_files": [
+                    "F095PA0NAQH"
+                ],
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "51\/ts",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/docs.google.com\/document\/d\/1bBJ99bHusBaUy0vNqfi2HXU2q4NyUQwW-uoPL8QiZAE\/edit?tab=t.0"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "type": "message",
+                "ts": "1752187144.759709",
+                "client_msg_id": "58c54737-c608-4acd-9ecb-0503205e3b17"
+            }
+        ],
+        "has_more": true,
+        "mutation_timestamps": {
+            "latest": "1752272623.419389",
+            "updated": "1752272602.000200",
+            "history_invalid": "0000000000.000000"
+        },
+        "channel_actions_ts": null,
+        "channel_actions_count": 0,
+        "next_ts": 1752187140411689
+    },
+    "users": [
+        {
+            "id": "U0824M6DHLK",
+            "name": "ingrid",
+            "is_bot": false,
+            "updated": 1750532247,
+            "is_app_user": false,
+            "team_id": "TA97020CV",
+            "deleted": false,
+            "color": "9b3b45",
+            "is_email_confirmed": true,
+            "real_name": "Ingrid",
+            "tz": "America\/Los_Angeles",
+            "tz_label": "Pacific Daylight Time",
+            "tz_offset": -25200,
+            "is_admin": false,
+            "is_owner": false,
+            "is_primary_owner": false,
+            "is_restricted": false,
+            "is_ultra_restricted": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Ingrid",
+                "display_name": "Ingrid",
+                "avatar_hash": "d5bbcb72bc6d",
+                "real_name_normalized": "Ingrid",
+                "display_name_normalized": "Ingrid",
+                "image_original": "https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2025-05-05\/8861473271585_d5bbcb72bc6dfedced17_original.png",
+                "is_custom_image": true,
+                "first_name": "Ingrid",
+                "last_name": "",
+                "team": "TA97020CV",
+                "email": "ingrid@higherdose.com",
+                "title": "",
+                "phone": "",
+                "skype": "",
+                "status_text": "",
+                "status_text_canonical": "",
+                "status_emoji": "",
+                "status_emoji_display_info": [],
+                "status_expiration": 0,
+                "huddle_state": "default_unset",
+                "huddle_state_expiration_ts": 0
+            }
+        },
+        {
+            "id": "U0913R7KB7E",
+            "name": "jourdan",
+            "is_bot": false,
+            "updated": 1752084881,
+            "is_app_user": false,
+            "team_id": "TA97020CV",
+            "deleted": false,
+            "color": "619a4f",
+            "is_email_confirmed": true,
+            "real_name": "Jourdan",
+            "tz": "America\/Chicago",
+            "tz_label": "Central Daylight Time",
+            "tz_offset": -18000,
+            "is_admin": false,
+            "is_owner": false,
+            "is_primary_owner": false,
+            "is_restricted": false,
+            "is_ultra_restricted": false,
+            "has_2fa": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Jourdan",
+                "display_name": "Jourdan",
+                "avatar_hash": "g7da6b614b42",
+                "real_name_normalized": "Jourdan",
+                "display_name_normalized": "Jourdan",
+                "first_name": "Jourdan",
+                "last_name": "",
+                "team": "TA97020CV",
+                "email": "jourdan@higherdose.com",
+                "title": "",
+                "phone": "",
+                "skype": "",
+                "status_text": "",
+                "status_text_canonical": "",
+                "status_emoji": "",
+                "status_emoji_display_info": [],
+                "status_expiration": 0,
+                "huddle_state": "default_unset",
+                "huddle_state_expiration_ts": 0
+            }
+        }
+    ],
+    "bots": [],
+    "channels": [],
+    "emojis": {},
+    "im": {
+        "id": "D091C4YDWBF",
+        "created": 1749837793,
+        "is_frozen": false,
+        "is_archived": false,
+        "is_im": true,
+        "is_org_shared": false,
+        "context_team_id": "TA97020CV",
+        "updated": 1749839230510,
+        "user": "U0824M6DHLK",
+        "last_read": "1752272623.419389",
+        "latest": "1752272623.419389",
+        "unread_count": 0,
+        "unread_count_display": 0,
+        "is_open": true,
+        "properties": {
+            "tabs": [
+                {
+                    "type": "files",
+                    "label": "",
+                    "id": "files"
+                }
+            ],
+            "tabz": [
+                {
+                    "type": "files"
+                }
+            ]
+        }
+    },
+    "response_metadata": {
+        "next_cursor": "bmV4dF90czoxNzUyMTg3MTQwNDExNjg5"
+    }
+}
