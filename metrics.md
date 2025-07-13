@@ -19,7 +19,7 @@
 - eCPNV (1d)
 
 ## Tier 3 Metrics
-
+Platform-reported metrics are the metrics that are reported by the platform. 
 - Spend 
 - Platform-reported CAC
 - Platform-reported ROAS
