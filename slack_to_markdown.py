@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
-import json
+"""
+This script converts a Slack JSON export to markdown format.
+
+It handles:
+- User mentions
+- Channel mentions
+- Links
+- Bold, italic, and strikethrough formatting
+"""
+
 import re
+import json
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 def load_slack_data(file_path: str) -> dict:
     """Load Slack JSON export data."""
@@ -31,25 +41,25 @@ def clean_slack_formatting(text: str) -> str:
     """Clean up Slack-specific formatting and convert to markdown."""
     if not text:
         return ""
-    
+
     # Convert user mentions <@U123456> to @username (will be handled later)
     text = re.sub(r'<@([^>]+)>', r'@\1', text)
-    
+
     # Convert channel mentions <#C123456|channel-name> to #channel-name
     text = re.sub(r'<#[^|]+\|([^>]+)>', r'#\1', text)
-    
+
     # Convert links <https://example.com|text> to [text](https://example.com)
     text = re.sub(r'<([^|]+)\|([^>]+)>', r'[\2](\1)', text)
-    
+
     # Convert simple links <https://example.com> to [https://example.com](https://example.com)
     text = re.sub(r'<(https?://[^>]+)>', r'[\1](\1)', text)
-    
+
     # Convert bold *text* to **text**
     text = re.sub(r'\*([^*]+)\*', r'**\1**', text)
-    
+
     # Convert italic _text_ to *text*
     text = re.sub(r'_([^_]+)_', r'*\1*', text)
-    
+
     # Convert code `text` (keep as is)
     # Convert strikethrough ~text~ to ~~text~~
     text = re.sub(r'~([^~]+)~', r'~~\1~~', text)
@@ -59,7 +69,7 @@ def clean_slack_formatting(text: str) -> str:
 def extract_text_from_blocks(blocks: List[dict]) -> str:
     """Extract plain text from Slack's rich text blocks."""
     text_parts = []
-    
+
     for block in blocks:
         if block.get('type') == 'rich_text':
             elements = block.get('elements', [])
@@ -92,7 +102,7 @@ def extract_text_from_blocks(blocks: List[dict]) -> str:
                                     text = item_element.get('text', url)
                                     item_text += f"<{url}|{text}>"
                             text_parts.append(f"• {item_text}")
-    
+
     return '\n'.join(text_parts)
 
 def replace_user_mentions(text: str, user_map: Dict[str, str]) -> str:
@@ -100,7 +110,7 @@ def replace_user_mentions(text: str, user_map: Dict[str, str]) -> str:
     def replace_mention(match):
         user_id = match.group(1)
         return f"@{user_map.get(user_id, user_id)}"
-    
+
     return re.sub(r'@([A-Z0-9]+)', replace_mention, text)
 
 def format_message(message: dict, user_map: Dict[str, str], thread_level: int = 0) -> str:
@@ -108,76 +118,76 @@ def format_message(message: dict, user_map: Dict[str, str], thread_level: int = 
     # Skip bot messages and system messages
     if message.get('subtype') in ['bot_message', 'channel_join', 'channel_leave']:
         return ""
-    
+
     user_id = message.get('user', '')
     username = user_map.get(user_id, 'Unknown User')
-    
+
     # Convert timestamp
     timestamp = timestamp_to_datetime(message.get('ts', '0'))
     date_str = timestamp.strftime('%Y-%m-%d %H:%M:%S')
-    
+
     # Get message text
     text = message.get('text', '')
-    
+
     # If text is empty, try to extract from blocks
     if not text and message.get('blocks'):
         text = extract_text_from_blocks(message.get('blocks', []))
-    
+
     # Clean and format the text
     text = clean_slack_formatting(text)
     text = replace_user_mentions(text, user_map)
-    
+
     # Skip empty messages
     if not text.strip():
         return ""
-    
+
     # Format with appropriate indentation for threads
     indent = "  " * thread_level
-    
+
     # Format the message
     formatted_message = f"{indent}**{username}** ({date_str}):\n"
-    
+
     # Add the message text with proper indentation
     text_lines = text.split('\n')
     for line in text_lines:
         formatted_message += f"{indent}{line}\n"
-    
+
     formatted_message += "\n"
     
     return formatted_message
 
 def extract_messages_to_markdown(json_file_path: str, output_file_path: str):
     """Extract all messages from Slack JSON and save as markdown."""
-    
+
     # Load the data
     data = load_slack_data(json_file_path)
-    
+
     # Create user mapping
     user_map = create_user_map(data.get('users', []))
-    
+
     # Get channel info
     channel = data.get('channel', {})
     channel_name = channel.get('name', 'Unknown Channel')
-    
+
     # Start building markdown content
     markdown_content = f"# Slack Channel: {channel_name}\n\n"
-    
+
     # Get messages
     messages = data.get('history', {}).get('messages', [])
-    
+
     # Sort messages by timestamp (oldest first)
     messages.sort(key=lambda x: float(x.get('ts', '0')))
-    
+
     # Process each message
     for message in messages:
         formatted_message = format_message(message, user_map)
         if formatted_message:
             markdown_content += formatted_message
-    
+
     # Save to file
     with open(output_file_path, 'w', encoding='utf-8') as f:
         f.write(markdown_content)
-    
+
     print(f"Successfully converted {len(messages)} messages to markdown.")
     print(f"Output saved to: {output_file_path}")
 
@@ -185,5 +195,5 @@ if __name__ == "__main__":
     # Use the provided JSON file
     json_file = "slack.json"
     output_file = "slack_messages.md"
-    
-    extract_messages_to_markdown(json_file, output_file) 
+
+    extract_messages_to_markdown(json_file, output_file)
