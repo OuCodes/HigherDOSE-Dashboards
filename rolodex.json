@@ -1,0 +1,142 @@
+{
+  "people": [
+    {
+      "name": "Rahul",
+      "role": "Google Campaign Manager",
+      "company": "Sharma Brands",
+      "email": "rahul@sharmabrands.com",
+      "notes": "Manages Google campaigns, conducts A/B tests, provides search impression share insights, coordinates with Google reps, handles PMAX campaigns and TROAS settings"
+    },
+    {
+      "name": "Ingrid",
+      "role": "Senior Leadership",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Appears to be in leadership role, receives campaign updates, makes strategic decisions, involved in GMC access and bundle image approvals"
+    },
+    {
+      "name": "Jourdan",
+      "role": "Account Manager",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Acts as intermediary between CMO and agencies/vendors, responsible for performance reporting, projecting July performance, reviewing TROAS settings, target: 25% MoM/YoY growth with 20% bonus"
+    },
+    {
+      "name": "Chris Jacob",
+      "role": "Technical Operations",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Handles technical aspects including GMC access, works with legacy images, manages TikTok shop compliance issues, tracks Nordstrom sales impact"
+    },
+    {
+      "name": "Berkeley Clark",
+      "role": "Campaign Operations",
+      "company": "Sharma Brands",
+      "email": "berkeley@sharmabrands.com",
+      "notes": "Frequently cc'd on campaign communications, needs GMC admin access, involved in Hyperrice bundle oversight"
+    },
+    {
+      "name": "Jake Panzer",
+      "role": "Campaign Specialist",
+      "company": "Sharma Brands",
+      "email": null,
+      "notes": "Works on attribution windows for legacy campaigns, provides creative reports, handles 1DC ROAS analysis"
+    },
+    {
+      "name": "Jeremy Dranikoff",
+      "role": "Performance Marketing Specialist",
+      "company": "Unknown Agency",
+      "email": null,
+      "notes": "Provides detailed performance reports including TikTok analysis, manages body sculpt funnels, handles creative performance data and traffic campaigns"
+    },
+    {
+      "name": "Abigale",
+      "role": "Team Member",
+      "company": "Sharma Brands",
+      "email": null,
+      "notes": "Coordinates team schedules, manages holiday coverage, stays available for urgent issues"
+    },
+    {
+      "name": "Ari Murray",
+      "role": "Team Member",
+      "company": "Sharma Brands",
+      "email": null,
+      "notes": "Frequently cc'd on campaign communications and A/B test results"
+    },
+    {
+      "name": "Sumish Khadka",
+      "role": "Creative/Technical Support",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Handles legacy images and promotional materials, works on bundle image updates"
+    },
+    {
+      "name": "Tori",
+      "role": "Google Representative",
+      "company": "Google",
+      "email": null,
+      "notes": "Google rep who provides guidance on PMAX scaling tests, ROAS targets, Demand Gen scaling, and ToF YT Reach/Traffic investments"
+    },
+    {
+      "name": "Dani",
+      "role": "Creative Designer",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Creates and updates bundle images, removes promotional stickers from product images"
+    },
+    {
+      "name": "Elyse",
+      "role": "Team Member",
+      "company": "Unknown",
+      "email": null,
+      "notes": "Brief mention requesting team to check something"
+    },
+    {
+      "name": "Simo",
+      "role": "Senior Leadership/CMO",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Higher-up who requests performance reports, asked for one-pager on first half year performance vs previous year"
+    },
+    {
+      "name": "CMO",
+      "role": "Chief Marketing Officer",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Sets high-level growth initiatives and goals (25% MoM/YoY growth), relies on account manager for vendor communication, receives weekly reports every Monday"
+    },
+    {
+      "name": "Multi-hat CFO",
+      "role": "Finance/Tech/HR Lead",
+      "company": "HigherDOSE",
+      "email": null,
+      "notes": "Oversees tech, finance, and HR functions, frequently works with account manager, met during onboarding process"
+    }
+  ],
+  "companies": [
+    {
+      "name": "HigherDOSE",
+      "type": "Client Company",
+      "industry": "Health & Wellness",
+      "description": "Sells health and wellness electronic devices, beauty topicals, and supplements"
+    },
+    {
+      "name": "Sharma Brands",
+      "type": "Agency",
+      "industry": "Digital Marketing",
+      "description": "Manages advertising channels including Google and Meta for HigherDOSE"
+    },
+    {
+      "name": "Google",
+      "type": "Platform",
+      "industry": "Technology/Advertising",
+      "description": "Advertising platform with dedicated reps for account management"
+    }
+  ],
+  "last_updated": "2025-07-13",
+  "source_files": [
+    "slack_messages.md",
+    "context.md",
+    "transcripts/jourdan-repo-structure-setup-pt2-2025-07-13_-_03-13-32.md"
+  ]
+} 
