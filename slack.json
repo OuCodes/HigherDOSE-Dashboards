@@ -1,0 +1,3157 @@
+{
+    "ok": true,
+    "history": {
+        "messages": [
+            {
+                "text": "Bundle images with no promo sticker here!",
+                "files": [
+                    {
+                        "id": "F09546EC1U7",
+                        "created": 1752349073,
+                        "timestamp": 1752349073,
+                        "name": "Bundles Thumbnail (No stickers).zip",
+                        "title": "Bundles Thumbnail (No stickers)",
+                        "mimetype": "application\/zip",
+                        "filetype": "zip",
+                        "pretty_type": "Zip",
+                        "user": "U0824M6DHLK",
+                        "user_team": "TA97020CV",
+                        "editable": false,
+                        "size": 24433496,
+                        "mode": "hosted",
+                        "is_external": false,
+                        "external_type": "",
+                        "is_public": true,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "url_private": "https:\/\/files.slack.com\/files-pri\/TA97020CV-F09546EC1U7\/bundles_thumbnail__no_stickers_.zip",
+                        "url_private_download": "https:\/\/files.slack.com\/files-pri\/TA97020CV-F09546EC1U7\/download\/bundles_thumbnail__no_stickers_.zip",
+                        "media_display_type": "unknown",
+                        "permalink": "https:\/\/higherdosemanagement.slack.com\/files\/U0913R7KB7E\/F09546EC1U7\/bundles_thumbnail__no_stickers_.zip",
+                        "permalink_public": "https:\/\/slack-files.com\/TA97020CV-F09546EC1U7-63242b1f49",
+                        "is_starred": false,
+                        "skipped_shares": true,
+                        "has_rich_preview": false,
+                        "file_access": "visible"
+                    }
+                ],
+                "upload": false,
+                "user": "U0824M6DHLK",
+                "display_as_bot": false,
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "NDX",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Bundle images with no promo sticker here!"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "type": "message",
+                "ts": "1752349103.340769",
+                "team": "TA97020CV",
+                "thread_ts": "1752349103.340769",
+                "reply_count": 1,
+                "reply_users_count": 1,
+                "latest_reply": "1752397353.997509",
+                "reply_users": [
+                    "U06SRGR9M7E"
+                ],
+                "is_locked": false,
+                "subscribed": false
+            },
+            {
+                "user": "UA8FED08G",
+                "type": "message",
+                "ts": "1752258540.523479",
+                "client_msg_id": "b28b452d-050c-4ace-be85-ff7a1f37c7d0",
+                "text": "fyi both mask and red light starter kit got pulled from tt shop compliance working to restore",
+                "team": "TA97020CV",
+                "thread_ts": "1752258540.523479",
+                "reply_count": 4,
+                "reply_users_count": 3,
+                "latest_reply": "1752349212.869249",
+                "reply_users": [
+                    "U07QLTS27JN",
+                    "U0824M6DHLK",
+                    "UA8FED08G"
+                ],
+                "is_locked": false,
+                "subscribed": false,
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "5Y8d6",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "fyi both mask and red light starter kit got pulled from tt shop compliance working to restore"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "white_check_mark",
+                        "users": [
+                            "U07QLTS27JN",
+                            "U04PHVC4WJH",
+                            "U0824M6DHLK"
+                        ],
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752257961.623149",
+                "client_msg_id": "398a5612-3a90-40f8-8832-e575d436e1d6",
+                "text": "excuse me for stating the obvious but we are also on the last day of prime week (4 days this year) so that would also account for slowness in the DTC front",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "HCEsO",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "excuse me for stating the obvious but we are also on the last day of prime week (4 days this year) so that would also account for slowness in the DTC front"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "+1",
+                        "users": [
+                            "U04K57DB7H9"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "subtype": "thread_broadcast",
+                "user": "U07QLTS27JN",
+                "thread_ts": "1751987067.774009",
+                "root": {
+                    "user": "U07QLTS27JN",
+                    "type": "message",
+                    "ts": "1751987067.774009",
+                    "edited": {
+                        "user": "U07QLTS27JN",
+                        "ts": "1751987092.000000"
+                    },
+                    "client_msg_id": "2456132c-5d8a-4e89-8f53-2b66d7515c94",
+                    "text": "*1DC NB L7*\n*Spend: $6,200*\n*Revenue: $804*\n*ROAS: .13* (-35.58%)\n*CAC: $3,100 (+30.90%)* \nUpdates and next steps\n\u2022 The body sculpt focused funnel has started off well both in platform and in NB.\n    \u25e6 In platform: 4.54 ROAS $73 CAC\n    \u25e6 NB clicks only: .68 ROAS \n    \u25e6 Awareness metrics: 62.3% LP view rate, .72 CPC. We will look to refresh this campaign to keep driving these metrics \n\u2022 In the pipeline is our full high aov product funnel\n    \u25e6 We'll launch this if body sculpt falls off\/budget supports!\nTraffic campaigns in June (Roughly 12% of spend this week)\n\u2022 .35 CPC, 1.56% CTR and a Landing page view rate 66.14%\n<https:\/\/projects.motionapp.com\/snapshot\/1c57f4ef-091a-473c-9802-ac496beffacb|Creative Report>\n\u2022 027 V4 is our top performer in platform and on NB. The sound and text overlay are both key factors here. The background sound is consistent in the top performing body sculpt creatives ",
+                    "team": "TA97020CV",
+                    "user_team": "TKAF9UATA",
+                    "source_team": "TKAF9UATA",
+                    "user_profile": {
+                        "avatar_hash": "0d0d8862770f",
+                        "image_72": "https:\/\/avatars.slack-edge.com\/2024-10-18\/7925935346896_0d0d8862770fd877b6af_72.jpg",
+                        "first_name": "Jeremy",
+                        "real_name": "Jeremy Dranikoff",
+                        "display_name": "Jeremy Dranikoff",
+                        "team": "TKAF9UATA",
+                        "name": "jeremyd",
+                        "is_restricted": false,
+                        "is_ultra_restricted": false
+                    },
+                    "thread_ts": "1751987067.774009",
+                    "reply_count": 13,
+                    "reply_users_count": 2,
+                    "latest_reply": "1752375464.655159",
+                    "reply_users": [
+                        "U0913R7KB7E",
+                        "U07QLTS27JN"
+                    ],
+                    "is_locked": false,
+                    "subscribed": true,
+                    "last_read": "1752375464.655159",
+                    "blocks": [
+                        {
+                            "type": "rich_text",
+                            "block_id": "8KYQ9",
+                            "elements": [
+                                {
+                                    "type": "rich_text_section",
+                                    "elements": [
+                                        {
+                                            "type": "text",
+                                            "text": "1DC NB L7",
+                                            "style": {
+                                                "bold": true
+                                            }
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "\n"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "Spend: $6,200",
+                                            "style": {
+                                                "bold": true
+                                            }
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "\n"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "Revenue: $804",
+                                            "style": {
+                                                "bold": true
+                                            }
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "\n"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "ROAS: .13 ",
+                                            "style": {
+                                                "bold": true
+                                            }
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "(-35.58%)\n"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "CAC: $3,100 (+30.90%) ",
+                                            "style": {
+                                                "bold": true
+                                            }
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "\nUpdates and next steps\n"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "rich_text_list",
+                                    "elements": [
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "The body sculpt focused funnel has started off well both in platform and in NB."
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "style": "bullet",
+                                    "indent": 0,
+                                    "border": 0
+                                },
+                                {
+                                    "type": "rich_text_list",
+                                    "elements": [
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "In platform: 4.54 ROAS $73 CAC"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "NB clicks only: .68 ROAS "
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "Awareness metrics: 62.3% LP view rate, .72 CPC. We will look to refresh this campaign to keep driving these metrics "
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "style": "bullet",
+                                    "indent": 1,
+                                    "border": 0
+                                },
+                                {
+                                    "type": "rich_text_list",
+                                    "elements": [
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "In the pipeline is our full high aov product funnel"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "style": "bullet",
+                                    "indent": 0,
+                                    "border": 0
+                                },
+                                {
+                                    "type": "rich_text_list",
+                                    "elements": [
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "We'll launch this if body sculpt falls off\/budget supports!"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "style": "bullet",
+                                    "indent": 1,
+                                    "border": 0
+                                },
+                                {
+                                    "type": "rich_text_section",
+                                    "elements": [
+                                        {
+                                            "type": "text",
+                                            "text": "\nTraffic campaigns in June (Roughly 12% of spend this week)\n"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "rich_text_list",
+                                    "elements": [
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": ".35 CPC, 1.56% CTR and a Landing page view rate 66.14%"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "style": "bullet",
+                                    "indent": 0,
+                                    "border": 0
+                                },
+                                {
+                                    "type": "rich_text_section",
+                                    "elements": [
+                                        {
+                                            "type": "text",
+                                            "text": "\n"
+                                        },
+                                        {
+                                            "type": "link",
+                                            "url": "https:\/\/projects.motionapp.com\/snapshot\/1c57f4ef-091a-473c-9802-ac496beffacb",
+                                            "text": "Creative Report"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "\n"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "rich_text_list",
+                                    "elements": [
+                                        {
+                                            "type": "rich_text_section",
+                                            "elements": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "027 V4 is our top performer in platform and on NB. The sound and text overlay are both key factors here. The background sound is consistent in the top performing body sculpt creatives "
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "style": "bullet",
+                                    "indent": 0,
+                                    "border": 0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "type": "message",
+                "ts": "1752251914.993619",
+                "edited": {
+                    "user": "U07QLTS27JN",
+                    "ts": "1752251920.000000"
+                },
+                "client_msg_id": "9efb68e3-5d99-4f47-ac6a-7b5c1639e79c",
+                "text": "Hey <@U0913R7KB7E> happy Friday! Please see <https:\/\/docs.google.com\/spreadsheets\/d\/1i0FND-8p7CjiRzOjRk0AFC7nRfWXxWwSbYZHzLhYf1A\/edit?usp=sharing|here> for our Tiktok relationship to the other channels and business as a whole. Happy to pull anymore numbers and explain this further anytime. Definitely some interesting insights here! We are prepared to take action on turning off the SPC and launching a red light mask specific funnel, but decided to hold for feedback. Let us know what you think. Thank you and have a great weekend! CC <@U04PHVC4WJH>",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "gqUEi",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " happy Friday! Please see "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/docs.google.com\/spreadsheets\/d\/1i0FND-8p7CjiRzOjRk0AFC7nRfWXxWwSbYZHzLhYf1A\/edit?usp=sharing",
+                                        "text": "here"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " for our Tiktok relationship to the other channels and business as a whole. Happy to pull anymore numbers and explain this further anytime. Definitely some interesting insights here! We are prepared to take action on turning off the SPC and launching a red light mask specific funnel, but decided to hold for feedback. Let us know what you think. Thank you and have a great weekend! CC "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U04PHVC4WJH"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "UA8FED08G",
+                "type": "message",
+                "ts": "1752239655.259749",
+                "client_msg_id": "82c6e678-ff82-4eeb-b6e8-b5db3ca4c6e4",
+                "text": "FYI we had a sale on Nordstrom for sauna blankets which sold 150 units over the past three days so maybe some effect on DTC",
+                "team": "TA97020CV",
+                "thread_ts": "1752239655.259749",
+                "reply_count": 1,
+                "reply_users_count": 1,
+                "latest_reply": "1752243140.359149",
+                "reply_users": [
+                    "U04K57DB7H9"
+                ],
+                "is_locked": false,
+                "subscribed": false,
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "JrI8q",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "FYI we had a sale on Nordstrom for sauna blankets which sold 150 units over the past three days so maybe some effect on DTC"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "orange_heart",
+                        "users": [
+                            "U04K57DB7H9",
+                            "U05KD2RULPN",
+                            "U0824M6DHLK"
+                        ],
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752179741.892909",
+                "client_msg_id": "7881c0ea-029d-43ec-85a9-e5f1f6a5127d",
+                "text": "unrelated - <@U04PHVC4WJH> can we please make sure there are no Hyperrice bundles in ads?",
+                "team": "TA97020CV",
+                "thread_ts": "1752179741.892909",
+                "reply_count": 3,
+                "reply_users_count": 3,
+                "latest_reply": "1752180249.938479",
+                "reply_users": [
+                    "U04PHVC4WJH",
+                    "U0913R7KB7E",
+                    "U05KD2RULPN"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1752180249.938479",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "RZe8Z",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "unrelated - "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U04PHVC4WJH"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " can we please make sure there are no Hyperrice bundles in ads?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "white_check_mark",
+                        "users": [
+                            "U04PHVC4WJH"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752179711.693349",
+                "client_msg_id": "307f3b4d-b51e-4749-9804-b63165760ed0",
+                "text": "confirming we don't have them without the discounts but I've asked Dani to take if off and send me a fresh batch - will share here",
+                "team": "TA97020CV",
+                "thread_ts": "1752179711.693349",
+                "reply_count": 1,
+                "reply_users_count": 1,
+                "latest_reply": "1752232822.203149",
+                "reply_users": [
+                    "U06SRGR9M7E"
+                ],
+                "is_locked": false,
+                "subscribed": false,
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "+zcdG",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "confirming we don't have them without the discounts but I've asked Dani to take if off and send me a fresh batch - will share here"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "fire",
+                        "users": [
+                            "U06SRGR9M7E"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U0824M6DHLK",
+                "type": "message",
+                "ts": "1752178958.116889",
+                "client_msg_id": "9ad061b6-075c-4d04-a255-bcbcf66dbe4a",
+                "text": "<@UA8FED08G> let me look",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "sUSSn",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "user",
+                                        "user_id": "UA8FED08G"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " let me look"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "UA8FED08G",
+                "type": "message",
+                "ts": "1752170748.952849",
+                "client_msg_id": "b40285e2-20ae-4666-bd86-8e272ed16f8a",
+                "text": "<@U021VAACPFZ> do you have the legacy images without the promo",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "UtI4V",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "user",
+                                        "user_id": "U021VAACPFZ"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " do you have the legacy images without the promo"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "UA8FED08G",
+                "type": "message",
+                "ts": "1752170741.879779",
+                "client_msg_id": "072e8e57-2320-4f2d-9932-d24f1a3689fd",
+                "text": "I've added access",
+                "team": "TA97020CV",
+                "thread_ts": "1752170741.879779",
+                "reply_count": 2,
+                "reply_users_count": 2,
+                "latest_reply": "1752173074.182679",
+                "reply_users": [
+                    "U06SRGR9M7E",
+                    "U0913R7KB7E"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1752173074.182679",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "U\/Dar",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "I've added access"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "pray::skin-tone-4",
+                        "users": [
+                            "U06SRGR9M7E"
+                        ],
+                        "count": 1
+                    },
+                    {
+                        "name": "pray",
+                        "users": [
+                            "U0824M6DHLK"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U06SRGR9M7E",
+                "type": "message",
+                "ts": "1752163137.465269",
+                "client_msg_id": "f40341e7-2363-44b0-b4ff-dfe1dd6be788",
+                "text": "Hey <@U0913R7KB7E> and team, our Shopping campaign has had a bit of drop off in spends and revenue recently, so I did a little digging and noticed that _bundles_ were the primary cause. I believe the bundle images which are synced to GMC showcases the evergreen offer, and because of this, GMC has disapproved those SKUs as promotional imagery is not allowed in Google Shopping placements. Would you guys be able to provide <mailto:rahul@sharmabrands.com|rahul@sharmabrands.com> and <mailto:berkeley@sharmabrands.com|berkeley@sharmabrands.com> admin access to your GMC, and also provide us alternate image links for each bundle that's live on-site, which doesn't showcase the offer?\nThanks in advance!\ncc: <@U04PHVC4WJH> <@UA8FED08G>",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "6f07d4ec1c33",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-05-10\/7092061157094_6f07d4ec1c33ccf97c3b_72.png",
+                    "first_name": "Rahul",
+                    "real_name": "Rahul Vithanage",
+                    "display_name": "Rahul",
+                    "team": "TKAF9UATA",
+                    "name": "rahul",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "CdA9J",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " and team, our Shopping campaign has had a bit of drop off in spends and revenue recently, so I did a little digging and noticed that "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "bundles",
+                                        "style": {
+                                            "italic": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " were the primary cause. I believe the bundle images which are synced to GMC showcases the evergreen offer, and because of this, GMC has disapproved those SKUs as promotional imagery is not allowed in Google Shopping placements. Would you guys be able to provide "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "mailto:rahul@sharmabrands.com",
+                                        "text": "rahul@sharmabrands.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " and "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "mailto:berkeley@sharmabrands.com",
+                                        "text": "berkeley@sharmabrands.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " admin access to your GMC, and also provide us alternate image links for each bundle that's live on-site, which doesn't showcase the offer?\nThanks in advance!\ncc: "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U04PHVC4WJH"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "UA8FED08G"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U06SRGR9M7E",
+                "type": "message",
+                "ts": "1752157212.973059",
+                "client_msg_id": "5b39a238-4078-4eee-8991-86b46aace0da",
+                "text": "Hey <@U0824M6DHLK> (cc: <@U0913R7KB7E>), we met with our Google rep Tori yesterday and here\u2019s what we aligned on\u2014sharing for visibility:\n\u2022 We\u2019ll let the *Pmax scaling test* run for 30 days (from June 19 until July 18), then scale down any campaigns that aren\u2019t driving incremental revenue post scale.\n \u2022 On July 12 (after Prime Day), we\u2019ll *increase the target ROAS* on one Pmax campaign by +15% and monitor for around 2 weeks before deciding whether to roll this out to other campaigns.\n \u2022 *Demand Gen scaling to $500\/day* will realistically need about 6 weeks for proper learning according to Tori. Let us know if you guys are down to up the budget to $500\/day from the current $300\/day.\n \u2022 Waiting on Tori to confirm what the *ToF YT Reach\/Traffic investment* will look like.\ncc: <@U04PHVC4WJH>",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "6f07d4ec1c33",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-05-10\/7092061157094_6f07d4ec1c33ccf97c3b_72.png",
+                    "first_name": "Rahul",
+                    "real_name": "Rahul Vithanage",
+                    "display_name": "Rahul",
+                    "team": "TKAF9UATA",
+                    "name": "rahul",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "thread_ts": "1752157212.973059",
+                "reply_count": 5,
+                "reply_users_count": 3,
+                "latest_reply": "1752397481.553089",
+                "reply_users": [
+                    "U0913R7KB7E",
+                    "U0824M6DHLK",
+                    "U06SRGR9M7E"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1752352927.510839",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "hJLq+",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0824M6DHLK"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " (cc: "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "), we met with our Google rep Tori yesterday and here\u2019s what we aligned on\u2014sharing for visibility:\n\u2022 We\u2019ll let the "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Pmax scaling test",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " run for 30 days (from June 19 until July 18), then scale down any campaigns that aren\u2019t driving incremental revenue post scale.\n \u2022 On July 12 (after Prime Day), we\u2019ll "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "increase the target ROAS",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " on one Pmax campaign by +15% and monitor for around 2 weeks before deciding whether to roll this out to other campaigns.\n \u2022 "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Demand Gen scaling to $500\/day",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " will realistically need about 6 weeks for proper learning according to Tori. Let us know if you guys are down to up the budget to $500\/day from the current $300\/day.\n \u2022 Waiting on Tori to confirm what the "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "ToF YT Reach\/Traffic investment",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " will look like.\ncc: "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U04PHVC4WJH"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "text": "Hey <@U0824M6DHLK> and <@UA8FED08G>, sharing through our *search impression share and CPC insights* for brand and non-brand (product) terms.\n\n*Core Brand - Screenshot 1*\n\u2022 Defending brand terms very well with an impression share consistently over 90%, over the last 8+ weeks.\n\u2022 <http:\/\/amazon.com|amazon.com> and <http:\/\/healthyline.com|healthyline.com> have increased impression share over the last 4 weeks, indicating higher bidding on our brand terms. \n*Sauna Blanket (Non-Brand \/ Product-Specific) - Screenshot 2*\n\u2022 Defending market share well - still the market leader. <http:\/\/amazon.com|amazon.com> is our main competitor in the space. \n\u2022 CPCs seem to be normalizing over the last 3 weeks, showcasing a slow return to an evergreen state\n*Red Light Hat (Non-Brand \/ Product-Specific) - Screenshot 3*\n\u2022 Market leaders <http:\/\/irestorelaser.com|irestorelaser.com> and <http:\/\/kiierr.com|kiierr.com> have seen a significant drop in impression share over the last 2 weeks. Possibly due to scaling down drastically post promos. Showcases a need to scale significantly during sale periods to remain competitive with them.\n\u2022 Competitors like <http:\/\/schoolofdermatology.com|schoolofdermatology.com> and <http:\/\/omniluxled.com|omniluxled.com> have managed to improve their share in the space and a new competitor has entered the auction house (<http:\/\/hoogahealth.com|hoogahealth.com>) \n\u2022 We want to scale this campaign by 20% this week to assess if we can capture some additional impression share, traffic and conversions. \n*PEMF Mat (Non-Brand \/ Product-Specific) - Screenshot 4*\n\u2022 We remain market leaders in the space despite scaling down drastically in June. This indicates strong performance during evergreen periods. We also recently launched new ad copy under the PEMF ad group aimed at improving quality scores and impression share which seems to be working well in defending our share. \n\u2022 <http:\/\/magnawavepemf.com|magnawavepemf.com> remains our biggest competitor in the space. \n\u2022 CPCs are dropping \/ stabilizing, indicating a slow return to an evergreen state. \nLet us know if you have any questions :relaxed: cc: <@U04PHVC4WJH> <@U029WD39C0Z>",
+                "files": [
+                    {
+                        "id": "F09513YED0S",
+                        "created": 1752070096,
+                        "timestamp": 1752070096,
+                        "name": "Screenshot 2025-07-09 at 7.30.08 PM.png",
+                        "title": "Screenshot 2025-07-09 at 7.30.08 PM.png",
+                        "mimetype": "image\/png",
+                        "filetype": "png",
+                        "pretty_type": "PNG",
+                        "user": "U06SRGR9M7E",
+                        "user_team": "TKAF9UATA",
+                        "editable": false,
+                        "size": 456936,
+                        "mode": "hosted",
+                        "is_external": false,
+                        "external_type": "",
+                        "is_public": true,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "url_private": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F09513YED0S\/screenshot_2025-07-09_at_7.30.08_pm.png",
+                        "url_private_download": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F09513YED0S\/download\/screenshot_2025-07-09_at_7.30.08_pm.png",
+                        "media_display_type": "unknown",
+                        "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_64.png",
+                        "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_80.png",
+                        "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_360.png",
+                        "thumb_360_w": 360,
+                        "thumb_360_h": 223,
+                        "thumb_480": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_480.png",
+                        "thumb_480_w": 480,
+                        "thumb_480_h": 297,
+                        "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_160.png",
+                        "thumb_720": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_720.png",
+                        "thumb_720_w": 720,
+                        "thumb_720_h": 445,
+                        "thumb_800": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_800.png",
+                        "thumb_800_w": 800,
+                        "thumb_800_h": 495,
+                        "thumb_960": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_960.png",
+                        "thumb_960_w": 960,
+                        "thumb_960_h": 594,
+                        "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F09513YED0S-06fd0531da\/screenshot_2025-07-09_at_7.30.08_pm_1024.png",
+                        "thumb_1024_w": 1024,
+                        "thumb_1024_h": 633,
+                        "original_w": 1200,
+                        "original_h": 742,
+                        "thumb_tiny": "AwAdADDRIOeD+FGG9f1oJoHUfSgBPm\/2qPm9z+NOB6fSkB6UAGD6\/rQBz1\/DNA7fWlzz1FACEYzyOaaHB2+9SUmB6UAMVlO38qAw4\/Kn4GOKMD0oAZuA\/A0\/qeoowPSloA\/\/2Q==",
+                        "permalink": "https:\/\/sharmamedia.slack.com\/files\/U0913R7KB7E\/F09513YED0S\/screenshot_2025-07-09_at_7.30.08_pm.png",
+                        "permalink_public": "https:\/\/slack-files.com\/TKAF9UATA-F09513YED0S-2602e45ea1",
+                        "source_team": "TKAF9UATA",
+                        "is_starred": false,
+                        "skipped_shares": true,
+                        "has_rich_preview": false,
+                        "file_access": "visible"
+                    },
+                    {
+                        "id": "F094ZUR6JAH",
+                        "created": 1752070102,
+                        "timestamp": 1752070102,
+                        "name": "Screenshot 2025-07-09 at 7.30.17 PM.png",
+                        "title": "Screenshot 2025-07-09 at 7.30.17 PM.png",
+                        "mimetype": "image\/png",
+                        "filetype": "png",
+                        "pretty_type": "PNG",
+                        "user": "U06SRGR9M7E",
+                        "user_team": "TKAF9UATA",
+                        "editable": false,
+                        "size": 432805,
+                        "mode": "hosted",
+                        "is_external": false,
+                        "external_type": "",
+                        "is_public": true,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "url_private": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F094ZUR6JAH\/screenshot_2025-07-09_at_7.30.17_pm.png",
+                        "url_private_download": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F094ZUR6JAH\/download\/screenshot_2025-07-09_at_7.30.17_pm.png",
+                        "media_display_type": "unknown",
+                        "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_64.png",
+                        "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_80.png",
+                        "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_360.png",
+                        "thumb_360_w": 360,
+                        "thumb_360_h": 193,
+                        "thumb_480": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_480.png",
+                        "thumb_480_w": 480,
+                        "thumb_480_h": 258,
+                        "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_160.png",
+                        "thumb_720": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_720.png",
+                        "thumb_720_w": 720,
+                        "thumb_720_h": 387,
+                        "thumb_800": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_800.png",
+                        "thumb_800_w": 800,
+                        "thumb_800_h": 430,
+                        "thumb_960": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_960.png",
+                        "thumb_960_w": 960,
+                        "thumb_960_h": 515,
+                        "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6JAH-cf58589dca\/screenshot_2025-07-09_at_7.30.17_pm_1024.png",
+                        "thumb_1024_w": 1024,
+                        "thumb_1024_h": 550,
+                        "original_w": 1382,
+                        "original_h": 742,
+                        "thumb_tiny": "AwAZADDT5zTcH1\/Wgngn0o7n6UAJhv8AJow3+TTu4pMg496AAA+v60o96T\/HFLnB60ADDIIHemhWyDntg0+igBgDAKSenWk2tgc96kooAYVb5seuRThnvS0UAf\/Z",
+                        "permalink": "https:\/\/sharmamedia.slack.com\/files\/U0913R7KB7E\/F094ZUR6JAH\/screenshot_2025-07-09_at_7.30.17_pm.png",
+                        "permalink_public": "https:\/\/slack-files.com\/TKAF9UATA-F094ZUR6JAH-7a4109118b",
+                        "source_team": "TKAF9UATA",
+                        "is_starred": false,
+                        "skipped_shares": true,
+                        "has_rich_preview": false,
+                        "file_access": "visible"
+                    },
+                    {
+                        "id": "F094ZUR6ZSR",
+                        "created": 1752070107,
+                        "timestamp": 1752070107,
+                        "name": "Screenshot 2025-07-09 at 7.30.27 PM.png",
+                        "title": "Screenshot 2025-07-09 at 7.30.27 PM.png",
+                        "mimetype": "image\/png",
+                        "filetype": "png",
+                        "pretty_type": "PNG",
+                        "user": "U06SRGR9M7E",
+                        "user_team": "TKAF9UATA",
+                        "editable": false,
+                        "size": 526919,
+                        "mode": "hosted",
+                        "is_external": false,
+                        "external_type": "",
+                        "is_public": true,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "url_private": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F094ZUR6ZSR\/screenshot_2025-07-09_at_7.30.27_pm.png",
+                        "url_private_download": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F094ZUR6ZSR\/download\/screenshot_2025-07-09_at_7.30.27_pm.png",
+                        "media_display_type": "unknown",
+                        "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_64.png",
+                        "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_80.png",
+                        "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_360.png",
+                        "thumb_360_w": 360,
+                        "thumb_360_h": 163,
+                        "thumb_480": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_480.png",
+                        "thumb_480_w": 480,
+                        "thumb_480_h": 218,
+                        "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_160.png",
+                        "thumb_720": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_720.png",
+                        "thumb_720_w": 720,
+                        "thumb_720_h": 327,
+                        "thumb_800": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_800.png",
+                        "thumb_800_w": 800,
+                        "thumb_800_h": 363,
+                        "thumb_960": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_960.png",
+                        "thumb_960_w": 960,
+                        "thumb_960_h": 436,
+                        "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094ZUR6ZSR-799e1594e2\/screenshot_2025-07-09_at_7.30.27_pm_1024.png",
+                        "thumb_1024_w": 1024,
+                        "thumb_1024_h": 465,
+                        "original_w": 1626,
+                        "original_h": 738,
+                        "thumb_tiny": "AwAVADDSOfWkIPrzS9uaPWgBuD60YPrTs0ZoATBHel5zRxQevFAAQD1o2jPSlooATaMD2o2jHSlooATaOfelAAoooA\/\/2Q==",
+                        "permalink": "https:\/\/sharmamedia.slack.com\/files\/U0913R7KB7E\/F094ZUR6ZSR\/screenshot_2025-07-09_at_7.30.27_pm.png",
+                        "permalink_public": "https:\/\/slack-files.com\/TKAF9UATA-F094ZUR6ZSR-f90806c5a5",
+                        "source_team": "TKAF9UATA",
+                        "is_starred": false,
+                        "skipped_shares": true,
+                        "has_rich_preview": false,
+                        "file_access": "visible"
+                    },
+                    {
+                        "id": "F094VCRN0AF",
+                        "created": 1752070112,
+                        "timestamp": 1752070112,
+                        "name": "Screenshot 2025-07-09 at 7.30.36 PM.png",
+                        "title": "Screenshot 2025-07-09 at 7.30.36 PM.png",
+                        "mimetype": "image\/png",
+                        "filetype": "png",
+                        "pretty_type": "PNG",
+                        "user": "U06SRGR9M7E",
+                        "user_team": "TKAF9UATA",
+                        "editable": false,
+                        "size": 634936,
+                        "mode": "hosted",
+                        "is_external": false,
+                        "external_type": "",
+                        "is_public": true,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "url_private": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F094VCRN0AF\/screenshot_2025-07-09_at_7.30.36_pm.png",
+                        "url_private_download": "https:\/\/files.slack.com\/files-pri\/TKAF9UATA-F094VCRN0AF\/download\/screenshot_2025-07-09_at_7.30.36_pm.png",
+                        "media_display_type": "unknown",
+                        "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_64.png",
+                        "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_80.png",
+                        "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_360.png",
+                        "thumb_360_w": 360,
+                        "thumb_360_h": 153,
+                        "thumb_480": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_480.png",
+                        "thumb_480_w": 480,
+                        "thumb_480_h": 204,
+                        "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_160.png",
+                        "thumb_720": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_720.png",
+                        "thumb_720_w": 720,
+                        "thumb_720_h": 307,
+                        "thumb_800": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_800.png",
+                        "thumb_800_w": 800,
+                        "thumb_800_h": 341,
+                        "thumb_960": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_960.png",
+                        "thumb_960_w": 960,
+                        "thumb_960_h": 409,
+                        "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/TKAF9UATA-F094VCRN0AF-61a94e721a\/screenshot_2025-07-09_at_7.30.36_pm_1024.png",
+                        "thumb_1024_w": 1024,
+                        "thumb_1024_h": 436,
+                        "original_w": 1728,
+                        "original_h": 736,
+                        "thumb_tiny": "AwAUADDS5zSHJ70NwpPtTQ\/Kj1FAC4PrRg+tN35Cn3xQW4b2NADxkd6UZphfluOgzTlO5QaAHYFJgelLRQAm0Y6CjAx060tA6UAJgelKAB2oooA\/\/9k=",
+                        "permalink": "https:\/\/sharmamedia.slack.com\/files\/U0913R7KB7E\/F094VCRN0AF\/screenshot_2025-07-09_at_7.30.36_pm.png",
+                        "permalink_public": "https:\/\/slack-files.com\/TKAF9UATA-F094VCRN0AF-78a4c80655",
+                        "source_team": "TKAF9UATA",
+                        "is_starred": false,
+                        "skipped_shares": true,
+                        "has_rich_preview": false,
+                        "file_access": "visible"
+                    }
+                ],
+                "upload": false,
+                "user": "U06SRGR9M7E",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "6UQk3",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0824M6DHLK"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " and "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "UA8FED08G"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", sharing through our "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "search impression share and CPC insights",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " for brand and non-brand (product) terms.\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Core Brand - Screenshot 1",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "Defending brand terms very well with an impression share consistently over 90%, over the last 8+ weeks."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/amazon.com",
+                                                "text": "amazon.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " and "
+                                            },
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/healthyline.com",
+                                                "text": "healthyline.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " have increased impression share over the last 4 weeks, indicating higher bidding on our brand terms. "
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Sauna Blanket (Non-Brand \/ Product-Specific) - Screenshot 2",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "Defending market share well - still the market leader. "
+                                            },
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/amazon.com",
+                                                "text": "amazon.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " is our main competitor in the space. "
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "CPCs seem to be normalizing over the last 3 weeks, showcasing a slow return to an evergreen state"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Red Light Hat (Non-Brand \/ Product-Specific) - Screenshot 3",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "Market leaders "
+                                            },
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/irestorelaser.com",
+                                                "text": "irestorelaser.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " and "
+                                            },
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/kiierr.com",
+                                                "text": "kiierr.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " have seen a significant drop in impression share over the last 2 weeks. Possibly due to scaling down drastically post promos. Showcases a need to scale significantly during sale periods to remain competitive with them."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "Competitors like "
+                                            },
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/schoolofdermatology.com",
+                                                "text": "schoolofdermatology.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " and "
+                                            },
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/omniluxled.com",
+                                                "text": "omniluxled.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " have managed to improve their share in the space and a new competitor has entered the auction house ("
+                                            },
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/hoogahealth.com",
+                                                "text": "hoogahealth.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": ") "
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "We want to scale this campaign by 20% this week to assess if we can capture some additional impression share, traffic and conversions. "
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "PEMF Mat (Non-Brand \/ Product-Specific) - Screenshot 4",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "We remain market leaders in the space despite scaling down drastically in June. This indicates strong performance during evergreen periods. We also recently launched new ad copy under the PEMF ad group aimed at improving quality scores and impression share which seems to be working well in defending our share. "
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "link",
+                                                "url": "http:\/\/magnawavepemf.com",
+                                                "text": "magnawavepemf.com"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": " remains our biggest competitor in the space. "
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "CPCs are dropping \/ stabilizing, indicating a slow return to an evergreen state. "
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "\nLet us know if you have any questions "
+                                    },
+                                    {
+                                        "type": "emoji",
+                                        "name": "relaxed",
+                                        "unicode": "263a-fe0f"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " cc: "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U04PHVC4WJH"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U029WD39C0Z"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "type": "message",
+                "ts": "1752070193.217089",
+                "client_msg_id": "bd6b9049-e4e5-4dbf-ab75-5ec3aedff1c6",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "6f07d4ec1c33",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-05-10\/7092061157094_6f07d4ec1c33ccf97c3b_72.png",
+                    "first_name": "Rahul",
+                    "real_name": "Rahul Vithanage",
+                    "display_name": "Rahul",
+                    "team": "TKAF9UATA",
+                    "name": "rahul",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                }
+            },
+            {
+                "user": "U07QLTS27JN",
+                "type": "message",
+                "ts": "1751987067.774009",
+                "edited": {
+                    "user": "U07QLTS27JN",
+                    "ts": "1751987092.000000"
+                },
+                "client_msg_id": "2456132c-5d8a-4e89-8f53-2b66d7515c94",
+                "text": "*1DC NB L7*\n*Spend: $6,200*\n*Revenue: $804*\n*ROAS: .13* (-35.58%)\n*CAC: $3,100 (+30.90%)* \nUpdates and next steps\n\u2022 The body sculpt focused funnel has started off well both in platform and in NB.\n    \u25e6 In platform: 4.54 ROAS $73 CAC\n    \u25e6 NB clicks only: .68 ROAS \n    \u25e6 Awareness metrics: 62.3% LP view rate, .72 CPC. We will look to refresh this campaign to keep driving these metrics \n\u2022 In the pipeline is our full high aov product funnel\n    \u25e6 We'll launch this if body sculpt falls off\/budget supports!\nTraffic campaigns in June (Roughly 12% of spend this week)\n\u2022 .35 CPC, 1.56% CTR and a Landing page view rate 66.14%\n<https:\/\/projects.motionapp.com\/snapshot\/1c57f4ef-091a-473c-9802-ac496beffacb|Creative Report>\n\u2022 027 V4 is our top performer in platform and on NB. The sound and text overlay are both key factors here. The background sound is consistent in the top performing body sculpt creatives ",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "0d0d8862770f",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-10-18\/7925935346896_0d0d8862770fd877b6af_72.jpg",
+                    "first_name": "Jeremy",
+                    "real_name": "Jeremy Dranikoff",
+                    "display_name": "Jeremy Dranikoff",
+                    "team": "TKAF9UATA",
+                    "name": "jeremyd",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "thread_ts": "1751987067.774009",
+                "reply_count": 13,
+                "reply_users_count": 2,
+                "latest_reply": "1752375464.655159",
+                "reply_users": [
+                    "U0913R7KB7E",
+                    "U07QLTS27JN"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1752375464.655159",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "8KYQ9",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "1DC NB L7",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Spend: $6,200",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Revenue: $804",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "ROAS: .13 ",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "(-35.58%)\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "CAC: $3,100 (+30.90%) ",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\nUpdates and next steps\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "The body sculpt focused funnel has started off well both in platform and in NB."
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "In platform: 4.54 ROAS $73 CAC"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "NB clicks only: .68 ROAS "
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "Awareness metrics: 62.3% LP view rate, .72 CPC. We will look to refresh this campaign to keep driving these metrics "
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 1,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "In the pipeline is our full high aov product funnel"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "We'll launch this if body sculpt falls off\/budget supports!"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 1,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "\nTraffic campaigns in June (Roughly 12% of spend this week)\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": ".35 CPC, 1.56% CTR and a Landing page view rate 66.14%"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/projects.motionapp.com\/snapshot\/1c57f4ef-091a-473c-9802-ac496beffacb",
+                                        "text": "Creative Report"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_list",
+                                "elements": [
+                                    {
+                                        "type": "rich_text_section",
+                                        "elements": [
+                                            {
+                                                "type": "text",
+                                                "text": "027 V4 is our top performer in platform and on NB. The sound and text overlay are both key factors here. The background sound is consistent in the top performing body sculpt creatives "
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "style": "bullet",
+                                "indent": 0,
+                                "border": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U05KD2RULPN",
+                "type": "message",
+                "ts": "1751986836.593419",
+                "client_msg_id": "c8cf1a40-b95f-4902-8439-ef92e04ee1d9",
+                "text": "Creative Reports below <@U0824M6DHLK> <@U0913R7KB7E>!\n<https:\/\/projects.motionapp.com\/snapshot\/29e8846f-dcad-4603-8380-2b6b7fa94550|YTD by 1DC ROAS>\n<https:\/\/projects.motionapp.com\/snapshot\/877bd708-38be-4b39-bf1b-600e78ec620d|YTD NC 1DC ROAS>\n<https:\/\/projects.motionapp.com\/snapshot\/53ccfad5-df4a-424f-ba19-9ca5893bb799|June by 1DC ROAS>\n<https:\/\/projects.motionapp.com\/snapshot\/67334640-608a-4007-80e5-363ef96e12a5|June NC 1DC ROAS>",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "1d0e35ac745a",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-01-05\/6433694154900_1d0e35ac745a7edfc7d3_72.png",
+                    "first_name": "Jake",
+                    "real_name": "Jake Panzer",
+                    "display_name": "Jake Panzer",
+                    "team": "TKAF9UATA",
+                    "name": "jake",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "WyUo1",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Creative Reports below "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0824M6DHLK"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "!\n"
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/projects.motionapp.com\/snapshot\/29e8846f-dcad-4603-8380-2b6b7fa94550",
+                                        "text": "YTD by 1DC ROAS"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/projects.motionapp.com\/snapshot\/877bd708-38be-4b39-bf1b-600e78ec620d",
+                                        "text": "YTD NC 1DC ROAS"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/projects.motionapp.com\/snapshot\/53ccfad5-df4a-424f-ba19-9ca5893bb799",
+                                        "text": "June by 1DC ROAS"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/projects.motionapp.com\/snapshot\/67334640-608a-4007-80e5-363ef96e12a5",
+                                        "text": "June NC 1DC ROAS"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "raised_hands",
+                        "users": [
+                            "U0824M6DHLK"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U01C255NN3F",
+                "type": "message",
+                "ts": "1751918164.523599",
+                "text": "<!here> can you check this out please?",
+                "team": "TA97020CV",
+                "thread_ts": "1751918164.523599",
+                "reply_count": 10,
+                "reply_users_count": 4,
+                "latest_reply": "1751931476.218859",
+                "reply_users": [
+                    "U0913R7KB7E",
+                    "U04PHVC4WJH",
+                    "U05KD2RULPN",
+                    "UA8FED08G"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1751931476.218859",
+                "attachments": [
+                    {
+                        "ts": "1751907893.812059",
+                        "author_id": "U02A7TA38DR",
+                        "channel_id": "C01UXKPBU77",
+                        "channel_team": "TA97020CV",
+                        "is_msg_unfurl": true,
+                        "message_blocks": [
+                            {
+                                "team": "TA97020CV",
+                                "channel": "C01UXKPBU77",
+                                "ts": "1751907893.812059",
+                                "message": {
+                                    "blocks": [
+                                        {
+                                            "type": "rich_text",
+                                            "block_id": "VjiR6",
+                                            "elements": [
+                                                {
+                                                    "type": "rich_text_section",
+                                                    "elements": [
+                                                        {
+                                                            "type": "user",
+                                                            "user_id": "U05L2FPC0A2"
+                                                        },
+                                                        {
+                                                            "type": "text",
+                                                            "text": " Not sure if you can assist with this but the Recovery bundle with Normatec boots is still being advertised on IG. Are you able to deactivate this? We no longer offer this bundle"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "files": [
+                            {
+                                "id": "F095BGR3AN4",
+                                "created": 1751907879,
+                                "timestamp": 1751907879,
+                                "name": "Screenshot 2025-07-07 at 1.03.47\u202fPM.png",
+                                "title": "Screenshot 2025-07-07 at 1.03.47\u202fPM.png",
+                                "mimetype": "image\/png",
+                                "filetype": "png",
+                                "pretty_type": "PNG",
+                                "user": "U02A7TA38DR",
+                                "user_team": "TA97020CV",
+                                "editable": false,
+                                "size": 54497,
+                                "mode": "hosted",
+                                "is_external": false,
+                                "external_type": "",
+                                "is_public": true,
+                                "public_url_shared": false,
+                                "display_as_bot": false,
+                                "username": "",
+                                "url_private": "https:\/\/files.slack.com\/files-pri\/TA97020CV-F095BGR3AN4\/screenshot_2025-07-07_at_1.03.47___pm.png",
+                                "url_private_download": "https:\/\/files.slack.com\/files-pri\/TA97020CV-F095BGR3AN4\/download\/screenshot_2025-07-07_at_1.03.47___pm.png",
+                                "media_display_type": "unknown",
+                                "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095BGR3AN4-4f2a5701d0\/screenshot_2025-07-07_at_1.03.47___pm_64.png",
+                                "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095BGR3AN4-4f2a5701d0\/screenshot_2025-07-07_at_1.03.47___pm_80.png",
+                                "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095BGR3AN4-4f2a5701d0\/screenshot_2025-07-07_at_1.03.47___pm_360.png",
+                                "thumb_360_w": 253,
+                                "thumb_360_h": 360,
+                                "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F095BGR3AN4-4f2a5701d0\/screenshot_2025-07-07_at_1.03.47___pm_160.png",
+                                "original_w": 325,
+                                "original_h": 462,
+                                "thumb_tiny": "AwAwACHSNID7Up7UUAGaM013WNNzHApUYOAynINADqKKKAEfhTWZaTykTMXJKpkZ5rTcZUiqFlayRs\/nJhWXHWgCbOQ0cw3DeFGOO2asKoQBVGAKjCM0zbkAXIYMD1P0qXvQAtFFFACGjNBGRSbfb9aAFzR3pNv+c0oXnP8AWgBaKKKAP\/\/Z",
+                                "permalink": "https:\/\/higherdosemanagement.slack.com\/files\/U0913R7KB7E\/F095BGR3AN4\/screenshot_2025-07-07_at_1.03.47___pm.png",
+                                "permalink_public": "https:\/\/slack-files.com\/TA97020CV-F095BGR3AN4-9d2d6752b5",
+                                "comments_count": 0,
+                                "is_starred": false,
+                                "skipped_shares": true,
+                                "has_rich_preview": false,
+                                "file_access": "visible"
+                            }
+                        ],
+                        "color": "D0D0D0",
+                        "from_url": "https:\/\/higherdosemanagement.slack.com\/archives\/C01UXKPBU77\/p1751907893812059",
+                        "is_share": true,
+                        "fallback": "[July 7th, 2025 1:04 PM] thila: <@U05L2FPC0A2> Not sure if you can assist with this but the Recovery bundle with Normatec boots is still being advertised on IG. Are you able to deactivate this? We no longer offer this bundle",
+                        "text": "<@U05L2FPC0A2> Not sure if you can assist with this but the Recovery bundle with Normatec boots is still being advertised on IG. Are you able to deactivate this? We no longer offer this bundle",
+                        "author_name": "Thilakawathy Subramuniam",
+                        "author_link": "https:\/\/higherdosemanagement.slack.com\/team\/U02A7TA38DR",
+                        "author_icon": "https:\/\/avatars.slack-edge.com\/2024-06-01\/7208405109858_d65ffdaab7ffccd72575_48.jpg",
+                        "author_subname": "Thilakawathy Subramuniam",
+                        "mrkdwn_in": [
+                            "text"
+                        ],
+                        "team_name": "Sharma Brands",
+                        "footer": "Slack Conversation"
+                    }
+                ],
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "4YcaU",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "broadcast",
+                                        "range": "here"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " can you check this out please?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "text": "",
+                "files": [
+                    {
+                        "id": "F094A42KTE2",
+                        "created": 1751640905,
+                        "timestamp": 1751640905,
+                        "name": "image.png",
+                        "title": "image.png",
+                        "mimetype": "image\/png",
+                        "filetype": "png",
+                        "pretty_type": "PNG",
+                        "user": "UA8FED08G",
+                        "user_team": "TA97020CV",
+                        "editable": false,
+                        "size": 122500,
+                        "mode": "hosted",
+                        "is_external": false,
+                        "external_type": "",
+                        "is_public": true,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "url_private": "https:\/\/files.slack.com\/files-pri\/TA97020CV-F094A42KTE2\/image.png",
+                        "url_private_download": "https:\/\/files.slack.com\/files-pri\/TA97020CV-F094A42KTE2\/download\/image.png",
+                        "media_display_type": "unknown",
+                        "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_64.png",
+                        "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_80.png",
+                        "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_360.png",
+                        "thumb_360_w": 303,
+                        "thumb_360_h": 360,
+                        "thumb_480": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_480.png",
+                        "thumb_480_w": 404,
+                        "thumb_480_h": 480,
+                        "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_160.png",
+                        "thumb_720": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_720.png",
+                        "thumb_720_w": 606,
+                        "thumb_720_h": 720,
+                        "thumb_800": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_800.png",
+                        "thumb_800_w": 800,
+                        "thumb_800_h": 951,
+                        "thumb_960": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_960.png",
+                        "thumb_960_w": 807,
+                        "thumb_960_h": 960,
+                        "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/TA97020CV-F094A42KTE2-9fb211fd38\/image_1024.png",
+                        "thumb_1024_w": 861,
+                        "thumb_1024_h": 1024,
+                        "original_w": 1143,
+                        "original_h": 1359,
+                        "thumb_tiny": "AwAwACjR7Uc\/3v0pD93pmgDnoR+AoAcPdgaXI9RSY9\/0ox7\/AKUAI3WkpW60lACMwVCTnGewzUfmp\/tf981OOlHPtT0Ag8xPf\/vmjzY\/9r\/vmpg2ehz9KdRoIaTnB9qSlbrSUhig4GTSGQdj+lKOnTNA6\/doAauN24Hk+5\/lT8+tGB6ClxQA1utJSt1pKAP\/2Q==",
+                        "permalink": "https:\/\/higherdosemanagement.slack.com\/files\/U0913R7KB7E\/F094A42KTE2\/image.png",
+                        "permalink_public": "https:\/\/slack-files.com\/TA97020CV-F094A42KTE2-b6437c0fd6",
+                        "is_starred": false,
+                        "skipped_shares": true,
+                        "has_rich_preview": false,
+                        "file_access": "visible"
+                    }
+                ],
+                "upload": false,
+                "user": "UA8FED08G",
+                "display_as_bot": false,
+                "type": "message",
+                "ts": "1751640908.465689",
+                "client_msg_id": "1de1a1ee-9f0c-4d7a-9de2-84a6fc5f634a",
+                "team": "TA97020CV",
+                "thread_ts": "1751640908.465689",
+                "reply_count": 1,
+                "reply_users_count": 1,
+                "latest_reply": "1751648482.855639",
+                "reply_users": [
+                    "U05KD2RULPN"
+                ],
+                "is_locked": false,
+                "subscribed": false
+            },
+            {
+                "user": "U04K57DB7H9",
+                "type": "message",
+                "ts": "1751576012.506439",
+                "client_msg_id": "8edc4ded-929b-447c-a29c-8b28e50d6fb7",
+                "text": "Hi team! Noting that we are out of office tomorrow in celebration of the 4th but we will be staying close all weekend as needed. Please let us know if you have any flags from your end in the meantime, we hope you enjoy your holiday weekend! cc <@U05KD2RULPN>",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "03d41094511b",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-01-18\/6496826522868_03d41094511b68e7c4f0_72.png",
+                    "first_name": "Abigale",
+                    "real_name": "Abigale Coleman",
+                    "display_name": "Abigale",
+                    "team": "TKAF9UATA",
+                    "name": "abigale",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "DF28U",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hi team! Noting that we are out of office tomorrow in celebration of the 4th but we will be staying close all weekend as needed. Please let us know if you have any flags from your end in the meantime, we hope you enjoy your holiday weekend! cc "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U05KD2RULPN"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1751565660.329989",
+                "edited": {
+                    "user": "U0913R7KB7E",
+                    "ts": "1751565792.000000"
+                },
+                "client_msg_id": "30552f0e-3e04-480a-9d5e-8b6b36d6e45c",
+                "text": "Hey <@U06SRGR9M7E> I\u2019m projecting July performance and reviewing the account. I\u2019m curious about some of the TROAS settings for PMAX campaigns.  I see the All Products campaign is set to 400% can you help me understand what determines the targets?",
+                "team": "TA97020CV",
+                "thread_ts": "1751565660.329989",
+                "reply_count": 5,
+                "reply_users_count": 2,
+                "latest_reply": "1751903933.915789",
+                "reply_users": [
+                    "U06SRGR9M7E",
+                    "U0913R7KB7E"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1751903933.915789",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "VDbw1",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U06SRGR9M7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " I\u2019m projecting July performance and reviewing the account. I\u2019m curious about some of the TROAS settings for PMAX campaigns.  I see the All Products campaign is set to 400% can you help me understand what determines the targets?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1751560292.622129",
+                "client_msg_id": "4b1dcb1a-6d89-4fef-811d-a48fa6fa4a4e",
+                "text": "Just to kick off in that direction then optimize the account over time to single product camps",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "xVgyE",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Just to kick off in that direction then optimize the account over time to single product camps"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1751560280.440729",
+                "client_msg_id": "21668960-bba2-4fd5-a213-4d673ae07560",
+                "text": "Okay thank you for following up. Can we also launch a single product campaign for Red Light Hat ?",
+                "team": "TA97020CV",
+                "thread_ts": "1751560280.440729",
+                "reply_count": 1,
+                "reply_users_count": 1,
+                "latest_reply": "1751566197.103859",
+                "reply_users": [
+                    "U05KD2RULPN"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1751566197.103859",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "uqw5i",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Okay thank you for following up. Can we also launch a single product campaign for Red Light Hat ?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U05KD2RULPN",
+                "type": "message",
+                "ts": "1751560209.438739",
+                "client_msg_id": "27361301-51fb-43f1-9584-73fcf3a7de94",
+                "text": "Hey <@U0913R7KB7E> <@U0824M6DHLK>- just wanted to note we plan on getting those attribution windows of the legacy campaigns changed before the holiday weekend as discussed!",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "1d0e35ac745a",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-01-05\/6433694154900_1d0e35ac745a7edfc7d3_72.png",
+                    "first_name": "Jake",
+                    "real_name": "Jake Panzer",
+                    "display_name": "Jake Panzer",
+                    "team": "TKAF9UATA",
+                    "name": "jake",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "iBZl3",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0824M6DHLK"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "- just wanted to note we plan on getting those attribution windows of the legacy campaigns changed before the holiday weekend as discussed!"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1751559873.480169",
+                "client_msg_id": "d7819d0a-14dd-4f14-87fd-b76b7fcc6651",
+                "text": "Looks like the old ads were paused from what i see in the columns so the winning variants are getting the majority of spend from increasing?",
+                "team": "TA97020CV",
+                "thread_ts": "1751559873.480169",
+                "reply_count": 2,
+                "reply_users_count": 2,
+                "latest_reply": "1751560308.104079",
+                "reply_users": [
+                    "U06SRGR9M7E",
+                    "U0913R7KB7E"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1751560308.104079",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "Rwupo",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Looks like the old ads were paused from what i see in the columns so the winning variants are getting the majority of spend from increasing?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "white_check_mark",
+                        "users": [
+                            "U06SRGR9M7E"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1751559769.611359",
+                "client_msg_id": "ca59a7a0-ee0d-403d-9f38-b90a5cbac627",
+                "text": "Good work on this too btw. Looks like you guys created a winning iteration for every ad group over that timeline",
+                "team": "TA97020CV",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "XW5CF",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Good work on this too btw. Looks like you guys created a winning iteration for every ad group over that timeline"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "heart",
+                        "users": [
+                            "U06SRGR9M7E"
+                        ],
+                        "count": 1
+                    },
+                    {
+                        "name": "pray::skin-tone-4",
+                        "users": [
+                            "U06SRGR9M7E"
+                        ],
+                        "count": 1
+                    },
+                    {
+                        "name": "orange_heart",
+                        "users": [
+                            "U04K57DB7H9"
+                        ],
+                        "count": 1
+                    },
+                    {
+                        "name": "saluting_face",
+                        "users": [
+                            "U05KD2RULPN"
+                        ],
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "user": "U0913R7KB7E",
+                "type": "message",
+                "ts": "1751559674.954959",
+                "client_msg_id": "0bd02526-ef73-4b9b-aa69-064814382ad7",
+                "text": "Thank you <@U06SRGR9M7E> can you add me to the Wed meeting next week w\/ the reps?",
+                "team": "TA97020CV",
+                "thread_ts": "1751559674.954959",
+                "reply_count": 3,
+                "reply_users_count": 2,
+                "latest_reply": "1751560801.627599",
+                "reply_users": [
+                    "U06SRGR9M7E",
+                    "U0913R7KB7E"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1751560801.627599",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "MQ3Ke",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Thank you "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U06SRGR9M7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " can you add me to the Wed meeting next week w\/ the reps?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U06SRGR9M7E",
+                "type": "message",
+                "ts": "1751559506.821049",
+                "client_msg_id": "50354444-db40-471f-93ff-27bc8230379d",
+                "text": "Hey <@U0913R7KB7E>, <https:\/\/docs.google.com\/spreadsheets\/d\/13_8Qp8uECRBg3T0wxocgl0mMlWpPLjydwduFLtHbwkw\/edit?usp=sharing|here's the sheet> which includes the most recently concluded search copy a\/b test results. Let me know if you have any questions. Thanks! cc: <@U04K57DB7H9> <@U029WD39C0Z> <@U0824M6DHLK>",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "6f07d4ec1c33",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-05-10\/7092061157094_6f07d4ec1c33ccf97c3b_72.png",
+                    "first_name": "Rahul",
+                    "real_name": "Rahul Vithanage",
+                    "display_name": "Rahul",
+                    "team": "TKAF9UATA",
+                    "name": "rahul",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "Xt3kA",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/docs.google.com\/spreadsheets\/d\/13_8Qp8uECRBg3T0wxocgl0mMlWpPLjydwduFLtHbwkw\/edit?usp=sharing",
+                                        "text": "here's the sheet"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " which includes the most recently concluded search copy a\/b test results. Let me know if you have any questions. Thanks! cc: "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U04K57DB7H9"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U029WD39C0Z"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0824M6DHLK"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "subtype": "thread_broadcast",
+                "user": "U06SRGR9M7E",
+                "thread_ts": "1751398125.047869",
+                "root": {
+                    "user": "U06SRGR9M7E",
+                    "type": "message",
+                    "ts": "1751398125.047869",
+                    "client_msg_id": "d15243d6-3cc8-4b91-bdeb-2f8fc64ac123",
+                    "text": "Hey <@U0824M6DHLK> <@U0913R7KB7E> <@UA8FED08G>, the meeting w\/ the Google reps is confirmed for 11.30am PST tomorrow. Sent over a temp block until the Google rep adds you guys to the official invite. cc: <@U04PHVC4WJH>",
+                    "team": "TA97020CV",
+                    "user_team": "TKAF9UATA",
+                    "source_team": "TKAF9UATA",
+                    "user_profile": {
+                        "avatar_hash": "6f07d4ec1c33",
+                        "image_72": "https:\/\/avatars.slack-edge.com\/2024-05-10\/7092061157094_6f07d4ec1c33ccf97c3b_72.png",
+                        "first_name": "Rahul",
+                        "real_name": "Rahul Vithanage",
+                        "display_name": "Rahul",
+                        "team": "TKAF9UATA",
+                        "name": "rahul",
+                        "is_restricted": false,
+                        "is_ultra_restricted": false
+                    },
+                    "thread_ts": "1751398125.047869",
+                    "reply_count": 3,
+                    "reply_users_count": 2,
+                    "latest_reply": "1751481086.367009",
+                    "reply_users": [
+                        "U06SRGR9M7E",
+                        "UA8FED08G"
+                    ],
+                    "is_locked": false,
+                    "subscribed": true,
+                    "last_read": "1751481086.367009",
+                    "blocks": [
+                        {
+                            "type": "rich_text",
+                            "block_id": "1sSfx",
+                            "elements": [
+                                {
+                                    "type": "rich_text_section",
+                                    "elements": [
+                                        {
+                                            "type": "text",
+                                            "text": "Hey "
+                                        },
+                                        {
+                                            "type": "user",
+                                            "user_id": "U0824M6DHLK"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " "
+                                        },
+                                        {
+                                            "type": "user",
+                                            "user_id": "U0913R7KB7E"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": " "
+                                        },
+                                        {
+                                            "type": "user",
+                                            "user_id": "UA8FED08G"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": ", the meeting w\/ the Google reps is confirmed for 11.30am PST tomorrow. Sent over a temp block until the Google rep adds you guys to the official invite. cc: "
+                                        },
+                                        {
+                                            "type": "user",
+                                            "user_id": "U04PHVC4WJH"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "type": "message",
+                "ts": "1751481027.190419",
+                "client_msg_id": "9a0353eb-965a-4b76-bb40-f968514fed1e",
+                "text": "Hey team <@U0824M6DHLK> <@U0913R7KB7E> <@UA8FED08G>, confirmed meeting slot for the Google chat:\n\nHigherDOSE x Google\nThursday, July 3 \u00b7 12:00 \u2013 12:30am\nTime zone: Asia\/Colombo\nGoogle Meet joining info\nVideo call link: <https:\/\/meet.google.com\/oam-rjme-pvc>\nOr dial: \u202a(LK) +94 72 010 6541\u202c PIN: \u202a910 904 274 2400\u202c#\nMore phone numbers: <https:\/\/tel.meet\/oam-rjme-pvc?pin=9109042742400>",
+                "attachments": [
+                    {
+                        "from_url": "https:\/\/meet.google.com\/oam-rjme-pvc",
+                        "service_icon": "http:\/\/fonts.gstatic.com\/s\/i\/productlogos\/meet_2020q4\/v1\/web-24dp\/logo_meet_2020q4_color_1x_web_24dp.png",
+                        "thumb_url": "https:\/\/fonts.gstatic.com\/s\/i\/productlogos\/meet_2020q4\/v1\/web-96dp\/logo_meet_2020q4_color_2x_web_96dp.png",
+                        "thumb_width": 192,
+                        "thumb_height": 192,
+                        "id": 1,
+                        "original_url": "https:\/\/meet.google.com\/oam-rjme-pvc",
+                        "fallback": "Meet",
+                        "text": "Real-time meetings by Google. Using your browser, share your video, desktop, and presentations with teammates and customers.",
+                        "title": "Meet",
+                        "title_link": "https:\/\/meet.google.com\/oam-rjme-pvc",
+                        "service_name": "meet.google.com"
+                    },
+                    {
+                        "from_url": "https:\/\/tel.meet\/oam-rjme-pvc?pin=9109042742400",
+                        "service_icon": "http:\/\/fonts.gstatic.com\/s\/i\/productlogos\/meet_2020q4\/v1\/web-24dp\/logo_meet_2020q4_color_1x_web_24dp.png",
+                        "thumb_url": "https:\/\/fonts.gstatic.com\/s\/i\/productlogos\/meet_2020q4\/v1\/web-96dp\/logo_meet_2020q4_color_2x_web_96dp.png",
+                        "thumb_width": 192,
+                        "thumb_height": 192,
+                        "id": 2,
+                        "original_url": "https:\/\/tel.meet\/oam-rjme-pvc?pin=9109042742400",
+                        "fallback": "Meet",
+                        "text": "Real-time meetings by Google. Using your browser, share your video, desktop, and presentations with teammates and customers.",
+                        "title": "Meet",
+                        "title_link": "https:\/\/tel.meet\/oam-rjme-pvc?pin=9109042742400",
+                        "service_name": "meet.google.com"
+                    }
+                ],
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "v8rIM",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey team "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0824M6DHLK"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "UA8FED08G"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", confirmed meeting slot for the Google chat:\n\nHigherDOSE x Google\nThursday, July 3 \u00b7 12:00 \u2013 12:30am\nTime zone: Asia\/Colombo\nGoogle Meet joining info\nVideo call link: "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/meet.google.com\/oam-rjme-pvc"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\nOr dial: \u202a(LK) +94 72 010 6541\u202c PIN: \u202a910 904 274 2400\u202c#\nMore phone numbers: "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/tel.meet\/oam-rjme-pvc?pin=9109042742400"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "user": "U06SRGR9M7E",
+                "type": "message",
+                "ts": "1751398125.047869",
+                "client_msg_id": "d15243d6-3cc8-4b91-bdeb-2f8fc64ac123",
+                "text": "Hey <@U0824M6DHLK> <@U0913R7KB7E> <@UA8FED08G>, the meeting w\/ the Google reps is confirmed for 11.30am PST tomorrow. Sent over a temp block until the Google rep adds you guys to the official invite. cc: <@U04PHVC4WJH>",
+                "team": "TA97020CV",
+                "user_team": "TKAF9UATA",
+                "source_team": "TKAF9UATA",
+                "user_profile": {
+                    "avatar_hash": "6f07d4ec1c33",
+                    "image_72": "https:\/\/avatars.slack-edge.com\/2024-05-10\/7092061157094_6f07d4ec1c33ccf97c3b_72.png",
+                    "first_name": "Rahul",
+                    "real_name": "Rahul Vithanage",
+                    "display_name": "Rahul",
+                    "team": "TKAF9UATA",
+                    "name": "rahul",
+                    "is_restricted": false,
+                    "is_ultra_restricted": false
+                },
+                "thread_ts": "1751398125.047869",
+                "reply_count": 3,
+                "reply_users_count": 2,
+                "latest_reply": "1751481086.367009",
+                "reply_users": [
+                    "U06SRGR9M7E",
+                    "UA8FED08G"
+                ],
+                "is_locked": false,
+                "subscribed": true,
+                "last_read": "1751481086.367009",
+                "blocks": [
+                    {
+                        "type": "rich_text",
+                        "block_id": "1sSfx",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Hey "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0824M6DHLK"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U0913R7KB7E"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "UA8FED08G"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", the meeting w\/ the Google reps is confirmed for 11.30am PST tomorrow. Sent over a temp block until the Google rep adds you guys to the official invite. cc: "
+                                    },
+                                    {
+                                        "type": "user",
+                                        "user_id": "U04PHVC4WJH"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "name": "white_check_mark",
+                        "users": [
+                            "U0913R7KB7E"
+                        ],
+                        "count": 1
+                    }
+                ]
+            }
+        ],
+        "has_more": true,
+        "mutation_timestamps": {
+            "latest": "1752349103.340769",
+            "updated": "1752397481.010500",
+            "history_invalid": "1744411608.004800"
+        },
+        "channel_actions_ts": null,
+        "channel_actions_count": 0,
+        "next_ts": 1751395655772719
+    },
+    "users": [
+        {
+            "id": "U0824M6DHLK",
+            "name": "ingrid",
+            "is_bot": false,
+            "updated": 1750532247,
+            "is_app_user": false,
+            "team_id": "TA97020CV",
+            "deleted": false,
+            "color": "9b3b45",
+            "is_email_confirmed": true,
+            "real_name": "Ingrid",
+            "tz": "America\/Los_Angeles",
+            "tz_label": "Pacific Daylight Time",
+            "tz_offset": -25200,
+            "is_admin": false,
+            "is_owner": false,
+            "is_primary_owner": false,
+            "is_restricted": false,
+            "is_ultra_restricted": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Ingrid",
+                "display_name": "Ingrid",
+                "avatar_hash": "d5bbcb72bc6d",
+                "real_name_normalized": "Ingrid",
+                "display_name_normalized": "Ingrid",
+                "image_original": "https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2025-05-05\/8861473271585_d5bbcb72bc6dfedced17_original.png",
+                "is_custom_image": true,
+                "first_name": "Ingrid",
+                "last_name": "",
+                "team": "TA97020CV",
+                "email": "ingrid@higherdose.com",
+                "title": "",
+                "phone": "",
+                "skype": "",
+                "status_text": "",
+                "status_text_canonical": "",
+                "status_emoji": "",
+                "status_emoji_display_info": [],
+                "status_expiration": 0,
+                "huddle_state": "default_unset",
+                "huddle_state_expiration_ts": 0
+            }
+        },
+        {
+            "id": "UA8FED08G",
+            "name": "chris",
+            "is_bot": false,
+            "updated": 1750363452,
+            "is_app_user": false,
+            "team_id": "TA97020CV",
+            "deleted": false,
+            "color": "3c989f",
+            "is_email_confirmed": true,
+            "real_name": "Chris Jacob",
+            "tz": "America\/Chicago",
+            "tz_label": "Central Daylight Time",
+            "tz_offset": -18000,
+            "is_admin": true,
+            "is_owner": true,
+            "is_primary_owner": false,
+            "is_restricted": false,
+            "is_ultra_restricted": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Chris Jacob",
+                "display_name": "",
+                "avatar_hash": "g615b1c29485",
+                "real_name_normalized": "Chris Jacob",
+                "display_name_normalized": "",
+                "team": "TA97020CV",
+                "email": "chris@higherdose.com",
+                "title": "",
+                "phone": "",
+                "skype": "",
+                "status_text": "",
+                "status_text_canonical": "",
+                "status_emoji": "",
+                "status_emoji_display_info": [],
+                "status_expiration": 0,
+                "huddle_state": "default_unset",
+                "huddle_state_expiration_ts": 0
+            }
+        },
+        {
+            "id": "U0913R7KB7E",
+            "name": "jourdan",
+            "is_bot": false,
+            "updated": 1752084881,
+            "is_app_user": false,
+            "team_id": "TA97020CV",
+            "deleted": false,
+            "color": "619a4f",
+            "is_email_confirmed": true,
+            "real_name": "Jourdan",
+            "tz": "America\/Chicago",
+            "tz_label": "Central Daylight Time",
+            "tz_offset": -18000,
+            "is_admin": false,
+            "is_owner": false,
+            "is_primary_owner": false,
+            "is_restricted": false,
+            "is_ultra_restricted": false,
+            "has_2fa": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Jourdan",
+                "display_name": "Jourdan",
+                "avatar_hash": "g7da6b614b42",
+                "real_name_normalized": "Jourdan",
+                "display_name_normalized": "Jourdan",
+                "first_name": "Jourdan",
+                "last_name": "",
+                "team": "TA97020CV",
+                "email": "jourdan@higherdose.com",
+                "title": "",
+                "phone": "",
+                "skype": "",
+                "status_text": "",
+                "status_text_canonical": "",
+                "status_emoji": "",
+                "status_emoji_display_info": [],
+                "status_expiration": 0,
+                "huddle_state": "default_unset",
+                "huddle_state_expiration_ts": 0
+            }
+        },
+        {
+            "id": "U021VAACPFZ",
+            "name": "sumish",
+            "is_bot": false,
+            "updated": 1752433256,
+            "is_app_user": false,
+            "team_id": "TA97020CV",
+            "deleted": false,
+            "color": "235e5b",
+            "is_email_confirmed": true,
+            "real_name": "Sumish Khadka",
+            "tz": "America\/Los_Angeles",
+            "tz_label": "Pacific Daylight Time",
+            "tz_offset": -25200,
+            "is_admin": false,
+            "is_owner": false,
+            "is_primary_owner": false,
+            "is_restricted": false,
+            "is_ultra_restricted": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Sumish Khadka",
+                "display_name": "Sumish Khadka",
+                "avatar_hash": "ged6f50b38a5",
+                "real_name_normalized": "Sumish Khadka",
+                "display_name_normalized": "Sumish Khadka",
+                "team": "TA97020CV",
+                "email": "sumish@higherdose.com",
+                "title": "",
+                "phone": "",
+                "skype": "",
+                "status_text": "",
+                "status_text_canonical": "",
+                "status_emoji": "",
+                "status_emoji_display_info": [],
+                "status_expiration": 0,
+                "huddle_state": "default_unset",
+                "huddle_state_expiration_ts": 0
+            }
+        },
+        {
+            "id": "U01C255NN3F",
+            "name": "elyse",
+            "is_bot": false,
+            "updated": 1752243243,
+            "is_app_user": false,
+            "team_id": "TA97020CV",
+            "deleted": false,
+            "color": "e96699",
+            "is_email_confirmed": true,
+            "real_name": "Elyse Fonseca",
+            "tz": "America\/New_York",
+            "tz_label": "Eastern Daylight Time",
+            "tz_offset": -14400,
+            "is_admin": false,
+            "is_owner": false,
+            "is_primary_owner": false,
+            "is_restricted": false,
+            "is_ultra_restricted": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Elyse Fonseca",
+                "display_name": "Elyse",
+                "avatar_hash": "372b6d2ed917",
+                "real_name_normalized": "Elyse Fonseca",
+                "display_name_normalized": "Elyse",
+                "image_original": "https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2022-10-24\/4271043946148_372b6d2ed9171faf33f2_original.jpg",
+                "is_custom_image": true,
+                "first_name": "Elyse",
+                "last_name": "Fonseca",
+                "team": "TA97020CV",
+                "email": "elyse@higherdose.com",
+                "title": "she\/her",
+                "phone": "",
+                "skype": "",
+                "status_text": "",
+                "status_text_canonical": "",
+                "status_emoji": "",
+                "status_emoji_display_info": [],
+                "status_expiration": 0,
+                "huddle_state": "default_unset",
+                "huddle_state_expiration_ts": 0
+            }
+        },
+        {
+            "id": "U07QLTS27JN",
+            "name": "jeremyd",
+            "is_bot": false,
+            "updated": 1752249004,
+            "is_app_user": false,
+            "team_id": "TKAF9UATA",
+            "color": "73769d",
+            "is_stranger": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Jeremy Dranikoff",
+                "display_name": "Jeremy Dranikoff",
+                "avatar_hash": "0d0d8862770f",
+                "real_name_normalized": "Jeremy Dranikoff",
+                "display_name_normalized": "Jeremy Dranikoff",
+                "first_name": "Jeremy",
+                "last_name": "Dranikoff",
+                "team": "TKAF9UATA",
+                "email": "jeremyd@sharmabrands.com"
+            }
+        },
+        {
+            "id": "U04PHVC4WJH",
+            "name": "berkeley",
+            "is_bot": false,
+            "updated": 1752250446,
+            "is_app_user": false,
+            "team_id": "TKAF9UATA",
+            "color": "bc3663",
+            "is_stranger": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Berkeley Clark",
+                "display_name": "Berkeley Clark",
+                "avatar_hash": "eeb509f3f26f",
+                "real_name_normalized": "Berkeley Clark",
+                "display_name_normalized": "Berkeley Clark",
+                "first_name": "Berkeley",
+                "last_name": "Clark",
+                "team": "TKAF9UATA",
+                "email": "berkeley@sharmabrands.com"
+            }
+        },
+        {
+            "id": "U029WD39C0Z",
+            "name": "ari",
+            "is_bot": false,
+            "updated": 1752192539,
+            "is_app_user": false,
+            "team_id": "TKAF9UATA",
+            "color": "db3150",
+            "is_stranger": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Ari Murray",
+                "display_name": "Ari Murray",
+                "avatar_hash": "4d309b480962",
+                "real_name_normalized": "Ari Murray",
+                "display_name_normalized": "Ari Murray",
+                "first_name": "Ari",
+                "last_name": "Murray",
+                "team": "TKAF9UATA",
+                "email": "ari@sharmabrands.com"
+            }
+        },
+        {
+            "id": "U05KD2RULPN",
+            "name": "jake",
+            "is_bot": false,
+            "updated": 1751380254,
+            "is_app_user": false,
+            "team_id": "TKAF9UATA",
+            "color": "99a949",
+            "is_stranger": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Jake Panzer",
+                "display_name": "Jake Panzer",
+                "avatar_hash": "1d0e35ac745a",
+                "real_name_normalized": "Jake Panzer",
+                "display_name_normalized": "Jake Panzer",
+                "first_name": "Jake",
+                "last_name": "Panzer",
+                "team": "TKAF9UATA",
+                "email": "jake@sharmabrands.com"
+            }
+        },
+        {
+            "id": "U06SRGR9M7E",
+            "name": "rahul",
+            "is_bot": false,
+            "updated": 1752084881,
+            "is_app_user": false,
+            "team_id": "TKAF9UATA",
+            "color": "965d1b",
+            "is_stranger": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Rahul Vithanage",
+                "display_name": "Rahul",
+                "avatar_hash": "6f07d4ec1c33",
+                "real_name_normalized": "Rahul Vithanage",
+                "display_name_normalized": "Rahul",
+                "first_name": "Rahul",
+                "last_name": "Vithanage",
+                "team": "TKAF9UATA",
+                "email": "rahul@sharmabrands.com"
+            }
+        },
+        {
+            "id": "U04K57DB7H9",
+            "name": "abigale",
+            "is_bot": false,
+            "updated": 1752193925,
+            "is_app_user": false,
+            "team_id": "TKAF9UATA",
+            "color": "bd9336",
+            "is_stranger": false,
+            "who_can_share_contact_card": "EVERYONE",
+            "profile": {
+                "real_name": "Abigale Coleman",
+                "display_name": "Abigale",
+                "avatar_hash": "03d41094511b",
+                "real_name_normalized": "Abigale Coleman",
+                "display_name_normalized": "Abigale",
+                "first_name": "Abigale",
+                "last_name": "Coleman",
+                "team": "TKAF9UATA",
+                "email": "abigale@sharmabrands.com"
+            }
+        }
+    ],
+    "bots": [],
+    "channels": [],
+    "emojis": {},
+    "channel": {
+        "id": "C08JS5H7JFP",
+        "name": "sb-higherdose",
+        "is_channel": true,
+        "is_group": false,
+        "is_im": false,
+        "is_mpim": false,
+        "is_private": false,
+        "created": 1742583294,
+        "is_archived": false,
+        "is_general": false,
+        "unlinked": 0,
+        "name_normalized": "sb-higherdose",
+        "is_shared": true,
+        "is_frozen": false,
+        "is_org_shared": false,
+        "is_pending_ext_shared": false,
+        "pending_shared": [],
+        "context_team_id": "TA97020CV",
+        "updated": 1748770136564,
+        "parent_conversation": null,
+        "creator": "U04PHVC4WJH",
+        "is_read_only": false,
+        "is_thread_only": false,
+        "is_non_threadable": false,
+        "is_ext_shared": true,
+        "shared_team_ids": [
+            "TKAF9UATA"
+        ],
+        "internal_team_ids": [],
+        "connected_team_ids": [
+            "TKAF9UATA",
+            "TA97020CV"
+        ],
+        "connected_limited_team_ids": [],
+        "pending_connected_team_ids": [],
+        "conversation_host_id": "TKAF9UATA",
+        "is_member": true,
+        "last_read": "1752375464.655159",
+        "latest": "1752397481.553089",
+        "unread_count": 2,
+        "unread_count_display": 2,
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": 0
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": 0
+        },
+        "properties": {
+            "tabs": [
+                {
+                    "type": "files",
+                    "label": "",
+                    "id": "files"
+                }
+            ],
+            "tabz": [
+                {
+                    "type": "files"
+                }
+            ]
+        },
+        "previous_names": []
+    },
+    "response_metadata": {
+        "next_cursor": "bmV4dF90czoxNzUxMzk1NjU1NzcyNzE5"
+    }
+}
