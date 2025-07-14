@@ -273,6 +273,117 @@ def identify_opportunities(channel_summary):
     if not challenges:
         print("  ✅ No major performance issues identified")
 
+def export_markdown_report(executive_metrics, channel_summary, campaign_analysis, first_time_metrics):
+    """Generate a markdown report string from the computed metrics"""
+    lines = []
+    report_date = datetime.now().strftime('%Y-%m-%d')
+
+    # --- Front-matter & title ---
+    lines.append("---")
+    lines.append(f"title: \"Weekly Growth Report\"")
+    lines.append(f"description: \"Weekly Growth Report for HigherDOSE covering 7-day performance period ending {report_date}\"")
+    lines.append("recipient: \"Ingrid\"")
+    lines.append("report_type: \"Weekly Growth Report\"")
+    lines.append(f"date: \"{report_date}\"")
+    lines.append("period: \"7-Day Review\"")
+    lines.append("---\n")
+
+    lines.append(f"# Weekly Growth Report — {report_date}\n\n---\n")
+
+    # 1. Executive Summary
+    lines.append("## 1. Executive Summary\n")
+    total_spend = executive_metrics['total_spend']
+    total_revenue = executive_metrics['total_revenue']
+    overall_roas = executive_metrics['overall_roas']
+    overall_cac = executive_metrics['overall_cac']
+
+    lines.append(
+        f"**Overall Performance**: Total DTC spend reached **${total_spend:,.0f}** across all channels with **{overall_roas:.2f} ROAS** and overall **CAC of ${overall_cac:,.2f}**. "
+        f"The business achieved **{int(executive_metrics['total_transactions'])} transactions** generating **${total_revenue:,.0f}** in attributed revenue during this 7-day period.\n\n"
+    )
+
+    # 2. Channel Performance table (top 10 by spend)
+    lines.append("## 2. DTC Performance — 7-Day Snapshot (Northbeam)\n")
+    headers = [
+        "Channel",
+        "Period Spend",
+        "% of Total",
+        "CAC",
+        "ROAS",
+        "AOV",
+        "Transactions",
+        "Revenue",
+    ]
+    lines.append("| " + " | ".join(headers) + " |")
+    lines.append("|" + "|".join(["-" * len(h) for h in headers]) + "|")
+
+    total_transactions = executive_metrics['total_transactions']
+    # Add All row first
+    lines.append(
+        f"| **All DTC** | **${total_spend:,.0f}** | **100%** | **${overall_cac:,.2f}** | **{overall_roas:.2f}** | **${executive_metrics['overall_aov']:.0f}** | **{int(total_transactions)}** | **${total_revenue:,.0f}** |")
+
+    # Prepare top channels
+    total_spend_safe = total_spend if total_spend != 0 else 1  # prevent div 0
+    for platform, row in channel_summary.iterrows():
+        spend = row['spend']
+        if spend <= 0:
+            continue
+        percent_total = spend / total_spend_safe * 100
+        cac = row['cac']
+        roas = row['roas']
+        aov = row['aov']
+        transactions = row['transactions']
+        revenue = row['attributed_rev']
+        lines.append(
+            f"| {platform} | ${spend:,.0f} | {percent_total:.1f}% | ${cac:,.2f} | {roas:.2f} | ${aov:,.0f} | {int(transactions)} | ${revenue:,.0f} |")
+
+    lines.append("\n---\n")
+
+    # 3. Top Campaigns by ROAS & Spend
+    if not campaign_analysis.empty:
+        lines.append("## 3. Top Campaign Performance Analysis\n")
+        # Top 5 by ROAS
+        top_roas = campaign_analysis.sort_values('roas', ascending=False).head(5)
+        lines.append("### 🏆 Best Performing Campaigns by ROAS\n")
+        headers2 = ["Platform", "Campaign Name", "ROAS", "Spend"]
+        lines.append("| " + " | ".join(headers2) + " |")
+        lines.append("|" + "|".join(["-" * len(h) for h in headers2]) + "|")
+        for _, row in top_roas.iterrows():
+            platform = row['breakdown_platform_northbeam']
+            campaign = row['campaign_name'][:50]
+            roas_val = row['roas']
+            spend_val = row['spend']
+            lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | ${spend_val:,.0f} |")
+
+        # Top 5 by Spend
+        top_spend = campaign_analysis.sort_values('spend', ascending=False).head(5)
+        lines.append("\n### 💰 Highest Spend Campaigns\n")
+        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS"]
+        lines.append("| " + " | ".join(headers3) + " |")
+        lines.append("|" + "|".join(["-" * len(h) for h in headers3]) + "|")
+        for _, row in top_spend.iterrows():
+            platform = row['breakdown_platform_northbeam']
+            campaign = row['campaign_name'][:50]
+            spend_val = row['spend']
+            roas_val = row['roas']
+            lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} |")
+
+    # 4. First-time customer metrics
+    if isinstance(first_time_metrics, pd.DataFrame) and not first_time_metrics.empty:
+        lines.append("\n## 4. First-Time Customer Metrics by Channel\n")
+        headers_ft = ["Channel", "CAC 1st", "ROAS 1st", "AOV 1st", "Spend"]
+        lines.append("| " + " | ".join(headers_ft) + " |")
+        lines.append("|" + "|".join(["-" * len(h) for h in headers_ft]) + "|")
+        for platform, row in first_time_metrics.iterrows():
+            lines.append(
+                f"| {platform} | ${row['cac_1st_time']:.2f} | {row['roas_1st_time']:.2f} | ${row['aov_1st_time']:.2f} | ${row['spend']:,.0f} |")
+
+    lines.append("\n---\n")
+    lines.append(f"**Report Compiled**: {report_date}\n")
+
+    return "\n".join(lines)
+
+
 def main():
     """Main analysis function"""
     print("HigherDOSE Weekly Growth Report Analysis")
@@ -300,6 +411,13 @@ def main():
         first_time_metrics = analyze_first_time_metrics(df)
         analyze_attribution_modes(df)
         identify_opportunities(channel_summary)
+
+        # Export markdown report
+        markdown_report = export_markdown_report(executive_metrics, channel_summary, campaign_analysis, first_time_metrics)
+        report_filename = f"weekly-growth-report-{datetime.now().strftime('%Y-%m-%d')}.md"
+        with open(report_filename, "w") as md_file:
+            md_file.write(markdown_report)
+        print(f"📝 Markdown report saved to {report_filename}")
     
     print("\n" + "="*60)
     print("✅ ANALYSIS COMPLETE")
