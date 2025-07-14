@@ -29,7 +29,7 @@ venv\Scripts\activate.bat
 
 ### 2. Upgrade `pip` (recommended)
 ```bash
-pip install --upgrade pip
+pip install --upgrade pip wheel setuptools
 ```
 
 ### 3. Install project dependencies
