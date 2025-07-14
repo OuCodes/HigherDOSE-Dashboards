@@ -8,12 +8,16 @@ from datetime import datetime
 
 import pandas as pd
 import numpy as np
-from utils.io.file_selector import select_data_file_for_report
+from utils.io.file_selector import select_csv_file
 
 def load_and_clean_data():
     """Load and clean the 7-day sales data"""
     # Interactive file selection
-    csv_file = select_data_file_for_report("weekly")
+    csv_file = select_csv_file(
+        directory="stats",
+        file_pattern="*.csv",
+        prompt_message="\nSelect CSV file for weekly analysis: "
+    )
     if not csv_file:
         print("No file selected. Exiting.")
         return None
@@ -35,7 +39,33 @@ def load_and_clean_data():
         
         # Fill NaN values with 0 for analysis
         df = df.fillna(0)
-        
+
+        # -------------------------------------------------------------
+        # Ensure the dataset has the required platform column expected
+        # throughout the rest of this script.  Northbeam occasionally
+        # changes the column nomenclature (e.g., 'platform', 'channel',
+        # 'breakdown_platform').  If the canonical
+        # 'breakdown_platform_northbeam' column is absent, look for a
+        # known alternative and copy / rename it.  If none are present
+        # create a placeholder so downstream code does not crash.
+        # -------------------------------------------------------------
+        REQUIRED_PLATFORM_COL = 'breakdown_platform_northbeam'
+        if REQUIRED_PLATFORM_COL not in df.columns:
+            alternative_cols = ['platform', 'channel', 'breakdown_platform']
+            found = False
+            for alt in alternative_cols:
+                if alt in df.columns:
+                    df[REQUIRED_PLATFORM_COL] = df[alt]
+                    print(f"ℹ️  Mapped column '{alt}' -> '{REQUIRED_PLATFORM_COL}' for compatibility")
+                    found = True
+                    break
+
+            if not found:
+                # Fallback – create a placeholder so groupby operations
+                # continue to work without raising KeyError.
+                print("⚠️  No platform column found. Inserting placeholder 'Unknown'.")
+                df[REQUIRED_PLATFORM_COL] = 'Unknown'
+ 
         return df
     except Exception as e:
         print(f"❌ Error loading data: {e}")
@@ -352,7 +382,7 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         # Top 5 by ROAS
         top_roas = campaign_analysis.sort_values('roas', ascending=False).head(5)
         lines.append("### 🏆 Best Performing Campaigns by ROAS\n")
-        headers2 = ["Platform", "Campaign Name", "ROAS", "Spend"]
+        headers2 = ["Platform", "Campaign Name", "ROAS", "Spend", "Revenue"]
         lines.append("| " + " | ".join(headers2) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers2]) + "|")
         for _, row in top_roas.iterrows():
@@ -360,12 +390,13 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             campaign = row['campaign_name'][:50]
             roas_val = row['roas']
             spend_val = row['spend']
-            lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | ${spend_val:,.0f} |")
+            rev_val = row['attributed_rev']
+            lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | ${spend_val:,.0f} | ${rev_val:,.0f} |")
 
         # Top 5 by Spend
         top_spend = campaign_analysis.sort_values('spend', ascending=False).head(5)
         lines.append("\n### 💰 Highest Spend Campaigns\n")
-        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS"]
+        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS", "Revenue"]
         lines.append("| " + " | ".join(headers3) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers3]) + "|")
         for _, row in top_spend.iterrows():
@@ -373,17 +404,18 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             campaign = row['campaign_name'][:50]
             spend_val = row['spend']
             roas_val = row['roas']
-            lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} |")
+            rev_val = row['attributed_rev']
+            lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} | ${rev_val:,.0f} |")
 
     # 4. First-time customer metrics
     if isinstance(first_time_metrics, pd.DataFrame) and not first_time_metrics.empty:
         lines.append("\n## 4. First-Time Customer Metrics by Channel\n")
-        headers_ft = ["Channel", "CAC 1st", "ROAS 1st", "AOV 1st", "Spend"]
+        headers_ft = ["Channel", "CAC 1st", "ROAS 1st", "AOV 1st", "Revenue 1st", "Spend"]
         lines.append("| " + " | ".join(headers_ft) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers_ft]) + "|")
         for platform, row in first_time_metrics.iterrows():
             lines.append(
-                f"| {platform} | ${row['cac_1st_time']:.2f} | {row['roas_1st_time']:.2f} | ${row['aov_1st_time']:.2f} | ${row['spend']:,.0f} |")
+                f"| {platform} | ${row['cac_1st_time']:.2f} | {row['roas_1st_time']:.2f} | ${row['aov_1st_time']:.2f} | ${row['attributed_rev_1st_time']:,.0f} | ${row['spend']:,.0f} |")
 
     lines.append("\n---\n")
     lines.append(f"**Report Compiled**: {report_date}\n")
