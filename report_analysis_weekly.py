@@ -8,11 +8,18 @@ from datetime import datetime
 
 import pandas as pd
 import numpy as np
+from utils.io.file_selector import select_data_file_for_report
 
 def load_and_clean_data():
     """Load and clean the 7-day sales data"""
+    # Interactive file selection
+    csv_file = select_data_file_for_report("weekly")
+    if not csv_file:
+        print("No file selected. Exiting.")
+        return None
+    
     try:
-        df = pd.read_csv('stats/7d-sales_data-higher_dose_llc-2025_07_13_22_54_02_734538-000000000000.csv')
+        df = pd.read_csv(csv_file)
         print(f"✅ Successfully loaded data with {len(df)} rows")
         
         # Clean and convert numeric columns
