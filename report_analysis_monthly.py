@@ -7,10 +7,17 @@ Comprehensive analysis of 30-day sales data organized by metric tiers
 import pandas as pd
 import numpy as np
 from datetime import datetime
+from utils.io.file_selector import select_data_file_for_report
 
 def load_and_clean_data():
     """Load and clean the 30-day sales data"""
-    df = pd.read_csv('stats/30D-sales_data-higher_dose_llc-2025_07_13_20_20_54_625967-000000000000.csv')
+    # Interactive file selection
+    csv_file = select_data_file_for_report("monthly")
+    if not csv_file:
+        print("No file selected. Exiting.")
+        return None
+    
+    df = pd.read_csv(csv_file)
     
     # Clean and convert numeric columns
     numeric_cols = [
@@ -319,6 +326,8 @@ def main():
     
     # Load data
     df = load_and_clean_data()
+    if df is None:
+        return
     print(f"\nDataset loaded: {len(df)} campaigns analyzed")
     
     # Run tier analyses
