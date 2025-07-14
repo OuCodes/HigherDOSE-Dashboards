@@ -10,13 +10,22 @@ from datetime import datetime
 
 def load_and_clean_data():
     """Load and clean the 30-day sales data"""
-    df = pd.read_csv('stats/30-sales_data-higher_dose_llc-2025_07_13_17_34_35_496782-000000000000.csv')
+    df = pd.read_csv('stats/30D-sales_data-higher_dose_llc-2025_07_13_20_20_54_625967-000000000000.csv')
     
     # Clean and convert numeric columns
-    numeric_cols = ['spend', 'cac', 'cac_1st_time', 'roas', 'roas_1st_time', 
-                   'aov', 'aov_1st_time', 'ecr', 'ecr_1st_time', 'ecpnv',
-                   'platformreported_cac', 'platformreported_roas', 
-                   'new_customer_percentage', 'revenue_per_visit']
+    numeric_cols = [
+        'spend',
+        'cac', 'cac_1st_time',
+        'roas', 'roas_1st_time',
+        'aov', 'aov_1st_time',
+        'ecr', 'ecr_1st_time',
+        'ecpnv',
+        'platformreported_cac', 'platformreported_roas',
+        'new_customer_percentage', 'revenue_per_visit',
+        # Added for accurate first-time calculations
+        'attributed_rev_1st_time', 'transactions_1st_time',
+        'visits', 'new_visits'
+    ]
     
     for col in numeric_cols:
         if col in df.columns:
@@ -28,38 +37,49 @@ def load_and_clean_data():
     return df
 
 def analyze_tier_1_metrics(df):
-    """Analyze Tier 1 Metrics: First-time customer performance"""
-    print("="*60)
+    """Analyze Tier 1 Metrics: First-time customer performance (Accrual only)"""
+    print("=" * 60)
     print("TIER 1 METRICS ANALYSIS (First-Time Customer Focus)")
-    print("="*60)
-    
-    # Filter for campaigns with meaningful spend and first-time metrics
-    tier1_df = df[(df['spend'] > 0) & (df['cac_1st_time'] > 0)]
-    
-    if len(tier1_df) == 0:
-        print("No campaigns with first-time customer data found")
+    print("=" * 60)
+
+    # Restrict to Accrual performance rows for correct attribution metrics
+    accrual_df = df[df['accounting_mode'] == 'Accrual performance'].copy()
+
+    if len(accrual_df) == 0:
+        print("⚠️ No Accrual Performance data found")
         return
-    
-    # Platform-level analysis
-    platform_analysis = tier1_df.groupby('breakdown_platform_northbeam').agg({
+
+    # Aggregate required sums at platform level
+    grouped = accrual_df.groupby('breakdown_platform_northbeam').agg({
         'spend': 'sum',
-        'cac_1st_time': 'mean',
-        'roas_1st_time': 'mean',
-        'aov_1st_time': 'mean',
-        'ecr_1st_time': 'mean',
-        'ecpnv': 'mean'
-    }).round(2)
-    
-    # Filter platforms with meaningful spend
+        'attributed_rev_1st_time': 'sum',
+        'transactions_1st_time': 'sum',
+        'visits': 'sum',
+        'new_visits': 'sum'
+    })
+
+    # Compute first-time metrics according to definitions
+    grouped['cac_1st_time'] = (grouped['spend'] / grouped['transactions_1st_time']).replace([np.inf], 0)
+    grouped['roas_1st_time'] = (grouped['attributed_rev_1st_time'] / grouped['spend']).replace([np.inf], 0)
+    grouped['aov_1st_time'] = (grouped['attributed_rev_1st_time'] / grouped['transactions_1st_time']).replace([np.inf], 0)
+    grouped['ecr_1st_time'] = (grouped['transactions_1st_time'] / grouped['visits']).replace([np.inf], 0)
+    grouped['ecpnv'] = (grouped['spend'] / grouped['new_visits']).replace([np.inf], 0)
+
+    platform_analysis = grouped.round(2)
+
+    # Keep only platforms with meaningful spend
     platform_analysis = platform_analysis[platform_analysis['spend'] > 1000]
     platform_analysis = platform_analysis.sort_values('spend', ascending=False)
-    
+
     print("\n🎯 TIER 1: Top Platforms by First-Time Customer Performance")
-    print("-" * 55)
-    print(platform_analysis)
-    
-    # Product campaign analysis
-    product_campaigns = tier1_df[tier1_df['campaign_name'].str.contains(
+    print("-" * 70)
+    if platform_analysis.empty:
+        print("No platforms meet the spend threshold (>$1,000)")
+    else:
+        print(platform_analysis[['spend', 'cac_1st_time', 'roas_1st_time', 'aov_1st_time', 'ecr_1st_time', 'ecpnv']])
+
+    # ---- Product campaign deep dive (unchanged) ----
+    product_campaigns = accrual_df[accrual_df['campaign_name'].str.contains(
         'Red Light|PEMF|Sauna|Body Sculptor', case=False, na=False)]
     
     if len(product_campaigns) > 0:
