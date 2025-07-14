@@ -14,11 +14,28 @@ import os
 import json
 from datetime import datetime
 from typing import Dict, List, Set
+from utils.logs import report
+from utils.style import ansi
+from slack.track_conversions import is_file_converted, mark_file_converted, print_conversion_status
+
+# Initialize logging
+logger = report.settings(__file__)
 
 def load_slack_data(file_path: str) -> dict:
     """Load Slack JSON export data."""
-    with open(file_path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+    logger.info("Loading Slack data from %s", file_path)
+    print(f"Loading Slack data from: {ansi.cyan}{file_path}{ansi.reset}")
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        message_count = len(data.get('history', {}).get('messages', []))
+        logger.info("Successfully loaded Slack data with %d messages", message_count)
+        print(f"Successfully loaded Slack data with {ansi.green}{message_count}{ansi.reset} messages")
+        return data
+    except Exception as e:
+        logger.error("Failed to load Slack data from %s: %s", file_path, str(e))
+        print(f"{ansi.red}Failed{ansi.reset} to load Slack data from {file_path}: {str(e)}")
+        raise
 
 def create_user_map(users: List[dict]) -> Dict[str, str]:
     """Create a mapping of user IDs to display names."""
@@ -276,6 +293,14 @@ def create_export_metadata(data: dict, new_messages_count: int, total_messages: 
 
 def extract_messages_to_markdown(json_file_path: str):
     """Extract messages from Slack JSON and save as organized markdown with deduplication."""
+    logger.info("Starting Slack to markdown conversion for %s", json_file_path)
+    print(f"Starting Slack to markdown conversion for: {ansi.cyan}{json_file_path}{ansi.reset}")
+
+    # Check if file has already been converted
+    if is_file_converted(json_file_path):
+        logger.info("File %s has already been converted, skipping", json_file_path)
+        print(f"{ansi.yellow}File has already been converted, skipping.{ansi.reset}")
+        return None
 
     # Load the data
     data = load_slack_data(json_file_path)
@@ -285,9 +310,11 @@ def extract_messages_to_markdown(json_file_path: str):
 
     # Get channel info
     channel_name, channel_type = get_channel_info(data, user_map)
+    logger.info("Processing %s: %s", channel_type, channel_name)
+    print(f"Processing {ansi.magenta}{channel_type}{ansi.reset}: {ansi.cyan}{channel_name}{ansi.reset}")
 
-    # Create directory structure
-    base_dir = "slack_exports"
+    # Create directory structure in the processed folder
+    base_dir = "slack/processed"
     channel_dir = os.path.join(base_dir, channel_name)
     os.makedirs(channel_dir, exist_ok=True)
 
@@ -298,6 +325,8 @@ def extract_messages_to_markdown(json_file_path: str):
 
     # Get existing timestamps to avoid duplicates
     existing_timestamps = extract_existing_timestamps(output_file)
+    logger.info("Found %d existing messages in output file", len(existing_timestamps))
+    print(f"Found {ansi.yellow}{len(existing_timestamps)}{ansi.reset} existing messages in output file")
 
     # Get messages and filter out duplicates
     messages = data.get('history', {}).get('messages', [])
@@ -342,9 +371,11 @@ def extract_messages_to_markdown(json_file_path: str):
                     f.write("---\n\n")
                     f.write(new_content)
 
-            print(f"Added {len(new_messages)} new messages to existing file.")
+            logger.info("Added %d new messages to existing file", len(new_messages))
+            print(f"Added {ansi.green}{len(new_messages)}{ansi.reset} new messages to existing file.")
         else:
-            print("No new messages to add.")
+            logger.info("No new messages to add")
+            print(f"{ansi.yellow}No new messages to add.{ansi.reset}")
     else:
         # File doesn't exist, create new
         if new_messages:
@@ -374,15 +405,70 @@ def extract_messages_to_markdown(json_file_path: str):
                     f.write(f"# Slack {channel_type.title()}: {channel_name}\n\n")
                 f.write(new_content)
 
-            print(f"Created new file with {len(new_messages)} messages.")
+            logger.info("Created new file with %d messages", len(new_messages))
+            print(f"Created new file with {ansi.green}{len(new_messages)}{ansi.reset} messages.")
         else:
-            print("No messages to process.")
+            logger.warning("No messages to process")
+            print(f"{ansi.yellow}No messages to process.{ansi.reset}")
 
-    print(f"Output saved to: {output_file}")
+    # Mark file as converted if we processed any messages
+    if messages:
+        mark_file_converted(json_file_path, output_file, len(messages))
+    
+    logger.info("Conversion completed. Output saved to: %s", output_file)
+    print(f"Output saved to: {ansi.cyan}{output_file}{ansi.reset}")
     return output_file
 
-if __name__ == "__main__":
-    # Use the provided JSON file
-    JSON_FILE = "slack.json"
+def process_all_slack_exports():
+    """Process all JSON files in the raw_exports directory."""
+    raw_exports_dir = "slack/raw_exports"
+    
+    # Create raw_exports directory if it doesn't exist
+    os.makedirs(raw_exports_dir, exist_ok=True)
+    
+    # Find all JSON files in raw_exports directory
+    json_files = []
+    if os.path.exists(raw_exports_dir):
+        for file in os.listdir(raw_exports_dir):
+            if file.endswith('.json'):
+                json_files.append(os.path.join(raw_exports_dir, file))
+    
+    # Also check root directory for any legacy files
+    for file in ['slack.json', 'slack-2.json']:
+        if os.path.exists(file):
+            json_files.append(file)
+    
+    if not json_files:
+        print(f"{ansi.yellow}No JSON files found to process.{ansi.reset}")
+        print(f"Please place Slack export JSON files in: {ansi.cyan}{raw_exports_dir}{ansi.reset}")
+        return
+    
+    print(f"Found {ansi.green}{len(json_files)}{ansi.reset} JSON files to process:")
+    for file in json_files:
+        print(f"  - {ansi.cyan}{file}{ansi.reset}")
+    
+    print()
+    
+    processed_count = 0
+    skipped_count = 0
+    
+    for json_file in json_files:
+        result = extract_messages_to_markdown(json_file)
+        if result is None:
+            skipped_count += 1
+        else:
+            processed_count += 1
+        print()  # Add spacing between files
+    
+    print(f"\n{ansi.magenta}Processing Summary{ansi.reset}")
+    print("=" * 30)
+    print(f"Files processed: {ansi.green}{processed_count}{ansi.reset}")
+    print(f"Files skipped: {ansi.yellow}{skipped_count}{ansi.reset}")
+    print(f"Total files: {ansi.cyan}{len(json_files)}{ansi.reset}")
+    
+    # Show overall conversion status
+    print()
+    print_conversion_status()
 
-    extract_messages_to_markdown(JSON_FILE)
+if __name__ == "__main__":
+    process_all_slack_exports()
