@@ -11,4 +11,6 @@
 
 - [ ] Add utility scripts to the repo
 - [ ] Add logging to the slack converter script
-- [ ] Create a home for the slack script and the slack json exports. We need a home folder for the py script to scan and keep track of which json files have already been converted. Cleaner than leaving it in the root directory.
+- [ ] Create a home for the slack script and the Slack JSON exports so the script can track which files have been converted, instead of leaving everything in the repo root
+- [ ] Update the weekly and monthly report scripts to prompt the user to select the correct CSV file from the `stats/` folder at runtime
+- [ ] Conduct preliminary research on the Gmail API/setup so we can convert emails to markdown and store them in this repo
