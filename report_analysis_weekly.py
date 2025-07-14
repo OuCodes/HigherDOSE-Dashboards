@@ -117,30 +117,44 @@ def analyze_campaign_performance(df):
     return significant_campaigns
 
 def analyze_first_time_metrics(df):
-    """Analyze first-time customer metrics by channel"""
-    print("\n" + "="*60)
+    """Analyze first-time customer metrics by channel (Accrual performance only)"""
+    print("\n" + "=" * 60)
     print("👥 FIRST-TIME CUSTOMER METRICS BY CHANNEL")
-    print("="*60)
-    
-    # Group by platform for first-time metrics
-    first_time_metrics = df.groupby('breakdown_platform_northbeam').agg({
+    print("=" * 60)
+
+    # Use only Accrual performance rows to avoid double-counting spend / transactions
+    accrual_df = df[df['accounting_mode'] == 'Accrual performance'].copy()
+
+    if len(accrual_df) == 0:
+        print("⚠️ No Accrual Performance data found")
+        return {}
+
+    # Aggregate sums needed for metric calculations
+    grouped = accrual_df.groupby('breakdown_platform_northbeam').agg({
         'spend': 'sum',
-        'cac_1st_time': lambda x: (df.loc[x.index, 'spend'].sum() / df.loc[x.index, 'transactions_1st_time'].sum()) if df.loc[x.index, 'transactions_1st_time'].sum() > 0 else 0,
-        'roas_1st_time': lambda x: (df.loc[x.index, 'attributed_rev_1st_time'].sum() / df.loc[x.index, 'spend'].sum()) if df.loc[x.index, 'spend'].sum() > 0 else 0,
-        'aov_1st_time': lambda x: (df.loc[x.index, 'attributed_rev_1st_time'].sum() / df.loc[x.index, 'transactions_1st_time'].sum()) if df.loc[x.index, 'transactions_1st_time'].sum() > 0 else 0,
         'attributed_rev_1st_time': 'sum',
         'transactions_1st_time': 'sum'
-    }).round(2)
-    
-    # Sort by spend
-    first_time_metrics = first_time_metrics.sort_values('spend', ascending=False)
-    
-    print("\nTOP CHANNELS - FIRST-TIME CUSTOMER METRICS:")
+    })
+
+    # Calculate metrics in accordance with definitions (Accrual mode)
+    grouped['cac_1st_time'] = (grouped['spend'] / grouped['transactions_1st_time']).replace([np.inf], 0)
+    grouped['roas_1st_time'] = (grouped['attributed_rev_1st_time'] / grouped['spend']).replace([np.inf], 0)
+    grouped['aov_1st_time'] = (grouped['attributed_rev_1st_time'] / grouped['transactions_1st_time']).replace([np.inf], 0)
+
+    # Round for tidy output
+    first_time_metrics = grouped.round(2).sort_values('spend', ascending=False)
+
+    print("\nTOP CHANNELS ‑ FIRST-TIME CUSTOMER METRICS:")
     print("-" * 100)
     for platform, row in first_time_metrics.head(10).iterrows():
         if row['spend'] > 100:  # Only show channels with significant spend
-            print(f"{platform:<15} | CAC 1st: ${row['cac_1st_time']:>7.2f} | ROAS 1st: {row['roas_1st_time']:>5.2f} | AOV 1st: ${row['aov_1st_time']:>7.2f} | Spend: ${row['spend']:>8.2f}")
-    
+            print(
+                f"{platform:<15} | CAC 1st: ${row['cac_1st_time']:>7.2f} | "
+                f"ROAS 1st: {row['roas_1st_time']:>5.2f} | "
+                f"AOV 1st: ${row['aov_1st_time']:>7.2f} | "
+                f"Spend: ${row['spend']:>8.2f}"
+            )
+
     return first_time_metrics
 
 def generate_executive_summary(channel_summary):
