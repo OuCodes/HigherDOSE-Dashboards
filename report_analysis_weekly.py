@@ -558,15 +558,30 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
                 aov = row.get('aov', 0)
                 lines.append(f"| {platform} | **{campaign}** | ${revenue:,.0f} | {txns:.2f} | ${aov:.2f} |")
 
-    # 4. First-time customer metrics
-    if isinstance(first_time_metrics, pd.DataFrame) and not first_time_metrics.empty:
-        lines.append("\n## 4. First-Time Customer Metrics by Channel\n")
-        headers_ft = ["Channel", "CAC 1st", "ROAS 1st", "AOV 1st", "Revenue 1st", "Spend"]
-        lines.append("| " + " | ".join(headers_ft) + " |")
-        lines.append("|" + "|".join(["-" * len(h) for h in headers_ft]) + "|")
-        for platform, row in first_time_metrics.iterrows():
-            lines.append(
-                f"| {platform} | ${row['cac_1st_time']:.2f} | {row['roas_1st_time']:.2f} | ${row['aov_1st_time']:.2f} | ${row['attributed_rev_1st_time']:,.0f} | ${row['spend']:,.0f} |")
+    # 4. Channel Performance Metrics (overall, not first-time)
+    if isinstance(channel_summary, pd.DataFrame) and not channel_summary.empty:
+        lines.append("\n## 4. Channel Performance Metrics\n")
+        headers_g = ["Channel", "Spend", "Revenue", "CAC", "ROAS", "AOV", "Transactions"]
+        lines.append("| " + " | ".join(headers_g) + " |")
+        lines.append("|" + "|".join(["-" * len(h) for h in headers_g]) + "|")
+
+        # Combine spend-priority and revenue-priority ordering
+        high_spend = channel_summary[channel_summary['spend'] > 0].copy()
+        high_spend = high_spend.sort_values('spend', ascending=False)
+
+        rev_only = channel_summary[channel_summary['spend'] == 0].copy()
+        rev_only = rev_only.sort_values('attributed_rev', ascending=False)
+
+        combined = pd.concat([high_spend, rev_only])
+
+        for platform, row in combined.iterrows():
+            spend = row['spend']
+            revenue = row['attributed_rev']
+            cac = row['cac']
+            roas_val = row['roas']
+            aov_val = row['aov']
+            txns = row['transactions']
+            lines.append(f"| {platform} | ${spend:,.0f} | ${revenue:,.0f} | ${cac:.2f} | {roas_val:.2f} | ${aov_val:.2f} | {int(txns)} |")
 
     lines.append("\n---\n")
     lines.append(f"**Report Compiled**: {report_date}\n")
