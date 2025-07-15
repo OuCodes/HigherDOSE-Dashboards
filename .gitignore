@@ -1,5 +1,7 @@
 #Custom Files
 .DS_Store
+*.pickle
+client_secret_*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
