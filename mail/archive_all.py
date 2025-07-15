@@ -10,7 +10,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 # Reuse components from the existing script
-from gmail_client.gmail_archive import get_creds, save_msg, ansi, logger
+from mail.gmail_archive import get_creds, save_msg, ansi, logger
 
 def fetch_all_message_ids(gmail):
     """Fetches all message IDs from the user's Gmail account."""

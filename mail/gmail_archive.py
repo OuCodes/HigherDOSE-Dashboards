@@ -18,9 +18,9 @@ from utils.style import ansi
 logger = report.settings(__file__)
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
-TOKEN   = Path("gmail_client", "token.pickle")
-CURSOR  = Path("gmail_client", "cursor.txt")
-OUTDIR  = Path("gmail_client", "archive")
+TOKEN   = Path("mail", "token.pickle")
+CURSOR  = Path("mail", "cursor.txt")
+OUTDIR  = Path("mail", "archive")
 OUTDIR.mkdir(exist_ok=True)
 
 def get_creds():
