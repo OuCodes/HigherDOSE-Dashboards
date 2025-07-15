@@ -35,6 +35,8 @@ pip install --upgrade pip wheel setuptools
 ### 3. Install project dependencies
 ```bash
 pip install pandas numpy
+pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
+pip install markdownify
 ```
 
 ### 4. Verify the environment
