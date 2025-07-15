@@ -116,6 +116,52 @@ aliases = {
     "body sculptor": "Microcurrent Body Sculptor Ritual Set",
     "body sculptor ritual set": "Microcurrent Body Sculptor Ritual Set",
     "sculptor": "Microcurrent Body Sculptor Ritual Set",
+    "body sculpt": "Microcurrent Body Sculptor Ritual Set",
+
+    # PEMF Pro Mat variants
+    "pemfpro": "Infrared PEMF Pro Mat",
+    "pemfpromat": "Infrared PEMF Pro Mat",
+    "pemf pro mat": "Infrared PEMF Pro Mat",
+
+    # Recovery / Solution bundles (map to Best Seller Bundle)
+    "solution recovery": "Best Seller Bundle",
+    "recovery bundle": "Best Seller Bundle",
+
+    # Serotonin Soak misspelling
+    "seratonin soak": "Serotonin Soak Salt",
+
+    # Red Light Face Mask variants
+    "redlightfacemask": "Red Light Face Mask",
+    "red light facemask": "Red Light Face Mask",
+    "magnewsium spray": "Transdermal Magnesium Spray",
+    "magnesiumspray": "Transdermal Magnesium Spray",
+
+    # Additional aliases from latest unattributed review
+    "red light neck": "Red Light Neck Enhancer",
+    "redlightneck": "Red Light Neck Enhancer",
+    "rlne": "Red Light Neck Enhancer",
+
+    "infrared sauna": "Full Spectrum Infrared Sauna",
+    "infraredsauna": "Full Spectrum Infrared Sauna",
+    "full spectrum sauna": "Full Spectrum Infrared Sauna",
+    "fullspectrumsauna": "Full Spectrum Infrared Sauna",
+
+    "saunblanket": "Infrared Sauna Blanket",
+    "sauna body wrap": "Infrared Sauna Blanket",
+    "saunabodywrap": "Infrared Sauna Blanket",
+
+    "soak salt": "Serotonin Soak Salt",
+    "soaksalt": "Serotonin Soak Salt",
+
+    "glow serum": "Light-Activated Glow Serum",
+    "glowserum": "Light-Activated Glow Serum",
+
+    "pemfgo": "Infrared PEMF Go Mat",
+    # Generic short forms
+    "pemf": "Infrared PEMF Pro Mat",
+    "redlight": "Red Light Face Mask",
+    "red light": "Red Light Face Mask",
+    "blanket": "Infrared Sauna Blanket",
 }
 
 # Build markdown content
