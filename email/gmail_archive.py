@@ -101,8 +101,8 @@ def save_msg(gmail, mid):
 def main():
     """Runs the Gmail archiving script."""
     logger.info("Starting Gmail archive script.")
-    print(f"Starting Gmail archive script...")
-    
+    print("Starting Gmail archive script...")
+
     gmail = build("gmail", "v1", credentials=get_creds(), cache_discovery=False)
     logger.info("Gmail service client created successfully.")
     print(f"Gmail service client {ansi.green}created successfully{ansi.reset}.")
@@ -111,11 +111,11 @@ def main():
         logger.warning("Cursor file not found at %s. Creating a new one.", CURSOR)
         print(f"{ansi.yellow}Cursor file not found{ansi.reset} at {ansi.cyan}{CURSOR}{ansi.reset}. Creating a new one.")
         initial_cursor = latest_history_id(gmail)
-        CURSOR.write_text(str(initial_cursor))
+        CURSOR.write_text(str(initial_cursor), encoding='utf-8')
         logger.info("Cursor file created with history ID: %s", initial_cursor)
         print(f"  Cursor file {ansi.green}created{ansi.reset} with history ID: {ansi.cyan}{initial_cursor}{ansi.reset}")
-    
-    cursor = CURSOR.read_text().strip()
+
+    cursor = CURSOR.read_text(encoding='utf-8').strip()
     logger.info("Starting with cursor: %s", cursor)
     print(f"Starting with cursor: {ansi.cyan}{cursor}{ansi.reset}")
 
@@ -124,7 +124,7 @@ def main():
             logger.info("Checking for new messages...")
             print(f"\n{ansi.magenta}Checking for new messages...{ansi.reset}")
             message_ids, new_cursor = fetch_deltas(gmail, cursor)
-            
+
             if message_ids:
                 logger.info("Found %d new messages to archive.", len(message_ids))
                 print(f"Found {ansi.green}{len(message_ids)}{ansi.reset} new messages to archive.")
@@ -139,8 +139,8 @@ def main():
                 logger.info("Updating cursor from %s to %s", cursor, new_cursor)
                 print(f"  Updating cursor from {ansi.yellow}{cursor}{ansi.reset} to {ansi.green}{new_cursor}{ansi.reset}")
                 cursor = new_cursor
-                CURSOR.write_text(str(cursor))
-                
+                CURSOR.write_text(str(cursor), encoding='utf-8')
+
         except HttpError as e:
             logger.error("An HTTP error occurred: %s", e)
             print(f"{ansi.red}An HTTP error occurred:{ansi.reset} {e}")
@@ -148,7 +148,7 @@ def main():
                 logger.warning("History ID is too old; performing a full resync.")
                 print(f"  {ansi.yellow}History ID is too old; performing a full resync.{ansi.reset}")
                 cursor = latest_history_id(gmail)
-        
+
         logger.info("Waiting for 30 seconds before next check...")
         print(f"Waiting for {ansi.yellow}30 seconds{ansi.reset} before next check...")
         time.sleep(30)
