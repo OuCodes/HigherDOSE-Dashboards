@@ -206,27 +206,30 @@ def main():
     accrual_df_prod = df_prod[df_prod["accounting_mode"] == "Accrual performance"].copy()
 
     # -------------------------------------------------------------
-    # 🧹 Deduplicate at the campaign level to prevent double-counting.
-    # Many Northbeam exports include one row per *ad* **and** an aggregated
-    # row per *campaign*.  Both rows carry the full campaign spend so summing
-    # them inflates totals.  The safest fix is to keep only ONE spend figure
-    # per (platform, campaign) – we keep the *largest* non-zero spend value.
+    # 🧹 Remove *campaign summary* rows to avoid double-counting.
+    # These are rows whose adset_name and ad_name are empty or "(no name)".
+    # If a campaign has ONLY such a row (i.e., no ad-level lines), we keep it.
+    # But if both summary + detailed rows exist, we drop the summary row.
     # -------------------------------------------------------------
-    def _dedupe(df: pd.DataFrame):
-        # Sort so the row with highest spend appears first within each group
-        df_sorted = df.sort_values("spend", ascending=False)
-        return (
-            df_sorted
-            .drop_duplicates(subset=["breakdown_platform_northbeam", "campaign_name"], keep="first")
-            .copy()
-        )
 
-    accrual_dedup = _dedupe(accrual_df_prod)
+    def _is_blank(val):
+        return pd.isna(val) or str(val).strip() == "" or str(val).strip().lower() == "(no name)"
 
-    product_summary = build_summary(accrual_dedup[accrual_dedup["product"].notna()], "product")
+    accrual_df_prod["_is_summary"] = accrual_df_prod.apply(
+        lambda r: _is_blank(r["adset_name"]) and _is_blank(r["ad_name"]), axis=1
+    )
 
-    accrual_dedup["category"] = accrual_dedup["product"].map(product_to_category).fillna("Unattributed")
-    category_summary = build_summary(accrual_dedup[accrual_dedup["category"].notna()], "category")
+    # Identify campaigns that also have detailed rows (non-summary)
+    has_detail = (
+        accrual_df_prod.groupby("campaign_name")["_is_summary"].transform(lambda s: (~s).any())
+    )
+
+    accrual_filtered = accrual_df_prod[~(accrual_df_prod["_is_summary"] & has_detail)].copy()
+
+    product_summary = build_summary(accrual_filtered[accrual_filtered["product"].notna()], "product")
+
+    accrual_filtered["category"] = accrual_filtered["product"].map(product_to_category).fillna("Unattributed")
+    category_summary = build_summary(accrual_filtered[accrual_filtered["category"].notna()], "category")
 
     # 4. Run existing channel-level analyses (for executive summary etc.)
     channel_summary = base.analyze_channel_performance(df)
