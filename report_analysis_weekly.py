@@ -132,7 +132,21 @@ def analyze_campaign_performance(df):
     # Calculate performance metrics
     significant_campaigns['roas'] = (significant_campaigns['attributed_rev'] / significant_campaigns['spend']).replace([np.inf], 0)
     significant_campaigns['cac'] = (significant_campaigns['spend'] / significant_campaigns['transactions']).replace([np.inf], 0)
+    # First-time CAC (cost per first-time customer)
+    if 'transactions_1st_time' in significant_campaigns.columns:
+        significant_campaigns['cac_1st_time'] = (
+            significant_campaigns['spend'] / significant_campaigns['transactions_1st_time']
+        ).replace([np.inf], 0)
+    else:
+        significant_campaigns['cac_1st_time'] = 0
     significant_campaigns['aov'] = (significant_campaigns['attributed_rev'] / significant_campaigns['transactions']).replace([np.inf], 0)
+    # First-time ROAS at campaign level
+    if 'attributed_rev_1st_time' in significant_campaigns.columns:
+        significant_campaigns['roas_1st_time'] = (
+            significant_campaigns['attributed_rev_1st_time'] / significant_campaigns['spend']
+        ).replace([np.inf], 0)
+    else:
+        significant_campaigns['roas_1st_time'] = 0
     
     # Sort by ROAS (descending)
     top_roas = significant_campaigns.nlargest(10, 'roas')
@@ -203,17 +217,19 @@ def generate_executive_summary(channel_summary):
     # Total performance across all channels
     total_spend = channel_summary['spend'].sum()
     total_revenue = channel_summary['attributed_rev'].sum()
+    total_revenue_1st_time = channel_summary['attributed_rev_1st_time'].sum()
     total_transactions = channel_summary['transactions'].sum()
     total_visits = channel_summary['visits'].sum()
     
     overall_roas = total_revenue / total_spend if total_spend > 0 else 0
+    overall_roas_1st_time = total_revenue_1st_time / total_spend if total_spend > 0 else 0
     overall_cac = total_spend / total_transactions if total_transactions > 0 else 0
     overall_aov = total_revenue / total_transactions if total_transactions > 0 else 0
     overall_ecr = total_transactions / total_visits if total_visits > 0 else 0
     
     print(f"💰 Total Spend: ${total_spend:,.2f}")
     print(f"💵 Total Revenue: ${total_revenue:,.2f}")
-    print(f"🎯 Overall ROAS: {overall_roas:.2f}")
+    print(f"🎯 Overall ROAS: {overall_roas:.2f} (First-Time: {overall_roas_1st_time:.2f})")
     print(f"💸 Overall CAC: ${overall_cac:.2f}")
     print(f"🛒 Overall AOV: ${overall_aov:.2f}")
     print(f"📊 Overall ECR: {overall_ecr:.4f} ({overall_ecr*100:.2f}%)")
@@ -233,6 +249,7 @@ def generate_executive_summary(channel_summary):
         'overall_roas': overall_roas,
         'overall_cac': overall_cac,
         'overall_aov': overall_aov,
+        'overall_roas_1st_time': overall_roas_1st_time,
         'overall_ecr': overall_ecr,
         'total_transactions': total_transactions,
         'total_visits': total_visits
@@ -281,6 +298,7 @@ def identify_opportunities(channel_summary):
             continue
             
         roas = row['roas']
+        roas1 = row['roas_1st_time']
         cac = row['cac_1st_time'] if row['cac_1st_time'] > 0 else row['cac']
         spend = row['spend']
         
@@ -332,10 +350,11 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
     total_spend = executive_metrics['total_spend']
     total_revenue = executive_metrics['total_revenue']
     overall_roas = executive_metrics['overall_roas']
+    overall_roas_1st_time = executive_metrics['overall_roas_1st_time']
     overall_cac = executive_metrics['overall_cac']
 
     lines.append(
-        f"**Overall Performance**: Total DTC spend reached **${total_spend:,.0f}** across all channels with **{overall_roas:.2f} ROAS** and overall **CAC of ${overall_cac:,.2f}**. "
+        f"**Overall Performance**: Total DTC spend reached **${total_spend:,.0f}** across all channels with **{overall_roas:.2f} ROAS** (First-Time: **{overall_roas_1st_time:.2f}**) and overall **CAC of ${overall_cac:,.2f}**. "
         f"The business achieved **{int(executive_metrics['total_transactions'])} transactions** generating **${total_revenue:,.0f}** in attributed revenue during this 7-day period.\n\n"
     )
 
@@ -346,7 +365,9 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         "Period Spend",
         "% of Total",
         "CAC",
+        "CAC 1st",
         "ROAS",
+        "ROAS 1st",
         "AOV",
         "Transactions",
         "Revenue",
@@ -356,8 +377,30 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
 
     total_transactions = executive_metrics['total_transactions']
     # Add All row first
+    overall_cac_1st = (
+        total_spend / channel_summary['transactions_1st_time'].sum()
+        if channel_summary['transactions_1st_time'].sum() > 0
+        else 0
+    )
     lines.append(
-        f"| **All DTC** | **${total_spend:,.0f}** | **100%** | **${overall_cac:,.2f}** | **{overall_roas:.2f}** | **${executive_metrics['overall_aov']:.0f}** | **{int(total_transactions)}** | **${total_revenue:,.0f}** |")
+        f"| **All DTC** | **${total_spend:,.0f}** | **100%** | **${overall_cac:,.2f}** | **${overall_cac_1st:.2f}** | **{overall_roas:.2f}** | **{executive_metrics['overall_roas_1st_time']:.2f}** | **${executive_metrics['overall_aov']:.0f}** | **{int(total_transactions)}** | **${total_revenue:,.0f}** |")
+
+    # NEW: Aggregate paid-media-only metrics (channels with spend > 0)
+    paid_df = channel_summary[channel_summary['spend'] > 0]
+    if not paid_df.empty:
+        paid_spend = paid_df['spend'].sum()
+        paid_revenue = paid_df['attributed_rev'].sum()
+        paid_revenue_1st = paid_df['attributed_rev_1st_time'].sum()
+        paid_transactions = paid_df['transactions'].sum()
+        paid_transactions_1st = paid_df['transactions_1st_time'].sum()
+        paid_roas = paid_revenue / paid_spend if paid_spend else 0
+        paid_roas_1st = paid_revenue_1st / paid_spend if paid_spend else 0
+        paid_cac = paid_spend / paid_transactions if paid_transactions else 0
+        paid_cac_1st = paid_spend / paid_transactions_1st if paid_transactions_1st else 0
+        paid_aov = paid_revenue / paid_transactions if paid_transactions else 0
+        percent_total_paid = paid_spend / total_spend * 100 if total_spend > 0 else 0
+        lines.append(
+            f"| **Paid Media** | ${paid_spend:,.0f} | {percent_total_paid:.1f}% | ${paid_cac:.2f} | ${paid_cac_1st:.2f} | {paid_roas:.2f} | {paid_roas_1st:.2f} | ${paid_aov:,.0f} | {int(paid_transactions)} | ${paid_revenue:,.0f} |")
 
     # Prepare top channels
     total_spend_safe = total_spend if total_spend != 0 else 1  # prevent div 0
@@ -367,12 +410,14 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             continue
         percent_total = spend / total_spend_safe * 100
         cac = row['cac']
+        cac1 = row['cac_1st_time']
         roas = row['roas']
+        roas1 = row['roas_1st_time']
         aov = row['aov']
         transactions = row['transactions']
         revenue = row['attributed_rev']
         lines.append(
-            f"| {platform} | ${spend:,.0f} | {percent_total:.1f}% | ${cac:,.2f} | {roas:.2f} | ${aov:,.0f} | {int(transactions)} | ${revenue:,.0f} |")
+            f"| {platform} | ${spend:,.0f} | {percent_total:.1f}% | ${cac:,.2f} | ${cac1:.2f} | {roas:.2f} | {roas1:.2f} | ${aov:,.0f} | {int(transactions)} | ${revenue:,.0f} |")
 
     lines.append("\n---\n")
 
@@ -382,30 +427,36 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         # Top 5 by ROAS
         top_roas = campaign_analysis.sort_values('roas', ascending=False).head(5)
         lines.append("### 🏆 Best Performing Campaigns by ROAS\n")
-        headers2 = ["Platform", "Campaign Name", "ROAS", "Spend", "Revenue"]
+        headers2 = ["Platform", "Campaign Name", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "Spend", "Revenue"]
         lines.append("| " + " | ".join(headers2) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers2]) + "|")
         for _, row in top_roas.iterrows():
             platform = row['breakdown_platform_northbeam']
-            campaign = row['campaign_name'][:50]
+            campaign = row['campaign_name'][:50].replace('|', '\\|')
             roas_val = row['roas']
             spend_val = row['spend']
             rev_val = row['attributed_rev']
-            lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | ${spend_val:,.0f} | ${rev_val:,.0f} |")
+            roas1_val = row.get('roas_1st_time', 0)
+            cac_val = row.get('cac', 0)
+            cac1_val = row.get('cac_1st_time', 0)
+            lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${spend_val:,.0f} | ${rev_val:,.0f} |")
 
         # Top 5 by Spend
         top_spend = campaign_analysis.sort_values('spend', ascending=False).head(5)
         lines.append("\n### 💰 Highest Spend Campaigns\n")
-        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS", "Revenue"]
+        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "Revenue"]
         lines.append("| " + " | ".join(headers3) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers3]) + "|")
         for _, row in top_spend.iterrows():
             platform = row['breakdown_platform_northbeam']
-            campaign = row['campaign_name'][:50]
+            campaign = row['campaign_name'][:50].replace('|', '\\|')
             spend_val = row['spend']
             roas_val = row['roas']
+            roas1_val = row.get('roas_1st_time', 0)
+            cac_val = row.get('cac', 0)
+            cac1_val = row.get('cac_1st_time', 0)
             rev_val = row['attributed_rev']
-            lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} | ${rev_val:,.0f} |")
+            lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${rev_val:,.0f} |")
 
     # 4. First-time customer metrics
     if isinstance(first_time_metrics, pd.DataFrame) and not first_time_metrics.empty:
