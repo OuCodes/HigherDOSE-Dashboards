@@ -122,13 +122,18 @@ def build_summary(df: pd.DataFrame, group_col: str):
     summary["roas_1st_time"] = (
         summary["attributed_rev_1st_time"] / summary["spend"]
     ).replace([np.inf], 0)
-    summary["cac"] = (summary["spend"] / summary["transactions"]).replace([np.inf], 0)
+    # Use *rounded* transactions for CAC / AOV to avoid confusing fractional counts
+    txns_rounded = summary["transactions"].round().replace(0, np.nan)
+    summary["cac"] = (summary["spend"] / txns_rounded).replace([np.inf], 0).fillna(0)
     summary["cac_1st_time"] = (
-        summary["spend"] / summary["transactions_1st_time"]
-    ).replace([np.inf], 0)
+        summary["spend"] / summary["transactions_1st_time"].round().replace(0, np.nan)
+    ).replace([np.inf], 0).fillna(0)
     summary["aov"] = (
-        summary["attributed_rev"] / summary["transactions"]
-    ).replace([np.inf], 0)
+        summary["attributed_rev"] / txns_rounded
+    ).replace([np.inf], 0).fillna(0)
+
+    # Store the rounded value for display purposes
+    summary["transactions_display"] = txns_rounded.fillna(0)
 
     summary = summary.replace([np.inf, -np.inf], 0).round(2)
     summary = summary.sort_values("spend", ascending=False)
@@ -167,7 +172,7 @@ def markdown_table(summary: pd.DataFrame, index_label: str, extra_col: str | Non
             f"{row['roas']:.2f}",
             f"${row['cac']:.2f}",
             f"${row['aov']:.2f}",
-            f"{int(row['transactions'])}",
+            f"{row.get('transactions_display', row['transactions']):.0f}",
         ])
         lines.append("| " + " | ".join(map(str, cells)) + " |")
 
@@ -191,13 +196,16 @@ def totals_row(summary: pd.DataFrame, label: str):
     revenue = agg["attributed_rev"]
     txns = agg["transactions"]
 
+    txns_display = round(txns)
+
     total_series = {
         "spend": spend,
         "attributed_rev": revenue,
         "roas": revenue / spend if spend else 0,
-        "cac": spend / txns if txns else 0,
-        "aov": revenue / txns if txns else 0,
-        "transactions": txns,
+        "cac": spend / txns_display if txns_display else 0,
+        "aov": revenue / txns_display if txns_display else 0,
+        "transactions": txns_display,
+        "transactions_display": txns_display,
     }
 
     return pd.DataFrame(total_series, index=[label])
@@ -247,10 +255,26 @@ def main():
 
     accrual_filtered = accrual_df_prod[~(accrual_df_prod["_is_summary"] & has_detail)].copy()
 
-    product_summary = build_summary(accrual_filtered[accrual_filtered["product"].notna()], "product")
+    # -------------------------------------------------------------
+    # 🔄  Build Product & Category summaries using *Cash snapshot*
+    #     to avoid fractional-transaction confusion in CAC/AOV.
+    # -------------------------------------------------------------
 
-    accrual_filtered["category"] = accrual_filtered["product"].map(product_to_category).fillna("Unattributed")
-    category_summary = build_summary(accrual_filtered[accrual_filtered["category"].notna()], "category")
+    cash_df_prod = df_prod[df_prod["accounting_mode"] == "Cash snapshot"].copy()
+
+    # Re-use the same summary-row removal logic for cash rows
+    cash_df_prod["_is_summary"] = cash_df_prod.apply(
+        lambda r: _is_blank(r["adset_name"]) and _is_blank(r["ad_name"]), axis=1
+    )
+    cash_has_detail = (
+        cash_df_prod.groupby("campaign_name")["_is_summary"].transform(lambda s: (~s).any())
+    )
+    cash_filtered = cash_df_prod[~(cash_df_prod["_is_summary"] & cash_has_detail)].copy()
+
+    product_summary = build_summary(cash_filtered[cash_filtered["product"].notna()], "product")
+
+    cash_filtered["category"] = cash_filtered["product"].map(product_to_category).fillna("Unattributed")
+    category_summary = build_summary(cash_filtered[cash_filtered["category"].notna()], "category")
 
     # -------------------------------------------------------------
     # 🚩 Capture Unattributed rows for alias discovery
@@ -310,27 +334,77 @@ def main():
     category_table_df = pd.concat([cat_tot, category_summary])
 
     product_section_md = (
-        "\n## 2a. Performance by Product\n" +
+        "\n## 2a. Performance by Product (Cash Snapshot)\n" +
         markdown_table(prod_table_df, index_label="Product", extra_col="Category") +
-        "\n\n## 2b. Performance by Category\n" +
+        "\n\n## 2b. Performance by Category (Cash Snapshot)\n" +
         markdown_table(category_table_df, index_label="Category") +
         "\n---\n"
     )
 
-    final_report = base_report.replace("---\n", product_section_md, 1)  # inject once after first divider
+    # Insert product/category tables *after* the DTC 7-Day Snapshot section.
+    # We look for the header that starts that section, then locate the first
+    # divider ("\n---\n") that follows it and inject our markdown right there.
+
+    dtc_header = "## 2. DTC Performance"
+    header_pos = base_report.find(dtc_header)
+
+    if header_pos != -1:
+        # Find the divider that closes the DTC section
+        divider_pos = base_report.find("\n---\n", header_pos)
+        if divider_pos != -1:
+            insert_at = divider_pos  # insert *before* this divider
+            final_report = base_report[:insert_at] + product_section_md + base_report[insert_at:]
+        else:
+            # Fallback – divider not found after header; append at end
+            final_report = base_report + product_section_md
+    else:
+        # Fallback – header not found; keep previous behaviour (second divider)
+        front_matter, remainder = base_report.split("\n---\n", 1)
+        remainder_with_section = remainder.replace("\n---\n", product_section_md, 1)
+        final_report = "\n---\n".join([front_matter, remainder_with_section])
+
+    # Label major base-report tables as Accrual Performance to distinguish from cash snapshot
+    header_map = {
+        "## 2. DTC Performance — 7-Day Snapshot (Northbeam)": "## 2. DTC Breakdown (Accrual Performance) - 7 Days (Northbeam)",
+        "## 3. Top Campaign Performance Analysis": "## 3. Top Campaign Performance Analysis (Accrual Performance)",
+        "## 4. Channel Performance Metrics": "## 4. Channel Performance Metrics (Accrual Performance)",
+        "### 💰 Highest Spend Campaigns": "### 💰 Highest Spend Campaigns",
+    }
+    for old, new in header_map.items():
+        final_report = final_report.replace(old, new)
 
     # Append an appendix listing top unattributed campaigns for quick reference
     if not unattributed_df.empty:
-        top_unattributed = unattributed_df.sort_values("spend", ascending=False).head(20)
+        # Include all unattributed rows *with spend > 0*, sorted by spend descending
+        top_unattributed = (
+            unattributed_df[unattributed_df["spend"] > 0]
+            .sort_values("spend", ascending=False)
+        )
         appendix_lines = [
             "\n## Appendix: Top Unattributed Spend (Review for New Aliases)\n",
             "| Platform | Campaign | Ad Set | Ad | Spend | Revenue |",
             "|-|-|-|-|-|-|",
         ]
+
+        # Helper to escape pipe characters that would break Markdown tables
+        def _escape_pipes(text: str) -> str:
+            """Return text safe for Markdown table cells by escaping pipe characters."""
+            return str(text).replace("|", "\\|")
+
         for _, row in top_unattributed.iterrows():
             appendix_lines.append(
-                f"| {row['breakdown_platform_northbeam']} | {row['campaign_name'][:40]} | {row['adset_name'][:30]} | {row['ad_name'][:30]} | ${row['spend']:,.0f} | ${row['attributed_rev']:,.0f} |"
-            )
+                f"| {row['breakdown_platform_northbeam']} | "
+                f"{_escape_pipes(row['campaign_name'])[:40]} | "
+                f"{_escape_pipes(row['adset_name'])[:30]} | "
+                f"{_escape_pipes(row['ad_name'])[:30]} | "
+                f"${row['spend']:,.0f} | ${row['attributed_rev']:,.0f} |")
+
+        # Add totals row
+        # Totals should reflect only the rows shown in the table
+        tot_spend_un = top_unattributed['spend'].sum()
+        tot_rev_un = top_unattributed['attributed_rev'].sum()
+        appendix_lines.append(
+            f"| **Totals** | — | — | — | **${tot_spend_un:,.0f}** | **${tot_rev_un:,.0f}** |")
 
         final_report += "\n".join(appendix_lines)
 
