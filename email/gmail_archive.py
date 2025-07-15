@@ -8,7 +8,6 @@ sys.path.insert(0, str(project_root))
 
 import markdownify
 import google.auth.transport.requests
-from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -28,7 +27,7 @@ def get_creds():
     logger.info("Authenticating with Google...")
     print(f"{ansi.magenta}Authenticating{ansi.reset} with Google...")
     if TOKEN.exists():
-        logger.info(f"Token file found at {TOKEN}")
+        logger.info("Token file found at %s", TOKEN)
         print(f"  Token file found at {ansi.cyan}{TOKEN}{ansi.reset}")
         creds = pickle.loads(TOKEN.read_bytes())
         if creds.expired and creds.refresh_token:
@@ -49,12 +48,12 @@ def get_creds():
     secret_files = list(Path(__file__).resolve().parent.glob("client_secret_*.json"))
 
     client_secrets_file = str(secret_files[0])
-    logger.info(f"Using client secrets file: {client_secrets_file}")
+    logger.info("Using client secrets file: %s", client_secrets_file)
     print(f"  Using client secrets file: {ansi.cyan}{client_secrets_file}{ansi.reset}")
     flow = InstalledAppFlow.from_client_secrets_file(client_secrets_file, SCOPES)
     creds = flow.run_local_server(port=0)
     TOKEN.write_bytes(pickle.dumps(creds))
-    logger.info(f"Token created and saved to {TOKEN}")
+    logger.info("Token created and saved to %s", TOKEN)
     print(f"  Token {ansi.green}created{ansi.reset} and saved to {ansi.cyan}{TOKEN}{ansi.reset}")
     return creds
 
@@ -63,12 +62,12 @@ def latest_history_id(gmail):
     print(f"{ansi.magenta}Fetching{ansi.reset} latest history ID from Gmail...")
     prof = gmail.users().getProfile(userId="me").execute()
     history_id = prof["historyId"]
-    logger.info(f"Latest history ID is {history_id}")
+    logger.info("Latest history ID is %s", history_id)
     print(f"  Latest history ID is {ansi.green}{history_id}{ansi.reset}")
     return history_id
 
 def fetch_deltas(gmail, start):
-    logger.info(f"Fetching message deltas since history ID: {start}")
+    logger.info("Fetching message deltas since history ID: %s", start)
     print(f"{ansi.magenta}Fetching{ansi.reset} message deltas since history ID: {ansi.cyan}{start}{ansi.reset}")
     page = gmail.users().history().list(
         userId="me", startHistoryId=start, historyTypes=["messageAdded"]
@@ -78,12 +77,12 @@ def fetch_deltas(gmail, start):
         messages.extend(m["id"] for m in h.get("messages", []))
 
     new_history_id = page.get("historyId")
-    logger.info(f"Found {len(messages)} new messages. New history ID: {new_history_id}")
+    logger.info("Found %d new messages. New history ID: %s", len(messages), new_history_id)
     print(f"  Found {ansi.green}{len(messages)}{ansi.reset} new messages. New history ID: {ansi.cyan}{new_history_id or 'N/A'}{ansi.reset}")
     return messages, page.get("historyId")
 
 def save_msg(gmail, mid):
-    logger.info(f"Saving message with ID: {mid}")
+    logger.info("Saving message with ID: %s", mid)
     raw = gmail.users().messages().get(userId="me", id=mid, format="raw").execute()["raw"]
     mime = email.message_from_bytes(base64.urlsafe_b64decode(raw))
     body = next(      # pick first text/html or text/plain part
@@ -93,7 +92,7 @@ def save_msg(gmail, mid):
     md   = markdownify.markdownify(body.decode(errors="ignore"))
     output_path = OUTDIR / f"{mid}.md"
     output_path.write_text(md, encoding="utf-8")
-    logger.info(f"Message saved to {output_path}")
+    logger.info("Message saved to %s", output_path)
 
 def main():
     logger.info("Starting Gmail archive script.")
@@ -104,15 +103,15 @@ def main():
     print(f"Gmail service client {ansi.green}created successfully{ansi.reset}.")
 
     if not CURSOR.exists():
-        logger.warning(f"Cursor file not found at {CURSOR}. Creating a new one.")
+        logger.warning("Cursor file not found at %s. Creating a new one.", CURSOR)
         print(f"{ansi.yellow}Cursor file not found{ansi.reset} at {ansi.cyan}{CURSOR}{ansi.reset}. Creating a new one.")
         initial_cursor = latest_history_id(gmail)
         CURSOR.write_text(str(initial_cursor))
-        logger.info(f"Cursor file created with history ID: {initial_cursor}")
+        logger.info("Cursor file created with history ID: %s", initial_cursor)
         print(f"  Cursor file {ansi.green}created{ansi.reset} with history ID: {ansi.cyan}{initial_cursor}{ansi.reset}")
     
     cursor = CURSOR.read_text().strip()
-    logger.info(f"Starting with cursor: {cursor}")
+    logger.info("Starting with cursor: %s", cursor)
     print(f"Starting with cursor: {ansi.cyan}{cursor}{ansi.reset}")
 
     while True:
@@ -122,7 +121,7 @@ def main():
             message_ids, new_cursor = fetch_deltas(gmail, cursor)
             
             if message_ids:
-                logger.info(f"Found {len(message_ids)} new messages to archive.")
+                logger.info("Found %d new messages to archive.", len(message_ids))
                 print(f"Found {ansi.green}{len(message_ids)}{ansi.reset} new messages to archive.")
                 for i, mid in enumerate(message_ids):
                     print(f"  {ansi.magenta}Processing {i+1}{ansi.reset}/{ansi.green}{len(message_ids)}{ansi.reset}: {mid}")
@@ -132,13 +131,13 @@ def main():
                 print("No new messages found.")
 
             if new_cursor and new_cursor != cursor:
-                logger.info(f"Updating cursor from {cursor} to {new_cursor}")
+                logger.info("Updating cursor from %s to %s", cursor, new_cursor)
                 print(f"  Updating cursor from {ansi.yellow}{cursor}{ansi.reset} to {ansi.green}{new_cursor}{ansi.reset}")
                 cursor = new_cursor
                 CURSOR.write_text(str(cursor))
                 
         except HttpError as e:
-            logger.error(f"An HTTP error occurred: {e}")
+            logger.error("An HTTP error occurred: %s", e)
             print(f"{ansi.red}An HTTP error occurred:{ansi.reset} {e}")
             if e.resp.status == 404:
                 logger.warning("History ID is too old; performing a full resync.")
