@@ -353,9 +353,19 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
     overall_roas_1st_time = executive_metrics['overall_roas_1st_time']
     overall_cac = executive_metrics['overall_cac']
 
+    # --- Paid-media aggregates (channels with spend > 0) ---
+    paid_df_exec = channel_summary[channel_summary['spend'] > 0]
+    paid_spend_exec = paid_df_exec['spend'].sum()
+    paid_revenue_exec = paid_df_exec['attributed_rev'].sum()
+    paid_transactions_exec = paid_df_exec['transactions'].sum()
+    paid_roas_exec = paid_revenue_exec / paid_spend_exec if paid_spend_exec else 0
+    paid_cac_exec = paid_spend_exec / paid_transactions_exec if paid_transactions_exec else 0
+
     lines.append(
-        f"**Overall Performance**: Total DTC spend reached **${total_spend:,.0f}** across all channels with **{overall_roas:.2f} ROAS** (First-Time: **{overall_roas_1st_time:.2f}**) and overall **CAC of ${overall_cac:,.2f}**. "
-        f"The business achieved **{int(executive_metrics['total_transactions'])} transactions** generating **${total_revenue:,.0f}** in attributed revenue during this 7-day period.\n\n"
+        f"**Overall Performance**: Total DTC spend reached **${total_spend:,.0f}** across all channels with **{overall_roas:.2f} ROAS**, "
+        f"generating **${total_revenue:,.0f}** in revenue and blended **CAC of ${overall_cac:,.2f}**. "
+        f"Paid Media delivered **${paid_revenue_exec:,.0f}** revenue at **{paid_roas_exec:.2f} ROAS** with **CAC of ${paid_cac_exec:,.2f}**, across **{int(paid_transactions_exec)} transactions**. "
+        f"The business achieved **{int(executive_metrics['total_transactions'])} total transactions** during this 7-day period.\n\n"
     )
 
     # 2. Channel Performance table (top 10 by spend)
