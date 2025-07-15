@@ -31,7 +31,8 @@ def load_and_clean_data():
                        'aov', 'aov_1st_time', 'ecr', 'ecr_1st_time', 'ecpnv',
                        'platformreported_cac', 'platformreported_roas', 
                        'new_customer_percentage', 'attributed_rev', 'attributed_rev_1st_time',
-                       'transactions', 'transactions_1st_time', 'visits']
+                       'transactions', 'transactions_1st_time', 'visits',
+                       'web_revenue', 'web_transactions']
         
         for col in numeric_cols:
             if col in df.columns:
@@ -39,6 +40,36 @@ def load_and_clean_data():
         
         # Fill NaN values with 0 for analysis
         df = df.fillna(0)
+
+        # -------------------------------------------------------------
+        # Fallback for channels that only report cash-style web metrics
+        # (e.g., AWIN, ShopMyShelf).  If a row has spend plus positive
+        # web_revenue but zero attributed revenue, promote the web_*  
+        # figures so that downstream ROAS / CAC calculations are
+        # meaningful and the campaign isn't shown as all-zeros.
+        # -------------------------------------------------------------
+        if {'web_revenue', 'web_transactions'}.issubset(df.columns):
+            mask_web_only = (df['attributed_rev'] == 0) & (df['web_revenue'] > 0)
+
+            if mask_web_only.any():
+                # Promote web revenue/transactions into attributed cols
+                df.loc[mask_web_only, 'attributed_rev'] = df.loc[mask_web_only, 'web_revenue']
+
+                # Assume all web revenue is first-time revenue if first-time column exists
+                if 'attributed_rev_1st_time' in df.columns:
+                    df.loc[mask_web_only, 'attributed_rev_1st_time'] = df.loc[mask_web_only, 'web_revenue']
+
+                # Same for transactions
+                if 'transactions' in df.columns:
+                    df.loc[mask_web_only, 'transactions'] = df.loc[mask_web_only, 'web_transactions']
+                if 'transactions_1st_time' in df.columns:
+                    df.loc[mask_web_only, 'transactions_1st_time'] = df.loc[mask_web_only, 'web_transactions']
+
+                # Optional flag for auditing
+                df.loc[mask_web_only, 'used_web_metrics'] = True
+                print(f"ℹ️  Applied web-metric fallback for {mask_web_only.sum()} rows (AWIN / ShopMyShelf etc.)")
+            else:
+                df['used_web_metrics'] = False
 
         # -------------------------------------------------------------
         # Ensure the dataset has the required platform column expected
@@ -124,6 +155,15 @@ def analyze_campaign_performance(df):
     # Filter for campaigns with significant spend
     accrual_df = df[df['accounting_mode'] == 'Accrual performance'].copy()
     significant_campaigns = accrual_df[accrual_df['spend'] > 100].copy()
+
+    # Identify campaigns with $0 spend but meaningful revenue (e.g., email/SMS, affiliate)
+    revenue_only = accrual_df[(accrual_df['spend'] == 0) & (accrual_df['attributed_rev'] > 0)].copy()
+
+    # Compute AOV for revenue_only rows (transactions may be fractional)
+    if not revenue_only.empty:
+        revenue_only['aov'] = revenue_only.apply(
+            lambda r: (r['attributed_rev'] / r['transactions']) if r['transactions'] else 0, axis=1
+        )
     
     if len(significant_campaigns) == 0:
         print("⚠️ No campaigns with significant spend found")
@@ -172,7 +212,7 @@ def analyze_campaign_performance(df):
     for _, row in top_spend.iterrows():
         print(f"{row['breakdown_platform_northbeam']:<12} | {row['campaign_name'][:40]:<40} | Spend: ${row['spend']:>8,.2f} | ROAS: {row['roas']:>5.2f}")
     
-    return significant_campaigns
+    return significant_campaigns, revenue_only
 
 def analyze_first_time_metrics(df):
     """Analyze first-time customer metrics by channel (Accrual performance only)"""
@@ -335,7 +375,7 @@ def identify_opportunities(channel_summary):
     if not challenges:
         print("  ✅ No major performance issues identified")
 
-def export_markdown_report(executive_metrics, channel_summary, campaign_analysis, first_time_metrics):
+def export_markdown_report(executive_metrics, channel_summary, campaign_analysis, revenue_only_df, first_time_metrics):
     """Generate a markdown report string from the computed metrics"""
     lines = []
     report_date = datetime.now().strftime('%Y-%m-%d')
@@ -443,14 +483,17 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         lines.append("## 3. Top Campaign Performance Analysis\n")
         # Top campaign by ROAS for each channel (ensures representation across platforms)
         # 1. Identify the campaign with the highest ROAS within each platform
+        # Exclude campaigns with zero ROAS before selecting winners
+        subset_roas = campaign_analysis[campaign_analysis['roas'] > 0]
+
         idx = (
-            campaign_analysis
+            subset_roas
             .groupby('breakdown_platform_northbeam')['roas']
             .idxmax()
         )
 
         top_roas = (
-            campaign_analysis.loc[idx]
+            subset_roas.loc[idx]
             .sort_values('roas', ascending=False)
         )
         # Optional: If the list is very long, you can limit to the top N overall while still preserving one per channel
@@ -491,6 +534,30 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             rev_val = row['attributed_rev']
             lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${aov_val:.2f} | ${aov1_val:.2f} | ${rev_val:,.0f} |")
 
+        # Zero-Spend but Revenue campaigns
+        # Revenue-only table – drop low-signal placeholder platforms and keep one per channel
+        exclude_platforms = {"Untattributed", "Excluded", "(not set)"}
+        rev_filtered = revenue_only_df[~revenue_only_df['breakdown_platform_northbeam'].isin(exclude_platforms)]
+
+        if not rev_filtered.empty:
+            idx_rev = rev_filtered.groupby('breakdown_platform_northbeam')['attributed_rev'].idxmax()
+            top_rev = rev_filtered.loc[idx_rev].sort_values('attributed_rev', ascending=False)
+
+            # Limit to top 10 channels
+            top_rev = top_rev.head(10)
+
+            lines.append("\n### 📧 Revenue-Only Campaigns ($0 Spend)\n")
+            headers0 = ["Platform", "Campaign Name", "Revenue", "Transactions", "AOV"]
+            lines.append("| " + " | ".join(headers0) + " |")
+            lines.append("|" + "|".join(["-" * len(h) for h in headers0]) + "|")
+            for _, row in top_rev.iterrows():
+                platform = row['breakdown_platform_northbeam']
+                campaign = row['campaign_name'][:50].replace('|','\\|')
+                revenue = row['attributed_rev']
+                txns = row['transactions']
+                aov = row.get('aov', 0)
+                lines.append(f"| {platform} | **{campaign}** | ${revenue:,.0f} | {txns:.2f} | ${aov:.2f} |")
+
     # 4. First-time customer metrics
     if isinstance(first_time_metrics, pd.DataFrame) and not first_time_metrics.empty:
         lines.append("\n## 4. First-Time Customer Metrics by Channel\n")
@@ -530,13 +597,13 @@ def main():
     channel_summary = analyze_channel_performance(df)
     if len(channel_summary) > 0:
         executive_metrics = generate_executive_summary(channel_summary)
-        campaign_analysis = analyze_campaign_performance(df)
+        campaign_analysis, revenue_only_df = analyze_campaign_performance(df)
         first_time_metrics = analyze_first_time_metrics(df)
         analyze_attribution_modes(df)
         identify_opportunities(channel_summary)
 
         # Export markdown report
-        markdown_report = export_markdown_report(executive_metrics, channel_summary, campaign_analysis, first_time_metrics)
+        markdown_report = export_markdown_report(executive_metrics, channel_summary, campaign_analysis, revenue_only_df, first_time_metrics)
         report_filename = f"weekly-growth-report-{datetime.now().strftime('%Y-%m-%d')}.md"
         with open(report_filename, "w") as md_file:
             md_file.write(markdown_report)
