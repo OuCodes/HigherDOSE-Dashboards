@@ -5,41 +5,26 @@ A Python-based analysis tool for HigherDOSE's weekly and monthly growth reports,
 ## Installation
 
 > **Requirement**: Python **3.10** or newer must already be installed and available on your `PATH`.
->
-> Check with:
-> ```bash
-> python --version   # or python3 --version on macOS/Linux
-> ```
 
 ### 1. Create & activate a virtual environment
-
-Create a dedicated environment (named `hdose`) inside a folder called `venv`:
 
 ```bash
 # macOS / Linux
 python3 -m venv --prompt hdose venv
 source venv/bin/activate
-```
 
-```cmd
-:: Windows Command Prompt
+# Windows Command Prompt
 python -m venv --prompt hdose venv
 venv\Scripts\activate.bat
 ```
 
-### 2. Upgrade `pip` (recommended)
+### 2. Install dependencies
 ```bash
-pip install --upgrade pip wheel setuptools
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-### 3. Install project dependencies
-```bash
-pip install pandas numpy
-pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
-pip install markdownify
-```
-
-### 4. Verify the environment
+### 3. Verify installation
 ```bash
 python -c "import pandas, numpy, sys; print(f'✅ Environment ready — Python {sys.version.split()[0]}')"
 ```
