@@ -18,3 +18,7 @@
 - [x] Conduct preliminary research on the Gmail API/setup so we can convert emails to markdown and store them in this repo
 
 - [ ] Format `email/tutorial.md` correctly. The headers for prompt and response are not formatted correctly.
+
+## Improving `Mail`
+
+- [ ] Explore what the script is pulling in for each email BEFORE it is converted to markdown.
