@@ -19,6 +19,9 @@ import pandas as pd
 
 import report_analysis_weekly as base
 
+# Pathlib for file-friendly names
+from pathlib import Path
+
 
 # -------------------------------------------------------------
 # 🔎  Product & Category Mapping Helpers
@@ -56,32 +59,50 @@ def load_product_mappings(md_path: str = "product-list.md"):
     # Ensure a default bucket for unmatched rows
     product_to_category.setdefault("Unattributed", "Unattributed")
 
-    # Aliases (case-insensitive)
-    alias_map = {k.lower(): v for k, v in aliases_dict.items()}
+    # Normalize helper
+    def _norm(s: str):
+        # insert spaces before CamelCase transitions first
+        s = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", s)
+        s = s.replace("_", " ").replace("-", " ")
+        s = s.lower()
+        s = re.sub(r"[^a-z0-9 ]+", " ", s)
+        s = re.sub(r"\s+", " ", s).strip()
+        return s
+
+    alias_map = {_norm(k): v for k, v in aliases_dict.items()}
     # Ensure canonical names map to themselves
     for prod in product_to_category:
-        alias_map.setdefault(prod.lower(), prod)
+        alias_map.setdefault(_norm(prod), prod)
+
+    # Precompute variants with spaces removed for camel-case matches
+    expanded_alias = {}
+    for key, val in alias_map.items():
+        expanded_alias[key] = val
+        nospace = key.replace(" ", "")
+        if nospace != key:
+            expanded_alias.setdefault(nospace, val)
 
     # sort longest->shortest for deterministic greedy matching
-    alias_sorted = sorted(alias_map.items(), key=lambda kv: len(kv[0]), reverse=True)
-    return product_to_category, alias_sorted
+    alias_sorted = sorted(expanded_alias.items(), key=lambda kv: len(kv[0]), reverse=True)
+    return product_to_category, alias_sorted, _norm
 
 
-def detect_product(row, alias_sorted):
+def detect_product(row, alias_sorted, norm_fn):
     """Return canonical product found in Ad Name, Ad Set, then Campaign."""
     search_fields = ("ad_name", "adset_name", "campaign_name")
     for field in search_fields:
-        text = str(row.get(field, "")).lower()
+        original = str(row.get(field, ""))
+        text_norm = norm_fn(original)
+        text_nospace = text_norm.replace(" ", "")
         for alias, canonical in alias_sorted:
-            # basic word-boundary regex; adjust if needed for special chars
-            if re.search(r"\b" + re.escape(alias) + r"\b", text):
+            if alias in text_norm or alias in text_nospace:
                 return canonical
     return None
 
 
-def assign_products(df: pd.DataFrame, alias_sorted):
+def assign_products(df: pd.DataFrame, alias_sorted, norm_fn):
     df = df.copy()
-    df["product"] = df.apply(lambda r: detect_product(r, alias_sorted), axis=1)
+    df["product"] = df.apply(lambda r: detect_product(r, alias_sorted, norm_fn), axis=1)
     return df
 
 
@@ -196,8 +217,8 @@ def main():
         return
 
     # 2. Product mapping & assignment
-    product_to_category, alias_sorted = load_product_mappings()
-    df_prod = assign_products(df, alias_sorted)
+    product_to_category, alias_sorted, norm_fn = load_product_mappings()
+    df_prod = assign_products(df, alias_sorted, norm_fn)
 
     # Label rows with no matched product as 'Unattributed'
     df_prod["product"] = df_prod["product"].fillna("Unattributed")
@@ -230,6 +251,28 @@ def main():
 
     accrual_filtered["category"] = accrual_filtered["product"].map(product_to_category).fillna("Unattributed")
     category_summary = build_summary(accrual_filtered[accrual_filtered["category"].notna()], "category")
+
+    # -------------------------------------------------------------
+    # 🚩 Capture Unattributed rows for alias discovery
+    # -------------------------------------------------------------
+    unattributed_df = accrual_filtered[accrual_filtered["product"] == "Unattributed"].copy()
+
+    if not unattributed_df.empty:
+        cols_to_keep = [
+            "breakdown_platform_northbeam",
+            "campaign_name",
+            "adset_name",
+            "ad_name",
+            "spend",
+            "attributed_rev",
+        ]
+        unattributed_export = unattributed_df[cols_to_keep].sort_values("spend", ascending=False)
+
+        export_name = (
+            f"unattributed_lines_{datetime.now().strftime('%Y-%m-%d')}.csv"
+        )
+        unattributed_export.to_csv(export_name, index=False)
+        print(f"📤 Exported {len(unattributed_export)} unattributed rows to {export_name}")
 
     # 4. Run existing channel-level analyses (for executive summary etc.)
     channel_summary = base.analyze_channel_performance(df)
@@ -275,6 +318,21 @@ def main():
     )
 
     final_report = base_report.replace("---\n", product_section_md, 1)  # inject once after first divider
+
+    # Append an appendix listing top unattributed campaigns for quick reference
+    if not unattributed_df.empty:
+        top_unattributed = unattributed_df.sort_values("spend", ascending=False).head(20)
+        appendix_lines = [
+            "\n## Appendix: Top Unattributed Spend (Review for New Aliases)\n",
+            "| Platform | Campaign | Ad Set | Ad | Spend | Revenue |",
+            "|-|-|-|-|-|-|",
+        ]
+        for _, row in top_unattributed.iterrows():
+            appendix_lines.append(
+                f"| {row['breakdown_platform_northbeam']} | {row['campaign_name'][:40]} | {row['adset_name'][:30]} | {row['ad_name'][:30]} | ${row['spend']:,.0f} | ${row['attributed_rev']:,.0f} |"
+            )
+
+        final_report += "\n".join(appendix_lines)
 
     out_file = f"weekly-growth-report-with-products-{datetime.now().strftime('%Y-%m-%d')}.md"
     with open(out_file, "w") as f:
