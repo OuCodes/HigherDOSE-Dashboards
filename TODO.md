@@ -7,7 +7,7 @@
 - [x] Add transcript to repository and set up system for future transcript processing
 - [ ] As we accomplish certain goals, we should move them from the comprehensive context.md file to a specific timestamped markdown file in the @/notes folder.
 
-- [ ] Create a requirements.txt file for the project
+- [x] Create a requirements.txt file for the project
 
 ## Scripting
 
