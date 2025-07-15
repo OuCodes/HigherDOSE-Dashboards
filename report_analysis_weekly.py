@@ -32,7 +32,10 @@ def load_and_clean_data():
                        'platformreported_cac', 'platformreported_roas', 
                        'new_customer_percentage', 'attributed_rev', 'attributed_rev_1st_time',
                        'transactions', 'transactions_1st_time', 'visits',
-                       'web_revenue', 'web_transactions']
+                       'web_revenue', 'web_transactions',
+                       'meta_shops_revenue', 'meta_shops_transactions',
+                       'tiktok_shops_revenue', 'tiktok_shops_transactions',
+                       'rev']
         
         for col in numeric_cols:
             if col in df.columns:
@@ -42,34 +45,44 @@ def load_and_clean_data():
         df = df.fillna(0)
 
         # -------------------------------------------------------------
-        # Fallback for channels that only report cash-style web metrics
-        # (e.g., AWIN, ShopMyShelf).  If a row has spend plus positive
-        # web_revenue but zero attributed revenue, promote the web_*  
-        # figures so that downstream ROAS / CAC calculations are
-        # meaningful and the campaign isn't shown as all-zeros.
+        # Revenue fallbacks for channels where conversions are recorded
+        # outside the primary pixel/attribution model:
+        #   • web_*           → affiliates & email/SMS
+        #   • meta_shops_*    → Meta Shops check-outs
+        #   • tiktok_shops_*  → TikTok Shops check-outs
+        #   • rev             → Cash snapshot rows (Northbeam’s raw sales)
         # -------------------------------------------------------------
-        if {'web_revenue', 'web_transactions'}.issubset(df.columns):
-            mask_web_only = (df['attributed_rev'] == 0) & (df['web_revenue'] > 0)
 
-            if mask_web_only.any():
-                # Promote web revenue/transactions into attributed cols
-                df.loc[mask_web_only, 'attributed_rev'] = df.loc[mask_web_only, 'web_revenue']
-
-                # Assume all web revenue is first-time revenue if first-time column exists
+        def promote(src_rev, src_txn, label):
+            mask = (df['attributed_rev'] == 0) & (df[src_rev] > 0)
+            if mask.any():
+                df.loc[mask, 'attributed_rev'] = df.loc[mask, src_rev]
                 if 'attributed_rev_1st_time' in df.columns:
-                    df.loc[mask_web_only, 'attributed_rev_1st_time'] = df.loc[mask_web_only, 'web_revenue']
+                    df.loc[mask, 'attributed_rev_1st_time'] = df.loc[mask, src_rev]
+                if 'transactions' in df.columns and src_txn in df.columns:
+                    df.loc[mask, 'transactions'] = df.loc[mask, src_txn]
+                if 'transactions_1st_time' in df.columns and src_txn in df.columns:
+                    df.loc[mask, 'transactions_1st_time'] = df.loc[mask, src_txn]
+                df.loc[mask, f'used_{label}_metrics'] = True
+                print(f"ℹ️  Applied {label} fallback for {mask.sum()} rows")
 
-                # Same for transactions
-                if 'transactions' in df.columns:
-                    df.loc[mask_web_only, 'transactions'] = df.loc[mask_web_only, 'web_transactions']
-                if 'transactions_1st_time' in df.columns:
-                    df.loc[mask_web_only, 'transactions_1st_time'] = df.loc[mask_web_only, 'web_transactions']
+        if {'web_revenue', 'web_transactions'}.issubset(df.columns):
+            promote('web_revenue', 'web_transactions', 'web')
 
-                # Optional flag for auditing
-                df.loc[mask_web_only, 'used_web_metrics'] = True
-                print(f"ℹ️  Applied web-metric fallback for {mask_web_only.sum()} rows (AWIN / ShopMyShelf etc.)")
-            else:
-                df['used_web_metrics'] = False
+        if {'meta_shops_revenue', 'meta_shops_transactions'}.issubset(df.columns):
+            promote('meta_shops_revenue', 'meta_shops_transactions', 'meta_shops')
+
+        if {'tiktok_shops_revenue', 'tiktok_shops_transactions'}.issubset(df.columns):
+            promote('tiktok_shops_revenue', 'tiktok_shops_transactions', 'tiktok_shops')
+
+        # Cash snapshot revenue (rev column) – no separate transactions column
+        if 'rev' in df.columns:
+            mask_rev = (df['attributed_rev'] == 0) & (df['rev'] > 0)
+            if mask_rev.any():
+                df.loc[mask_rev, 'attributed_rev'] = df.loc[mask_rev, 'rev']
+                # transactions remain whatever they were (often 0)
+                df.loc[mask_rev, 'used_rev_metrics'] = True
+                print(f"ℹ️  Promoted 'rev' cash snapshot for {mask_rev.sum()} rows")
 
         # -------------------------------------------------------------
         # Ensure the dataset has the required platform column expected
@@ -577,11 +590,15 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         for platform, row in combined.iterrows():
             spend = row['spend']
             revenue = row['attributed_rev']
-            cac = row['cac']
-            roas_val = row['roas']
-            aov_val = row['aov']
-            txns = row['transactions']
-            lines.append(f"| {platform} | ${spend:,.0f} | ${revenue:,.0f} | ${cac:.2f} | {roas_val:.2f} | ${aov_val:.2f} | {int(txns)} |")
+            cac = 0 if pd.isna(row['cac']) else row['cac']
+            roas_val = 0 if pd.isna(row['roas']) else row['roas']
+            aov_val = 0 if pd.isna(row['aov']) else row['aov']
+            txns_raw = row['transactions']
+            # Show fractional transactions (2-dp) for channels with no spend; else whole number
+            txns_display = f"{txns_raw:.2f}" if spend == 0 else f"{int(txns_raw)}"
+
+            lines.append(
+                f"| {platform} | ${spend:,.0f} | ${revenue:,.0f} | ${cac:.2f} | {roas_val:.2f} | ${aov_val:.2f} | {txns_display} |")
 
     lines.append("\n---\n")
     lines.append(f"**Report Compiled**: {report_date}\n")
