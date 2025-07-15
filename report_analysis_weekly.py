@@ -140,6 +140,13 @@ def analyze_campaign_performance(df):
     else:
         significant_campaigns['cac_1st_time'] = 0
     significant_campaigns['aov'] = (significant_campaigns['attributed_rev'] / significant_campaigns['transactions']).replace([np.inf], 0)
+    # First-time AOV (average order value for first-time customers)
+    if 'attributed_rev_1st_time' in significant_campaigns.columns and 'transactions_1st_time' in significant_campaigns.columns:
+        significant_campaigns['aov_1st_time'] = (
+            significant_campaigns['attributed_rev_1st_time'] / significant_campaigns['transactions_1st_time']
+        ).replace([np.inf], 0)
+    else:
+        significant_campaigns['aov_1st_time'] = 0
     # First-time ROAS at campaign level
     if 'attributed_rev_1st_time' in significant_campaigns.columns:
         significant_campaigns['roas_1st_time'] = (
@@ -434,10 +441,22 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
     # 3. Top Campaigns by ROAS & Spend
     if not campaign_analysis.empty:
         lines.append("## 3. Top Campaign Performance Analysis\n")
-        # Top 5 by ROAS
-        top_roas = campaign_analysis.sort_values('roas', ascending=False).head(5)
+        # Top campaign by ROAS for each channel (ensures representation across platforms)
+        # 1. Identify the campaign with the highest ROAS within each platform
+        idx = (
+            campaign_analysis
+            .groupby('breakdown_platform_northbeam')['roas']
+            .idxmax()
+        )
+
+        top_roas = (
+            campaign_analysis.loc[idx]
+            .sort_values('roas', ascending=False)
+        )
+        # Optional: If the list is very long, you can limit to the top N overall while still preserving one per channel
+        # top_roas = top_roas.head(10)  # Uncomment to limit rows in the report
         lines.append("### 🏆 Best Performing Campaigns by ROAS\n")
-        headers2 = ["Platform", "Campaign Name", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "Spend", "Revenue"]
+        headers2 = ["Platform", "Campaign Name", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "AOV", "AOV 1st", "Spend", "Revenue"]
         lines.append("| " + " | ".join(headers2) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers2]) + "|")
         for _, row in top_roas.iterrows():
@@ -449,12 +468,14 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             roas1_val = row.get('roas_1st_time', 0)
             cac_val = row.get('cac', 0)
             cac1_val = row.get('cac_1st_time', 0)
-            lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${spend_val:,.0f} | ${rev_val:,.0f} |")
+            aov_val = row.get('aov', 0)
+            aov1_val = row.get('aov_1st_time', 0)
+            lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${aov_val:.2f} | ${aov1_val:.2f} | ${spend_val:,.0f} | ${rev_val:,.0f} |")
 
         # Top 5 by Spend
         top_spend = campaign_analysis.sort_values('spend', ascending=False).head(5)
         lines.append("\n### 💰 Highest Spend Campaigns\n")
-        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "Revenue"]
+        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "AOV", "AOV 1st", "Revenue"]
         lines.append("| " + " | ".join(headers3) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers3]) + "|")
         for _, row in top_spend.iterrows():
@@ -465,8 +486,10 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             roas1_val = row.get('roas_1st_time', 0)
             cac_val = row.get('cac', 0)
             cac1_val = row.get('cac_1st_time', 0)
+            aov_val = row.get('aov', 0)
+            aov1_val = row.get('aov_1st_time', 0)
             rev_val = row['attributed_rev']
-            lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${rev_val:,.0f} |")
+            lines.append(f"| {platform} | **{campaign}** | ${spend_val:,.0f} | {roas_val:.2f} | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${aov_val:.2f} | ${aov1_val:.2f} | ${rev_val:,.0f} |")
 
     # 4. First-time customer metrics
     if isinstance(first_time_metrics, pd.DataFrame) and not first_time_metrics.empty:
