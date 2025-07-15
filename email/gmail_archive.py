@@ -24,6 +24,7 @@ OUTDIR  = Path("email", "archive")
 OUTDIR.mkdir(exist_ok=True)
 
 def get_creds():
+    """Authenticates with Google and returns credentials."""
     logger.info("Authenticating with Google...")
     print(f"{ansi.magenta}Authenticating{ansi.reset} with Google...")
     if TOKEN.exists():
@@ -58,6 +59,7 @@ def get_creds():
     return creds
 
 def latest_history_id(gmail):
+    """Fetches the latest history ID from Gmail."""
     logger.info("Fetching latest history ID from Gmail...")
     print(f"{ansi.magenta}Fetching{ansi.reset} latest history ID from Gmail...")
     prof = gmail.users().getProfile(userId="me").execute()
@@ -67,6 +69,7 @@ def latest_history_id(gmail):
     return history_id
 
 def fetch_deltas(gmail, start):
+    """Fetches new messages since a given history ID."""
     logger.info("Fetching message deltas since history ID: %s", start)
     print(f"{ansi.magenta}Fetching{ansi.reset} message deltas since history ID: {ansi.cyan}{start}{ansi.reset}")
     page = gmail.users().history().list(
@@ -82,6 +85,7 @@ def fetch_deltas(gmail, start):
     return messages, page.get("historyId")
 
 def save_msg(gmail, mid):
+    """Saves a single email message to a markdown file."""
     logger.info("Saving message with ID: %s", mid)
     raw = gmail.users().messages().get(userId="me", id=mid, format="raw").execute()["raw"]
     mime = email.message_from_bytes(base64.urlsafe_b64decode(raw))
@@ -95,6 +99,7 @@ def save_msg(gmail, mid):
     logger.info("Message saved to %s", output_path)
 
 def main():
+    """Runs the Gmail archiving script."""
     logger.info("Starting Gmail archive script.")
     print(f"Starting Gmail archive script...")
     
