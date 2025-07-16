@@ -2,6 +2,8 @@
   "people": [
     {
       "name": "Rahul",
+      "username": "rahul",
+      "user_id": "U05KD2RULPN",
       "role": "Google Campaign Manager",
       "company": "Sharma Brands",
       "email": "rahul@sharmabrands.com",
@@ -33,10 +35,14 @@
       "role": "Campaign Operations",
       "company": "Sharma Brands",
       "email": "berkeley@sharmabrands.com",
-      "notes": "Frequently cc'd on campaign communications, needs GMC admin access, involved in Hyperrice bundle oversight"
+      "notes": "Frequently cc'd on campaign communications, needs GMC admin access, involved in Hyperrice bundle oversight",
+      "user_id": "U04PHVC4WJH",
+      "username": "berkeley"
     },
     {
       "name": "Jake Panzer",
+      "username": "jake",
+      "user_id": "U06SRGR9M7E",
       "role": "Campaign Specialist",
       "company": "Sharma Brands",
       "email": null,
@@ -61,7 +67,9 @@
       "role": "Team Member",
       "company": "Sharma Brands",
       "email": null,
-      "notes": "Frequently cc'd on campaign communications and A/B test results"
+      "notes": "Frequently cc'd on campaign communications and A/B test results",
+      "user_id": "U029WD39C0Z",
+      "username": "ari"
     },
     {
       "name": "Sumish Khadka",
@@ -111,6 +119,474 @@
       "company": "HigherDOSE",
       "email": null,
       "notes": "Oversees tech, finance, and HR functions, frequently works with account manager, met during onboarding process"
+    },
+    {
+      "name": "Slackbot",
+      "username": "slackbot",
+      "user_id": "USLACKBOT",
+      "role": "Team Member",
+      "company": "Unknown",
+      "email": "",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Katie",
+      "username": "katie",
+      "user_id": "UA901PCBV",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "katie@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Victoria",
+      "username": "victoria",
+      "user_id": "UA9V9J1AS",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "victoria@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Affiliates",
+      "username": "affiliates",
+      "user_id": "U01CWJ5T134",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "affiliates@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Molly Virostek",
+      "username": "mollyvirostek",
+      "user_id": "U01USED4350",
+      "role": "Team Member",
+      "company": "External/Contractor",
+      "email": "mollyvirostek@gmail.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Philip Wu",
+      "username": "philip",
+      "user_id": "U01UU6QNB70",
+      "role": "Team Member",
+      "company": "Signalcollective",
+      "email": "philip@signalcollective.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Lauren",
+      "username": "laurenb",
+      "user_id": "U01V52H6QLQ",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "laurenb@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Joyce Spano",
+      "username": "joyce",
+      "user_id": "U02A5R3CRHD",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "joyce@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Thila",
+      "username": "thila",
+      "user_id": "U02A7TA38DR",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "thila@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Bryonna Costable",
+      "username": "bryonna",
+      "user_id": "U02H1H28B0S",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "bryonna@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Jessie Quinn",
+      "username": "hello",
+      "user_id": "U02PA2VP95F",
+      "role": "Team Member",
+      "company": "Jessiequinn",
+      "email": "hello@jessiequinn.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Fiona Hillery",
+      "username": "fionahillery",
+      "user_id": "U02QGJWLNJ1",
+      "role": "Team Member",
+      "company": "External/Contractor",
+      "email": "fionahillery@gmail.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Aubrey Dela Cruz",
+      "username": "aubrey",
+      "user_id": "U030Z5U4079",
+      "role": "Team Member",
+      "company": "Beinspiredpr",
+      "email": "aubrey@beinspiredpr.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Michael Tejada",
+      "username": "michael",
+      "user_id": "U03FES8RC72",
+      "role": "Team Member",
+      "company": "Cardinalco.Email",
+      "email": "michael@cardinalco.email",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Natalie Bogle",
+      "username": "natalie",
+      "user_id": "U03NUHY2K34",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "natalie@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Jessica Alcalde",
+      "username": "jessica",
+      "user_id": "U043E8MNLP7",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "jessica@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Anastasia",
+      "username": "anastasia",
+      "user_id": "U0452C635K7",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "anastasia@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Todd Stefan",
+      "username": "toddstefan",
+      "user_id": "U0494062XS4",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "toddstefan@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Siamoy Stewart",
+      "username": "siamoy",
+      "user_id": "U04QX0P5UTH",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "siamoy@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Mario Ho",
+      "username": "mario",
+      "user_id": "U04RTSGBB61",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "mario@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "RV",
+      "username": "rishiisonline",
+      "user_id": "U05105GM2SV",
+      "role": "Team Member",
+      "company": "External/Contractor",
+      "email": "rishiisonline@gmail.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Lauren Fulluck",
+      "username": "laurenfulluck",
+      "user_id": "U05KXESLMV3",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "laurenfulluck@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Mar\u00eda Jos\u00e9 Castro",
+      "username": "mariajose108e",
+      "user_id": "U05L2FPC0A2",
+      "role": "Team Member",
+      "company": "External/Contractor",
+      "email": "mariajose108e@gmail.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Heather Doolin",
+      "username": "heather",
+      "user_id": "U05MK0AQ1EC",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "heather@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Maria Jose Castro",
+      "username": "maria",
+      "user_id": "U06DTT8E32Q",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "maria@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Anthony Berlingeri",
+      "username": "anthony",
+      "user_id": "U06KQAD4WRE",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "anthony@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Dani Batista",
+      "username": "daniela",
+      "user_id": "U075DJF9EG4",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "daniela@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Ester Barril",
+      "username": "ester.b",
+      "user_id": "U0789UWGGJ2",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "ester.b@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Robin",
+      "username": "robin.i",
+      "user_id": "U0789V0PVK8",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "robin.i@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Grace Luna",
+      "username": "grace.l",
+      "user_id": "U078A10LRD4",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "grace.l@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Cheska Magno",
+      "username": "cheska.m",
+      "user_id": "U078DLZ5C21",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "cheska.m@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Mona Rhea Casulla",
+      "username": "mona.c",
+      "user_id": "U078GER76MR",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "mona.c@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Crisvin Cuyno",
+      "username": "crisvin.c",
+      "user_id": "U078GEWQF6X",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "crisvin.c@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Micro Castro",
+      "username": "micro.c",
+      "user_id": "U078GF4FHDZ",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "micro.c@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Albert Magandam",
+      "username": "albert.m",
+      "user_id": "U078K35FPTN",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "albert.m@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Risah Yvonne Atienza",
+      "username": "risah.a",
+      "user_id": "U078MSPP15Z",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "risah.a@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Iian Barnett",
+      "username": "iian.barnett",
+      "user_id": "U078U7RDHLM",
+      "role": "Team Member",
+      "company": "RedStag Fulfillment",
+      "email": "iian.barnett@redstagfulfillment.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "George Frrokaj",
+      "username": "george.frrokaj",
+      "user_id": "U078X1GA1MH",
+      "role": "Team Member",
+      "company": "RedStag Fulfillment",
+      "email": "george.frrokaj@redstagfulfillment.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Shenara Gonzales",
+      "username": "shenara.g",
+      "user_id": "U0795BX0CD6",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "shenara.g@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Steven Brown",
+      "username": "steven.brown",
+      "user_id": "U0799QC47JM",
+      "role": "Team Member",
+      "company": "RedStag Fulfillment",
+      "email": "steven.brown@redstagfulfillment.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Drew Fox",
+      "username": "drew.fox",
+      "user_id": "U0799QC865P",
+      "role": "Team Member",
+      "company": "RedStag Fulfillment",
+      "email": "drew.fox@redstagfulfillment.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "MJ",
+      "username": "tychng.m",
+      "user_id": "U079VTUGFH7",
+      "role": "Team Member",
+      "company": "External/Contractor",
+      "email": "tychng.m@gmail.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Mandy",
+      "username": "mandy",
+      "user_id": "U07EXBMM5DF",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "mandy@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Louelen Lat",
+      "username": "louelen",
+      "user_id": "U07FD628V6J",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "louelen@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Aibel",
+      "username": "aibel",
+      "user_id": "U07GDMM3R6E",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "aibel@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Lisa",
+      "username": "lisa.delevante",
+      "user_id": "U07HQGF5D2B",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "lisa.delevante@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Des",
+      "username": "deserose.yano",
+      "user_id": "U07JWA5JXEH",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "deserose.yano@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Audrey",
+      "username": "audrey",
+      "user_id": "U07Q3S3MFEJ",
+      "role": "Team Member",
+      "company": "Audreymcgee",
+      "email": "audrey@audreymcgee.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Sajel Mistry",
+      "username": "sajel",
+      "user_id": "U083GRT4ASE",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "sajel@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Josan",
+      "username": "josan",
+      "user_id": "U085V7LMTRD",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "josan@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Laura",
+      "username": "laura",
+      "user_id": "U08APD87P71",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "laura@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
+    },
+    {
+      "name": "Vanessa Acosta",
+      "username": "vanessa",
+      "user_id": "U08L71VJ9J9",
+      "role": "Team Member",
+      "company": "HigherDOSE",
+      "email": "vanessa@higherdose.com",
+      "notes": "Found in Slack conversations - added automatically on 2025-07-15"
     }
   ],
   "companies": [
@@ -133,10 +609,10 @@
       "description": "Advertising platform with dedicated reps for account management"
     }
   ],
-  "last_updated": "2025-07-13",
+  "last_updated": "2025-07-15",
   "source_files": [
     "slack_messages.md",
     "context.md",
     "transcripts/jourdan-repo-structure-setup-pt2-2025-07-13_-_03-13-32.md"
   ]
-} 
+}
