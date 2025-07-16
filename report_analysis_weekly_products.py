@@ -18,9 +18,83 @@ import numpy as np
 import pandas as pd
 
 import report_analysis_weekly as base
+import glob, os
 
 # Pathlib for file-friendly names
 from pathlib import Path
+
+
+# -------------------------------------------------------------
+# 📅  Previous Week Utilities
+# -------------------------------------------------------------
+
+
+def _find_previous_csv(stats_dir: str = "stats") -> str | None:
+    """Return path to the previous-week CSV.
+
+    Priority:
+    1. Any file whose basename starts with ``prev-`` (Northbeam export you drop in).
+    2. Otherwise, the *second* most-recent CSV in the directory.
+    """
+    csvs = sorted(glob.glob(os.path.join(stats_dir, "*.csv")), key=os.path.getmtime, reverse=True)
+    for p in csvs:
+        if os.path.basename(p).startswith("prev-"):
+            return p
+    if len(csvs) >= 2:
+        return csvs[1]
+    return None
+
+
+def _load_csv_clean(path: str) -> pd.DataFrame | None:
+    """Lightweight clone of base.load_and_clean_data() but non-interactive."""
+    if not path or not os.path.exists(path):
+        print("⚠️  Previous-week CSV not found – skipping deltas")
+        return None
+    df = pd.read_csv(path)
+
+    # Minimal numeric cast
+    numeric_cols = [
+        "spend",
+        "attributed_rev",
+        "attributed_rev_1st_time",
+        "transactions",
+        "transactions_1st_time",
+        "visits",
+    ]
+    for col in numeric_cols:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    df = df.fillna(0)
+    # Ensure required platform col present
+    if "breakdown_platform_northbeam" not in df.columns:
+        df["breakdown_platform_northbeam"] = df.get("platform", "Unknown")
+    return df
+
+
+# -------------------------------------------------------------
+# Δ  Delta Formatting Helpers
+# -------------------------------------------------------------
+
+
+def _pct_delta(cur: float, prev: float) -> float:
+    if prev == 0:
+        return 0.0
+    return (cur - prev) / prev * 100.0
+
+
+def _fmt_delta(cur: float, prev: float, prefix: str = "$", digits: int = 0) -> str:
+    """Return a formatted cell showing cur, prev and %Δ."""
+    pct = _pct_delta(cur, prev)
+    sign = "+" if pct > 0 else ("-" if pct < 0 else "")
+    pct_str = f"{sign}{abs(pct):.0f}%"
+    if prefix:
+        cur_str = f"{prefix}{cur:,.{digits}f}"
+        prev_str = f"{prefix}{prev:,.{digits}f}"
+    else:
+        cur_str = f"{cur:,.{digits}f}"
+        prev_str = f"{prev:,.{digits}f}"
+    return f"{cur_str} ( {prev_str} | {pct_str} )"
 
 
 # -------------------------------------------------------------
@@ -140,43 +214,82 @@ def build_summary(df: pd.DataFrame, group_col: str):
     return summary
 
 
-def markdown_table(summary: pd.DataFrame, index_label: str, extra_col: str | None = None):
-    """Return a markdown table string for a given summary dataframe.
+def markdown_table(
+    summary: pd.DataFrame,
+    index_label: str,
+    extra_col: str | None = None,
+    prev_summary: pd.DataFrame | None = None,
+):
+    """Return a markdown table with optional Prev and Δ% columns for each metric."""
 
-    Parameters
-    ----------
-    summary : pd.DataFrame
-        DataFrame with metrics already computed. The index is expected to be
-        the primary label (e.g., product name or category).
-    index_label : str
-        Header text to use for the index column (e.g., "Product").
-    extra_col : str | None
-        Optional column in `summary` to display immediately after the index
-        column (e.g., "Category" when the index is Product).
-    """
-
-    headers = [index_label]
+    headers: list[str] = [index_label]
     if extra_col:
         headers.append(extra_col)
-    headers.extend(["Spend", "Revenue", "ROAS", "CAC", "AOV", "Transactions"])
 
-    lines = ["| " + " | ".join(headers) + " |", "|" + "|".join("-" * len(h) for h in headers) + "|"]
+    metrics = [
+        ("spend", "$", 0),
+        ("attributed_rev", "$", 0),
+        ("roas", "", 2),
+        ("cac", "$", 2),
+        ("aov", "$", 2),
+        ("transactions_display", "", 0),
+    ]
+
+    for m, _, _ in metrics:
+        title = m.replace("_display", "").title()
+        headers.append(title)
+        if prev_summary is not None:
+            headers.extend([f"{title} Prev", f"{title} Δ%"])
+
+    lines = ["| " + " | ".join(headers) + " |", "|" + "|".join(["-"] * len(headers)) + "|"]
 
     for idx, row in summary.iterrows():
-        cells = [idx]
+        cells: list[str] = [idx]
         if extra_col:
-            cells.append(row[extra_col])  # type: ignore[index]
-        cells.extend([
-            f"${row['spend']:,.0f}",
-            f"${row['attributed_rev']:,.0f}",
-            f"{row['roas']:.2f}",
-            f"${row['cac']:.2f}",
-            f"${row['aov']:.2f}",
-            f"{row.get('transactions_display', row['transactions']):.0f}",
-        ])
-        lines.append("| " + " | ".join(map(str, cells)) + " |")
+            cells.append(str(row[extra_col]))
+
+        for metric, prefix, dec in metrics:
+            cur_val = row[metric] if metric in row else 0
+            # Current value
+            cur_fmt = f"{prefix}{cur_val:,.{dec}f}" if prefix else f"{cur_val:,.{dec}f}" if dec else f"{int(cur_val)}"
+            cells.append(cur_fmt)
+
+            if prev_summary is not None:
+                prev_val = prev_summary.loc[idx][metric] if idx in prev_summary.index and metric in prev_summary.columns else 0
+                prev_fmt = f"{prefix}{prev_val:,.{dec}f}" if prefix else f"{prev_val:,.{dec}f}" if dec else f"{int(prev_val)}"
+                pct = _pct_delta(cur_val, prev_val)
+                sign = "+" if pct > 0 else ("-" if pct < 0 else "")
+                delta_fmt = f"{sign}{abs(pct):.0f}%"
+                cells.extend([prev_fmt, delta_fmt])
+
+        lines.append("| " + " | ".join(cells) + " |")
 
     return "\n".join(lines)
+
+
+# -------------------------------------------------------------
+# Σ  Totals row helper specifically for CHANNEL table so that
+#   WoW Prev and Δ columns can be displayed.
+# -------------------------------------------------------------
+
+
+def channel_totals_df(summary: pd.DataFrame, label: str = "**All Channels**") -> pd.DataFrame:
+    """Return 1-row DataFrame with totals and rounded txns_display."""
+    spend = summary["spend"].sum()
+    revenue = summary["attributed_rev"].sum()
+    txns = summary["transactions"].sum()
+
+    txns_display = round(txns)
+    row = {
+        "spend": spend,
+        "attributed_rev": revenue,
+        "roas": revenue / spend if spend else 0,
+        "cac": spend / txns_display if txns_display else 0,
+        "aov": revenue / txns_display if txns_display else 0,
+        "transactions": txns_display,
+        "transactions_display": txns_display,
+    }
+    return pd.DataFrame(row, index=[label])
 
 
 # -------------------------------------------------------------
@@ -277,6 +390,21 @@ def main():
     category_summary = build_summary(cash_filtered[cash_filtered["category"].notna()], "category")
 
     # -------------------------------------------------------------
+    # 📅  Previous-week summaries for deltas
+    # -------------------------------------------------------------
+    prev_csv = _find_previous_csv()
+    prev_df = _load_csv_clean(prev_csv) if prev_csv else None
+
+    prev_product_summary = prev_category_summary = None
+    if prev_df is not None:
+        prev_df_prod = assign_products(prev_df, alias_sorted, norm_fn)
+        prev_cash_df = prev_df_prod[prev_df_prod["accounting_mode"] == "Cash snapshot"].copy()
+        prev_cash_df["category"] = prev_cash_df["product"].map(product_to_category).fillna("Unattributed")
+
+        prev_product_summary = build_summary(prev_cash_df[prev_cash_df["product"].notna()], "product")
+        prev_category_summary = build_summary(prev_cash_df[prev_cash_df["category"].notna()], "category")
+
+    # -------------------------------------------------------------
     # 🚩 Capture Unattributed rows for alias discovery
     # -------------------------------------------------------------
     unattributed_df = accrual_filtered[accrual_filtered["product"] == "Unattributed"].copy()
@@ -341,27 +469,124 @@ def main():
         "\n---\n"
     )
 
-    # Insert product/category tables *after* the DTC 7-Day Snapshot section.
-    # We look for the header that starts that section, then locate the first
-    # divider ("\n---\n") that follows it and inject our markdown right there.
+    # -------------------------------------------------------------
+    # 🔄 Build DTC channel table with WoW columns
+    # -------------------------------------------------------------
+    # Only keep channels with spend > 0 for display, but compute the
+    # totals row using the full data so revenue-only rows are still
+    # included in the aggregate metrics.
 
-    dtc_header = "## 2. DTC Performance"
-    header_pos = base_report.find(dtc_header)
+    channel_summary["transactions_display"] = channel_summary["transactions"].round()
 
-    if header_pos != -1:
-        # Find the divider that closes the DTC section
-        divider_pos = base_report.find("\n---\n", header_pos)
+    # Build display DF: totals row + channels with spend > 0
+    chan_tot = channel_totals_df(channel_summary)
+    channel_nonzero = channel_summary[channel_summary["spend"] > 0].copy()
+    # Insert a consolidated **Paid Media** row (all channels with spend)
+    paid_tot = totals_row(channel_nonzero, label="**Paid Media**")
+    channel_summary_display = pd.concat([chan_tot, paid_tot, channel_nonzero])
+
+    prev_channel_summary = None
+    if prev_df is not None:
+        prev_channel_summary_full = base.analyze_channel_performance(prev_df)
+        if isinstance(prev_channel_summary_full, pd.DataFrame) and not prev_channel_summary_full.empty:
+            prev_channel_summary_full["transactions_display"] = prev_channel_summary_full["transactions"].round()
+            prev_tot = channel_totals_df(prev_channel_summary_full)
+            prev_nonzero = prev_channel_summary_full[prev_channel_summary_full["spend"] > 0].copy()
+            prev_paid_tot = totals_row(prev_nonzero, label="**Paid Media**")
+            prev_channel_summary = pd.concat([prev_tot, prev_paid_tot, prev_nonzero])
+
+    dtc_table_md = "## 2. DTC Breakdown (Accrual Performance) - 7 Days (Northbeam)\n" + \
+        markdown_table(channel_summary_display, index_label="Channel", prev_summary=prev_channel_summary) + "\n"
+
+    # ----------------------------------------------
+    # 📝  Build the final markdown by starting from
+    #     the base report, renaming the DTC header,
+    #     and inserting the Product & Category tables
+    #     directly beneath that section (as 2a/2b).
+    # ----------------------------------------------
+
+    final_report = base_report  # start fresh from base
+
+    # 1) Rename key section headers so we can reliably locate them
+    header_map = {
+        "## 2. DTC Performance — 7-Day Snapshot (Northbeam)": "## 2. DTC Breakdown (Accrual Performance) - 7 Days (Northbeam)",
+        "## 3. Top Campaign Performance Analysis": "## 3. Top Campaign Performance Analysis (Accrual Performance)",
+        "## 4. Channel Performance Metrics": "## 4. Channel Performance Metrics (Accrual Performance)",
+    }
+    for old, new in header_map.items():
+        final_report = final_report.replace(old, new)
+
+    # 2) Replace the existing DTC table with the enhanced version that
+    #    includes WoW deltas, then append the Product (2a) & Category (2b)
+    #    tables directly afterwards.
+    dtc_header = "## 2. DTC Breakdown (Accrual Performance) - 7 Days (Northbeam)"
+    hdr_pos = final_report.find(dtc_header)
+    if hdr_pos != -1:
+        divider_pos = final_report.find("\n---\n", hdr_pos)
         if divider_pos != -1:
-            insert_at = divider_pos  # insert *before* this divider
-            final_report = base_report[:insert_at] + product_section_md + base_report[insert_at:]
+            final_report = (
+                final_report[:hdr_pos] +
+                dtc_table_md + "\n" + product_section_md +
+                final_report[divider_pos:]
+            )
         else:
-            # Fallback – divider not found after header; append at end
-            final_report = base_report + product_section_md
+            # Fallback – no divider found; replace from header line to next blank line
+            next_break = final_report.find("\n\n", hdr_pos)
+            replace_end = next_break if next_break != -1 else hdr_pos
+            final_report = (
+                final_report[:hdr_pos] +
+                dtc_table_md + "\n" + product_section_md +
+                final_report[replace_end:]
+            )
     else:
-        # Fallback – header not found; keep previous behaviour (second divider)
-        front_matter, remainder = base_report.split("\n---\n", 1)
-        remainder_with_section = remainder.replace("\n---\n", product_section_md, 1)
-        final_report = "\n---\n".join([front_matter, remainder_with_section])
+        # If header somehow missing, append both sections to ensure they appear.
+        final_report += "\n" + dtc_table_md + "\n" + product_section_md
+
+    # -------------------------------------------------------------
+    # 📈 Week-over-Week Executive Delta Overview (re-injected)
+    # -------------------------------------------------------------
+    if prev_df is not None:
+        cur_acc = df[df["accounting_mode"] == "Accrual performance"].copy()
+        prev_acc = prev_df[prev_df["accounting_mode"] == "Accrual performance"].copy()
+
+        def _totals(d):
+            return {
+                "spend": d["spend"].sum(),
+                "rev": d["attributed_rev"].sum(),
+                "txns": d["transactions"].sum(),
+            }
+
+        tot_cur = _totals(cur_acc)
+        tot_prev = _totals(prev_acc)
+        tot_cur["roas"] = tot_cur["rev"] / tot_cur["spend"] if tot_cur["spend"] else 0
+        tot_prev["roas"] = tot_prev["rev"] / tot_prev["spend"] if tot_prev["spend"] else 0
+
+        wow_lines = [
+            "\n### Week-over-Week Overview\n",
+            f"* **Spend:** {_fmt_delta(tot_cur['spend'], tot_prev['spend'])}",
+            f"* **Revenue:** {_fmt_delta(tot_cur['rev'], tot_prev['rev'])}",
+            f"* **ROAS:** {_fmt_delta(tot_cur['roas'], tot_prev['roas'], prefix='', digits=2)}",
+            f"* **Transactions:** {_fmt_delta(tot_cur['txns'], tot_prev['txns'], prefix='', digits=0)}",
+            "\n",
+        ]
+
+        exec_hdr = "## 1. Executive Summary"
+        pos_exec = final_report.find(exec_hdr)
+        if pos_exec != -1:
+            insert_pos = final_report.find("\n", pos_exec + len(exec_hdr)) + 1
+            final_report = final_report[:insert_pos] + "\n".join(wow_lines) + final_report[insert_pos:]
+
+    # -----------------------------------------------------------------
+    # 📝  Initialize the working markdown document
+    #       Start with the base report produced by the core script and
+    #       immediately append the Product & Category section we built
+    #       above.  Subsequent steps will mutate this `final_report`
+    #       string in-place (e.g., replace the old DTC table, inject
+    #       WoW overview, add appendix).
+    # -----------------------------------------------------------------
+
+    # Replace existing DTC section with new one
+    # final_report = base_report + product_section_md
 
     # Label major base-report tables as Accrual Performance to distinguish from cash snapshot
     header_map = {
