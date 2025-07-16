@@ -495,8 +495,9 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
     if not campaign_analysis.empty:
         lines.append("## 3. Top Campaign Performance Analysis\n")
         # Top campaign by ROAS for each channel (ensures representation across platforms)
+        # -----------------------------------------------------------------------------
         # 1. Identify the campaign with the highest ROAS within each platform
-        # Exclude campaigns with zero ROAS before selecting winners
+        #    (Exclude campaigns with zero ROAS before selecting winners)
         subset_roas = campaign_analysis[campaign_analysis['roas'] > 0]
 
         idx = (
@@ -515,6 +516,25 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         headers2 = ["Platform", "Campaign Name", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "AOV", "AOV 1st", "Spend", "Revenue"]
         lines.append("| " + " | ".join(headers2) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers2]) + "|")
+
+        # --- Totals row for Best ROAS table ---
+        if not top_roas.empty:
+            tot_spend = top_roas['spend'].sum()
+            tot_rev = top_roas['attributed_rev'].sum()
+            tot_rev1 = top_roas.get('attributed_rev_1st_time', pd.Series(dtype=float)).sum()
+            tot_txn = top_roas['transactions'].sum() if 'transactions' in top_roas.columns else 0
+            tot_txn1 = top_roas.get('transactions_1st_time', pd.Series(dtype=float)).sum()
+
+            tot_roas = tot_rev / tot_spend if tot_spend else 0
+            tot_roas1 = tot_rev1 / tot_spend if tot_spend else 0
+            tot_cac = tot_spend / tot_txn if tot_txn else 0
+            tot_cac1 = tot_spend / tot_txn1 if tot_txn1 else 0
+            tot_aov = tot_rev / tot_txn if tot_txn else 0
+            tot_aov1 = tot_rev1 / tot_txn1 if tot_txn1 else 0
+
+            lines.append(
+                f"| **Totals** | — | **{tot_roas:.2f}** | {tot_roas1:.2f} | ${tot_cac:.2f} | ${tot_cac1:.2f} | ${tot_aov:.2f} | ${tot_aov1:.2f} | ${tot_spend:,.0f} | ${tot_rev:,.0f} |")
+
         for _, row in top_roas.iterrows():
             platform = row['breakdown_platform_northbeam']
             campaign = row['campaign_name'][:50].replace('|', '\\|')
@@ -528,12 +548,60 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             aov1_val = row.get('aov_1st_time', 0)
             lines.append(f"| {platform} | **{campaign}** | **{roas_val:.2f}** | {roas1_val:.2f} | ${cac_val:.2f} | ${cac1_val:.2f} | ${aov_val:.2f} | ${aov1_val:.2f} | ${spend_val:,.0f} | ${rev_val:,.0f} |")
 
-        # Top 5 by Spend
-        top_spend = campaign_analysis.sort_values('spend', ascending=False).head(5)
+        # -----------------------------------------------------------------------------
+        # 💰 Highest Spend Campaigns – aggregate by Campaign + Platform first
+        # -----------------------------------------------------------------------------
+        agg_cols_sum = [
+            'spend',
+            'attributed_rev',
+            'attributed_rev_1st_time',
+            'transactions',
+            'transactions_1st_time'
+        ]
+
+        # Ensure missing columns exist in dataframe to avoid KeyErrors
+        for col in agg_cols_sum:
+            if col not in campaign_analysis.columns:
+                campaign_analysis[col] = 0
+
+        aggregated = (
+            campaign_analysis
+            .groupby(['breakdown_platform_northbeam', 'campaign_name'], as_index=False)[agg_cols_sum]
+            .sum()
+        )
+
+        # Re-calculate derived metrics on aggregated data
+        aggregated['roas'] = aggregated['attributed_rev'] / aggregated['spend'].replace({0: np.nan})
+        aggregated['roas_1st_time'] = aggregated['attributed_rev_1st_time'] / aggregated['spend'].replace({0: np.nan})
+        aggregated['cac'] = aggregated['spend'] / aggregated['transactions'].replace({0: np.nan})
+        aggregated['cac_1st_time'] = aggregated['spend'] / aggregated['transactions_1st_time'].replace({0: np.nan})
+        aggregated['aov'] = aggregated['attributed_rev'] / aggregated['transactions'].replace({0: np.nan})
+        aggregated['aov_1st_time'] = aggregated['attributed_rev_1st_time'] / aggregated['transactions_1st_time'].replace({0: np.nan})
+
+        top_spend = aggregated.sort_values('spend', ascending=False).head(5)
         lines.append("\n### 💰 Highest Spend Campaigns\n")
         headers3 = ["Platform", "Campaign Name", "Spend", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "AOV", "AOV 1st", "Revenue"]
         lines.append("| " + " | ".join(headers3) + " |")
         lines.append("|" + "|".join(["-" * len(h) for h in headers3]) + "|")
+
+        # --- Totals row for Highest Spend table ---
+        if not top_spend.empty:
+            tot_spend2 = top_spend['spend'].sum()
+            tot_rev2 = top_spend['attributed_rev'].sum()
+            tot_rev1_2 = top_spend['attributed_rev_1st_time'].sum()
+            tot_txn2 = top_spend['transactions'].sum()
+            tot_txn1_2 = top_spend['transactions_1st_time'].sum()
+
+            tot_roas2 = tot_rev2 / tot_spend2 if tot_spend2 else 0
+            tot_roas1_2 = tot_rev1_2 / tot_spend2 if tot_spend2 else 0
+            tot_cac2 = tot_spend2 / tot_txn2 if tot_txn2 else 0
+            tot_cac1_2 = tot_spend2 / tot_txn1_2 if tot_txn1_2 else 0
+            tot_aov2 = tot_rev2 / tot_txn2 if tot_txn2 else 0
+            tot_aov1_2 = tot_rev1_2 / tot_txn1_2 if tot_txn1_2 else 0
+
+            lines.append(
+                f"| **Totals** | — | ${tot_spend2:,.0f} | {tot_roas2:.2f} | {tot_roas1_2:.2f} | ${tot_cac2:.2f} | ${tot_cac1_2:.2f} | ${tot_aov2:.2f} | ${tot_aov1_2:.2f} | ${tot_rev2:,.0f} |")
+
         for _, row in top_spend.iterrows():
             platform = row['breakdown_platform_northbeam']
             campaign = row['campaign_name'][:50].replace('|', '\\|')
@@ -571,6 +639,12 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
                 aov = row.get('aov', 0)
                 lines.append(f"| {platform} | **{campaign}** | ${revenue:,.0f} | {txns:.2f} | ${aov:.2f} |")
 
+            # --- Totals for revenue-only campaigns ---
+            rev_tot = top_rev['attributed_rev'].sum()
+            rev_txn_tot = top_rev['transactions'].sum()
+            rev_aov_tot = rev_tot / rev_txn_tot if rev_txn_tot else 0
+            lines.append(f"| **Totals** | — | ${rev_tot:,.0f} | {rev_txn_tot:.2f} | ${rev_aov_tot:.2f} |")
+
     # 4. Channel Performance Metrics (overall, not first-time)
     if isinstance(channel_summary, pd.DataFrame) and not channel_summary.empty:
         lines.append("\n## 4. Channel Performance Metrics\n")
@@ -586,6 +660,17 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         rev_only = rev_only.sort_values('attributed_rev', ascending=False)
 
         combined = pd.concat([high_spend, rev_only])
+
+        # --- Grand totals row for this table ---
+        grand_spend = combined['spend'].sum()
+        grand_rev = combined['attributed_rev'].sum()
+        grand_txn = combined['transactions'].sum()
+        grand_cac = grand_spend / grand_txn if grand_txn else 0
+        grand_roas = grand_rev / grand_spend if grand_spend else 0
+        grand_aov = grand_rev / grand_txn if grand_txn else 0
+
+        lines.append(
+            f"| **All Channels** | ${grand_spend:,.0f} | ${grand_rev:,.0f} | ${grand_cac:.2f} | {grand_roas:.2f} | ${grand_aov:.2f} | {int(grand_txn)} |")
 
         for platform, row in combined.iterrows():
             spend = row['spend']
