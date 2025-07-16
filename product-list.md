@@ -162,6 +162,34 @@ aliases = {
     "redlight": "Red Light Face Mask",
     "red light": "Red Light Face Mask",
     "blanket": "Infrared Sauna Blanket",
+
+    # High-confidence tokens from latest unattributed scan
+    "sculpt": "Microcurrent Body Sculptor Ritual Set",
+    "sculptpdp": "Microcurrent Body Sculptor Ritual Set",
+
+    # Mask variants
+    "mask": "Red Light Face Mask",
+    "masks": "Red Light Face Mask",
+    "led mask": "Red Light Face Mask",
+    "ledmask": "Red Light Face Mask",
+    "led masks": "Red Light Face Mask",
+    "ledmasks": "Red Light Face Mask",
+    "face mask": "Red Light Face Mask",
+    "facemask": "Red Light Face Mask",
+
+    # Soak shorthand
+    "soak": "Serotonin Soak Salt",
+
+    # Mat shorthand
+    "mat": "Infrared PEMF Pro Mat",
+    "dose mat": "Infrared PEMF Pro Mat",
+
+    # Medium-confidence tokens
+    "brush": "Supercharge Copper Body Brush",
+    "serum": "Light-Activated Glow Serum",
+    "towel": "Infrared Sauna Blanket Insert",
+    "insert": "Infrared Sauna Blanket Insert",
+    "cleaner": "High Maintenance Cleaner",
 }
 
 # Build markdown content
