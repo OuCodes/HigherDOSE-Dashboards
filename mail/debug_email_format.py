@@ -60,7 +60,7 @@ def get_creds():
 def debug_email_formats(gmail, mid):
     """Debug function to show email at different processing stages."""
     print(f"\n{ansi.cyan}=== DEBUGGING EMAIL ID: {mid} ==={ansi.reset}")
-    
+
     # Stage 1: Raw Gmail API response (base64 encoded)
     print(f"\n{ansi.yellow}Stage 1: Raw Gmail API Response{ansi.reset}")
     raw_response = gmail.users().messages().get(userId="me", id=mid, format="raw").execute()
@@ -68,23 +68,23 @@ def debug_email_formats(gmail, mid):
     print(f"Raw data type: {type(raw_data)}")
     print(f"Raw data length: {len(raw_data)} characters")
     print(f"First 200 chars: {raw_data[:200]}...")
-    
+
     # Save raw data
     raw_file = DEBUG_OUTDIR / f"{mid}_1_raw.txt"
     raw_file.write_text(raw_data, encoding="utf-8")
     print(f"Saved to: {raw_file}")
-    
+
     # Stage 2: Base64 decoded bytes
     print(f"\n{ansi.yellow}Stage 2: Base64 Decoded Bytes{ansi.reset}")
     decoded_bytes = base64.urlsafe_b64decode(raw_data)
     print(f"Decoded bytes length: {len(decoded_bytes)} bytes")
     print(f"First 500 chars: {decoded_bytes[:500].decode(errors='ignore')}")
-    
+
     # Save decoded bytes
     decoded_file = DEBUG_OUTDIR / f"{mid}_2_decoded.txt"
     decoded_file.write_bytes(decoded_bytes)
     print(f"Saved to: {decoded_file}")
-    
+
     # Stage 3: Parsed MIME message
     print(f"\n{ansi.yellow}Stage 3: Parsed MIME Message{ansi.reset}")
     mime_msg = email.message_from_bytes(decoded_bytes)
@@ -95,7 +95,7 @@ def debug_email_formats(gmail, mid):
     print(f"Date: {mime_msg.get('Date', 'No Date')}")
     print(f"Content-Type: {mime_msg.get_content_type()}")
     print(f"Is multipart: {mime_msg.is_multipart()}")
-    
+
     # Save MIME headers and structure
     mime_info = {
         "headers": dict(mime_msg.items()),
@@ -103,7 +103,7 @@ def debug_email_formats(gmail, mid):
         "is_multipart": mime_msg.is_multipart(),
         "parts": []
     }
-    
+
     print(f"\n{ansi.yellow}MIME Parts Analysis:{ansi.reset}")
     for i, part in enumerate(mime_msg.walk()):
         part_info = {
@@ -117,11 +117,11 @@ def debug_email_formats(gmail, mid):
         print(f"  Part {i}: {part.get_content_type()}")
         if part.get_filename():
             print(f"    Filename: {part.get_filename()}")
-    
+
     mime_file = DEBUG_OUTDIR / f"{mid}_3_mime_info.json"
     mime_file.write_text(json.dumps(mime_info, indent=2), encoding="utf-8")
     print(f"Saved MIME info to: {mime_file}")
-    
+
     # Stage 4: Extracted body content (before markdown conversion)
     print(f"\n{ansi.yellow}Stage 4: Extracted Body Content{ansi.reset}")
     body_parts = []
@@ -141,14 +141,14 @@ def debug_email_formats(gmail, mid):
                     print(f"  Length: {len(content)} characters")
                     print(f"  First 300 chars: {content[:300]}")
                     print(f"  Last 100 chars: {content[-100:]}")
-                    
+
                     # Save this body part
                     body_file = DEBUG_OUTDIR / f"{mid}_4_body_{part.get_content_type().replace('/', '_')}.txt"
                     body_file.write_text(content, encoding="utf-8")
                     print(f"  Saved to: {body_file}")
             except Exception as e:
                 print(f"  Error extracting part: {e}")
-    
+
     # Stage 5: What the original script would extract
     print(f"\n{ansi.yellow}Stage 5: Original Script Extraction{ansi.reset}")
     original_body = next(
@@ -159,31 +159,31 @@ def debug_email_formats(gmail, mid):
         original_content = original_body.decode(errors="ignore")
         print(f"Original script would extract: {len(original_content)} characters")
         print(f"First 300 chars: {original_content[:300]}")
-        
+
         original_file = DEBUG_OUTDIR / f"{mid}_5_original_extraction.txt"
         original_file.write_text(original_content, encoding="utf-8")
         print(f"Saved to: {original_file}")
-        
+
         # Stage 6: Final markdown conversion
         print(f"\n{ansi.yellow}Stage 6: Markdown Conversion{ansi.reset}")
         md_content = markdownify.markdownify(original_content)
         print(f"Markdown length: {len(md_content)} characters")
         print(f"First 300 chars: {md_content[:300]}")
-        
+
         md_file = DEBUG_OUTDIR / f"{mid}_6_final_markdown.md"
         md_file.write_text(md_content, encoding="utf-8")
         print(f"Saved to: {md_file}")
-        
+
         # Stage 7: New Enhanced Format
         print(f"\n{ansi.yellow}Stage 7: New Enhanced Structured Format{ansi.reset}")
-        
+
         # Extract email metadata
         subject = mime_msg.get('Subject', 'No Subject')
         from_addr = mime_msg.get('From', 'No From')
         to_addr = mime_msg.get('To', 'No To')
         date_str = mime_msg.get('Date', 'No Date')
-        
-        # Create structured markdown content  
+
+        # Create structured markdown content
         structured_content = f"""## Date
 
 {date_str}
@@ -201,22 +201,22 @@ to: {to_addr}
 
 {md_content.strip()}
 """
-        
+
         # Clean subject for filename
         new_filename = f"{clean.up(subject)}-{mid}.md"
-        
+
         print(f"New filename would be: {ansi.cyan}{new_filename}{ansi.reset}")
         print(f"Cleaned subject: {ansi.green}{clean.up(subject)}{ansi.reset}")
         print("Structured content preview (first 400 chars):")
         print(f"{structured_content[:400]}...")
-        
+
         # Save the new structured format
         structured_file = DEBUG_OUTDIR / f"{mid}_7_enhanced_format.md"
         structured_file.write_text(structured_content, encoding="utf-8")
         print(f"Saved enhanced format to: {structured_file}")
     else:
         print("No body content found!")
-    
+
     print(f"\n{ansi.green}=== DEBUG COMPLETE FOR {mid} ==={ansi.reset}")
 
 def get_recent_messages(gmail, count=5):
@@ -231,19 +231,19 @@ def main():
     """Debug version of the Gmail script."""
     print("Starting Gmail Debug Script...")
     print(f"Debug files will be saved to: {DEBUG_OUTDIR}")
-    
+
     gmail = build("gmail", "v1", credentials=get_creds(), cache_discovery=False)
     print(f"Gmail service client {ansi.green}created successfully{ansi.reset}.")
-    
+
     # Get a few recent messages to debug
     message_ids = get_recent_messages(gmail, 3)
-    
+
     for i, mid in enumerate(message_ids):
         print(f"\n{ansi.cyan}Processing message {i+1}/{len(message_ids)}{ansi.reset}")
         debug_email_formats(gmail, mid)
         if i < len(message_ids) - 1:
             input(f"\n{ansi.yellow}Press Enter to continue to next message...{ansi.reset}")
-    
+
     print(f"\n{ansi.green}Debug complete! Check the files in {DEBUG_OUTDIR} to see email formats.{ansi.reset}")
 
 if __name__ == "__main__":
