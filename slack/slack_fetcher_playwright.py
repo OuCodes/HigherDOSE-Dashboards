@@ -1546,26 +1546,50 @@ class SlackBrowser:
             return []
     
     async def get_user_list(self) -> Dict[str, str]:
-        """Get user list from intercepted data and merge with rolodex."""
+        """Get user list from intercepted data and merge with rolodex. Also
+        falls back to users.list API when a token is available so we can
+        resolve every user ID."""
         users = {}
-        
-        # Load rolodex data first
+        # Load rolodex entries first (highest priority)
         rolodex_users = self._load_rolodex()
         users.update(rolodex_users)
-        
-        # Then add any users from intercepted API data
+
+        # 1) From intercepted data (client.userBoot etc.)
         for data in self.intercepted_data:
             response_data = data.get("response", {})
-            
-            # Check client.userBoot response for user data
-            if "client.userBoot" in data["url"]:
-                if "users" in response_data:
-                    for user_id, user_info in response_data["users"].items():
-                        name = user_info.get("real_name") or user_info.get("name", f"User_{user_id[-6:]}")
-                        # Only add if not already in rolodex (rolodex takes priority)
-                        if user_id not in users:
-                            users[user_id] = name
-        
+            if "client.userBoot" in data.get("url", "") and isinstance(response_data, dict):
+                for uid, info in response_data.get("users", {}).items():
+                    if uid not in users:
+                        name = info.get("real_name") or info.get("name") or f"User_{uid[-6:]}"
+                        users[uid] = name
+
+        # 2) If we have a fresh token, query users.list API for anything missing
+        if self.credentials.token and self.credentials.cookies:
+            import asyncio, time
+            cursor = None
+            while True:
+                payload = {"limit": 1000}
+                if cursor:
+                    payload["cursor"] = cursor
+                api_resp = await asyncio.to_thread(self._api_post_sync, "users.list", payload)
+                if not api_resp.get("ok"):
+                    break
+                for member in api_resp.get("members", []):
+                    uid = member.get("id")
+                    if not uid:
+                        continue
+                    if uid in users:
+                        continue
+                    if member.get("deleted") or member.get("is_bot"):
+                        continue
+                    profile = member.get("profile", {})
+                    display_name = profile.get("display_name") or profile.get("real_name") or member.get("name")
+                    users[uid] = display_name or f"User_{uid[-6:]}"
+                cursor = api_resp.get("response_metadata", {}).get("next_cursor")
+                if not cursor:
+                    break
+                await asyncio.sleep(0.2)
+
         print(f"👥 Total users loaded: {len(users)} ({len(rolodex_users)} from rolodex)")
         return users
     
@@ -1682,6 +1706,88 @@ class SlackBrowser:
         except Exception as e:
             print(f"⚠️ Error loading rolodex: {e}")
             return {}
+
+    # ------------------------------------------------------------------ #
+    #  Helper: lightweight Web-API POST using captured creds              #
+    # ------------------------------------------------------------------ #
+    def _api_post_sync(self, endpoint: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+        """Minimal wrapper around Slack web API POST.
+        Expects that self.credentials already holds both cookies & token."""
+        if not (self.credentials.token and self.credentials.cookies):
+            return {}
+
+        domain = WORKSPACE_URL.split("//")[-1]
+        url = f"https://{domain}/api/{endpoint}"
+
+        payload = {**payload, "token": self.credentials.token}
+
+        cookie_header = "; ".join(f"{k}={v}" for k, v in self.credentials.cookies.items())
+        headers = {
+            "cookie": cookie_header,
+            "user-agent": "Mozilla/5.0",
+            "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
+            "accept": "application/json, text/plain, */*",
+        }
+
+        try:
+            r = requests.post(url, headers=headers, data=payload, timeout=30)
+            r.raise_for_status()
+            return r.json()
+        except Exception as exc:
+            print(f"⚠️  API call {endpoint} failed: {exc}")
+            return {}
+
+    def _get_dm_participants_sync(self, channel_id: str, users: Dict[str, str]) -> List[str]:
+        """Return display names for all participants in a DM/MPDM channel."""
+        info = self._api_post_sync("conversations.info", {"channel": channel_id})
+        if not info.get("ok"):
+            return []
+
+        chan = info.get("channel", {})
+        names: List[str] = []
+
+        # 1-on-1 DM
+        if chan.get("is_im") and chan.get("user"):
+            uid = chan["user"]
+            names.append(users.get(uid, f"User_{uid[-6:]}"))
+        # Group DM (mpim)
+        elif chan.get("is_mpim") and chan.get("members"):
+            for uid in chan["members"]:
+                names.append(users.get(uid, f"User_{uid[-6:]}"))
+
+        return names
+
+    async def get_dm_participants(self, channel_id: str, users: Dict[str, str]) -> List[str]:
+        """Async wrapper for participant lookup."""
+        import asyncio
+        return await asyncio.to_thread(self._get_dm_participants_sync, channel_id, users)
+
+    # ------------------------------------------------------------------ #
+    #  Friendly filename generator                                       #
+    # ------------------------------------------------------------------ #
+    async def conversation_filename(self, channel_id: str, channel_name: str, users: Dict[str, str]) -> str:
+        """Return a human-friendly, filesystem-safe filename for this conversation."""
+        import re
+
+        # Detect D or G => DM / MPDM
+        if channel_id and channel_id[0] in {"D", "G"}:
+            parts = await self.get_dm_participants(channel_id, users)
+            if parts:
+                parts = sorted(set(parts))  # stable ordering
+                if len(parts) == 1:
+                    base = f"dm_with_{parts[0]}_{channel_id[-6:]}"
+                else:
+                    trimmed = "-".join(parts[:4])  # limit length after sort
+                    base = f"group_dm_{trimmed}"
+            else:
+                base = f"dm_{channel_id}"
+        else:
+            base = channel_name.lstrip("#@") or f"channel_{channel_id}"
+
+        # Sanitize
+        safe = re.sub(r'[<>:"/\\|?*@]', '_', base)
+        safe = re.sub(r'_+', '_', safe).strip('_')
+        return safe
 
 
 # -------------- Utility Functions -------------------------------------------
@@ -2136,20 +2242,21 @@ async def main():
             print("📭 No messages found. The channel might be empty or inaccessible.")
             return
         
-        # Save to markdown
-        safe_name = _create_safe_filename(channel_name or channel_input, channel_id or "unknown")
+        # Save to markdown with friendly filename
+        safe_name = await browser.conversation_filename(channel_id or "", channel_name or channel_input, users)
         md_path = EXPORT_DIR / f"{safe_name}.md"
         
-        # Write header
-        with md_path.open("w", encoding="utf-8") as f:
-            f.write(f"# {channel_name or channel_input}\n\n")
-            if channel_id:
-                f.write(f"**Channel ID:** {channel_id}\n")
-            f.write(f"**Exported:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            f.write(f"**Message Count:** {len(messages)}\n\n")
-            f.write("---\n\n")
-            
-            # Write messages
+        write_mode = "a" if md_path.exists() else "w"
+        with md_path.open(write_mode, encoding="utf-8") as f:
+            if write_mode == "w":
+                f.write(f"# {channel_name or channel_input}\n\n")
+                if channel_id:
+                    f.write(f"**Channel ID:** {channel_id}\n")
+                f.write(f"**Exported:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"**Message Count:** {len(messages)}\n\n")
+                f.write("---\n\n")
+
+            # Append new messages
             for msg in messages:
                 f.write(_markdown_line(msg, users) + "\n")
         
