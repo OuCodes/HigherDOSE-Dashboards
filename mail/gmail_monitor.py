@@ -12,7 +12,6 @@ from email.header import decode_header
 project_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(project_root))
 
-import markdownify
 import google.auth.transport.requests
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
@@ -196,10 +195,9 @@ def save_msg(gmail, mid):
         raw_content = "\n\n".join(text_parts)
         body_content = clean_email_content(raw_content)
     elif html_parts:
-        # Only use markdownify if we actually have HTML content
+        # Use raw HTML content for now
         html_content = "\n\n".join(html_parts)
-        markdown_content = markdownify.markdownify(html_content)
-        body_content = clean_email_content(markdown_content)
+        body_content = clean_email_content(html_content)
     else:
         body_content = "No body content found."
 
