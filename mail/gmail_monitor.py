@@ -36,7 +36,7 @@ def clean_subject(subject):
             decoded_subject += part.decode(encoding or 'utf-8', errors='ignore')
         else:
             decoded_subject += part
-    
+
     # Remove any remaining odd encoding artifacts
     decoded_subject = re.sub(r'utf-8[a-zA-Z0-9]*', '', decoded_subject)
     return decoded_subject.strip()
@@ -45,7 +45,7 @@ def clean_email_content(content):
     """Clean up email content by removing tracking pixels, normalizing whitespace, and shortening URLs."""
     if not content:
         return content
-    
+
     # Remove invisible/zero-width characters commonly used for tracking
     # These include zero-width space, zero-width non-joiner, zero-width joiner, etc.
     invisible_chars = [
@@ -57,17 +57,17 @@ def clean_email_content(content):
         '͏',       # Combining grapheme joiner (common in email tracking)
         '‌',       # Zero-width non-joiner (another variant)
     ]
-    
+
     for char in invisible_chars:
         content = content.replace(char, '')
-    
+
     # Clean up excessive whitespace patterns
     # Replace multiple consecutive spaces with single space
     content = re.sub(r' {3,}', ' ', content)
-    
+
     # Replace multiple consecutive line breaks with double line breaks (paragraph spacing)
     content = re.sub(r'\n{4,}', '\n\n', content)
-    
+
     # Clean up lines that are just whitespace
     lines = content.split('\n')
     cleaned_lines = []
@@ -77,13 +77,13 @@ def clean_email_content(content):
             cleaned_lines.append('')
         else:
             cleaned_lines.append(line.strip())
-    
+
     # Rejoin and normalize paragraph spacing
     content = '\n'.join(cleaned_lines)
-    
+
     # Remove excessive line breaks at start/end
     content = content.strip()
-    
+
     # Shorten extremely long URLs (optional)
     def shorten_url(match):
         url = match.group(0)
@@ -94,10 +94,10 @@ def clean_email_content(content):
                 domain = domain_match.group(1)
                 return f"[Long URL: {domain}...]({url})"
         return url
-    
+
     # Apply URL shortening to very long URLs
     content = re.sub(r'https?://[^\s)]{100,}', shorten_url, content)
-    
+
     return content
 TOKEN   = Path("mail", "token.pickle")
 CURSOR  = Path("mail", "cursor.txt")
@@ -176,11 +176,11 @@ def save_msg(gmail, mid):
     from_addr = mime.get('From', 'No From')
     to_addr = mime.get('To', 'No To')
     date_str = mime.get('Date', 'No Date')
-    
+
     # Extract body content - prefer plain text over HTML
     text_parts = []
     html_parts = []
-    
+
     for part in mime.walk():
         if part.get_content_type() == "text/plain":
             payload = part.get_payload(decode=True)
@@ -190,7 +190,7 @@ def save_msg(gmail, mid):
             payload = part.get_payload(decode=True)
             if payload:
                 html_parts.append(payload.decode(errors="ignore"))
-    
+
     # Prefer plain text, fall back to HTML if needed
     if text_parts:
         raw_content = "\n\n".join(text_parts)
