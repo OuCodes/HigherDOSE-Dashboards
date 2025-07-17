@@ -1,42 +1,27 @@
 #!/usr/bin/env python3
 """
-Playwright-based Slack message fetcher with automatic authentication.
-
-This script uses Playwright to:
-1. Automatically log into Slack (or use existing session)
-2. Intercept API requests to extract fresh tokens/cookies
-3. Fetch messages using either intercepted API calls or direct browser automation
-4. Handle authentication expiration automatically
-5. Categorize conversations by type (channels, DMs, multi-person DMs)
-
-Dependencies:
-    playwright
-    python-dateutil
-    requests (fallback)
+Slack conversation extractor using Playwright for HigherDOSE workspace.
 """
-from __future__ import annotations
 
+import asyncio
 import json
 import os
-import sys
-import time
-import pathlib
 import re
-import asyncio
+import time
 from datetime import datetime
-from typing import Dict, List, Any, Optional, Tuple
-from urllib.parse import urlparse, parse_qs
+from pathlib import Path
+from typing import Dict, List, Any, Optional
 from enum import Enum
-
-from playwright.async_api import async_playwright, Page, Route, Request, Response
-from dateutil import parser as date_parser
+from dataclasses import dataclass
+from playwright.async_api import async_playwright, Browser, Page, Request, Route
+import requests
 
 
 # -------------- Config -------------------------------------------------------
-EXPORT_DIR = pathlib.Path("slack/markdown_exports")
-TRACK_FILE = pathlib.Path("slack/conversion_tracker.json")
-ROLODEX_FILE = pathlib.Path("rolodex.json")
-CREDENTIALS_FILE = pathlib.Path("slack/playwright_creds.json")
+EXPORT_DIR = Path("slack/markdown_exports")
+TRACK_FILE = Path("slack/conversion_tracker.json")
+ROLODEX_FILE = Path("rolodex.json")
+CREDENTIALS_FILE = Path("slack/playwright_creds.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Slack workspace config
@@ -287,112 +272,88 @@ class SlackBrowser:
             await route.continue_()
     
     async def ensure_logged_in(self) -> bool:
-        """Ensure we're logged into Slack."""
+        """Ensure we're logged in to Slack workspace."""
         if not self.page:
             return False
-            
-        print("🔍 Checking Slack login status...")
-        # Since we're using existing Chrome profile, try going directly to workspace
-        try:
-            print("🔗 Navigating to HigherDOSE workspace...")
-            await self.page.goto(WORKSPACE_URL, timeout=15000)
-            await self.page.wait_for_timeout(3000)
-            print(f"✅ Successfully navigated to: {self.page.url}")
-        except Exception as e:
-            print(f"⚠️  Direct navigation failed: {e}")
-            print("💡 Working with current page...")
-            # Continue with whatever page is already open
         
-        # Check if we're already logged in
         try:
-            # Look for signs we're logged in (channel list, user menu, etc.)
+            # Navigate to the workspace
+            print(f"🌐 Navigating to {WORKSPACE_URL}")
+            await self.page.goto(WORKSPACE_URL)
+            
+            # First, try to bypass any launch screen that tries to open the desktop app
+            await self._bypass_launch_screen()
+            
+            # Check if we're already logged in by waiting for API calls
+            print("⏳ Waiting for workspace to load...")
+            await self.page.wait_for_timeout(5000)  # Wait for API calls to start
+            
+            # If we're intercepting API calls, we're likely logged in
+            if len(self.intercepted_data) > 0:
+                print("✅ Login detected via API interception!")
+                
+                # Look for specific API calls that indicate successful login
+                logged_in_apis = [
+                    "client.userBoot", "client.counts", "team.info", 
+                    "users.prefs", "conversations", "search.modules"
+                ]
+                
+                for data in self.intercepted_data:
+                    url = data.get("url", "")
+                    if any(api in url for api in logged_in_apis):
+                        print(f"✅ Confirmed login with API call: {url}")
+                        return True
+            
+            # Fallback: Try to find elements that indicate we're logged in
+            await self.page.wait_for_timeout(3000)
+            
             logged_in_selectors = [
-                '[data-qa="channel_sidebar"]',
-                '[data-qa="user_menu"]', 
-                '.c-virtual_list',
-                '[data-qa="workspace-name"]',
+                '[data-qa="workspace_name"]',
+                '[data-qa="team_name"]',
+                '.p-ia__sidebar',
                 '.p-channel_sidebar',
-                '.c-channel_list',
-                '[data-qa="slack_kit_list"]',
-                '.c-unified_member',
-                '.p-workspace_layout',
-                '.c-workspace__primary_view'
+                '.p-workspace__sidebar',
+                '.c-team_sidebar',
+                '.c-workspace_sidebar',
+                # More generic selectors
+                '[data-qa="sidebar"]',
+                '.c-message_input',
+                '.p-message_input',
+                '[data-qa="message_input"]'
             ]
             
-            print("🔍 Checking for workspace indicators...")
-            for i, selector in enumerate(logged_in_selectors):
+            for selector in logged_in_selectors:
                 try:
                     element = await self.page.wait_for_selector(selector, timeout=2000)
                     if element:
-                        print(f"✅ Found workspace indicator: {selector}")
-                        print("✅ Already logged into Slack!")
+                        print(f"✅ Login confirmed via DOM element: {selector}")
                         return True
                 except:
-                    print(f"   ❌ {selector}")
                     continue
-                    
-        except Exception as e:
-            print(f"⚠️  Error checking login status: {e}")
-        
-        # If we reach here, we need to login
-        print("🔐 Need to log into Slack...")
-        print("📖 Please follow these steps in the browser window:")
-        print("   1. Log into your Slack account if prompted")
-        print("   2. Navigate to: HigherDOSE workspace")
-        print("   3. You should see the channel sidebar")
-        print("   4. Once you see the workspace, press Enter here...")
-        print()
-        
-        # Wait for user to log in manually
-        input("Press Enter after you can see the HigherDOSE workspace...")
-        
-        # Try to navigate to workspace one more time to verify
-        try:
-            await self.page.goto(WORKSPACE_URL)
-            await self.page.wait_for_timeout(3000)
             
-            # Quick URL check
-            current_url = self.page.url
-            if "higherdosemanagement.slack.com" in current_url:
-                print("✅ Confirmed: In HigherDOSE workspace")
-            else:
-                print(f"⚠️  Current URL: {current_url}")
-                print("💡 Please make sure you're in the HigherDOSE workspace")
-                
-        except Exception as e:
-            print(f"⚠️  Navigation error: {e}")
-            pass
-        
-        # Verify login worked - try multiple selectors
-        verification_selectors = [
-            '[data-qa="channel_sidebar"]',
-            '.p-channel_sidebar', 
-            '.c-channel_list',
-            '.p-workspace_layout',
-            '.c-workspace__primary_view'
-        ]
-        
-        print("🔍 Verifying workspace access...")
-        for selector in verification_selectors:
-            try:
-                await self.page.wait_for_selector(selector, timeout=3000)
-                print(f"✅ Verified with: {selector}")
-                print("✅ Login successful!")
+            # If we got here but have API data, we're probably logged in
+            if len(self.intercepted_data) > 0:
+                print("✅ Assuming login success based on API activity")
                 return True
-            except:
-                print(f"   ❌ {selector}")
-                continue
-        
-        # If all selectors failed, provide guidance
-        print("❌ Could not detect HigherDOSE workspace.")
-        print("💡 Make sure you're in the HigherDOSE workspace, not just logged into Slack.")
-        print("   You should see channels like #general, #marketing, etc.")
-        print(f"   Current URL: {self.page.url}")
-        
-        retry = input("Try again? (y/N): ")
-        if retry.lower() == 'y':
-            return await self.ensure_logged_in()
-        return False
+            
+            # Check current URL for login indicators
+            current_url = self.page.url
+            if "signin" in current_url or "login" in current_url:
+                print("🔐 Login page detected. Please authenticate manually.")
+                print("💡 This script requires existing authentication via browser profile.")
+                return False
+            
+            # If we can navigate and have some API activity, consider it logged in
+            if "slack.com" in current_url and len(self.intercepted_data) > 0:
+                print("✅ Login assumed successful (on Slack domain with API activity)")
+                return True
+            
+            print("❌ Unable to verify login status")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Error checking login status: {e}")
+            return False
     
     def _parse_conversation_data(self, conv_data: Dict[str, Any]) -> Optional[ConversationInfo]:
         """Parse conversation data and return ConversationInfo object."""
@@ -405,44 +366,98 @@ class SlackBrowser:
         if not conv_id:
             return None
         
+        # Get user and channel mappings for better naming
+        user_mappings = getattr(self, 'user_mappings', {})
+        channel_mappings = getattr(self, 'channel_mappings', {})
+        
         # Determine conversation type based on ID and other properties
         conversation_type = ConversationType.UNKNOWN
         
+        # Check for multi-person DM patterns in the name FIRST (before checking ID)
+        if name and ("mpdm-" in name or "--" in name):
+            conversation_type = ConversationType.MULTI_PERSON_DM
+            # Fix name format for multi-person DMs
+            if not name.startswith("@"):
+                name = f"@{name}"
+        
         # Check if it's a DM (starts with D)
-        if conv_id.startswith('D'):
+        elif conv_id.startswith('D'):
             # Check if it's a multi-person DM
             if conv_data.get("is_mpim", False) or conv_data.get("is_group", False):
                 conversation_type = ConversationType.MULTI_PERSON_DM
+                # Try to get user names for multi-person DM
+                if not name:
+                    user_ids = conv_data.get("members", [])
+                    if user_ids:
+                        user_names = []
+                        for user_id in user_ids[:3]:  # Limit to first 3 users
+                            if user_id in user_mappings:
+                                user_names.append(user_mappings[user_id])
+                            else:
+                                user_names.append(f"user_{user_id[-6:]}")
+                        if user_names:
+                            name = f"@{'_'.join(user_names)}"
+                        else:
+                            name = f"@mpim_{conv_id}"
+                    else:
+                        name = f"@mpim_{conv_id}"
             else:
+                # Regular DM
                 conversation_type = ConversationType.DM
+                if not name:
+                    # Try to get the other user's name
+                    user_id = conv_data.get("user", "")
+                    if user_id and user_id in user_mappings:
+                        name = f"@{user_mappings[user_id]}"
+                    else:
+                        name = f"@dm_{conv_id}"
+        
         # Check if it's a channel (starts with C)
         elif conv_id.startswith('C'):
             conversation_type = ConversationType.CHANNEL
+            # Use channel mapping if available
+            if conv_id in channel_mappings:
+                name = channel_mappings[conv_id]
+            elif name:
+                name = f"#{name}"
+            else:
+                name = f"#channel_{conv_id}"
+        
         # Check if it's a group (starts with G)
         elif conv_id.startswith('G'):
-            if conv_data.get("is_mpim", False):
-                conversation_type = ConversationType.MULTI_PERSON_DM
-            else:
-                # Groups are usually private channels
-                conversation_type = ConversationType.CHANNEL
-        
-        # Handle multi-person DMs - they often have specific naming patterns
-        if name.startswith('mpdm-') or '-' in name and len(name.split('-')) > 2:
             conversation_type = ConversationType.MULTI_PERSON_DM
-        
-        # If name is empty, generate one based on type and ID
-        if not name:
-            if conversation_type == ConversationType.DM:
-                name = f"dm_{conv_id}"
-            elif conversation_type == ConversationType.MULTI_PERSON_DM:
-                name = f"mpdm_{conv_id}"
+            if conv_id in channel_mappings:
+                name = channel_mappings[conv_id]
+            elif name:
+                name = f"#{name}"
             else:
-                name = f"channel_{conv_id}"
+                name = f"#group_{conv_id}"
         
-        # Get additional properties
+        # Fallback naming
+        if not name:
+            if conversation_type == ConversationType.CHANNEL:
+                name = f"#channel_{conv_id}"
+            elif conversation_type == ConversationType.DM:
+                name = f"@dm_{conv_id}"
+            elif conversation_type == ConversationType.MULTI_PERSON_DM:
+                name = f"@group_{conv_id}"
+            else:
+                name = f"unknown_{conv_id}"
+        
+        # Get member count
+        member_count = 0
+        if "num_members" in conv_data:
+            member_count = conv_data["num_members"]
+        elif "members" in conv_data and isinstance(conv_data["members"], list):
+            member_count = len(conv_data["members"])
+        
+        # Get members list
+        members = []
+        if "members" in conv_data and isinstance(conv_data["members"], list):
+            members = conv_data["members"]
+        
+        # Check if private
         is_private = conv_data.get("is_private", False)
-        member_count = conv_data.get("num_members", 0)
-        members = conv_data.get("members", [])
         
         return ConversationInfo(
             name=name,
@@ -483,566 +498,318 @@ class SlackBrowser:
                 print(f"  Examples of {conv_type.value}: {', '.join(example_list)}")
         print()
     
-    async def get_channel_list(self) -> Dict[str, ConversationInfo]:
-        """Get list of conversations by triggering Slack to load them."""
-        if not self.page:
-            return {}
-            
-        print("📋 Getting conversation list...")
+    async def get_channel_list(self) -> Dict[str, str]:
+        """Get channel list from processed files and API data."""
+        print("🔗 Getting channel list...")
         
-        # Clear previous intercepted data
-        self.intercepted_data.clear()
-        
-        # Navigate to main workspace to trigger API calls
-        try:
-            # Try the main workspace URL first
-            await self.page.goto(WORKSPACE_URL, timeout=10000)
-            await self.page.wait_for_timeout(2000)
-        except:
-            try:
-                # Fallback to client URL format
-                await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}")
-                await self.page.wait_for_timeout(2000)
-            except:
-                print("⚠️  Using current page for channel detection")
-                # Use whatever page we're currently on
-        
-        # Try multiple approaches to trigger channel list API calls
-        print("🔄 Triggering channel list API calls...")
-        
-        # Approach 1: Reload to trigger fresh API calls
-        try:
-            await self.page.reload()
-            await self.page.wait_for_timeout(4000)
-            print("  ✅ Page reloaded to trigger fresh API calls")
-        except:
-            print("  ⚠️  Page reload failed")
-        
-        # Approach 2: Try to interact with sidebar elements
-        try:
-            sidebar_selectors = [
-                '[data-qa="channel_sidebar"]',
-                '.p-channel_sidebar',
-                '.c-channel_list',
-                '.c-virtual_list',
-                '[aria-label="Channel browser"]',
-                '[data-qa="channel_list"]'
-            ]
-            
-            for selector in sidebar_selectors:
-                try:
-                    element = await self.page.wait_for_selector(selector, timeout=2000)
-                    if element:
-                        await element.click()
-                        await self.page.wait_for_timeout(1000)
-                        print(f"  ✅ Clicked on {selector}")
-                        break
-                except:
-                    continue
-                    
-        except Exception as e:
-            print(f"  ⚠️  Error interacting with sidebar: {e}")
-        
-        # Approach 3: Try to navigate to specific pages that trigger channel lists
-        navigation_attempts = [
-            f"{WORKSPACE_URL}/admin/settings",
-            f"{WORKSPACE_URL}/customize/emoji",
-            f"https://app.slack.com/client/{TEAM_ID}/browse-channels",
-            f"https://app.slack.com/client/{TEAM_ID}/channels"
-        ]
-        
-        for url in navigation_attempts:
-            try:
-                await self.page.goto(url, timeout=8000)
-                await self.page.wait_for_timeout(2000)
-                print(f"  ✅ Navigated to {url}")
-                break
-            except:
-                continue
-        
-        # Approach 4: Try keyboard shortcuts that might trigger channel lists
-        try:
-            # Ctrl+K opens quick switcher which loads channels
-            await self.page.keyboard.press('Meta+K')  # Cmd+K on Mac
-            await self.page.wait_for_timeout(1000)
-            await self.page.keyboard.press('Escape')  # Close the switcher
-            await self.page.wait_for_timeout(1000)
-            print("  ✅ Tried keyboard shortcut Cmd+K")
-        except:
-            print("  ⚠️  Keyboard shortcut failed")
-        
-        # Wait a bit more for any delayed API calls
-        await self.page.wait_for_timeout(3000)
-        
-        # Navigate to the workspace homepage (not a specific channel)
-        workspace_homepage_urls = [
-            f"https://app.slack.com/client/{TEAM_ID}/",  # With trailing slash
-            f"https://app.slack.com/client/{TEAM_ID}",   # Without trailing slash
-            f"{WORKSPACE_URL}/"  # Direct workspace URL
-        ]
-        
-        print("🏠 Navigating to workspace homepage to find channel sidebar...")
-        for url in workspace_homepage_urls:
-            try:
-                await self.page.goto(url, timeout=10000)
-                await self.page.wait_for_timeout(5000)  # Wait longer for page to load
-                print(f"✅ Navigated to: {url}")
-                break
-            except Exception as e:
-                print(f"⚠️  Could not navigate to {url}: {e}")
-                continue
-        
-        # Debug: See what's actually on the page
-        print("🔍 Debugging page content...")
-        try:
-            page_title = await self.page.title()
-            page_url = self.page.url
-            print(f"  📄 Page title: {page_title}")
-            print(f"  🔗 Page URL: {page_url}")
-            
-            # Try to find any elements that might be channels
-            all_links = await self.page.query_selector_all('a')
-            print(f"  🔗 Found {len(all_links)} links on page")
-            
-            # Check for any text that looks like channel names
-            all_text = await self.page.query_selector_all('*')
-            channel_like_text = []
-            for element in all_text[:100]:  # Check first 100 elements
-                try:
-                    text = await element.text_content()
-                    if text and text.strip():
-                        text = text.strip()
-                        # Look for short text that might be channel names
-                        if text.startswith('#') and len(text) > 1 and len(text) < 50:
-                            channel_like_text.append(text)
-                        elif len(text) < 30 and text.islower() and '-' in text:
-                            # Channel names are often lowercase with dashes
-                            channel_like_text.append(f"#{text}")
-                except:
-                    continue
-            
-            if channel_like_text:
-                print(f"  📌 Found channel-like text: {channel_like_text[:10]}")  # Show first 10
-            else:
-                print("  ❌ No channel-like text found")
-            
-            # Also check for sidebar elements specifically
-            sidebar_elements = await self.page.query_selector_all('.p-channel_sidebar, [data-qa="channel_sidebar"], nav, .c-virtual_list')
-            print(f"  📋 Found {len(sidebar_elements)} sidebar-like elements")
-            
-            # Check what's in the sidebar
-            for i, sidebar in enumerate(sidebar_elements[:3]):  # Check first 3
-                try:
-                    sidebar_text = await sidebar.text_content()
-                    if sidebar_text and len(sidebar_text) > 10:
-                        print(f"    📋 Sidebar {i+1}: {sidebar_text[:100]}...")
-                except:
-                    continue
-                
-        except Exception as e:
-            print(f"  ⚠️  Error debugging page: {e}")
-        
-        # Try to find and click on elements that would show the channel list
-        print("🔍 Looking for channel list triggers...")
-        try:
-            # Try to find "Browse channels" or similar buttons
-            channel_triggers = [
-                'button[aria-label*="Browse"]',
-                'button[aria-label*="browse"]',
-                'button[aria-label*="Channel"]',
-                'button[aria-label*="channel"]',
-                '[data-qa="browse_channels"]',
-                '[data-qa="add_channel"]',
-                'a[href*="browse"]',
-                'a[href*="channels"]',
-                # Look for "+" buttons that might add channels
-                'button[aria-label*="Create"]',
-                'button[aria-label*="Add"]',
-                # Look for expandable sections
-                'button[aria-expanded="false"]',
-                '[role="button"][aria-label*="expand"]'
-            ]
-            
-            for selector in channel_triggers:
-                try:
-                    elements = await self.page.query_selector_all(selector)
-                    print(f"  🔍 Found {len(elements)} elements with selector: {selector}")
-                    
-                    if elements:
-                        # Try clicking the first element
-                        await elements[0].click()
-                        await self.page.wait_for_timeout(2000)
-                        print(f"  ✅ Clicked on {selector}")
-                        break
-                except Exception as e:
-                    print(f"  ⚠️  Error clicking {selector}: {e}")
-                    continue
-                    
-        except Exception as e:
-            print(f"⚠️  Error finding channel triggers: {e}")
-        
-        # Try direct navigation to channel browse/list pages
-        print("🔍 Trying direct navigation to channel browser...")
-        channel_browser_urls = [
-            f"https://app.slack.com/client/{TEAM_ID}/browse-channels",
-            f"https://app.slack.com/client/{TEAM_ID}/channels",
-            f"https://app.slack.com/client/{TEAM_ID}/browse-public-channels",
-            f"{WORKSPACE_URL}/channels/browse",
-            f"{WORKSPACE_URL}/admin/channels",
-            f"{WORKSPACE_URL}/browse",
-            # Try more specific URLs that might trigger channel list API calls
-            f"https://app.slack.com/client/{TEAM_ID}/browse-channels?filter=all",
-            f"https://app.slack.com/client/{TEAM_ID}/browse-channels?type=public",
-            f"https://app.slack.com/client/{TEAM_ID}/browse-channels?type=private",
-            f"https://app.slack.com/client/{TEAM_ID}/channels-browse"
-        ]
-        
-        for url in channel_browser_urls:
-            try:
-                print(f"  🔗 Trying to navigate to: {url}")
-                await self.page.goto(url, timeout=15000)
-                await self.page.wait_for_timeout(5000)  # Wait longer for page to load
-                
-                # Check if URL actually changed (not redirected back to channel)
-                current_url = self.page.url
-                if "/browse" in current_url or "/channels" in current_url:
-                    print(f"  ✅ Successfully navigated to channel browser: {current_url}")
-                    
-                    # Wait for channel list to load and try to trigger more API calls
-                    await self.page.wait_for_timeout(5000)  # Wait longer for initial load
-                    
-                    # Look for signs that the page is fully loaded
-                    print("  🔍 Waiting for channel data to load...")
-                    
-                    # Try to trigger the client.boot or similar calls by refreshing or interacting
-                    try:
-                        # Try refreshing to trigger client.boot
-                        await self.page.reload()
-                        await self.page.wait_for_timeout(8000)  # Wait for reload to complete
-                        print("  🔄 Reloaded page to trigger client.boot")
-                        
-                        # Try to trigger additional channel loading
-                        await self.page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
-                        await self.page.wait_for_timeout(3000)
-                        await self.page.evaluate("window.scrollTo(0, 0);")
-                        await self.page.wait_for_timeout(3000)
-                        
-                        # Try pressing keys that might trigger channel list loading
-                        await self.page.keyboard.press('PageDown')
-                        await self.page.wait_for_timeout(2000)
-                        await self.page.keyboard.press('PageUp')
-                        await self.page.wait_for_timeout(2000)
-                        
-                        # Try clicking on filter buttons to trigger channel loading
-                        filter_buttons = await self.page.query_selector_all('button[data-qa*="channel"]')
-                        if filter_buttons:
-                            try:
-                                # Try clicking "All channels" button
-                                await filter_buttons[0].click()
-                                await self.page.wait_for_timeout(3000)
-                                print("  📋 Clicked on channel filter button")
-                            except:
-                                pass
-                        
-                        print(f"  📋 Triggered additional loading actions")
-                        
-                    except Exception as e:
-                        print(f"  ⚠️  Error triggering additional loading: {e}")
-                    
-                    # Debug: See what's on the channel browser page
-                    try:
-                        page_title = await self.page.title()
-                        print(f"    📄 Channel browser title: {page_title}")
-                        print(f"    🔗 Channel browser URL: {current_url}")
-                        
-                        # Look for channel browser specific elements
-                        browser_elements = await self.page.query_selector_all('div, section, main, article')
-                        channel_texts = []
-                        for element in browser_elements[:20]:  # Check first 20 elements
-                            try:
-                                text = await element.text_content()
-                                if text and text.strip():
-                                    text = text.strip()
-                                    # Look for potential channel names (simple, short text)
-                                    if (len(text) < 100 and len(text) > 2 and 
-                                        not any(word in text.lower() for word in ['yesterday', 'today', 'am', 'pm', 'ago', 'hour', 'min', 'sec', 'edit', 'reply', 'thread'])):
-                                        channel_texts.append(text)
-                            except:
-                                continue
-                        
-                        if channel_texts:
-                            print(f"    📋 Channel browser content samples: {channel_texts[:5]}")
-                        
-                        # Look for specific channel browser elements
-                        channel_browser_selectors = [
-                            'div[data-qa="channel_browser"]',
-                            'section[aria-label*="channel"]',
-                            'ul[role="list"]',
-                            'div[role="list"]',
-                            'div[data-qa="browse_channels"]'
-                        ]
-                        
-                        for selector in channel_browser_selectors:
-                            elements = await self.page.query_selector_all(selector)
-                            if elements:
-                                print(f"    📋 Found {len(elements)} elements with {selector}")
-                                
-                    except Exception as e:
-                        print(f"    ⚠️  Error debugging channel browser: {e}")
-                    
-                    break
-                else:
-                    print(f"  ⚠️  Redirected back to: {current_url}")
-                    
-            except Exception as e:
-                print(f"  ⚠️  Could not navigate to {url}: {e}")
-                continue
-        
-        # Try to extract channels directly from the DOM
-        print("🔍 Trying to extract channels from DOM...")
-        dom_channels = await self.extract_channels_from_dom()
-        
-        # Extract channels from intercepted data - try multiple API endpoints
         channels = {}
-        channel_endpoints = [
-            "conversations.list",
-            "conversations.info", 
-            "channels.list",
-            "channels.info",
-            "client.counts",
-            "client.boot",
-            "rtm.start",
-            # Additional endpoints that might contain channel data
-            "conversations.browse",
-            "conversations.search",
-            "channels.browse",
-            "channels.search",
-            "team.info",
-            "workspace.info",
-            "client.boot",
-            "rtm.connect"
-        ]
         
-        print(f"🔍 Looking for conversations in {len(self.intercepted_data)} intercepted calls...")
-        
-        # First, let's see if any API calls contain a large number of conversations
-        large_conversation_responses = []
-        client_boot_responses = []
-        
-        for data in self.intercepted_data:
-            response = data.get("response", {})
-            url = data.get("url", "")
+        try:
+            # Check processed directories for known channel names
+            import os
+            processed_dir = os.path.join(os.path.dirname(__file__), 'processed')
+            if os.path.exists(processed_dir):
+                for item in os.listdir(processed_dir):
+                    item_path = os.path.join(processed_dir, item)
+                    if os.path.isdir(item_path):
+                        # This is a known channel/DM name
+                        if item.startswith('sb-'):
+                            # This looks like a channel name
+                            channels[item] = f"#{item}"
+                        elif item.startswith('dm_'):
+                            # This is a DM name
+                            channels[item] = f"@{item}"
             
-            if isinstance(response, dict):
-                # Look specifically for client.boot calls (most likely to have all conversations)
-                if "client.boot" in url:
-                    client_boot_responses.append((url, response))
-                    print(f"  🎯 Found client.boot call: {url}")
-                    
-                    # Check if it has conversations in various locations
-                    conversation_count = 0
-                    if "channels" in response:
-                        conversation_count += len(response["channels"]) if isinstance(response["channels"], list) else 0
-                    if "ims" in response:
-                        conversation_count += len(response["ims"]) if isinstance(response["ims"], list) else 0
-                    if "groups" in response:
-                        conversation_count += len(response["groups"]) if isinstance(response["groups"], list) else 0
-                    if "mpims" in response:
-                        conversation_count += len(response["mpims"]) if isinstance(response["mpims"], list) else 0
-                    if "self" in response:
-                        self_data = response["self"]
-                        if "channels" in self_data:
-                            conversation_count += len(self_data["channels"]) if isinstance(self_data["channels"], list) else 0
-                        if "ims" in self_data:
-                            conversation_count += len(self_data["ims"]) if isinstance(self_data["ims"], list) else 0
-                        if "groups" in self_data:
-                            conversation_count += len(self_data["groups"]) if isinstance(self_data["groups"], list) else 0
-                        if "mpims" in self_data:
-                            conversation_count += len(self_data["mpims"]) if isinstance(self_data["mpims"], list) else 0
-                    print(f"    📋 client.boot has {conversation_count} total conversations")
-                
-                # Look for responses that might contain many conversations
-                total_conversations = 0
-                if "channels" in response:
-                    total_conversations += len(response["channels"]) if isinstance(response["channels"], list) else 0
-                if "ims" in response:
-                    total_conversations += len(response["ims"]) if isinstance(response["ims"], list) else 0
-                if "groups" in response:
-                    total_conversations += len(response["groups"]) if isinstance(response["groups"], list) else 0
-                if "mpims" in response:
-                    total_conversations += len(response["mpims"]) if isinstance(response["mpims"], list) else 0
-                if "conversations" in response:
-                    total_conversations += len(response["conversations"]) if isinstance(response["conversations"], list) else 0
-                
-                if total_conversations > 5:  # More than 5 conversations suggests a full list
-                    large_conversation_responses.append((url, total_conversations))
-                    print(f"  🎯 Found API call with {total_conversations} conversations: {url}")
-        
-        if client_boot_responses:
-            print(f"  🎯 Found {len(client_boot_responses)} client.boot calls (most likely to have all conversations)")
-        
-        if large_conversation_responses:
-            print(f"  📋 Found {len(large_conversation_responses)} API calls with substantial conversation data")
-        else:
-            print("  ⚠️  No API calls found with substantial conversation data")
-        
-        # Parse intercepted API responses for conversations
-        conversations = {}
-        
-        for data in self.intercepted_data:
-            url = data.get("url", "")
-            response = data.get("response", {})
+            # Also check markdown_exports directory
+            markdown_exports_dir = os.path.join(os.path.dirname(__file__), 'markdown_exports')
+            if os.path.exists(markdown_exports_dir):
+                for item in os.listdir(markdown_exports_dir):
+                    if item.endswith('.md'):
+                        # Remove .md extension
+                        name = item[:-3]
+                        if name.startswith('sb-'):
+                            channels[name] = f"#{name}"
+                        elif name.startswith('dm_'):
+                            channels[name] = f"@{name}"
             
-            # Check if this is a successful API response
-            if response and isinstance(response, dict):
-                # Look for conversations in various response formats
-                conversations_data = []
-                
-                # Look for conversations in different response structures
-                if response.get("ok", False):  # Successful responses
-                    
-                    if "channels" in response:
-                        conversations_data.extend(response["channels"])
-                    
-                    if "conversations" in response:
-                        conversations_data.extend(response["conversations"])
-                    
-                    if "ims" in response:
-                        conversations_data.extend(response["ims"])
-                    
-                    if "groups" in response:
-                        conversations_data.extend(response["groups"])
-                    
-                    if "mpims" in response:
-                        conversations_data.extend(response["mpims"])
-                    
-                    if "self" in response:
-                        self_data = response["self"]
-                        if "channels" in self_data:
-                            conversations_data.extend(self_data["channels"])
-                        if "conversations" in self_data:
-                            conversations_data.extend(self_data["conversations"])
-                        if "ims" in self_data:
-                            conversations_data.extend(self_data["ims"])
-                        if "groups" in self_data:
-                            conversations_data.extend(self_data["groups"])
-                        if "mpims" in self_data:
-                            conversations_data.extend(self_data["mpims"])
-                
-                # Special handling for client.boot responses (try even without "ok" status)
-                if "client.boot" in url:
-                    print(f"  🎯 Processing client.boot response from {url}")
-                    
-                    # Look for conversations in all possible locations
-                    conversation_locations = [
-                        response.get("channels", []),
-                        response.get("conversations", []),
-                        response.get("ims", []),
-                        response.get("groups", []),
-                        response.get("mpims", []),
-                        response.get("self", {}).get("channels", []),
-                        response.get("self", {}).get("conversations", []),
-                        response.get("self", {}).get("ims", []),
-                        response.get("self", {}).get("groups", []),
-                        response.get("self", {}).get("mpims", []),
-                        response.get("data", {}).get("channels", []),
-                        response.get("data", {}).get("conversations", []),
-                        response.get("team", {}).get("channels", []),
-                        response.get("workspace", {}).get("channels", [])
-                    ]
-                    
-                    for location in conversation_locations:
-                        if isinstance(location, list):
-                            conversations_data.extend(location)
-                    
-                    # Also check for conversation data as objects with conversation IDs as keys
-                    for key, value in response.items():
-                        if isinstance(value, dict):
-                            for sub_key, sub_value in value.items():
-                                if isinstance(sub_key, str) and (sub_key.startswith('C') or sub_key.startswith('D') or sub_key.startswith('G')) and len(sub_key) > 5:
-                                    if isinstance(sub_value, dict):
-                                        conversations_data.append({
-                                            "id": sub_key,
-                                            "name": sub_value.get("name", sub_key),
-                                            "is_channel": sub_key.startswith('C'),
-                                            "is_group": sub_key.startswith('G'),
-                                            "is_im": sub_key.startswith('D'),
-                                            "is_mpim": sub_value.get("is_mpim", False),
-                                            "is_private": sub_value.get("is_private", False),
-                                            "num_members": sub_value.get("num_members", 0),
-                                            "members": sub_value.get("members", [])
-                                        })
-                
-                # Process all found conversation data
-                for conv_data in conversations_data:
-                    if isinstance(conv_data, dict):
-                        conv_info = self._parse_conversation_data(conv_data)
-                        if conv_info:
-                            conversations[conv_info.name] = conv_info
-                            print(f"  📌 Found conversation: {conv_info}")
-        
-        # If no conversations found, show what API calls we DID capture AND their content
-        if not conversations:
-            print("🔍 No conversations found. Analyzing captured API calls for hidden conversation data...")
-            for i, data in enumerate(self.intercepted_data[-10:]):  # Show last 10
+            # Extract channels from API data - enhanced extraction
+            for data in self.intercepted_data:
                 url = data.get("url", "")
                 response = data.get("response", {})
                 
-                if "api" in url:
-                    print(f"  {i+1}. {url}")
-                    
-                    # Look for any conversation-related data in the response
-                    if response and isinstance(response, dict):
-                        # Check for conversations in various possible locations
-                        conversation_locations = [
-                            "channels", "channel", "conversations", "conversation",
-                            "ims", "im", "groups", "group", "mpims", "mpim",
-                            "prefs", "preferences", "team", "workspace", "data", "results"
-                        ]
-                        
-                        for location in conversation_locations:
-                            if location in response:
-                                content = response[location]
-                                if isinstance(content, dict):
-                                    # Look for conversation-like data in dictionaries
-                                    for key, value in content.items():
-                                        if key and isinstance(key, str) and (key.startswith('C') or key.startswith('D') or key.startswith('G')) and len(key) > 5:
-                                            print(f"    🔍 Found conversation-like key: {key}")
-                                            if isinstance(value, dict):
-                                                conv_info = self._parse_conversation_data({
-                                                    "id": key,
-                                                    "name": value.get("name", key),
-                                                    **value
-                                                })
-                                                if conv_info:
-                                                    conversations[conv_info.name] = conv_info
-                                                    print(f"    📌 Found conversation: {conv_info}")
-                                elif isinstance(content, list) and content:
-                                    # Look for conversation-like data in lists
-                                    for item in content[:10]:  # Check first 10 items
-                                        if isinstance(item, dict) and "id" in item:
-                                            conv_info = self._parse_conversation_data(item)
-                                            if conv_info:
-                                                conversations[conv_info.name] = conv_info
-                                                print(f"    📌 Found conversation: {conv_info}")
+                if not isinstance(response, dict):
+                    continue
+                
+                # Check search.modules.channels - this might contain channel names
+                if "search.modules.channels" in url and response.get("ok"):
+                    print(f"🔍 Processing search.modules.channels response...")
+                    if "channels" in response:
+                        search_channels = response["channels"]
+                        if isinstance(search_channels, list):
+                            for ch in search_channels:
+                                if isinstance(ch, dict):
+                                    ch_id = ch.get("id", "")
+                                    ch_name = ch.get("name", "")
+                                    if ch_id and ch_name:
+                                        channels[ch_id] = f"#{ch_name}"
+                                        print(f"  Found search channel: {ch_id} -> #{ch_name}")
+                
+                # Check client.counts response - it showed 4 channels
+                if "client.counts" in url and response.get("ok"):
+                    print(f"🔍 Processing client.counts response...")
+                    if "channels" in response:
+                        counts_channels = response["channels"]
+                        if isinstance(counts_channels, dict):
+                            for ch_id, ch_data in counts_channels.items():
+                                if isinstance(ch_data, dict):
+                                    ch_name = ch_data.get("name", "")
+                                    if ch_name:
+                                        channels[ch_id] = f"#{ch_name}"
+                                        print(f"  Found counts channel: {ch_id} -> #{ch_name}")
+                                    else:
+                                        # Try other fields that might contain the name
+                                        for field in ["display_name", "real_name", "canonical_name"]:
+                                            if field in ch_data:
+                                                ch_name = ch_data[field]
+                                                if ch_name:
+                                                    channels[ch_id] = f"#{ch_name}"
+                                                    print(f"  Found counts channel ({field}): {ch_id} -> #{ch_name}")
+                                                    break
+                        elif isinstance(counts_channels, list):
+                            for ch in counts_channels:
+                                if isinstance(ch, dict):
+                                    ch_id = ch.get("id", "")
+                                    ch_name = ch.get("name", "")
+                                    if ch_id and ch_name:
+                                        channels[ch_id] = f"#{ch_name}"
+                                        print(f"  Found counts channel (list): {ch_id} -> #{ch_name}")
+                
+                # Check client.userBoot and client.counts for comprehensive channel data
+                if "client.userBoot" in url and response.get("ok"):
+                    print(f"🔍 Processing client.userBoot response...")
+                    # Look for channels in various structures
+                    for key in ["channels", "ims", "groups", "team"]:
+                        if key in response:
+                            data_section = response[key]
+                            if isinstance(data_section, dict):
+                                if key == "team" and "channels" in data_section:
+                                    # Team channels structure
+                                    team_channels = data_section["channels"]
+                                    if isinstance(team_channels, dict):
+                                        for ch_id, ch_data in team_channels.items():
+                                            if isinstance(ch_data, dict):
+                                                ch_name = ch_data.get("name", "")
+                                                if ch_name:
+                                                    channels[ch_id] = f"#{ch_name}"
+                                                    print(f"  Found team channel: {ch_id} -> #{ch_name}")
+                                elif key == "channels":
+                                    # Direct channels structure
+                                    if isinstance(data_section, dict):
+                                        for ch_id, ch_data in data_section.items():
+                                            if isinstance(ch_data, dict):
+                                                ch_name = ch_data.get("name", "")
+                                                if ch_name:
+                                                    channels[ch_id] = f"#{ch_name}"
+                                                    print(f"  Found direct channel: {ch_id} -> #{ch_name}")
+                                    elif isinstance(data_section, list):
+                                        for ch_data in data_section:
+                                            if isinstance(ch_data, dict):
+                                                ch_id = ch_data.get("id", "")
+                                                ch_name = ch_data.get("name", "")
+                                                if ch_id and ch_name:
+                                                    channels[ch_id] = f"#{ch_name}"
+                                                    print(f"  Found list channel: {ch_id} -> #{ch_name}")
+                
+                # Check team.info response - might contain channel information
+                if "team.info" in url and response.get("ok"):
+                    print(f"🔍 Processing team.info response...")
+                    if "team" in response:
+                        team_data = response["team"]
+                        if isinstance(team_data, dict) and "channels" in team_data:
+                            team_channels = team_data["channels"]
+                            if isinstance(team_channels, dict):
+                                for ch_id, ch_data in team_channels.items():
+                                    if isinstance(ch_data, dict):
+                                        ch_name = ch_data.get("name", "")
+                                        if ch_name:
+                                            channels[ch_id] = f"#{ch_name}"
+                                            print(f"  Found team.info channel: {ch_id} -> #{ch_name}")
+                
+                # Check conversations.list and channels.list
+                if any(endpoint in url for endpoint in ["conversations.list", "channels.list"]) and response.get("ok"):
+                    for channel in response.get("channels", []):
+                        if isinstance(channel, dict):
+                            channel_id = channel.get("id")
+                            channel_name = channel.get("name")
+                            if channel_id and channel_name:
+                                channels[channel_id] = f"#{channel_name}"
+                                print(f"  Found API channel: {channel_id} -> #{channel_name}")
+                
+                # Check for channel data in client.boot
+                if "client.boot" in url and response.get("ok"):
+                    team = response.get("team", {})
+                    if isinstance(team, dict):
+                        team_channels = team.get("channels", {})
+                        if isinstance(team_channels, dict):
+                            for channel_id, channel_data in team_channels.items():
+                                if isinstance(channel_data, dict):
+                                    channel_name = channel_data.get("name")
+                                    if channel_name:
+                                        channels[channel_id] = f"#{channel_name}"
+                                        print(f"  Found boot channel: {channel_id} -> #{channel_name}")
+                
+                # Check individual conversations in responses
+                if "conversations" in response and isinstance(response["conversations"], list):
+                    for conv in response["conversations"]:
+                        if isinstance(conv, dict):
+                            conv_id = conv.get("id")
+                            conv_name = conv.get("name")
+                            if conv_id and conv_name:
+                                channels[conv_id] = f"#{conv_name}"
+                                print(f"  Found conv channel: {conv_id} -> #{conv_name}")
+                
+            print(f"✅ Found {len(channels)} channels")
             
-            print(f"🔍 After analyzing responses, found {len(conversations)} conversations")
+        except Exception as e:
+            print(f"❌ Error loading channels: {e}")
+            
+        return channels
+    
+    async def get_conversations(self) -> Dict[str, ConversationInfo]:
+        """Get all conversations (channels, DMs, group DMs) with proper ConversationInfo objects."""
+        print("🔍 Getting conversations...")
         
-        # Merge DOM conversations with API conversations
-        for name, channel_id in dom_channels.items():
-            if name not in conversations:
-                # Create a basic conversation info for DOM-found channels
-                conv_info = ConversationInfo(
-                    name=name,
-                    id=channel_id,
-                    conversation_type=ConversationType.CHANNEL  # Assume channel for DOM-found items
-                )
-                conversations[name] = conv_info
+        # Get user and channel mappings for better naming
+        users = await self.get_user_list()
+        channels = await self.get_channel_list()
         
-        # Print summary by conversation type
-        self._print_conversation_summary(conversations)
+        # Store mappings for use in parsing
+        self.user_mappings = users
+        self.channel_mappings = channels
         
-        print(f"✅ Found {len(conversations)} conversations total")
+        # Navigate to channels page to trigger channel list API calls
+        try:
+            print("🔍 Navigating to channels page to get channel data...")
+            await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}/browse-channels", timeout=10000)
+            await self.page.wait_for_timeout(3000)
+            
+            # Also try the main channels view
+            await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}/channels", timeout=10000)
+            await self.page.wait_for_timeout(3000)
+            
+            # Refresh channel mappings after navigation
+            print("🔍 Refreshing channel mappings after navigation...")
+            channels = await self.get_channel_list()
+            self.channel_mappings = channels
+            
+        except Exception as e:
+            print(f"⚠️  Error navigating to channels page: {e}")
+        
+        conversations = {}
+        
+        # Debug: Print some API response data
+        print(f"🔍 Debug: Found {len(self.intercepted_data)} intercepted API calls")
+        for data in self.intercepted_data[-10:]:  # Show last 10 calls
+            url = data.get("url", "")
+            if "client.userBoot" in url or "client.counts" in url or "conversations" in url:
+                print(f"  API: {url}")
+                response = data.get("response", {})
+                if isinstance(response, dict):
+                    print(f"    Keys: {list(response.keys())}")
+                    if "channels" in response:
+                        print(f"    Channels found: {len(response['channels']) if isinstance(response['channels'], list) else 'dict'}")
+        
+        # Extract conversations from intercepted data
+        for data in self.intercepted_data:
+            url = data.get("url", "")
+            response = data.get("response", {})
+            
+            if not isinstance(response, dict):
+                continue
+                
+            # Check various API endpoints that might contain conversation data
+            conversation_endpoints = [
+                "conversations.list",
+                "conversations.info", 
+                "channels.list",
+                "channels.info",
+                "im.list",
+                "groups.list",
+                "client.counts",
+                "client.boot",
+                "client.userBoot",
+                "search.modules.people",
+                "conversations.genericInfo"
+            ]
+            
+            # Extract conversations from different API responses
+            if any(endpoint in url for endpoint in conversation_endpoints) and response.get("ok"):
+                # Handle conversations.list, channels.list, etc.
+                for list_key in ["conversations", "channels", "ims", "groups"]:
+                    if list_key in response and isinstance(response[list_key], list):
+                        for conv_data in response[list_key]:
+                            if isinstance(conv_data, dict):
+                                conv_info = self._parse_conversation_data(conv_data)
+                                if conv_info:
+                                    conversations[conv_info.name] = conv_info
+                
+                # Handle client.boot and client.userBoot responses
+                if "client.boot" in url or "client.userBoot" in url:
+                    # Look for conversation data in various nested structures
+                    for key in ["channels", "ims", "groups", "conversations"]:
+                        if key in response:
+                            conv_data = response[key]
+                            if isinstance(conv_data, dict):
+                                # Handle dict format (user_id: data)
+                                for conv_id, conv_info in conv_data.items():
+                                    if isinstance(conv_info, dict):
+                                        conv_info["id"] = conv_id
+                                        parsed_conv = self._parse_conversation_data(conv_info)
+                                        if parsed_conv:
+                                            conversations[parsed_conv.name] = parsed_conv
+                            elif isinstance(conv_data, list):
+                                # Handle list format
+                                for conv_info in conv_data:
+                                    if isinstance(conv_info, dict):
+                                        parsed_conv = self._parse_conversation_data(conv_info)
+                                        if parsed_conv:
+                                            conversations[parsed_conv.name] = parsed_conv
+                
+                # Handle im.list specifically
+                if "im.list" in url and "ims" in response:
+                    for im_data in response["ims"]:
+                        if isinstance(im_data, dict):
+                            conv_info = self._parse_conversation_data(im_data)
+                            if conv_info:
+                                conversations[conv_info.name] = conv_info
+        
+        # Create fallback conversations for known channels from processed directories
+        processed_dir = os.path.join(os.path.dirname(__file__), 'processed')
+        if os.path.exists(processed_dir):
+            for item in os.listdir(processed_dir):
+                item_path = os.path.join(processed_dir, item)
+                if os.path.isdir(item_path) and item not in conversations:
+                    # Create a fallback ConversationInfo
+                    if item.startswith('sb-'):
+                        conv_type = ConversationType.CHANNEL
+                        name = f"#{item}"
+                    elif item.startswith('dm_'):
+                        conv_type = ConversationType.DM
+                        name = f"@{item}"
+                    else:
+                        conv_type = ConversationType.UNKNOWN
+                        name = item
+                    
+                    conversations[name] = ConversationInfo(
+                        name=name,
+                        id=item,
+                        conversation_type=conv_type,
+                        is_private=False,
+                        member_count=0,
+                        members=[]
+                    )
+        
+        print(f"✅ Found {len(conversations)} conversations")
         return conversations
     
     async def extract_channels_from_dom(self) -> Dict[str, str]:
@@ -1162,87 +929,644 @@ class SlackBrowser:
         
         return channels
     
-    async def fetch_conversation_history(self, channel_id: str, oldest_ts: float = 0) -> List[Dict[str, Any]]:
-        """Fetch conversation history for a channel."""
+    async def _dismiss_modals(self):
+        """Dismiss any modal dialogs that might interfere with scrolling."""
         if not self.page:
+            return
+        
+        try:
+            # Common modal selectors to try closing
+            modal_selectors = [
+                # Channel overview modal
+                '[data-qa="channel_overview_modal"] .c-button--close',
+                '[data-qa="channel_overview_modal"] .c-icon--times',
+                '[data-qa="channel_overview_modal"] [aria-label="Close"]',
+                
+                # Generic modal close buttons
+                '.c-modal__close',
+                '.c-modal__close_button',
+                '.c-dialog__close',
+                '.c-dialog__close_button',
+                
+                # Slack-specific modal patterns
+                '.c-sk-modal__close',
+                '.c-sk-modal__close_button',
+                '[data-qa="modal_close_button"]',
+                '[data-qa="close_modal"]',
+                '[data-qa="dialog_close"]',
+                
+                # Generic close icons
+                '.c-icon--times',
+                '.c-icon--close',
+                '[aria-label="Close"]',
+                '[aria-label="Close dialog"]',
+                '[aria-label="Close modal"]',
+                
+                # Overlay/backdrop elements (click to close)
+                '.c-modal__backdrop',
+                '.c-sk-modal__backdrop',
+                '.c-dialog__backdrop',
+                
+                # Specific known modals
+                '[data-qa="channel_browser_modal"] .c-button--close',
+                '[data-qa="member_profile_modal"] .c-button--close',
+                '[data-qa="thread_view_modal"] .c-button--close',
+            ]
+            
+            for selector in modal_selectors:
+                try:
+                    elements = await self.page.query_selector_all(selector)
+                    for element in elements:
+                        is_visible = await element.is_visible()
+                        if is_visible:
+                            print(f"🔍 Found modal element, closing: {selector}")
+                            await element.click()
+                            await self.page.wait_for_timeout(500)
+                            return True  # Found and closed a modal
+                except Exception as e:
+                    # Some selectors might not work, that's okay
+                    continue
+            
+            # Try pressing Escape key as a fallback
+            await self.page.keyboard.press("Escape")
+            await self.page.wait_for_timeout(300)
+            
+        except Exception as e:
+            print(f"⚠️  Error dismissing modals: {e}")
+        
+        return False
+
+    # ------------------------------------------------------------------ #
+    # Direct Web API fallback                                            #
+    # ------------------------------------------------------------------ #
+    def _fetch_history_via_api_sync(self, channel_id: str, oldest_ts: float = 0) -> List[Dict[str, Any]]:
+        """Blocking helper that paginates conversations.history using the
+        fresh token & cookies captured during interception. Mirrors the
+        old fetch_cookie_md.py flow so we aren't dependent on UI scrolling."""
+        import requests, time
+
+        # Require both token and cookies
+        if not (self.credentials.token and self.credentials.cookies):
             return []
-        
-        print(f"📥 Fetching history for channel {channel_id}...")
-        
-        # Clear previous data
-        self.intercepted_data.clear()
-        
-        # Navigate to the channel to trigger history loading
-        channel_url = f"{WORKSPACE_URL}/archives/{channel_id}"
-        await self.page.goto(channel_url)
-        
-        # Wait for messages to load
-        await self.page.wait_for_timeout(5000)
-        
-        # Scroll up to load more history if needed
-        for _ in range(3):
-            await self.page.keyboard.press("PageUp")
-            await self.page.wait_for_timeout(1000)
-        
-        # Extract messages from intercepted API calls
-        all_messages = []
-        for data in self.intercepted_data:
-            if "conversations.history" in data["url"] or "conversations.replies" in data["url"]:
-                response = data.get("response", {})
-                if response.get("ok"):
-                    messages = response.get("messages", [])
-                    for msg in messages:
-                        if float(msg.get("ts", "0")) > oldest_ts:
-                            all_messages.append(msg)
-        
-        # Remove duplicates and sort by timestamp
-        seen_ts = set()
-        unique_messages = []
-        for msg in all_messages:
-            ts = msg.get("ts")
-            if ts not in seen_ts:
-                seen_ts.add(ts)
-                unique_messages.append(msg)
-        
-        unique_messages.sort(key=lambda x: float(x.get("ts", "0")))
-        
-        print(f"✅ Found {len(unique_messages)} new messages")
-        return unique_messages
+
+        # Build headers & multipart body (Slack still accepts form-data)
+        boundary = "----WebKitFormBoundary" + hex(int(time.time()*1000))[2:]
+        cookie_header = "; ".join(f"{k}={v}" for k, v in self.credentials.cookies.items())
+        headers = {
+            "cookie": cookie_header,
+            "content-type": f"multipart/form-data; boundary={boundary}",
+            "user-agent": "Mozilla/5.0",
+            "accept": "*/*",
+        }
+
+        def _multipart(payload: dict) -> str:
+            parts = []
+            for k, v in payload.items():
+                parts.append(f"--{boundary}")
+                parts.append(f'Content-Disposition: form-data; name="{k}"')
+                parts.append("")
+                parts.append(str(v))
+            parts.append(f"--{boundary}--")
+            return "\r\n".join(parts)
+
+        domain = WORKSPACE_URL.split("//")[-1]
+        url = f"https://{domain}/api/conversations.history"
+
+        messages: List[Dict[str, Any]] = []
+        cursor = None
+        while True:
+            payload: Dict[str, Any] = {
+                "token": self.credentials.token,
+                "channel": channel_id,
+                "limit": 1000,
+                "oldest": oldest_ts,
+                "inclusive": False,
+            }
+            if cursor:
+                payload["cursor"] = cursor
+            resp = requests.post(url, headers=headers, data=_multipart(payload), timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            if not data.get("ok"):
+                print(f"⚠️  API error: {data.get('error')}")
+                break
+            messages.extend(data.get("messages", []))
+            cursor = data.get("response_metadata", {}).get("next_cursor")
+            if not cursor:
+                break
+            time.sleep(0.3)
+
+        # Sort chronologically
+        messages.sort(key=lambda m: float(m.get("ts", 0)))
+        return messages
+
+    async def fetch_history_via_api(self, channel_id: str, oldest_ts: float = 0) -> List[Dict[str, Any]]:
+        """Async wrapper around the sync helper so we don't block Playwright."""
+        import asyncio
+        return await asyncio.to_thread(self._fetch_history_via_api_sync, channel_id, oldest_ts)
+
+    async def fetch_conversation_history(self, channel_id: str, oldest_ts: float = 0) -> List[Dict[str, Any]]:
+        """Fetch conversation history – prefers Web API pagination, falls back to UI scroll."""
+        # 1) Try pure Web-API pagination first (fast & reliable)
+        if self.credentials.token and self.credentials.cookies:
+            try:
+                api_msgs = await self.fetch_history_via_api(channel_id, oldest_ts)
+                if api_msgs:
+                    print(f"✅ Retrieved {len(api_msgs)} messages via direct API")
+                    return api_msgs
+                else:
+                    print("⚠️  API returned no messages – falling back to UI scroll…")
+            except Exception as e:
+                print(f"⚠️  API pagination failed ({e}) – falling back to UI scroll…")
+
+        # 2) UI scroll fallback (original behaviour)
+        if not self.page:
+            print("❌ No page available for UI scroll fallback")
+            return []
+
+        print(f"📥 Fetching history for channel {channel_id} via UI scroll…")
+
+        try:
+            # Do NOT clear earlier intercepted data – we keep user/channel maps
+            start_intercept_index = len(self.intercepted_data)
+            
+            # Navigate to the channel to trigger history loading
+            channel_url = f"{WORKSPACE_URL}/archives/{channel_id}"
+            
+            try:
+                await self.page.goto(channel_url, timeout=30000)
+            except Exception as e:
+                print(f"⚠️  Failed to navigate to channel: {e}")
+                # Try alternative URL format
+                try:
+                    alt_url = f"https://app.slack.com/client/{TEAM_ID}/{channel_id}"
+                    await self.page.goto(alt_url, timeout=30000)
+                    print("✅ Successfully navigated using alternative URL")
+                except Exception as e2:
+                    print(f"❌ Failed to navigate with alternative URL: {e2}")
+                    return []
+            
+            # Wait for initial messages to load
+            await self.page.wait_for_timeout(3000)
+            
+            # Dismiss any modals that might interfere with scrolling
+            print("🔍 Checking for and dismissing any modal dialogs...")
+            await self._dismiss_modals()
+            
+            # Improved scrolling to load more history
+            print("🔄 Scrolling to load more message history...")
+            
+            # Try to scroll to the very top to load all history
+            previous_message_count = 0
+            max_scroll_attempts = 50  # Increased from 10 to 50
+            no_new_messages_count = 0
+            
+            print(f"🔄 Starting aggressive scrolling (up to {max_scroll_attempts} attempts)")
+            
+            for attempt in range(max_scroll_attempts):
+                try:
+                    # Every few attempts, dismiss any launch screens or popups
+                    if attempt % 3 == 0:  # Every 3rd attempt
+                        await self._bypass_launch_screen()
+                        await self._dismiss_modals()
+                    
+                    # Get current message count from intercepted data
+                    current_message_count = 0
+                    earliest_timestamp = None
+                    
+                    for data in self.intercepted_data:
+                        if "conversations.history" in data["url"]:
+                            response = data.get("response", {})
+                            if response.get("ok"):
+                                messages = response.get("messages", [])
+                                current_message_count += len(messages)
+                                
+                                # Track earliest timestamp to detect if we've reached the beginning
+                                for msg in messages:
+                                    msg_ts = float(msg.get("ts", "0"))
+                                    if earliest_timestamp is None or msg_ts < earliest_timestamp:
+                                        earliest_timestamp = msg_ts
+                    
+                    # Check if we've stopped loading new messages
+                    if current_message_count == previous_message_count:
+                        no_new_messages_count += 1
+                        print(f"🔍 No new messages loaded in attempt {attempt + 1} (count: {no_new_messages_count})")
+                        
+                        # Only stop if we've had no new messages for 8 attempts (increased from 3)
+                        if no_new_messages_count >= 8:
+                            print("✅ Reached the beginning of channel history (no new messages for 8 attempts)")
+                            break
+                            
+                        # Try more aggressive scrolling methods when no new messages
+                        if attempt > 5:
+                            # First dismiss any modals that might be blocking
+                            await self._dismiss_modals()
+                            
+                            # Try multiple Page Up presses
+                            for i in range(5):
+                                await self.page.keyboard.press("PageUp")
+                                await self.page.wait_for_timeout(200)
+                            
+                            # Try pressing Home key to go to the beginning
+                            await self.page.keyboard.press("Home")
+                            await self.page.wait_for_timeout(500)
+                            
+                            # Try Ctrl+Home as alternative
+                            await self.page.keyboard.press("Control+Home")
+                            await self.page.wait_for_timeout(500)
+                            
+                            # Try scrolling to absolute top
+                            await self.page.evaluate("window.scrollTo(0, 0)")
+                            await self.page.wait_for_timeout(500)
+                            
+                            # Try clicking at the very top of the message area
+                            try:
+                                await self.page.click('[data-qa="message_pane"]', position={'x': 100, 'y': 10})
+                                await self.page.wait_for_timeout(500)
+                            except Exception:
+                                pass
+                                
+                            # Try clicking on the channel name to refresh
+                            try:
+                                await self.page.click('[data-qa="channel_name"]')
+                                await self.page.wait_for_timeout(1000)
+                            except Exception:
+                                pass
+                    else:
+                        no_new_messages_count = 0
+                        new_messages = current_message_count - previous_message_count
+                        print(f"🔍 Loaded {new_messages} new messages (total: {current_message_count})")
+                        
+                        # Reset no new messages counter since we found new messages
+                        no_new_messages_count = 0
+                    
+                    # Use multiple scrolling methods for better coverage
+                    scroll_methods = [
+                        lambda: self.page.keyboard.press("PageUp"),
+                        lambda: self.page.keyboard.press("Control+Home"),
+                        lambda: self.page.keyboard.press("Home"),
+                        lambda: self.page.mouse.wheel(0, -2000),
+                        lambda: self.page.evaluate("window.scrollTo(0, 0)"),
+                        lambda: self.page.evaluate("document.querySelector('[data-qa=\"message_pane\"]')?.scrollTo(0, 0)"),
+                        lambda: self.page.evaluate("document.querySelector('.c-message_list')?.scrollTo(0, 0)"),
+                        lambda: self.page.evaluate("document.querySelector('.c-message_list__scrollbar')?.scrollTo(0, 0)"),
+                        lambda: self.page.evaluate("document.querySelector('.c-message_list__scrollbar_hider')?.scrollTo(0, 0)"),
+                    ]
+                    
+                    # Use different scrolling methods on different attempts
+                    method_index = attempt % len(scroll_methods)
+                    try:
+                        await scroll_methods[method_index]()
+                        await self.page.wait_for_timeout(800)  # Increased wait time
+                    except Exception as e:
+                        print(f"⚠️  Scrolling method {method_index} failed: {e}")
+                        # Fallback to basic PageUp
+                        await self.page.keyboard.press("PageUp")
+                        await self.page.wait_for_timeout(800)
+                    
+                    # Every 10 attempts, try to refresh the channel view to trigger more API calls
+                    if attempt > 0 and attempt % 10 == 0:
+                        print(f"🔄 Refreshing channel view (attempt {attempt})")
+                        # Dismiss modals before refreshing
+                        await self._dismiss_modals()
+                        current_url = self.page.url
+                        await self.page.goto(current_url)
+                        await self.page.wait_for_timeout(3000)
+                        # Dismiss modals after refreshing
+                        await self._dismiss_modals()
+                    
+                    previous_message_count = current_message_count
+                    
+                    # If we've reached the oldest timestamp, stop scrolling
+                    if oldest_ts > 0:
+                        oldest_message_found = False
+                        for data in self.intercepted_data:
+                            if "conversations.history" in data["url"]:
+                                response = data.get("response", {})
+                                if response.get("ok"):
+                                    messages = response.get("messages", [])
+                                    for msg in messages:
+                                        if float(msg.get("ts", "0")) <= oldest_ts:
+                                            oldest_message_found = True
+                                            break
+                                    if oldest_message_found:
+                                        break
+                        if oldest_message_found:
+                            print(f"✅ Reached oldest timestamp target ({oldest_ts})")
+                            break
+                    
+                    # Enhanced check for reaching the beginning
+                    if earliest_timestamp and attempt > 15:
+                        # Calculate how old the earliest message is
+                        import time
+                        current_time = time.time()
+                        message_age_days = (current_time - earliest_timestamp) / (24 * 60 * 60)
+                        print(f"🔍 Earliest message is {message_age_days:.1f} days old")
+                        
+                        # If messages are very old, we might be at the beginning
+                        if message_age_days > 30:  # More than 30 days old
+                            print("✅ Reached old messages, likely near channel beginning")
+                            # But continue for a few more attempts to be sure
+                            if attempt > 25:
+                                print("✅ Stopping - reached very old messages")
+                                break
+                
+                except Exception as e:
+                    print(f"⚠️  Error during scroll attempt {attempt + 1}: {e}")
+                    # Try to dismiss modals in case of error
+                    await self._dismiss_modals()
+                    # Continue with next attempt
+                    continue
+            
+            print(f"🔄 Completed {min(attempt + 1, max_scroll_attempts)} scroll attempts")
+            
+            # Final modal dismissal before thread extraction
+            await self._dismiss_modals()
+            
+            # Final wait for any remaining API calls
+            await self.page.wait_for_timeout(5000)  # Increased from 2000 to 5000
+            
+            # Try to click on threads to load replies
+            try:
+                print("🔄 Clicking on threads to load replies...")
+                
+                # First, let's inspect the page to find thread elements
+                try:
+                    # Try to get all elements that might be thread indicators
+                    all_thread_elements = await self.page.query_selector_all('*[data-qa*="thread"]')
+                    print(f"🔍 Found {len(all_thread_elements)} elements with 'thread' in data-qa")
+                    
+                    # Try to find elements with reply text
+                    reply_elements = await self.page.query_selector_all('*:has-text("replies")')
+                    print(f"🔍 Found {len(reply_elements)} elements containing 'replies'")
+                    
+                    # Try to find elements with reply count
+                    reply_count_elements = await self.page.query_selector_all('*:has-text("reply")')
+                    print(f"🔍 Found {len(reply_count_elements)} elements containing 'reply'")
+                    
+                except Exception as e:
+                    print(f"⚠️  Error inspecting page: {e}")
+                
+                # Try multiple selectors for thread buttons
+                selectors_to_try = [
+                    '[data-qa="thread_reply_bar"]',
+                    '[data-qa="thread-reply-bar"]',
+                    '[data-qa="message-thread-reply-count"]',
+                    '.c-message__thread_reply_indicator',
+                    '.c-message__thread_reply_indicator_text',
+                    '.c-message__thread_reply_bar',
+                    '.c-message__thread_reply_count',
+                    '.c-message__thread_reply_link',
+                    '.c-message_kit__thread_reply_indicator',
+                    '.c-message_kit__thread_reply_bar',
+                    '.c-button--thread-reply',
+                    '[aria-label*="replies"]',
+                    '[aria-label*="reply"]',
+                    'button:has-text("replies")',
+                    'button:has-text("reply")',
+                    'a:has-text("replies")',
+                    'a:has-text("reply")',
+                    '.c-message__thread_reply_count:has-text("replies")',
+                    '.c-message__thread_reply_count:has-text("reply")',
+                    '[data-qa*="reply"]',
+                    '[data-qa*="thread"]',
+                    '.c-message__thread_reply',
+                    '.c-message_kit__thread_reply',
+                    '.c-message__reply_count',
+                    '.c-message_kit__reply_count',
+                    '.c-message__link--thread',
+                    '.c-message_kit__link--thread',
+                    '.c-message__thread_actions',
+                    '.c-message_kit__thread_actions'
+                ]
+                
+                thread_buttons = []
+                for selector in selectors_to_try:
+                    try:
+                        elements = await self.page.query_selector_all(selector)
+                        if elements:
+                            print(f"🔍 Found {len(elements)} elements with selector: {selector}")
+                            thread_buttons.extend(elements)
+                    except Exception as e:
+                        # Some selectors might not work, that's okay
+                        continue
+                
+                # Remove duplicates
+                unique_buttons = []
+                for button in thread_buttons:
+                    if button not in unique_buttons:
+                        unique_buttons.append(button)
+                
+                print(f"🔍 Found {len(unique_buttons)} unique thread buttons")
+                
+                for i, button in enumerate(unique_buttons[:5]):  # Limit to first 5 threads
+                    try:
+                        print(f"🔄 Clicking thread {i+1}...")
+                        
+                        # Try to scroll the button into view first
+                        try:
+                            await button.scroll_into_view_if_needed()
+                            await self.page.wait_for_timeout(500)
+                        except Exception:
+                            pass
+                        
+                        # Check if button is visible and clickable
+                        is_visible = await button.is_visible()
+                        print(f"🔍 Button {i+1} visible: {is_visible}")
+                        
+                        if is_visible:
+                            await button.click()
+                            await self.page.wait_for_timeout(2000)  # Wait for replies to load
+                            
+                            # Wait for the thread panel to load
+                            await self.page.wait_for_timeout(1000)
+                            
+                            # Scroll within the thread to load more replies
+                            try:
+                                # Try multiple selectors for thread panels
+                                thread_panel_selectors = [
+                                    '[data-qa="thread-messages-scroller"]',
+                                    '.c-message_list__thread_messages',
+                                    '.c-message_list__thread_view',
+                                    '.c-flexpane__content_container',
+                                    '.c-flexpane__content',
+                                    '.c-message_list__scrollbar',
+                                    '.c-message_list__scrollbar_hider'
+                                ]
+                                
+                                thread_scroll_area = None
+                                for selector in thread_panel_selectors:
+                                    try:
+                                        thread_scroll_area = await self.page.query_selector(selector)
+                                        if thread_scroll_area:
+                                            print(f"🔍 Found thread scroll area with: {selector}")
+                                            break
+                                    except Exception:
+                                        continue
+                                
+                                if thread_scroll_area:
+                                    for scroll_attempt in range(3):
+                                        await thread_scroll_area.scroll_into_view_if_needed()
+                                        await self.page.keyboard.press("PageDown")
+                                        await self.page.wait_for_timeout(1000)
+                                        print(f"🔄 Thread scroll attempt {scroll_attempt + 1}")
+                                else:
+                                    print("⚠️  Could not find thread scroll area")
+                                        
+                            except Exception as e:
+                                print(f"⚠️  Error scrolling thread: {e}")
+                                
+                            # Close the thread panel
+                            try:
+                                close_selectors = [
+                                    '[data-qa="thread-close-button"]',
+                                    '.c-button--thread-close',
+                                    '.c-flexpane__close_button',
+                                    '.c-flexpane__close',
+                                    '.c-icon--times',
+                                    '.c-icon--close'
+                                ]
+                                
+                                close_button = None
+                                for selector in close_selectors:
+                                    try:
+                                        close_button = await self.page.query_selector(selector)
+                                        if close_button:
+                                            print(f"🔍 Found close button with: {selector}")
+                                            break
+                                    except Exception:
+                                        continue
+                                
+                                if close_button:
+                                    await close_button.click()
+                                    await self.page.wait_for_timeout(500)
+                                else:
+                                    # Try pressing escape to close
+                                    print("🔍 Trying Escape key to close thread")
+                                    await self.page.keyboard.press("Escape")
+                                    await self.page.wait_for_timeout(500)
+                                    
+                            except Exception as e:
+                                print(f"⚠️  Error closing thread: {e}")
+                                # Try pressing escape as backup
+                                await self.page.keyboard.press("Escape")
+                                await self.page.wait_for_timeout(500)
+                        else:
+                            print(f"⚠️  Button {i+1} not visible, skipping")
+                            
+                    except Exception as e:
+                        print(f"⚠️  Error clicking thread {i+1}: {e}")
+                        continue
+                        
+            except Exception as e:
+                print(f"⚠️  Error loading threads: {e}")
+            
+            # Wait a bit more for thread API calls
+            await self.page.wait_for_timeout(3000)
+            
+            # Extract messages from intercepted API calls
+            all_messages = []
+            threads_data = {}  # Store thread replies
+            
+            for data in self.intercepted_data:
+                try:
+                    url = data["url"]
+                    
+                    # Handle main conversation history
+                    if "conversations.history" in url:
+                        response = data.get("response", {})
+                        if response.get("ok"):
+                            messages = response.get("messages", [])
+                            for msg in messages:
+                                if float(msg.get("ts", "0")) > oldest_ts:
+                                    all_messages.append(msg)
+                    
+                    # Handle thread replies
+                    elif "conversations.replies" in url:
+                        response = data.get("response", {})
+                        if response.get("ok"):
+                            messages = response.get("messages", [])
+                            # Skip the first message (parent) and add replies
+                            for msg in messages[1:]:
+                                if float(msg.get("ts", "0")) > oldest_ts:
+                                    all_messages.append(msg)
+                    
+                    # Handle other message-related endpoints
+                    elif any(endpoint in url for endpoint in [
+                        "conversations.info", 
+                        "conversations.members",
+                        "files.info",
+                        "reactions.get"
+                    ]):
+                        response = data.get("response", {})
+                        if response.get("ok"):
+                            # Extract any message data from these endpoints
+                            if "message" in response:
+                                msg = response["message"]
+                                if float(msg.get("ts", "0")) > oldest_ts:
+                                    all_messages.append(msg)
+                
+                except Exception as e:
+                    print(f"⚠️  Error processing intercepted data: {e}")
+                    # Continue with next data item
+                    continue
+            
+            # Remove duplicates and sort by timestamp
+            seen_ts = set()
+            unique_messages = []
+            for msg in all_messages:
+                try:
+                    ts = msg.get("ts")
+                    if ts and ts not in seen_ts:
+                        seen_ts.add(ts)
+                        unique_messages.append(msg)
+                except Exception as e:
+                    print(f"⚠️  Error processing message: {e}")
+                    continue
+            
+            unique_messages.sort(key=lambda x: float(x.get("ts", "0")))
+            
+            print(f"✅ Found {len(unique_messages)} new messages")
+            
+            # Print some debug info about message types
+            if unique_messages:
+                subtypes = {}
+                for msg in unique_messages:
+                    subtype = msg.get("subtype", "regular")
+                    subtypes[subtype] = subtypes.get(subtype, 0) + 1
+                
+                print(f"📊 Message types: {dict(subtypes)}")
+            
+            return unique_messages
+            
+        except Exception as e:
+            print(f"❌ Error fetching conversation history: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
     
     async def get_user_list(self) -> Dict[str, str]:
-        """Get user list from intercepted API calls."""
-        print("👥 Getting user list...")
-        
-        # Clear previous data
-        self.intercepted_data.clear()
-        
-        # Navigate to workspace settings or members page to trigger user list loading
-        try:
-            await self.page.goto(f"{WORKSPACE_URL}/admin")
-            await self.page.wait_for_timeout(3000)
-        except:
-            # Fallback to main page
-            await self.page.goto(f"{WORKSPACE_URL}/ssb/redirect")
-            await self.page.wait_for_timeout(3000)
-        
-        # Extract users from intercepted data
+        """Get user list from intercepted data and merge with rolodex."""
         users = {}
-        for data in self.intercepted_data:
-            if "users.list" in data["url"]:
-                response = data.get("response", {})
-                if response.get("ok"):
-                    for member in response.get("members", []):
-                        user_id = member.get("id", "")
-                        profile = member.get("profile", {})
-                        display_name = (
-                            profile.get("display_name") or 
-                            profile.get("real_name") or 
-                            member.get("name", "")
-                        )
-                        if user_id and display_name:
-                            users[user_id] = display_name
         
-        print(f"✅ Found {len(users)} users")
+        # Load rolodex data first
+        rolodex_users = self._load_rolodex()
+        users.update(rolodex_users)
+        
+        # Then add any users from intercepted API data
+        for data in self.intercepted_data:
+            response_data = data.get("response", {})
+            
+            # Check client.userBoot response for user data
+            if "client.userBoot" in data["url"]:
+                if "users" in response_data:
+                    for user_id, user_info in response_data["users"].items():
+                        name = user_info.get("real_name") or user_info.get("name", f"User_{user_id[-6:]}")
+                        # Only add if not already in rolodex (rolodex takes priority)
+                        if user_id not in users:
+                            users[user_id] = name
+        
+        print(f"👥 Total users loaded: {len(users)} ({len(rolodex_users)} from rolodex)")
         return users
     
     async def save_credentials(self):
@@ -1256,6 +1580,108 @@ class SlackBrowser:
         await self.save_credentials()
         if self.browser:
             await self.browser.close()
+    
+    async def _bypass_launch_screen(self):
+        """Bypass the Slack launch screen that tries to open the desktop app."""
+        if not self.page:
+            return
+        
+        try:
+            # Check if we're on the launch screen by looking for common elements
+            launch_screen_selectors = [
+                # "Continue in browser" button
+                'button:has-text("Continue in browser")',
+                'a:has-text("Continue in browser")',
+                '[data-qa="continue_in_browser"]',
+                
+                # "Use Slack in your browser" button
+                'button:has-text("Use Slack in your browser")',
+                'a:has-text("Use Slack in your browser")',
+                
+                # "Open in browser" button
+                'button:has-text("Open in browser")',
+                'a:has-text("Open in browser")',
+                
+                # Skip app download
+                'button:has-text("Skip")',
+                'a:has-text("Skip")',
+                
+                # Generic "browser" link
+                'a:has-text("browser")',
+                
+                # App download dismissal
+                '.p-download_page__cta--skip',
+                '.p-download_page__skip',
+                
+                # App prompt dismissal
+                'button:has-text("Not now")',
+                'button:has-text("Maybe later")',
+                'button:has-text("No thanks")',
+                
+                # Close buttons on app prompts
+                '[data-qa="app-download-banner-close"]',
+                '[data-qa="download-banner-close"]',
+                
+                # Generic close on overlays
+                '.c-banner__close',
+                '.c-alert__close',
+            ]
+            
+            for selector in launch_screen_selectors:
+                try:
+                    element = await self.page.wait_for_selector(selector, timeout=1000)
+                    if element:
+                        print(f"🔍 Found app launcher element: {selector}")
+                        await element.click()
+                        print("✅ Dismissed app launcher/popup")
+                        await self.page.wait_for_timeout(1000)
+                        return True
+                except:
+                    continue
+            
+            # Check for app download banner in URL and dismiss
+            current_url = self.page.url
+            if any(term in current_url for term in ["/getting-started", "/download", "/app"]):
+                print("🔍 Detected app download page, navigating to workspace...")
+                await self.page.goto(WORKSPACE_URL)
+                await self.page.wait_for_timeout(2000)
+                return True
+            
+            # Try pressing Escape to dismiss any overlays
+            try:
+                await self.page.keyboard.press("Escape")
+                await self.page.wait_for_timeout(500)
+            except:
+                pass
+            
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ Error handling app launcher: {e}")
+            return False
+
+    def _load_rolodex(self) -> Dict[str, str]:
+        """Load user mappings from rolodex.json file."""
+        try:
+            rolodex_path = Path("rolodex.json")
+            if rolodex_path.exists():
+                with open(rolodex_path, 'r', encoding='utf-8') as f:
+                    rolodex = json.load(f)
+                
+                # Create user_id -> name mapping
+                user_mapping = {}
+                for person in rolodex.get("people", []):
+                    if "user_id" in person and "name" in person:
+                        user_mapping[person["user_id"]] = person["name"]
+                
+                print(f"📋 Loaded {len(user_mapping)} user mappings from rolodex")
+                return user_mapping
+            else:
+                print("📋 No rolodex.json found, using basic user mapping")
+                return {}
+        except Exception as e:
+            print(f"⚠️ Error loading rolodex: {e}")
+            return {}
 
 
 # -------------- Utility Functions -------------------------------------------
@@ -1277,34 +1703,227 @@ def _save_tracker(data: Dict[str, Any]) -> None:
 
 
 def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
-    """Convert message to markdown line."""
+    """Convert message to markdown line with enhanced formatting."""
     ts_float = float(msg["ts"])
     ts_str = datetime.fromtimestamp(ts_float).strftime("%Y-%m-%d %H:%M")
     
     user_id = msg.get("user", "")
     user_name = users.get(user_id, f"User_{user_id[-6:]}" if user_id else "System")
     
-    text = msg.get("text", "").replace("\n", "  \n")
+    # Handle different message types
+    subtype = msg.get("subtype", "")
+    
+    # Handle system messages
+    if subtype in ["channel_join", "channel_leave", "channel_topic", "channel_purpose"]:
+        action = {
+            "channel_join": "joined the channel",
+            "channel_leave": "left the channel", 
+            "channel_topic": "changed the channel topic",
+            "channel_purpose": "changed the channel purpose"
+        }.get(subtype, "performed an action")
+        return f"- **{ts_str}** *{user_name}* {action}"
+    
+    # Handle bot messages
+    if msg.get("bot_id") or subtype == "bot_message":
+        bot_name = msg.get("username", "Bot")
+        user_name = f"🤖 {bot_name}"
+    
+    # Get message text
+    text = msg.get("text", "")
+    
+    # Process Slack formatting in text
+    if text:
+        # Handle user mentions (<@U123456>)
+        import re
+        def replace_user_mention(match):
+            user_id = match.group(1)
+            mentioned_user = users.get(user_id, f"User_{user_id[-6:]}")
+            return f"@{mentioned_user}"
+        
+        text = re.sub(r'<@([A-Z0-9]+)>', replace_user_mention, text)
+        
+        # Handle channel mentions (<#C123456|channel-name>)
+        def replace_channel_mention(match):
+            channel_name = match.group(2) if match.group(2) else match.group(1)
+            return f"#{channel_name}"
+        
+        text = re.sub(r'<#([A-Z0-9]+)(?:\|([^>]+))?>', replace_channel_mention, text)
+        
+        # Handle URLs (<https://example.com|Link Text>)
+        def replace_url(match):
+            url = match.group(1)
+            link_text = match.group(2) if match.group(2) else url
+            return f"[{link_text}]({url})"
+        
+        text = re.sub(r'<(https?://[^>|]+)(?:\|([^>]+))?>', replace_url, text)
+        
+        # Handle bold text (*text*)
+        text = re.sub(r'(?<!\\)\*([^*]+)\*', r'**\1**', text)
+        
+        # Handle italic text (_text_)
+        text = re.sub(r'(?<!\\)_([^_]+)_', r'*\1*', text)
+        
+        # Handle strikethrough (~text~)
+        text = re.sub(r'(?<!\\)~([^~]+)~', r'~~\1~~', text)
+        
+        # Handle inline code (`text`)
+        text = re.sub(r'(?<!\\)`([^`]+)`', r'`\1`', text)
+        
+        # Handle code blocks (```text```)
+        text = re.sub(r'(?<!\\)```([^`]+)```', r'```\n\1\n```', text)
+    
+    # Handle file attachments
+    attachments = msg.get("files", [])
+    if attachments:
+        file_info = []
+        for file_data in attachments:
+            file_name = file_data.get("name", "Unknown file")
+            file_type = file_data.get("filetype", "")
+            file_size = file_data.get("size", 0)
+            file_url = file_data.get("url_private", "")
+            
+            # Format file size
+            if file_size > 1024 * 1024:
+                size_str = f"{file_size / (1024 * 1024):.1f}MB"
+            elif file_size > 1024:
+                size_str = f"{file_size / 1024:.1f}KB"
+            else:
+                size_str = f"{file_size}B"
+            
+            # Create a nice file description
+            if file_type:
+                file_desc = f"📎 **{file_name}** ({file_type}, {size_str})"
+            else:
+                file_desc = f"📎 **{file_name}** ({size_str})"
+            
+            # Add URL if available
+            if file_url:
+                file_desc += f" - [Download]({file_url})"
+            
+            file_info.append(file_desc)
+        
+        if text:
+            text += "\\n\\n" + "\\n".join(file_info)
+        else:
+            text = "\\n".join(file_info)
+    
+    # Handle message attachments (rich content)
+    message_attachments = msg.get("attachments", [])
+    if message_attachments:
+        for attachment in message_attachments:
+            attachment_parts = []
+            
+            # Add service name/author
+            if attachment.get("service_name"):
+                attachment_parts.append(f"**{attachment['service_name']}**")
+            elif attachment.get("author_name"):
+                attachment_parts.append(f"**{attachment['author_name']}**")
+            
+            # Add attachment title
+            if attachment.get("title"):
+                title = attachment["title"]
+                title_link = attachment.get("title_link", "")
+                if title_link:
+                    attachment_parts.append(f"🔗 **[{title}]({title_link})**")
+                else:
+                    attachment_parts.append(f"🔗 **{title}**")
+            
+            # Add attachment text/description
+            if attachment.get("text"):
+                attachment_parts.append(f"> {attachment['text']}")
+            
+            # Add fields if present
+            if attachment.get("fields"):
+                for field in attachment["fields"]:
+                    field_title = field.get("title", "")
+                    field_value = field.get("value", "")
+                    if field_title and field_value:
+                        attachment_parts.append(f"**{field_title}:** {field_value}")
+            
+            # Add footer info
+            footer_parts = []
+            if attachment.get("footer"):
+                footer_parts.append(attachment["footer"])
+            if attachment.get("ts"):
+                footer_ts = datetime.fromtimestamp(float(attachment["ts"])).strftime("%Y-%m-%d %H:%M")
+                footer_parts.append(footer_ts)
+            
+            if footer_parts:
+                attachment_parts.append(f"*{' | '.join(footer_parts)}*")
+            
+            if attachment_parts:
+                text += "\\n\\n" + "\\n".join(attachment_parts)
+    
+    # Handle reactions
+    reactions = msg.get("reactions", [])
+    if reactions:
+        reaction_summary = []
+        for reaction in reactions:
+            emoji = reaction.get("name", "")
+            count = reaction.get("count", 0)
+            users_who_reacted = reaction.get("users", [])
+            
+            if emoji and count > 0:
+                # Show who reacted if it's a small number
+                if count <= 3 and users_who_reacted:
+                    user_names = []
+                    for user_id in users_who_reacted:
+                        user_names.append(users.get(user_id, f"User_{user_id[-6:]}"))
+                    reaction_summary.append(f":{emoji}: {', '.join(user_names)}")
+                else:
+                    reaction_summary.append(f":{emoji}: {count}")
+        
+        if reaction_summary:
+            text += f"\\n\\n*Reactions: {', '.join(reaction_summary)}*"
+    
+    # Handle thread info
+    thread_info = ""
+    if msg.get("reply_count", 0) > 0:
+        reply_count = msg["reply_count"]
+        thread_info = f" 💬 {reply_count} {'reply' if reply_count == 1 else 'replies'}"
+    
+    # Replace newlines for markdown formatting
+    text = text.replace("\n", "  \n")
+    
     # Indent replies for threads
     prefix = "    " if msg.get("parent_user_id") else ""
-    return f"{prefix}- **{ts_str}** *{user_name}*: {text}"
+    
+    # Add thread indicator for replies
+    thread_indicator = "↳ " if msg.get("parent_user_id") else ""
+    
+    return f"{prefix}- **{ts_str}** *{user_name}*{thread_info}: {thread_indicator}{text}"
 
 
 def _create_safe_filename(channel_name: str, channel_id: str) -> str:
-    """Create a safe filename for the channel."""
-    if channel_id.startswith('D'):
-        # DM channel
-        safe_name = f"dm_{channel_id}"
-    else:
-        # Regular channel
-        safe_name = channel_name or f"channel_{channel_id}"
+    """Create a safe filename from channel name, fallback to ID if needed."""
+    # Try to use the channel name first, clean it up
+    if channel_name and channel_name != channel_id:
+        # Remove # or @ prefixes
+        clean_name = channel_name.lstrip("#@")
+        # Replace problematic characters
+        safe_name = re.sub(r'[<>:"/\\|?*]', '_', clean_name)
+        # Remove consecutive underscores
+        safe_name = re.sub(r'_+', '_', safe_name)
+        # Remove leading/trailing underscores
+        safe_name = safe_name.strip('_')
+        
+        if safe_name:
+            return safe_name
     
-    # Make filename safe
-    safe_name = re.sub(r'[<>:"/\\|?*]', '_', safe_name)
-    safe_name = re.sub(r'_{2,}', '_', safe_name)
-    safe_name = safe_name.strip('_')
+    # Fallback to using channel ID
+    return f"channel_{channel_id}"
+
+
+def _is_valid_slack_id(slack_id: str) -> bool:
+    """Check if a string is a valid Slack conversation ID format."""
+    if not slack_id or not isinstance(slack_id, str):
+        return False
     
-    return safe_name
+    # Slack IDs should start with C (channels), D (DMs), G (groups), or U (users)
+    # and be followed by alphanumeric characters, typically 9-11 characters total
+    import re
+    pattern = r'^[CDGU][A-Z0-9]{8,10}$'
+    return bool(re.match(pattern, slack_id))
 
 
 # -------------- Main Script -------------------------------------------------
@@ -1326,30 +1945,24 @@ async def main():
             print("❌ Failed to log in. Exiting.")
             return
         
-        # Get initial data
-        print("📊 Loading workspace data...")
-        conversations = await browser.get_channel_list()
-        users = await browser.get_user_list()
+        # Ask user what they want to extract
+        print("\nWhat would you like to extract?")
+        print("  • Enter a channel name (e.g., 'general' or '#general')")
+        print("  • Enter a channel ID (e.g., 'C1234567890')")
+        print("  • Enter 'list' to see available channels first")
         
-        if not conversations:
-            print("⚠️  No conversations found. You may need to navigate manually in the browser.")
+        user_input = input("\nTarget channel: ").strip()
         
-        # Interactive loop
-        while True:
-            print(f"\nAvailable commands:")
-            print(f"  • 'list' - Show available conversations ({len(conversations)} found)")
-            print(f"  • '<conversation_name>' - Fetch messages from conversation")
-            print(f"  • 'refresh <conversation>' - Re-fetch entire conversation")
-            print(f"  • 'q' - Quit")
+        # Handle list request
+        if user_input.lower() == 'list':
+            print("📊 Loading available channels...")
+            conversations = await browser.get_conversations()
             
-            user_input = input("\nCommand: ").strip()
-            
-            if user_input.lower() == "q":
-                print("👋 Goodbye!")
-                break
-            
-            if user_input.lower() == "list":
-                print(f"\nConversations ({len(conversations)}):")
+            if not conversations:
+                print("⚠️  No conversations found. Try entering a channel name or ID directly.")
+                user_input = input("Target channel: ").strip()
+            else:
+                print(f"\nAvailable conversations ({len(conversations)}):")
                 
                 # Group by conversation type
                 by_type = {
@@ -1365,71 +1978,190 @@ async def main():
                 # Show channels first
                 if by_type[ConversationType.CHANNEL]:
                     print(f"\n  📁 Channels ({len(by_type[ConversationType.CHANNEL])}):")
-                    for conv_info in sorted(by_type[ConversationType.CHANNEL], key=lambda x: x.name)[:20]:
+                    for conv_info in sorted(by_type[ConversationType.CHANNEL], key=lambda x: x.name):
                         print(f"    {conv_info}")
                 
                 # Show DMs
                 if by_type[ConversationType.DM]:
                     print(f"\n  💬 Direct Messages ({len(by_type[ConversationType.DM])}):")
-                    for conv_info in sorted(by_type[ConversationType.DM], key=lambda x: x.name)[:20]:
+                    for conv_info in sorted(by_type[ConversationType.DM], key=lambda x: x.name):
                         print(f"    {conv_info}")
                 
                 # Show multi-person DMs
                 if by_type[ConversationType.MULTI_PERSON_DM]:
                     print(f"\n  👥 Multi-person DMs ({len(by_type[ConversationType.MULTI_PERSON_DM])}):")
-                    for conv_info in sorted(by_type[ConversationType.MULTI_PERSON_DM], key=lambda x: x.name)[:20]:
+                    for conv_info in sorted(by_type[ConversationType.MULTI_PERSON_DM], key=lambda x: x.name):
                         print(f"    {conv_info}")
                 
-                total_shown = sum(min(len(convs), 20) for convs in by_type.values())
-                if len(conversations) > total_shown:
-                    print(f"  ... and {len(conversations) - total_shown} more")
-                continue
+                print()
+                user_input = input("Target channel: ").strip()
+        
+        if not user_input:
+            print("❌ No channel specified. Exiting.")
+            return
             
-            refresh_mode = False
-            if user_input.lower().startswith("refresh "):
-                refresh_mode = True
-                conversation_name = user_input[8:].strip().lstrip("#@")
-            else:
-                conversation_name = user_input.lstrip("#@")
+        # Clean up the input
+        channel_input = user_input.lstrip("#@")
+        
+        # Try to find the channel
+        channel_id = None
+        channel_name = None
+        
+        # If it looks like a channel ID (starts with C, D, or G)
+        if channel_input.startswith(('C', 'D', 'G')) and len(channel_input) > 8:
+            channel_id = channel_input
+            channel_name = f"channel_{channel_id}"
+            print(f"🎯 Using channel ID: {channel_id}")
+        else:
+            # Try to find by name in conversations
+            if 'conversations' in locals():
+                # Look for exact match first
+                for name, conv_info in conversations.items():
+                    if conv_info.name.lstrip("#@").lower() == channel_input.lower():
+                        channel_id = conv_info.id
+                        channel_name = conv_info.name
+                        print(f"🎯 Found channel: {conv_info}")
+                        break
+                
+                # If no exact match, try partial match
+                if not channel_id:
+                    matches = []
+                    for name, conv_info in conversations.items():
+                        if channel_input.lower() in conv_info.name.lower():
+                            matches.append(conv_info)
+                    
+                    if len(matches) == 1:
+                        channel_id = matches[0].id
+                        channel_name = matches[0].name
+                        print(f"🎯 Found matching channel: {matches[0]}")
+                    elif len(matches) > 1:
+                        print(f"❌ Multiple channels match '{channel_input}':")
+                        for conv_info in matches:
+                            print(f"    {conv_info}")
+                        print("Please be more specific.")
+                        return
             
-            if conversation_name not in conversations:
-                print(f"❌ Conversation '{conversation_name}' not found. Use 'list' to see available conversations.")
-                continue
+            # If still not found, try loading conversations
+            if not channel_id:
+                print("🔍 Searching for channel...")
+                conversations = await browser.get_conversations()
+                
+                for name, conv_info in conversations.items():
+                    if conv_info.name.lstrip("#@").lower() == channel_input.lower():
+                        channel_id = conv_info.id
+                        channel_name = conv_info.name
+                        print(f"🎯 Found channel: {conv_info}")
+                        break
             
-            conv_info = conversations[conversation_name]
-            channel_id = conv_info.id
+            # Last resort: assume it's a channel name and try to find it
+            if not channel_id:
+                # Use the input as channel name and let the API try to find it
+                channel_name = f"#{channel_input}"
+                print(f"🎯 Attempting to extract channel: {channel_name}")
+                print("    (Channel ID will be determined from API calls)")
+        
+        # Get users for better formatting
+        print("👥 Loading user list...")
+        users = await browser.get_user_list()
+        
+        # Fetch messages
+        print(f"📥 Fetching messages from {channel_name or channel_input}...")
+        
+        if channel_id:
+            # Validate the channel ID format before using it
+            if not _is_valid_slack_id(channel_id):
+                print(f"❌ Invalid Slack ID format: {channel_id}")
+                print("    Slack IDs should start with C (channels), D (DMs), or G (groups)")
+                return
             
-            # Load tracking data
+            messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
+        else:
+            # If we don't have a valid ID, we need to find it through API calls
+            # Don't try to navigate to invalid URLs that cause Slack to glitch
+            print("🔍 Channel ID not found. Browsing workspace to discover channel IDs...")
+            
+            try:
+                # Navigate to safer URLs that are more likely to work
+                safe_urls = [
+                    f"https://app.slack.com/client/{TEAM_ID}",  # Main workspace
+                    f"https://app.slack.com/client/{TEAM_ID}/browse-channels",  # Browse channels
+                    WORKSPACE_URL  # Fallback to main URL
+                ]
+                
+                channel_found = False
+                
+                for url in safe_urls:
+                    try:
+                        print(f"🌐 Navigating to {url}")
+                        await browser.page.goto(url, timeout=10000)
+                        await browser.page.wait_for_timeout(3000)
+                        
+                        # Load conversations to get the real IDs
+                        conversations = await browser.get_conversations()
+                        
+                        # Try to find the channel by name in the loaded conversations
+                        for name, conv_info in conversations.items():
+                            if conv_info.name.lstrip("#@").lower() == channel_input.lower():
+                                channel_id = conv_info.id
+                                channel_name = conv_info.name
+                                print(f"✅ Found channel: {conv_info} (ID: {channel_id})")
+                                channel_found = True
+                                break
+                        
+                        if channel_found:
+                            break
+                            
+                    except Exception as e:
+                        print(f"⚠️  Failed to load {url}: {e}")
+                        continue
+                
+                if not channel_found:
+                    print(f"❌ Could not find channel '{channel_input}'.")
+                    print("Available channels:")
+                    conversations = await browser.get_conversations()
+                    for name, conv_info in list(conversations.items())[:10]:  # Show first 10
+                        print(f"    {conv_info}")
+                    if len(conversations) > 10:
+                        print(f"    ... and {len(conversations) - 10} more")
+                    return
+                
+                # Now fetch with the proper ID
+                messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
+                
+            except Exception as e:
+                print(f"❌ Error finding channel: {e}")
+                return
+        
+        if not messages:
+            print("📭 No messages found. The channel might be empty or inaccessible.")
+            return
+        
+        # Save to markdown
+        safe_name = _create_safe_filename(channel_name or channel_input, channel_id or "unknown")
+        md_path = EXPORT_DIR / f"{safe_name}.md"
+        
+        # Write header
+        with md_path.open("w", encoding="utf-8") as f:
+            f.write(f"# {channel_name or channel_input}\n\n")
+            if channel_id:
+                f.write(f"**Channel ID:** {channel_id}\n")
+            f.write(f"**Exported:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"**Message Count:** {len(messages)}\n\n")
+            f.write("---\n\n")
+            
+            # Write messages
+            for msg in messages:
+                f.write(_markdown_line(msg, users) + "\n")
+        
+        # Update tracker
+        if messages and channel_id:
             tracker = _load_tracker()
-            last_ts = 0 if refresh_mode else tracker["channels"].get(channel_id, 0)
-            
-            if refresh_mode:
-                print(f"🔄 Refreshing entire conversation for {conv_info}")
-            else:
-                print(f"📥 Fetching new messages from {conv_info} (since {last_ts})")
-            
-            # Fetch messages
-            messages = await browser.fetch_conversation_history(channel_id, last_ts)
-            
-            if not messages:
-                print("📭 No new messages found.")
-                continue
-            
-            # Save to markdown
-            safe_name = _create_safe_filename(conv_info.name, channel_id)
-            md_path = EXPORT_DIR / f"{safe_name}.md"
-            
-            with md_path.open("a", encoding="utf-8") as f:
-                for msg in messages:
-                    f.write(_markdown_line(msg, users) + "\n")
-            
-            # Update tracker
-            if messages:
-                highest_ts = max(float(m["ts"]) for m in messages)
-                tracker["channels"][channel_id] = highest_ts
-                _save_tracker(tracker)
-            
-            print(f"✅ Added {len(messages)} messages to {md_path}")
+            highest_ts = max(float(m["ts"]) for m in messages)
+            tracker["channels"][channel_id] = highest_ts
+            _save_tracker(tracker)
+        
+        print(f"✅ Exported {len(messages)} messages to {md_path}")
+        print(f"📁 File saved: {md_path.absolute()}")
     
     except KeyboardInterrupt:
         print("\n⚠️  Interrupted by user")
