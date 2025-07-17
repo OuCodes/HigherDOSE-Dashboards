@@ -1765,13 +1765,21 @@ class SlackBrowser:
     # ------------------------------------------------------------------ #
     #  Friendly filename generator                                       #
     # ------------------------------------------------------------------ #
-    async def conversation_filename(self, channel_id: str, channel_name: str, users: Dict[str, str]) -> str:
+    async def conversation_filename(self, channel_id: str, channel_name: str, users: Dict[str, str], messages: List[Dict[str, Any]] | None = None) -> str:
         """Return a human-friendly, filesystem-safe filename for this conversation."""
         import re
 
         # Detect D or G => DM / MPDM
         if channel_id and channel_id[0] in {"D", "G"}:
             parts = await self.get_dm_participants(channel_id, users)
+            # Fallback: derive from message authors if API didn't return anything
+            if not parts and messages:
+                uid_set = {m.get("user") for m in messages if m.get("user")}
+                me = self.credentials.user_id
+                if me in uid_set:
+                    uid_set.remove(me)
+                parts = [users.get(uid, f"User_{uid[-6:]}") for uid in uid_set]
+
             if parts:
                 parts = sorted(set(parts))  # stable ordering
                 if len(parts) == 1:
@@ -1788,6 +1796,23 @@ class SlackBrowser:
         safe = re.sub(r'[<>:"/\\|?*@]', '_', base)
         safe = re.sub(r'_+', '_', safe).strip('_')
         return safe
+
+    # ------------------------------------------------------------------ #
+    #  Channel helper                                                    #
+    # ------------------------------------------------------------------ #
+    def _get_channel_name_sync(self, channel_id: str) -> str | None:
+        """Return the readable channel name for a given C-channel id."""
+        if not channel_id or channel_id[0] not in {"C", "G"}:
+            return None
+        info = self._api_post_sync("conversations.info", {"channel": channel_id})
+        if info.get("ok"):
+            ch = info.get("channel", {})
+            return ch.get("name") or ch.get("normalized_name")
+        return None
+
+    async def get_channel_name(self, channel_id: str) -> str | None:
+        import asyncio
+        return await asyncio.to_thread(self._get_channel_name_sync, channel_id)
 
 
 # -------------- Utility Functions -------------------------------------------
@@ -2242,10 +2267,28 @@ async def main():
             print("📭 No messages found. The channel might be empty or inaccessible.")
             return
         
+        # Try to improve channel_name if it's still a generic placeholder
+        if channel_id and (not channel_name or channel_name.startswith("channel_")):
+            looked_up = await browser.get_channel_name(channel_id)
+            if looked_up:
+                channel_name = f"#{looked_up}"
+
         # Save to markdown with friendly filename
-        safe_name = await browser.conversation_filename(channel_id or "", channel_name or channel_input, users)
+        safe_name = await browser.conversation_filename(channel_id or "", channel_name or channel_input, users, messages)
+
         md_path = EXPORT_DIR / f"{safe_name}.md"
-        
+
+        # If an old placeholder file exists, rename it
+        placeholder_name = _create_safe_filename(f"channel_{channel_id}", channel_id) if channel_id else None
+        if placeholder_name:
+            old_path = EXPORT_DIR / f"{placeholder_name}.md"
+            if old_path.exists() and old_path != md_path:
+                try:
+                    old_path.rename(md_path)
+                    print(f"🔄 Renamed {old_path.name} -> {md_path.name}")
+                except Exception as e:
+                    print(f"⚠️  Could not rename old file: {e}")
+
         write_mode = "a" if md_path.exists() else "w"
         with md_path.open(write_mode, encoding="utf-8") as f:
             if write_mode == "w":
