@@ -21,4 +21,4 @@
 
 ## Improving `Mail`
 
-- [ ] Explore what the script is pulling in for each email BEFORE it is converted to markdown.
+- [x] Explore what the script is pulling in for each email BEFORE it is converted to markdown.
