@@ -60,7 +60,7 @@ def main():
         total = len(message_ids)
         logger.info("Found %d total messages to archive.", total)
         print(f"Found {ansi.green}{total}{ansi.reset} total messages to archive.")
-        
+
         for i, mid in enumerate(message_ids):
             print(f"  {ansi.magenta}Processing {i+1}{ansi.reset}/{ansi.green}{total}{ansi.reset}: {mid}")
             try:
