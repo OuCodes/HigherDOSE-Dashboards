@@ -13,7 +13,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 from utils.logs import report
-from utils.style import ansi
+from utils.style import ansi, clean
 
 logger = report.settings(__file__)
 
@@ -173,6 +173,47 @@ def debug_email_formats(gmail, mid):
         md_file = DEBUG_OUTDIR / f"{mid}_6_final_markdown.md"
         md_file.write_text(md_content, encoding="utf-8")
         print(f"Saved to: {md_file}")
+        
+        # Stage 7: New Enhanced Format
+        print(f"\n{ansi.yellow}Stage 7: New Enhanced Structured Format{ansi.reset}")
+        
+        # Extract email metadata
+        subject = mime_msg.get('Subject', 'No Subject')
+        from_addr = mime_msg.get('From', 'No From')
+        to_addr = mime_msg.get('To', 'No To')
+        date_str = mime_msg.get('Date', 'No Date')
+        
+        # Create structured markdown content  
+        structured_content = f"""## Date
+
+{date_str}
+
+## Address
+
+from: {from_addr}
+to: {to_addr}
+
+## Subject
+
+{subject}
+
+## Body
+
+{md_content.strip()}
+"""
+        
+        # Clean subject for filename
+        new_filename = f"{clean.up(subject)}-{mid}.md"
+        
+        print(f"New filename would be: {ansi.cyan}{new_filename}{ansi.reset}")
+        print(f"Cleaned subject: {ansi.green}{clean.up(subject)}{ansi.reset}")
+        print("Structured content preview (first 400 chars):")
+        print(f"{structured_content[:400]}...")
+        
+        # Save the new structured format
+        structured_file = DEBUG_OUTDIR / f"{mid}_7_enhanced_format.md"
+        structured_file.write_text(structured_content, encoding="utf-8")
+        print(f"Saved enhanced format to: {structured_file}")
     else:
         print("No body content found!")
     
