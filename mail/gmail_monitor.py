@@ -1,9 +1,10 @@
+import re
 import sys
 import time
 import email
 import pickle
 import base64
-import re
+from io import BytesIO
 from pathlib import Path
 from email.utils import parsedate_to_datetime
 from email.header import decode_header
@@ -16,6 +17,7 @@ import google.auth.transport.requests
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from markitdown import MarkItDown
 
 from utils.logs import report
 from utils.style import clean
@@ -195,9 +197,12 @@ def save_msg(gmail, mid):
         raw_content = "\n\n".join(text_parts)
         body_content = clean_email_content(raw_content)
     elif html_parts:
-        # Use raw HTML content for now
+        # Convert HTML to markdown using MarkItDown
         html_content = "\n\n".join(html_parts)
-        body_content = clean_email_content(html_content)
+        markitdown = MarkItDown()
+        html_stream = BytesIO(html_content.encode('utf-8'))
+        markdown_result = markitdown.convert_stream(html_stream, file_extension=".html")
+        body_content = clean_email_content(markdown_result.text_content)
     else:
         body_content = "No body content found."
 
