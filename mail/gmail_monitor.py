@@ -1,6 +1,10 @@
-from pathlib import Path
-import base64, email, time, pickle
 import sys
+import time
+import email
+import pickle
+import base64
+from pathlib import Path
+from email.utils import parsedate_to_datetime
 
 # Add project root to path to allow absolute imports from 'utils'
 project_root = Path(__file__).resolve().parent.parent
@@ -13,6 +17,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from utils.logs import report
+from utils.style import clean
 from utils.style import ansi
 
 logger = report.settings(__file__)
@@ -85,17 +90,49 @@ def fetch_deltas(gmail, start):
     return messages, page.get("historyId")
 
 def save_msg(gmail, mid):
-    """Saves a single email message to a markdown file."""
+    """Saves a single email message to a structured markdown file."""
     logger.info("Saving message with ID: %s", mid)
     raw = gmail.users().messages().get(userId="me", id=mid, format="raw").execute()["raw"]
     mime = email.message_from_bytes(base64.urlsafe_b64decode(raw))
+
+    # Extract email metadata
+    subject = mime.get('Subject', 'No Subject')
+    from_addr = mime.get('From', 'No From')
+    to_addr = mime.get('To', 'No To')
+    date_str = mime.get('Date', 'No Date')
+
+    # Extract body content
     body = next(      # pick first text/html or text/plain part
         (p.get_payload(decode=True) for p in mime.walk()
          if p.get_content_type() in ("text/html", "text/plain")), b""
     )
-    md   = markdownify.markdownify(body.decode(errors="ignore"))
-    output_path = OUTDIR / f"{mid}.md"
-    output_path.write_text(md, encoding="utf-8")
+    body_content = markdownify.markdownify(body.decode(errors="ignore")) if body else "No body content found."
+
+    # Create structured markdown content
+    structured_content = f"""## Date
+
+{date_str}
+
+## Address
+
+from: {from_addr}
+to: {to_addr}
+
+## Subject
+
+{subject}
+
+## Body
+
+{body_content.strip()}
+"""
+
+    # Parse email date using RFC 2822 parser (handles all email date formats)
+    chronodate = parsedate_to_datetime(date_str).strftime("%Y%m%d")
+    filename = f"{chronodate}-{clean.up(subject)}-{mid}.md"
+    output_path = OUTDIR / filename
+
+    output_path.write_text(structured_content, encoding="utf-8")
     logger.info("Message saved to %s", output_path)
 
 def main():
