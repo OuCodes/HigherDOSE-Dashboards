@@ -95,8 +95,11 @@ def clean_email_content(content):
             domain_match = re.search(r'https?://([^/]+)', url)
             if domain_match:
                 domain = domain_match.group(1)
-                return f"[Long URL: {domain}...]({url})"
+                return f"[{domain}...]({url})"
         return url
+
+    # Apply the URL shortener to every http/https link in the content
+    content = re.sub(r'https?://\S+', shorten_url, content)
 
     return content
 TOKEN   = Path("mail", "token.pickle")
