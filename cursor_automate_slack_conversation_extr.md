@@ -114,6 +114,7 @@ Here’s a proven, repeatable way to get from “copy-pasting JSON out of DevToo
    Follow the prompts, then continue using `report_analysis_*` or any notebook exactly as before.
 
 ────────────────────────────── WHY THIS IS BETTER ──────────────────────────────
+
 • Zero manual DevTools copy/paste.  
 • Works for channels, DMs, or a single threaded convo.  
 • Respects date windows so files stay small.  
@@ -210,8 +211,11 @@ Yes, but every alternative still boils down to one of two ideas:
 Here are the practical, code-ready ways to do it, plus trade-offs:
 
 ────────────────────────────────────────────────────────────────────────────
+
 1. Owner/Workspace-Export route (no tokens, no scraping)
+
 ────────────────────────────────────────────────────────────────────────────
+
 • Any Workspace Owner can visit  
   https://my.slack.com/services/export  
 
@@ -250,8 +254,11 @@ PY
 Plug that final JSON straight into `track_conversions.py`.
 
 ────────────────────────────────────────────────────────────────────────────
+
 2. “Replay your browser” route (headless Playwright/Puppeteer)
+
 ────────────────────────────────────────────────────────────────────────────
+
 Idea: let a headless Chrome session **you are already logged into**
 open the conversation URL, then programmatically scroll while capturing
 the network responses Slack’s web-client fetches.
@@ -327,8 +334,11 @@ cookies and stores them locally (encrypted).
   – Technically not blessed by Slack; use at your own risk
 
 ────────────────────────────────────────────────────────────────────────────
+
 Which should you choose?
+
 ────────────────────────────────────────────────────────────────────────────
+
 • If you are a workspace owner → **Export ZIP** (option 1) is the most
   robust and TOS-compliant.
 
