@@ -43,7 +43,9 @@ def clean_subject(subject):
     return decoded_subject.strip()
 
 def clean_email_content(content):
-    """Clean up email content by removing tracking pixels, normalizing whitespace, and shortening URLs."""
+    """
+    Clean up email content by removing tracking pixels,
+    normalizing whitespace, and shortening URLs."""
     if not content:
         return content
 
@@ -95,9 +97,6 @@ def clean_email_content(content):
                 domain = domain_match.group(1)
                 return f"[Long URL: {domain}...]({url})"
         return url
-
-    # Apply URL shortening to very long URLs
-    content = re.sub(r'https?://[^\s)]{100,}', shorten_url, content)
 
     return content
 TOKEN   = Path("mail", "token.pickle")
@@ -192,8 +191,9 @@ def save_msg(gmail, mid):
             if payload:
                 html_parts.append(payload.decode(errors="ignore"))
 
-    # Prefer plain text, fall back to HTML if needed
+    # Use MarkItDown for HTML content, keep plain text as-is (avoids encoding issues)
     if text_parts:
+        # Plain text is already readable, just clean it up
         raw_content = "\n\n".join(text_parts)
         body_content = clean_email_content(raw_content)
     elif html_parts:
