@@ -19,19 +19,21 @@ Whats the best way to go about this
 
 Here’s a proven, repeatable way to get from “copy-pasting JSON out of DevTools” to a one-command workflow that:
 
-• Prompts you for a Slack URL (channel, DM, thread, or permalink)  
-• Asks for a date-range to pull (or uses sensible defaults)  
-• Downloads the messages through Slack’s Web API, handling pagination & rate limits  
-• Saves the results to a file that your existing `track_conversions.py` can recognise (e.g. `slack/raw_exports/…json`)  
-• Updates `conversion_tracker.json` so you never re-fetch the same data twice
+- Prompts you for a Slack URL (channel, DM, thread, or permalink)  
+- Asks for a date-range to pull (or uses sensible defaults)  
+- Downloads the messages through Slack’s Web API, handling pagination & rate limits  
+- Saves the results to a file that your existing `track_conversions.py` can recognise (e.g. `slack/raw_exports/…json`)  
+- Updates `conversion_tracker.json` so you never re-fetch the same data twice
 
-──────────────────────────────── HOW TO BUILD IT ────────────────────────────────
+---
+HOW TO BUILD IT
+---
 
 1. Create (or reuse) a Slack app & token  
-   • Go to https://api.slack.com/apps ► “Create New App from scratch”.  
-   • Scopes: `channels:history`, `groups:history`, `im:history`, `mpim:history`, `channels:read`, `groups:read`, `im:read`, `mpim:read`.  
-   • Install the app to the workspace and copy the “Bot Token” (starts with `xoxb-…`).  
-   • Store it once in your environment so scripts can find it:  
+   - Go to https://api.slack.com/apps ► “Create New App from scratch”.  
+   - Scopes: `channels:history`, `groups:history`, `im:history`, `mpim:history`, `channels:read`, `groups:read`, `im:read`, `mpim:read`.  
+   - Install the app to the workspace and copy the “Bot Token” (starts with `xoxb-…`).  
+   - Store it once in your environment so scripts can find it:  
      ```bash
      export SLACK_BOT_TOKEN=“xoxb-…”
      ```
@@ -98,10 +100,10 @@ Here’s a proven, repeatable way to get from “copy-pasting JSON out of DevToo
    if __name__ == "__main__":
        main()
    ```
-   • URL parser accepts normal channel/DM links or permalinks to a single thread.  
-   • `--start` / `--end` default to “today”, but you can enter any ISO date.  
-   • Automatically paginates until all messages in range are fetched.  
-   • Saves the same top-level keys (`ok`, `history` …) your downstream scripts expect.
+   - URL parser accepts normal channel/DM links or permalinks to a single thread.  
+   - `--start` / `--end` default to “today”, but you can enter any ISO date.  
+   - Automatically paginates until all messages in range are fetched.  
+   - Saves the same top-level keys (`ok`, `history` …) your downstream scripts expect.
 
 4. Wire it into your existing tracking flow  
    After saving the JSON, call `track_conversions.mark_file_converted(output_path, …)` so the file is logged exactly once.
@@ -113,13 +115,13 @@ Here’s a proven, repeatable way to get from “copy-pasting JSON out of DevToo
    ```
    Follow the prompts, then continue using `report_analysis_*` or any notebook exactly as before.
 
-────────────────────────────── WHY THIS IS BETTER ──────────────────────────────
+--- WHY THIS IS BETTER ---
 
-• Zero manual DevTools copy/paste.  
-• Works for channels, DMs, or a single threaded convo.  
-• Respects date windows so files stay small.  
-• Uses official Slack Web API (no scraping, no brittle HTML parsing).  
-• Easily extended (add `--threads`, `--replies`, or export to markdown).
+- Zero manual DevTools copy/paste.  
+- Works for channels, DMs, or a single threaded convo.  
+- Respects date windows so files stay small.  
+- Uses official Slack Web API (no scraping, no brittle HTML parsing).  
+- Easily extended (add `--threads`, `--replies`, or export to markdown).
 
 Feel free to drop this into the repo; if you’d like me to add the file and update `conversion_tracker` integration automatically, just say the word and I’ll push the edits.
 
@@ -210,24 +212,24 @@ Yes, but every alternative still boils down to one of two ideas:
 
 Here are the practical, code-ready ways to do it, plus trade-offs:
 
-────────────────────────────────────────────────────────────────────────────
+---
 
 1. Owner/Workspace-Export route (no tokens, no scraping)
 
-────────────────────────────────────────────────────────────────────────────
+---
 
-• Any Workspace Owner can visit  
+- Any Workspace Owner can visit  
   https://my.slack.com/services/export  
 
-• Click “Start Export” → Slack emails you a ZIP that contains `channels/`,
+- Click “Start Export” → Slack emails you a ZIP that contains `channels/`,
   `groups/`, `mpims/`, `ims/` – all JSON, neatly day-partitioned.
 
-• Advantages  
+- Advantages  
   – Totally “official”; zero risk of breaking TOS  
   – No rate limits, every message + file + reaction in one shot  
   – Works even for private channels/DMs (if you’re the owner)
 
-• Disadvantages  
+- Disadvantages  
   – Manual step (have to run export each time)  
   – Granularity is whole-workspace; you still need a small script to
     filter to the channel & date-range you care about.
@@ -253,11 +255,11 @@ PY
 ```
 Plug that final JSON straight into `track_conversions.py`.
 
-────────────────────────────────────────────────────────────────────────────
+---
 
 2. “Replay your browser” route (headless Playwright/Puppeteer)
 
-────────────────────────────────────────────────────────────────────────────
+---
 
 Idea: let a headless Chrome session **you are already logged into**
 open the conversation URL, then programmatically scroll while capturing
@@ -298,19 +300,19 @@ json.dump({"ok": True, "history": {"messages": messages}},
 `handle_response` would parse `await resp.json()`, keep only messages
 inside the date window, and append to the in-memory list.
 
-• Advantages  
+- Advantages  
   – No app setup, uses the session you already have  
   – Works even if you don’t have token-scopes approved by the admin  
   – Can target a single thread precisely (just open its permalink)
 
-• Disadvantages  
+- Disadvantages  
   – Finicky (Slack UI or network shape changes can break it)  
   – Still subject to the same rate limits; long scrolls can be slow  
   – Needs your cookies on disk (headless Desktop app is easiest)
 
-────────────────────────────────────────────────────────────────────────────
+---
 3. Direct cookie-based Web-API calls (still “no app”)
-────────────────────────────────────────────────────────────────────────────
+---
 Even without creating an app you can copy the
 `cookie: xoxc-…` + `x-slack-crumb: …` headers from DevTools and hit the
 same endpoints your browser does:
@@ -325,28 +327,28 @@ curl 'https://app.slack.com/client/T1234567/C89ABCD?...' \
 Automate that with Python’s `requests`; program asks you once for the
 cookies and stores them locally (encrypted).
 
-• Advantages  
+- Advantages  
   – Fast; identical payloads to what the official SDK returns  
   – No scrolling / headless browser
 
-• Disadvantages  
+- Disadvantages  
   – Slack could invalidate the cookie at any time  
   – Technically not blessed by Slack; use at your own risk
 
-────────────────────────────────────────────────────────────────────────────
+---
 
 Which should you choose?
 
-────────────────────────────────────────────────────────────────────────────
+---
 
-• If you are a workspace owner → **Export ZIP** (option 1) is the most
+- If you are a workspace owner → **Export ZIP** (option 1) is the most
   robust and TOS-compliant.
 
-• If you’re not an owner but have long-lived access via the Slack desktop
+- If you’re not an owner but have long-lived access via the Slack desktop
   app → **Playwright scroll & capture** (option 2) is hands-free after a
   little setup.
 
-• If you need something quick & are already comfortable grabbing cookies
+- If you need something quick & are already comfortable grabbing cookies
   in DevTools → **Direct cookie calls** (option 3) is the lightest code,
   but least future-proof.
 
@@ -437,9 +439,9 @@ playwright install chromium           # one-time browser download
 
 STEP 2  Locate the Slack profile you’ll piggy-back on
 
-• Web Slack: your browser profile already has cookies.  
+- Web Slack: your browser profile already has cookies.  
   – Chrome: `~/Library/Application Support/Google/Chrome/Default`  
-• Desktop app (easier – no CORS issues):  
+- Desktop app (easier – no CORS issues):  
   – macOS: `~/Library/Application Support/Slack`  
   – Windows: `%APPDATA%\Slack`  
 
@@ -507,9 +509,9 @@ python slack/fetch_with_playwright.py
 – Result lands in `slack/raw_exports/…` and can immediately feed your `track_conversions.py`.
 
 WHAT CAN GO WRONG & FIXES
-• “Browser not logged in” → open Slack once with that profile to create cookies.  
-• “Too few messages” → increase scroll iterations or slow down the delay.  
-• New Slack frontend paths → update `URL_RE` if Slack renames the endpoint.
+- “Browser not logged in” → open Slack once with that profile to create cookies.  
+- “Too few messages” → increase scroll iterations or slow down the delay.  
+- New Slack frontend paths → update `URL_RE` if Slack renames the endpoint.
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 OPTION 3 – Direct cookie-based API calls
@@ -521,8 +523,8 @@ STEP 1  Find the required headers once
 2. DevTools ► Network ► Filter `conversations.history` (or `.replies`).  
 3. Click any such request, copy → “Copy as cURL (bash)”.  
    You’ll see two key headers:  
-   • `cookie: xoxc-<long> …` (plus other session cookies)  
-   • `x-slack-crumb: <value>`  
+   - `cookie: xoxc-<long> …` (plus other session cookies)  
+   - `x-slack-crumb: <value>`  
 
 STEP 2  Store them locally & securely
 Create `~/.slack_curl.env`
@@ -600,15 +602,15 @@ python slack/fetch_with_cookies.py
 – Script reads the cookie & crumb once; no interactive login ever again (until Slack invalidates the cookie).
 
 SECURITY & STABILITY NOTES
-• Cookies grant full account access while valid → keep the file 0600.  
-• Slack may rotate tokens (esp. after logout). Just refresh via DevTools.  
-• This method is unofficial; heavy automated use might trigger rate-limiting.
+- Cookies grant full account access while valid → keep the file 0600.  
+- Slack may rotate tokens (esp. after logout). Just refresh via DevTools.  
+- This method is unofficial; heavy automated use might trigger rate-limiting.
 
 ━━━━━━━━━━━━━━━
 Choosing between them
 ━━━━━━━━━━━━━━━
-• Playwright (option 2) is usually quickest to get running if you have the Desktop app installed and don’t want to hand-edit cookies.  
-• Cookie script (option 3) is faster at runtime and easier to schedule on a headless server, but you must refresh cookies occasionally.
+- Playwright (option 2) is usually quickest to get running if you have the Desktop app installed and don’t want to hand-edit cookies.  
+- Cookie script (option 3) is faster at runtime and easier to schedule on a headless server, but you must refresh cookies occasionally.
 
 When you’re ready, I can commit whichever script you prefer, integrate it with `track_conversions.mark_file_converted`, and add a Make/CLI entry so the whole flow is:
 
@@ -766,25 +768,29 @@ Okay I have the desktop app but I would want to use this same script across mult
 
 Here’s how the two “no-API-token” approaches scale when you want to pull from several workspaces and drop the script into any repo:
 
-───────────────────────────────────────────
+---
+
 Flexibility comparison
-───────────────────────────────────────────
+
+---
 1. Headless-Playwright scroll & capture  
-   • Needs the **Slack Desktop profile path** for each workspace.  
+   - Needs the **Slack Desktop profile path** for each workspace.  
      – All workspaces live inside one directory (`~/Library/Application Support/Slack`), but Playwright can only attach to **one profile at a time**.  
-   • If you open a second workspace in the desktop app, it gets its own cookie jar inside the same profile, so the script still works – you just pass a permalink for the workspace you want and it “just works”.  
-   • Requires a local GUI session (even though Chromium is headless). Harder to run on a headless Linux box.
+   - If you open a second workspace in the desktop app, it gets its own cookie jar inside the same profile, so the script still works – you just pass a permalink for the workspace you want and it “just works”.  
+   - Requires a local GUI session (even though Chromium is headless). Harder to run on a headless Linux box.
 
 2. Cookie-replay (option 3)  
-   • Completely headless; portable to CI or servers with no desktop.  
-   • You keep **one cookie+crumb file per workspace**, and the script picks the right one automatically by parsing the conversation URL.  
-   • You don’t have to install Playwright’s 100 MB browser for every repo.
+   - Completely headless; portable to CI or servers with no desktop.  
+   - You keep **one cookie+crumb file per workspace**, and the script picks the right one automatically by parsing the conversation URL.  
+   - You don’t have to install Playwright’s 100 MB browser for every repo.
 
 Because you said “multiple repositories” and possibly non-GUI environments, **option 3 is usually the most flexible** once you organise the cookies.
 
-───────────────────────────────────────────
+---
+
 Making option 3 multi-workspace friendly
-───────────────────────────────────────────
+
+---
 
 1. Store a credentials file per workspace  
    ```
@@ -800,12 +806,12 @@ Making option 3 multi-workspace friendly
    ```
 
 2. Modify the fetch script to:
-   • Parse the **team ID** from any Slack URL  
+   - Parse the **team ID** from any Slack URL  
      – Channel URLs: `https://app.slack.com/client/<TEAM>/<CHANNEL>`  
      – Permalinks:   `https://*.slack.com/archives/<CHANNEL>/p<timestamp>`  
-   • Load `~/.slack_cookies/<TEAM>.env` for auth.  
-   • Extract the `<CHANNEL>` or thread-ts from the URL, exactly like before.  
-   • Fire the same `conversations.history` or `conversations.replies` POSTs.
+   - Load `~/.slack_cookies/<TEAM>.env` for auth.  
+   - Extract the `<CHANNEL>` or thread-ts from the URL, exactly like before.  
+   - Fire the same `conversations.history` or `conversations.replies` POSTs.
 
 Here is the minimal change (only the bits that matter):
 
@@ -895,26 +901,28 @@ python slack/fetch_with_cookies.py
 ```
 
 4. How it “knows” what to grab  
-   • The **URL** you paste contains both the workspace (team ID or
+   - The **URL** you paste contains both the workspace (team ID or
      sub-domain) and the channel or thread you care about.  
-   • The script maps workspace → credential file, then calls the same
+   - The script maps workspace → credential file, then calls the same
      endpoint Slack’s web client uses, passing the `channel` parameter.  
-   • If you give a permalink (`/p<timestamp>`), the script additionally
+   - If you give a permalink (`/p<timestamp>`), the script additionally
      filters the returned list so only that thread (+root message) is kept.
 
 5. Keeping it repo-agnostic  
-   • Put the script in a tiny PyPI package or copy the file into each repo.  
-   • Or create a dot-bin utility (`~/bin/hd-slack-pull`) that any repo
+   - Put the script in a tiny PyPI package or copy the file into each repo.  
+   - Or create a dot-bin utility (`~/bin/hd-slack-pull`) that any repo
      can call.  
-   • Only dependency is `requests`; no browser assets required.
+   - Only dependency is `requests`; no browser assets required.
 
-───────────────────────────────────────────
+---
+
 Summary
-───────────────────────────────────────────
-• **Most flexible**: cookie-replay (option 3) – portable, headless, one
+
+---
+- **Most flexible**: cookie-replay (option 3) – portable, headless, one
   script handles any workspace as long as you save a cookie/crumb file
   per team.  
-• It “knows” which conversation to grab purely from the URL you supply,
+- It “knows” which conversation to grab purely from the URL you supply,
   and it chooses the right credentials by matching the workspace/team id.
 
 If this looks good, I can drop the multi-workspace script into your repo,
@@ -1039,9 +1047,9 @@ C. keep one growing Markdown file per conversation without ever duplicating the 
 Nothing is committed to your repo yet—these are the exact manual steps plus the code outline.  
 When you’re happy with the plan, I can drop the script into `slack/`, wire it to `conversion_tracker.json`, and add any dependencies for you.
 
-──────────────────────────────────────────────────────
+---
 A. Grab the headers (do this once per workspace)
-──────────────────────────────────────────────────────
+---
 1. Use the **Web** version of Slack, even if you normally use the desktop app.  
    Why? The Electron desktop app stores cookies in an encrypted DB; pulling them is painful, while the browser exposes them in two clicks.
 
@@ -1078,15 +1086,15 @@ A. Grab the headers (do this once per workspace)
 
    Repeat the 6-step process for every other workspace; you end up with one `.env` file per team.
 
-──────────────────────────────────────────────────────
+---
 B. Flexible multi-workspace fetch script
-──────────────────────────────────────────────────────
+---
 
 Key features requested:
-• Ask for a **channel or DM name**, not a URL  
-• Automatically resolve that name to its channel ID via `conversations.list` (using the same cookie auth)  
-• Create/append to a single Markdown file per conversation  
-• Keep a JSON tracker so a second run only fetches messages newer than the last pull.
+- Ask for a **channel or DM name**, not a URL  
+- Automatically resolve that name to its channel ID via `conversations.list` (using the same cookie auth)  
+- Create/append to a single Markdown file per conversation  
+- Keep a JSON tracker so a second run only fetches messages newer than the last pull.
 
 Below is the core logic you’ll need (dependencies: `requests`, `python-dateutil`).
 
@@ -1250,9 +1258,9 @@ What this script does
 
 7. Updates `conversion_tracker.json` so the next run picks up exactly where it left off.
 
-──────────────────────────────────────────────────────
+---
 C. Usage example (after you’ve saved the script)
-──────────────────────────────────────────────────────
+---
 ```bash
 # activate your venv first [[memory:3164445]]
 python slack/fetch_cookie_md.py
@@ -1265,10 +1273,10 @@ python slack/fetch_cookie_md.py
 
 Run the same script in another repo; as long as `~/.slack_cookies/` is on that machine, it works immediately.
 
-──────────────────────────────────────────────────────
+---
 Next steps
-──────────────────────────────────────────────────────
-• Tell me if you’d like this exact script (plus a tiny `requirements.txt` entry for `requests` and `python-dateutil`) added to the repo, and I’ll commit it along with any wiring to the existing `track_conversions.py`.
+---
+- Tell me if you’d like this exact script (plus a tiny `requirements.txt` entry for `requests` and `python-dateutil`) added to the repo, and I’ll commit it along with any wiring to the existing `track_conversions.py`.
 
 ```plaintext
    curl 'https://app.slack.com/api/conversations.history' \
@@ -1457,9 +1465,9 @@ The helper script only needs two values, stored as two single-line shell variabl
 
 Everything else—the URL, headers, form boundary, payload—must be removed.
 
-───────────────────────────────
+---
 What you have now (summarised)
-───────────────────────────────
+---
 ```
 curl https://…conversations.history … \
   -H 'accept: */*' \
@@ -1471,29 +1479,29 @@ curl https://…conversations.history … \
 ```
 That whole block is unnecessary and will break the parser.
 
-───────────────────────────────
+---
 What the file **should** look like
-───────────────────────────────
+---
 ```
 SLACK_COOKIE='b=.060d652feeaedd7c3328be6a0f4da746; ssb_instance_id=78539885-fc68-47ad-b852-a572fc54ce1a; cjConsent=MHxOfDB8Tnww; … ; d=xoxd-xSlN7amWIP0s…'
 SLACK_CRUMB='4c5d6e7f8g'      # ← exact value from the x-slack-crumb header
 ```
 Notes:
 
-• Keep the **full cookie string exactly as it appears after `-b '` (all semicolon-separated key=value pairs).  
-• The quotes must be **single quotes**; otherwise Bash will try to expand characters inside.  
-• If the request you copied didn’t contain an `x-slack-crumb` header, copy another XHR (e.g. `conversations.list`); one of them will include it.  Slack still validates it on some endpoints.
+- Keep the **full cookie string exactly as it appears after `-b '` (all semicolon-separated key=value pairs).  
+- The quotes must be **single quotes**; otherwise Bash will try to expand characters inside.  
+- If the request you copied didn’t contain an `x-slack-crumb` header, copy another XHR (e.g. `conversations.list`); one of them will include it.  Slack still validates it on some endpoints.
 
-───────────────────────────────
+---
 Step-by-step to recapture
-───────────────────────────────
+---
 1. Open Chrome DevTools → Network.  
 2. Filter for `conversations.list` or `conversations.history`.  
 3. Right-click a row → “Copy → Copy as cURL (bash)”.  
 4. In a text editor:  
-   • Find the bit that starts with `-b '` and ends at the next `' \`.  
+   - Find the bit that starts with `-b '` and ends at the next `' \`.  
      That entire substring (without `-b `) is your cookie.  
-   • Find the header `-H 'x-slack-crumb: …'`.  
+   - Find the header `-H 'x-slack-crumb: …'`.  
      Copy just the value after the colon (no quotes, no spaces).  
 5. Create/overwrite the file `slack/slack_cookies/TA97020CV-higherdose.env` with the two lines exactly as shown above.  
 6. Save the file and make sure its permissions aren’t world-readable:
@@ -1542,9 +1550,9 @@ Assuming the ellipsis (`…`) you copied here is just for anonymisation and your
 
 Next step: run the fetch script and verify it can:
 
-• Load the creds,  
-• Resolve a channel name,  
-• Save/update the Markdown export.
+- Load the creds,  
+- Resolve a channel name,  
+- Save/update the Markdown export.
 
 Let me know if you hit any issues or if you’d like me to add the script and requirements directly to the repo.
 
@@ -1595,11 +1603,11 @@ Okay i made the updates and ready to test
 """
 Fetch Slack messages (channels or DMs) using existing browser cookies.
 
-• Supports multiple workspaces by keeping one creds file per team in
+- Supports multiple workspaces by keeping one creds file per team in
   ~/.slack_cookies/<TEAM_ID>*.env
-• Appends new messages to a Markdown file per conversation instead of
+- Appends new messages to a Markdown file per conversation instead of
   overwriting.
-• Remembers the latest timestamp fetched for every channel in a single
+- Remembers the latest timestamp fetched for every channel in a single
   JSON tracker, so subsequent runs grab only the delta.
 
 Dependencies (add to requirements.txt):
@@ -1842,11 +1850,11 @@ How to test:
    ```
    python slack/fetch_cookie_md.py
    ```
-   • Enter  
+   - Enter  
      - Workspace domain: `higherdosemanagement.slack.com`  
      - Team ID: `TA97020CV`  
-   • When prompted, type a channel or DM name (e.g. `sb-higherdose`) and hit ↵.  
-   • The first run will fetch everything; later runs append only new messages.
+   - When prompted, type a channel or DM name (e.g. `sb-higherdose`) and hit ↵.  
+   - The first run will fetch everything; later runs append only new messages.
 
 3. Resulting Markdown appears in `slack/markdown_exports/<channel>.md`, and the latest timestamp is tracked in `slack/conversion_tracker.json`.
 
@@ -1906,12 +1914,12 @@ Because it didn’t find such a file, it stopped with:
 
 What probably happened:
 
-• You built the creds file inside the repo (`slack/slack_cookies/…`) and later deleted or moved it.  
-• But you never copied it to the **home-level** creds folder that the script expects.
+- You built the creds file inside the repo (`slack/slack_cookies/…`) and later deleted or moved it.  
+- But you never copied it to the **home-level** creds folder that the script expects.
 
-──────────────────────────────
+---
 Fix in three shell commands
-──────────────────────────────
+---
 1. Re-create the directory (if it isn’t already there):
 ```bash
 mkdir -p ~/.slack_cookies
@@ -1981,7 +1989,9 @@ Right now your credentials file is inside the repo at
 
 Fix it one of two ways (quickest is option A):
 
-──────────────── A. Copy or move the creds file ────────────────
+---
+A. Copy or move the creds file 
+---
 ```bash
 # create the target directory if it doesn’t exist
 mkdir -p ~/.slack_cookies
@@ -1998,7 +2008,9 @@ Then rerun:
 venv/bin/python slack/fetch_cookie_md.py
 ```
 
-──────────────── B. Tell the script to look inside the repo ────────────────
+---
+B. Tell the script to look inside the repo 
+---
 If you’d prefer not to touch `~/.slack_cookies`, you can set an env-var before running:
 
 ```bash
@@ -2008,7 +2020,9 @@ venv/bin/python slack/fetch_cookie_md.py
 
 (The script checks `SLACK_COOKIE_DIR`; if set, it overrides the default path.)
 
-──────────────── Extra sanity check ────────────────
+---
+Extra sanity check 
+---
 Open the creds file and make sure:
 
 1. The first line starts exactly with `SLACK_COOKIE=` (no typo, all caps).  
@@ -2121,9 +2135,9 @@ why is this not working
 “not_authed” means Slack didn’t see any valid OAuth-style token in the request body, so the cookie+crumb alone weren’t enough.  
 The Web client always sends a form field named `token` (value starts with `xoxc-…`). You need to give the script that value as well.
 
-─────────────────────────────
+---
 1  Locate the xoxc token once
-─────────────────────────────
+---
 1. Open Chrome DevTools → Network.  
 2. Filter for `conversations.list` or any Slack API call.  
 3. Click a row and look in the Request Payload.  
@@ -2133,9 +2147,9 @@ The Web client always sends a form field named `token` (value starts with `xoxc-
    ```
 4. Copy the full `xoxc-…` string.
 
-─────────────────────────────
+---
 2  Add it to your creds file
-─────────────────────────────
+---
 Edit `slack/slack_cookies/TA97020CV.env` so it has THREE lines:
 
 ```
@@ -2146,9 +2160,9 @@ SLACK_TOKEN='xoxc-349238068437-9037…'   # <-- new line
 
 Keep the single quotes, no trailing spaces.
 
-─────────────────────────────
+---
 3  Run the script again
-─────────────────────────────
+---
 ```bash
 # activate venv
 . venv/bin/activate
@@ -2167,9 +2181,9 @@ Fetching channel list…
 Channel/DM name:
 ```
 
-─────────────────────────────
+---
 Common shell note
-─────────────────────────────
+---
 When you pasted my earlier example, the `#` comment lines were executed literally, so zsh complained (“command not found: #”).  
 In the shell, either skip comment lines or prefix them with `#` **only if you intend them to be comments**.
 
@@ -2221,17 +2235,17 @@ There are only three things it checks for the Web client:
 If any one of the three is wrong or stale Slack will answer `not_authed`.  
 Your `.env` file now has all three keys, so the most common causes are:
 
-────────────────────────────────────────────────────────
+---
 A. Crumb or token came from a **different request**
-────────────────────────────────────────────────────────
+---
 Make sure the values you pasted are taken **from the same workspace and the same browser session** you copied the cookie from.  
 A crumb from an old tab or another workspace doesn’t match the cookie and Slack rejects the call.
 
 Quick check:
 
-• Open DevTools ► Network.  
-• Filter for `conversations.list` again.  
-• Click the most recent request.
+- Open DevTools ► Network.  
+- Filter for `conversations.list` again.  
+- Click the most recent request.
 
 Look at the Request Headers / Form Data:
 
@@ -2251,15 +2265,15 @@ SLACK_TOKEN='xoxc-3492380…'
 
 (No trailing spaces, keep the single quotes.)
 
-────────────────────────────────────────────────────────
+---
 B. The cookie string is truncated
-────────────────────────────────────────────────────────
+---
 The line must include **every key=value pair** exactly as it appeared after the `-b` flag in the “Copy as cURL” output – right up to the final semicolon (or the `d=` field).  
 If anything in the middle was dropped (ellipsis, newline wrap) Slack won’t accept it.
 
-────────────────────────────────────────────────────────
+---
 C. Quickly validate the trio
-────────────────────────────────────────────────────────
+---
 After updating the file, you can make a one-liner test:
 
 ```bash
@@ -2277,13 +2291,13 @@ print(r.json())
 PY
 ```
 
-• If you get `{"ok": true, ...}`, the trio is valid.  
-• If you get `{"ok": false, "error": "not_authed"}`, one of the three
+- If you get `{"ok": true, ...}`, the trio is valid.  
+- If you get `{"ok": false, "error": "not_authed"}`, one of the three
   strings is still off – recopy them.
 
-────────────────────────────────────────────────────────
+---
 Once auth.test returns ok
-────────────────────────────────────────────────────────
+---
 Run the fetch script again:
 
 ```bash
@@ -2350,20 +2364,20 @@ where can i find the crumb
 The crumb is sent as an HTTP request-header called `x-slack-crumb` in almost every XHR Slack’s web client makes.  
 Here’s the fastest way to grab it:
 
-──────────────────────────────────
+---
 Step-by-step (Chrome / Edge / Brave)
-──────────────────────────────────
+---
 1. Open the workspace in your browser  
    e.g. `https://app.slack.com/client/TA97020CV/<channelID>`
 
 2. Open DevTools  
-   • macOS `⌥⌘I` • Windows/Linux `Ctrl Shift I`  
+   - macOS `⌥⌘I` - Windows/Linux `Ctrl Shift I`  
    Click the “Network” tab.
 
 3. Capture a fresh request  
-   • In the small filter box, type `conversations.list`  
+   - In the small filter box, type `conversations.list`  
      (or `conversations.history` – any Slack API call works)  
-   • Reload the page (`⌘R` / `F5`) so new XHRs appear.
+   - Reload the page (`⌘R` / `F5`) so new XHRs appear.
 
 4. Click one of the rows that shows up.  
    In the right-hand pane choose the “Headers” sub-tab.
@@ -2386,9 +2400,9 @@ Step-by-step (Chrome / Edge / Brave)
    Make sure the cookie (`SLACK_COOKIE`) and token (`SLACK_TOKEN`) you
    copied come from the *same request* or at least the same session.
 
-──────────────────────────────────
+---
 Quick sanity test (optional)
-──────────────────────────────────
+---
 After saving all three lines, run:
 
 ```bash
@@ -2408,8 +2422,8 @@ print(r.json())
 PY
 ```
 
-• If you get `{"ok": true, …}`, the trio (cookie + crumb + token) is valid.  
-• If it still returns `"not_authed"`, at least one of the three values is
+- If you get `{"ok": true, …}`, the trio (cookie + crumb + token) is valid.  
+- If it still returns `"not_authed"`, at least one of the three values is
   mismatched—recopy them from the same request.
 
 Once `auth.test` passes, rerun:
@@ -2464,9 +2478,9 @@ i cant find the crumb through the methods your explainng
 Here are three dependable ways to surface the `x-slack-crumb` value.  
 If one doesn’t show it, move to the next; the crumb **is always present** in at least one of the web-client requests.
 
-────────────────────────────────────────
+---
 1. Copy-as-cURL (most reliable)
-────────────────────────────────────────
+---
 1. Open DevTools → Network  
 2. In the filter box, type `conversations.list` (or just `list`)  
 3. Reload the page (⌘R / F5) so new rows appear  
@@ -2484,17 +2498,17 @@ If one doesn’t show it, move to the next; the crumb **is always present** in a
 
 Tip: use your editor’s “find” (`⌘F`) for `x-slack-crumb`.
 
-────────────────────────────────────────
+---
 2. Header pane search
-────────────────────────────────────────
+---
 1. DevTools → Network → filter `conversations.list` (or any API call)  
 2. Click one row  
 3. In the right panel, “Headers” tab, place your cursor in the Headers area and press `⌘F` (or `Ctrl F`)  
 4. Type `x-slack-crumb` – DevTools will highlight the header and its value.
 
-────────────────────────────────────────
+---
 3. Quick JavaScript snippet (last resort)
-────────────────────────────────────────
+---
 Paste this into the DevTools **Console** (while Slack is open):
 
 ```js
@@ -2507,12 +2521,12 @@ Paste this into the DevTools **Console** (while Slack is open):
 Immediately inspect the resulting network request (same Network panel, look for `auth.test`).  
 The headers of that request always include the real `x-slack-crumb`; copy its value.
 
-────────────────────────────────────────
+---
 If you still can’t see it
-────────────────────────────────────────
-• Make sure you are inspecting **https://app.slack.com** (the web client), not the legacy `*.slack.com/messages` interface.  
-• Clear the Network log (right-click ➜ Clear) before reloading so you only see fresh requests.  
-• The crumb may show up only on some endpoints; try filtering for `users.list`, `channels.info`, or just leave the filter empty and pick any recent XHR.
+---
+- Make sure you are inspecting **https://app.slack.com** (the web client), not the legacy `*.slack.com/messages` interface.  
+- Clear the Network log (right-click ➜ Clear) before reloading so you only see fresh requests.  
+- The crumb may show up only on some endpoints; try filtering for `users.list`, `channels.info`, or just leave the filter empty and pick any recent XHR.
 
 Once you have the crumb, place all three lines in `TA97020CV.env`:
 
@@ -2565,11 +2579,11 @@ What to do:
 3. In the filter box type **`conversations.list`** or **`users.list`**  
 4. Reload the page (⌘R / F5)  
 5. Pick one of the new rows, right-click ► Copy ► **Copy as cURL (bash)**  
-   • Open the copy in a text editor and search for  
+   - Open the copy in a text editor and search for  
      ```
      -H 'x-slack-crumb:
      ```  
-   • You should see something like  
+   - You should see something like  
      ```
      -H 'x-slack-crumb: abcd.1234' \
      ```  
@@ -2581,13 +2595,13 @@ What to do:
 
 If that request still has no crumb, try these endpoints (they always include it):
 
-• `api/auth.test` (manually call it in the console):
+- `api/auth.test` (manually call it in the console):
   ```js
   fetch('/api/auth.test').then(()=>{})
   ```  
   then click the request in Network.
 
-• `conversations.history` (scroll any channel; a new request fires).
+- `conversations.history` (scroll any channel; a new request fires).
 
 Once you have a header that actually contains `x-slack-crumb`, paste its value into `TA97020CV.env`, keep the existing `SLACK_COOKIE=` and `SLACK_TOKEN=`, save, and rerun the script.
 
@@ -2624,9 +2638,9 @@ If you capture an XHR that was fired by the classic workspace domain (`*.slack.c
 
 Use one of these two guaranteed methods and you’ll see it immediately:
 
-─────────────────────────────────────────────────
+---
 Method 1  Copy a fresh conversations.history POST
-─────────────────────────────────────────────────
+---
 1. In Chrome DevTools → Network, click the funnel icon and enter  
    ```
    method:POST
@@ -2637,8 +2651,8 @@ Method 1  Copy a fresh conversations.history POST
    The client fires `conversations.history` to fetch older messages.
 
 3. A new row called `conversations.history` appears.  
-   • Right-click it → Copy → *Copy as cURL (bash)*.  
-   • Paste in a text editor and search for  
+   - Right-click it → Copy → *Copy as cURL (bash)*.  
+   - Paste in a text editor and search for  
      ```
      -H 'x-slack-crumb:
      ```
@@ -2655,9 +2669,9 @@ Copy the part after the colon (here `8594.4c5d6e7f8g9h`) and set
 SLACK_CRUMB='8594.4c5d6e7f8g9h'
 ```
 
-─────────────────────────────────────────────────
+---
 Method 2  Fire auth.test manually (always has a crumb)
-─────────────────────────────────────────────────
+---
 1. Go to DevTools → **Console** and run:
 
 ```js
@@ -2678,9 +2692,9 @@ Copy the value and add it to your `.env` file exactly as:
 SLACK_CRUMB='ab12.cd34ef56'
 ```
 
-─────────────────────────────────────────────────
+---
 Checklist for TA97020CV.env
-─────────────────────────────────────────────────
+---
 Your file should contain **only three** lines, no blank lines, no extra quotes:
 
 ```
@@ -2722,8 +2736,8 @@ print(r.json())
 PY
 ```
 
-• `{"ok": true, ...}` → creds are correct; fetch script will work.  
-• `"not_authed"` → at least one of the three strings is still from a different session/workspace; recapture all three together.
+- `{"ok": true, ...}` → creds are correct; fetch script will work.  
+- `"not_authed"` → at least one of the three strings is still from a different session/workspace; recapture all three together.
 
 Once `auth.test` passes, the fetcher will too.
 
@@ -3427,13 +3441,13 @@ Let me create an improved version that:
 """
 Fetch Slack messages (channels or DMs) using existing browser cookies.
 
-• Supports multiple workspaces by keeping one creds file per team in
+- Supports multiple workspaces by keeping one creds file per team in
   ~/.slack_cookies/<TEAM_ID>*.env
-• Appends new messages to a Markdown file per conversation instead of
+- Appends new messages to a Markdown file per conversation instead of
   overwriting.
-• Remembers the latest timestamp fetched for every channel in a single
+- Remembers the latest timestamp fetched for every channel in a single
   JSON tracker, so subsequent runs grab only the delta.
-• Automatically updates rolodex.json with new contacts found.
+- Automatically updates rolodex.json with new contacts found.
 
 Dependencies (add to requirements.txt):
     requests
