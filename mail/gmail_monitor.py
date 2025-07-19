@@ -6,8 +6,9 @@ import pickle
 import base64
 from io import BytesIO
 from pathlib import Path
-from email.utils import parsedate_to_datetime
+from urllib.parse import urlsplit
 from email.header import decode_header
+from email.utils import parsedate_to_datetime
 
 # Add project root to path to allow absolute imports from 'utils'
 project_root = Path(__file__).resolve().parent.parent
@@ -91,11 +92,9 @@ def clean_email_content(content):
     def shorten_url(match):
         url = match.group(0)
         if len(url) > 50:
-            # Extract domain for readability
-            domain_match = re.search(r'https?://([^/]+)', url)
-            if domain_match:
-                domain = domain_match.group(1)
-                return f"[{domain}...]({url})"
+            # Extract domain (including subdomain) using urllib.parse
+            domain = urlsplit(url).netloc
+            return f"[{domain}]({url})"
         return url
 
     # Apply the URL shortener to every http/https link in the content
