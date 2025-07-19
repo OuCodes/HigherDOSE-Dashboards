@@ -26,7 +26,9 @@ Here’s a proven, repeatable way to get from “copy-pasting JSON out of DevToo
 - Updates `conversion_tracker.json` so you never re-fetch the same data twice
 
 ---
+
 HOW TO BUILD IT
+
 ---
 
 1. Create (or reuse) a Slack app & token  
@@ -426,9 +428,9 @@ Okay for option 2 and 3 can you walk me through step by step what you would be n
 Below is a pragmatic, “from-zero-to-JSON-file” walkthrough for BOTH approaches.  
 Nothing here changes your repo yet; it just shows every step and the minimal code you need to prove the concept. When one of these feels right, tell me and I’ll wire it into the project.
 
-━━━━━━━━━━━━━━━━━━━━━━━
+---
 OPTION 2 – Headless Playwright “scroll-and-capture”
-━━━━━━━━━━━━━━━━━━━━━━━
+---
 Goal: Re-use the session that’s already logged in (Desktop app or web browser), let a headless Chromium open the exact conversation URL, scroll until all messages in your date-range are fetched, intercept Slack’s network responses, and save them.
 
 STEP 1  Install tooling (inside your venv)
@@ -513,9 +515,9 @@ WHAT CAN GO WRONG & FIXES
 - “Too few messages” → increase scroll iterations or slow down the delay.  
 - New Slack frontend paths → update `URL_RE` if Slack renames the endpoint.
 
-━━━━━━━━━━━━━━━━━━━━━━━
+---
 OPTION 3 – Direct cookie-based API calls
-━━━━━━━━━━━━━━━━━━━━━━━
+---
 Goal: Skip the browser entirely, mimic the exact XHR your Slack tab makes, but send it with `requests` using the same auth cookies.
 
 STEP 1  Find the required headers once
@@ -606,9 +608,9 @@ SECURITY & STABILITY NOTES
 - Slack may rotate tokens (esp. after logout). Just refresh via DevTools.  
 - This method is unofficial; heavy automated use might trigger rate-limiting.
 
-━━━━━━━━━━━━━━━
+---
 Choosing between them
-━━━━━━━━━━━━━━━
+---
 - Playwright (option 2) is usually quickest to get running if you have the Desktop app installed and don’t want to hand-edit cookies.  
 - Cookie script (option 3) is faster at runtime and easier to schedule on a headless server, but you must refresh cookies occasionally.
 
