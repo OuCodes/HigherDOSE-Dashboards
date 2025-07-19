@@ -90,7 +90,7 @@ def clean_email_content(content):
     # Shorten extremely long URLs (optional)
     def shorten_url(match):
         url = match.group(0)
-        if len(url) > 100:
+        if len(url) > 50:
             # Extract domain for readability
             domain_match = re.search(r'https?://([^/]+)', url)
             if domain_match:
