@@ -429,7 +429,9 @@ Below is a pragmatic, “from-zero-to-JSON-file” walkthrough for BOTH approach
 Nothing here changes your repo yet; it just shows every step and the minimal code you need to prove the concept. When one of these feels right, tell me and I’ll wire it into the project.
 
 ---
+
 OPTION 2 – Headless Playwright “scroll-and-capture”
+
 ---
 Goal: Re-use the session that’s already logged in (Desktop app or web browser), let a headless Chromium open the exact conversation URL, scroll until all messages in your date-range are fetched, intercept Slack’s network responses, and save them.
 
@@ -516,7 +518,9 @@ WHAT CAN GO WRONG & FIXES
 - New Slack frontend paths → update `URL_RE` if Slack renames the endpoint.
 
 ---
+
 OPTION 3 – Direct cookie-based API calls
+
 ---
 Goal: Skip the browser entirely, mimic the exact XHR your Slack tab makes, but send it with `requests` using the same auth cookies.
 
@@ -1050,7 +1054,9 @@ Nothing is committed to your repo yet—these are the exact manual steps plus th
 When you’re happy with the plan, I can drop the script into `slack/`, wire it to `conversion_tracker.json`, and add any dependencies for you.
 
 ---
+
 A. Grab the headers (do this once per workspace)
+
 ---
 1. Use the **Web** version of Slack, even if you normally use the desktop app.  
    Why? The Electron desktop app stores cookies in an encrypted DB; pulling them is painful, while the browser exposes them in two clicks.
@@ -1089,7 +1095,9 @@ A. Grab the headers (do this once per workspace)
    Repeat the 6-step process for every other workspace; you end up with one `.env` file per team.
 
 ---
+
 B. Flexible multi-workspace fetch script
+
 ---
 
 Key features requested:
@@ -1261,7 +1269,9 @@ What this script does
 7. Updates `conversion_tracker.json` so the next run picks up exactly where it left off.
 
 ---
+
 C. Usage example (after you’ve saved the script)
+
 ---
 ```bash
 # activate your venv first [[memory:3164445]]
@@ -1276,7 +1286,9 @@ python slack/fetch_cookie_md.py
 Run the same script in another repo; as long as `~/.slack_cookies/` is on that machine, it works immediately.
 
 ---
+
 Next steps
+
 ---
 - Tell me if you’d like this exact script (plus a tiny `requirements.txt` entry for `requests` and `python-dateutil`) added to the repo, and I’ll commit it along with any wiring to the existing `track_conversions.py`.
 
