@@ -1,0 +1,11 @@
+Can you review @/markdown_exports and @/mail in the archive folder and categorize the markdown files into the following categories from July 14th - July 20th 
+
+Wins & Updates = General insights across the brand
+Challenges = General insights across the brand
+Opportunities & Solutions = General insights across the brand
+Daily Task List & July Priorities = Specifically for Jourdan
+Affiliate Insights = Affiliate partnerships, programs, updates
+Motion & Creative Reporting Insights = Creative insights and updates mentioned in slack or found in reporting. 
+Website & CRO = Genral insights related to the website update or CRO pushed. 
+Notes on Creative Testing Constraints = Any insights on create restraints or creative demand. 
+Next Steps / Action Items = What are the action items for this week and next steps following previous action items. 
