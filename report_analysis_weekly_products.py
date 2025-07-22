@@ -12,13 +12,14 @@ The original channel-level analytics remain intact via re-use of
 """
 import ast
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import numpy as np
 import pandas as pd
 
 import report_analysis_weekly as base
 import glob, os
+import argparse
 
 # Pathlib for file-friendly names
 from pathlib import Path
@@ -27,6 +28,11 @@ from pathlib import Path
 # -------------------------------------------------------------
 # 📅  Previous Week Utilities
 # -------------------------------------------------------------
+
+# Helper to pick newest file matching a pattern (used as fallback)
+def _latest(pattern: str) -> str | None:
+    matches = glob.glob(pattern)
+    return max(matches, key=os.path.getmtime) if matches else None
 
 
 def _find_previous_csv(stats_dir: str = "stats") -> str | None:
@@ -227,16 +233,17 @@ def markdown_table(
         headers.append(extra_col)
 
     metrics = [
-        ("spend", "$", 0),
-        ("attributed_rev", "$", 0),
-        ("roas", "", 2),
-        ("cac", "$", 2),
-        ("aov", "$", 2),
-        ("transactions_display", "", 0),
+        ("spend", "$", 0, "Spend"),
+        ("attributed_rev", "$", 0, "Revenue"),
+        ("roas", "", 2, "ROAS"),
+        ("roas_1st_time", "", 2, "ROAS 1st"),
+        ("cac", "$", 2, "CAC"),
+        ("cac_1st_time", "$", 2, "CAC 1st"),
+        ("aov", "$", 2, "AOV"),
+        ("transactions_display", "", 0, "Transactions"),
     ]
 
-    for m, _, _ in metrics:
-        title = m.replace("_display", "").title()
+    for m, _, _, title in metrics:
         headers.append(title)
         if prev_summary is not None:
             headers.extend([f"{title} Prev", f"{title} Δ%"])
@@ -248,7 +255,7 @@ def markdown_table(
         if extra_col:
             cells.append(str(row[extra_col]))
 
-        for metric, prefix, dec in metrics:
+        for metric, prefix, dec, _ in metrics:
             cur_val = row[metric] if metric in row else 0
             # Current value
             cur_fmt = f"{prefix}{cur_val:,.{dec}f}" if prefix else f"{cur_val:,.{dec}f}" if dec else f"{int(cur_val)}"
@@ -280,11 +287,15 @@ def channel_totals_df(summary: pd.DataFrame, label: str = "**All Channels**") ->
     txns = summary["transactions"].sum()
 
     txns_display = round(txns)
+    rev_1st_sum = summary["attributed_rev_1st_time"].sum() if "attributed_rev_1st_time" in summary.columns else 0
+    txns_1st_sum = summary["transactions_1st_time"].sum() if "transactions_1st_time" in summary.columns else 0
     row = {
         "spend": spend,
         "attributed_rev": revenue,
         "roas": revenue / spend if spend else 0,
+        "roas_1st_time": rev_1st_sum / spend if spend else 0,
         "cac": spend / txns_display if txns_display else 0,
+        "cac_1st_time": spend / txns_1st_sum if txns_1st_sum else 0,
         "aov": revenue / txns_display if txns_display else 0,
         "transactions": txns_display,
         "transactions_display": txns_display,
@@ -311,11 +322,15 @@ def totals_row(summary: pd.DataFrame, label: str):
 
     txns_display = round(txns)
 
+    rev_1st_sum = summary["attributed_rev_1st_time"].sum() if "attributed_rev_1st_time" in summary.columns else 0
+    txns_1st_sum = summary["transactions_1st_time"].sum() if "transactions_1st_time" in summary.columns else 0
     total_series = {
         "spend": spend,
         "attributed_rev": revenue,
         "roas": revenue / spend if spend else 0,
+        "roas_1st_time": rev_1st_sum / spend if spend else 0,
         "cac": spend / txns_display if txns_display else 0,
+        "cac_1st_time": spend / txns_1st_sum if txns_1st_sum else 0,
         "aov": revenue / txns_display if txns_display else 0,
         "transactions": txns_display,
         "transactions_display": txns_display,
@@ -331,6 +346,24 @@ def totals_row(summary: pd.DataFrame, label: str):
 def main():
     print("HigherDOSE Weekly Product/Category Report")
     print("========================================\n")
+
+    # -------------------------------------------------------------
+    # 🔧  CLI arguments (paths to current-year MTD CSVs)
+    # -------------------------------------------------------------
+
+    parser = argparse.ArgumentParser(description="Generate weekly growth report with YoY comparisons")
+    parser.add_argument("--google_csv", help="Path to current Google Ads MTD CSV", default=None)
+    parser.add_argument("--meta_csv", help="Path to current Meta Ads MTD CSV", default=None)
+    args, _unknown = parser.parse_known_args()
+
+    # Determine current-year MTD files (CLI arg if supplied, otherwise prompt)
+    google_cur_path = args.google_csv
+    if not google_cur_path:
+        google_cur_path = input("Path to current-year Google Ads MTD CSV (blank to skip YoY): ").strip() or None
+
+    meta_cur_path = args.meta_csv
+    if not meta_cur_path:
+        meta_cur_path = input("Path to current-year Meta Ads MTD CSV (blank to skip YoY): ").strip() or None
 
     # 1. Load channel-level cleaned data from the base module
     df = base.load_and_clean_data()
@@ -470,6 +503,94 @@ def main():
     )
 
     # -------------------------------------------------------------
+    # 🚀 Meta Product Group Performance (Accrual Performance)
+    # -------------------------------------------------------------
+    meta_base = df[(df["accounting_mode"] == "Accrual performance") &
+                   (df["breakdown_platform_northbeam"].astype(str).str.contains(r"meta|facebook|fb|instagram", case=False, na=False))].copy()
+
+    # Remove campaign summary rows to avoid double-counting (same logic as above)
+    def _is_blank(val):
+        return pd.isna(val) or str(val).strip() == "" or str(val).strip().lower() == "(no name)"
+
+    meta_base["_is_summary"] = meta_base.apply(
+        lambda r: _is_blank(r["adset_name"]) and _is_blank(r["ad_name"]), axis=1
+    )
+    has_meta_detail = meta_base.groupby("campaign_name")["_is_summary"].transform(lambda s: (~s).any())
+    meta_accrual = meta_base[~(meta_base["_is_summary"] & has_meta_detail)].copy()
+
+    if not meta_accrual.empty:
+        # Use campaign-name keywords for grouping to align with user’s totals
+        def _keyword_group(row):
+            text = str(row.get("campaign_name", "")).lower()
+            # Explicit keywords checked in priority order to avoid mis-classification
+            if "bundle" in text:
+                return "Bundle"
+            if "blanket" in text:
+                return "Sauna Blanket"
+            if "pemf" in text:
+                return "PEMF Mat"
+            if "hat" in text:
+                return "Red Light Hat"
+            if "mask" in text:
+                return "Red Light Mask"
+            return "Body Care & Supplements"
+
+        meta_accrual["product_group"] = meta_accrual.apply(_keyword_group, axis=1)
+
+        # Ensure groups exactly match the desired order for table output
+        desired_order = [
+            "Body Care & Supplements",
+            "Sauna Blanket",
+            "Red Light Hat",
+            "PEMF Mat",
+            "Red Light Mask",
+            "Bundle",
+        ]
+
+        meta_group_df = meta_accrual.copy()
+
+        meta_summary = build_summary(meta_group_df, "product_group")
+
+        # Re-index to ensure all groups appear (missing groups will be 0)
+        meta_summary = meta_summary.reindex(desired_order).fillna(0)
+
+        # Build markdown table mirroring DTC metrics
+        headers = [
+            "Product Group",
+            "Spend",
+            "% of Total",
+            "CAC",
+            "CAC 1st",
+            "ROAS",
+            "ROAS 1st",
+            "AOV",
+            "Transactions",
+            "Revenue",
+        ]
+        meta_lines = ["| " + " | ".join(headers) + " |", "|" + "|".join(["-"] * len(headers)) + "|"]
+
+        total_spend_meta = meta_summary["spend"].sum() if not meta_summary.empty else 0
+
+        for idx, row in meta_summary.iterrows():
+            spend = row["spend"]
+            pct_total = (spend / total_spend_meta * 100) if total_spend_meta else 0
+            meta_lines.append(
+                f"| {idx} | ${spend:,.0f} | {pct_total:.1f}% | "
+                f"${row['cac']:,.2f} | ${row['cac_1st_time']:,.2f} | "
+                f"{row['roas']:.2f} | {row['roas_1st_time']:.2f} | "
+                f"${row['aov']:,.0f} | {int(row['transactions_display'])} | "
+                f"${row['attributed_rev']:,.0f} |"
+            )
+
+        meta_section_md = (
+            "\n## 2c. Meta Product Group Performance (Accrual Performance)\n" +
+            "\n".join(meta_lines) +
+            "\n---\n"
+        )
+    else:
+        meta_section_md = ""
+
+    # -------------------------------------------------------------
     # 🔄 Build DTC channel table with WoW columns
     # -------------------------------------------------------------
     # Only keep channels with spend > 0 for display, but compute the
@@ -526,7 +647,7 @@ def main():
         if divider_pos != -1:
             final_report = (
                 final_report[:hdr_pos] +
-                dtc_table_md + "\n" + product_section_md +
+                dtc_table_md + "\n" + product_section_md + meta_section_md +
                 final_report[divider_pos:]
             )
         else:
@@ -535,12 +656,12 @@ def main():
             replace_end = next_break if next_break != -1 else hdr_pos
             final_report = (
                 final_report[:hdr_pos] +
-                dtc_table_md + "\n" + product_section_md +
+                dtc_table_md + "\n" + product_section_md + meta_section_md +
                 final_report[replace_end:]
             )
     else:
         # If header somehow missing, append both sections to ensure they appear.
-        final_report += "\n" + dtc_table_md + "\n" + product_section_md
+        final_report += "\n" + dtc_table_md + "\n" + product_section_md + meta_section_md
 
     # -------------------------------------------------------------
     # 📈 Week-over-Week Executive Delta Overview (re-injected)
@@ -554,18 +675,37 @@ def main():
                 "spend": d["spend"].sum(),
                 "rev": d["attributed_rev"].sum(),
                 "txns": d["transactions"].sum(),
+                # First-time metrics (may be absent in some exports)
+                "rev_1st": d["attributed_rev_1st_time"].sum() if "attributed_rev_1st_time" in d.columns else 0,
+                "txns_1st": d["transactions_1st_time"].sum() if "transactions_1st_time" in d.columns else 0,
             }
 
         tot_cur = _totals(cur_acc)
         tot_prev = _totals(prev_acc)
+        # Derived metrics
         tot_cur["roas"] = tot_cur["rev"] / tot_cur["spend"] if tot_cur["spend"] else 0
         tot_prev["roas"] = tot_prev["rev"] / tot_prev["spend"] if tot_prev["spend"] else 0
+        # First-time ROAS & CAC
+        tot_cur["roas_1st"] = (
+            tot_cur["rev_1st"] / tot_cur["spend"] if tot_cur["spend"] else 0
+        )
+        tot_prev["roas_1st"] = (
+            tot_prev["rev_1st"] / tot_prev["spend"] if tot_prev["spend"] else 0
+        )
+        tot_cur["cac_1st"] = (
+            tot_cur["spend"] / tot_cur["txns_1st"] if tot_cur["txns_1st"] else 0
+        )
+        tot_prev["cac_1st"] = (
+            tot_prev["spend"] / tot_prev["txns_1st"] if tot_prev["txns_1st"] else 0
+        )
 
         wow_lines = [
             "\n### Week-over-Week Overview\n",
             f"* **Spend:** {_fmt_delta(tot_cur['spend'], tot_prev['spend'])}",
             f"* **Revenue:** {_fmt_delta(tot_cur['rev'], tot_prev['rev'])}",
             f"* **ROAS:** {_fmt_delta(tot_cur['roas'], tot_prev['roas'], prefix='', digits=2)}",
+            f"* **ROAS 1st:** {_fmt_delta(tot_cur['roas_1st'], tot_prev['roas_1st'], prefix='', digits=2)}",
+            f"* **CAC 1st:** {_fmt_delta(tot_cur['cac_1st'], tot_prev['cac_1st'], prefix='$', digits=2)}",
             f"* **Transactions:** {_fmt_delta(tot_cur['txns'], tot_prev['txns'], prefix='', digits=0)}",
             "\n",
         ]
@@ -576,14 +716,181 @@ def main():
             insert_pos = final_report.find("\n", pos_exec + len(exec_hdr)) + 1
             final_report = final_report[:insert_pos] + "\n".join(wow_lines) + final_report[insert_pos:]
 
-    # -----------------------------------------------------------------
+    # -------------------------------------------------------------
+    # 📊  Year-over-Year Growth Comparison (Google & Meta Ads)
+    # -------------------------------------------------------------
+
+    try:
+        # Previous-year daily exports (static for now)
+        google_prev_path = os.path.join("stats", "google-2024-account-level-daily report.csv")
+        meta_prev_path   = os.path.join("stats", "meta-daily-export-jan-1-2024-to-dec-31-2024.csv")
+
+        def _summarize_google(cur_path: str | None, prev_path: str):
+            """Return dict with spend, revenue, conversions, roas for current & previous year MTD."""
+            if not cur_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
+                return None
+
+            cur_df = pd.read_csv(cur_path, skiprows=2, thousands=",")
+            prev_df = pd.read_csv(prev_path, skiprows=2, thousands=",")
+
+            cur_df["Day"] = pd.to_datetime(cur_df["Day"], errors="coerce")
+            prev_df["Day"] = pd.to_datetime(prev_df["Day"], errors="coerce")
+
+            if cur_df["Day"].isna().all() or prev_df["Day"].isna().all():
+                return None
+
+            end_cur = cur_df["Day"].max()
+            start_cur = end_cur - timedelta(days=6)  # Last 7 days inclusive
+            end_prev = datetime(end_cur.year - 1, end_cur.month, end_cur.day)
+            start_prev = end_prev - timedelta(days=6)
+
+            cur_mtd = cur_df[(cur_df["Day"] >= start_cur) & (cur_df["Day"] <= end_cur)].copy()
+            prev_mtd = prev_df[(prev_df["Day"] >= start_prev) & (prev_df["Day"] <= end_prev)].copy()
+
+            for col in ["Cost", "Conv. value", "Conversions"]:
+                cur_mtd[col] = pd.to_numeric(cur_mtd[col], errors="coerce")
+                prev_mtd[col] = pd.to_numeric(prev_mtd[col], errors="coerce")
+
+            def _tot(df):
+                return (
+                    df["Cost"].sum(),
+                    df["Conv. value"].sum(),
+                    df["Conversions"].sum(),
+                )
+
+            spend_cur, rev_cur, conv_cur = _tot(cur_mtd)
+            spend_prev, rev_prev, conv_prev = _tot(prev_mtd)
+
+            roas_cur = rev_cur / spend_cur if spend_cur else 0
+            roas_prev = rev_prev / spend_prev if spend_prev else 0
+
+            cpa_cur = spend_cur / conv_cur if conv_cur else 0
+            cpa_prev = spend_prev / conv_prev if conv_prev else 0
+
+            return {
+                "spend_cur": spend_cur,
+                "spend_prev": spend_prev,
+                "rev_cur": rev_cur,
+                "rev_prev": rev_prev,
+                "conv_cur": conv_cur,
+                "conv_prev": conv_prev,
+                "roas_cur": roas_cur,
+                "roas_prev": roas_prev,
+                "cpa_cur": cpa_cur,
+                "cpa_prev": cpa_prev,
+                "start_date": start_cur.strftime("%B %d"),
+                "end_date": end_cur.strftime("%B %d"),
+            }
+
+        def _summarize_meta(cur_path: str | None, prev_path: str):
+            if not cur_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
+                return None
+
+            cur_df = pd.read_csv(cur_path, thousands=",")
+            prev_df = pd.read_csv(prev_path, thousands=",")
+
+            cur_df["Day"] = pd.to_datetime(cur_df["Day"], errors="coerce")
+            prev_df["Day"] = pd.to_datetime(prev_df["Day"], errors="coerce")
+
+            if cur_df["Day"].isna().all() or prev_df["Day"].isna().all():
+                return None
+
+            end_cur = cur_df["Day"].max()
+            start_cur = end_cur - timedelta(days=6)
+            end_prev = datetime(end_cur.year - 1, end_cur.month, end_cur.day)
+            start_prev = end_prev - timedelta(days=6)
+
+            cur_mtd = cur_df[(cur_df["Day"] >= start_cur) & (cur_df["Day"] <= end_cur)].copy()
+            prev_mtd = prev_df[(prev_df["Day"] >= start_prev) & (prev_df["Day"] <= end_prev)].copy()
+
+            for col in ["Amount spent (USD)", "Purchases conversion value", "Purchases"]:
+                cur_mtd[col] = pd.to_numeric(cur_mtd[col], errors="coerce")
+                prev_mtd[col] = pd.to_numeric(prev_mtd[col], errors="coerce")
+
+            def _tot(df):
+                return (
+                    df["Amount spent (USD)"].sum(),
+                    df["Purchases conversion value"].sum(),
+                    df["Purchases"].sum(),
+                )
+
+            spend_cur, rev_cur, conv_cur = _tot(cur_mtd)
+            spend_prev, rev_prev, conv_prev = _tot(prev_mtd)
+
+            roas_cur = rev_cur / spend_cur if spend_cur else 0
+            roas_prev = rev_prev / spend_prev if spend_prev else 0
+
+            cpa_cur = spend_cur / conv_cur if conv_cur else 0
+            cpa_prev = spend_prev / conv_prev if conv_prev else 0
+
+            return {
+                "spend_cur": spend_cur,
+                "spend_prev": spend_prev,
+                "rev_cur": rev_cur,
+                "rev_prev": rev_prev,
+                "conv_cur": conv_cur,
+                "conv_prev": conv_prev,
+                "roas_cur": roas_cur,
+                "roas_prev": roas_prev,
+                "cpa_cur": cpa_cur,
+                "cpa_prev": cpa_prev,
+                "start_date": start_cur.strftime("%B %d"),
+                "end_date": end_cur.strftime("%B %d"),
+            }
+
+        google_yoy = _summarize_google(google_cur_path, google_prev_path)
+        meta_yoy = _summarize_meta(meta_cur_path, meta_prev_path)
+
+        def _fmt(val: float, prefix: str = "$", digits: int = 0):
+            if prefix:
+                return f"{prefix}{val:,.{digits}f}"
+            return f"{val:,.{digits}f}"
+
+        if google_yoy and meta_yoy:
+            end_label = google_yoy["end_date"]
+            yoy_lines: list[str] = [
+                f"\n## 5. Year-over-Year Growth (Week {google_yoy['start_date']}–{end_label})\n",
+            ]
+
+            def _yoy_rows(platform: str, data: dict[str, float]):
+                rows: list[str] = []
+                metrics = [
+                    ("spend", "$", 0, "Spend"),
+                    ("rev", "$", 0, "Revenue"),
+                    ("conv", "", 0, "Conversions"),
+                    ("roas", "", 2, "ROAS"),
+                    ("cpa", "$", 2, "CPA"),
+                ]
+                rows.append(f"\n### {platform}\n")
+                rows.append("| Metric | 2025 | 2024 | YoY Δ% |")
+                rows.append("|-|-|-|-|")
+                for key, prefix, digits, title in metrics:
+                    cur_val = data[f"{key}_cur"]
+                    prev_val = data[f"{key}_prev"]
+                    pct = _pct_delta(cur_val, prev_val)
+                    sign = "+" if pct > 0 else ("-" if pct < 0 else "")
+                    delta_fmt = f"{sign}{abs(pct):.0f}%"
+                    rows.append(
+                        f"| {title} | {_fmt(cur_val, prefix, digits)} | {_fmt(prev_val, prefix, digits)} | {delta_fmt} |")
+                return "\n".join(rows)
+
+            yoy_lines.append(_yoy_rows("Google Ads", google_yoy))
+            yoy_lines.append(_yoy_rows("Meta Ads", meta_yoy))
+
+            yoy_section_md = "\n".join(yoy_lines) + "\n"
+
+            final_report += yoy_section_md
+    except Exception as e:
+        print(f"⚠️  YoY section failed: {e}")
+
+    # -------------------------------------------------------------
     # 📝  Initialize the working markdown document
     #       Start with the base report produced by the core script and
     #       immediately append the Product & Category section we built
     #       above.  Subsequent steps will mutate this `final_report`
     #       string in-place (e.g., replace the old DTC table, inject
     #       WoW overview, add appendix).
-    # -----------------------------------------------------------------
+    # -------------------------------------------------------------
 
     # Replace existing DTC section with new one
     # final_report = base_report + product_section_md
@@ -641,4 +948,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
