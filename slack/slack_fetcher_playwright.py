@@ -2057,6 +2057,119 @@ def _is_valid_slack_id(slack_id: str) -> bool:
     return bool(re.match(pattern, slack_id))
 
 
+# -------------- Batch Processing Helper ------------------------------------
+# This lightweight helper lets us update **multiple** channels in a single
+# run.  It re-implements the essentials of the one-off export flow but without
+# any interactive prompts so we can be safely called in a loop.
+
+from typing import Optional  # already imported above but re-importing is safe
+
+
+async def _export_single_channel(
+    browser: 'SlackBrowser',
+    channel_input_raw: str,
+    users: Dict[str, str],
+    conversations_cache: Optional[Dict[str, 'ConversationInfo']] = None,
+) -> None:
+    """Export *one* Slack conversation to its respective markdown file.
+
+    Parameters
+    ----------
+    browser : SlackBrowser
+        Live browser instance (already logged-in).
+    channel_input_raw : str
+        Whatever the user typed – can be a #name, plain name, or C/D/G-style id.
+    users : Dict[str, str]
+        Mapping of user IDs → human names for nicer formatting.
+    conversations_cache : Optional mapping that speeds up name→id resolution.
+    """
+
+    channel_input = channel_input_raw.strip().lstrip("#@")
+
+    # ------------------------------------------------------------------
+    # Resolve channel ID & display name
+    # ------------------------------------------------------------------
+    channel_id: Optional[str] = None
+    channel_name: Optional[str] = None
+
+    # 1) Direct ID provided?
+    if _is_valid_slack_id(channel_input):
+        channel_id = channel_input
+        channel_name = f"channel_{channel_id}"
+    else:
+        # 2) Try cached conversations first (exact then partial match)
+        if conversations_cache is None:
+            conversations_cache = await browser.get_conversations()
+
+        for conv in conversations_cache.values():
+            if conv.name.lstrip("#@").lower() == channel_input.lower():
+                channel_id = conv.id
+                channel_name = conv.name
+                break
+
+        if not channel_id:
+            for conv in conversations_cache.values():
+                if channel_input.lower() in conv.name.lower():
+                    channel_id = conv.id
+                    channel_name = conv.name
+                    break
+
+    if not channel_id:
+        print(f"⚠️  Skipping '{channel_input_raw}': unable to resolve channel.")
+        return
+
+    print(f"\n📥 Fetching messages for {channel_name or channel_id} …")
+
+    try:
+        messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
+    except Exception as exc:
+        print(f"⚠️  Failed to fetch history for {channel_input_raw}: {exc}")
+        return
+
+    if not messages:
+        print(f"📭 No new messages for {channel_name or channel_id}.")
+        return
+
+    # Improve placeholder names when possible
+    if channel_name is None or channel_name.startswith("channel_"):
+        looked_up = await browser.get_channel_name(channel_id)
+        if looked_up:
+            channel_name = f"#{looked_up}"
+
+    # ------------------------------------------------------------------
+    # Write / append markdown
+    # ------------------------------------------------------------------
+    safe_name = await browser.conversation_filename(
+        channel_id,
+        channel_name or channel_input_raw,
+        users,
+        messages,
+    )
+    md_path = EXPORT_DIR / f"{safe_name}.md"
+
+    write_mode = "a" if md_path.exists() else "w"
+    with md_path.open(write_mode, encoding="utf-8") as f:
+        if write_mode == "w":
+            f.write(f"# {channel_name or channel_input_raw}\n\n")
+            f.write(f"**Channel ID:** {channel_id}\n")
+            f.write(f"**Exported:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"**Message Count:** {len(messages)}\n\n")
+            f.write("---\n\n")
+
+        for msg in messages:
+            f.write(_markdown_line(msg, users) + "\n")
+
+    # ------------------------------------------------------------------
+    # Tracker update – remember newest ts so incremental runs are possible
+    # ------------------------------------------------------------------
+    tracker = _load_tracker()
+    highest_ts = max(float(m.get("ts", 0)) for m in messages)
+    tracker.setdefault("channels", {})[channel_id] = highest_ts
+    _save_tracker(tracker)
+
+    print(f"✅ Exported {len(messages)} messages → {md_path}")
+
+
 # -------------- Main Script -------------------------------------------------
 
 async def main():
@@ -2082,57 +2195,30 @@ async def main():
         print("  • Enter a channel ID (e.g., 'C1234567890')")
         print("  • Enter 'list' to see available channels first")
         
-        user_input = input("\nTarget channel: ").strip()
+        user_input = input("\nTarget channel(s): ").strip()
         
-        # Handle list request
-        if user_input.lower() == 'list':
-            print("📊 Loading available channels...")
+        # ------------------------------------------------------------------
+        # Batch mode – allow comma-separated list so we can update multiple
+        # conversations in one run.
+        # ------------------------------------------------------------------
+        # Normalise to a list (filtering out accidental double-commas / whitespace)
+        channel_inputs = [s.strip() for s in user_input.split(',') if s.strip()]
+
+        # If more than one entry, switch to batch processing and exit early
+        if len(channel_inputs) > 1:
+            print(f"🔄 Processing {len(channel_inputs)} channels…")
+            users = await browser.get_user_list()
             conversations = await browser.get_conversations()
-            
-            if not conversations:
-                print("⚠️  No conversations found. Try entering a channel name or ID directly.")
-                user_input = input("Target channel: ").strip()
-            else:
-                print(f"\nAvailable conversations ({len(conversations)}):")
-                
-                # Group by conversation type
-                by_type = {
-                    ConversationType.CHANNEL: [],
-                    ConversationType.DM: [],
-                    ConversationType.MULTI_PERSON_DM: []
-                }
-                
-                for name, conv_info in conversations.items():
-                    if conv_info.conversation_type in by_type:
-                        by_type[conv_info.conversation_type].append(conv_info)
-                
-                # Show channels first
-                if by_type[ConversationType.CHANNEL]:
-                    print(f"\n  📁 Channels ({len(by_type[ConversationType.CHANNEL])}):")
-                    for conv_info in sorted(by_type[ConversationType.CHANNEL], key=lambda x: x.name):
-                        print(f"    {conv_info}")
-                
-                # Show DMs
-                if by_type[ConversationType.DM]:
-                    print(f"\n  💬 Direct Messages ({len(by_type[ConversationType.DM])}):")
-                    for conv_info in sorted(by_type[ConversationType.DM], key=lambda x: x.name):
-                        print(f"    {conv_info}")
-                
-                # Show multi-person DMs
-                if by_type[ConversationType.MULTI_PERSON_DM]:
-                    print(f"\n  👥 Multi-person DMs ({len(by_type[ConversationType.MULTI_PERSON_DM])}):")
-                    for conv_info in sorted(by_type[ConversationType.MULTI_PERSON_DM], key=lambda x: x.name):
-                        print(f"    {conv_info}")
-                
-                print()
-                user_input = input("Target channel: ").strip()
+            for target in channel_inputs:
+                await _export_single_channel(browser, target, users, conversations)
+            return
         
-        if not user_input:
+        if not channel_inputs:
             print("❌ No channel specified. Exiting.")
             return
             
         # Clean up the input
-        channel_input = user_input.lstrip("#@")
+        channel_input = channel_inputs[0].lstrip("#@")
         
         # Try to find the channel
         channel_id = None
