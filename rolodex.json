@@ -3,8 +3,8 @@
     {
       "name": "Rahul",
       "username": "rahul",
-      "user_id": "U05KD2RULPN",
-      "role": "Google Campaign Manager",
+      "user_id": "U06SRGR9M7E",
+      "role": "Google Ads / GA4 Lead",
       "company": "Sharma Brands",
       "email": "rahul@sharmabrands.com",
       "notes": "Manages Google campaigns, conducts A/B tests, provides search impression share insights, coordinates with Google reps, handles PMAX campaigns and TROAS settings"
@@ -42,8 +42,8 @@
     {
       "name": "Jake Panzer",
       "username": "jake",
-      "user_id": "U06SRGR9M7E",
-      "role": "Campaign Specialist",
+      "user_id": "U05KD2RULPN",
+      "role": "Meta Ads Lead",
       "company": "Sharma Brands",
       "email": null,
       "notes": "Works on attribution windows for legacy campaigns, provides creative reports, handles 1DC ROAS analysis"
