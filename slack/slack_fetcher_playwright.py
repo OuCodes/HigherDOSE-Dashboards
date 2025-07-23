@@ -1546,26 +1546,30 @@ class SlackBrowser:
             return []
     
     async def get_user_list(self) -> Dict[str, str]:
-        """Get user list from intercepted data and merge with rolodex. Also
-        falls back to users.list API when a token is available so we can
-        resolve every user ID."""
-        users = {}
-        # Load rolodex entries first (highest priority)
-        rolodex_users = self._load_rolodex()
-        users.update(rolodex_users)
+        """Get user list from intercepted data and rolodex with **live data taking precedence**.
+        Previously, rolodex entries overwrote the freshest Slack profile info which led to
+        name / user-id mismatches (e.g. Jake vs Rahul). The new logic builds the mapping
+        from Slack first, then fills any gaps from rolodex as a **fallback**.
+        """
+        users: Dict[str, str] = {}
 
-        # 1) From intercepted data (client.userBoot etc.)
+        # ------------------------------------------------------------------
+        # 1) Gather from intercepted bootstrap payloads                      
+        # ------------------------------------------------------------------
         for data in self.intercepted_data:
-            response_data = data.get("response", {})
-            if "client.userBoot" in data.get("url", "") and isinstance(response_data, dict):
-                for uid, info in response_data.get("users", {}).items():
-                    if uid not in users:
-                        name = info.get("real_name") or info.get("name") or f"User_{uid[-6:]}"
-                        users[uid] = name
+            resp = data.get("response", {})
+            if "client.userBoot" in data.get("url", "") and isinstance(resp, dict):
+                for uid, info in resp.get("users", {}).items():
+                    if not uid:
+                        continue
+                    name = info.get("real_name") or info.get("name") or f"User_{uid[-6:]}"
+                    users[uid] = name
 
-        # 2) If we have a fresh token, query users.list API for anything missing
+        # ------------------------------------------------------------------
+        # 2) Enrich via users.list API when token is present                 
+        # ------------------------------------------------------------------
         if self.credentials.token and self.credentials.cookies:
-            import asyncio, time
+            import asyncio
             cursor = None
             while True:
                 payload = {"limit": 1000}
@@ -1576,21 +1580,32 @@ class SlackBrowser:
                     break
                 for member in api_resp.get("members", []):
                     uid = member.get("id")
-                    if not uid:
-                        continue
-                    if uid in users:
-                        continue
-                    if member.get("deleted") or member.get("is_bot"):
+                    if not uid or member.get("deleted") or member.get("is_bot"):
                         continue
                     profile = member.get("profile", {})
-                    display_name = profile.get("display_name") or profile.get("real_name") or member.get("name")
-                    users[uid] = display_name or f"User_{uid[-6:]}"
+                    display_name = (
+                        profile.get("display_name")
+                        or profile.get("real_name")
+                        or member.get("name")
+                        or f"User_{uid[-6:]}"
+                    )
+                    users[uid] = display_name
                 cursor = api_resp.get("response_metadata", {}).get("next_cursor")
                 if not cursor:
                     break
                 await asyncio.sleep(0.2)
 
-        print(f"👥 Total users loaded: {len(users)} ({len(rolodex_users)} from rolodex)")
+        # ------------------------------------------------------------------
+        # 3) Fallback to rolodex for any **missing** ids                     
+        # ------------------------------------------------------------------
+        rolodex_users = self._load_rolodex()
+        missing_count = 0
+        for uid, name in rolodex_users.items():
+            if uid not in users:
+                users[uid] = name
+                missing_count += 1
+
+        print(f"👥 Total users loaded: {len(users)} ({missing_count} filled from rolodex fallback)")
         return users
     
     async def save_credentials(self):
