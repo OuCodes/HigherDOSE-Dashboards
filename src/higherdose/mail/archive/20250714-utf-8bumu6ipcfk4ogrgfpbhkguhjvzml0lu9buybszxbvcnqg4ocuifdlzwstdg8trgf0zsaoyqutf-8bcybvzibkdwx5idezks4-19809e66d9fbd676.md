@@ -1,0 +1,137 @@
+## Date
+
+Mon, 14 Jul 2025 10:05:39 -0700
+
+## Address
+
+from: Ingrid Milman Cordy <ingrid@higherdose.com>
+to: Mati Cohen <mati@bark-ai.com>
+
+## Subject
+
+=?UTF-8?B?UmU6IPCfk4ogRGFpbHkgUHJvZml0LU9BUyBSZXBvcnQg4oCUIFdlZWstdG8tRGF0ZSAoYQ==?=
+	=?UTF-8?B?cyBvZiBKdWx5IDEzKS4=?=
+
+## Body
+
+Thank you, Mati.
+I think it's a good time to have a touch base call with Jourdan, Sharma and
+me so that we can explain our new Meta setup and how we are adjusting
+things (just went into place last week). This will create a slight
+instability in the account short term but long term will give us much more
+opportunity to fine tune our creative and investments. Would love your
+input and awareness here.
+@Jourdan Smith  and @Berkeley Clark
+ will you please help find some time to have
+this chat? Ideally we do it this week, but I'm out Friday. Only need 30
+min.
+Thanks!
+Ingrid
+On Mon, Jul 14, 2025 at 4:55 AM Mati Cohen  wrote:
+> Hi Team,
+>
+> 1. Below is your updated \*Profit-OAS report\* for the past 7 days
+> Date
+> Profit-OAS
+> Net Sales
+> CM
+> %CM
+> %Media
+> Media
+> Sun, July 13
+> 1.0 ⚠️
+> $25,910
+> $8,112
+> 31%
+> 31%
+> $7,957
+> Sat, July 12
+> 2.1 ✅
+> $36,489
+> $14,990
+> 41%
+> 19%
+> $7,096
+> Fri, July 11
+> 1.1 ⚠️
+> $32,508
+> $8,225
+> 25%
+> 23%
+> $7,451
+> Thu, July 10
+> 2.6 ✅
+> $45,256
+> $19,875
+> 44%
+> 17%
+> $7,619
+> Wed, July 9
+> 1.3 ✅
+> $35,496
+> $11,888
+> 33%
+> 26%
+> $9,185
+> Tue, July 8
+> 1.8 ✅
+> $43,675
+> $17,308
+> 40%
+> 21%
+> $9,383
+> Mon, July 7
+> 1.5 ✅
+> $38,406
+> $14,299
+> 37%
+> 25%
+> $9,458
+> Sun, July 6
+> 2.4 ✅
+> $50,474
+> $22,280
+> 44%
+> 18%
+>
+> Yesterday (Sunday) saw a major drop in sales—the lowest in the last 30
+> days. We don’t know if this was due to a website, operational, or other
+> significant issue.
+>
+> \*2. Special Tracker – Amazon Prime Monitor\*
+>
+>
+> 3. \* Exposure Optimization Strategy\*
+>
+> I suggest we set up a meeting to:
+>
+> 1.
+>
+> Explore ways to promote additional products and bundles beside
+> relying heavily on the Red Light Hat.
+> 2.
+>
+> Address the GA4 tracking issue: views for the Sauna Blanket are being
+> collected incorrectly (possibly due to multiple SKUs) and are excluded from
+> the above reporting. We need to resolve this GA4 problem as soon as
+> possible.
+>
+> \*4 \*\*Body Sculptor Ritual Set Tracker\*\*:\*
+> View Tracker in Bark-AI
+> 
+>
+> \*Last 7 days \*
+>
+> \*Yesterday\*
+>
+>
+> Best, Bark-AI Team
+>
+>
+> \*Mati Cohen | \*\*CEO & \*\*Co Founder | Bark-AI \*
+> +972-52-4762-059 | LinkedIn
+> 
+>
+> Sent via Superhuman 
+>
+>

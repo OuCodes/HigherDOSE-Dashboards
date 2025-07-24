@@ -1,0 +1,43 @@
+## Date
+
+Mon, 7 Jul 2025 09:15:30 -0400
+
+## Address
+
+from: Kyra Richards <kyra@motionapp.com>
+to: jourdan@higherdose.com
+
+## Subject
+
+=?utf-8?Q?Uncover_your_best_landing_pages_=F0=9F=93=9D?=
+
+## Body
+
+Here’s how to find your best performing landing pages—and those that could use some changes—in Motion.
+motion-logo-black (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WXC3prCCW7lCdLW6lZ3nCV7TXd\_8051mfW5kTR7q2rmgQ8VLnZGp6px4G\_W6T8-Qc91r2lPW5qL3JN3lXl4qVV9jNR1K7q5-W97JfPD7K1ZCqW7fZwjB7jRHR0W929LmB8wrFR-W2vHgSb8B43Y4W7NgqjL4lbZQ0W6m\_W7F6WyfCCW3z1VVZ6-FjCXW6BRCd89fgVz4W13lT8P2syPY3W4B60qj2Xn7JNW4kPR1x39-Qg\_W7ks1lp62czyKW7VfxSr2-l9\_HW2k4PB029CSXFW5DmGwZ8KxW1pN2tNk1Gm51lKW1PLq-74DLwbWW5pJDVv7\_03rmf95sLwF04 )
+Hi Jourdan,
+Here’s how to find your best performing landing pages in Motion:
+Create a new top performing report → Group by “Landing page.”
+Switch to card view (top right of chart) to get visuals of the actual landing pages. You can even click into the preview and scroll to see the full page. 🤯
+I recommend adding these two metrics to drill down into the landing page side of things if you are focused on driving purchases:
+- Click to ATC (Add to Cart) ratio
+- Click to purchase
+To find creatives that may benefit from changing the landing page…
+Create a new top performing report → Group by “Ad name” or “Creative”
+Filter for:
+- Convert score below <70
+- Click score above >70
+- Set your spend threshold (i.e. spend above $100)
+Then, +add metrics to your view → click score and convert score.
+Scroll down to the data table and find your convert score → sort by lowest to highest.
+Watch our step-by-step videos for extra guidance: Uncover your best landing pages for ads (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WYv3prCCW95jsWP6lZ3lYW4RHyH27n1RfjW4GCfZV6Ln13SVTlLyW9134JWW3g4WPr5jF2lsVy2m5P47DycpW1jsBJK3Y0mPNW2f09G34wzKVMW4\_3Dyz2f1NJgW3LHDHd1KyVylW6h3zHT8bTKl9N6Z6cBGjplydW7h0sk583Mx0QN3HDDB3C3pN\_W96bSnS8Db7y2W14dZvl3tQnRXW2ZB2JL1GBYSnW2QC3Pg2xfMx0W8g7YSB7vc7TXW2Cnhk37DZWtPW1RLr6X4gvVRjW2X4bBX7x0vmKW3dF9311Ck30qW2b4WV12cyC4NW2kmFg97q9-vPN2H5PjGyCyd\_W6JBWKk88MC4pW2NhNZ532HdyGW23QWKv8Nb0vWW6bvGSK4cr6yjVphpfF1-hD4qdPTPBz04 ) + find creatives that may benefit from changing the landing page. (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WWK5m\_5PW5BWr2F6lZ3nCW73hMHy5VgKzlW19kjZs7WCwWMN7M53NZWJngGW5m9mdn6QbV\_RW433JwV3tWj4tW88DsX37mHt6ZW6\_Rg4B4MsgvDN14WlTbCXMdRW6BZ\_Qk64\_BhYW4JLgl78TvGQDW5C2NbW2xxFjkW979Dbq5l7fPtW5RL-Zy3xq8yXW8nQ2dL4R4J\_HVgsTmp36kDMCW3V95qT59-xJ6W3q7G1J13VWN6W791HbY6VJhbLW7-3LNm1pZMQ7W6wnqLJ7l\_GWKV5d2zn5PcZ2xW87zW6s7Wb0ppW8lf9tn186t7LN2KYCT5TGqLRW95zdqZ2NkGvYW89WgxW683\_DvW7hYk43676prqN5Y3hRk7m6dpW81THtj6BQfwVW4CzZs54jFPPvW2X\_MXL2NtpvCM1ZBBy22cMvW6YkTng8\_yH4MW1w6sjf4tBVBWf71c6lH04 )
+Kyra Richards
+Head of Customer Success
+Facebook (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WXW3prCCW7Y8-PT6lZ3kQW6c5d735pt0wWW2jf-JK5dq8RHW7xzHGQ7fWr4\_V3rXRx4PJMDPW2vjyXx5JPFYpW6dC5p684rzrPN2\_WDWF6Rw5BW1d4zWQ3x1yBpM4\_5C-LdLRNW1rDg\_r6MhktRW8fnzh28Mkx-nW8S5r8P2Wxp5GW7N8LZy4DxLN\_W6Hy\_LS5xZbGMN3SHm\_JbH\_nRW6Tww-p1rV2BsW1rDW1c17nPWMW4xsG185XqyXSW2drkhB3b3XSSW44xQBq7q1hNLVlYk9N5GQcgzW8N4Jxt6hsgx9W1kmptp3bjsKQV3jqkp4cgX8gVwZR1V60j4kDVQV8wW535J0bf6dL7Sz04 )
+X (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WXC3prCCW7lCdLW6lZ3mfN8BQxK4klltvW8SXpz94r-lxkW99pZd8437sRqW13Jqz31zRrJYW3l8CKm6S6D0QN6vCsyg1p9LZW8m9wkb4hXn\_ZT3dTV4ddlrCW6YGrCp5wZNS4N1r9hjmg24MvVtdjp855cqY9W6qt25J7h\_PyzW8C6k2s5JZTzhW46vbBs8w65XhW3H3MkV9fwTlJW3qr5L11xjCF-W5sLQ\_P5bBdDtW8s8ksZ7tJ1zGW7xSN561jRv4NW46g58Z71\_5W3W43v55760df\_tW123k212lXhc4W2z3dVL4pLwPfW5lltFh5HfHc1f4CW50d04 )
+Instagram (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WXW3prCCW7Y8-PT6lZ3pWW6RL6xq2PFSg8W3YqRYn6YMN2XVvFf3d6ts74dW334-2B86rsYLW14m7Dx7wX760N25KKvBYkgxmW8Sw5p16rVFk-W6TcNkl26l6PxW8WpxQ86D6FQ3W6YlD5P5DVWhLW39fGJx6XNmbDW3Vtgcm71q20xW3ZTC5v5F\_Hd8W91sbhm4ppyBmW3qxHb-9jv7vZW2NS4SN7CdmsFW6-J3d819PCtVW241wpF7pRZqlW1Q-SbV3Ybj8nW1HB6sr7Wmx01W7VwK0Y2TFZ-pW3vwrLH3V1K-YW7g\_69d64n36fW93G7Vk5y5tmcW2MQC7J4nbPSFW1HPdMk14cVLkdh94vR04 )
+YouTube (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WYb3prCCW8wLKSR6lZ3nlW87vMMD8XP2T3W5yBWHx4tvR2tW6kvm265Wv5F6W3Rm\_vv2BWfxCW4qlb2j6Bstg3W3p-KyC3VK6kYN4BY\_PGJ2s8hW3NXY2g5nzhW2W1Mz3Dy6R5c23W37V3B711g30MW5dXMSH7myN-qW7NPR-b8Nh-7yW1ZMtyz5CWyccW4Ll-tv35ydLdW7PPR2m5bMmHNW8tkSYT6DxCYwW8W5cx44vGghsN3VGcmcPdTgRVtX2dK3Rr7XSN43sWxnHWGfgW2dF0rp5vPfhnW6Xmn2d5VpbWkW2R9wxQ1VKjsGW6bxsFr1djPMFVc77yr6GkcgQW67pS-t84-LlJVcHWxM39HfDqW6NtmjY4mrcR-f7WkRMM04 )
+Website (https://content.motionapp.com/e3t/Ctc/GF+113/d2hYgB04/VWxJ2B8MBypFW2ydPMq2C1dlrW2v98dD5yJRkgN197WWK3gP0xW5BW0B06lZ3nFW4sYdgG900b92W5l3Z\_w2SR46-W5qdkq46y9\_3hW81v8gq3WRjWKW2ZQ8N\_2-ZW2-VzfPp63-kdZbW5CGsPb4gd07hW8M5dWc8SLdNxW8sCWRb3Jb0mlW5M32XF1LynPbW4JJLbj59wk38N3plk36-hgHJW5vtVV721KmJqW5FM3kz2tlGdBW5jdHsm1pBBK4W5wZTv13SS5XJW2NhHhT66Q3t8W4-xpG91s2kY\_f6BH3QY04 )
+Motion, 9225 Leslie Street, 2nd Floor, Richmond Hill, ON L4B 3H6
+Unsubscribe (https://content.motionapp.com/hs/preferences-center/en/direct?data=W2nXS-N30h-H8W2B2mxD4kwhGCW4tG9RK49Kr3fW2-H-SJ4t6nPsW3XXV\_y2RwTGsW2Hsr9k4rFtc3W2FHKFK3QMWgyW2MGjn\_3LFhHSW30mm-G2CT4kkW1Z0T441SB0QgW4myZ5c32FWKJW1ZkVTm41YTKnW3bxFNQ3LJ69KW2TJ\_cN43XwY1W3BY06-1BqWb8W4klZmQ4rCvLmW4tyNSR1SlVPTW4hFxZv3ghmv8W2Wj9vq4pb90WW41qDZC2Rs2B-W2RMm7c3JL0LBW1\_qFG93VP8b6W3bxkzf47N5RXW2PKtSD1LpGr2W3\_syG13ZHKPbW4hgY\_42KpPCjW4cLrtz2PW369W3QKr9d32wVQrW2nN5jN3SN\_JyW3dx6c51Xvmb1W3Xv\_PY23591ZW3QxW-M3jwKYSW3F1fZw2-fHW5W3MbBHg3zjgGrW3M1VX14rnnBVW1Ly5ww3XPs3hW45lY\_R3dwC\_xW1T\_XfS3\_LxhyW47zLLV49D1T\_W3QWtnT2z\_TqwW32JrkM2Tz8f3W2PK43W2RC1nxW2TQV1x2qSZ5nW1Xmnhv3K9ZJGW30sN9j47KKZqW2HGmdL2t5Sgtf238W3Q04&\_hsenc=p2ANqtz-\_8mUhNpXt3QW1yi9thd2ng29ggXE-30mlzfB080E3CNk8mtVsb7ZfZeUo3DBvqzmP7ugAMZ17h3\_TbiUM-3mv6jVh5dA&\_hsmi=301781335 )
+Manage preferences (https://content.motionapp.com/hs/preferences-center/en/page?data=W2nXS-N30h-H8W2B2mxD4kwhGCW4tG9RK49Kr3fW2-H-SJ4t6nPsW3XXV\_y2RwTGsW2Hsr9k4rFtc3W2FHKFK3QMWgyW2MGjn\_3LFhHSW30mm-G2CT4kkW1Z0T441SB0QgW4myZ5c32FWKJW1ZkVTm41YTKnW3bxFNQ3LJ69KW2TJ\_cN43XwY1W3BY06-1BqWb8W4klZmQ4rCvLmW4tyNSR1SlVPTW4hFxZv3ghmv8W2Wj9vq4pb90WW41qDZC2Rs2B-W2RMm7c3JL0LBW1\_qFG93VP8b6W3bxkzf47N5RXW2PKtSD1LpGr2W3\_syG13ZHKPbW4hgY\_42KpPCjW4cLrtz2PW369W3QKr9d32wVQrW2nN5jN3SN\_JyW3dx6c51Xvmb1W3Xv\_PY23591ZW3QxW-M3jwKYSW3F1fZw2-fHW5W3MbBHg3zjgGrW3M1VX14rnnBVW1Ly5ww3XPs3hW45lY\_R3dwC\_xW1T\_XfS3\_LxhyW47zLLV49D1T\_W3QWtnT2z\_TqwW32JrkM2Tz8f3W2PK43W2RC1nxW2TQV1x2qSZ5nW1Xmnhv3K9ZJGW30sN9j47KKZqW2HGmdL2t5Sgtf238W3Q04&\_hsenc=p2ANqtz-\_8mUhNpXt3QW1yi9thd2ng29ggXE-30mlzfB080E3CNk8mtVsb7ZfZeUo3DBvqzmP7ugAMZ17h3\_TbiUM-3mv6jVh5dA&\_hsmi=301781335 )
