@@ -12,6 +12,7 @@
 - [ ] Merge requirements.txt into the pyproject.toml file.
 - [ ] Change mail tutorial.md to README.md
 - [ ] Data folders need a much better naming convention
+- [ ] Maybe rethink data/raw/stats naming convention should it be timeframe? or csv?
 
 ## Scripting
 
