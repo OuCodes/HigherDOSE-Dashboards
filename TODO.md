@@ -8,6 +8,8 @@
 - [ ] Document the data flow in `src/higherdose/slack` and clarify how `scripts/hd_slack_to_markdown.py` and `hd_slack_to_markdown.py` are used.
 - [ ] Create a top-level `config` directory for secrets (e.g., Gmail client secrets, Slack cookies).
 - [ ] Merge `weekly.py` and `weekly_products.py` into a single `weekly.py` script and remove the old file.
+- [ ] Update the README.md to reflect the new structure and usage instructions.
+- [ ] Merge requirements.txt into the pyproject.toml file.
 
 ## Scripting
 
