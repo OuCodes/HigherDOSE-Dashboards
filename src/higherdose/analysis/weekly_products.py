@@ -20,6 +20,7 @@ import pandas as pd
 from . import weekly as base
 import glob, os
 import argparse
+from pathlib import Path
 
 
 # -------------------------------------------------------------
@@ -450,9 +451,9 @@ def main():
         ]
         unattributed_export = unattributed_df[cols_to_keep].sort_values("spend", ascending=False)
 
-        export_name = (
-            f"unattributed_lines_{datetime.now().strftime('%Y-%m-%d')}.csv"
-        )
+        out_dir = Path("data/processed/unattributed_products")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        export_name = out_dir / f"unattributed_lines_{datetime.now().strftime('%Y-%m-%d')}.csv"
         unattributed_export.to_csv(export_name, index=False)
         print(f"📤 Exported {len(unattributed_export)} unattributed rows to {export_name}")
 

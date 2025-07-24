@@ -4,15 +4,7 @@
 
 - I'm not sure that `data` > `processed` is the right place for transcripts. Maybe needs a better home.
 
-- Need to check if `data` > `processed` is the right place for unattributed_lines because it is used in `src/higherdose/analysis/weekly_products.py`
-
-- Probably can rename `weekly_products.py` to `products.py`
-
-- Can probably rename `docs` > `brain` or fit into another category
-
 - Seems like `product-list.md` should not be a markdown file
-
-- Think `docs` > `slack_curl_example.txt` can be removed, outdated
 
 - `reports` > `h1` and `reports` > `weekly` seem to be well organized and placed in the right place, no notes
 
@@ -24,3 +16,5 @@
 - Seems like every single script in `scripts` is having import issues and I would like to understand why
 
 - Let's sort of combine weekly.py and weekly_products.py into a single script and rename it to weekly. Instead of importing weekly as a base to weeklyproducts.py lets just bring the code into weekly_products.py. Then let's rename _products to just weekly.py and get rid of the old weekly.py
+
+- lets also make sure that whatever script is using "unattributed_lines_*" can still find it as well
