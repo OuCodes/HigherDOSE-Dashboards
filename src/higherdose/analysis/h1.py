@@ -19,8 +19,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import report_analysis_weekly as base  # Re-use helper functions
-from report_analysis_weekly_products import (
+from . import weekly as base  # Re-use helper functions from the same package
+from .weekly_products import (
     load_product_mappings,
     assign_products,
     build_summary,
@@ -35,7 +35,8 @@ from report_analysis_weekly_products import (
 
 H1_MONTH_END = "06-30"  # YYYY-06-30 marks end of H1
 
-DEFAULT_DIR = Path("stats/h1-report")
+# Base directory containing H1-report CSVs (moved under data/raw/stats in repo restructure)
+DEFAULT_DIR = Path("data/raw/stats/h1-report")
 
 # GA → Channel mapping keywords (very simple heuristics – tweak as needed)
 GA_CHANNEL_KEYWORDS = {
@@ -730,8 +731,14 @@ def main():
         conc_md
     )
 
-    out_file = f"h1-growth-report-with-products-{year}.md"
-    with open(out_file, "w") as f:
+    # ------------------------------------------------------------------
+    # 🗄️  Save report to dedicated output directory (reports/h1)
+    # ------------------------------------------------------------------
+    REPORT_DIR = Path("reports/h1")
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+
+    out_file = REPORT_DIR / f"h1-growth-report-with-products-{year}.md"
+    with open(out_file, "w", encoding="utf-8") as f:
         f.write(final_md)
     print(f"📝 Markdown report saved to {out_file}")
 

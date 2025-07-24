@@ -55,7 +55,7 @@ def main():
     try:
         # Check if Playwright is installed and browsers are available
         result = subprocess.run([str(python_exe), "-c", "from playwright.sync_api import sync_playwright; print('ok')"], 
-                              capture_output=True, text=True)
+                              capture_output=True, text=True, check=False)
         if result.returncode != 0:
             print("🔄 Installing Playwright...")
             subprocess.run([str(pip_exe), "install", "playwright"], check=True)
