@@ -2,7 +2,7 @@
 .DS_Store
 *.pickle
 client_secret_*.json
-src/higherdose/mail/archive
+**/mail/archive/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
