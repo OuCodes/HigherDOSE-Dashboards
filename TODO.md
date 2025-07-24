@@ -10,12 +10,14 @@
 - [ ] Merge `weekly.py` and `weekly_products.py` into a single `weekly.py` script and remove the old file.
 - [ ] Update the README.md to reflect the new structure and usage instructions.
 - [ ] Merge requirements.txt into the pyproject.toml file.
+- [ ] Change mail tutorial.md to README.md
 
 ## Scripting
 
 - [ ] Add logging to all the src logic
 - [ ] Format `email/tutorial.md` correctly. The headers for prompt and response are not formatted correctly.
 - [ ] Rewrite the monthly report, very out of date at this point.
+- [ ] Move io.file_selector.py logic into analysis script.
 
 ## Product Data
 
