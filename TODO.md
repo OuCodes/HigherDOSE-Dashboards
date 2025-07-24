@@ -26,6 +26,7 @@
 ## Product Data
 
 - [ ] Determine if this should just be a dataclass type thing
+- [ ] Fix `src/higherdose/product_data.py`, it does not inlude the full `docs/product-list.md` list
 
 ## Email
 
