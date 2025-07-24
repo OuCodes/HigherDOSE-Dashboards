@@ -21,9 +21,6 @@ from . import weekly as base
 import glob, os
 import argparse
 
-# Pathlib for file-friendly names
-from pathlib import Path
-
 
 # -------------------------------------------------------------
 # 📅  Previous Week Utilities
