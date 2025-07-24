@@ -1,67 +1,158 @@
-# HigherDOSE Growth Report Analysis
+# HigherDOSE Growth-Report Toolkit
 
-A Python-based analysis tool for HigherDOSE's weekly and monthly growth reports, providing insights into sales performance, channel effectiveness, and campaign optimization.
+A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
-## Installation
+— Built with Python 3.10+ & pandas.
 
-> **Requirement**: Python **3.10** or newer must already be installed and available on your `PATH`.
+---
 
-### 1. Create & activate a virtual environment
+## 1. Quick Start
 
 ```bash
-# macOS / Linux
-python3 -m venv --prompt hdose venv
-source venv/bin/activate
+# 1)  Clone the repo & enter it
+$ git clone git@github.com:HigherDOSE/growth-reports.git
+$ cd HigherDOSE
 
-# Windows Command Prompt
-python -m venv --prompt hdose venv
-venv\Scripts\activate.bat
+# 2)  Create + activate a virtual-env (recommended)
+$ python3 -m venv venv
+$ source venv/bin/activate   # Windows → venv\Scripts\activate.bat
+
+# 3)  Install project requirements
+$ pip install -r requirements.txt
+
+# 4)  Run a report (see sections below)
 ```
 
-### 2. Install dependencies
+> ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/raw` before running the scripts.
+
+---
+
+## 2. Repository Layout (post-reorg)
+
+```
+├── scripts/               # One-line wrappers you actually execute
+│   ├── report_weekly.py   # → higherdose.analysis.weekly_products.main()
+│   ├── report_h1.py       # → higherdose.analysis.h1.main()
+│   └── slack_export.py    # → higherdose.slack.slack_fetcher_playwright
+│
+├── src/higherdose/        # Installable Python package
+│   ├── analysis/          # Core analytics modules (weekly.py, h1.py, …)
+│   ├── slack/             # Playwright-based Slack fetcher & helpers
+│   └── mail/              # Archived Gmail messages (for reference only)
+│
+├── data/
+│   ├── raw/               # **INPUTS** – drop CSV exports in here
+│   │   └── stats/         #   • Northbeam, Google, Meta exports, etc.
+│   └── processed/         # **OUTPUTS** & intermediate files
+│       ├── transcripts/   #   • Meeting transcripts
+│       └── slack/         #   • Markdown channel exports
+│
+├── reports/               # Final Markdown/PDF reports written by scripts
+│   ├── weekly/
+│   └── h1/
+└── README.md              # (this file)
+```
+
+---
+
+## 3. Running the **Weekly** Growth Report
+
+1. Download the **7-day** Northbeam “ad + platform – date breakdown” export (CSV).
+2. Save it in `data/raw/stats/`  → the filename can be anything.
+3. Execute:
+
 ```bash
-pip install --upgrade pip
-pip install -r requirements.txt
+$ python scripts/report_weekly.py
 ```
 
-### 3. Verify installation
+The script will prompt for the CSV if multiple files are present, analyse the data, then write a Markdown file to:
+
+```
+reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
+```
+
+### Options
+The wrapper is intentionally minimal.  For advanced usage call the module directly:
+
 ```bash
-python -c "import pandas, numpy, sys; print(f'✅ Environment ready — Python {sys.version.split()[0]}')"
+$ python -m higherdose.analysis.weekly_products --help
 ```
 
-### Running the Analysis
+---
 
-After installation, you can run the analysis scripts:
+## 4. Running the **H1** (Jan → Jun) Growth Report
 
-#### Weekly Report Analysis:
+Required files (place in `data/raw/stats/h1-report/` or pass `--*` flags):
+
+* `northbeam-2025-ad+platform-date-breakdown-level-ytd-report.csv`
+* `google-2025-account-level-ytd-report.csv`
+* `google-2024-account-level-ytd-report.csv`
+* `meta-2025-account-level-ytd-report.csv`
+* `meta-2024-account-level-ytd-report.csv`
+* `google-analytics-jan-june-2025-traffic_acquisition_Session_source_medium.csv`
+* `google-analytics-jan-june-2024-traffic_acquisition_Session_source_medium.csv`
+
+Then run:
+
 ```bash
-# macOS
-python3 report_analysis_weekly.py
-
-# Windows  
-python report_analysis_weekly.py
+$ python scripts/report_h1.py  # accepts --northbeam_csv etc. if paths differ
 ```
 
-#### Monthly Report Analysis:
+Output → `reports/h1/h1-growth-report-with-products-2025.md`
+
+---
+
+## 5. Exporting Slack Conversations
+
+The Slack extractor uses **Playwright**.
+
 ```bash
-# macOS
-python3 report_analysis_monthly.py
-
-# Windows
-python report_analysis_monthly.py
+$ python scripts/slack_export.py
 ```
 
-### Troubleshooting
+* Creates a `venv` if missing, installs Playwright & downloads the Chromium browser.
+* Launches `higherdose.slack.slack_fetcher_playwright` which expects cookies in `data/raw/slack/slack_cookies/`.
+* Markdown files are written to `data/processed/slack/markdown_exports/`.
 
-#### Common Issues:
+Refer to `slack/README.md` for detailed credential setup.
 
-**macOS:**
-- If you get "command not found" errors, try using `python` instead of `python3`
-- If pip installation fails, try: `python3 -m pip install pandas numpy`
+---
 
-**Windows:**
-- If Python is not recognized, ensure it was added to PATH during installation
-- If you get permission errors, try running Command Prompt as Administrator
+## 6. Updating Product-Alias Mappings
 
-**Both platforms:**
-- If you encounter SSL certificate errors, try: `pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pandas numpy`
+Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
+Unattributed rows with spend are automatically exported to
+`data/processed/unattributed_products/`—review these files periodically and
+add new aliases to improve mapping accuracy.
+
+---
+
+## 7. Development & Contribution
+
+* **Formatting**:  Run `black` and `ruff` before committing.
+* **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
+* **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
+
+---
+
+## 8. Release History (last 12 commits)
+
+```
+# git log -12 --pretty=format:"%h  %s"
+51bfdb5  chore: after the reorg
+139921d  chore: remove piplist.md and update TODO …
+219e2af  refactor: streamline report generation …
+64ee6ae  refactor: enhance organization and output handling …
+a91ea25  feat: add pyproject.toml for project configuration
+c311ca0  refactor: moving and deleting
+bc733ff  refactor: small add-on to last attempt
+9b793ab  refactor: reorganize hierarchy of codebase
+…
+```
+
+(Use `git log` for full details.)
+
+---
+
+### License
+Internal HigherDOSE project – not for public distribution.
