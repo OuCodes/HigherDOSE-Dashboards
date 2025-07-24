@@ -24,3 +24,7 @@
 ## Product Data
 
 - [ ] Determine if this should just be a dataclass type thing
+
+## Email
+
+- [ ] Fix the trailing and leading whitespaces around links in certain emails.

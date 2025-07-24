@@ -1,5 +1,8 @@
+"""
+This script monitors the Gmail inbox for new messages and saves them to a structured markdown file.
+"""
+
 import re
-import sys
 import time
 import email
 import pickle
@@ -10,9 +13,8 @@ from urllib.parse import urlsplit
 from email.header import decode_header
 from email.utils import parsedate_to_datetime
 
-# project_root and sys.path insertion removed – package paths now resolved via 'higherdose' namespace
-
 import google.auth.transport.requests
+from google.auth.exceptions import RefreshError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -99,10 +101,19 @@ def clean_email_content(content):
     content = re.sub(r'https?://\S+', shorten_url, content)
 
     return content
-TOKEN   = Path("mail", "token.pickle")
-CURSOR  = Path("mail", "cursor.txt")
-OUTDIR  = Path("mail", "archive")
-OUTDIR.mkdir(exist_ok=True)
+# Paths for the auth token, cursor, and archive directory should be based on the
+# location of this script—not the shell's working directory—to avoid FileNotFound
+# errors when the script is executed from other locations.
+ROOT_DIR = Path(__file__).resolve().parent
+
+TOKEN = ROOT_DIR / "token.pickle"
+CURSOR = ROOT_DIR / "cursor.txt"
+OUTDIR = ROOT_DIR / "archive"
+
+# Create the archive directory (including any missing parents) if it does not yet
+# exist. The `parents=True` flag guarantees that the whole path hierarchy is
+# created in one call.
+OUTDIR.mkdir(parents=True, exist_ok=True)
 
 def get_creds():
     """Authenticates with Google and returns credentials."""
@@ -112,17 +123,31 @@ def get_creds():
         logger.info("Token file found at %s", TOKEN)
         print(f"  Token file found at {ansi.cyan}{TOKEN}{ansi.reset}")
         creds = pickle.loads(TOKEN.read_bytes())
+        # Handle token refresh or fallback to new OAuth flow if refresh fails
         if creds.expired and creds.refresh_token:
-            logger.info("Token expired, refreshing...")
-            print(f"  Token {ansi.yellow}expired{ansi.reset}, refreshing...")
-            creds.refresh(google.auth.transport.requests.Request())
-            TOKEN.write_bytes(pickle.dumps(creds))
-            logger.info("Token refreshed successfully.")
-            print(f"  Token refreshed {ansi.green}successfully{ansi.reset}.")
+            logger.info("Token expired, attempting refresh...")
+            print(f"  Token {ansi.yellow}expired{ansi.reset}, attempting refresh...")
+            try:
+                creds.refresh(google.auth.transport.requests.Request())
+                TOKEN.write_bytes(pickle.dumps(creds))
+                logger.info("Token refreshed successfully.")
+                print(f"  Token refreshed {ansi.green}successfully{ansi.reset}.")
+            except RefreshError as e:
+                # The stored token is no longer valid (e.g., revoked). Remove it and
+                # fall back to a full OAuth flow to obtain a new one.
+                logger.warning("Token refresh failed (%s). Removing stale token and starting OAuth flow...", e)
+                print(f"  {ansi.red}Token refresh failed{ansi.reset}: {e}. Removing stale token and starting OAuth flow...")
+                try:
+                    TOKEN.unlink(missing_ok=True)
+                except Exception as unlink_err:
+                    logger.error("Failed to delete stale token file: %s", unlink_err)
+                creds = None  # Trigger OAuth flow below
         else:
             logger.info("Token is valid.")
             print(f"  Token is {ansi.green}valid{ansi.reset}.")
-        return creds
+
+        if creds:
+            return creds
 
     # Attempt to locate the downloaded OAuth client secret JSON
     logger.warning("No token file found, starting OAuth flow...")
