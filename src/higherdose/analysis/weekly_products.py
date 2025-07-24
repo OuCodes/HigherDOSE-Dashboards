@@ -10,7 +10,8 @@ markdown tables summarising performance by product and by product category.
 The original channel-level analytics remain intact via re-use of
 `report_analysis_weekly` helper functions.
 """
-import re, ast
+import ast
+import re
 from datetime import datetime, timedelta
 
 import numpy as np
@@ -104,14 +105,63 @@ def _fmt_delta(cur: float, prev: float, prefix: str = "$", digits: int = 0) -> s
 # 🔎  Product & Category Mapping Helpers
 # -------------------------------------------------------------
 
-def load_product_mappings():
-    """Return mapping structures from higherdose.product_data."""
-    product_to_category = pd.PRODUCT_TO_CATEGORY
-    alias_sorted = pd.ALIAS_SORTED
+def load_product_mappings(md_path: str = "docs/product-list.md"):
+    """Parse the product-list markdown to build mappings without importing it as a module.
 
+    We look for literal `categories = {...}` and optional `aliases = {...}` blocks and
+    evaluate them safely with `ast.literal_eval` so we avoid executing any other code
+    (like the file-writing section).
+    """
+    with open(md_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    def _extract_dict(name: str):
+        pattern = rf"{name}\s*=\s*(\{{.*?\}})"  # greedy balanced with simple heuristic
+        match = re.search(pattern, content, re.S)
+        if match:
+            try:
+                return ast.literal_eval(match.group(1))
+            except Exception:
+                pass
+        return {}
+
+    categories_dict = _extract_dict("categories")
+    aliases_dict = _extract_dict("aliases")
+
+    # Build product → category mapping
+    product_to_category: dict[str, str] = {}
+    for cat, prods in categories_dict.items():
+        for prod in prods:
+            product_to_category[prod] = cat
+
+    # Ensure a default bucket for unmatched rows
+    product_to_category.setdefault("Unattributed", "Unattributed")
+
+    # Normalize helper
     def _norm(s: str):
-        return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+        # insert spaces before CamelCase transitions first
+        s = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", s)
+        s = s.replace("_", " ").replace("-", " ")
+        s = s.lower()
+        s = re.sub(r"[^a-z0-9 ]+", " ", s)
+        s = re.sub(r"\s+", " ", s).strip()
+        return s
 
+    alias_map = {_norm(k): v for k, v in aliases_dict.items()}
+    # Ensure canonical names map to themselves
+    for prod in product_to_category:
+        alias_map.setdefault(_norm(prod), prod)
+
+    # Precompute variants with spaces removed for camel-case matches
+    expanded_alias = {}
+    for key, val in alias_map.items():
+        expanded_alias[key] = val
+        nospace = key.replace(" ", "")
+        if nospace != key:
+            expanded_alias.setdefault(nospace, val)
+
+    # sort longest->shortest for deterministic greedy matching
+    alias_sorted = sorted(expanded_alias.items(), key=lambda kv: len(kv[0]), reverse=True)
     return product_to_category, alias_sorted, _norm
 
 
