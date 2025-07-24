@@ -11,6 +11,7 @@
 - [ ] Update the README.md to reflect the new structure and usage instructions.
 - [ ] Merge requirements.txt into the pyproject.toml file.
 - [ ] Change mail tutorial.md to README.md
+- [ ] Data folders need a much better naming convention
 
 ## Scripting
 
