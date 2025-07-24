@@ -129,3 +129,39 @@ ls src/higherdose/mail/archive/
 - ✅ Files won't appear in `git status` output
 - ✅ Files won't be included in future commits
 - ✅ Other developers won't see these files when they clone/pull 
+
+Here’s the quick-fix checklist distilled from `docs/tutorials/git-untrack-tutorial.md` and adapted to your archive problem.
+
+1. Verify what’s still tracked  
+   (replace the path if your archive lives somewhere else):
+   ```bash
+   git ls-files src/higherdose/mail/archive
+   ```
+
+2. Stop tracking the directory but keep the files on disk:  
+   ```bash
+   git rm -r --cached src/higherdose/mail/archive
+   ```
+
+3. Make sure the ignore rule is in `.gitignore`  
+   (you already have this line, but double-check in case of typos):
+   ```
+   **/mail/archive/
+   ```
+
+4. Commit the changes:
+   ```bash
+   git add .gitignore
+   git commit -m "Remove mail/archive from git tracking"
+   ```
+
+5. Confirm everything worked:
+   ```bash
+   # Should print nothing
+   git ls-files src/higherdose/mail/archive
+
+   # Should print the path (means git is ignoring it)
+   git check-ignore src/higherdose/mail/archive/anyfile.md
+   ```
+
+If `git ls-files` in step 1 already shows nothing, tracking has been removed—any remaining issue is usually a mismatched ignore pattern (extra spaces, missing slash, etc.). Fix the pattern, then clear the index again with steps 2-4. 
