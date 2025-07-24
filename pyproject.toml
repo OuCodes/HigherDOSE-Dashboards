@@ -5,6 +5,17 @@ description = "Growth report analysis toolkit for HigherDOSE"
 authors = [{name = "HigherDOSE"}]
 readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+    "pandas==2.3.1",
+    "numpy==2.3.1",
+    "google-api-python-client==2.176.0",
+    "google-auth-httplib2==0.2.0",
+    "google-auth-oauthlib==1.2.2",
+    "markitdown==0.1.2",
+    "playwright==1.54.0",
+    "requests==2.32.4",
+    "python-dateutil==2.9.0.post0",
+]
 
 [build-system]
 requires = ["setuptools>=61.0"]
