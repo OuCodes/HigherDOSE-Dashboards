@@ -166,6 +166,21 @@ def get_page_access_tokens(
         print("  5. Run the script again with the new token")
         raise
 
+    # Check token permissions/scope
+    print(f"\n{ansi.cyan}DEBUG: Checking token permissions...{ansi.reset}")
+    permissions_url = f"{config.app.base_url}/me/permissions?access_token={user_token}"
+    try:
+        permissions_data = make_api_request(permissions_url)
+        print(f"Token permissions:")
+        for perm in permissions_data.get('data', []):
+            status = perm.get('status', 'unknown')
+            permission = perm.get('permission', 'unknown')
+            color = ansi.green if status == 'granted' else ansi.red
+            print(f"  - {permission}: {color}{status}{ansi.reset}")
+
+    except Exception as e:
+        print(f"Could not retrieve permissions: {ansi.red}{str(e)}{ansi.reset}")
+
     # Get page access tokens
     pages_url = f"{config.app.base_url}/{user_id}/accounts?access_token={user_token}"
 
@@ -174,8 +189,36 @@ def get_page_access_tokens(
           f"user: {ansi.yellow}{user_id}{ansi.reset}")
     data = make_api_request(pages_url)
 
+    # Debug: Show full API response structure
+    print(f"\n{ansi.cyan}DEBUG: Full API Response Structure:{ansi.reset}")
+    print(f"Response keys: {list(data.keys())}")
+    if 'data' in data:
+        print(f"Number of accounts: {len(data['data'])}")
+        if data['data']:
+            print(f"Sample account keys: {list(data['data'][0].keys())}")
+
     pages = {}
     logger.info("Processing %d pages from API response", len(data.get('data', [])))
+    
+    # Debug: Show all pages returned from API
+    print(f"\n{ansi.cyan}DEBUG: Pages returned from Facebook API:{ansi.reset}")
+    for i, page_data in enumerate(data.get('data', []), 1):
+        page_id = page_data['id']
+        page_name = page_data.get('name', 'Unknown')
+        category = page_data.get('category', 'Unknown')
+        tasks = page_data.get('tasks', [])
+        perms = page_data.get('perms', [])
+        print(f"  {i}. {ansi.yellow}{page_name}{ansi.reset} (ID: {ansi.yellow}{page_id}{ansi.reset})")
+        print(f"     Category: {category}")
+        if tasks:
+            print(f"     Tasks: {tasks}")
+        if perms:
+            print(f"     Permissions: {perms}")
+    
+    if target_page_id:
+        print(f"\n{ansi.cyan}DEBUG: Looking for specific page ID:{ansi.reset} {ansi.yellow}{target_page_id}{ansi.reset}")
+    else:
+        print(f"\n{ansi.cyan}DEBUG: No target page ID specified - will process all pages{ansi.reset}")
 
     for page_data in data.get('data', []):
         page_id = page_data['id']
@@ -185,9 +228,11 @@ def get_page_access_tokens(
         if target_page_id and page_id != target_page_id:
             logger.info("Skipping page: %s (%s) - not target page",
                        page_name, page_id)
+            print(f"  {ansi.red}SKIPPING{ansi.reset}: {page_name} ({page_id}) - not the target page")
             continue
 
         logger.info("Processing page: %s (%s)", page_name, page_id)
+        print(f"  {ansi.green}PROCESSING{ansi.reset}: {page_name} ({page_id})")
         page_config = Page(
             page_id=page_id,
             page_name=page_name,
