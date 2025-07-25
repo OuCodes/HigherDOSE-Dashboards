@@ -444,6 +444,19 @@ def main():
     sessions_map = _apply_alias(sessions_map_raw)
     sessions_2024_map = _apply_alias(sessions_map_2024_raw)
 
+    # Substitute Google Ads sessions with clicks for both 2025 and 2024 so GA tables are realistic
+    try:
+        g_clicks_25 = _aggregate_google_metrics(args.google_2025_csv)["Clicks"]
+        sessions_map["Google Ads"] = g_clicks_25
+    except Exception:
+        pass
+
+    try:
+        g_clicks_24 = _aggregate_google_metrics(args.google_2024_csv)["Clicks"]
+        sessions_2024_map["Google Ads"] = g_clicks_24
+    except Exception:
+        pass
+
     # -------------------------------------------------------------
     # If we collapsed individual affiliate partners into a single
     # 'Affiliate' channel above, merge their GA session rows too so
@@ -461,6 +474,11 @@ def main():
     channel_summary["%_rev"] = (channel_summary["attributed_rev"] / total_rev * 100).round(1)
     # Attach GA sessions for reference but compute Conv Rate using Northbeam visits for accuracy
     channel_summary["sessions"] = channel_summary.index.map(lambda x: sessions_map.get(x, 0))
+
+    # -------------------------------------------------------------
+    # Google Ads tracking gap: GA & NB both under-count sessions.
+    # Substitute Google ad-clicks so CVR is meaningful.
+    # -------------------------------------------------------------
 
     # -------------------------------------------------------------
     # 🚦 SESSION HARMONISATION RULES
@@ -481,6 +499,14 @@ def main():
     mask_ret = channel_summary.index.isin(RETENTION_CHANNELS)
     harmonise_mask = mask_paid | mask_ret
     channel_summary.loc[harmonise_mask, "sessions"] = channel_summary.loc[harmonise_mask, "visits"]
+
+    # 🡒 Now override Google Ads once more with ad-clicks so visit substitution doesn't overwrite it
+    if "Google Ads" in channel_summary.index:
+        try:
+            g_clicks = _aggregate_google_metrics(args.google_2025_csv)["Clicks"]
+            channel_summary.at["Google Ads", "sessions"] = g_clicks
+        except Exception:
+            pass
 
     # Use GA sessions (not NB visits) for a more realistic conversion rate
     channel_summary["conv_rate"] = channel_summary.apply(
@@ -816,36 +842,46 @@ def main():
     month_trend_md = "\n## 7. Monthly Trend – Northbeam (Accrual)\n" + "\n".join(month_md_lines) + "\n---\n"
 
     # GA Sessions to NB Transactions conversion YoY
+    # Use the harmonised session counts from channel_summary when available
+    latest_sessions_map = channel_summary["sessions"].to_dict()
     txn_map_25 = nb_df_acc.groupby("breakdown_platform_northbeam")["transactions"].sum().to_dict()
+
     conv_rows = []
     for ch in ga_channels:  # ga_channels defined earlier
-        s25 = sessions_map.get(ch, 0)
+        s25 = latest_sessions_map.get(ch, sessions_map.get(ch, 0))
         s24 = sessions_2024_map.get(ch, 0)
         tx25 = txn_map_25.get(ch, 0)
         conv25 = tx25 / s25 * 100 if s25 else 0
-        conv24 = tx25 / s24 * 100 if s24 else 0  # proxy – lacking 2024 txns
-        delta_pp = conv25 - conv24
+        # conv25 is a percent value; convert to fraction to estimate 2024 txns
+        tx24_est = (conv25 / 100) * s24
+        conv24_est = (tx24_est / s24 * 100) if s24 else 0
+        delta_pp = conv25 - conv24_est
         conv_rows.append({
             "Channel": ch,
             "Sessions_2025": s25,
             "Sessions_2024": s24,
             "YoY_%": (s25 - s24) / s24 * 100 if s24 else 0,
             "Txns_2025": tx25,
+            "Txns_2024_est": tx24_est,
             "ConvRate_25": conv25,
-            "ConvRate_24": conv24,
+            "ConvRate_24_est": conv24_est,
             "Δ_pp": delta_pp,
         })
     conv_df = pd.DataFrame(conv_rows).sort_values("Sessions_2025", ascending=False)
     conv_md_lines = [
-        "| Channel | 2025 Sessions | 2024 Sessions | YoY Δ% | 2025 Txns | Conv-Rate 25 | Conv-Rate 24* | Δ pp |",
-        "| - | - | - | - | - | - | - | - |",
+        "| Channel | 2025 Sessions | 2024 Sessions | YoY Δ% | 2025 Txns | 2024 Txns (est) | Conv-Rate 25 | Conv-Rate 24 (est) | Δ pp |",
+        "| - | - | - | - | - | - | - | - | - |",
     ]
     for _, r in conv_df.iterrows():
         sign = "+" if r["YoY_%"] > 0 else ("-" if r["YoY_%"] < 0 else "")
         conv_md_lines.append(
-            f"| {r['Channel']} | {int(r['Sessions_2025']):,} | {int(r['Sessions_2024']):,} | {sign}{abs(r['YoY_%']):.0f}% | {int(r['Txns_2025']):,} | {r['ConvRate_25']:.2f}% | {r['ConvRate_24']:.2f}% | {r['Δ_pp']:.2f} |"
+            f"| {r['Channel']} | {int(r['Sessions_2025']):,} | {int(r['Sessions_2024']):,} | {sign}{abs(r['YoY_%']):.0f}% | {int(r['Txns_2025']):,} | {int(r['Txns_2024_est']):,} | {r['ConvRate_25']:.2f}% | {r['ConvRate_24_est']:.2f}% | {r['Δ_pp']:.2f} |"
         )
-    conv_md = "\n## 8. GA Sessions → NB Transactions Conversion\n" + "\n".join(conv_md_lines) + "\n*Conv-Rate 24 uses 2025 transactions as proxy (NB has no 2024 export).\n---\n"
+    conv_md = (
+        "\n## 8. GA Sessions → NB Transactions Conversion\n" +
+        "\n".join(conv_md_lines) +
+        "\n*2024 transactions and conversion-rate are estimated by applying 2025 channel-level CVR to 2024 sessions (Northbeam not installed in 2024).\nPaid channels use Northbeam visit counts instead of GA sessions, so session totals may differ from Table 4.*\n---\n"
+    )
 
     # Spend / Revenue concentration
     conc_df = channel_summary.copy()
