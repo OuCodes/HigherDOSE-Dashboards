@@ -20,9 +20,9 @@ import requests
 # -------------- Config -------------------------------------------------------
 # Updated path to align with new repository structure
 EXPORT_DIR = Path("data/processed/slack/markdown_exports")
-TRACK_FILE = Path("slack/conversion_tracker.json")
+TRACK_FILE = Path("config/slack/conversion_tracker.json")
 ROLODEX_FILE = Path("rolodex.json")
-CREDENTIALS_FILE = Path("slack/playwright_creds.json")
+CREDENTIALS_FILE = Path("config/slack/playwright_creds.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Slack workspace config
