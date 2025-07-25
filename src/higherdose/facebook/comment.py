@@ -54,12 +54,14 @@ def load_latest_tokens() -> Tuple[str, Dict[str, str]]:
     tm = TokenManager()
     latest = tm.get_latest_run_file()
     if latest is None:
-        print(f"{ansi.red}No token files found. Run `higherdose.facebook.tokens` first.{ansi.reset}")
+        error_msg = "No token files found. Run `higherdose.facebook.tokens` first."
+        print(f"{ansi.red}{error_msg}{ansi.reset}")
         sys.exit(1)
 
     tm.load_run_data(latest)
 
-    user_token = tm.user_config.long_lived_token.access_token if tm.user_config.long_lived_token else None
+    long_lived_token = tm.user_config.long_lived_token
+    user_token = long_lived_token.access_token if long_lived_token else None
     if not user_token:
         print(f"{ansi.red}User long-lived token missing in {latest}{ansi.reset}")
         sys.exit(1)
@@ -72,6 +74,7 @@ def load_latest_tokens() -> Tuple[str, Dict[str, str]]:
 
 
 def graph_request(endpoint: str, params: Dict[str, Any]) -> Dict[str, Any]:
+    """Make a Graph API request with error handling and debugging output."""
     query = urllib.parse.urlencode(params)
     url = f"{BASE_URL}/{endpoint}?{query}"
     logger.info("Graph GET %s", url[:120] + ("…" if len(url) > 120 else ""))
@@ -84,7 +87,8 @@ def graph_request(endpoint: str, params: Dict[str, Any]) -> Dict[str, Any]:
             body = resp.read().decode()
             print(f"  Response status: {ansi.green}{resp.status}{ansi.reset}")
             print(f"  Response body length: {len(body)} characters")
-            print(f"  Response body (first 500 chars): {ansi.grey}{body[:500]}{'...' if len(body) > 500 else ''}{ansi.reset}")
+            body_preview = f"{body[:500]}{'...' if len(body) > 500 else ''}"
+            print(f"  Response body (first 500 chars): {ansi.grey}{body_preview}{ansi.reset}")
 
             data = json.loads(body)
 
@@ -99,13 +103,15 @@ def graph_request(endpoint: str, params: Dict[str, Any]) -> Dict[str, Any]:
     except urllib.error.HTTPError as e:
         err_body = e.read().decode(errors="ignore") if hasattr(e, "read") else ""
         print(f"  {ansi.red}HTTP Error {e.code}: {e.reason}{ansi.reset}")
-        print(f"  Error body: {ansi.red}{err_body[:300]}{'...' if len(err_body) > 300 else ''}{ansi.reset}")
+        error_preview = f"{err_body[:300]}{'...' if len(err_body) > 300 else ''}"
+        print(f"  Error body: {ansi.red}{error_preview}{ansi.reset}")
 
         logger.error("HTTP %s: %s – %s", e.code, e.reason, err_body[:200])
         raise
 
 
 def chunked(lst: List[str], size: int) -> List[List[str]]:
+    """Split a list into chunks of specified size."""
     for i in range(0, len(lst), size):
         yield lst[i:i + size]
 
@@ -230,15 +236,20 @@ def test_direct_post_access(post_id: str, token: str) -> bool:
         print(f"  Post data: {json.dumps(data, indent=2)}")
         return True
 
-    except Exception as e:
+    except (urllib.error.HTTPError, urllib.error.URLError, OSError,
+            json.JSONDecodeError, KeyError) as e:
         print(f"  {ansi.red}✗ Post not accessible: {str(e)}{ansi.reset}")
         return False
 
 
 def main(argv: Optional[List[str]] = None):
-    parser = argparse.ArgumentParser(description="Fetch comments for a list of Facebook Ad IDs → Post IDs → Comments")
-    parser.add_argument("--ids-file", type=Path, default=DEFAULT_IDS_FILE, help="Text file containing one Ad ID per line")
-    parser.add_argument("--output", type=Path, default=DATA_FACEBOOK, help="Directory to write comments-*.json")
+    """Main function to orchestrate Facebook ad comments extraction process."""
+    description = "Fetch comments for a list of Facebook Ad IDs → Post IDs → Comments"
+    parser = argparse.ArgumentParser(description=description)
+    ids_help = "Text file containing one Ad ID per line"
+    parser.add_argument("--ids-file", type=Path, default=DEFAULT_IDS_FILE, help=ids_help)
+    output_help = "Directory to write comments-*.json"
+    parser.add_argument("--output", type=Path, default=DATA_FACEBOOK, help=output_help)
     parser.add_argument("--test-post", type=str, help="Test direct access to a specific post ID")
     args = parser.parse_args(argv)
 
@@ -284,7 +295,8 @@ def main(argv: Optional[List[str]] = None):
         comments = fetch_all_comments(post_id, token)
         all_comments[post_id] = comments
         total_comments += len(comments)
-        print(f"💬 Post {ansi.cyan}{post_id}{ansi.reset}: fetched {ansi.yellow}{len(comments)}{ansi.reset} comments")
+        comment_msg = f"Post {post_id}: fetched {len(comments)} comments"
+        print(f"💬 {ansi.cyan}{comment_msg}{ansi.reset}")
 
     # 3. Persist
     timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
