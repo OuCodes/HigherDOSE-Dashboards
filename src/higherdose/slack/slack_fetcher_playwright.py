@@ -18,7 +18,8 @@ import requests
 
 
 # -------------- Config -------------------------------------------------------
-EXPORT_DIR = Path("slack/markdown_exports")
+# Updated path to align with new repository structure
+EXPORT_DIR = Path("data/processed/slack/markdown_exports")
 TRACK_FILE = Path("slack/conversion_tracker.json")
 ROLODEX_FILE = Path("rolodex.json")
 CREDENTIALS_FILE = Path("slack/playwright_creds.json")
@@ -124,6 +125,10 @@ class SlackCredentials:
                         token_match = re.search(r'(xoxc-[a-zA-Z0-9-]+)', post_data)
                         if token_match:
                             self.token = token_match.group(1)
+                    # Capture any token that starts with xox(c|p|b|s|e)-
+                    token_match = re.search(r'(xox[a-z]-[a-zA-Z0-9-]+)', post_data)
+                    if token_match:
+                        self.token = token_match.group(1)
             except:
                 pass
         
@@ -142,7 +147,8 @@ class SlackCredentials:
                         try:
                             import urllib.parse
                             decoded = urllib.parse.unquote(value)
-                            if decoded.startswith(('xoxc-', 'xoxd-')):
+                            if decoded.startswith(('xox',)):
+                                # cookie sometimes holds xoxd- or xoxc-/xoxe-, accept any
                                 self.token = decoded
                         except:
                             pass
@@ -1702,7 +1708,11 @@ class SlackBrowser:
     def _load_rolodex(self) -> Dict[str, str]:
         """Load user mappings from rolodex.json file."""
         try:
+            # First look for top-level rolodex, then fall back to data/raw
             rolodex_path = Path("rolodex.json")
+            if not rolodex_path.exists():
+                rolodex_path = Path("data/raw/rolodex.json")
+
             if rolodex_path.exists():
                 with open(rolodex_path, 'r', encoding='utf-8') as f:
                     rolodex = json.load(f)
@@ -1716,7 +1726,7 @@ class SlackBrowser:
                 print(f"📋 Loaded {len(user_mapping)} user mappings from rolodex")
                 return user_mapping
             else:
-                print("📋 No rolodex.json found, using basic user mapping")
+                print("📋 No rolodex file found (searched 'rolodex.json' and 'data/raw/rolodex.json'), using basic user mapping")
                 return {}
         except Exception as e:
             print(f"⚠️ Error loading rolodex: {e}")
@@ -1807,8 +1817,9 @@ class SlackBrowser:
         else:
             base = channel_name.lstrip("#@") or f"channel_{channel_id}"
 
-        # Sanitize
+        # Sanitize: replace invalid chars and collapse whitespace to underscores
         safe = re.sub(r'[<>:"/\\|?*@]', '_', base)
+        safe = re.sub(r'\s+', '_', safe)  # spaces and tabs => underscore
         safe = re.sub(r'_+', '_', safe).strip('_')
         return safe
 
