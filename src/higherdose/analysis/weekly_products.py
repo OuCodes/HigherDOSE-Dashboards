@@ -21,6 +21,7 @@ from . import weekly as base
 import glob, os
 import argparse
 from pathlib import Path
+from higherdose.utils.io.file_selector import select_csv_file
 
 
 # -------------------------------------------------------------
@@ -355,78 +356,197 @@ def main():
     args, _unknown = parser.parse_known_args()
 
     # Determine current-year MTD files (CLI arg if supplied, otherwise prompt)
-    google_cur_path = args.google_csv
-    if not google_cur_path:
-        google_cur_path = input("Path to current-year Google Ads MTD CSV (blank to skip YoY): ").strip() or None
+    def _prompt_mtd(platform: str, cli_value: str | None):
+        if cli_value:
+            return cli_value
+        pattern = f"*{platform.lower()}*mtd*csv"
+        return select_csv_file(
+            directory="data/raw/stats",
+            file_pattern=pattern,
+            prompt_message=f"Select {platform} MTD CSV (or q to skip): ",
+            max_items=10,
+        )
 
-    meta_cur_path = args.meta_csv
-    if not meta_cur_path:
-        meta_cur_path = input("Path to current-year Meta Ads MTD CSV (blank to skip YoY): ").strip() or None
+    google_cur_path = _prompt_mtd("google", args.google_csv)
+    meta_cur_path   = _prompt_mtd("meta",   args.meta_csv)
 
     # 1. Load channel-level cleaned data from the base module
     df = base.load_and_clean_data()
     if df is None:
         return
 
-    # 2. Product mapping & assignment
+    # Preserve a copy of the *full* dataset before we potentially
+    # slice it down to a specific date range so we can use it to
+    # derive the previous-period DataFrame without re-prompting for
+    # a file.
+    df_full = df.copy()
+
+    # -------------------------------------------------------------
+    # 📅  Interactive date filtering (new)
+    # -------------------------------------------------------------
+    # If the loaded CSV now contains an explicit date column, allow
+    # the user to choose a custom date window (e.g. the most recent
+    # 7-day period) and automatically derive the *previous* period
+    # for WoW comparisons from the *same* file.  If no usable date
+    # column is found we fall back to the older behaviour that looks
+    # for a separate “prev-” CSV on disk.
+    # -------------------------------------------------------------
+
+    # Identify potential date column(s) – case-insensitive match
+    date_cols = [c for c in df.columns if c.lower() in {"date", "day", "report_date"}]
+    use_date_filter = bool(date_cols)
+
+    prev_df: pd.DataFrame | None = None  # will be populated below
+
+    if use_date_filter:
+        date_col = date_cols[0]
+        # Ensure datetime dtype for both filtered and full copies
+        df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
+        df_full[date_col] = pd.to_datetime(df_full[date_col], errors="coerce")
+
+        # --------------------------------------------------
+        # ①  Select CURRENT period
+        # --------------------------------------------------
+        period_menu = (
+            "Choose reporting period (Northbeam alignment):\n"
+            "  1) Last 7 days\n"
+            "  2) Last 14 days\n"
+            "  3) Last 30 days\n"
+            "  4) Custom range\n"
+        )
+        while True:
+            choice = input(period_menu + "Selection: ").strip()
+            if choice in {"1", "7", "last 7", "l7"}:
+                days = 7
+            elif choice in {"2", "14", "last 14", "l14"}:
+                days = 14
+            elif choice in {"3", "30", "last 30", "l30"}:
+                days = 30
+            elif choice in {"4", "custom", "c"}:
+                days = None  # handled below
+            else:
+                print("❌ Invalid option – try again.\n")
+                continue
+            break
+
+        if days is not None:
+            # Northbeam presets end on *yesterday*, not today
+            latest_dt = df_full[date_col].max().date()
+            end_date = latest_dt - timedelta(days=1)
+            start_date = end_date - timedelta(days=days - 1)
+        else:
+            # Custom range prompt
+            while True:
+                try:
+                    start_input = input("Enter report START date  (YYYY-MM-DD): ").strip()
+                    end_input   = input("Enter report END date    (YYYY-MM-DD): ").strip()
+                    start_date = pd.to_datetime(start_input).date()
+                    end_date   = pd.to_datetime(end_input).date()
+                    if end_date < start_date:
+                        print("❌ End date must not be before start date. Try again.\n")
+                        continue
+                    break
+                except Exception:
+                    print("❌ Invalid date format – please use YYYY-MM-DD.\n")
+
+        # Slice current period
+        df = df[(df[date_col].dt.date >= start_date) & (df[date_col].dt.date <= end_date)].copy()
+
+        if df.empty:
+            print("⚠️  No data found in the selected period – exiting.")
+            return
+
+        # --------------------------------------------------
+        # ②  Select COMPARISON window
+        # --------------------------------------------------
+        compare_menu = (
+            "Compare against:\n"
+            "  1) Previous period (same length)\n"
+            "  2) Previous month\n"
+            "  3) Previous year\n"
+            "  4) None\n"
+        )
+        while True:
+            comp_choice = input(compare_menu + "Selection: ").strip()
+            if comp_choice == "1":
+                prev_start = start_date - timedelta(days=(end_date - start_date).days + 1)
+                prev_end   = start_date - timedelta(days=1)
+                break
+            elif comp_choice == "2":
+                prev_start = (start_date - pd.DateOffset(months=1)).date()
+                prev_end   = (end_date   - pd.DateOffset(months=1)).date()
+                break
+            elif comp_choice == "3":
+                prev_start = (start_date - pd.DateOffset(years=1)).date()
+                prev_end   = (end_date   - pd.DateOffset(years=1)).date()
+                break
+            elif comp_choice == "4":
+                prev_start = prev_end = None
+                break
+            else:
+                print("❌ Invalid option – try again.\n")
+
+        if prev_start and prev_end:
+            prev_df_subset = df_full[(df_full[date_col].dt.date >= prev_start) & (df_full[date_col].dt.date <= prev_end)].copy()
+            if not prev_df_subset.empty:
+                prev_df = prev_df_subset.fillna(0)
+
+        # Announce selection summary
+        label_prev = f"{prev_start} → {prev_end}" if prev_start else "NONE"
+        print(f"📅 Current period : {start_date} → {end_date}\n" +
+              f"🔁 Comparison     : {label_prev}\n")
+    # -------------------------------------------------------------
+    # Legacy behaviour – fall back to separate previous-week CSV
+    # -------------------------------------------------------------
+    else:
+        prev_csv = _find_previous_csv()
+        prev_df = _load_csv_clean(prev_csv) if prev_csv else None
+
+    # -------------------------------------------------------------
+    # 2️⃣  Product mapping & summary preparation (current period)
+    # -------------------------------------------------------------
+
     product_to_category, alias_sorted, norm_fn = load_product_mappings()
+
+    # Assign canonical product to each row
     df_prod = assign_products(df, alias_sorted, norm_fn)
 
     # Label rows with no matched product as 'Unattributed'
     df_prod["product"] = df_prod["product"].fillna("Unattributed")
 
-    # 3. Build product & category summaries using Accrual performance rows only (to mirror channel-level logic)
+    # --- Accrual rows (for unattributed + meta grouping logic later) ---
     accrual_df_prod = df_prod[df_prod["accounting_mode"] == "Accrual performance"].copy()
-
-    # -------------------------------------------------------------
-    # 🧹 Remove *campaign summary* rows to avoid double-counting.
-    # These are rows whose adset_name and ad_name are empty or "(no name)".
-    # If a campaign has ONLY such a row (i.e., no ad-level lines), we keep it.
-    # But if both summary + detailed rows exist, we drop the summary row.
-    # -------------------------------------------------------------
 
     def _is_blank(val):
         return pd.isna(val) or str(val).strip() == "" or str(val).strip().lower() == "(no name)"
 
+    # Flag campaign-summary rows (blank adset/ad names) and drop them when detailed rows exist
     accrual_df_prod["_is_summary"] = accrual_df_prod.apply(
         lambda r: _is_blank(r["adset_name"]) and _is_blank(r["ad_name"]), axis=1
     )
-
-    # Identify campaigns that also have detailed rows (non-summary)
-    has_detail = (
-        accrual_df_prod.groupby("campaign_name")["_is_summary"].transform(lambda s: (~s).any())
-    )
-
+    has_detail = accrual_df_prod.groupby("campaign_name")["_is_summary"].transform(lambda s: (~s).any())
     accrual_filtered = accrual_df_prod[~(accrual_df_prod["_is_summary"] & has_detail)].copy()
 
-    # -------------------------------------------------------------
-    # 🔄  Build Product & Category summaries using *Cash snapshot*
-    #     to avoid fractional-transaction confusion in CAC/AOV.
-    # -------------------------------------------------------------
-
+    # --- Cash snapshot rows for CAC/AOV consistency ---
     cash_df_prod = df_prod[df_prod["accounting_mode"] == "Cash snapshot"].copy()
-
-    # Re-use the same summary-row removal logic for cash rows
     cash_df_prod["_is_summary"] = cash_df_prod.apply(
         lambda r: _is_blank(r["adset_name"]) and _is_blank(r["ad_name"]), axis=1
     )
-    cash_has_detail = (
-        cash_df_prod.groupby("campaign_name")["_is_summary"].transform(lambda s: (~s).any())
-    )
+    cash_has_detail = cash_df_prod.groupby("campaign_name")["_is_summary"].transform(lambda s: (~s).any())
     cash_filtered = cash_df_prod[~(cash_df_prod["_is_summary"] & cash_has_detail)].copy()
 
+    # Build summaries
     product_summary = build_summary(cash_filtered[cash_filtered["product"].notna()], "product")
 
     cash_filtered["category"] = cash_filtered["product"].map(product_to_category).fillna("Unattributed")
     category_summary = build_summary(cash_filtered[cash_filtered["category"].notna()], "category")
 
     # -------------------------------------------------------------
-    # 📅  Previous-week summaries for deltas
+    # Previous-period mapping placeholders (will be filled if prev_df exists)
     # -------------------------------------------------------------
-    prev_csv = _find_previous_csv()
-    prev_df = _load_csv_clean(prev_csv) if prev_csv else None
 
     prev_product_summary = prev_category_summary = None
+
     if prev_df is not None:
         prev_df_prod = assign_products(prev_df, alias_sorted, norm_fn)
         prev_cash_df = prev_df_prod[prev_df_prod["accounting_mode"] == "Cash snapshot"].copy()
