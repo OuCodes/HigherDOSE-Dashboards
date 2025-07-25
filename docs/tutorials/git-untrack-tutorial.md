@@ -16,9 +16,9 @@ First, verify which files git is currently tracking in the target directory:
 git ls-files path/to/directory
 ```
 
-Example for mail/archive:
+Example for mail/exports:
 ```bash
-git ls-files src/higherdose/mail/archive
+git ls-files data/mail/exports
 ```
 
 ### Step 2: Remove from Git Tracking (Keep Local Files)
@@ -33,9 +33,9 @@ git rm --cached path/to/file
 git rm -r --cached path/to/directory
 ```
 
-**Key Commands for mail/archive:**
+**Key Commands for mail/exports:**
 ```bash
-git rm -r --cached src/higherdose/mail/archive
+git rm -r --cached data/mail/exports
 ```
 
 ⚠️ **Important**: The `--cached` flag is crucial - it removes files from git tracking but keeps them on disk.
@@ -46,15 +46,15 @@ Add the appropriate ignore pattern to `.gitignore`:
 
 ```gitignore
 # To ignore specific path
-src/higherdose/mail/archive/
+data/mail/exports/
 
 # To ignore directory anywhere in repo (recommended)
-**/mail/archive/
+**/mail/exports/
 ```
 
-The `**/mail/archive/` pattern means:
+The `**/mail/exports/` pattern means:
 - `**` = match any number of directories at any depth
-- `/mail/archive/` = followed by the specific path
+- `/mail/exports/` = followed by the specific path
 - Trailing `/` = match directories and their contents
 
 ### Step 4: Verify the Ignore is Working
@@ -67,7 +67,7 @@ git check-ignore path/to/file
 
 Example:
 ```bash
-git check-ignore src/higherdose/mail/archive/somefile.md
+git check-ignore data/mail/exports/somefile.md
 ```
 
 If the command outputs the file path, git is successfully ignoring it.
@@ -78,27 +78,27 @@ The `git rm --cached` command stages the file deletions. Commit these changes:
 
 ```bash
 git add .gitignore
-git commit -m "Remove mail/archive from git tracking and add to .gitignore"
+git commit -m "Remove mail/exports from git tracking and add to .gitignore"
 ```
 
 ## Complete Example Workflow
 
 ```bash
 # 1. Check what's tracked
-git ls-files src/higherdose/mail/archive
+git ls-files data/mail/exports
 
 # 2. Remove from tracking (keep local files)
-git rm -r --cached src/higherdose/mail/archive
+git rm -r --cached data/mail/exports
 
-# 3. Add to .gitignore (edit the file to add **/mail/archive/)
-echo "**/mail/archive/" >> .gitignore
+# 3. Add to .gitignore (edit the file to add **/mail/exports/)
+echo "**/mail/exports/" >> .gitignore
 
 # 4. Verify ignore is working
-git check-ignore src/higherdose/mail/archive/somefile.md
+git check-ignore data/mail/exports/somefile.md
 
 # 5. Commit the changes
 git add .gitignore
-git commit -m "Remove mail/archive from git tracking"
+git commit -m "Remove mail/exports from git tracking"
 ```
 
 ## Common Mistakes to Avoid
@@ -113,13 +113,13 @@ After completing the process, verify everything worked:
 
 ```bash
 # Should show no output (files not tracked)
-git ls-files src/higherdose/mail/archive
+git ls-files data/mail/exports
 
 # Should list the file path (git is ignoring it)
-git check-ignore src/higherdose/mail/archive/anyfile.md
+git check-ignore data/mail/exports/anyfile.md
 
 # Should show files still exist locally
-ls src/higherdose/mail/archive/
+ls data/mail/exports/
 ```
 
 ## What This Accomplishes
@@ -133,35 +133,35 @@ ls src/higherdose/mail/archive/
 Here’s the quick-fix checklist distilled from `docs/tutorials/git-untrack-tutorial.md` and adapted to your archive problem.
 
 1. Verify what’s still tracked  
-   (replace the path if your archive lives somewhere else):
+   (replace the path if your exports live somewhere else):
    ```bash
-   git ls-files src/higherdose/mail/archive
+   git ls-files data/mail/exports
    ```
 
 2. Stop tracking the directory but keep the files on disk:  
    ```bash
-   git rm -r --cached src/higherdose/mail/archive
+   git rm -r --cached data/mail/exports
    ```
 
 3. Make sure the ignore rule is in `.gitignore`  
    (you already have this line, but double-check in case of typos):
    ```
-   **/mail/archive/
+   **/mail/exports/
    ```
 
 4. Commit the changes:
    ```bash
    git add .gitignore
-   git commit -m "Remove mail/archive from git tracking"
+   git commit -m "Remove mail/exports from git tracking"
    ```
 
 5. Confirm everything worked:
    ```bash
    # Should print nothing
-   git ls-files src/higherdose/mail/archive
+   git ls-files data/mail/exports
 
    # Should print the path (means git is ignoring it)
-   git check-ignore src/higherdose/mail/archive/anyfile.md
+   git check-ignore data/mail/exports/anyfile.md
    ```
 
 If `git ls-files` in step 1 already shows nothing, tracking has been removed—any remaining issue is usually a mismatched ignore pattern (extra spaces, missing slash, etc.). Fix the pattern, then clear the index again with steps 2-4. 

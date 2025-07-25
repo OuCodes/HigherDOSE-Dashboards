@@ -1,4 +1,4 @@
-Can you review @/exports and @/mail in the archive folder and categorize the markdown files into the following categories from July 14th - July 20th 
+Can you review @/exports and @/mail in the exports folder and categorize the markdown files into the following categories from July 14th - July 20th 
 
 Wins & Updates = General insights across the brand
 Challenges = General insights across the brand

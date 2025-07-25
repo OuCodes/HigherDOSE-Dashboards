@@ -101,16 +101,16 @@ def clean_email_content(content):
     content = re.sub(r'https?://\S+', shorten_url, content)
 
     return content
-# Paths for the auth token, cursor, and archive directory should be based on the
-# location of this script—not the shell's working directory—to avoid FileNotFound
-# errors when the script is executed from other locations.
+# Paths for the auth token and cursor should be based on the location of this script
+# to avoid FileNotFound errors when executed from other locations.
+# Mail exports are now saved to the centralized data/mail/exports/ directory.
 ROOT_DIR = Path(__file__).resolve().parent
 
 TOKEN = ROOT_DIR / "token.pickle"
 CURSOR = ROOT_DIR / "cursor.txt"
-OUTDIR = ROOT_DIR / "archive"
+OUTDIR = Path("data/mail/exports")
 
-# Create the archive directory (including any missing parents) if it does not yet
+# Create the mail exports directory (including any missing parents) if it does not yet
 # exist. The `parents=True` flag guarantees that the whole path hierarchy is
 # created in one call.
 OUTDIR.mkdir(parents=True, exist_ok=True)

@@ -33,4 +33,4 @@
 ## Email
 
 - [ ] Fix the trailing and leading whitespaces around links in certain emails.
-- [ ] Move mail/archive to data/mail/archive
+- [x] Move mail/archive to data/mail/exports

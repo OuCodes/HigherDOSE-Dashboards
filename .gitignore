@@ -3,7 +3,7 @@
 .DS_Store
 *.pickle
 client_secret_*.json
-**/mail/archive/
+**/mail/exports/
 secrets.json
 
 # Byte-compiled / optimized / DLL files
