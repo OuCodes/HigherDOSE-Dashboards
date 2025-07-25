@@ -33,7 +33,7 @@ from dateutil import parser as date_parser
 # Directory containing per-workspace credential files.
 # Can be overridden with the environment variable SLACK_COOKIE_DIR so that
 # repositories can keep creds inside the repo if desired.
-COOKIE_DIR = pathlib.Path(os.environ.get("SLACK_COOKIE_DIR", str(pathlib.Path.home() / ".slack_cookies")))
+COOKIE_DIR = pathlib.Path(os.environ.get("SLACK_COOKIE_DIR", "config/slack"))
 TRACK_FILE = pathlib.Path("config/slack/conversion_tracker.json")
 EXPORT_DIR = pathlib.Path("data/processed/slack/markdown_exports")
 ROLODEX_FILE = pathlib.Path("rolodex.json")

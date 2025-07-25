@@ -114,12 +114,19 @@ pip install -r requirements.txt
 ## Files Structure
 
 ```
-slack/
-├── slack_fetcher_playwright.py    # New Playwright-based fetcher
+src/higherdose/slack/
+├── slack_fetcher_playwright.py    # Main Playwright-based fetcher
 ├── setup_playwright.py            # Setup script for Playwright
-├── fetch_cookie_md.py             # Legacy cookie-based fetcher
+├── fetch_cookie_md.py             # Legacy cookie-based fetcher (backup)
+├── update_credentials.py          # Credential management for legacy method
+├── track_conversions.py           # Conversation tracking utilities
+└── README.md                      # This file
+
+config/slack/
 ├── playwright_creds.json          # Cached credentials (auto-generated)
 ├── conversion_tracker.json        # Message tracking data
-├── markdown_exports/              # Exported conversations
-└── README.md                      # This file
+└── TA97020CV.env                  # Legacy credentials file
+
+data/processed/slack/
+└── markdown_exports/              # Exported conversations
 ``` 

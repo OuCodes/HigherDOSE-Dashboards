@@ -60,7 +60,7 @@ def update_credentials_file(team_id: str, cookie: str, token: str, crumb: str = 
     """Update the credentials file with new values."""
     
     # Get cookie directory
-    cookie_dir = pathlib.Path(os.environ.get("SLACK_COOKIE_DIR", str(pathlib.Path.home() / ".slack_cookies")))
+    cookie_dir = pathlib.Path(os.environ.get("SLACK_COOKIE_DIR", "config/slack"))
     cookie_dir.mkdir(exist_ok=True)
     
     # Find existing file or create new one
