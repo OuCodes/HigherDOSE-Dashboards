@@ -47,7 +47,7 @@ $ pip install -r requirements.txt
 │       ├── transcripts/   #   • Meeting transcripts
 │       └── slack/         #   • Markdown channel exports
 │
-├── reports/               # Final Markdown/PDF reports written by scripts
+├── data/reports/          # Final Markdown/PDF reports written by scripts
 │   ├── weekly/
 │   └── h1/
 └── README.md              # (this file)
@@ -68,7 +68,7 @@ $ python scripts/report_weekly.py
 The script will prompt for the CSV if multiple files are present, analyse the data, then write a Markdown file to:
 
 ```
-reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
+data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
 
 ### Options
@@ -98,7 +98,7 @@ Then run:
 $ python scripts/report_h1.py  # accepts --northbeam_csv etc. if paths differ
 ```
 
-Output → `reports/h1/h1-growth-report-with-products-2025.md`
+Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
 
 ---
 

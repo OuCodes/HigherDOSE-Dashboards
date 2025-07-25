@@ -722,7 +722,13 @@ def main():
 
         # Export markdown report
         markdown_report = export_markdown_report(executive_metrics, channel_summary, campaign_analysis, revenue_only_df, first_time_metrics)
-        report_filename = f"weekly-growth-report-{datetime.now().strftime('%Y-%m-%d')}.md"
+        
+        # Save to dedicated output directory
+        from pathlib import Path
+        REPORT_DIR = Path("data/reports/weekly")
+        REPORT_DIR.mkdir(parents=True, exist_ok=True)
+        
+        report_filename = REPORT_DIR / f"weekly-growth-report-{datetime.now().strftime('%Y-%m-%d')}.md"
         with open(report_filename, "w") as md_file:
             md_file.write(markdown_report)
         print(f"📝 Markdown report saved to {report_filename}")

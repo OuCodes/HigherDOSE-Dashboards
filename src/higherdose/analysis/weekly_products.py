@@ -1059,9 +1059,9 @@ def main():
         final_report += "\n".join(appendix_lines)
 
     # ------------------------------------------------------------------
-    # 🗄️  Save report to dedicated output directory (reports/weekly)
+    # 🗄️  Save report to dedicated output directory (data/reports/weekly)
     # ------------------------------------------------------------------
-    REPORT_DIR = Path("reports/weekly")
+    REPORT_DIR = Path("data/reports/weekly")
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
     out_file = REPORT_DIR / f"weekly-growth-report-with-products-{datetime.now().strftime('%Y-%m-%d')}.md"

@@ -937,9 +937,9 @@ def main():
     )
 
     # ------------------------------------------------------------------
-    # 🗄️  Save report to dedicated output directory (reports/h1)
+    # 🗄️  Save report to dedicated output directory (data/reports/h1)
     # ------------------------------------------------------------------
-    REPORT_DIR = Path("reports/h1")
+    REPORT_DIR = Path("data/reports/h1")
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
     out_file = REPORT_DIR / f"h1-growth-report-with-products-{year}.md"
