@@ -34,7 +34,7 @@ def _latest(pattern: str) -> str | None:
     return max(matches, key=os.path.getmtime) if matches else None
 
 
-def _find_previous_csv(stats_dir: str = "data/raw/stats") -> str | None:
+def _find_previous_csv(stats_dir: str = "data/ads") -> str | None:
     """Return path to the previous-week CSV.
 
     Priority:
@@ -361,7 +361,7 @@ def main():
             return cli_value
         pattern = f"*{platform.lower()}*mtd*csv"
         return select_csv_file(
-            directory="data/raw/stats",
+            directory="data/ads",
             file_pattern=pattern,
             prompt_message=f"Select {platform} MTD CSV (or q to skip): ",
             max_items=10,
@@ -571,7 +571,7 @@ def main():
         ]
         unattributed_export = unattributed_df[cols_to_keep].sort_values("spend", ascending=False)
 
-        out_dir = Path("data/processed/unattributed_products")
+        out_dir = Path("data/products/unattributed")
         out_dir.mkdir(parents=True, exist_ok=True)
         export_name = out_dir / f"unattributed_lines_{datetime.now().strftime('%Y-%m-%d')}.csv"
         unattributed_export.to_csv(export_name, index=False)

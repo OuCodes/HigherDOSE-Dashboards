@@ -1707,10 +1707,10 @@ class SlackBrowser:
     def _load_rolodex(self) -> Dict[str, str]:
         """Load user mappings from rolodex.json file."""
         try:
-            # First look for top-level rolodex, then fall back to data/raw
+            # First look for top-level rolodex, then fall back to data/
             rolodex_path = Path("rolodex.json")
             if not rolodex_path.exists():
-                rolodex_path = Path("data/raw/rolodex.json")
+                rolodex_path = Path("data/rolodex.json")
 
             if rolodex_path.exists():
                 with open(rolodex_path, 'r', encoding='utf-8') as f:
@@ -1725,7 +1725,7 @@ class SlackBrowser:
                 print(f"📋 Loaded {len(user_mapping)} user mappings from rolodex")
                 return user_mapping
             else:
-                print("📋 No rolodex file found (searched 'rolodex.json' and 'data/raw/rolodex.json'), using basic user mapping")
+                print("📋 No rolodex file found (searched 'rolodex.json' and 'data/rolodex.json'), using basic user mapping")
                 return {}
         except Exception as e:
             print(f"⚠️ Error loading rolodex: {e}")

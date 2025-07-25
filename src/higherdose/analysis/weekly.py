@@ -14,7 +14,7 @@ def load_and_clean_data():
     """Load and clean the 7-day sales data"""
     # Interactive file selection
     csv_file = select_csv_file(
-        directory="data/raw/stats",
+        directory="data/ads",
         file_pattern="*sales_data-higher_dose*csv",
         prompt_message="\nSelect Northbeam sales CSV (or 'q' to quit): ",
         max_items=10,

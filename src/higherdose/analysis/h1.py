@@ -35,8 +35,8 @@ from .weekly_products import (
 
 H1_MONTH_END = "06-30"  # YYYY-06-30 marks end of H1
 
-# Base directory containing H1-report CSVs (moved under data/raw/stats in repo restructure)
-DEFAULT_DIR = Path("data/raw/stats/h1-report")
+# Base directory containing H1-report CSVs (moved under data/ads in repo restructure)
+DEFAULT_DIR = Path("data/ads/h1-report")
 
 # GA → Channel mapping keywords (very simple heuristics – tweak as needed)
 GA_CHANNEL_KEYWORDS = {

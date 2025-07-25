@@ -15,7 +15,7 @@ from higherdose.utils.style import ansi
 
 
 
-def select_csv_file(directory="data/raw/stats", file_pattern="*.csv", prompt_message=None, max_items: int | None = None):
+def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=None, max_items: int | None = None):
     """
     Interactive CSV file selection from a directory.
     
@@ -116,7 +116,7 @@ def select_data_file_for_report(report_type="weekly"):
         message = f"\n{ansi.cyan}Select sales data file for {report_type} report:{ansi.reset} "
     
     return select_csv_file(
-        directory="data/raw/stats",
+        directory="data/ads",
         file_pattern=pattern,
         prompt_message=message
     )

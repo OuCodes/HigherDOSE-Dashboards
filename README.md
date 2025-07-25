@@ -23,7 +23,7 @@ $ pip install -r requirements.txt
 # 4)  Run a report (see sections below)
 ```
 
-> ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/raw` before running the scripts.
+> ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
 
 ---
 
@@ -58,7 +58,7 @@ $ pip install -r requirements.txt
 ## 3. Running the **Weekly** Growth Report
 
 1. Download the **7-day** Northbeam “ad + platform – date breakdown” export (CSV).
-2. Save it in `data/raw/stats/`  → the filename can be anything.
+2. Save it in `data/ads/`  → the filename can be anything.
 3. Execute:
 
 ```bash
@@ -82,7 +82,7 @@ $ python -m higherdose.analysis.weekly_products --help
 
 ## 4. Running the **H1** (Jan → Jun) Growth Report
 
-Required files (place in `data/raw/stats/h1-report/` or pass `--*` flags):
+Required files (place in `data/ads/h1-report/` or pass `--*` flags):
 
 * `northbeam-2025-ad+platform-date-breakdown-level-ytd-report.csv`
 * `google-2025-account-level-ytd-report.csv`
@@ -122,7 +122,7 @@ Refer to `slack/README.md` for detailed credential setup.
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
-`data/processed/unattributed_products/`—review these files periodically and
+`data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
 
 ---
