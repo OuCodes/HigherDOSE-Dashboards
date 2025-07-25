@@ -15,6 +15,8 @@
 - [ ] Data folders need a much better naming convention
     - [ ] Determine data/slack/raw data/slack/export or data/transcripts or data/products or data/stats
 - [ ] Maybe rethink data/raw/stats naming convention should it be timeframe? or csv?
+- [ ] Remove top-level `slack` directory but make sure the tracker and creds in src/higherdose/slack are up to date.
+- [ ] Move `reports` into `data/reports`
 
 ## Scripting
 
