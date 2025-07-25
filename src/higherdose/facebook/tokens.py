@@ -20,17 +20,18 @@ import time
 import argparse
 import urllib.parse
 import urllib.request
+from pathlib import Path
 from datetime import datetime, timezone
 from typing import Optional, Dict, Any
 
 from higherdose.utils.style import ansi
 from higherdose.utils.logs import report
-from higherdose.utils.cfg import engine
+from higherdose.facebook import engine
 from higherdose.facebook.engine import TokenManager
 from higherdose.facebook.schema import Token, Page
 
 logger = report.settings(__file__)
-config = engine.load()
+config = engine.load(Path("config", "facebook", "facebook.ini"))
 
 
 def make_api_request(url: str) -> Dict[str, Any]:
