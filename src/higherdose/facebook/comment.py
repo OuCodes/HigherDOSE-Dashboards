@@ -37,9 +37,10 @@ from higherdose.facebook.engine import TokenManager
 logger = report.settings(__file__)
 
 # Constants
-TOKENS_DIR = Path("tokens")  # where TokenManager writes its JSON files
-DEFAULT_IDS_FILE = Path("data/facebook/ad-ids.txt")
-SAVE_DIR = Path("data/facebook")
+CONFIG = Path("config", "facebook")
+TOKENS_DIR = Path(CONFIG, "tokens")
+DATA_FACEBOOK = Path("data", "facebook")
+DEFAULT_IDS_FILE = Path(DATA_FACEBOOK, "ad-ids.txt")
 GRAPH_VERSION = "v23.0"
 BASE_URL = f"https://graph.facebook.com/{GRAPH_VERSION}"
 CHUNK_SIZE = 50  # Graph API lets you batch ~50 IDs per request
