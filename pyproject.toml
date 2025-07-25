@@ -18,6 +18,19 @@ dependencies = [
     "pylint==3.3.7"
 ]
 
+# CLI entry points - these will be available as commands after installation
+[project.scripts]
+# higherdose-weekly = "higherdose.analysis.weekly_products:main"
+# higherdose-h1 = "higherdose.analysis.h1:main"
+# higherdose-slack = "higherdose.slack.slack_fetcher_playwright:run_main"
+# higherdose-email = "higherdose.mail.gmail_archive:main"
+
+# Alternative shorter names (uncomment if you prefer these)
+hd-weekly = "higherdose.analysis.weekly_products:main"
+hd-h1 = "higherdose.analysis.h1:main" 
+hd-slack = "higherdose.slack.slack_fetcher_playwright:run_main"
+hd-email = "higherdose.mail.gmail_archive:main"
+
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta" 
