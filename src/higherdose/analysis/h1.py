@@ -53,6 +53,15 @@ GA_CHANNEL_KEYWORDS = {
     "app": "AppLovin",   # applovin strings are long – "app" catch
     "lovin": "AppLovin",
     "pinterest": "Pinterest",
+    # --- NEW email / sms / other organic & referral patterns ---
+    "klaviyo": "Klaviyo",
+    "attentive": "Attentive",
+    "email": "Other Email",
+    "sms": "Attentive",
+    "linktree": "LinkTree",
+    "youtube": "YouTube Organic",
+    "reddit": "Reddit",
+    "twitter": "Twitter",
 }
 
 # Unified alias map to convert GA channel names → Northbeam names
@@ -189,11 +198,67 @@ def _load_ga_sessions(path: Path | str) -> dict[str, float]:
 
     ga_df["Sessions"] = pd.to_numeric(ga_df["Sessions"], errors="coerce").fillna(0)
 
-    def _map(src: str) -> str:
-        s = str(src).lower()
+    # ------------------------------------------------------------------
+    # Improved mapper: inspect both source *and* medium so we can reliably
+    # distinguish paid-media clicks (google / cpc, facebook / cpc, etc.).
+    # Returns the final Northbeam-style channel name so we do not need an
+    # extra alias pass later.
+    # ------------------------------------------------------------------
+
+    def _map(src_med: str) -> str:
+        """Map a GA4 `Session source / medium` string to a Northbeam channel."""
+        val = str(src_med).lower()
+        if "/" in val:
+            src, med = [p.strip() for p in val.split("/", 1)]
+        else:
+            src, med = val, ""
+
+        # Paid traffic – identify by medium keywords first
+        if med in {"cpc", "ppc", "paid", "paidsocial"}:
+            if any(k in src for k in ("google", "g")):
+                return "Google Ads"
+            if any(k in src for k in ("bing", "microsoft", "msn")):
+                return "Microsoft Ads"
+            if any(k in src for k in ("facebook", "instagram", "meta")):
+                return "Facebook Ads"
+            if "tiktok" in src:
+                return "TikTok"
+            if "pinterest" in src:
+                return "Pinterest"
+            if any(k in src for k in ("awin", "shopmyshelf", "shareasale", "affiliate")):
+                return "Affiliate"
+
+        # --- Organic Search ---
+        if med == "organic":
+            return "Organic Search"
+
+        # --- Direct / none  -> Unattributed ---
+        if src in {"direct", "(not set)", ""} and med in {"(none)", "", "none"}:
+            return "Unattributed"
+
+        # Email / SMS specific handling
+        if "klaviyo" in src:
+            return "Klaviyo"
+        if "attentive" in src:
+            return "Attentive"
+        if med in {"email"} or "email" in src:
+            return "Other Email"
+        if med in {"sms"} or "sms" in src:
+            return "Attentive"
+        if "linktree" in src:
+            return "LinkTree"
+        if "youtube" in src:
+            return "YouTube Organic"
+        if "reddit" in src:
+            return "Reddit"
+        if "twitter" in src or "t.co" in src:
+            return "Twitter"
+
+        # Organic / referral & catch-all keyword fallback
         for kw, ch in GA_CHANNEL_KEYWORDS.items():
-            if kw in s:
+            if kw in src:
                 return ch
+
         return "Other"
 
     ga_df["channel"] = ga_df["Session source / medium"].apply(_map)
@@ -379,6 +444,15 @@ def main():
     sessions_map = _apply_alias(sessions_map_raw)
     sessions_2024_map = _apply_alias(sessions_map_2024_raw)
 
+    # -------------------------------------------------------------
+    # If we collapsed individual affiliate partners into a single
+    # 'Affiliate' channel above, merge their GA session rows too so
+    # we do not double-count in the session totals.
+    # -------------------------------------------------------------
+    if affiliate_rows:
+        aff_sess = sum(sessions_map.pop(ch, 0) for ch in affiliate_rows)
+        sessions_map["Affiliate"] = sessions_map.get("Affiliate", 0) + aff_sess
+
     total_spend = channel_summary["spend"].sum()
     total_rev = channel_summary["attributed_rev"].sum()
     total_sessions = sum(sessions_map.values())
@@ -387,8 +461,31 @@ def main():
     channel_summary["%_rev"] = (channel_summary["attributed_rev"] / total_rev * 100).round(1)
     # Attach GA sessions for reference but compute Conv Rate using Northbeam visits for accuracy
     channel_summary["sessions"] = channel_summary.index.map(lambda x: sessions_map.get(x, 0))
+
+    # -------------------------------------------------------------
+    # 🚦 SESSION HARMONISATION RULES
+    #   • Paid-media rows (spend > 0) → use Northbeam visits (tracking loss in GA)
+    #   • Retention / owned-media rows (email/SMS) also use NB visits as GA often blocks opens
+    #   • All other rows keep GA sessions so organic/referral analysis matches GA.
+    # -------------------------------------------------------------
+
+    RETENTION_CHANNELS = {
+        "Klaviyo",
+        "Attentive",
+        "Other Email",
+        "Transactional",
+        "Yotpo",
+    }
+
+    mask_paid = channel_summary["spend"] > 0
+    mask_ret = channel_summary.index.isin(RETENTION_CHANNELS)
+    harmonise_mask = mask_paid | mask_ret
+    channel_summary.loc[harmonise_mask, "sessions"] = channel_summary.loc[harmonise_mask, "visits"]
+
+    # Use GA sessions (not NB visits) for a more realistic conversion rate
     channel_summary["conv_rate"] = channel_summary.apply(
-        lambda r: (r["transactions"] / r["visits"] if r.get("visits", 0) else 0), axis=1
+        lambda r: (r["transactions"] / r["sessions"] if r.get("sessions", 0) else 0),
+        axis=1,
     )
 
     # ---------- Build GA YoY sessions DataFrame ---------- #
@@ -452,6 +549,30 @@ def main():
 
     # ---------- NEW: Generate insight bullets ---------- #
     opps, chals = _generate_channel_insights(channel_summary)
+
+    # Build executive-summary specific bullets (scale candidates & under-performers)
+    def _build_exec_bullets(df: pd.DataFrame) -> list[str]:
+        bullets: list[str] = []
+        # Ensure share columns exist
+        if "%_spend" not in df.columns:
+            return bullets
+
+        # ➊ Scale candidates – high ROAS but <15% of spend
+        scale = df[(df["roas"] >= 3) & (df["%_spend"] < 15)].nlargest(3, "spend")
+        for idx, r in scale.iterrows():
+            bullets.append(
+                f"* **Scale {idx}** – ROAS {r.roas:.2f} on only {r['%_spend']:.0f}% of spend"
+            )
+
+        # ➋ Under-performers – >5% spend but ROAS <1.0
+        under = df[(df["roas"] < 1) & (df["%_spend"] > 5)]
+        for idx, r in under.iterrows():
+            bullets.append(
+                f"* **Reduce {idx}** – ROAS {r.roas:.2f} consuming {r['%_spend']:.0f}% of budget"
+            )
+        return bullets
+
+    exec_bullets_extra = _build_exec_bullets(channel_summary)
 
     # Custom markdown table builder with new columns
     def _fmt(val, prefix="", digits=0):
@@ -589,6 +710,7 @@ def main():
 
     # Append YoY bullets if we calculated them earlier
     exec_lines.extend(yoy_bullets)
+    exec_lines.extend(exec_bullets_extra)
 
     exec_lines.append("\n")
     exec_md = "\n".join(exec_lines)
@@ -650,8 +772,24 @@ def main():
         "attributed_rev": "sum",
         "transactions": "sum",
     })
+
+    # Ensure chronological order (Jan → Dec)
+    _month_order = {m: i for i, m in enumerate(
+        ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], start=1)
+    }
+    month_sum["_order"] = month_sum.index.map(_month_order)
+    month_sum = month_sum.sort_values("_order").drop(columns="_order")
+
+    # Compute performance ratios
     month_sum["ROAS"] = month_sum["attributed_rev"] / month_sum["spend"]
     month_sum["CAC"] = month_sum["spend"] / month_sum["transactions"]
+
+    # Month-over-Month deltas (pct change)
+    month_sum["spend_delta"] = month_sum["spend"].pct_change() * 100
+    month_sum["rev_delta"] = month_sum["attributed_rev"].pct_change() * 100
+    month_sum["txn_delta"] = month_sum["transactions"].pct_change() * 100
+    month_sum["cac_delta"] = month_sum["CAC"].pct_change() * 100
+
     month_sum = month_sum.reset_index()
 
     # Proper H1 totals (use aggregate values, not sum of ratios)
@@ -661,12 +799,19 @@ def main():
     h1_roas = h1_rev / h1_spend if h1_spend else 0
     h1_cac = h1_spend / h1_txn if h1_txn else 0
 
-    month_sum.loc["Total"] = ["**H1**", h1_spend, h1_rev, h1_txn, h1_roas, h1_cac]
+    month_sum.loc["Total"] = ["**H1**", h1_spend, h1_rev, h1_txn, h1_roas, h1_cac, None, None, None, None]
 
-    month_md_lines = ["| Month | Spend | Revenue | ROAS | Transactions | CAC |", "| - | - | - | - | - | - |"]
+    month_md_lines = [
+        "| Month | Spend | MoM Δ% | Revenue | MoM Δ% | ROAS | Transactions | MoM Δ% | CAC | MoM Δ% |",
+        "| - | - | - | - | - | - | - | - | - | - |",
+    ]
     for _, r in month_sum.iterrows():
+        spend_delta = "" if pd.isna(r["spend_delta"]) else f"{r['spend_delta']:+.0f}%"
+        rev_delta = "" if pd.isna(r["rev_delta"]) else f"{r['rev_delta']:+.0f}%"
+        txn_delta = "" if pd.isna(r["txn_delta"]) else f"{r['txn_delta']:+.0f}%"
+        cac_delta = "" if pd.isna(r["cac_delta"]) else f"{r['cac_delta']:+.0f}%"
         month_md_lines.append(
-            f"| {r['month']} | ${r['spend']:,.0f} | ${r['attributed_rev']:,.0f} | {r['ROAS']:.2f} | {int(r['transactions']):,} | ${r['CAC']:,.2f} |"
+            f"| {r['month']} | ${r['spend']:,.0f} | {spend_delta} | ${r['attributed_rev']:,.0f} | {rev_delta} | {r['ROAS']:.2f} | {int(r['transactions']):,} | {txn_delta} | ${r['CAC']:,.2f} | {cac_delta} |"
         )
     month_trend_md = "\n## 7. Monthly Trend – Northbeam (Accrual)\n" + "\n".join(month_md_lines) + "\n---\n"
 
@@ -715,6 +860,29 @@ def main():
         )
     conc_md = "\n## 9. Spend vs Revenue Concentration (2025)\n" + "\n".join(conc_md_lines[:10]) + "\n---\n"
 
+    # -------------------------------------------------------------
+    #  🔮  H2 ACTION PLAN  -----------------------------------------
+    # -------------------------------------------------------------
+
+    def _safe_spend(label: str) -> float:
+        return channel_summary.loc[label, "spend"] if label in channel_summary.index else 0.0
+
+    fb_spend = _safe_spend("Facebook Ads")
+    shift_amt = fb_spend * 0.2  # Example: shift 20% of FB budget
+
+    action_plan = [
+        (
+            f"1. **Shift ${shift_amt:,.0f} from Facebook Ads to Google PMAX** – maintain blended ROAS ≥ 3.0"
+            if fb_spend else "1. **Re-allocate budget toward higher-ROAS channels (Google, Affiliate)**"
+        ),
+        "2. **Double Microsoft Ads budget** – proven ROAS >6 at low spend",
+        "3. **Affiliate optimisation** – renegotiate Awin rev-share, focus on top 5 publishers",
+        "4. **Creative testing** – Refresh TikTok & Pinterest hooks (ROAS <0.2)",
+        "5. **Ensure Northbeam pixel firing on Meta & TikTok Shops checkout flows",
+    ]
+
+    action_md = "\n## 10. H2 Action Plan\n" + "\n".join(action_plan) + "\n"
+
     # -------------------------------------------------------------------------
 
     final_md = (
@@ -728,7 +896,8 @@ def main():
         meta_eff_md +
         month_trend_md +
         conv_md +
-        conc_md
+        conc_md +
+        action_md
     )
 
     # ------------------------------------------------------------------
