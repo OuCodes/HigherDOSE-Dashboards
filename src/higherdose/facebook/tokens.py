@@ -134,8 +134,12 @@ def get_all_paginated_data(url: str, user_token: str) -> list:
     """Get all data from a paginated Facebook API endpoint"""
     all_data = []
     current_url = url
+    page_count = 0
+    
+    print(f"\n{ansi.cyan}PAGINATION DEBUG: Starting data collection from {url}{ansi.reset}")
     
     while current_url:
+        page_count += 1
         try:
             # Make the request
             if '?' in current_url:
@@ -143,30 +147,46 @@ def get_all_paginated_data(url: str, user_token: str) -> list:
             else:
                 current_url += f"?access_token={user_token}"
                 
+            print(f"  Page {page_count}: Requesting {len(all_data)} items so far...")
             response_data = make_api_request(current_url)
             
             # Add this batch of data
             data_batch = response_data.get('data', [])
             all_data.extend(data_batch)
             
+            print(f"  Page {page_count}: Got {len(data_batch)} items (total: {len(all_data)})")
+            
             # Check for next page
             paging = response_data.get('paging', {})
-            current_url = paging.get('next')
+            next_url = paging.get('next')
             
-            # Remove access_token from next URL since we'll add it again
-            if current_url and 'access_token=' in current_url:
-                # Parse the URL and rebuild without access_token
-                parsed = urllib.parse.urlparse(current_url)
-                query_params = dict(urllib.parse.parse_qsl(parsed.query))
-                query_params.pop('access_token', None)
-                query_string = urllib.parse.urlencode(query_params)
-                current_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{query_string}" if query_string else f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+            if next_url:
+                print(f"  Page {page_count}: Next page available")
+                # Remove access_token from next URL since we'll add it again
+                if 'access_token=' in next_url:
+                    # Parse the URL and rebuild without access_token
+                    parsed = urllib.parse.urlparse(next_url)
+                    query_params = dict(urllib.parse.parse_qsl(parsed.query))
+                    query_params.pop('access_token', None)
+                    query_string = urllib.parse.urlencode(query_params)
+                    current_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{query_string}" if query_string else f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+                else:
+                    current_url = next_url
+            else:
+                print(f"  Page {page_count}: No more pages available")
+                current_url = None
             
+            # Safety check to prevent infinite loops
+            if page_count > 50:  # Reasonable safety limit
+                print(f"  {ansi.yellow}WARNING: Reached safety limit of 50 pages. Stopping pagination.{ansi.reset}")
+                break
+                
         except Exception as e:
             logger.error("Pagination request failed: %s", str(e))
-            print(f"Pagination request failed: {ansi.red}{str(e)}{ansi.reset}")
+            print(f"  Page {page_count}: {ansi.red}Request failed: {str(e)}{ansi.reset}")
             break
     
+    print(f"{ansi.cyan}PAGINATION COMPLETE: {len(all_data)} total items across {page_count} pages{ansi.reset}")
     return all_data
 
 
@@ -385,15 +405,20 @@ def get_page_access_tokens(
         pages[page_id] = page_config
 
     # Also check Business Manager pages
-    business_pages, business_info = get_business_manager_pages(user_token)
+    # business_pages, business_info = get_business_manager_pages(user_token)
     
     # Merge business pages with personal pages
-    for page_id, business_page in business_pages.items():
-        if target_page_id and page_id != target_page_id:
-            logger.info("Skipping business page: %s (%s) - not target page",
-                       business_page.page_name, page_id)
-            continue
-        pages[page_id] = business_page
+    # for page_id, business_page in business_pages.items():
+    #     if target_page_id and page_id != target_page_id:
+    #         logger.info("Skipping business page: %s (%s) - not target page",
+    #                    business_page.page_name, page_id)
+    #         continue
+    #     pages[page_id] = business_page
+
+    # Temporarily disable business manager for debugging
+    business_pages = {}
+    business_info = []
+    print(f"\n{ansi.yellow}DEBUG MODE: Business Manager checking disabled{ansi.reset}")
 
     # Summary
     personal_count = len(personal_pages_data)
