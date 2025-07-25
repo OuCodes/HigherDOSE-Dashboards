@@ -227,3 +227,201 @@ PEMF &amp; SB
 - **2025-07-10 20:22** *Laura*: does she know we have all of that coming too? or does she want us to brief 2 weeks in a row on that?
 - **2025-07-10 20:22** *Laura*: specifically for SB
 - **2025-07-10 20:25** *Jourdan*: Yeah she knows. Applying pressure on core 4 because performance is down and those products are proven to convert at KPI with paid media
+- **2025-06-18 11:43** *Jourdan*: Hey @Laura, Sorry for not getting back to you sooner via email but wanted to follow up in slack for quick communication. Ingrid did emphasize meeting with you is important to provide input on the next creative briefs going out so would love to jump on tomorrow or friday if you have availability?
+- **2025-06-18 13:50** *Laura*: Hi! all good, i'm sure you're busy with onboarding stuff!
+- **2025-06-18 13:51** *Laura*: I can do 11-11:30 am on Friday?
+- **2025-06-18 13:53** *Laura*: Sharma should have added you to a call on friday morning - we are needing to have a weekly creative briefing with them because there are still some inconsistencies. No action from your side for these, but might helpful to listen in
+- **2025-06-23 11:33** *Jourdan*: Morning! I put together a list of Creative insights  from a SEO &amp; GA4 Analysis i put together  
+  
+[https://docs.google.com/document/d/1CW9r4*7aJyZfa450xJVPekNZSD-sCaDL5b6r1UmCyT0/edit?usp=sharing](https://docs.google.com/document/d/1CW9r4*7aJyZfa450xJVPekNZSD-sCaDL5b6r1UmCyT0/edit?usp=sharing)  
+  
+The highlights list the actionables from the breakdown but there’s more detail below.  
+  
+Let me know if you have any questions! We can finally jump on that call to discuss :sweat_smile:
+- **2025-06-23 14:52** *Laura*: Thanks, I’ll take a look. Was this pulled from sharmas reports? Or in platform, or northbeam? 
+- **2025-06-23 15:05** *Jourdan*: Pulled from GA4 directly but not sure where SEO came from. Ingrid shared that with me so i think it may have been internal
+- **2025-06-23 15:05** *Laura*: ok perf, thanks!!
+- **2025-06-26 11:50** *Laura*: Do you have avails to meet tomorrow from 9am-12p pst?
+- **2025-06-26 11:51** *Jourdan*: Yes ma’am anytime works between 9 and 11am 
+- **2025-06-26 11:52** *Laura*: Let’s do 10-10:30am tomorrow 6/27? I can send an invite in a bit 
+- **2025-06-26 11:52** *Jourdan*: Okay sweet that works
+- **2025-06-27 09:56** *Jourdan*: Good morning! The invite came through for 7/1 did you still want to chat today
+- **2025-06-27 10:06** *Laura*: i had left a note in the invite - i have a conflict, does 7/1 work?
+- **2025-06-27 10:06** *Jourdan*: Ahh okay and yes that works
+- **2025-07-07 15:29** *Jourdan*: Yo do you need any insights on Top Red Light Hat or Mask Creative?
+- **2025-07-07 20:48** *Laura*: Sorry i totally missed this! No I think I'm good - i'll tag you in the brief for your inputs
+- **2025-07-07 20:48** *Laura*: thanks!
+- **2025-07-08 00:22** *Jourdan*: Okay thank you!
+- **2025-07-10 18:43** *Jourdan*: Hey, apologies for the delayed response on your brief. For Red Light Neck Enhancer, did you pick that up from the call or were there other needs for creative there? I ask because Sauna Blanket &amp; PEMF mat are down in sales rev compared to last year and we want to push those but they’re not performing well w/ paid media. I’d like to get more creative in the mix there but if that’s gonna overload SB or delay their turn around i can push to next week :eyes:
+- **2025-07-10 18:46** *Laura*: yes I thought jake said neck enhancer? or maybe I made that up lol, but I think we can maybe test the mask + neck enhancer together, and we also push them together too
+- **2025-07-10 18:47** *Laura*: SB is working on blanket, so we can push pemf to next week
+- **2025-07-10 18:47** *Laura*: they should have red light hat too since we briefed them on the other week as well
+- **2025-07-10 18:47** *Jourdan*: Okay cool that could help with AOV because that’s taken a dip as well. I’m aligned with Mask + Neck Enhancer
+- **2025-07-10 18:48** *Laura* 💬 1 reply: i also started a CTV brief: [https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR*sG4Bi5E/edit?usp=sharing](https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR*sG4Bi5E/edit?usp=sharing) but we can chat about this next week, i assume it's going to be awarness focused\n\n📎 **HD CTV Brief** (gpres, 0B) - [Download](https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR_sG4Bi5E/edit?usp=sharing)
+- **2025-07-10 18:48** *Jourdan*: but yeah for sure red light hat that’s our winner
+- **2025-07-10 18:48** *Laura*: are you aligned to these other products too for a refresh?\n\n📎 **Screenshot 2025-07-10 at 4.48.31 PM.png** (png, 42.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F095C1BF9T6/screenshot_2025-07-10_at_4.48.31___pm.png)
+- **2025-07-10 18:49** *Jourdan*: Yes ma’am
+- **2025-07-10 18:51** *Laura*: idk if you looked at the YT brief that carly sent through but i did think it was maybe too performanced focused? but once we have specs etc i can provide better messaging
+- **2025-07-10 18:53** *Jourdan*: Is this the YT Brief? [https://docs.google.com/document/d/1hqw3Np-ZJjCNd2NVxwqdICiAQoyzPBWzfHxTs772j2U/edit?tab=t.0](https://docs.google.com/document/d/1hqw3Np-ZJjCNd2NVxwqdICiAQoyzPBWzfHxTs772j2U/edit?tab=t.0)
+- **2025-07-10 18:54** *Laura*: yes? that's what she sent
+- **2025-07-10 18:54** *Laura*: i feel like it was more of a performance report? lol
+- **2025-07-10 18:55** *Jourdan*: Lol yeah a bit confusing and they probably need more direction if this is the brief
+- **2025-07-10 18:55** *Jourdan*: leaning in to what works organically might make the most sense
+- **2025-07-10 18:55** *Jourdan*: Some of those videos move slow for ads though
+- **2025-07-10 18:57** *Laura*: yeah
+- **2025-07-10 18:58** *Laura*: i haven't finished mine i threw something together last night buuuut once we have more info i can update
+- **2025-07-10 18:58** *Jourdan*: Okkkk sounds good
+- **2025-07-10 18:58** *Jourdan*: Yeah all awareness and maybe core 4 to start?  I do like that you threw the Full Spectrum Sauna in the mix too.  
+  
+Red Light Hat &amp; Mask  
+PEMF &amp; SB
+- **2025-07-10 19:00** *Laura*: yes
+- **2025-07-10 19:01** *Laura*: i think it would be cool to have the full size in there too but whatever you land on just lmk
+- **2025-07-10 19:01** *Laura*: lauren does have interest in adding some of our topicals into things usually, but we ask ingrid
+- **2025-07-10 19:04** *Jourdan*: Yeah definitely and get people started on that customer journey. Consideration cycle on Full spectrum sauna will be long so could be a good start for people to research the product
+- **2025-07-10 19:04** *Laura*: yeah agree
+- **2025-07-10 19:04** *Jourdan*: and i spoke with a CTV partner today and they had a case study with Laneige’s lip sleeping mask so seems like it can work with Low AOV products too
+- **2025-07-10 19:04** *Laura*: i think we'd need to have other ads ready to go if we do launch with CTV
+- **2025-07-10 19:04** *Laura*: oh nice
+- **2025-07-10 19:05** *Jourdan*: Yeah deff will need to have full spectrum funnel and resources built out a bit to capitalize
+- **2025-07-10 20:13** *Jourdan*: Hey @Laura Ingrid said we should focus on more red light had and PEMF for tomorrow’s brief and for CTV start with lifestyle and core 4 then add full size and topicals when the channel becomes proven
+- **2025-07-10 20:14** *Laura*: okay
+- **2025-07-10 20:14** *Laura*: does she not want any of the other products?
+- **2025-07-10 20:14** *Laura*: we should be getting more pemf by eow bc we briefed them last week
+- **2025-07-10 20:18** *Laura*: if she is online we can also start a group slack lol
+- **2025-07-10 20:21** *Jourdan*: lol yeah group slack might be easiest to align us all. Although she did just respond so keep lets keep focus on Red Light Hat, Mask, PEMF, and SB for this week so we can get rev up. Then push Endorphin oil + sweat band, trans mag spray, and press to next week because she said they’re good entry points to the brand.
+- **2025-07-10 20:22** *Laura*: does she know we have all of that coming too? or does she want us to brief 2 weeks in a row on that?
+- **2025-07-10 20:22** *Laura*: specifically for SB
+- **2025-07-10 20:25** *Jourdan*: Yeah she knows. Applying pressure on core 4 because performance is down and those products are proven to convert at KPI with paid media
+- **2025-06-18 11:43** *Jourdan*: Hey @Laura, Sorry for not getting back to you sooner via email but wanted to follow up in slack for quick communication. Ingrid did emphasize meeting with you is important to provide input on the next creative briefs going out so would love to jump on tomorrow or friday if you have availability?
+- **2025-06-18 13:50** *Laura*: Hi! all good, i'm sure you're busy with onboarding stuff!
+- **2025-06-18 13:51** *Laura*: I can do 11-11:30 am on Friday?
+- **2025-06-18 13:53** *Laura*: Sharma should have added you to a call on friday morning - we are needing to have a weekly creative briefing with them because there are still some inconsistencies. No action from your side for these, but might helpful to listen in
+- **2025-06-23 11:33** *Jourdan*: Morning! I put together a list of Creative insights  from a SEO &amp; GA4 Analysis i put together  
+  
+[https://docs.google.com/document/d/1CW9r4*7aJyZfa450xJVPekNZSD-sCaDL5b6r1UmCyT0/edit?usp=sharing](https://docs.google.com/document/d/1CW9r4*7aJyZfa450xJVPekNZSD-sCaDL5b6r1UmCyT0/edit?usp=sharing)  
+  
+The highlights list the actionables from the breakdown but there’s more detail below.  
+  
+Let me know if you have any questions! We can finally jump on that call to discuss :sweat_smile:
+- **2025-06-23 14:52** *Laura*: Thanks, I’ll take a look. Was this pulled from sharmas reports? Or in platform, or northbeam? 
+- **2025-06-23 15:05** *Jourdan*: Pulled from GA4 directly but not sure where SEO came from. Ingrid shared that with me so i think it may have been internal
+- **2025-06-23 15:05** *Laura*: ok perf, thanks!!
+- **2025-06-26 11:50** *Laura*: Do you have avails to meet tomorrow from 9am-12p pst?
+- **2025-06-26 11:51** *Jourdan*: Yes ma’am anytime works between 9 and 11am 
+- **2025-06-26 11:52** *Laura*: Let’s do 10-10:30am tomorrow 6/27? I can send an invite in a bit 
+- **2025-06-26 11:52** *Jourdan*: Okay sweet that works
+- **2025-06-27 09:56** *Jourdan*: Good morning! The invite came through for 7/1 did you still want to chat today
+- **2025-06-27 10:06** *Laura*: i had left a note in the invite - i have a conflict, does 7/1 work?
+- **2025-06-27 10:06** *Jourdan*: Ahh okay and yes that works
+- **2025-07-07 15:29** *Jourdan*: Yo do you need any insights on Top Red Light Hat or Mask Creative?
+- **2025-07-07 20:48** *Laura*: Sorry i totally missed this! No I think I'm good - i'll tag you in the brief for your inputs
+- **2025-07-07 20:48** *Laura*: thanks!
+- **2025-07-08 00:22** *Jourdan*: Okay thank you!
+- **2025-07-10 18:43** *Jourdan*: Hey, apologies for the delayed response on your brief. For Red Light Neck Enhancer, did you pick that up from the call or were there other needs for creative there? I ask because Sauna Blanket &amp; PEMF mat are down in sales rev compared to last year and we want to push those but they’re not performing well w/ paid media. I’d like to get more creative in the mix there but if that’s gonna overload SB or delay their turn around i can push to next week :eyes:
+- **2025-07-10 18:46** *Laura*: yes I thought jake said neck enhancer? or maybe I made that up lol, but I think we can maybe test the mask + neck enhancer together, and we also push them together too
+- **2025-07-10 18:47** *Laura*: SB is working on blanket, so we can push pemf to next week
+- **2025-07-10 18:47** *Laura*: they should have red light hat too since we briefed them on the other week as well
+- **2025-07-10 18:47** *Jourdan*: Okay cool that could help with AOV because that’s taken a dip as well. I’m aligned with Mask + Neck Enhancer
+- **2025-07-10 18:48** *Laura* 💬 1 reply: i also started a CTV brief: [https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR*sG4Bi5E/edit?usp=sharing](https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR*sG4Bi5E/edit?usp=sharing) but we can chat about this next week, i assume it's going to be awarness focused\n\n📎 **HD CTV Brief** (gpres, 0B) - [Download](https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR_sG4Bi5E/edit?usp=sharing)
+- **2025-07-10 18:48** *Jourdan*: but yeah for sure red light hat that’s our winner
+- **2025-07-10 18:48** *Laura*: are you aligned to these other products too for a refresh?\n\n📎 **Screenshot 2025-07-10 at 4.48.31 PM.png** (png, 42.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F095C1BF9T6/screenshot_2025-07-10_at_4.48.31___pm.png)
+- **2025-07-10 18:49** *Jourdan*: Yes ma’am
+- **2025-07-10 18:51** *Laura*: idk if you looked at the YT brief that carly sent through but i did think it was maybe too performanced focused? but once we have specs etc i can provide better messaging
+- **2025-07-10 18:53** *Jourdan*: Is this the YT Brief? [https://docs.google.com/document/d/1hqw3Np-ZJjCNd2NVxwqdICiAQoyzPBWzfHxTs772j2U/edit?tab=t.0](https://docs.google.com/document/d/1hqw3Np-ZJjCNd2NVxwqdICiAQoyzPBWzfHxTs772j2U/edit?tab=t.0)
+- **2025-07-10 18:54** *Laura*: yes? that's what she sent
+- **2025-07-10 18:54** *Laura*: i feel like it was more of a performance report? lol
+- **2025-07-10 18:55** *Jourdan*: Lol yeah a bit confusing and they probably need more direction if this is the brief
+- **2025-07-10 18:55** *Jourdan*: leaning in to what works organically might make the most sense
+- **2025-07-10 18:55** *Jourdan*: Some of those videos move slow for ads though
+- **2025-07-10 18:57** *Laura*: yeah
+- **2025-07-10 18:58** *Laura*: i haven't finished mine i threw something together last night buuuut once we have more info i can update
+- **2025-07-10 18:58** *Jourdan*: Okkkk sounds good
+- **2025-07-10 18:58** *Jourdan*: Yeah all awareness and maybe core 4 to start?  I do like that you threw the Full Spectrum Sauna in the mix too.  
+  
+Red Light Hat &amp; Mask  
+PEMF &amp; SB
+- **2025-07-10 19:00** *Laura*: yes
+- **2025-07-10 19:01** *Laura*: i think it would be cool to have the full size in there too but whatever you land on just lmk
+- **2025-07-10 19:01** *Laura*: lauren does have interest in adding some of our topicals into things usually, but we ask ingrid
+- **2025-07-10 19:04** *Jourdan*: Yeah definitely and get people started on that customer journey. Consideration cycle on Full spectrum sauna will be long so could be a good start for people to research the product
+- **2025-07-10 19:04** *Laura*: yeah agree
+- **2025-07-10 19:04** *Jourdan*: and i spoke with a CTV partner today and they had a case study with Laneige’s lip sleeping mask so seems like it can work with Low AOV products too
+- **2025-07-10 19:04** *Laura*: i think we'd need to have other ads ready to go if we do launch with CTV
+- **2025-07-10 19:04** *Laura*: oh nice
+- **2025-07-10 19:05** *Jourdan*: Yeah deff will need to have full spectrum funnel and resources built out a bit to capitalize
+- **2025-07-10 20:13** *Jourdan*: Hey @Laura Ingrid said we should focus on more red light had and PEMF for tomorrow’s brief and for CTV start with lifestyle and core 4 then add full size and topicals when the channel becomes proven
+- **2025-07-10 20:14** *Laura*: okay
+- **2025-07-10 20:14** *Laura*: does she not want any of the other products?
+- **2025-07-10 20:14** *Laura*: we should be getting more pemf by eow bc we briefed them last week
+- **2025-07-10 20:18** *Laura*: if she is online we can also start a group slack lol
+- **2025-07-10 20:21** *Jourdan*: lol yeah group slack might be easiest to align us all. Although she did just respond so keep lets keep focus on Red Light Hat, Mask, PEMF, and SB for this week so we can get rev up. Then push Endorphin oil + sweat band, trans mag spray, and press to next week because she said they’re good entry points to the brand.
+- **2025-07-10 20:22** *Laura*: does she know we have all of that coming too? or does she want us to brief 2 weeks in a row on that?
+- **2025-07-10 20:22** *Laura*: specifically for SB
+- **2025-07-10 20:25** *Jourdan*: Yeah she knows. Applying pressure on core 4 because performance is down and those products are proven to convert at KPI with paid media
+- **2025-06-18 11:43** *Jourdan*: Hey @Laura, Sorry for not getting back to you sooner via email but wanted to follow up in slack for quick communication. Ingrid did emphasize meeting with you is important to provide input on the next creative briefs going out so would love to jump on tomorrow or friday if you have availability?
+- **2025-06-18 13:50** *Laura*: Hi! all good, i'm sure you're busy with onboarding stuff!
+- **2025-06-18 13:51** *Laura*: I can do 11-11:30 am on Friday?
+- **2025-06-18 13:53** *Laura*: Sharma should have added you to a call on friday morning - we are needing to have a weekly creative briefing with them because there are still some inconsistencies. No action from your side for these, but might helpful to listen in
+- **2025-06-23 11:33** *Jourdan*: Morning! I put together a list of Creative insights  from a SEO &amp; GA4 Analysis i put together  
+  
+[https://docs.google.com/document/d/1CW9r4*7aJyZfa450xJVPekNZSD-sCaDL5b6r1UmCyT0/edit?usp=sharing](https://docs.google.com/document/d/1CW9r4*7aJyZfa450xJVPekNZSD-sCaDL5b6r1UmCyT0/edit?usp=sharing)  
+  
+The highlights list the actionables from the breakdown but there’s more detail below.  
+  
+Let me know if you have any questions! We can finally jump on that call to discuss :sweat_smile:
+- **2025-06-23 14:52** *Laura*: Thanks, I’ll take a look. Was this pulled from sharmas reports? Or in platform, or northbeam? 
+- **2025-06-23 15:05** *Jourdan*: Pulled from GA4 directly but not sure where SEO came from. Ingrid shared that with me so i think it may have been internal
+- **2025-06-23 15:05** *Laura*: ok perf, thanks!!
+- **2025-06-26 11:50** *Laura*: Do you have avails to meet tomorrow from 9am-12p pst?
+- **2025-06-26 11:51** *Jourdan*: Yes ma’am anytime works between 9 and 11am 
+- **2025-06-26 11:52** *Laura*: Let’s do 10-10:30am tomorrow 6/27? I can send an invite in a bit 
+- **2025-06-26 11:52** *Jourdan*: Okay sweet that works
+- **2025-06-27 09:56** *Jourdan*: Good morning! The invite came through for 7/1 did you still want to chat today
+- **2025-06-27 10:06** *Laura*: i had left a note in the invite - i have a conflict, does 7/1 work?
+- **2025-06-27 10:06** *Jourdan*: Ahh okay and yes that works
+- **2025-07-07 15:29** *Jourdan*: Yo do you need any insights on Top Red Light Hat or Mask Creative?
+- **2025-07-07 20:48** *Laura*: Sorry i totally missed this! No I think I'm good - i'll tag you in the brief for your inputs
+- **2025-07-07 20:48** *Laura*: thanks!
+- **2025-07-08 00:22** *Jourdan*: Okay thank you!
+- **2025-07-10 18:43** *Jourdan*: Hey, apologies for the delayed response on your brief. For Red Light Neck Enhancer, did you pick that up from the call or were there other needs for creative there? I ask because Sauna Blanket &amp; PEMF mat are down in sales rev compared to last year and we want to push those but they’re not performing well w/ paid media. I’d like to get more creative in the mix there but if that’s gonna overload SB or delay their turn around i can push to next week :eyes:
+- **2025-07-10 18:46** *Laura*: yes I thought jake said neck enhancer? or maybe I made that up lol, but I think we can maybe test the mask + neck enhancer together, and we also push them together too
+- **2025-07-10 18:47** *Laura*: SB is working on blanket, so we can push pemf to next week
+- **2025-07-10 18:47** *Laura*: they should have red light hat too since we briefed them on the other week as well
+- **2025-07-10 18:47** *Jourdan*: Okay cool that could help with AOV because that’s taken a dip as well. I’m aligned with Mask + Neck Enhancer
+- **2025-07-10 18:48** *Laura* 💬 1 reply: i also started a CTV brief: [https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR*sG4Bi5E/edit?usp=sharing](https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR*sG4Bi5E/edit?usp=sharing) but we can chat about this next week, i assume it's going to be awarness focused\n\n📎 **HD CTV Brief** (gpres, 0B) - [Download](https://docs.google.com/presentation/d/18PoqXx8mISEXosl3032aGPvW5YC3WQHanGR_sG4Bi5E/edit?usp=sharing)
+- **2025-07-10 18:48** *Jourdan*: but yeah for sure red light hat that’s our winner
+- **2025-07-10 18:48** *Laura*: are you aligned to these other products too for a refresh?\n\n📎 **Screenshot 2025-07-10 at 4.48.31 PM.png** (png, 42.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F095C1BF9T6/screenshot_2025-07-10_at_4.48.31___pm.png)
+- **2025-07-10 18:49** *Jourdan*: Yes ma’am
+- **2025-07-10 18:51** *Laura*: idk if you looked at the YT brief that carly sent through but i did think it was maybe too performanced focused? but once we have specs etc i can provide better messaging
+- **2025-07-10 18:53** *Jourdan*: Is this the YT Brief? [https://docs.google.com/document/d/1hqw3Np-ZJjCNd2NVxwqdICiAQoyzPBWzfHxTs772j2U/edit?tab=t.0](https://docs.google.com/document/d/1hqw3Np-ZJjCNd2NVxwqdICiAQoyzPBWzfHxTs772j2U/edit?tab=t.0)
+- **2025-07-10 18:54** *Laura*: yes? that's what she sent
+- **2025-07-10 18:54** *Laura*: i feel like it was more of a performance report? lol
+- **2025-07-10 18:55** *Jourdan*: Lol yeah a bit confusing and they probably need more direction if this is the brief
+- **2025-07-10 18:55** *Jourdan*: leaning in to what works organically might make the most sense
+- **2025-07-10 18:55** *Jourdan*: Some of those videos move slow for ads though
+- **2025-07-10 18:57** *Laura*: yeah
+- **2025-07-10 18:58** *Laura*: i haven't finished mine i threw something together last night buuuut once we have more info i can update
+- **2025-07-10 18:58** *Jourdan*: Okkkk sounds good
+- **2025-07-10 18:58** *Jourdan*: Yeah all awareness and maybe core 4 to start?  I do like that you threw the Full Spectrum Sauna in the mix too.  
+  
+Red Light Hat &amp; Mask  
+PEMF &amp; SB
+- **2025-07-10 19:00** *Laura*: yes
+- **2025-07-10 19:01** *Laura*: i think it would be cool to have the full size in there too but whatever you land on just lmk
+- **2025-07-10 19:01** *Laura*: lauren does have interest in adding some of our topicals into things usually, but we ask ingrid
+- **2025-07-10 19:04** *Jourdan*: Yeah definitely and get people started on that customer journey. Consideration cycle on Full spectrum sauna will be long so could be a good start for people to research the product
+- **2025-07-10 19:04** *Laura*: yeah agree
+- **2025-07-10 19:04** *Jourdan*: and i spoke with a CTV partner today and they had a case study with Laneige’s lip sleeping mask so seems like it can work with Low AOV products too
+- **2025-07-10 19:04** *Laura*: i think we'd need to have other ads ready to go if we do launch with CTV
+- **2025-07-10 19:04** *Laura*: oh nice
+- **2025-07-10 19:05** *Jourdan*: Yeah deff will need to have full spectrum funnel and resources built out a bit to capitalize
+- **2025-07-10 20:13** *Jourdan*: Hey @Laura Ingrid said we should focus on more red light had and PEMF for tomorrow’s brief and for CTV start with lifestyle and core 4 then add full size and topicals when the channel becomes proven
+- **2025-07-10 20:14** *Laura*: okay
+- **2025-07-10 20:14** *Laura*: does she not want any of the other products?
+- **2025-07-10 20:14** *Laura*: we should be getting more pemf by eow bc we briefed them last week
+- **2025-07-10 20:18** *Laura*: if she is online we can also start a group slack lol
+- **2025-07-10 20:21** *Jourdan*: lol yeah group slack might be easiest to align us all. Although she did just respond so keep lets keep focus on Red Light Hat, Mask, PEMF, and SB for this week so we can get rev up. Then push Endorphin oil + sweat band, trans mag spray, and press to next week because she said they’re good entry points to the brand.
+- **2025-07-10 20:22** *Laura*: does she know we have all of that coming too? or does she want us to brief 2 weeks in a row on that?
+- **2025-07-10 20:22** *Laura*: specifically for SB
+- **2025-07-10 20:25** *Jourdan*: Yeah she knows. Applying pressure on core 4 because performance is down and those products are proven to convert at KPI with paid media
