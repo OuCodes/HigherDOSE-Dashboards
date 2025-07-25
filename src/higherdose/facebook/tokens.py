@@ -169,7 +169,8 @@ def get_all_paginated_data(url: str, user_token: str) -> list:
                     query_params = dict(urllib.parse.parse_qsl(parsed.query))
                     query_params.pop('access_token', None)
                     query_string = urllib.parse.urlencode(query_params)
-                    current_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{query_string}" if query_string else f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+                    base_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+                    current_url = f"{base_url}?{query_string}" if query_string else base_url
                 else:
                     current_url = next_url
             else:
@@ -178,15 +179,17 @@ def get_all_paginated_data(url: str, user_token: str) -> list:
 
             # Safety check to prevent infinite loops
             if page_count > 50:  # Reasonable safety limit
-                print(f"  {ansi.yellow}WARNING: Reached safety limit of 50 pages. Stopping pagination.{ansi.reset}")
+                warning_msg = "WARNING: Reached safety limit of 50 pages. Stopping pagination."
+                print(f"  {ansi.yellow}{warning_msg}{ansi.reset}")
                 break
 
-        except Exception as e:
+        except (urllib.error.HTTPError, urllib.error.URLError, OSError, json.JSONDecodeError) as e:
             logger.error("Pagination request failed: %s", str(e))
             print(f"  Page {page_count}: {ansi.red}Request failed: {str(e)}{ansi.reset}")
             break
 
-    print(f"{ansi.cyan}PAGINATION COMPLETE: {len(all_data)} total items across {page_count} pages{ansi.reset}")
+    pagination_msg = f"PAGINATION COMPLETE: {len(all_data)} total items across {page_count} pages"
+    print(f"{ansi.cyan}{pagination_msg}{ansi.reset}")
     return all_data
 
 
@@ -202,7 +205,8 @@ def get_business_manager_pages(user_token: str) -> tuple[Dict[str, Page], list]:
     for i, business in enumerate(businesses, 1):
         business_id = business['id']
         business_name = business.get('name', 'Unknown')
-        print(f"  {i}. {ansi.yellow}{business_name}{ansi.reset} (ID: {ansi.yellow}{business_id}{ansi.reset})")
+        name_id_display = f"{business_name} (ID: {business_id})"
+        print(f"  {i}. {ansi.yellow}{name_id_display}{ansi.reset}")
 
     if not businesses:
         print("No Business Manager accounts found.")
@@ -235,7 +239,8 @@ def get_business_manager_pages(user_token: str) -> tuple[Dict[str, Page], list]:
             if target_pages_in_business:
                 print(f"{ansi.magenta}🎯 TARGET PAGES FOUND:{ansi.reset}")
                 for page_id, page_name in target_pages_in_business:
-                    print(f"  → {ansi.magenta}{page_name}{ansi.reset} (ID: {ansi.yellow}{page_id}{ansi.reset})")
+                    page_display = f"→ {page_name} (ID: {page_id})"
+                    print(f"  {ansi.magenta}{page_display}{ansi.reset}")
                     target_pages_found.append((page_name, page_id, business_name))
 
             # Process pages quietly, only show token success/failure summary
@@ -248,7 +253,10 @@ def get_business_manager_pages(user_token: str) -> tuple[Dict[str, Page], list]:
                 category = page.get('category', 'Unknown')
 
                 # Try to get page access token quietly
-                page_token_url = f"{config.app.base_url}/{page_id}?fields=access_token&access_token={user_token}"
+                page_token_url = (
+                    f"{config.app.base_url}/{page_id}"
+                    f"?fields=access_token&access_token={user_token}"
+                )
                 try:
                     page_token_data = make_api_request(page_token_url)
                     if 'access_token' in page_token_data:
@@ -269,14 +277,22 @@ def get_business_manager_pages(user_token: str) -> tuple[Dict[str, Page], list]:
                             print(f"  {ansi.green}✓ {page_name} - TOKEN RETRIEVED{ansi.reset}")
                     else:
                         failed_tokens += 1
-                except Exception:
+                except (urllib.error.HTTPError, urllib.error.URLError, OSError,
+                        json.JSONDecodeError, KeyError):
                     failed_tokens += 1
                     # Only show failures for target pages
-                    if any(target_id == page_id for target_id, _ in target_pages_in_business):
-                        print(f"  {ansi.red}✗ {page_name} - Token failed (needs pages_read_engagement permission){ansi.reset}")
+                    is_target_page = any(target_id == page_id 
+                                       for target_id, _ in target_pages_in_business)
+                    if is_target_page:
+                        error_msg = ("✗ {page_name} - Token failed "
+                                   "(needs pages_read_engagement permission)").format(page_name=page_name)
+                        print(f"  {ansi.red}{error_msg}{ansi.reset}")
 
             # Show summary
-            print(f"  Tokens: {ansi.green}{successful_tokens} successful{ansi.reset}, {ansi.red}{failed_tokens} failed{ansi.reset}")
+            success_msg = f"{successful_tokens} successful"
+            failed_msg = f"{failed_tokens} failed"
+            print(f"  Tokens: {ansi.green}{success_msg}{ansi.reset}, "
+                  f"{ansi.red}{failed_msg}{ansi.reset}")
 
             business_info.append({
                 'business_id': business_id,
@@ -286,7 +302,7 @@ def get_business_manager_pages(user_token: str) -> tuple[Dict[str, Page], list]:
                 'failed_tokens': failed_tokens
             })
 
-        except Exception as e:
+        except (urllib.error.HTTPError, urllib.error.URLError, OSError, json.JSONDecodeError) as e:
             print(f"Failed to get pages from {business_name}: {ansi.red}{str(e)}{ansi.reset}")
 
     # Show target pages summary
@@ -343,14 +359,14 @@ def get_page_access_tokens(
     permissions_url = f"{config.app.base_url}/me/permissions?access_token={user_token}"
     try:
         permissions_data = make_api_request(permissions_url)
-        print(f"Token permissions:")
+        print("Token permissions:")
         for perm in permissions_data.get('data', []):
             status = perm.get('status', 'unknown')
             permission = perm.get('permission', 'unknown')
             color = ansi.green if status == 'granted' else ansi.red
             print(f"  - {permission}: {color}{status}{ansi.reset}")
 
-    except Exception as e:
+    except (urllib.error.HTTPError, urllib.error.URLError, OSError, json.JSONDecodeError) as e:
         print(f"Could not retrieve permissions: {ansi.red}{str(e)}{ansi.reset}")
 
     # Get page access tokens from personal account (with pagination)
@@ -376,7 +392,8 @@ def get_page_access_tokens(
     if personal_target_pages:
         print(f"{ansi.magenta}🎯 TARGET PAGES FOUND IN PERSONAL PAGES:{ansi.reset}")
         for page_id, page_name in personal_target_pages:
-            print(f"  → {ansi.magenta}{page_name}{ansi.reset} (ID: {ansi.yellow}{page_id}{ansi.reset})")
+            personal_page_display = f"→ {page_name} (ID: {page_id})"
+            print(f"  {ansi.magenta}{personal_page_display}{ansi.reset}")
 
     pages = {}
     logger.info("Processing %d pages from personal API response", len(personal_pages_data))
@@ -417,19 +434,19 @@ def get_page_access_tokens(
 
     # Summary
     personal_count = len(personal_pages_data)
-    business_count = len(business_pages)
     total_count = len(pages)
 
     # Calculate Business Manager token stats
     total_bm_pages = sum(info.get('page_count', 0) for info in business_info)
     total_successful_tokens = sum(info.get('successful_tokens', 0) for info in business_info)
-    total_failed_tokens = sum(info.get('failed_tokens', 0) for info in business_info)
 
     print(f"\n{ansi.cyan}FINAL SUMMARY:{ansi.reset}")
     print(f"  Personal pages found: {ansi.yellow}{personal_count}{ansi.reset}")
     print(f"  Business Manager pages found: {ansi.yellow}{total_bm_pages}{ansi.reset}")
     print(f"  Total pages with tokens: {ansi.yellow}{total_count}{ansi.reset}")
-    print(f"  Token success rate: {ansi.green}{total_successful_tokens}{ansi.reset} / {total_bm_pages + personal_count}")
+    total_pages = total_bm_pages + personal_count
+    success_rate = f"{total_successful_tokens} / {total_pages}"
+    print(f"  Token success rate: {ansi.green}{success_rate}{ansi.reset}")
 
     if target_page_id:
         print(f"\n{ansi.cyan}TARGET PAGE CHECK:{ansi.reset}")
@@ -440,7 +457,7 @@ def get_page_access_tokens(
         else:
             print(f"  {ansi.red}✗ Target page not found{ansi.reset}")
     else:
-        print(f"  No specific target page - processing all available pages")
+        print("  No specific target page - processing all available pages")
 
     user_info = {
         'user_id': user_id,
