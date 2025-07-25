@@ -75,32 +75,32 @@ def graph_request(endpoint: str, params: Dict[str, Any]) -> Dict[str, Any]:
     query = urllib.parse.urlencode(params)
     url = f"{BASE_URL}/{endpoint}?{query}"
     logger.info("Graph GET %s", url[:120] + ("…" if len(url) > 120 else ""))
-    
+
     print(f"\n{ansi.blue}DEBUG: Making Graph API request:{ansi.reset}")
     print(f"  URL: {url[:150]}{'...' if len(url) > 150 else ''}")
-    
+
     try:
         with urllib.request.urlopen(url) as resp:
             body = resp.read().decode()
             print(f"  Response status: {ansi.green}{resp.status}{ansi.reset}")
             print(f"  Response body length: {len(body)} characters")
             print(f"  Response body (first 500 chars): {ansi.grey}{body[:500]}{'...' if len(body) > 500 else ''}{ansi.reset}")
-            
+
             data = json.loads(body)
-            
+
             # Check for Facebook errors in the response
             if 'error' in data:
                 print(f"  {ansi.red}Facebook API Error:{ansi.reset}")
                 print(f"    Message: {data['error'].get('message', 'Unknown')}")
                 print(f"    Type: {data['error'].get('type', 'Unknown')}")
                 print(f"    Code: {data['error'].get('code', 'Unknown')}")
-            
+
             return data
     except urllib.error.HTTPError as e:
         err_body = e.read().decode(errors="ignore") if hasattr(e, "read") else ""
         print(f"  {ansi.red}HTTP Error {e.code}: {e.reason}{ansi.reset}")
         print(f"  Error body: {ansi.red}{err_body[:300]}{'...' if len(err_body) > 300 else ''}{ansi.reset}")
-        
+
         logger.error("HTTP %s: %s – %s", e.code, e.reason, err_body[:200])
         raise
 
@@ -116,9 +116,9 @@ def chunked(lst: List[str], size: int) -> List[List[str]]:
 def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
     """Return mapping {ad_id: post_id}. Ignores ads that don't resolve."""
     mapping: Dict[str, str] = {}
-    
+
     print(f"\n{ansi.cyan}DEBUG: Starting ad-to-post resolution for {len(ad_ids)} ads{ansi.reset}")
-    
+
     for chunk in chunked(ad_ids, CHUNK_SIZE):
         ids_str = ",".join(chunk)
         params = {
@@ -126,59 +126,59 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
             "fields": "creative{effective_object_story_id}",
             "access_token": user_token,
         }
-        
+
         print(f"\n{ansi.yellow}DEBUG: Requesting chunk with {len(chunk)} ads:{ansi.reset}")
         for i, ad_id in enumerate(chunk, 1):
             print(f"  {i}. Ad ID: {ansi.cyan}{ad_id}{ansi.reset}")
-        
+
         print(f"{ansi.yellow}DEBUG: API call params:{ansi.reset}")
         print(f"  fields: {params['fields']}")
         print(f"  ids: {ids_str}")
-        
+
         try:
             data = graph_request("", params)  # blank endpoint when using ids param
-            
+
             print(f"\n{ansi.green}DEBUG: API Response received:{ansi.reset}")
             print(f"  Response keys: {list(data.keys())}")
-            
+
             for ad_id, ad_data in data.items():
                 print(f"\n{ansi.cyan}Processing Ad ID: {ad_id}{ansi.reset}")
                 print(f"  Raw ad_data: {json.dumps(ad_data, indent=2)}")
-                
+
                 creative = ad_data.get("creative", {})
                 print(f"  Creative data: {json.dumps(creative, indent=2)}")
-                
+
                 post_id = creative.get("effective_object_story_id")
                 print(f"  effective_object_story_id: {ansi.yellow}{post_id}{ansi.reset}")
-                
+
                 if post_id:
                     mapping[ad_id] = post_id
                     print(f"  {ansi.green}✓ Successfully mapped{ansi.reset}: {ad_id} → {post_id}")
                 else:
                     print(f"  {ansi.red}✗ No post_id found{ansi.reset}")
                     logger.warning("Ad %s – no post_id", ad_id)
-                    
+
                     # Additional debugging - check if there are any other fields
                     print(f"  {ansi.yellow}Available fields in ad_data:{ansi.reset}")
                     for key, value in ad_data.items():
                         print(f"    - {key}: {value}")
-                        
+
         except Exception as e:
             print(f"\n{ansi.red}DEBUG: API request failed:{ansi.reset}")
             print(f"  Error: {str(e)}")
             print(f"  Ad IDs in this chunk: {chunk}")
             raise
-    
+
     print(f"\n{ansi.cyan}DEBUG: Ad-to-post resolution complete:{ansi.reset}")
     print(f"  Total ads processed: {len(ad_ids)}")
     print(f"  Successful mappings: {len(mapping)}")
     print(f"  Failed mappings: {len(ad_ids) - len(mapping)}")
-    
+
     if mapping:
         print(f"  {ansi.green}Successful mappings:{ansi.reset}")
         for ad_id, post_id in mapping.items():
             print(f"    {ad_id} → {post_id}")
-    
+
     return mapping
 
 
@@ -218,18 +218,18 @@ def resolve_page_token(post_id: str, page_tokens: Dict[str, str], fallback_token
 def test_direct_post_access(post_id: str, token: str) -> bool:
     """Test if we can directly access a post ID to debug access issues."""
     print(f"\n{ansi.cyan}DEBUG: Testing direct access to post ID: {post_id}{ansi.reset}")
-    
+
     try:
         params = {
             "fields": "id,message,created_time,from",
             "access_token": token,
         }
         data = graph_request(f"{post_id}", params)
-        
+
         print(f"  {ansi.green}✓ Post accessible{ansi.reset}")
         print(f"  Post data: {json.dumps(data, indent=2)}")
         return True
-        
+
     except Exception as e:
         print(f"  {ansi.red}✗ Post not accessible: {str(e)}{ansi.reset}")
         return False
@@ -243,21 +243,21 @@ def main(argv: Optional[List[str]] = None):
     args = parser.parse_args(argv)
 
     user_token, page_tokens = load_latest_tokens()
-    
+
     # Test direct post access if requested
     if args.test_post:
         print(f"🧪 Testing direct post access for: {ansi.yellow}{args.test_post}{ansi.reset}")
-        
+
         # Try with user token
         print(f"\n{ansi.blue}Testing with user token:{ansi.reset}")
         test_direct_post_access(args.test_post, user_token)
-        
+
         # Try with page token if available
         if page_tokens:
             page_id, page_token = next(iter(page_tokens.items()))
             print(f"\n{ansi.blue}Testing with page token (Page ID: {page_id}):{ansi.reset}")
             test_direct_post_access(args.test_post, page_token)
-        
+
         return
 
     if not args.ids_file.exists():
