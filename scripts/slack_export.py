@@ -42,12 +42,13 @@ def main():
         return 1
     
     # Install requirements
-    print("📦 Installing/updating requirements...")
+    print("📦 Installing/updating project package (editable mode)...")
     try:
-        subprocess.run([str(pip_exe), "install", "-r", "requirements.txt"], check=True)
-        print("✅ Requirements installed")
+        # Install the project itself using pyproject.toml as the single source of truth
+        subprocess.run([str(pip_exe), "install", "-e", "."], check=True)
+        print("✅ Project installed/updated")
     except subprocess.CalledProcessError:
-        print("❌ Failed to install requirements")
+        print("❌ Failed to install project dependencies")
         return 1
     
     # Install Playwright browsers if needed
