@@ -23,7 +23,7 @@ logger = report.settings(__file__)
 
 # Paths
 ROOT = Path(__file__).resolve().parent.parent.parent
-CONFIG = Path(ROOT, "config")
+CONFIG = Path(ROOT, "config", "facebook")
 INI_FILE = Path(CONFIG, "facebook.ini")
 
 
