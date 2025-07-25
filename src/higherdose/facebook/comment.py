@@ -150,7 +150,7 @@ def resolve_page_token(post_id: str, page_tokens: Dict[str, str], fallback_token
 def main(argv: Optional[List[str]] = None):
     parser = argparse.ArgumentParser(description="Fetch comments for a list of Facebook Ad IDs → Post IDs → Comments")
     parser.add_argument("--ids-file", type=Path, default=DEFAULT_IDS_FILE, help="Text file containing one Ad ID per line")
-    parser.add_argument("--output", type=Path, default=SAVE_DIR, help="Directory to write comments-*.json")
+    parser.add_argument("--output", type=Path, default=DATA_FACEBOOK, help="Directory to write comments-*.json")
     args = parser.parse_args(argv)
 
     if not args.ids_file.exists():
