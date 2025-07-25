@@ -17,8 +17,8 @@ $ cd HigherDOSE
 $ python3 -m venv venv
 $ source venv/bin/activate   # Windows → venv\Scripts\activate.bat
 
-# 3)  Install project requirements
-$ pip install -r requirements.txt
+# 3)  Install the project (this installs all dependencies from pyproject.toml)
+$ pip install -e .
 
 # 4)  Run a report (see sections below)
 ```
@@ -27,42 +27,90 @@ $ pip install -r requirements.txt
 
 ---
 
-## 2. Repository Layout (post-reorg)
+## 2. Repository Layout
 
 ```
-├── scripts/               # One-line wrappers you actually execute
+├── scripts/               # One-line wrappers you can execute directly
 │   ├── report_weekly.py   # → higherdose.analysis.weekly_products.main()
 │   ├── report_h1.py       # → higherdose.analysis.h1.main()
-│   └── slack_export.py    # → higherdose.slack.slack_fetcher_playwright
+│   ├── slack_export.py    # → higherdose.slack.slack_fetcher_playwright
+│   └── email_export.py    # → higherdose.mail.gmail_archive.main()
 │
 ├── src/higherdose/        # Installable Python package
 │   ├── analysis/          # Core analytics modules (weekly.py, h1.py, …)
 │   ├── slack/             # Playwright-based Slack fetcher & helpers
-│   └── mail/              # Exported Gmail messages (for reference only)
+│   ├── mail/              # Gmail export functionality
+│   ├── facebook/          # Facebook API integrations
+│   └── utils/             # Shared utilities and helpers
 │
 ├── data/
-│   ├── raw/               # **INPUTS** – drop CSV exports in here
-│   │   └── stats/         #   • Northbeam, Google, Meta exports, etc.
-│   └── processed/         # **OUTPUTS** & intermediate files
-│       ├── transcripts/   #   • Meeting transcripts
-│       └── slack/         #   • Markdown channel exports
+│   ├── ads/               # **INPUTS** – CSV exports from ad platforms
+│   │   └── h1-report/     #   • Northbeam, Google, Meta exports for H1 reports
+│   ├── reports/           # **OUTPUTS** – Final Markdown/PDF reports
+│   │   ├── weekly/        #   • Weekly growth reports
+│   │   └── h1/            #   • H1 (half-year) reports
+│   ├── slack/             # Slack conversation exports
+│   │   └── exports/       #   • Markdown channel exports
+│   ├── mail/              # Gmail message exports
+│   │   └── exports/       #   • Email archive data
+│   ├── products/          # Product analysis data
+│   │   └── unattributed/  #   • Unattributed product lines for review
+│   └── facebook/          # Facebook data exports
 │
-├── data/reports/          # Final Markdown/PDF reports written by scripts
-│   ├── weekly/
-│   └── h1/
+├── config/                # Configuration files for various integrations
+│   ├── slack/             # Slack credentials and settings
+│   ├── facebook/          # Facebook API tokens and settings
+│   └── mail/              # Email configuration
+│
+├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
 
 ---
 
-## 3. Running the **Weekly** Growth Report
+## 3. Running Reports
 
-1. Download the **7-day** Northbeam “ad + platform – date breakdown” export (CSV).
-2. Save it in `data/ads/`  → the filename can be anything.
-3. Execute:
+### Option A: Using CLI Commands (After Installation)
+
+After running `pip install -e .`, you can use these convenient commands:
+
+```bash
+$ hd-weekly     # Generate weekly growth report
+$ hd-h1         # Generate H1 growth report  
+$ hd-slack      # Export Slack conversations
+$ hd-email      # Export Gmail archive
+```
+
+### Option B: Using Script Wrappers
 
 ```bash
 $ python scripts/report_weekly.py
+$ python scripts/report_h1.py
+$ python scripts/slack_export.py
+$ python scripts/email_export.py
+```
+
+### Option C: Direct Module Execution
+
+```bash
+$ python -m higherdose.analysis.weekly_products
+$ python -m higherdose.analysis.h1
+$ python -m higherdose.slack.slack_fetcher_playwright
+$ python -m higherdose.mail.gmail_archive
+```
+
+---
+
+## 4. Weekly Growth Report
+
+1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
+2. Save it in `data/ads/`  → the filename can be anything.
+3. Execute any of the following:
+
+```bash
+$ hd-weekly                          # CLI command (recommended)
+$ python scripts/report_weekly.py    # Script wrapper
+$ python -m higherdose.analysis.weekly_products --help  # Direct module
 ```
 
 The script will prompt for the CSV if multiple files are present, analyse the data, then write a Markdown file to:
@@ -71,16 +119,9 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
 
-### Options
-The wrapper is intentionally minimal.  For advanced usage call the module directly:
-
-```bash
-$ python -m higherdose.analysis.weekly_products --help
-```
-
 ---
 
-## 4. Running the **H1** (Jan → Jun) Growth Report
+## 5. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
 
@@ -95,30 +136,46 @@ Required files (place in `data/ads/h1-report/` or pass `--*` flags):
 Then run:
 
 ```bash
-$ python scripts/report_h1.py  # accepts --northbeam_csv etc. if paths differ
+$ hd-h1                           # CLI command (recommended)
+$ python scripts/report_h1.py     # Script wrapper  
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
 
 ---
 
-## 5. Exporting Slack Conversations
+## 6. Exporting Slack Conversations
 
-The Slack extractor uses **Playwright**.
+The Slack extractor uses **Playwright** and manages credentials automatically.
 
 ```bash
-$ python scripts/slack_export.py
+$ hd-slack                           # CLI command (recommended)
+$ python scripts/slack_export.py    # Script wrapper
 ```
 
 * Creates a `venv` if missing, installs Playwright & downloads the Chromium browser.
-* Launches `higherdose.slack.slack_fetcher_playwright` which manages credentials automatically in `config/slack/`.
+* Manages credentials automatically in `config/slack/`.
 * Markdown files are written to `data/slack/exports/`.
 
-Refer to `slack/README.md` for detailed credential setup.
+Refer to `src/higherdose/slack/README.md` for detailed credential setup.
 
 ---
 
-## 6. Updating Product-Alias Mappings
+## 7. Exporting Gmail Archive
+
+Export Gmail messages for analysis and record-keeping.
+
+```bash
+$ hd-email                           # CLI command (recommended)
+$ python scripts/email_export.py    # Script wrapper
+```
+
+* Exports are written to `data/mail/exports/`.
+* Requires Gmail API credentials setup.
+
+---
+
+## 8. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
@@ -127,35 +184,16 @@ add new aliases to improve mapping accuracy.
 
 ---
 
-## 7. Development & Contribution
+## 9. Development & Contribution
 
+* **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
 
 ---
 
-## 8. Release History (last 12 commits)
-
-```
-# git log -12 --pretty=format:"%h  %s"
-51bfdb5  chore: after the reorg
-139921d  chore: remove piplist.md and update TODO …
-219e2af  refactor: streamline report generation …
-64ee6ae  refactor: enhance organization and output handling …
-a91ea25  feat: add pyproject.toml for project configuration
-c311ca0  refactor: moving and deleting
-bc733ff  refactor: small add-on to last attempt
-9b793ab  refactor: reorganize hierarchy of codebase
-…
-```
-
-(Use `git log` for full details.)
-
----
-
-### License
-Internal HigherDOSE project – not for public distribution.
+## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
 Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack-tutorial.md`, adapted to your path) and the problem will disappear.
@@ -193,3 +231,8 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
+
+---
+
+### License
+Internal HigherDOSE project – not for public distribution.
