@@ -15,8 +15,9 @@ def load_and_clean_data():
     # Interactive file selection
     csv_file = select_csv_file(
         directory="data/raw/stats",
-        file_pattern="*.csv",
-        prompt_message="\nSelect CSV file for weekly analysis: "
+        file_pattern="*sales_data-higher_dose*csv",
+        prompt_message="\nSelect Northbeam sales CSV (or 'q' to quit): ",
+        max_items=10,
     )
     if not csv_file:
         print("No file selected. Exiting.")
