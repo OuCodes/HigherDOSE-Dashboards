@@ -14,7 +14,7 @@ from higherdose.utils.style import ansi
 
 logger = report.settings(__file__)
 
-TRACKING_FILE = "slack/conversion_tracker.json"
+TRACKING_FILE = "config/slack/conversion_tracker.json"
 
 def get_file_hash(file_path: str) -> str:
     """Get MD5 hash of a file to track changes."""
