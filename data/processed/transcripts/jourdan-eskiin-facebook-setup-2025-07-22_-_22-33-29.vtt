@@ -1,0 +1,434 @@
+WEBVTT
+
+00:02.030 --> 00:10.717
+Okay, so the first step that I've been on here, I was under apps, and then I just, how about this, let's check out all the apps.
+
+00:14.299 --> 00:15.440
+And then you can create an app.
+
+00:15.860 --> 00:18.502
+There's a new version, a new flow for creating an app.
+
+00:19.102 --> 00:19.543
+Whoops.
+
+00:21.724 --> 00:24.026
+I didn't go through the whole process today.
+
+00:24.106 --> 00:24.786
+Nope, I sure didn't.
+
+00:24.806 --> 00:28.649
+So I'm going to, let's do a hard refresh just to make sure.
+
+00:30.191 --> 00:35.787
+Yeah, my app did not get created, so I'm going to create the new one for, not daily report, but comment status.
+
+00:43.623 --> 00:45.325
+Use cases, I don't think is important.
+
+00:45.345 --> 00:49.267
+Like you technically can do other and then kind of like apply for everything on the back end.
+
+00:50.468 --> 00:51.849
+Create an app without a use case.
+
+00:52.369 --> 00:55.591
+But I'm sure that we want posts.
+
+00:56.032 --> 01:01.375
+So I'm going to manage, I'm going to select the use case that says manage everything on page, on your page.
+
+01:01.836 --> 01:06.719
+And I also want to create and manage app ads.
+
+01:07.239 --> 01:09.121
+Those two things are pretty important to me.
+
+01:12.876 --> 01:16.298
+And we'll need to pull in information from both places.
+
+01:17.078 --> 01:19.380
+I'm going to put this in the business portfolio that I have here.
+
+01:19.400 --> 01:27.244
+No requirements are identified yet.
+
+01:27.604 --> 01:29.305
+This may change if you add more to this app.
+
+01:32.907 --> 01:35.629
+And now we can go to the dashboard.
+
+02:00.877 --> 02:02.217
+Welcome to the app dashboard.
+
+02:02.637 --> 02:05.918
+This is where you will manage all aspects of your app and data access.
+
+02:05.938 --> 02:07.299
+So it's a nice little pop-up here.
+
+02:08.079 --> 02:08.679
+And this, this
+
+02:15.410 --> 02:15.730
+See?
+
+02:16.391 --> 02:24.978
+And this just looks much different than the other process, like the way, let's say, for example, Daily Report is set up.
+
+02:25.018 --> 02:29.902
+And I believe it's because Daily Report is set up still at V17.
+
+02:29.922 --> 02:36.547
+So just all of this is different compared to, I don't want to create a new app.
+
+02:36.787 --> 02:39.870
+I want to go to my apps and look for comment status.
+
+02:40.690 --> 02:40.891
+Boom.
+
+02:42.768 --> 02:45.330
+Yeah, so just this layout here on the left-hand side is just a lot different.
+
+02:47.832 --> 02:49.072
+We're going to add use cases.
+
+02:49.813 --> 02:52.115
+Customize and manage everything on your page.
+
+02:52.235 --> 02:53.295
+Okay, let's see here.
+
+03:04.559 --> 03:07.560
+Okay, okay, this is exactly what I was looking for.
+
+03:07.580 --> 03:08.580
+This is exactly what I was looking for.
+
+03:08.640 --> 03:08.900
+Okay.
+
+03:10.701 --> 03:23.204
+Everything here should be for managing the pages manage engagement.
+
+03:26.562 --> 03:27.924
+Create, edit, and delete comments.
+
+03:28.024 --> 03:30.047
+Okay, this is where it gets a little sketch.
+
+03:30.067 --> 03:40.781
+Like if I hit this add button, it'll kind of like do some kind of background check on, I'm sure, my personal profile as well as the pages that I have access to to see if they want to grant that access to me.
+
+03:41.122 --> 03:42.203
+Pages management data.
+
+03:48.297 --> 03:49.758
+Manage post-read engagement.
+
+03:49.978 --> 03:50.739
+Okay, okay, here it is.
+
+03:50.759 --> 03:52.200
+This is what I was looking for.
+
+03:52.760 --> 03:55.162
+And it does require some kind of approval, so I didn't know that.
+
+03:55.382 --> 03:57.163
+Hopefully it's auto-approved, I'm not sure.
+
+03:57.863 --> 04:04.188
+But so far we've created an app, gone through the whole workflow, setup flow.
+
+04:05.188 --> 04:06.649
+Here it says customized use case.
+
+04:06.689 --> 04:09.731
+I just clicked on a button that was on that homepage once I got to the app.
+
+04:10.772 --> 04:15.895
+And here it says customized use case, customized use case settings and permissions to make your app work the way you want it to.
+
+04:18.169 --> 04:24.553
+And then here, I think specifically what I need, I don't necessarily need to manage the engagement for this particular very small use case.
+
+04:25.053 --> 04:41.023
+I just need to be able to read engagement, which allows your app to read contents, which means posts, videos, photos, videos, events posted by the page, read followers data, including name, PSID, and profile picture, and read metadata and other insights about their page.
+
+04:41.903 --> 04:42.463
+And then here,
+
+04:46.460 --> 04:48.081
+Okay, so actually that's not the one I need.
+
+04:48.121 --> 04:50.563
+I need pages read user content.
+
+04:51.003 --> 05:02.250
+And it says pages read user content permission allows your app to read user generated content on the page such as posts, comments, and ratings by users or other pages and to delete user comments on page posts.
+
+05:03.811 --> 05:11.656
+So I'm going to go ahead and here, public profile, read insights.
+
+05:13.437 --> 05:15.078
+Pages read user content is what I need.
+
+05:17.483 --> 05:18.643
+We're just gonna go ahead and add that one.
+
+05:18.884 --> 05:20.144
+It swirls, let's see.
+
+05:20.164 --> 05:23.065
+A little nervous about this one.
+
+05:23.105 --> 05:24.786
+Okay, it seems like it approved me.
+
+05:25.826 --> 05:28.727
+So I now can read user content, meaning comments on the page.
+
+05:29.928 --> 05:40.492
+And I'm gonna go back out to the homepage, to the dashboard, because the next use case that I need to customize is for ads, and I'll see if it has anything to do with comments here.
+
+05:40.972 --> 05:45.934
+So that was just the manage use cases, and now we're gonna go to the ads use cases.
+
+05:49.068 --> 05:50.508
+See if they got anything good for me.
+
+05:52.129 --> 05:53.009
+I don't need a tour.
+
+05:53.409 --> 05:54.370
+We can skip that part.
+
+05:58.971 --> 05:59.091
+Oh.
+
+06:01.071 --> 06:12.055
+Oh, okay, so this is something that you may need to set up on your end, actually, like have your own custom app because connect your business portfolio and ad accounts.
+
+06:12.455 --> 06:16.656
+Before you get started, you'll need to connect a business port and at least one ad account.
+
+06:21.883 --> 06:25.526
+I'll be honest, I don't know ad account IDs off the top of my head.
+
+06:25.546 --> 06:28.108
+So what are we talking about?
+
+06:28.408 --> 06:32.271
+Ads.facebook.com, is that what we're on?
+
+06:34.533 --> 06:36.735
+Which redirects me to facebook.com slash business.
+
+06:42.739 --> 06:46.262
+Instead of the start now button, let's go for, is there a learn?
+
+06:46.342 --> 06:47.923
+Okay, so there's definitely learn more.
+
+06:47.943 --> 06:49.384
+I want to be able to...
+
+06:52.933 --> 07:02.599
+There we go, there we go.
+
+07:03.140 --> 07:03.980
+Go to Ads Manager.
+
+07:04.000 --> 07:10.264
+That's what I want, adsmanager.facebook.com.
+
+07:10.825 --> 07:12.886
+Okay, they've changed just so much of this again.
+
+07:21.511 --> 07:27.933
+Once we're in the here, all tools, add account settings.
+
+07:36.415 --> 07:37.075
+Okay, here we go.
+
+07:37.275 --> 07:39.056
+I can grab the add account ID from here.
+
+07:39.076 --> 07:42.457
+Oops.
+
+07:49.699 --> 07:50.880
+Well, this is the, okay, okay.
+
+07:51.060 --> 07:55.442
+Let's grab one of these sound waves.
+
+07:58.024 --> 08:06.448
+So I'm switching from my native ad account that's attached to my, oh, potential reach estimates.
+
+08:06.668 --> 08:07.469
+Hilarious.
+
+08:09.210 --> 08:10.890
+Facebookpotentialreachlawsuit.com.
+
+08:10.910 --> 08:11.491
+I'll go to that later.
+
+08:11.551 --> 08:12.731
+Anyways, the point is that...
+
+08:15.839 --> 08:21.663
+We are now in the Soundwaves ad account, and I simply want the ad account ID, so whatever that is.
+
+08:23.464 --> 08:30.488
+Copy it, paste it, and then save it.
+
+08:32.049 --> 08:33.330
+Add platforms and app stores.
+
+08:42.307 --> 08:43.728
+I'm just going to put in website for now.
+
+08:43.788 --> 08:44.808
+Keep it nice and simple.
+
+08:44.848 --> 08:46.809
+Probably most likely to get approved as well.
+
+08:46.829 --> 08:53.933
+And then here's app ID when setting up the events.
+
+08:55.153 --> 08:56.814
+Okay, so I'm going to leave that blank.
+
+08:56.834 --> 08:59.815
+I'm not going to worry about the website URL for now.
+
+08:59.835 --> 09:02.717
+Just going to go to app events.
+
+09:09.076 --> 09:12.118
+Or settings under app events, sorry, and then go to quick start.
+
+09:13.139 --> 09:14.180
+Here's the quick start.
+
+09:15.060 --> 09:18.143
+Here's how we can set up the Facebook SDK for JavaScript.
+
+09:26.529 --> 09:29.371
+Oh, and this is where you'll verify the things.
+
+09:29.711 --> 09:34.855
+So it doesn't look like your app having access to the ads is actually all that.
+
+09:38.383 --> 09:40.185
+Useful in terms of reading comments.
+
+09:42.868 --> 09:49.134
+What I'm hoping is just because you have access to the page itself means you'll have everything you'll need.
+
+09:49.274 --> 09:50.875
+Facebook login for business settings.
+
+09:51.936 --> 09:53.038
+Some more OAuth stuff.
+
+09:53.858 --> 09:57.001
+All of this makes sense to me, but at least from what I can tell,
+
+09:59.565 --> 10:09.474
+Once you've created an app and you go into use cases or it's asking you to customize the use cases right off the bat, as long as you customize what you need to for manage everything on your page, I think you're good to go.
+
+10:09.494 --> 10:15.259
+And of course, your user ID, your personal Facebook user profile is connected to a bunch of these pages.
+
+10:15.319 --> 10:18.762
+And that's how we generate the tokens that we need to make things happen.
+
+10:22.049 --> 10:31.932
+From here on out, from using manage everything on your page down, I have very detailed step-by-step notes on what to do, so I'm not really worried beyond that point.
+
+10:34.412 --> 10:42.754
+I think this is fairly easy to do based on my notes here.
+
+10:46.881 --> 10:53.906
+And you want pages, manage metadata, read engagement, manage posts.
+
+10:54.066 --> 10:56.328
+Like all of these things, pages show list was already approved.
+
+10:56.788 --> 10:59.290
+So these are probably the four things that I need access to.
+
+10:59.350 --> 11:01.992
+I'm going to do a lot with the pages.
+
+11:02.092 --> 11:03.713
+And in this case, we're not.
+
+11:03.813 --> 11:05.815
+We're simply like, we want access to the comments.
+
+11:05.875 --> 11:08.296
+It's kind of like the number one thing.
+
+11:08.777 --> 11:11.959
+If we get access to more than that, like can do more than that through the app, cool.
+
+11:11.979 --> 11:15.882
+But for now, that's probably what we need the most.
+
+11:19.685 --> 11:22.187
+And here there's like a graph API Explorer.
+
+11:22.567 --> 11:26.230
+I've literally gone through all the steps that are necessary for creating.
+
+11:26.250 --> 11:27.571
+I forgot what the name of it is.
+
+11:27.591 --> 11:29.112
+It's just like generate tokens.
+
+11:29.532 --> 11:33.495
+So I have like an entire workflow using the standard library.
+
+11:33.515 --> 11:35.277
+I don't think I'm actually using anything custom.
+
+11:35.297 --> 11:38.699
+You don't have to import any other libraries.
+
+11:39.079 --> 11:41.561
+We just use what we need to from
+
+11:45.914 --> 11:47.136
+I accept, try accept.
+
+11:47.917 --> 12:01.354
+Yeah, we can generate long-lived user tokens and then page access tokens from what we're already working with here.
+
+12:02.575 --> 12:05.399
+And then we can understand how long they'll take to expire.
+
+12:05.899 --> 12:09.323
+Basically, this is the entire workflow for generating the tokens that we need.
+
+12:10.224 --> 12:17.613
+And with that token, with this set of tokens, the long live user token and the process page token, the process page token will get you access to all the comments.
+
+12:17.653 --> 12:18.554
+I'm pretty sure that's how that works.
+
+12:20.908 --> 12:32.280
+I need to dive a bit deeper into that part of the API and figure out how to feed it video IDs and all that good stuff, but I'm pretty sure this is about as far as we need to go to make sure we get what we need to out of this app.
+
+12:32.921 --> 12:34.443
+So that being said, I'm going to wrap it up here.
+
