@@ -157,7 +157,7 @@ def main():
         
         if success:
             print(f"✅ Successfully extracted: {conversation_name}")
-            print(f"📁 Check the slack/markdown_exports directory for the file")
+            print(f"📁 Check the data/processed/slack/markdown_exports directory for the file")
         else:
             print(f"❌ Failed to extract: {conversation_name}")
             if headless:

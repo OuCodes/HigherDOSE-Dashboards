@@ -113,7 +113,7 @@ def main():
     print(f"🎉 Extraction complete!")
     print(f"✅ Successfully extracted: {successful}")
     print(f"❌ Failed to extract: {failed}")
-    print(f"📁 Check the slack/markdown_exports directory for your files")
+    print(f"📁 Check the data/processed/slack/markdown_exports directory for your files")
 
 if __name__ == "__main__":
     main() 
