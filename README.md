@@ -156,3 +156,40 @@ bc733ff  refactor: small add-on to last attempt
 
 ### License
 Internal HigherDOSE project – not for public distribution.
+
+Git is still watching the contents of `src/higherdose/mail/archive/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
+Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack-tutorial.md`, adapted to your path) and the problem will disappear.
+
+1. Verify what’s still tracked  
+   ```bash
+   git ls-files src/higherdose/mail/archive | head
+   ```
+   • If nothing prints, the directory is already un-tracked and you can skip to step 4.  
+   • If you see file names, continue.
+
+2. Tell Git to stop tracking the directory but keep the files on disk  
+   ```bash
+   git rm -r --cached src/higherdose/mail/archive
+   ```
+
+3. Make sure the ignore rule exists in `.gitignore` (it’s already there, but double-check):  
+   ```
+   **/mail/archive/
+   ```
+
+4. Commit the changes  
+   ```bash
+   git add .gitignore
+   git commit -m "Remove mail/archive from git tracking"
+   ```
+
+5. Confirm it worked  
+   ```bash
+   # should print nothing
+   git ls-files src/higherdose/mail/archive
+
+   # should print the path (means Git is ignoring it)
+   git check-ignore src/higherdose/mail/archive/anyfile.md
+   ```
+
+Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email archive as often as you like without Git complaining.
