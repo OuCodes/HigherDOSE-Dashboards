@@ -31,7 +31,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
-TOKEN = Path("token.pickle")
+TOKEN = Path("config/mail/token.pickle")
 
 def get_creds():
     if TOKEN.exists():
@@ -144,7 +144,7 @@ Nothing else (service accounts, DWD) is needed for a single consumer mailbox.
 python gmail_archive.py     # will pop a browser window
 ```
 
-You’ll see the Google consent screen once. After approval, a `token.pickle` (refresh‑token) is saved; subsequent cron runs are 100 % unattended. ([Google for Developers][3])
+You’ll see the Google consent screen once. After approval, a `config/mail/token.pickle` (refresh‑token) is saved; subsequent cron runs are 100 % unattended. ([Google for Developers][3])
 
 ---
 
@@ -160,7 +160,7 @@ from googleapiclient.discovery import build
 import markdownify
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
-TOKEN   = Path("token.pickle")
+TOKEN   = Path("config/mail/token.pickle")
 CURSOR  = Path("cursor.txt")
 OUTDIR  = Path("archive"); OUTDIR.mkdir(exist_ok=True)
 
@@ -250,7 +250,7 @@ If you ever need raw messages (e.g. for DKIM or attachments exactly as sent) you
 ### You’re ready
 
 1. **Download** *client\_secret.json*, place next to the script.
-2. Run once locally; the browser consent flow creates `token.pickle`.
+2. Run once locally; the browser consent flow creates `config/mail/token.pickle`.
 3. Schedule the script.
 
 Give it a whirl and let me know how it behaves; when you’re happy we can extend the same pattern to a Workspace service account.

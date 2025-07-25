@@ -101,12 +101,13 @@ def clean_email_content(content):
     content = re.sub(r'https?://\S+', shorten_url, content)
 
     return content
-# Paths for the auth token and cursor should be based on the location of this script
+# Paths for local files (cursor) should be based on the location of this script
 # to avoid FileNotFound errors when executed from other locations.
-# Mail exports are now saved to the centralized data/mail/exports/ directory.
+# Credentials are now stored in the centralized config/mail/ directory.
+# Mail exports are saved to the centralized data/mail/exports/ directory.
 ROOT_DIR = Path(__file__).resolve().parent
 
-TOKEN = ROOT_DIR / "token.pickle"
+TOKEN = Path("config/mail/token.pickle")
 CURSOR = ROOT_DIR / "cursor.txt"
 OUTDIR = Path("data/mail/exports")
 
@@ -152,7 +153,7 @@ def get_creds():
     # Attempt to locate the downloaded OAuth client secret JSON
     logger.warning("No token file found, starting OAuth flow...")
     print(f"  {ansi.yellow}No token file found{ansi.reset}, starting OAuth flow...")
-    secret_files = list(Path(__file__).resolve().parent.glob("client_secret_*.json"))
+    secret_files = list(Path("config/mail").glob("client_secret_*.json"))
 
     client_secrets_file = str(secret_files[0])
     logger.info("Using client secrets file: %s", client_secrets_file)
