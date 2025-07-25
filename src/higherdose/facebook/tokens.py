@@ -130,6 +130,158 @@ def get_long_lived_user_token(short_lived_token: str) -> Token:
     )
 
 
+def get_all_paginated_data(url: str, user_token: str) -> list:
+    """Get all data from a paginated Facebook API endpoint"""
+    all_data = []
+    current_url = url
+    
+    while current_url:
+        try:
+            # Make the request
+            if '?' in current_url:
+                current_url += f"&access_token={user_token}"
+            else:
+                current_url += f"?access_token={user_token}"
+                
+            response_data = make_api_request(current_url)
+            
+            # Add this batch of data
+            data_batch = response_data.get('data', [])
+            all_data.extend(data_batch)
+            
+            # Check for next page
+            paging = response_data.get('paging', {})
+            current_url = paging.get('next')
+            
+            # Remove access_token from next URL since we'll add it again
+            if current_url and 'access_token=' in current_url:
+                # Parse the URL and rebuild without access_token
+                parsed = urllib.parse.urlparse(current_url)
+                query_params = dict(urllib.parse.parse_qsl(parsed.query))
+                query_params.pop('access_token', None)
+                query_string = urllib.parse.urlencode(query_params)
+                current_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{query_string}" if query_string else f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+            
+        except Exception as e:
+            logger.error("Pagination request failed: %s", str(e))
+            print(f"Pagination request failed: {ansi.red}{str(e)}{ansi.reset}")
+            break
+    
+    return all_data
+
+
+def get_business_manager_pages(user_token: str) -> tuple[Dict[str, Page], list]:
+    """Get pages accessible through Business Manager"""
+    print(f"\n{ansi.cyan}DEBUG: Checking Business Manager accounts...{ansi.reset}")
+    
+    # Get Business Manager accounts the user has access to (with pagination)
+    businesses_url = f"{config.app.base_url}/me/businesses"
+    businesses = get_all_paginated_data(businesses_url, user_token)
+        
+    print(f"Found {len(businesses)} Business Manager account(s):")
+    for i, business in enumerate(businesses, 1):
+        business_id = business['id']
+        business_name = business.get('name', 'Unknown')
+        print(f"  {i}. {ansi.yellow}{business_name}{ansi.reset} (ID: {ansi.yellow}{business_id}{ansi.reset})")
+    
+    if not businesses:
+        print("No Business Manager accounts found.")
+        return {}, []
+    
+    # Get pages from each Business Manager
+    all_business_pages = {}
+    business_info = []
+    target_pages_found = []
+    
+    for business in businesses:
+        business_id = business['id']
+        business_name = business.get('name', 'Unknown')
+        
+        print(f"\n{ansi.cyan}Getting pages from Business Manager: {business_name}{ansi.reset}")
+        
+        # Get pages owned by this business (with pagination)
+        business_pages_url = f"{config.app.base_url}/{business_id}/owned_pages"
+        try:
+            pages = get_all_paginated_data(business_pages_url, user_token)
+            
+            # Count pages and look for target pages first
+            target_pages_in_business = []
+            for page in pages:
+                page_name = page.get('name', 'Unknown')
+                if 'higher dose' in page_name.lower() or 'higherdose' in page_name.lower():
+                    target_pages_in_business.append((page['id'], page_name))
+            
+            print(f"Found {len(pages)} page(s) in {business_name}")
+            if target_pages_in_business:
+                print(f"{ansi.magenta}🎯 TARGET PAGES FOUND:{ansi.reset}")
+                for page_id, page_name in target_pages_in_business:
+                    print(f"  → {ansi.magenta}{page_name}{ansi.reset} (ID: {ansi.yellow}{page_id}{ansi.reset})")
+                    target_pages_found.append((page_name, page_id, business_name))
+            
+            # Process pages quietly, only show token success/failure summary
+            successful_tokens = 0
+            failed_tokens = 0
+            
+            for page in pages:
+                page_id = page['id']
+                page_name = page.get('name', 'Unknown')
+                category = page.get('category', 'Unknown')
+                
+                # Try to get page access token quietly
+                page_token_url = f"{config.app.base_url}/{page_id}?fields=access_token&access_token={user_token}"
+                try:
+                    page_token_data = make_api_request(page_token_url)
+                    if 'access_token' in page_token_data:
+                        page_config = Page(
+                            page_id=page_id,
+                            page_name=page_name,
+                            category=category,
+                            page_access_token=Token(
+                                access_token=page_token_data['access_token'],
+                                expires_at=None
+                            )
+                        )
+                        all_business_pages[page_id] = page_config
+                        successful_tokens += 1
+                        
+                        # Only show details for target pages
+                        if any(target_id == page_id for target_id, _ in target_pages_in_business):
+                            print(f"  {ansi.green}✓ {page_name} - TOKEN RETRIEVED{ansi.reset}")
+                    else:
+                        failed_tokens += 1
+                except Exception:
+                    failed_tokens += 1
+                    # Only show failures for target pages
+                    if any(target_id == page_id for target_id, _ in target_pages_in_business):
+                        print(f"  {ansi.red}✗ {page_name} - Token failed (needs pages_read_engagement permission){ansi.reset}")
+            
+            # Show summary
+            print(f"  Tokens: {ansi.green}{successful_tokens} successful{ansi.reset}, {ansi.red}{failed_tokens} failed{ansi.reset}")
+            
+            business_info.append({
+                'business_id': business_id,
+                'business_name': business_name,
+                'page_count': len(pages),
+                'successful_tokens': successful_tokens,
+                'failed_tokens': failed_tokens
+            })
+            
+        except Exception as e:
+            print(f"Failed to get pages from {business_name}: {ansi.red}{str(e)}{ansi.reset}")
+    
+    # Show target pages summary
+    if target_pages_found:
+        print(f"\n{ansi.magenta}🎯 TARGET PAGES SUMMARY:{ansi.reset}")
+        for page_name, page_id, business_name in target_pages_found:
+            status = "✓ Token Available" if page_id in all_business_pages else "✗ Token Failed"
+            color = ansi.green if page_id in all_business_pages else ansi.red
+            print(f"  • {ansi.yellow}{page_name}{ansi.reset} ({page_id})")
+            print(f"    Business: {business_name}")
+            print(f"    Status: {color}{status}{ansi.reset}")
+    
+    return all_business_pages, business_info
+
+
 def get_page_access_tokens(
         user_token: str,
         target_page_id: Optional[str] = None
@@ -181,74 +333,99 @@ def get_page_access_tokens(
     except Exception as e:
         print(f"Could not retrieve permissions: {ansi.red}{str(e)}{ansi.reset}")
 
-    # Get page access tokens
-    pages_url = f"{config.app.base_url}/{user_id}/accounts?access_token={user_token}"
+    # Get page access tokens from personal account (with pagination)
+    pages_url = f"{config.app.base_url}/{user_id}/accounts"
 
     logger.info("Requesting page access tokens for user: %s", user_id)
-    print(f"Requesting {ansi.magenta}page access tokens{ansi.reset} for "
+    print(f"\nRequesting {ansi.magenta}personal page access tokens{ansi.reset} for "
           f"user: {ansi.yellow}{user_id}{ansi.reset}")
-    data = make_api_request(pages_url)
+    
+    # Get ALL personal pages with pagination
+    personal_pages_data = get_all_paginated_data(pages_url, user_token)
 
-    # Debug: Show full API response structure
-    print(f"\n{ansi.cyan}DEBUG: Full API Response Structure:{ansi.reset}")
-    print(f"Response keys: {list(data.keys())}")
-    if 'data' in data:
-        print(f"Number of accounts: {len(data['data'])}")
-        if data['data']:
-            print(f"Sample account keys: {list(data['data'][0].keys())}")
+    # Debug: Show summary instead of all pages
+    print(f"Total personal pages found: {len(personal_pages_data)}")
+    
+    # Look for target pages in personal pages
+    personal_target_pages = []
+    for page_data in personal_pages_data:
+        page_name = page_data.get('name', 'Unknown')
+        if 'higher dose' in page_name.lower() or 'higherdose' in page_name.lower():
+            personal_target_pages.append((page_data['id'], page_name))
+    
+    if personal_target_pages:
+        print(f"{ansi.magenta}🎯 TARGET PAGES FOUND IN PERSONAL PAGES:{ansi.reset}")
+        for page_id, page_name in personal_target_pages:
+            print(f"  → {ansi.magenta}{page_name}{ansi.reset} (ID: {ansi.yellow}{page_id}{ansi.reset})")
 
     pages = {}
-    logger.info("Processing %d pages from API response", len(data.get('data', [])))
+    logger.info("Processing %d pages from personal API response", len(personal_pages_data))
     
-    # Debug: Show all pages returned from API
-    print(f"\n{ansi.cyan}DEBUG: Pages returned from Facebook API:{ansi.reset}")
-    for i, page_data in enumerate(data.get('data', []), 1):
-        page_id = page_data['id']
-        page_name = page_data.get('name', 'Unknown')
-        category = page_data.get('category', 'Unknown')
-        tasks = page_data.get('tasks', [])
-        perms = page_data.get('perms', [])
-        print(f"  {i}. {ansi.yellow}{page_name}{ansi.reset} (ID: {ansi.yellow}{page_id}{ansi.reset})")
-        print(f"     Category: {category}")
-        if tasks:
-            print(f"     Tasks: {tasks}")
-        if perms:
-            print(f"     Permissions: {perms}")
-    
-    if target_page_id:
-        print(f"\n{ansi.cyan}DEBUG: Looking for specific page ID:{ansi.reset} {ansi.yellow}{target_page_id}{ansi.reset}")
-    else:
-        print(f"\n{ansi.cyan}DEBUG: No target page ID specified - will process all pages{ansi.reset}")
-
-    for page_data in data.get('data', []):
+    # Process personal pages
+    for page_data in personal_pages_data:
         page_id = page_data['id']
         page_name = page_data.get('name')
 
         # If target_page_id is specified, only process that page
         if target_page_id and page_id != target_page_id:
-            logger.info("Skipping page: %s (%s) - not target page",
+            logger.info("Skipping personal page: %s (%s) - not target page",
                        page_name, page_id)
-            print(f"  {ansi.red}SKIPPING{ansi.reset}: {page_name} ({page_id}) - not the target page")
             continue
 
-        logger.info("Processing page: %s (%s)", page_name, page_id)
-        print(f"  {ansi.green}PROCESSING{ansi.reset}: {page_name} ({page_id})")
+        logger.info("Processing personal page: %s (%s)", page_name, page_id)
         page_config = Page(
             page_id=page_id,
             page_name=page_name,
             category=page_data.get('category'),
             page_access_token=Token(
                 access_token=page_data['access_token'],
-                # Page tokens typically don't expire for pages you admin
                 expires_at=None
             )
         )
-
         pages[page_id] = page_config
+
+    # Also check Business Manager pages
+    business_pages, business_info = get_business_manager_pages(user_token)
+    
+    # Merge business pages with personal pages
+    for page_id, business_page in business_pages.items():
+        if target_page_id and page_id != target_page_id:
+            logger.info("Skipping business page: %s (%s) - not target page",
+                       business_page.page_name, page_id)
+            continue
+        pages[page_id] = business_page
+
+    # Summary
+    personal_count = len(personal_pages_data)
+    business_count = len(business_pages)
+    total_count = len(pages)
+    
+    # Calculate Business Manager token stats
+    total_bm_pages = sum(info.get('page_count', 0) for info in business_info)
+    total_successful_tokens = sum(info.get('successful_tokens', 0) for info in business_info)
+    total_failed_tokens = sum(info.get('failed_tokens', 0) for info in business_info)
+    
+    print(f"\n{ansi.cyan}FINAL SUMMARY:{ansi.reset}")
+    print(f"  Personal pages found: {ansi.yellow}{personal_count}{ansi.reset}")
+    print(f"  Business Manager pages found: {ansi.yellow}{total_bm_pages}{ansi.reset}")
+    print(f"  Total pages with tokens: {ansi.yellow}{total_count}{ansi.reset}")
+    print(f"  Token success rate: {ansi.green}{total_successful_tokens}{ansi.reset} / {total_bm_pages + personal_count}")
+    
+    if target_page_id:
+        print(f"\n{ansi.cyan}TARGET PAGE CHECK:{ansi.reset}")
+        print(f"  Looking for page ID: {ansi.yellow}{target_page_id}{ansi.reset}")
+        if target_page_id in pages:
+            target_page = pages[target_page_id]
+            print(f"  {ansi.green}✓ Target page found: {target_page.page_name}{ansi.reset}")
+        else:
+            print(f"  {ansi.red}✗ Target page not found{ansi.reset}")
+    else:
+        print(f"  No specific target page - processing all available pages")
 
     user_info = {
         'user_id': user_id,
-        'user_name': user_name
+        'user_name': user_name,
+        'business_accounts': business_info
     }
 
     return pages, user_info
@@ -372,6 +549,7 @@ def process_page_tokens(long_lived_user_token: Token, fb_page_id: Optional[str],
         return pages, user_info
 
     # Display page information and update TokenManager
+    print(f"\n{ansi.magenta}Processing {len(pages)} page(s):{ansi.reset}")
     for page_id, page_cfg in pages.items():
         print(f"\nPage: {page_cfg.page_name} ({page_id})")
         print(f"  Category: {page_cfg.category}")
