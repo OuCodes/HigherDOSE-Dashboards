@@ -19,7 +19,7 @@ import requests
 
 # -------------- Config -------------------------------------------------------
 # Updated path to align with new repository structure
-EXPORT_DIR = Path("data/processed/slack/markdown_exports")
+EXPORT_DIR = Path("data/processed/slack/exports")
 TRACK_FILE = Path("config/slack/conversion_tracker.json")
 ROLODEX_FILE = Path("rolodex.json")
 CREDENTIALS_FILE = Path("config/slack/playwright_creds.json")
@@ -526,10 +526,9 @@ class SlackBrowser:
                             # This is a DM name
                             channels[item] = f"@{item}"
             
-            # Also check markdown_exports directory
-            markdown_exports_dir = os.path.join(os.path.dirname(__file__), 'markdown_exports')
-            if os.path.exists(markdown_exports_dir):
-                for item in os.listdir(markdown_exports_dir):
+            # Also check exports directory 
+            if EXPORT_DIR.exists():
+                for item in os.listdir(EXPORT_DIR):
                     if item.endswith('.md'):
                         # Remove .md extension
                         name = item[:-3]

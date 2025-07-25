@@ -112,7 +112,7 @@ $ python scripts/slack_export.py
 
 * Creates a `venv` if missing, installs Playwright & downloads the Chromium browser.
 * Launches `higherdose.slack.slack_fetcher_playwright` which manages credentials automatically in `config/slack/`.
-* Markdown files are written to `data/processed/slack/markdown_exports/`.
+* Markdown files are written to `data/processed/slack/exports/`.
 
 Refer to `slack/README.md` for detailed credential setup.
 

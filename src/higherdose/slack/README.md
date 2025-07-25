@@ -62,7 +62,7 @@ python slack/slack_fetcher_playwright.py
 ### Files Created
 
 - `config/slack/playwright_creds.json` - Cached credentials (auto-updated)
-- `data/processed/slack/markdown_exports/` - Exported conversations in Markdown format
+- `data/processed/slack/exports/` - Exported conversations in Markdown format
 - `config/slack/conversion_tracker.json` - Tracks last fetched timestamps
 
 ## Legacy: Manual Cookie Method
@@ -128,5 +128,5 @@ config/slack/
 └── TA97020CV.env                  # Legacy credentials file
 
 data/processed/slack/
-└── markdown_exports/              # Exported conversations
+└── exports/                       # Exported conversations
 ``` 
