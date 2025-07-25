@@ -34,7 +34,7 @@ from dateutil import parser as date_parser
 # Can be overridden with the environment variable SLACK_COOKIE_DIR so that
 # repositories can keep creds inside the repo if desired.
 COOKIE_DIR = pathlib.Path(os.environ.get("SLACK_COOKIE_DIR", str(pathlib.Path.home() / ".slack_cookies")))
-TRACK_FILE = pathlib.Path("slack/conversion_tracker.json")
+TRACK_FILE = pathlib.Path("config/slack/conversion_tracker.json")
 EXPORT_DIR = pathlib.Path("slack/markdown_exports")
 ROLODEX_FILE = pathlib.Path("rolodex.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
