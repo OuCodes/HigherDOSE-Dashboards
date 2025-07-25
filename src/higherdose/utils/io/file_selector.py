@@ -15,7 +15,7 @@ from higherdose.utils.style import ansi
 
 
 
-def select_csv_file(directory="data/raw/stats", file_pattern="*.csv", prompt_message=None):
+def select_csv_file(directory="data/raw/stats", file_pattern="*.csv", prompt_message=None, max_items: int | None = None):
     """
     Interactive CSV file selection from a directory.
     
@@ -42,6 +42,10 @@ def select_csv_file(directory="data/raw/stats", file_pattern="*.csv", prompt_mes
     
     # Sort files by modification time (newest first)
     files.sort(key=os.path.getmtime, reverse=True)
+
+    # Limit to most recent N files if requested
+    if max_items is not None:
+        files = files[:max_items]
     
     # Display options
     print(f"\n{ansi.cyan}Available files in {directory}:{ansi.reset}")
