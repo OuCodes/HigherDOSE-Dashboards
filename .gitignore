@@ -1,8 +1,10 @@
 # Custom Files
+/.refs
 .DS_Store
 *.pickle
 client_secret_*.json
 **/mail/archive/
+secrets.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
