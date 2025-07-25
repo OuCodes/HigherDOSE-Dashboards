@@ -117,7 +117,7 @@ class TokenManager:
     static configuration and dynamic token artifacts.
     """
 
-    def __init__(self, storage_dir: str = "tokens"):
+    def __init__(self, storage_dir: Path = Path("config", "facebook", "tokens")):
         """
         Initialize TokenManager with storage directory.
 
