@@ -197,9 +197,24 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
         "access_token": token,
     }
     endpoint = f"{post_id}/comments"
+    print(f"\n{ansi.blue}DEBUG: Fetching comments for post {post_id}{ansi.reset}")
+    
     while True:
         data = graph_request(endpoint, params)
-        comments.extend(data.get("data", []))
+        
+        # Debug the response
+        if 'error' in data:
+            print(f"  {ansi.red}❌ Comments API Error:{ansi.reset}")
+            print(f"    Message: {data['error'].get('message', 'Unknown')}")
+            print(f"    Code: {data['error'].get('code', 'Unknown')}")
+            break
+            
+        comments_batch = data.get("data", [])
+        print(f"  {ansi.green}📥 Received {len(comments_batch)} comments in this batch{ansi.reset}")
+        if comments_batch:
+            print(f"    First comment preview: {comments_batch[0].get('message', 'No message')[:100]}...")
+        
+        comments.extend(comments_batch)
         paging = data.get("paging", {})
         next_url = paging.get("next")
         if not next_url:
@@ -208,6 +223,8 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
         parsed = urllib.parse.urlparse(next_url)
         endpoint = parsed.path.lstrip("/")
         params = dict(urllib.parse.parse_qsl(parsed.query))
+    
+    print(f"  {ansi.cyan}📊 Total comments fetched: {len(comments)}{ansi.reset}")
     return comments
 
 
@@ -292,6 +309,17 @@ def main(argv: Optional[List[str]] = None):
     total_comments = 0
     for post_id in post_ids:
         token = resolve_page_token(post_id, page_tokens, user_token)
+        # Debug: Show which token is being used
+        if "_" in post_id:
+            page_id = post_id.split("_", 1)[0]
+            if page_id in page_tokens:
+                token_type = f"page token (Page ID: {page_id})"
+            else:
+                token_type = "user token (fallback - page not found)"
+        else:
+            token_type = "user token (fallback - no page ID in post)"
+        print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id}")
+        
         comments = fetch_all_comments(post_id, token)
         all_comments[post_id] = comments
         total_comments += len(comments)
