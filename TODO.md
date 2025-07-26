@@ -30,9 +30,13 @@
 ## Product Data
 
 - [ ] Determine if this should just be a dataclass type thing
-- [ ] Fix `src/higherdose/product_data.py`, it does not inlude the full `docs/product-list.md` list
+- [x] Fix `src/higherdose/product_data.py`, it does not inlude the full `docs/product-list.md` list
 
 ## Email
 
 - [ ] Fix the trailing and leading whitespaces around links in certain emails.
 - [x] Move mail/archive to data/mail/exports
+
+## Facebook Comments
+
+- [ ] Maybe `data/facebook/ad-account-id.json` and `data/facebook/ad-ids.txt` should be in `config/facebook` instead of `data/facebook` 
