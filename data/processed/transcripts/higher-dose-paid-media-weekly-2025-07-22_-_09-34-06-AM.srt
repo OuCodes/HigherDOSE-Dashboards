@@ -1,0 +1,964 @@
+1
+00:00:00,009 --> 00:00:00,129
+there.
+
+2
+00:00:00,169 --> 00:00:01,430
+We're going to be scaling down.
+
+3
+00:00:01,490 --> 00:00:08,595
+Sound of like in Pemphat, just to make sure that we're sending as much of our budget as possible to the efficient campaigns like Bodycare and Red Light.
+
+4
+00:00:09,616 --> 00:00:09,996
+Okay, Chris.
+
+5
+00:00:10,837 --> 00:00:18,342
+Related to this, the Nordstrom anniversary sale has continued to be strong, particularly in blanket.
+
+6
+00:00:18,382 --> 00:00:20,784
+I don't really know why they're more successful.
+
+7
+00:00:20,804 --> 00:00:21,805
+I mean, it's on sale, but like,
+
+8
+00:00:23,148 --> 00:00:38,863
+There's even more demand that actually that runs all the way to August the fourth, you know, it's been slowing down, but there's a little lot of demand going through that man or an hour earlier, so that may have something to do with this, but not sure.
+
+9
+00:00:38,903 --> 00:00:43,327
+I mean, there's everything we sell for them is essentially, you know, on sale for security here, right?
+
+10
+00:00:43,348 --> 00:00:44,709
+So a little
+
+11
+00:00:46,107 --> 00:00:47,088
+Now, that's great contact.
+
+12
+00:00:47,128 --> 00:00:52,476
+It's actually very helpful because I'm sure the sound of like a demand offline isn't probably a lot higher than it usually is just due to that.
+
+13
+00:00:52,536 --> 00:00:55,440
+So I think that probably makes sense while we're seeing a little bit of slip performance on the come.
+
+14
+00:00:58,412 --> 00:01:01,955
+Bundle campaign, we're going to be scaling this up just as we roll out more creatives into the campaign.
+
+15
+00:01:01,975 --> 00:01:06,558
+We started it with a super, super low budget, but also that is something that we want to do a lot of testing in.
+
+16
+00:01:06,598 --> 00:01:15,423
+We right now are doing for volume of purchases, but we think purchase value will be a worthy test down the line once we get our budget there just because it's an AOV play.
+
+17
+00:01:15,443 --> 00:01:20,827
+We might as well make it as much of an AOV play as possible and lead you to the purchase value optimization.
+
+18
+00:01:20,867 --> 00:01:22,008
+So that's in the pipeline as well.
+
+19
+00:01:23,463 --> 00:01:25,485
+Overall, we're pretty encouraged with the state of the ad account.
+
+20
+00:01:25,525 --> 00:01:29,669
+I know the last seven data is a little bit weird, but as I said, the weekend's been really great.
+
+21
+00:01:29,789 --> 00:01:31,450
+And we're going to get pressing it set up soon.
+
+22
+00:01:31,510 --> 00:01:35,014
+And we actually have a lot of really solid momentum on meta, which is nice.
+
+23
+00:01:36,475 --> 00:01:41,360
+Any media buying meta questions before we go to creative report really quick?
+
+24
+00:01:46,371 --> 00:01:55,852
+All right, so kind of in the same light as my little body care and supplements are doing all the heavy lifting, really apparent moment of looking at the creative report here, right?
+
+25
+00:01:56,549 --> 00:01:59,872
+I know we talked about Shelley Edington a lot, but she does amazing stuff for us.
+
+26
+00:02:00,752 --> 00:02:04,555
+It's super interesting to me that for body sculpt, it's a lot of the video content that's leading the way.
+
+27
+00:02:04,915 --> 00:02:12,980
+I think that's a really interesting fly, especially when we're looking at the click stats here, really, really encouraging, like we're seeing click rates above 1.7%, which is awesome.
+
+28
+00:02:14,161 --> 00:02:18,865
+The Jessica Elise, I hope I'm saying that right, her video, doing very, very well, which is nice.
+
+29
+00:02:20,595 --> 00:02:22,817
+It's basically body sculpt and influencers.
+
+30
+00:02:22,917 --> 00:02:33,903
+That's really carrying the account the past seven days, which kind of makes sense considering we have not a ton of content live in the accounts, the ratio of which that content is UGC or whitelisting is higher than usual.
+
+31
+00:02:34,283 --> 00:02:34,843
+That makes sense.
+
+32
+00:02:34,903 --> 00:02:36,284
+Sorry, that might have been really poor phrasing.
+
+33
+00:02:37,184 --> 00:02:42,687
+But Dr. Cabral always killing it, always getting clicks, always getting conversions, doing the good stuff for us, which is awesome.
+
+34
+00:02:44,208 --> 00:02:46,990
+But yeah, that's pretty much it on the metaside.
+
+35
+00:02:47,610 --> 00:02:49,431
+We can take it over to Google.
+
+36
+00:02:52,395 --> 00:02:54,497
+Awesome, let me share my screen.
+
+37
+00:02:58,719 --> 00:02:59,440
+All right.
+
+38
+00:03:00,701 --> 00:03:09,607
+So Google, last seven versus the previous period, pretty encouraging data, was really great week over the last seven days.
+
+39
+00:03:10,227 --> 00:03:20,615
+Spends were scaled back slightly, Jordan, but revenue improved, leading to an improvement in ROAS and CAC efficiencies, both in platform and not being won by people.
+
+40
+00:03:22,056 --> 00:03:29,200
+Spins as I mentioned was reduced before we primarily because we scaled down some on the performing search campaigns.
+
+41
+00:03:30,241 --> 00:03:47,011
+But since we want to spend on Google to close the year over your gap, I've scaled those search campaigns back up and some of the PMX and all the PMX campaigns that generated incremental revenue from our scaling tests just to spend up and close that year over your gap.
+
+42
+00:03:48,311 --> 00:04:02,078
+And as we discussed and aligned over email on Slack, wherever I see incremental results from the scaling, I'll continue to ramp them up so that we can drive incremental results.
+
+43
+00:04:05,495 --> 00:04:26,183
+Moving on to some insights over the last seven days, our top five revenue generating campaigns were some of our usuals, our brand plastic products, PMX campaign, our co-brand search campaign, our brand plus product search campaign, and the shopping campaign coming in fourth, and the non-brand PMX campaign.
+
+44
+00:04:27,744 --> 00:04:47,537
+interesting inside on the shopping campaign it wasn't spending for a while because the target rose I think was a little too high and the camp Google wasn't able to achieve their target rose so generally what happens is then Google reduces spending so I've reduced our target rose that just to give
+
+45
+00:04:47,917 --> 00:05:01,728
+the campaign some waiting room just to allow me to spend more and it has in fact increased spend in generated conversions and coming at the fourth top five brand new generating campaigns over the last seven days.
+
+46
+00:05:04,011 --> 00:05:20,542
+Atop five revenue generating products over the last seven days was the PEMP Promet, then the PEMP Promet with cover, then the Sonner Blanket, and lastly the Sonner Blanket with one name set based on the platform data.
+
+47
+00:05:22,203 --> 00:05:30,949
+Atop five revenue generating states were some of our usual Kelly, Florida, Texas, New York, and lastly Michigan.
+
+48
+00:05:33,459 --> 00:05:37,962
+Finally, I just wanted to share some demand insights over the last seven days.
+
+49
+00:05:38,743 --> 00:05:48,050
+Obviously, we scaled it up to $500 on the 13th and wanted to run it for six weeks to understand true impact.
+
+50
+00:05:48,851 --> 00:05:52,553
+So over the last seven days, with that increase, we spent about $3,600 and $29 generated
+
+51
+00:05:57,597 --> 00:06:04,759
+$4,100 in revenue at a RSS of $1.14 and a cap of $450,000 based on impact form data.
+
+52
+00:06:05,859 --> 00:06:12,121
+It also has reported 2028 view through conversions, which is great to see.
+
+53
+00:06:12,221 --> 00:06:15,302
+But generally, this is slightly over reported on Google's part.
+
+54
+00:06:16,022 --> 00:06:22,744
+But still, regardless, it's quite encouraging to see what this campaign is doing at the scale.
+
+55
+00:06:25,526 --> 00:06:32,156
+Any questions on those insights before I move on to the creative report?
+
+56
+00:06:32,456 --> 00:06:33,478
+Awesome.
+
+57
+00:06:33,518 --> 00:06:34,840
+Thanks, man, for the breakdown.
+
+58
+00:06:35,421 --> 00:06:39,467
+On the campaigns that you scale this weekend, how are they performing so far into the week?
+
+59
+00:06:41,246 --> 00:06:41,846
+Yeah.
+
+60
+00:06:41,966 --> 00:06:45,588
+So most of those campaigns are actually driving incremental revenue.
+
+61
+00:06:45,668 --> 00:06:47,049
+So that's great.
+
+62
+00:06:47,309 --> 00:06:48,690
+Some of the campaigns are not.
+
+63
+00:06:49,290 --> 00:06:51,211
+I'll let you know which ones exactly.
+
+64
+00:06:51,611 --> 00:07:02,177
+But I think given the time to convert for high-dose because we have a higher AOV, we might need to allow it a few more days before we scale them back down.
+
+65
+00:07:02,657 --> 00:07:02,697
+OK.
+
+66
+00:07:02,717 --> 00:07:02,877
+Yeah.
+
+67
+00:07:03,317 --> 00:07:03,637
+Go ahead.
+
+68
+00:07:06,058 --> 00:07:09,981
+Overall, it's grinding incrementally loved, so encouraging.
+
+69
+00:07:10,442 --> 00:07:10,702
+Cool.
+
+70
+00:07:10,842 --> 00:07:18,729
+Yeah, if we continue to see that trend, let's keep pushing there down to keep scaling that as we get closer and closer into the month, definitely want to catch up on revenue.
+
+71
+00:07:19,109 --> 00:07:25,074
+And then for the top five revenue generating products, are those also like leading in efficiency?
+
+72
+00:07:25,315 --> 00:07:33,622
+Or I know like, obviously we've seen some softness on like the Pimp Pro Matt and the Son of Blanket this month compared to year over year.
+
+73
+00:07:34,122 --> 00:07:48,097
+some periods of those are performing better or if we're just driving more spin in that direction they are higher AOV products that kind of make sense by the top revenue generators but also want to see are like are they performing efficiently and like is there any more room to push there too?
+
+74
+00:07:50,066 --> 00:07:51,606
+That's a great question, John.
+
+75
+00:07:51,806 --> 00:07:54,807
+Let me get back to you on the exact efficiency numbers.
+
+76
+00:07:54,867 --> 00:07:56,927
+I don't have that right at this moment.
+
+77
+00:07:57,547 --> 00:08:03,088
+I'll let you know if it's because more spend is going there or if it's also more efficient compared to other things.
+
+78
+00:08:03,508 --> 00:08:03,828
+Awesome.
+
+79
+00:08:04,229 --> 00:08:06,009
+And then last question on demand, Jan.
+
+80
+00:08:06,929 --> 00:08:09,509
+I know we are like a 1.6 spending $300 a day.
+
+81
+00:08:09,529 --> 00:08:15,070
+I don't expect to see like a whole lot of efficiency from this campaign and judging from the rep set.
+
+82
+00:08:15,431 --> 00:08:17,671
+The 1.6 was actually pretty good performance.
+
+83
+00:08:18,391 --> 00:08:22,173
+Just kind of curious, what are your thoughts on how demand genus performing?
+
+84
+00:08:23,954 --> 00:08:31,359
+Yeah, I think definitely, as I mentioned, the margin is generally for to create awareness and drive consideration.
+
+85
+00:08:31,399 --> 00:08:35,261
+So we might not see direct conversion results from that campaign.
+
+86
+00:08:35,601 --> 00:08:42,425
+But in six weeks, we should essentially see a lifting our overall channel traffic and conversion.
+
+87
+00:08:42,485 --> 00:08:43,426
+So they should
+
+88
+00:08:43,926 --> 00:08:56,989
+improve awareness and consideration and bring in new uses to the funnel, and they will later down the line purchase through the search shopping campaigns, the PMAX campaigns, or organically through Google.
+
+89
+00:08:57,249 --> 00:09:05,692
+So we should essentially look at all those kind of metrics to understand the true impact, which we can do once we are done with the six-week test.
+
+90
+00:09:09,013 --> 00:09:09,513
+No worries.
+
+91
+00:09:11,539 --> 00:09:14,861
+Yeah, moving on to some of the creative insights.
+
+92
+00:09:16,522 --> 00:09:35,191
+So for the top one and creative report, basically I pulled a motion report, but what I noticed is that statics, the margin statics are not pulling into motion and we actually reached out to them and they said that statics are currently not supported in motion reports, motion, dimension reports.
+
+93
+00:09:36,257 --> 00:09:42,308
+So just wanted to note a few insights on statics that are performing well under top panel and internal.
+
+94
+00:09:43,210 --> 00:09:47,598
+And I also do have a video motion report for you guys over here, which I will go to next.
+
+95
+00:09:48,563 --> 00:09:59,826
+So in the top on our creative report, we're looking at the first of June to the 20th of July, any ad that has spent over $100, that is a CPM below average, which is $8.
+
+96
+00:10:00,426 --> 00:10:10,469
+Just to understand which campaigns are really driving impressions, spend impressions, and also driving efficient impressions at that.
+
+97
+00:10:11,950 --> 00:10:24,000
+So what we saw was that the HD 28 batch, the body style of the statics version 7 to 18 was doing really well in driving efficient breach.
+
+98
+00:10:25,221 --> 00:10:37,572
+We also saw that HD 060 batch, once again a body style statics batch focusing on the newness also did really well in terms of driving efficient breach.
+
+99
+00:10:39,540 --> 00:10:44,323
+Going into some of the videos, let me share this motion report.
+
+100
+00:10:46,465 --> 00:10:52,228
+I believe two weeks back, we saw the same videos as well.
+
+101
+00:10:52,749 --> 00:11:00,574
+But they're still driving a really good amount of impressions, really good view rates, and a below average CPM.
+
+102
+00:11:00,594 --> 00:11:09,020
+So they're driving a very good efficient reach here in this red light mask problem solution type.
+
+103
+00:11:13,063 --> 00:11:30,979
+We start off with the hook find lines just with their match and this multi-skill UGC video from this creator speaking to the self-care angle that is also really doing that on the top of the funnel.
+
+104
+00:11:33,922 --> 00:11:35,223
+Going back to
+
+105
+00:11:36,883 --> 00:11:40,507
+running dot in our mid funnel creative report.
+
+106
+00:11:41,448 --> 00:11:44,991
+I looked at once again the first of June to the 20th of July.
+
+107
+00:11:45,011 --> 00:11:50,657
+Any add that has been $100 in our driving high conversions or good view rates.
+
+108
+00:11:51,458 --> 00:11:53,640
+Once again, statics are not supported yet.
+
+109
+00:11:55,962 --> 00:11:59,444
+And, nevertheless, what we can see is some body-style aesthetics.
+
+110
+00:11:59,804 --> 00:12:08,668
+Every version, version 1 to 18, are driving a good amount of spend, a good amount of view through conversions or direct conversions.
+
+111
+00:12:08,688 --> 00:12:10,249
+So, that's great to see.
+
+112
+00:12:11,209 --> 00:12:20,194
+We also saw that the HD-16 can, of course, statics also are driving a good amount of conversion that are higher spend.
+
+113
+00:12:21,395 --> 00:12:26,139
+So I just wanted to share those insights going into the video report.
+
+114
+00:12:29,082 --> 00:12:42,175
+The midfinal video report, here we can see two common ads regarding the PEMP format, which is more of a problem solution type app, which is this one.
+
+115
+00:12:49,841 --> 00:12:57,967
+basically introducing the product and talking about the different benefits of using it.
+
+116
+00:12:58,887 --> 00:13:00,789
+And this one, which are quite similar.
+
+117
+00:13:04,605 --> 00:13:11,668
+We introduce a problem and then plug the product as a solution to alleviate those problems that people face.
+
+118
+00:13:11,708 --> 00:13:16,270
+So both of those videos are driving a good amount of you through conversions at a higher spend.
+
+119
+00:13:16,330 --> 00:13:17,370
+So that's great to see.
+
+120
+00:13:17,891 --> 00:13:23,033
+We also see one body scarf to video HD 27 batch right over here.
+
+121
+00:13:29,889 --> 00:13:32,191
+starting with the hope to use our body starts.
+
+122
+00:13:32,491 --> 00:13:47,441
+We need the surface that is also driving a good amount of view through conversions and also a really good view rate, meaning that people are interested in watching it till the end, 31% of 32% of people who come across the ad watch it till the end.
+
+123
+00:13:48,622 --> 00:13:55,627
+It also has a really good CPM well below account average showing that it's driving efficient reach.
+
+124
+00:13:59,084 --> 00:14:02,326
+Yeah, that's it from me from a creative perspective.
+
+125
+00:14:02,406 --> 00:14:04,488
+Any questions on the creative reports?
+
+126
+00:14:08,850 --> 00:14:09,951
+Awesome.
+
+127
+00:14:10,211 --> 00:14:13,593
+I will keep it back to Jan, I guess.
+
+128
+00:14:14,354 --> 00:14:15,354
+Yeah, I'll take it from you.
+
+129
+00:14:15,875 --> 00:14:16,295
+Thanks, Bill.
+
+130
+00:14:21,318 --> 00:14:23,559
+So, to talk this week is a little bit interesting.
+
+131
+00:14:23,619 --> 00:14:24,340
+The numbers are
+
+132
+00:14:25,410 --> 00:14:31,633
+just very, very little week over week because we made that entire, like we pretty much flipped the entire account over on the late Thursday night.
+
+133
+00:14:32,433 --> 00:14:35,815
+So about half the data is from like the old structure and then we have the new structure going on.
+
+134
+00:14:35,875 --> 00:14:39,537
+So right now we're just like still in the learning phase the first few days of that new structure here.
+
+135
+00:14:40,517 --> 00:14:43,499
+That's that we did pull down, spend really significantly over the last week.
+
+136
+00:14:44,039 --> 00:14:49,721
+We dropped spend from spending roughly 960 a day to now 760 and that'll actually drop even further today towards 720.
+
+137
+00:14:51,082 --> 00:15:08,298
+And that servers all the few things one is we turned off the smart plus campaign because that was be really testing just all the products in there as like penthan the song blanket the hat mask and body sculpt And now we switch the thought the the kind of structure the account towards just let's focus on you know each reading each of these products at their own storefront.
+
+138
+00:15:08,318 --> 00:15:16,305
+So we're going We have the mask at sorry, excuse me the active and the body sculpt is the only two products active and then the traffic campaign is the third thing that's active right now
+
+139
+00:15:17,796 --> 00:15:20,882
+We've reduced all the spend in those brought those down a pretty significant amount.
+
+140
+00:15:21,404 --> 00:15:26,114
+So we're focusing on just those two products as we kind of warm up the hat group and campaign.
+
+141
+00:15:27,116 --> 00:15:31,198
+Yeah, I group the hat I group and campaign right now is running a broad campaign as well as retargeting.
+
+142
+00:15:31,598 --> 00:15:39,622
+But I thought I was one thing that I just wanted to know just generally the retargeting campaign CPI was around really, really significantly while the broad is actually a half of the retargeting right now.
+
+143
+00:15:40,323 --> 00:15:48,967
+So definitely trying to play with the budgets a little bit more to see if we can allocate a little bit more from the retargeting into the broad because we are running $150 a day behind a $4 dollar product.
+
+144
+00:15:49,688 --> 00:15:51,489
+So we are just trying to reallocate those to
+
+145
+00:15:52,677 --> 00:15:57,640
+to see if we can lower the cack on just and get the proper reach that we should be really do expect on the hat campaign.
+
+146
+00:15:59,161 --> 00:16:05,606
+The bicycle funnel is printing down a little bit, but we've been refreshing this and has been relatively consistent over the last two weeks looking at a 14-day period.
+
+147
+00:16:05,946 --> 00:16:10,769
+So I'm not super worried about that one, but I definitely want to make sure that I continue to refresh that.
+
+148
+00:16:10,789 --> 00:16:13,671
+I have plenty of content right now to work with to keep the funneling through there.
+
+149
+00:16:15,071 --> 00:16:20,737
+As for the universal metrics, they've actually improved week over week, as we've been transitioning the account over to a new structure.
+
+150
+00:16:20,978 --> 00:16:31,169
+The traffic campaign is held really, really steadily, as well as the just tropical metrics in the conversion based campaigns, 39% cost per click and 1.7 click the rate on these is really, really great.
+
+151
+00:16:31,950 --> 00:16:35,414
+And then if a land paid fee rate, as we kind of lowered the
+
+152
+00:16:36,174 --> 00:16:49,966
+excuse me, as we had a higher span on the traffic campaign before we'd expected, I guess, these line of pitch eras to be a little bit lower and now that we lower the span on the traffic campaigns, that numbers should start to kind of raise a little bit, so we're doing a little bit better on that.
+
+153
+00:16:50,026 --> 00:16:50,827
+I'm so good to see there.
+
+154
+00:16:52,788 --> 00:16:56,792
+The grid report was, let me make sure that this is the correct screen.
+
+155
+00:16:57,994 --> 00:17:13,384
+Yeah, before you jump into that, do you think it would make sense to test one product on Tiktok, given that performance has been trending not necessarily in the right direction, and our AOVs are higher, so it's letting you between two campaigns might make it a little bit difficult to get traction on any one.
+
+156
+00:17:13,904 --> 00:17:22,109
+So I'm down to just focus on like body sculpt if that makes sense to everyone else, or I know I think we spoke yesterday about Tiktok and red light trending there.
+
+157
+00:17:22,169 --> 00:17:27,372
+So definitely just want to align on making sure, I don't know where to.
+
+158
+00:17:28,564 --> 00:17:41,551
+That we're allocating our resources wisely there just because the channel hasn't been a producer and then also just want to get congruency across the attribution miles that we're using because I see it was model views thrown on that one day quick.
+
+159
+00:17:42,612 --> 00:17:45,414
+Yeah, so good, but the progress both of the things there.
+
+160
+00:17:45,434 --> 00:17:48,776
+Yeah, so I was actually very quickly and I was just texting earlier and the
+
+161
+00:17:50,086 --> 00:17:52,928
+to try to increase the spend there, yeah, on one of the campaigns.
+
+162
+00:17:52,948 --> 00:17:58,711
+So I guess the original plan was way back like five, six weeks ago, we had decided we were going to kind of focus on two products.
+
+163
+00:17:59,732 --> 00:18:06,816
+Once we moved towards this highway, we, once we pivoted away from the low A of the products that the Saratonin soak and the ritual areas are the ritual kit, et cetera.
+
+164
+00:18:07,336 --> 00:18:10,037
+We moved towards, okay, let's try and focus on one or two products.
+
+165
+00:18:10,797 --> 00:18:15,198
+And we had hoped that we could do $150 a day behind two products and made this work.
+
+166
+00:18:15,698 --> 00:18:25,241
+The last three days, it kind of pushed us towards thinking otherwise as I'm just kind of referring to earlier, the CPMs being double on the retargeting campaign of one of the campaigns is definitely not good to see.
+
+167
+00:18:25,861 --> 00:18:27,542
+So I do want to try and flip that.
+
+168
+00:18:28,936 --> 00:18:29,917
+towards one of the products.
+
+169
+00:18:30,017 --> 00:18:35,964
+I don't want to give up on the hat in general, just as like a as a product I talk, but doesn't mean that we'd have to focus on it right now.
+
+170
+00:18:35,984 --> 00:18:40,369
+I do think the body sculpt is a better position product at the moment, but I don't think the roof.
+
+171
+00:18:41,252 --> 00:18:51,015
+Lopped on the hat and I don't think that that because we've putting $100 a day on 40 $400 products the cat is going to be really really high And online there for sure.
+
+172
+00:18:51,075 --> 00:19:10,742
+I mean, we see like certain products that perform so super well on matter either So sometimes it may make sense just to prioritize what does work best allocate more resources there get more efficiency drive more revenue So like if we're seeing that with body sculpt then like I'm down to shift and just pause on our light hat until we've kind of stabilized the channel And just have seen you know more consistency from it
+
+173
+00:19:11,912 --> 00:19:29,968
+100% yeah, okay, so I'll shift these budgets around today and I was already planning on having refresh yesterday and going to refresh again today the body spool campaign body sculpt campaign sorry I can speak and just trying to focus around a little bit more cool and so the you're the second question model news.
+
+174
+00:19:30,589 --> 00:19:33,892
+Yes, the model is so that one was based on the
+
+175
+00:19:34,878 --> 00:19:39,361
+Let me do that, the comparative analysis on that doc, the, whatever it's you're just going to know.
+
+176
+00:19:39,642 --> 00:19:43,584
+The one day click and the one day click model views, not significantly different in performance.
+
+177
+00:19:44,125 --> 00:19:49,749
+But it did take away the model views point was that it takes away the last purchase click on Google.
+
+178
+00:19:49,789 --> 00:19:57,735
+And because the CDM's have been lower in general on the better performing ones, like in body sculpt, the one that the CIRCPM's were in the red hat, the red light hat.
+
+179
+00:19:58,584 --> 00:20:11,471
+That told me that we can take away the last click on Google and apply that performance to TikTok and Meta as opposed to just giving 100% of the credit towards the last click on Google.
+
+180
+00:20:12,131 --> 00:20:14,293
+I can start reporting on multiple different attribution windows.
+
+181
+00:20:14,533 --> 00:20:22,297
+This one I thought was interesting this week because of that CPM reason, but I'm happy to just put out one day click and one day click model view for the first year of the future.
+
+182
+00:20:22,797 --> 00:20:43,606
+Yeah, no, that would be helpful and give additional kind of text like others on the call as far as like what TikTok is doing within the ecosystem so that that can be reflected in these weekly reports and a bit just be communicated a bit easier, but yeah, we could definitely start pushing the that same traffic numbers all those numbers that are putting that that dog a couple weeks together can start pulling into the numbers this week.
+
+183
+00:20:43,626 --> 00:20:45,267
+I don't think this sounds good.
+
+184
+00:20:46,028 --> 00:20:46,828
+You got it, right?
+
+185
+00:20:48,031 --> 00:20:53,337
+I'll go ahead and jump to a greater report real quick, and then I know we left you and that's a lot of people and I'm sure we have time for everything else.
+
+186
+00:20:53,357 --> 00:20:54,498
+Okay.
+
+187
+00:21:04,652 --> 00:21:09,655
+So these, the credit report here is one thing I just wanted to call out, not too many.
+
+188
+00:21:09,955 --> 00:21:11,716
+These are fairly, seven, these are fairly new.
+
+189
+00:21:11,736 --> 00:21:19,459
+One thing I just want to make sure here is this is not the only creator, the second one here, is not the only one that's in this ag group.
+
+190
+00:21:19,599 --> 00:21:27,143
+It's because it was in a spark, when it's sparked and it was in a smart plus game, and at some point it's not pulling in correctly, so this actually has like multiple different ads, just all summed up into one thing here.
+
+191
+00:21:28,337 --> 00:21:33,643
+Um, but this one I wanted to call out because the aesthetic of the body sculpting has definitely been killing it.
+
+192
+00:21:33,663 --> 00:21:44,516
+Um, so I'm definitely pleased with this and want to make sure that we're pushing as much as we can towards this kind of like aesthetics, life, education, feel, because the first like the first, I'm going to see if this can apply.
+
+193
+00:21:45,878 --> 00:21:45,958
+Um,
+
+194
+00:21:48,564 --> 00:21:51,787
+The one thing that, yes, this is the part that I thought was really, really interesting.
+
+195
+00:21:52,187 --> 00:21:58,693
+This is different than the other versions of this, where we're not calling on necessarily all the benefits continuously.
+
+196
+00:21:59,254 --> 00:22:01,976
+And that was one thing that I thought was interesting about this one.
+
+197
+00:22:02,056 --> 00:22:06,140
+And the aesthetic and just the music overall, I know TikTok is pushing this type of sound recently.
+
+198
+00:22:06,961 --> 00:22:09,303
+I was saying that work really well, particularly.
+
+199
+00:22:09,323 --> 00:22:13,386
+And this Q and A thing I know is, four and a half million dollars here.
+
+200
+00:22:14,764 --> 00:22:18,267
+a creative that had done really, really well for us about four, six weeks ago.
+
+201
+00:22:18,407 --> 00:22:21,989
+And I've put up a different version of it as we relaunched the hat.
+
+202
+00:22:22,450 --> 00:22:26,773
+And I want to keep playing with the position of it because the cost work look is really good and the click the rates really good and encouraging.
+
+203
+00:22:27,373 --> 00:22:31,136
+So while it could not be a hack conversion tool, it's definitely good to use for traffic.
+
+204
+00:22:31,276 --> 00:22:35,079
+So that's something that I've just been pushing towards in different parts of the account.
+
+205
+00:22:37,701 --> 00:22:44,923
+So I see that obviously body sculptors performing best on TikTok.
+
+206
+00:22:45,584 --> 00:22:51,546
+We are focused on the core four, like when we brief new creative each week, but body sculpt doesn't get included in that.
+
+207
+00:22:51,986 --> 00:22:56,027
+Where are we at with creative support on body sculpt for TikTok?
+
+208
+00:22:56,047 --> 00:22:58,468
+Because we may need to index more of that this weekend.
+
+209
+00:23:00,147 --> 00:23:03,270
+Yeah, we were probably need more I'd say in two weeks.
+
+210
+00:23:03,750 --> 00:23:23,645
+I have I think I have like seven or eight piece of creative that I've yet to use right now to refresh through But that's something that would be definitely in the pipeline if we're just for focusing fully on body scopes pulling away from red light had the creative is going a little bit faster So I have like seven piece of creative right now So definitely good for this week, but that'd be something that I would definitely look for towards the end of next week
+
+211
+00:23:24,085 --> 00:23:24,906
+Okay, good to know.
+
+212
+00:23:25,266 --> 00:23:30,911
+And then Jake circling back to you because we're seeing UGC content pool really well on meta.
+
+213
+00:23:31,972 --> 00:23:34,073
+Do we have enough to support you there as well?
+
+214
+00:23:35,214 --> 00:23:36,075
+Great timing.
+
+215
+00:23:36,155 --> 00:23:37,056
+Abigail, you want to take it?
+
+216
+00:23:37,576 --> 00:23:47,224
+Yeah, I actually was going through and doing a little bit of a UGC audit just because I want to make sure that we're utilizing all of the UGC that in a stage has been able to hand over to us.
+
+217
+00:23:47,605 --> 00:23:48,966
+So I just went through when I'm just
+
+218
+00:23:50,507 --> 00:23:53,969
+making note of everything that's live, everything that's turned off in that sheet.
+
+219
+00:23:54,709 --> 00:24:11,058
+We do still have quite a bit to work through, so I am feeling good about where we're at with UGC, but we will make sure to communicate especially when it comes to breaking it down per skew if there's any gaps that we're seeing, but for now, I would say for the next two weeks, we should be good there.
+
+220
+00:24:11,778 --> 00:24:12,418
+Thank you so much.
+
+221
+00:24:12,899 --> 00:24:13,219
+Awesome.
+
+222
+00:24:13,939 --> 00:24:23,943
+And just putting this on the table for anyone else, uh, anybody else need creative support in any area from a dimension may need some I look like there's only two campaigns.
+
+223
+00:24:23,963 --> 00:24:25,184
+I know we're not too creative.
+
+224
+00:24:25,244 --> 00:24:26,284
+I know we're not spending a lot there.
+
+225
+00:24:26,905 --> 00:24:29,746
+Um, but yeah, I just want to make sure that you guys were supporting with other things you need.
+
+226
+00:24:31,269 --> 00:24:33,291
+Yeah, that's on the margin.
+
+227
+00:24:33,331 --> 00:24:41,757
+We have launched a lot of creative actually that's already live, but isn't garnering spends because the top spenders are driving really good results.
+
+228
+00:24:41,917 --> 00:24:50,303
+So as they start to win off, I will make sure to turn them off so the newer ads that haven't garnered spend will be in traction.
+
+229
+00:24:50,763 --> 00:24:50,983
+Cool.
+
+230
+00:24:51,323 --> 00:24:51,563
+Awesome.
+
+231
+00:24:54,506 --> 00:24:56,307
+All right, I think we're good to go.
+
+232
+00:24:56,367 --> 00:24:58,008
+Is there anything else on your guys's side?
+
+233
+00:24:58,028 --> 00:24:59,129
+We didn't get a chance to touch on.
+
+234
+00:25:01,660 --> 00:25:02,620
+Okay, perfect.
+
+235
+00:25:02,721 --> 00:25:03,661
+We will stay close.
+
+236
+00:25:03,781 --> 00:25:08,583
+I do have some creative to follow up with Laura on, but I think we're good for now.
+
+237
+00:25:08,663 --> 00:25:10,903
+Thank you so much for your time and we will talk very soon.
+
+238
+00:25:11,343 --> 00:25:11,704
+Thanks guys.
+
+239
+00:25:11,724 --> 00:25:12,844
+Thanks guys.
+
+240
+00:25:39,287 --> 00:25:46,278
+I'm gonna clean the fucking room there.
+
+241
+00:50:57,858 --> 00:50:57,944
+you
+
