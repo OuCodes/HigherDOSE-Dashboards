@@ -10,18 +10,17 @@ markdown tables summarising performance by product and by product category.
 The original channel-level analytics remain intact via re-use of
 `report_analysis_weekly` helper functions.
 """
-import ast
 import re
 from datetime import datetime, timedelta
-
-import numpy as np
-import pandas as pd
 
 from . import weekly as base
 import glob, os
 import argparse
 from pathlib import Path
 from higherdose.utils.io.file_selector import select_csv_file
+
+import numpy as np
+import pandas as pd
 
 
 # -------------------------------------------------------------
@@ -106,36 +105,14 @@ def _fmt_delta(cur: float, prev: float, prefix: str = "$", digits: int = 0) -> s
 # 🔎  Product & Category Mapping Helpers
 # -------------------------------------------------------------
 
-def load_product_mappings(md_path: str = "docs/product-list.md"):
-    """Parse the product-list markdown to build mappings without importing it as a module.
-
-    We look for literal `categories = {...}` and optional `aliases = {...}` blocks and
-    evaluate them safely with `ast.literal_eval` so we avoid executing any other code
-    (like the file-writing section).
-    """
-    with open(md_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    def _extract_dict(name: str):
-        pattern = rf"{name}\s*=\s*(\{{.*?\}})"  # greedy balanced with simple heuristic
-        match = re.search(pattern, content, re.S)
-        if match:
-            try:
-                return ast.literal_eval(match.group(1))
-            except Exception:
-                pass
-        return {}
-
-    categories_dict = _extract_dict("categories")
-    aliases_dict = _extract_dict("aliases")
-
-    # Build product → category mapping
-    product_to_category: dict[str, str] = {}
-    for cat, prods in categories_dict.items():
-        for prod in prods:
-            product_to_category[prod] = cat
-
-    # Ensure a default bucket for unmatched rows
+def load_product_mappings():
+    """Load product mappings from the canonical product_data module."""
+    from .. import product_data
+    
+    # Use the canonical data directly
+    product_to_category = product_data.PRODUCT_TO_CATEGORY.copy()
+    
+    # Ensure a default bucket for unmatched rows  
     product_to_category.setdefault("Unattributed", "Unattributed")
 
     # Normalize helper
@@ -148,7 +125,9 @@ def load_product_mappings(md_path: str = "docs/product-list.md"):
         s = re.sub(r"\s+", " ", s).strip()
         return s
 
-    alias_map = {_norm(k): v for k, v in aliases_dict.items()}
+    # Use the pre-built aliases from product_data, but apply normalization
+    alias_map = {_norm(k): v for k, v in product_data.ALIASES.items()}
+    
     # Ensure canonical names map to themselves
     for prod in product_to_category:
         alias_map.setdefault(_norm(prod), prod)
