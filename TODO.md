@@ -17,6 +17,7 @@
 - [x] Maybe rethink data/ads naming convention should it be timeframe? or csv?
 - [x] Remove top-level `slack` directory but make sure the tracker and creds in src/higherdose/slack are up to date.
 - [x] Move `reports` into `data/reports`
+- [ ] Move `docs/winning-prompts.txt` into `data/prompts` each should be in its own .txt file
 
 ## Scripting
 
