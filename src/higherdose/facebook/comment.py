@@ -85,9 +85,11 @@ def load_latest_tokens() -> Tuple[str, Dict[str, str]]:
     for page_id, cfg in tm.page_configs.items():
         if cfg.page_access_token and cfg.page_access_token.access_token:
             page_tokens[page_id] = cfg.page_access_token.access_token
-            logger.debug("Loaded page token for page_id: %s (length: %d chars)", page_id, len(cfg.page_access_token.access_token))
+            logger.debug("Loaded page token for page_id: %s (length: %d chars)",
+                        page_id, len(cfg.page_access_token.access_token))
 
-    logger.info("Token loading complete - user token: available, page tokens: %d pages", len(page_tokens))
+    logger.info("Token loading complete - user token: available, page tokens: %d pages",
+               len(page_tokens))
     return user_token, page_tokens
 
 
@@ -99,13 +101,17 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
     url = f"{BASE_URL}/{endpoint}?{query}"
 
     # Log request details (sanitize access token)
-    sanitized_params = {k: (v[:20] + "..." if k == "access_token" and len(str(v)) > 20 else v) for k, v in params.items()}
+    sanitized_params = {
+        k: (v[:20] + "..." if k == "access_token" and len(str(v)) > 20 else v)
+        for k, v in params.items()
+    }
     logger.info("Making Graph API request to endpoint: %s", endpoint)
     logger.debug("Request parameters: %s", sanitized_params)
     logger.debug("Full URL (first 200 chars): %s", url[:200])
 
     if retry_count > 0:
-        logger.warning("Retry attempt %d/%d for endpoint: %s", retry_count, MAX_RETRIES, endpoint)
+        logger.warning("Retry attempt %d/%d for endpoint: %s",
+                      retry_count, MAX_RETRIES, endpoint)
 
     logger.info("Graph GET %s", url[:120] + ("…" if len(url) > 120 else ""))
 
@@ -121,7 +127,8 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
             body = resp.read().decode()
 
             logger.info("Graph API response received in %.3f seconds", response_time)
-            logger.info("Response status: %d, Content-Length: %d bytes", resp.status, len(body))
+            logger.info("Response status: %d, Content-Length: %d bytes",
+                       resp.status, len(body))
 
             print(f"  Response status: {ansi.green}{resp.status}{ansi.reset}")
             print(f"  Response body length: {len(body)} characters")
@@ -129,15 +136,16 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
             print(f"  Response body (first 500 chars): {ansi.grey}{body_preview}{ansi.reset}")
 
             data = json.loads(body)
-            logger.debug("Response JSON parsed successfully, top-level keys: %s", list(data.keys()))
+            logger.debug("Response JSON parsed successfully, top-level keys: %s",
+                        list(data.keys()))
 
             # Check for Facebook errors in the response
             if 'error' in data:
                 error = data['error']
-                logger.error("Facebook API error - Code: %s, Type: %s, Message: %s", 
-                           error.get('code', 'Unknown'), 
-                           error.get('type', 'Unknown'), 
-                           error.get('message', 'Unknown'))
+                logger.error("Facebook API error - Code: %s, Type: %s, Message: %s",
+                            error.get('code', 'Unknown'),
+                            error.get('type', 'Unknown'),
+                            error.get('message', 'Unknown'))
 
                 print(f"  {ansi.red}Facebook API Error:{ansi.reset}")
                 print(f"    Message: {error.get('message', 'Unknown')}")
@@ -146,16 +154,19 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
 
                 # Handle rate limiting specifically
                 if error.get('code') in [4, 17, 32]:  # Rate limit error codes
-                    logger.warning("Rate limit detected (code: %s), retry count: %d", error.get('code'), retry_count)
+                    logger.warning("Rate limit detected (code: %s), retry count: %d",
+                                  error.get('code'), retry_count)
                     if retry_count < MAX_RETRIES:
                         delay = RETRY_DELAY * (2 ** retry_count)  # Exponential backoff
-                        logger.info("Waiting %d seconds before retry %d/%d", delay, retry_count + 1, MAX_RETRIES)
-                        print(f"  {ansi.yellow}Rate limit detected, waiting {delay}s before retry...{ansi.reset}")
+                        logger.info("Waiting %d seconds before retry %d/%d",
+                                   delay, retry_count + 1, MAX_RETRIES)
+                        print(f"  {ansi.yellow}Rate limit detected, waiting {delay}s "
+                              f"before retry...{ansi.reset}")
                         time.sleep(delay)
                         return graph_request(endpoint, params, retry_count + 1)
-                    else:
-                        logger.error("Rate limit retry exhausted after %d attempts", MAX_RETRIES)
-                        raise Exception(f"Rate limit exceeded after {MAX_RETRIES} retries")
+
+                    logger.error("Rate limit retry exhausted after %d attempts", MAX_RETRIES)
+                    raise RuntimeError(f"Rate limit exceeded after {MAX_RETRIES} retries")
 
             logger.info("Graph API request completed successfully in %.3f seconds", response_time)
             return data
@@ -164,7 +175,8 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
         response_time = time.perf_counter() - request_start
         err_body = e.read().decode(errors="ignore") if hasattr(e, "read") else ""
 
-        logger.error("HTTP Error %d (%s) after %.3f seconds for endpoint: %s", e.code, e.reason, response_time, endpoint)
+        logger.error("HTTP Error %d (%s) after %.3f seconds for endpoint: %s",
+                    e.code, e.reason, response_time, endpoint)
         logger.debug("HTTP Error body: %s", err_body[:500])
 
         print(f"  {ansi.red}HTTP Error {e.code}: {e.reason}{ansi.reset}")
@@ -174,9 +186,10 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
         # Retry on server errors (5xx) or rate limits (429)
         if e.code in [429, 500, 502, 503, 504] and retry_count < MAX_RETRIES:
             delay = RETRY_DELAY * (2 ** retry_count)
-            logger.warning("Retrying HTTP %d error in %d seconds (attempt %d/%d) for endpoint: %s", 
-                         e.code, delay, retry_count + 1, MAX_RETRIES, endpoint)
-            print(f"  {ansi.yellow}Retrying in {delay}s... (attempt {retry_count + 1}/{MAX_RETRIES}){ansi.reset}")
+            logger.warning("Retrying HTTP %d error in %d seconds (attempt %d/%d) for endpoint: %s",
+                          e.code, delay, retry_count + 1, MAX_RETRIES, endpoint)
+            print(f"  {ansi.yellow}Retrying in {delay}s... "
+                  f"(attempt {retry_count + 1}/{MAX_RETRIES}){ansi.reset}")
             time.sleep(delay)
             return graph_request(endpoint, params, retry_count + 1)
 
@@ -185,16 +198,18 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
 
     except (urllib.error.URLError, OSError, ConnectionError) as e:
         response_time = time.perf_counter() - request_start
-        logger.error("Network error after %.3f seconds for endpoint %s: %s", response_time, endpoint, str(e))
+        logger.error("Network error after %.3f seconds for endpoint %s: %s",
+                    response_time, endpoint, str(e))
 
         print(f"  {ansi.red}Network Error: {str(e)}{ansi.reset}")
 
         # Retry on network errors
         if retry_count < MAX_RETRIES:
             delay = RETRY_DELAY * (2 ** retry_count)
-            logger.warning("Retrying network error in %d seconds (attempt %d/%d) for endpoint: %s", 
-                         delay, retry_count + 1, MAX_RETRIES, endpoint)
-            print(f"  {ansi.yellow}Network error, retrying in {delay}s... (attempt {retry_count + 1}/{MAX_RETRIES}){ansi.reset}")
+            logger.warning("Retrying network error in %d seconds (attempt %d/%d) for endpoint: %s",
+                          delay, retry_count + 1, MAX_RETRIES, endpoint)
+            print(f"  {ansi.yellow}Network error, retrying in {delay}s... "
+                  f"(attempt {retry_count + 1}/{MAX_RETRIES}){ansi.reset}")
             time.sleep(delay)
             return graph_request(endpoint, params, retry_count + 1)
 
@@ -212,7 +227,10 @@ def chunked(lst: List[str], size: int) -> List[List[str]]:
 #############################
 
 def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str]]:
-    """Return mapping {ad_id: [post_id1, post_id2, ...]}. Returns all posts associated with each ad."""
+    """Return mapping {ad_id: [post_id1, post_id2, ...]}.
+    
+    Returns all posts associated with each ad.
+    """
     function_start = time.perf_counter()
 
     logger.info("Starting ad_ids_to_post_ids function with %d ads", len(ad_ids))
@@ -225,17 +243,21 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
     print(f"{ansi.cyan}DEBUG: Will fetch ALL creatives per ad to capture multiple posts{ansi.reset}")
 
     chunks = list(chunked(ad_ids, CHUNK_SIZE))
-    logger.info("Split %d ads into %d chunks (chunk_size=%d)", len(ad_ids), len(chunks), CHUNK_SIZE)
+    logger.info("Split %d ads into %d chunks (chunk_size=%d)",
+               len(ad_ids), len(chunks), CHUNK_SIZE)
 
     for chunk_idx, chunk in enumerate(chunks):
         # Add rate limiting delay between chunks (except for the first one)
         chunk_start = time.perf_counter()
-        logger.info("Processing chunk %d/%d with %d ads", chunk_idx + 1, len(chunks), len(chunk))
+        logger.info("Processing chunk %d/%d with %d ads",
+                   chunk_idx + 1, len(chunks), len(chunk))
         logger.debug("Chunk %d ad_ids: %s", chunk_idx + 1, chunk)
 
         if chunk_idx > 0:
-            logger.info("Rate limiting: waiting %d seconds before chunk %d", RATE_LIMIT_DELAY, chunk_idx + 1)
-            print(f"\n{ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before processing next chunk...{ansi.reset}")
+            logger.info("Rate limiting: waiting %d seconds before chunk %d",
+                       RATE_LIMIT_DELAY, chunk_idx + 1)
+            print(f"\n{ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s "
+                  f"before processing next chunk...{ansi.reset}")
             time.sleep(RATE_LIMIT_DELAY)
 
         ids_str = ",".join(chunk)
@@ -246,9 +268,11 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
             "access_token": user_token,
         }
 
-        logger.debug("Chunk %d API parameters: fields=%s, ads_count=%d", chunk_idx + 1, params['fields'], len(chunk))
+        logger.debug("Chunk %d API parameters: fields=%s, ads_count=%d",
+                    chunk_idx + 1, params['fields'], len(chunk))
 
-        print(f"\n{ansi.yellow}DEBUG: Requesting chunk {chunk_idx + 1}/{len(chunks)} with {len(chunk)} ads:{ansi.reset}")
+        print(f"\n{ansi.yellow}DEBUG: Requesting chunk {chunk_idx + 1}/{len(chunks)} "
+              f"with {len(chunk)} ads:{ansi.reset}")
         for i, ad_id in enumerate(chunk, 1):
             print(f"  {i}. Ad ID: {ansi.cyan}{ad_id}{ansi.reset}")
 
@@ -257,11 +281,13 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
         print(f"  ids: {ids_str}")
 
         try:
-            logger.info("Making Graph API request for chunk %d with %d ads", chunk_idx + 1, len(chunk))
+            logger.info("Making Graph API request for chunk %d with %d ads",
+                       chunk_idx + 1, len(chunk))
             data = graph_request("", params)  # blank endpoint when using ids param
 
             chunk_response_time = time.perf_counter() - chunk_start
-            logger.info("Chunk %d API response received in %.3f seconds", chunk_idx + 1, chunk_response_time)
+            logger.info("Chunk %d API response received in %.3f seconds",
+                       chunk_idx + 1, chunk_response_time)
             logger.debug("Chunk %d response contains %d ads", chunk_idx + 1, len(data))
 
             print(f"\n{ansi.green}DEBUG: API Response received:{ansi.reset}")
@@ -279,7 +305,8 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
                 creatives_data = adcreatives.get("data", [])
 
                 logger.info("Ad %s has %d creatives", ad_id, len(creatives_data))
-                print(f"  Found {ansi.yellow}{len(creatives_data)}{ansi.reset} creatives for this ad")
+                print(f"  Found {ansi.yellow}{len(creatives_data)}{ansi.reset} "
+                      f"creatives for this ad")
 
                 post_ids = []
                 for creative_idx, creative in enumerate(creatives_data, 1):
@@ -294,34 +321,45 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
                     # Priority order: effective_object_story_id > object_story_id > object_id
                     if creative.get("effective_object_story_id"):
                         potential_post_id = creative["effective_object_story_id"]
-                        logger.debug("Ad %s creative %d found effective_object_story_id: %s", ad_id, creative_idx, potential_post_id)
-                        print(f"    Found effective_object_story_id: {ansi.yellow}{potential_post_id}{ansi.reset}")
+                        logger.debug("Ad %s creative %d found effective_object_story_id: %s",
+                                    ad_id, creative_idx, potential_post_id)
+                        print(f"    Found effective_object_story_id: "
+                              f"{ansi.yellow}{potential_post_id}{ansi.reset}")
                     elif creative.get("object_story_id"):
                         potential_post_id = creative["object_story_id"]
-                        logger.debug("Ad %s creative %d found object_story_id: %s", ad_id, creative_idx, potential_post_id)
-                        print(f"    Found object_story_id: {ansi.yellow}{potential_post_id}{ansi.reset}")
+                        logger.debug("Ad %s creative %d found object_story_id: %s",
+                                    ad_id, creative_idx, potential_post_id)
+                        print(f"    Found object_story_id: "
+                              f"{ansi.yellow}{potential_post_id}{ansi.reset}")
                     elif creative.get("object_id"):
                         potential_post_id = creative["object_id"]
-                        logger.debug("Ad %s creative %d found object_id: %s", ad_id, creative_idx, potential_post_id)
-                        print(f"    Found object_id: {ansi.yellow}{potential_post_id}{ansi.reset}")
+                        logger.debug("Ad %s creative %d found object_id: %s",
+                                    ad_id, creative_idx, potential_post_id)
+                        print(f"    Found object_id: "
+                              f"{ansi.yellow}{potential_post_id}{ansi.reset}")
                     else:
-                        logger.warning("Ad %s creative %d has no post ID fields. Available fields: %s", ad_id, creative_idx, list(creative.keys()))
+                        logger.warning("Ad %s creative %d has no post ID fields. Available fields: %s",
+                                      ad_id, creative_idx, list(creative.keys()))
                         print(f"    {ansi.red}No post ID found in this creative{ansi.reset}")
                         # Debug: show all available fields
                         print(f"    Available fields: {list(creative.keys())}")
 
                     if potential_post_id and potential_post_id not in post_ids:
                         post_ids.append(potential_post_id)
-                        logger.debug("Ad %s: Added unique post_id %s (total: %d)", ad_id, potential_post_id, len(post_ids))
+                        logger.debug("Ad %s: Added unique post_id %s (total: %d)",
+                                    ad_id, potential_post_id, len(post_ids))
                         print(f"    {ansi.green}✓ Added to post list{ansi.reset}: {potential_post_id}")
                     elif potential_post_id:
                         logger.debug("Ad %s: Skipping duplicate post_id %s", ad_id, potential_post_id)
-                        print(f"    {ansi.yellow}⚠ Duplicate post ID, skipping{ansi.reset}: {potential_post_id}")
+                        print(f"    {ansi.yellow}⚠ Duplicate post ID, skipping{ansi.reset}: "
+                              f"{potential_post_id}")
 
                 if post_ids:
                     mapping[ad_id] = post_ids
-                    logger.info("Ad %s successfully mapped to %d posts: %s", ad_id, len(post_ids), post_ids)
-                    print(f"  {ansi.green}✓ Successfully mapped{ansi.reset}: {ad_id} → {post_ids} ({len(post_ids)} posts)")
+                    logger.info("Ad %s successfully mapped to %d posts: %s",
+                               ad_id, len(post_ids), post_ids)
+                    print(f"  {ansi.green}✓ Successfully mapped{ansi.reset}: "
+                          f"{ad_id} → {post_ids} ({len(post_ids)} posts)")
                 else:
                     mapping[ad_id] = []
                     logger.warning("Ad %s – no post IDs found in any creatives", ad_id)
@@ -329,7 +367,8 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
 
         except Exception as e:
             chunk_error_time = time.perf_counter() - chunk_start
-            logger.error("Chunk %d failed after %.3f seconds: %s", chunk_idx + 1, chunk_error_time, str(e))
+            logger.error("Chunk %d failed after %.3f seconds: %s",
+                        chunk_idx + 1, chunk_error_time, str(e))
             logger.error("Failed chunk contained ad_ids: %s", chunk)
 
             print(f"\n{ansi.red}DEBUG: API request failed:{ansi.reset}")
@@ -344,8 +383,11 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
     ads_with_no_posts = len([posts for posts in mapping.values() if len(posts) == 0])
 
     logger.info("ad_ids_to_post_ids completed in %.3f seconds", function_time)
-    logger.info("Processing summary: %d ads → %d total posts (%d unique posts found)", len(ad_ids), total_posts, len(set(post for posts in mapping.values() for post in posts)))
-    logger.info("Ad distribution: %d ads with multiple posts, %d ads with no posts", ads_with_multiple_posts, ads_with_no_posts)
+    logger.info("Processing summary: %d ads → %d total posts (%d unique posts found)",
+               len(ad_ids), total_posts,
+               len(set(post for posts in mapping.values() for post in posts)))
+    logger.info("Ad distribution: %d ads with multiple posts, %d ads with no posts",
+               ads_with_multiple_posts, ads_with_no_posts)
 
     print(f"\n{ansi.cyan}DEBUG: Ad-to-post resolution complete:{ansi.reset}")
     print(f"  Total ads processed: {len(ad_ids)}")
@@ -354,7 +396,7 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
     print(f"  Ads with no posts: {ads_with_no_posts}")
 
     if mapping:
-        logger.debug("Full ad-to-post mapping: %s", {k: v for k, v in mapping.items()})
+        logger.debug("Full ad-to-post mapping: %s", dict(mapping))
         print(f"  {ansi.green}Successful mappings:{ansi.reset}")
         for ad_id, post_list in mapping.items():
             if post_list:
@@ -381,7 +423,8 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
     }
     endpoint = f"{post_id}/comments"
 
-    logger.debug("Initial params: %s", {k: (v[:20] + "..." if k == "access_token" else v) for k, v in params.items()})
+    logger.debug("Initial params: %s",
+                {k: (v[:20] + "..." if k == "access_token" else v) for k, v in params.items()})
     logger.debug("Starting endpoint: %s", endpoint)
 
     print(f"\n{ansi.blue}DEBUG: Fetching comments for post {post_id}{ansi.reset}")
@@ -396,8 +439,10 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
         logger.debug("Fetching page %d for post %s", page_count, post_id)
 
         if page_count > 1:  # Changed from page_count > 0 since we increment before this check
-            logger.debug("Rate limiting: waiting %d seconds before page %d", RATE_LIMIT_DELAY, page_count)
-            print(f"  {ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before next page...{ansi.reset}")
+            logger.debug("Rate limiting: waiting %d seconds before page %d",
+                        RATE_LIMIT_DELAY, page_count)
+            print(f"  {ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s "
+                  f"before next page...{ansi.reset}")
             time.sleep(RATE_LIMIT_DELAY)
 
         try:
@@ -409,8 +454,9 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
             # Debug the response
             if 'error' in data:
                 error = data['error']
-                logger.error("Comments API error for post %s page %d - Code: %s, Message: %s", 
-                           post_id, page_count, error.get('code', 'Unknown'), error.get('message', 'Unknown'))
+                logger.error("Comments API error for post %s page %d - Code: %s, Message: %s",
+                           post_id, page_count, error.get('code', 'Unknown'),
+                           error.get('message', 'Unknown'))
 
                 print(f"  {ansi.red}❌ Comments API Error:{ansi.reset}")
                 print(f"    Message: {error.get('message', 'Unknown')}")
@@ -418,19 +464,23 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
 
                 # Check for permissions errors specifically
                 if error.get('code') in [10, 200, 190] or 'permission' in error.get('message', '').lower():
-                    logger.warning("Permissions insufficient for post %s, stopping comment fetch", post_id)
-                    print(f"  {ansi.yellow}⚠️  Permissions insufficient for this post, skipping...{ansi.reset}")
+                    logger.warning("Permissions insufficient for post %s, stopping comment fetch",
+                                  post_id)
+                    print(f"  {ansi.yellow}⚠️  Permissions insufficient for this post, "
+                          f"skipping...{ansi.reset}")
                     break
-                else:
-                    logger.error("Other API error for post %s, stopping comment fetch", post_id)
-                    # Other API errors - also break to avoid infinite loop
-                    break
+
+                logger.error("Other API error for post %s, stopping comment fetch", post_id)
+                # Other API errors - also break to avoid infinite loop
+                break
 
             comments_batch = data.get("data", [])
-            logger.info("Page %d for post %s: received %d comments in %.3f seconds", page_count, post_id, len(comments_batch), page_time)
+            logger.info("Page %d for post %s: received %d comments in %.3f seconds",
+                       page_count, post_id, len(comments_batch), page_time)
 
             if comments_batch:
-                logger.debug("Page %d first comment preview: %s", page_count, comments_batch[0].get('message', 'No message')[:100])
+                logger.debug("Page %d first comment preview: %s",
+                           page_count, comments_batch[0].get('message', 'No message')[:100])
 
             print(f"  {ansi.green}📥 Received {len(comments_batch)} comments in page {page_count}{ansi.reset}")
             if comments_batch:
@@ -452,36 +502,43 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
 
         except urllib.error.HTTPError as e:
             page_error_time = time.perf_counter() - page_start
-            logger.error("HTTP error %d on page %d for post %s after %.3f seconds: %s", e.code, page_count, post_id, page_error_time, str(e))
+            logger.error("HTTP error %d on page %d for post %s after %.3f seconds: %s",
+                        e.code, page_count, post_id, page_error_time, str(e))
 
             # Handle HTTP errors gracefully (like 400 Bad Request for permissions)
             if e.code == 400:
-                logger.warning("HTTP 400 (Bad Request) for post %s - likely permissions issue", post_id)
-                print(f"  {ansi.yellow}⚠️  HTTP 400 (Bad Request) - likely permissions issue, skipping post...{ansi.reset}")
+                logger.warning("HTTP 400 (Bad Request) for post %s - likely permissions issue",
+                              post_id)
+                print(f"  {ansi.yellow}⚠️  HTTP 400 (Bad Request) - likely permissions issue, "
+                      f"skipping post...{ansi.reset}")
                 break
-            elif e.code == 403:
+            if e.code == 403:
                 logger.warning("HTTP 403 (Forbidden) for post %s - access denied", post_id)
-                print(f"  {ansi.yellow}⚠️  HTTP 403 (Forbidden) - access denied, skipping post...{ansi.reset}")
+                print(f"  {ansi.yellow}⚠️  HTTP 403 (Forbidden) - access denied, "
+                      f"skipping post...{ansi.reset}")
                 break
-            else:
-                logger.error("HTTP error %d for post %s - re-raising to trigger retry logic", e.code, post_id)
-                # For other HTTP errors, re-raise to trigger retry logic
-                raise
-        except Exception as e:
+
+            logger.error("HTTP error %d for post %s - re-raising to trigger retry logic",
+                        e.code, post_id)
+            # For other HTTP errors, re-raise to trigger retry logic
+            raise
+        except (urllib.error.URLError, OSError, ConnectionError, json.JSONDecodeError, KeyError) as e:
             page_error_time = time.perf_counter() - page_start
-            logger.error("Unexpected error on page %d for post %s after %.3f seconds: %s", page_count, post_id, page_error_time, str(e))
+            logger.error("Unexpected error on page %d for post %s after %.3f seconds: %s",
+                        page_count, post_id, page_error_time, str(e))
             print(f"  {ansi.red}❌ Unexpected error fetching comments: {str(e)}{ansi.reset}")
             break
 
     function_time = time.perf_counter() - function_start
-    logger.info("fetch_all_comments completed for post %s: %d comments across %d pages in %.3f seconds (%.3f seconds processing)", 
+    logger.info("fetch_all_comments completed for post %s: %d comments across %d pages "
+               "in %.3f seconds (%.3f seconds processing)",
                post_id, len(comments), page_count, function_time, total_processing_time)
 
     if comments:
-        logger.debug("Comments summary for post %s: first comment created at %s, last comment created at %s", 
-                   post_id, 
-                   comments[0].get('created_time', 'unknown') if comments else 'N/A',
-                   comments[-1].get('created_time', 'unknown') if comments else 'N/A')
+        first_created = comments[0].get('created_time', 'unknown') if comments else 'N/A'
+        last_created = comments[-1].get('created_time', 'unknown') if comments else 'N/A'
+        logger.debug("Comments summary for post %s: first comment created at %s, last comment created at %s",
+                   post_id, first_created, last_created)
 
     print(f"  {ansi.cyan}📊 Total comments fetched: {len(comments)} across {page_count} pages{ansi.reset}")
     return comments
@@ -494,15 +551,15 @@ def resolve_page_token(post_id: str, page_tokens: Dict[str, str], fallback_token
 
     # post_id may be "{pageId}_{postId}" or just numeric. Extract page prefix if present.
     if "_" in post_id:
-        page_id, post_suffix = post_id.split("_", 1)
+        page_id, _ = post_id.split("_", 1)
         logger.debug("Extracted page_id: %s from post_id: %s", page_id, post_id)
 
         if page_id in page_tokens:
             logger.debug("Found specific page token for page_id: %s", page_id)
             return page_tokens[page_id]
-        else:
-            logger.debug("No specific page token found for page_id: %s, using fallback", page_id)
-            return fallback_token
+
+        logger.debug("No specific page token found for page_id: %s, using fallback", page_id)
+        return fallback_token
 
     # If format without underscore, we don't know page id – fall back.
     logger.debug("Post_id has no underscore format, using fallback token")
@@ -546,7 +603,8 @@ def main(argv: Optional[List[str]] = None):
     parser.add_argument("--test-post", type=str, help="Test direct access to a specific post ID")
     args = parser.parse_args(argv)
 
-    logger.info("Parsed arguments - ids_file: %s, output: %s, test_post: %s", args.ids_file, args.output, args.test_post)
+    logger.info("Parsed arguments - ids_file: %s, output: %s, test_post: %s",
+               args.ids_file, args.output, args.test_post)
 
     user_token, page_tokens = load_latest_tokens()
 
@@ -660,9 +718,11 @@ def main(argv: Optional[List[str]] = None):
         source_ads = [ad_id for ad_id, posts in ad_to_posts.items() if post_id in posts]
         ads_info = f"from {len(source_ads)} ad(s): {', '.join(source_ads[:3])}" + ("..." if len(source_ads) > 3 else "")
 
-        logger.info("Post %s: using %s, belongs to %d ads: %s", post_id, token_type, len(source_ads), source_ads[:5])
+        logger.info("Post %s: using %s, belongs to %d ads: %s",
+                   post_id, token_type, len(source_ads), source_ads[:5])
 
-        print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id} ({i+1}/{len(all_post_ids)}) - {ads_info}")
+        print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id} "
+              f"({i+1}/{len(all_post_ids)}) - {ads_info}")
 
         comments = fetch_all_comments(post_id, token)
         post_time = time.perf_counter() - post_start
@@ -670,7 +730,8 @@ def main(argv: Optional[List[str]] = None):
         all_comments[post_id] = comments
         total_comments += len(comments)
 
-        logger.info("Post %s: fetched %d comments in %.3f seconds", post_id, len(comments), post_time)
+        logger.info("Post %s: fetched %d comments in %.3f seconds",
+                   post_id, len(comments), post_time)
 
         comment_msg = f"Post {post_id}: fetched {len(comments)} comments"
         print(f"💬 {ansi.cyan}{comment_msg}{ansi.reset}")
@@ -714,15 +775,16 @@ def main(argv: Optional[List[str]] = None):
     }
 
     logger.info("Writing payload to file: %s", out_file)
-    logger.info("Payload size: %d total objects, %d comments across %d posts", 
-                len(payload), total_comments, len(all_post_ids))
+    logger.info("Payload size: %d total objects, %d comments across %d posts",
+               len(payload), total_comments, len(all_post_ids))
 
     out_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
     phase3_time = time.perf_counter() - phase3_start
     total_script_time = time.perf_counter() - script_start
 
     logger.info("Phase 3 completed in %.3f seconds", phase3_time)
-    logger.info("=== Script completed successfully in %.3f seconds ===", total_script_time)
+    logger.info("=== Script completed successfully in %.3f seconds ===",
+               total_script_time)
 
     print(f"✅ Saved results to {ansi.cyan}{out_file}{ansi.reset}")
 
@@ -732,7 +794,8 @@ def main(argv: Optional[List[str]] = None):
     print(f"  • Found {len(all_post_ids)} unique posts")
     print(f"  • Collected {total_comments} total comments")
     print(f"  • {len(multi_post_ads)} ads had multiple posts")
-    print(f"  • {posts_with_comments} posts had comments, {posts_without_comments} posts had no comments")
+    print(f"  • {posts_with_comments} posts had comments, "
+          f"{posts_without_comments} posts had no comments")
     print(f"  • Total processing time: {total_script_time:.1f} seconds")
 
     if total_comments > 0:
