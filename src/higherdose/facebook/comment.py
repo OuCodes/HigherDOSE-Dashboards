@@ -161,11 +161,12 @@ def chunked(lst: List[str], size: int) -> List[List[str]]:
 # Core logic                #
 #############################
 
-def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
-    """Return mapping {ad_id: post_id}. Ignores ads that don't resolve."""
-    mapping: Dict[str, str] = {}
+def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str]]:
+    """Return mapping {ad_id: [post_id1, post_id2, ...]}. Returns all posts associated with each ad."""
+    mapping: Dict[str, List[str]] = {}
 
     print(f"\n{ansi.cyan}DEBUG: Starting ad-to-post resolution for {len(ad_ids)} ads{ansi.reset}")
+    print(f"{ansi.cyan}DEBUG: Will fetch ALL creatives per ad to capture multiple posts{ansi.reset}")
 
     chunks = list(chunked(ad_ids, CHUNK_SIZE))
     for chunk_idx, chunk in enumerate(chunks):
@@ -175,9 +176,10 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
             time.sleep(RATE_LIMIT_DELAY)
             
         ids_str = ",".join(chunk)
+        # Request ALL creatives for each ad, not just the primary one
         params = {
-            "ids": ids_str,  # supplied via path later; we use base URL with ?ids=…
-            "fields": "creative{effective_object_story_id}",
+            "ids": ids_str,
+            "fields": "adcreatives{effective_object_story_id,object_story_id,object_id,name}",
             "access_token": user_token,
         }
 
@@ -199,23 +201,48 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
                 print(f"\n{ansi.cyan}Processing Ad ID: {ad_id}{ansi.reset}")
                 print(f"  Raw ad_data: {json.dumps(ad_data, indent=2)}")
 
-                creative = ad_data.get("creative", {})
-                print(f"  Creative data: {json.dumps(creative, indent=2)}")
+                # Get all creatives for this ad
+                adcreatives = ad_data.get("adcreatives", {})
+                creatives_data = adcreatives.get("data", [])
+                
+                print(f"  Found {ansi.yellow}{len(creatives_data)}{ansi.reset} creatives for this ad")
 
-                post_id = creative.get("effective_object_story_id")
-                print(f"  effective_object_story_id: {ansi.yellow}{post_id}{ansi.reset}")
+                post_ids = []
+                for creative_idx, creative in enumerate(creatives_data, 1):
+                    print(f"  \n  {ansi.magenta}Creative {creative_idx}:{ansi.reset}")
+                    print(f"    Creative data: {json.dumps(creative, indent=4)}")
+                    
+                    # Try multiple fields that might contain post IDs
+                    potential_post_id = None
+                    
+                    # Priority order: effective_object_story_id > object_story_id > object_id
+                    if creative.get("effective_object_story_id"):
+                        potential_post_id = creative["effective_object_story_id"]
+                        print(f"    Found effective_object_story_id: {ansi.yellow}{potential_post_id}{ansi.reset}")
+                    elif creative.get("object_story_id"):
+                        potential_post_id = creative["object_story_id"]
+                        print(f"    Found object_story_id: {ansi.yellow}{potential_post_id}{ansi.reset}")
+                    elif creative.get("object_id"):
+                        potential_post_id = creative["object_id"]
+                        print(f"    Found object_id: {ansi.yellow}{potential_post_id}{ansi.reset}")
+                    else:
+                        print(f"    {ansi.red}No post ID found in this creative{ansi.reset}")
+                        # Debug: show all available fields
+                        print(f"    Available fields: {list(creative.keys())}")
+                    
+                    if potential_post_id and potential_post_id not in post_ids:
+                        post_ids.append(potential_post_id)
+                        print(f"    {ansi.green}✓ Added to post list{ansi.reset}: {potential_post_id}")
+                    elif potential_post_id:
+                        print(f"    {ansi.yellow}⚠ Duplicate post ID, skipping{ansi.reset}: {potential_post_id}")
 
-                if post_id:
-                    mapping[ad_id] = post_id
-                    print(f"  {ansi.green}✓ Successfully mapped{ansi.reset}: {ad_id} → {post_id}")
+                if post_ids:
+                    mapping[ad_id] = post_ids
+                    print(f"  {ansi.green}✓ Successfully mapped{ansi.reset}: {ad_id} → {post_ids} ({len(post_ids)} posts)")
                 else:
-                    print(f"  {ansi.red}✗ No post_id found{ansi.reset}")
-                    logger.warning("Ad %s – no post_id", ad_id)
-
-                    # Additional debugging - check if there are any other fields
-                    print(f"  {ansi.yellow}Available fields in ad_data:{ansi.reset}")
-                    for key, value in ad_data.items():
-                        print(f"    - {key}: {value}")
+                    mapping[ad_id] = []
+                    print(f"  {ansi.red}✗ No post IDs found for this ad{ansi.reset}")
+                    logger.warning("Ad %s – no post IDs found in any creatives", ad_id)
 
         except Exception as e:
             print(f"\n{ansi.red}DEBUG: API request failed:{ansi.reset}")
@@ -223,15 +250,24 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
             print(f"  Ad IDs in this chunk: {chunk}")
             raise
 
+    # Calculate totals
+    total_posts = sum(len(posts) for posts in mapping.values())
+    ads_with_multiple_posts = sum(1 for posts in mapping.values() if len(posts) > 1)
+    
     print(f"\n{ansi.cyan}DEBUG: Ad-to-post resolution complete:{ansi.reset}")
     print(f"  Total ads processed: {len(ad_ids)}")
-    print(f"  Successful mappings: {len(mapping)}")
-    print(f"  Failed mappings: {len(ad_ids) - len(mapping)}")
+    print(f"  Total unique posts found: {ansi.yellow}{total_posts}{ansi.reset}")
+    print(f"  Ads with multiple posts: {ansi.yellow}{ads_with_multiple_posts}{ansi.reset}")
+    print(f"  Ads with no posts: {len([posts for posts in mapping.values() if len(posts) == 0])}")
 
     if mapping:
         print(f"  {ansi.green}Successful mappings:{ansi.reset}")
-        for ad_id, post_id in mapping.items():
-            print(f"    {ad_id} → {post_id}")
+        for ad_id, post_list in mapping.items():
+            if post_list:
+                posts_str = ", ".join(post_list)
+                print(f"    {ad_id} → [{posts_str}] ({len(post_list)} posts)")
+            else:
+                print(f"    {ad_id} → {ansi.red}[no posts]{ansi.reset}")
 
     return mapping
 
@@ -379,14 +415,33 @@ def main(argv: Optional[List[str]] = None):
     print(f"🛰️  Processing {ansi.yellow}{len(ad_ids)}{ansi.reset} Ad IDs…")
 
     # 1. Ads → Posts
-    ad_to_post = ad_ids_to_post_ids(ad_ids, user_token)
-    post_ids = list(ad_to_post.values())
-    print(f"🔗 Resolved {ansi.yellow}{len(post_ids)}{ansi.reset} Post IDs from {len(ad_ids)} ads.")
+    ad_to_posts = ad_ids_to_post_ids(ad_ids, user_token)
+    
+    # Flatten all post IDs while preserving uniqueness
+    all_post_ids = []
+    ad_to_post_mapping = {}  # Keep flat mapping for output compatibility
+    
+    for ad_id, post_list in ad_to_posts.items():
+        for post_id in post_list:
+            if post_id not in all_post_ids:
+                all_post_ids.append(post_id)
+            # For output compatibility, map ad to first post (most common case)
+            if ad_id not in ad_to_post_mapping and post_list:
+                ad_to_post_mapping[ad_id] = post_list[0]
+    
+    print(f"🔗 Resolved {ansi.yellow}{len(all_post_ids)}{ansi.reset} unique Post IDs from {len(ad_ids)} ads.")
+    
+    # Show ads with multiple posts
+    multi_post_ads = {ad_id: posts for ad_id, posts in ad_to_posts.items() if len(posts) > 1}
+    if multi_post_ads:
+        print(f"📋 {ansi.magenta}{len(multi_post_ads)}{ansi.reset} ads have multiple posts:")
+        for ad_id, posts in multi_post_ads.items():
+            print(f"  Ad {ad_id}: {len(posts)} posts → {', '.join(posts)}")
 
     # 2. Posts → Comments
     all_comments: Dict[str, List[Dict[str, Any]]] = {}
     total_comments = 0
-    for i, post_id in enumerate(post_ids):
+    for i, post_id in enumerate(all_post_ids):
         # Add rate limiting delay between posts (except for the first one)
         if i > 0:
             print(f"\n{ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before processing next post...{ansi.reset}")
@@ -402,7 +457,12 @@ def main(argv: Optional[List[str]] = None):
                 token_type = "user token (fallback - page not found)"
         else:
             token_type = "user token (fallback - no page ID in post)"
-        print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id} ({i+1}/{len(post_ids)})")
+        
+        # Show which ads this post belongs to
+        source_ads = [ad_id for ad_id, posts in ad_to_posts.items() if post_id in posts]
+        ads_info = f"from {len(source_ads)} ad(s): {', '.join(source_ads[:3])}" + ("..." if len(source_ads) > 3 else "")
+        
+        print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id} ({i+1}/{len(all_post_ids)}) - {ads_info}")
         
         comments = fetch_all_comments(post_id, token)
         all_comments[post_id] = comments
@@ -419,14 +479,26 @@ def main(argv: Optional[List[str]] = None):
         "metadata": {
             "created_at": datetime.now().isoformat(),
             "ad_count": len(ad_ids),
-            "post_count": len(post_ids),
+            "unique_post_count": len(all_post_ids),
             "comment_count": total_comments,
+            "ads_with_multiple_posts": len(multi_post_ads),
         },
-        "ad_to_post": ad_to_post,
+        "ad_to_posts": ad_to_posts,  # New: full mapping showing multiple posts per ad
+        "ad_to_post": ad_to_post_mapping,  # Legacy: flat mapping for compatibility
         "comments": all_comments,
     }
     out_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
     print(f"✅ Saved results to {ansi.cyan}{out_file}{ansi.reset}")
+    
+    # Summary statistics
+    print(f"\n📊 {ansi.cyan}Summary:{ansi.reset}")
+    print(f"  • Processed {len(ad_ids)} ads")
+    print(f"  • Found {len(all_post_ids)} unique posts")
+    print(f"  • Collected {total_comments} total comments")
+    print(f"  • {len(multi_post_ads)} ads had multiple posts")
+    if total_comments > 0:
+        avg_comments = total_comments / len([p for p in all_comments.values() if len(p) > 0])
+        print(f"  • Average comments per post with comments: {avg_comments:.1f}")
 
 
 if __name__ == "__main__":
