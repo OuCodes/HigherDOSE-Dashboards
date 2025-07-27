@@ -109,7 +109,7 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
                 print(f"    Message: {error.get('message', 'Unknown')}")
                 print(f"    Type: {error.get('type', 'Unknown')}")
                 print(f"    Code: {error.get('code', 'Unknown')}")
-                
+
                 # Handle rate limiting specifically
                 if error.get('code') in [4, 17, 32]:  # Rate limit error codes
                     if retry_count < MAX_RETRIES:
@@ -121,7 +121,7 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
                         raise Exception(f"Rate limit exceeded after {MAX_RETRIES} retries")
 
             return data
-            
+
     except urllib.error.HTTPError as e:
         err_body = e.read().decode(errors="ignore") if hasattr(e, "read") else ""
         print(f"  {ansi.red}HTTP Error {e.code}: {e.reason}{ansi.reset}")
@@ -137,17 +137,17 @@ def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -
 
         logger.error("HTTP %s: %s – %s", e.code, e.reason, err_body[:200])
         raise
-        
+
     except (urllib.error.URLError, OSError, ConnectionError) as e:
         print(f"  {ansi.red}Network Error: {str(e)}{ansi.reset}")
-        
+
         # Retry on network errors
         if retry_count < MAX_RETRIES:
             delay = RETRY_DELAY * (2 ** retry_count)
             print(f"  {ansi.yellow}Network error, retrying in {delay}s... (attempt {retry_count + 1}/{MAX_RETRIES}){ansi.reset}")
             time.sleep(delay)
             return graph_request(endpoint, params, retry_count + 1)
-        
+
         logger.error("Network error after %d retries: %s", MAX_RETRIES, str(e))
         raise
 
@@ -174,7 +174,7 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
         if chunk_idx > 0:
             print(f"\n{ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before processing next chunk...{ansi.reset}")
             time.sleep(RATE_LIMIT_DELAY)
-            
+
         ids_str = ",".join(chunk)
         # Request ALL creatives for each ad, not just the primary one
         params = {
@@ -204,17 +204,17 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
                 # Get all creatives for this ad
                 adcreatives = ad_data.get("adcreatives", {})
                 creatives_data = adcreatives.get("data", [])
-                
+
                 print(f"  Found {ansi.yellow}{len(creatives_data)}{ansi.reset} creatives for this ad")
 
                 post_ids = []
                 for creative_idx, creative in enumerate(creatives_data, 1):
                     print(f"  \n  {ansi.magenta}Creative {creative_idx}:{ansi.reset}")
                     print(f"    Creative data: {json.dumps(creative, indent=4)}")
-                    
+
                     # Try multiple fields that might contain post IDs
                     potential_post_id = None
-                    
+
                     # Priority order: effective_object_story_id > object_story_id > object_id
                     if creative.get("effective_object_story_id"):
                         potential_post_id = creative["effective_object_story_id"]
@@ -229,7 +229,7 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
                         print(f"    {ansi.red}No post ID found in this creative{ansi.reset}")
                         # Debug: show all available fields
                         print(f"    Available fields: {list(creative.keys())}")
-                    
+
                     if potential_post_id and potential_post_id not in post_ids:
                         post_ids.append(potential_post_id)
                         print(f"    {ansi.green}✓ Added to post list{ansi.reset}: {potential_post_id}")
@@ -253,7 +253,7 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, List[str
     # Calculate totals
     total_posts = sum(len(posts) for posts in mapping.values())
     ads_with_multiple_posts = sum(1 for posts in mapping.values() if len(posts) > 1)
-    
+
     print(f"\n{ansi.cyan}DEBUG: Ad-to-post resolution complete:{ansi.reset}")
     print(f"  Total ads processed: {len(ad_ids)}")
     print(f"  Total unique posts found: {ansi.yellow}{total_posts}{ansi.reset}")
@@ -282,25 +282,25 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
     }
     endpoint = f"{post_id}/comments"
     print(f"\n{ansi.blue}DEBUG: Fetching comments for post {post_id}{ansi.reset}")
-    
+
     page_count = 0
     while True:
         # Add rate limiting delay between pages
         if page_count > 0:
             print(f"  {ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before next page...{ansi.reset}")
             time.sleep(RATE_LIMIT_DELAY)
-            
+
         try:
             data = graph_request(endpoint, params)
             page_count += 1
-            
+
             # Debug the response
             if 'error' in data:
                 error = data['error']
                 print(f"  {ansi.red}❌ Comments API Error:{ansi.reset}")
                 print(f"    Message: {error.get('message', 'Unknown')}")
                 print(f"    Code: {error.get('code', 'Unknown')}")
-                
+
                 # Check for permissions errors specifically
                 if error.get('code') in [10, 200, 190] or 'permission' in error.get('message', '').lower():
                     print(f"  {ansi.yellow}⚠️  Permissions insufficient for this post, skipping...{ansi.reset}")
@@ -308,12 +308,12 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
                 else:
                     # Other API errors - also break to avoid infinite loop
                     break
-                
+
             comments_batch = data.get("data", [])
             print(f"  {ansi.green}📥 Received {len(comments_batch)} comments in page {page_count}{ansi.reset}")
             if comments_batch:
                 print(f"    First comment preview: {comments_batch[0].get('message', 'No message')[:100]}...")
-            
+
             comments.extend(comments_batch)
             paging = data.get("paging", {})
             next_url = paging.get("next")
@@ -323,7 +323,7 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
             parsed = urllib.parse.urlparse(next_url)
             endpoint = parsed.path.lstrip("/")
             params = dict(urllib.parse.parse_qsl(parsed.query))
-            
+
         except urllib.error.HTTPError as e:
             # Handle HTTP errors gracefully (like 400 Bad Request for permissions)
             if e.code == 400:
@@ -338,7 +338,7 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
         except Exception as e:
             print(f"  {ansi.red}❌ Unexpected error fetching comments: {str(e)}{ansi.reset}")
             break
-    
+
     print(f"  {ansi.cyan}📊 Total comments fetched: {len(comments)} across {page_count} pages{ansi.reset}")
     return comments
 
@@ -416,11 +416,11 @@ def main(argv: Optional[List[str]] = None):
 
     # 1. Ads → Posts
     ad_to_posts = ad_ids_to_post_ids(ad_ids, user_token)
-    
+
     # Flatten all post IDs while preserving uniqueness
     all_post_ids = []
     ad_to_post_mapping = {}  # Keep flat mapping for output compatibility
-    
+
     for ad_id, post_list in ad_to_posts.items():
         for post_id in post_list:
             if post_id not in all_post_ids:
@@ -428,9 +428,9 @@ def main(argv: Optional[List[str]] = None):
             # For output compatibility, map ad to first post (most common case)
             if ad_id not in ad_to_post_mapping and post_list:
                 ad_to_post_mapping[ad_id] = post_list[0]
-    
+
     print(f"🔗 Resolved {ansi.yellow}{len(all_post_ids)}{ansi.reset} unique Post IDs from {len(ad_ids)} ads.")
-    
+
     # Show ads with multiple posts
     multi_post_ads = {ad_id: posts for ad_id, posts in ad_to_posts.items() if len(posts) > 1}
     if multi_post_ads:
@@ -446,7 +446,7 @@ def main(argv: Optional[List[str]] = None):
         if i > 0:
             print(f"\n{ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before processing next post...{ansi.reset}")
             time.sleep(RATE_LIMIT_DELAY)
-            
+
         token = resolve_page_token(post_id, page_tokens, user_token)
         # Debug: Show which token is being used
         if "_" in post_id:
@@ -457,13 +457,13 @@ def main(argv: Optional[List[str]] = None):
                 token_type = "user token (fallback - page not found)"
         else:
             token_type = "user token (fallback - no page ID in post)"
-        
+
         # Show which ads this post belongs to
         source_ads = [ad_id for ad_id, posts in ad_to_posts.items() if post_id in posts]
         ads_info = f"from {len(source_ads)} ad(s): {', '.join(source_ads[:3])}" + ("..." if len(source_ads) > 3 else "")
-        
+
         print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id} ({i+1}/{len(all_post_ids)}) - {ads_info}")
-        
+
         comments = fetch_all_comments(post_id, token)
         all_comments[post_id] = comments
         total_comments += len(comments)
@@ -489,7 +489,7 @@ def main(argv: Optional[List[str]] = None):
     }
     out_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
     print(f"✅ Saved results to {ansi.cyan}{out_file}{ansi.reset}")
-    
+
     # Summary statistics
     print(f"\n📊 {ansi.cyan}Summary:{ansi.reset}")
     print(f"  • Processed {len(ad_ids)} ads")
