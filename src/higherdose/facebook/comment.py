@@ -26,6 +26,7 @@ import sys
 import argparse
 import urllib.parse
 import urllib.request
+import time
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, List, Tuple, Optional
@@ -44,6 +45,12 @@ DEFAULT_IDS_FILE = Path(DATA_FACEBOOK, "ad-ids.txt")
 GRAPH_VERSION = "v23.0"
 BASE_URL = f"https://graph.facebook.com/{GRAPH_VERSION}"
 CHUNK_SIZE = 50  # Graph API lets you batch ~50 IDs per request
+
+# HTTP settings
+REQUEST_TIMEOUT = 30  # 30 seconds timeout
+MAX_RETRIES = 3
+RETRY_DELAY = 2  # seconds between retries
+RATE_LIMIT_DELAY = 1  # seconds between requests to avoid rate limiting
 
 #############################
 # Utility helpers           #
@@ -73,17 +80,20 @@ def load_latest_tokens() -> Tuple[str, Dict[str, str]]:
     return user_token, page_tokens
 
 
-def graph_request(endpoint: str, params: Dict[str, Any]) -> Dict[str, Any]:
-    """Make a Graph API request with error handling and debugging output."""
+def graph_request(endpoint: str, params: Dict[str, Any], retry_count: int = 0) -> Dict[str, Any]:
+    """Make a Graph API request with error handling, timeout, and retry logic."""
     query = urllib.parse.urlencode(params)
     url = f"{BASE_URL}/{endpoint}?{query}"
     logger.info("Graph GET %s", url[:120] + ("…" if len(url) > 120 else ""))
 
     print(f"\n{ansi.blue}DEBUG: Making Graph API request:{ansi.reset}")
     print(f"  URL: {url[:150]}{'...' if len(url) > 150 else ''}")
+    if retry_count > 0:
+        print(f"  Retry attempt: {retry_count}/{MAX_RETRIES}")
 
     try:
-        with urllib.request.urlopen(url) as resp:
+        req = urllib.request.Request(url)
+        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
             body = resp.read().decode()
             print(f"  Response status: {ansi.green}{resp.status}{ansi.reset}")
             print(f"  Response body length: {len(body)} characters")
@@ -94,19 +104,51 @@ def graph_request(endpoint: str, params: Dict[str, Any]) -> Dict[str, Any]:
 
             # Check for Facebook errors in the response
             if 'error' in data:
+                error = data['error']
                 print(f"  {ansi.red}Facebook API Error:{ansi.reset}")
-                print(f"    Message: {data['error'].get('message', 'Unknown')}")
-                print(f"    Type: {data['error'].get('type', 'Unknown')}")
-                print(f"    Code: {data['error'].get('code', 'Unknown')}")
+                print(f"    Message: {error.get('message', 'Unknown')}")
+                print(f"    Type: {error.get('type', 'Unknown')}")
+                print(f"    Code: {error.get('code', 'Unknown')}")
+                
+                # Handle rate limiting specifically
+                if error.get('code') in [4, 17, 32]:  # Rate limit error codes
+                    if retry_count < MAX_RETRIES:
+                        delay = RETRY_DELAY * (2 ** retry_count)  # Exponential backoff
+                        print(f"  {ansi.yellow}Rate limit detected, waiting {delay}s before retry...{ansi.reset}")
+                        time.sleep(delay)
+                        return graph_request(endpoint, params, retry_count + 1)
+                    else:
+                        raise Exception(f"Rate limit exceeded after {MAX_RETRIES} retries")
 
             return data
+            
     except urllib.error.HTTPError as e:
         err_body = e.read().decode(errors="ignore") if hasattr(e, "read") else ""
         print(f"  {ansi.red}HTTP Error {e.code}: {e.reason}{ansi.reset}")
         error_preview = f"{err_body[:300]}{'...' if len(err_body) > 300 else ''}"
         print(f"  Error body: {ansi.red}{error_preview}{ansi.reset}")
 
+        # Retry on server errors (5xx) or rate limits (429)
+        if e.code in [429, 500, 502, 503, 504] and retry_count < MAX_RETRIES:
+            delay = RETRY_DELAY * (2 ** retry_count)
+            print(f"  {ansi.yellow}Retrying in {delay}s... (attempt {retry_count + 1}/{MAX_RETRIES}){ansi.reset}")
+            time.sleep(delay)
+            return graph_request(endpoint, params, retry_count + 1)
+
         logger.error("HTTP %s: %s – %s", e.code, e.reason, err_body[:200])
+        raise
+        
+    except (urllib.error.URLError, OSError, ConnectionError) as e:
+        print(f"  {ansi.red}Network Error: {str(e)}{ansi.reset}")
+        
+        # Retry on network errors
+        if retry_count < MAX_RETRIES:
+            delay = RETRY_DELAY * (2 ** retry_count)
+            print(f"  {ansi.yellow}Network error, retrying in {delay}s... (attempt {retry_count + 1}/{MAX_RETRIES}){ansi.reset}")
+            time.sleep(delay)
+            return graph_request(endpoint, params, retry_count + 1)
+        
+        logger.error("Network error after %d retries: %s", MAX_RETRIES, str(e))
         raise
 
 
@@ -125,7 +167,13 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
 
     print(f"\n{ansi.cyan}DEBUG: Starting ad-to-post resolution for {len(ad_ids)} ads{ansi.reset}")
 
-    for chunk in chunked(ad_ids, CHUNK_SIZE):
+    chunks = list(chunked(ad_ids, CHUNK_SIZE))
+    for chunk_idx, chunk in enumerate(chunks):
+        # Add rate limiting delay between chunks (except for the first one)
+        if chunk_idx > 0:
+            print(f"\n{ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before processing next chunk...{ansi.reset}")
+            time.sleep(RATE_LIMIT_DELAY)
+            
         ids_str = ",".join(chunk)
         params = {
             "ids": ids_str,  # supplied via path later; we use base URL with ?ids=…
@@ -133,7 +181,7 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
             "access_token": user_token,
         }
 
-        print(f"\n{ansi.yellow}DEBUG: Requesting chunk with {len(chunk)} ads:{ansi.reset}")
+        print(f"\n{ansi.yellow}DEBUG: Requesting chunk {chunk_idx + 1}/{len(chunks)} with {len(chunk)} ads:{ansi.reset}")
         for i, ad_id in enumerate(chunk, 1):
             print(f"  {i}. Ad ID: {ansi.cyan}{ad_id}{ansi.reset}")
 
@@ -189,7 +237,7 @@ def ad_ids_to_post_ids(ad_ids: List[str], user_token: str) -> Dict[str, str]:
 
 
 def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
-    """Return all comments for a post (depth-1)."""
+    """Return all comments for a post (depth-1). Returns empty list if permissions insufficient."""
     comments: List[Dict[str, Any]] = []
     params = {
         "fields": "id,from,message,created_time,like_count,user_likes,comment_count,permalink_url",
@@ -199,32 +247,63 @@ def fetch_all_comments(post_id: str, token: str) -> List[Dict[str, Any]]:
     endpoint = f"{post_id}/comments"
     print(f"\n{ansi.blue}DEBUG: Fetching comments for post {post_id}{ansi.reset}")
     
+    page_count = 0
     while True:
-        data = graph_request(endpoint, params)
-        
-        # Debug the response
-        if 'error' in data:
-            print(f"  {ansi.red}❌ Comments API Error:{ansi.reset}")
-            print(f"    Message: {data['error'].get('message', 'Unknown')}")
-            print(f"    Code: {data['error'].get('code', 'Unknown')}")
-            break
+        # Add rate limiting delay between pages
+        if page_count > 0:
+            print(f"  {ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before next page...{ansi.reset}")
+            time.sleep(RATE_LIMIT_DELAY)
             
-        comments_batch = data.get("data", [])
-        print(f"  {ansi.green}📥 Received {len(comments_batch)} comments in this batch{ansi.reset}")
-        if comments_batch:
-            print(f"    First comment preview: {comments_batch[0].get('message', 'No message')[:100]}...")
-        
-        comments.extend(comments_batch)
-        paging = data.get("paging", {})
-        next_url = paging.get("next")
-        if not next_url:
+        try:
+            data = graph_request(endpoint, params)
+            page_count += 1
+            
+            # Debug the response
+            if 'error' in data:
+                error = data['error']
+                print(f"  {ansi.red}❌ Comments API Error:{ansi.reset}")
+                print(f"    Message: {error.get('message', 'Unknown')}")
+                print(f"    Code: {error.get('code', 'Unknown')}")
+                
+                # Check for permissions errors specifically
+                if error.get('code') in [10, 200, 190] or 'permission' in error.get('message', '').lower():
+                    print(f"  {ansi.yellow}⚠️  Permissions insufficient for this post, skipping...{ansi.reset}")
+                    break
+                else:
+                    # Other API errors - also break to avoid infinite loop
+                    break
+                
+            comments_batch = data.get("data", [])
+            print(f"  {ansi.green}📥 Received {len(comments_batch)} comments in page {page_count}{ansi.reset}")
+            if comments_batch:
+                print(f"    First comment preview: {comments_batch[0].get('message', 'No message')[:100]}...")
+            
+            comments.extend(comments_batch)
+            paging = data.get("paging", {})
+            next_url = paging.get("next")
+            if not next_url:
+                break
+            # Parse next_url into new endpoint + params
+            parsed = urllib.parse.urlparse(next_url)
+            endpoint = parsed.path.lstrip("/")
+            params = dict(urllib.parse.parse_qsl(parsed.query))
+            
+        except urllib.error.HTTPError as e:
+            # Handle HTTP errors gracefully (like 400 Bad Request for permissions)
+            if e.code == 400:
+                print(f"  {ansi.yellow}⚠️  HTTP 400 (Bad Request) - likely permissions issue, skipping post...{ansi.reset}")
+                break
+            elif e.code == 403:
+                print(f"  {ansi.yellow}⚠️  HTTP 403 (Forbidden) - access denied, skipping post...{ansi.reset}")
+                break
+            else:
+                # For other HTTP errors, re-raise to trigger retry logic
+                raise
+        except Exception as e:
+            print(f"  {ansi.red}❌ Unexpected error fetching comments: {str(e)}{ansi.reset}")
             break
-        # Parse next_url into new endpoint + params
-        parsed = urllib.parse.urlparse(next_url)
-        endpoint = parsed.path.lstrip("/")
-        params = dict(urllib.parse.parse_qsl(parsed.query))
     
-    print(f"  {ansi.cyan}📊 Total comments fetched: {len(comments)}{ansi.reset}")
+    print(f"  {ansi.cyan}📊 Total comments fetched: {len(comments)} across {page_count} pages{ansi.reset}")
     return comments
 
 
@@ -307,7 +386,12 @@ def main(argv: Optional[List[str]] = None):
     # 2. Posts → Comments
     all_comments: Dict[str, List[Dict[str, Any]]] = {}
     total_comments = 0
-    for post_id in post_ids:
+    for i, post_id in enumerate(post_ids):
+        # Add rate limiting delay between posts (except for the first one)
+        if i > 0:
+            print(f"\n{ansi.yellow}Rate limiting: waiting {RATE_LIMIT_DELAY}s before processing next post...{ansi.reset}")
+            time.sleep(RATE_LIMIT_DELAY)
+            
         token = resolve_page_token(post_id, page_tokens, user_token)
         # Debug: Show which token is being used
         if "_" in post_id:
@@ -318,7 +402,7 @@ def main(argv: Optional[List[str]] = None):
                 token_type = "user token (fallback - page not found)"
         else:
             token_type = "user token (fallback - no page ID in post)"
-        print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id}")
+        print(f"🔑 Using {ansi.yellow}{token_type}{ansi.reset} for post {post_id} ({i+1}/{len(post_ids)})")
         
         comments = fetch_all_comments(post_id, token)
         all_comments[post_id] = comments
