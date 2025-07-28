@@ -14,8 +14,6 @@ Usage:
     python tests/test_page_mapping.py --no-about         # Skip about page scraping for speed
 """
 
-from __future__ import annotations
-
 import argparse
 import json
 import sys
@@ -29,6 +27,8 @@ import re
 from urllib.parse import urlparse
 
 from playwright.async_api import async_playwright
+from playwright.async_api import Error as PlaywrightError
+from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 
 from higherdose.utils.style import ansi
 from higherdose.utils.logs import report
@@ -139,11 +139,20 @@ class FacebookPageScraper:
     """Playwright-based Facebook page scraper."""
 
     def __init__(self):
-        self.browser = None
-        self.context = None
-        self.page = None
+        """Initialize empty Playwright browser, context, and page placeholders."""
+        self.browser: Optional[any] = None
+        self.context: Optional[any] = None
+        self.page: Optional[any] = None
 
     async def start(self, headless: bool = True):
+        """Launch a Chromium browser and warm-up a single page.
+
+        Parameters
+        ----------
+        headless : bool, default ``True``
+            Run the browser in headless mode. Pass ``--no-headless`` on the CLI
+            to open a visible window for debugging.
+        """
         playwright = await async_playwright().start()
 
         # Launch browser with realistic user agent
@@ -169,7 +178,7 @@ class FacebookPageScraper:
         logger.info("Playwright browser started successfully")
 
     async def close(self):
-        """Close browser and cleanup."""
+        """Close Playwright browser, context, and page (if they exist)."""
         try:
             if self.page:
                 await self.page.close()
@@ -179,7 +188,7 @@ class FacebookPageScraper:
                 await self.browser.close()
             # Add a small delay to allow subprocess cleanup on Windows
             await asyncio.sleep(0.1)
-        except Exception as e:
+        except (PlaywrightError, AttributeError) as e:
             # Ignore cleanup errors - they're not critical
             logger.debug("Error during browser cleanup: %s", e)
 
@@ -261,7 +270,7 @@ class FacebookPageScraper:
                         if name_text and name_text.strip():
                             page_data["name"] = name_text.strip()
                             break
-                except Exception:
+                except PlaywrightError:
                     continue
 
             # Try to extract category
@@ -280,7 +289,7 @@ class FacebookPageScraper:
                         if category_text and category_text.strip():
                             page_data["category"] = category_text.strip()
                             break
-                except Exception:
+                except PlaywrightError:
                     continue
 
             # Try to extract description/about
@@ -301,7 +310,7 @@ class FacebookPageScraper:
                         ):  # Reasonable length for description
                             page_data["description"] = desc_text.strip()
                             break
-                except Exception:
+                except PlaywrightError:
                     continue
 
             # Try to extract follower count
@@ -328,7 +337,7 @@ class FacebookPageScraper:
                     '[aria-label*="Verified"]'
                 )
                 page_data["verified"] = verified_element is not None
-            except Exception:
+            except PlaywrightError:
                 page_data["verified"] = False
 
             # Check if page is accessible (not private/restricted)
@@ -422,7 +431,7 @@ class FacebookPageScraper:
             )
             return page_data
 
-        except Exception as e:
+        except (PlaywrightError, PlaywrightTimeoutError, ValueError) as e:
             duration = time.perf_counter() - start_time
             logger.error(
                 "Error scraping page %s after %.2f seconds: %s",
@@ -501,7 +510,7 @@ class FacebookPageScraper:
                                 break
                         if "about_description" in about_data:
                             break
-                    except Exception:
+                    except PlaywrightError:
                         continue
 
                 # Extract website/contact info
@@ -604,7 +613,7 @@ class FacebookPageScraper:
                                     social_media_links.append(link_entry)
                                 else:
                                     external_websites.append(link_entry)
-                    except Exception:
+                    except PlaywrightError:
                         continue
 
                 # Store the filtered results
@@ -630,7 +639,7 @@ class FacebookPageScraper:
 
                     if hours_text:
                         about_data["business_hours"] = hours_text
-                except Exception:
+                except PlaywrightError:
                     pass
 
                 # Extract location/address
@@ -669,7 +678,7 @@ class FacebookPageScraper:
                                     break
                         if "location" in about_data:
                             break
-                except Exception:
+                except PlaywrightError:
                     pass
 
                 # If we found substantial information, return it
@@ -696,18 +705,21 @@ class FacebookPageScraper:
 
                     return about_data
 
-            except Exception as e:
+            except PlaywrightError as e:
                 logger.debug("Failed to scrape about page %s: %s", about_url, str(e))
                 continue
 
         return None
 
     def _extract_domain(self, url: str) -> str:
-        """Extracts the domain from a URL."""
+        """Return the network location (domain) portion of *url*.
+
+        A fallback to the raw string is returned if the URL cannot be parsed.
+        """
         try:
             parsed_url = urlparse(url)
             return parsed_url.netloc
-        except Exception:
+        except (ValueError, AttributeError):
             return url
 
 
@@ -728,7 +740,13 @@ async def scrape_facebook_pages_concurrent(
     async def scrape_single_page(
         page_id: str, playwright_instance
     ) -> tuple[str, Dict[str, Any]]:
-        """Scrape a single page with its own browser context."""
+        """Scrape one Facebook page in its own lightweight browser context.
+
+        A new Chromium context is created to avoid cross-page contamination
+        (cookies, cache). The semaphore limits the total number of concurrent
+        contexts, protecting both the local machine and Facebook from
+        excessive parallelism.
+        """
         async with semaphore:  # Limit concurrent operations
             scraper = FacebookPageScraper()
 
@@ -839,10 +857,13 @@ async def scrape_facebook_pages_concurrent(
                     f"    [{completed}/{len(tasks)}] {ansi.red}❌ {page_id}{ansi.reset}: {error} - {ansi.cyan}{duration}s{ansi.reset}"
                 )
 
+    except (ValueError, RuntimeError) as e:
+        logger.error("Error during playwright initialization: %s", e)
+        sys.exit(1)
     finally:
         try:
             await playwright.stop()
-        except Exception as e:
+        except PlaywrightError as e:
             logger.debug("Error stopping playwright: %s", e)
 
     overall_duration = time.perf_counter() - overall_start
