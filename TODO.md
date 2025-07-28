@@ -36,7 +36,14 @@
 
 - [ ] Fix the trailing and leading whitespaces around links in certain emails.
 - [x] Move mail/archive to data/mail/exports
+- [ ] Detail steps necessary to get gmail archive working on window machine
+    - [ ] Create a tutorial or README around these steps
 
 ## Facebook Comments
 
-- [ ] Maybe `data/facebook/ad-account-id.json` and `data/facebook/ad-ids.txt` should be in `config/facebook` instead of `data/facebook` 
+- [ ] Maybe `data/facebook/ad-account-id.json` and `data/facebook/ad-ids.txt` should be in `config/facebook` instead of `data/facebook`
+
+## Slack
+
+- [ ] Remove any references to requirements.txt in slack
+- [ ] Get Slack working on another machine
