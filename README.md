@@ -8,19 +8,46 @@ A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Goo
 
 ## 1. Quick Start
 
+- Clone the repo & enter it:
+
 ```bash
-# 1)  Clone the repo & enter it
-$ git clone git@github.com:HigherDOSE/growth-reports.git
+$ git clone git@chrischcodes.github.com:chrischcodes/HigherDOSE.git
 $ cd HigherDOSE
+```
 
-# 2)  Create + activate a virtual-env (recommended)
-$ python3 -m venv venv
-$ source venv/bin/activate   # Windows → venv\Scripts\activate.bat
+### Mac/Linux
 
-# 3)  Install the project (this installs all dependencies from pyproject.toml)
-$ pip install -e .
+```bash
+# 2)  Create a virtual environment
+$ python3.10 -m venv --prompt hdose venv
 
-# 4)  Run a report (see sections below)
+# 3)  Upgrade pip, wheel, and setuptools (recommended)
+# macOS/Linux:
+$ ./venv/bin/python -m pip install --upgrade pip wheel setuptools
+
+# 4)  Install the project (this installs all dependencies from pyproject.toml)
+# macOS/Linux:
+$ ./venv/bin/pip install -e .
+
+# 5)  Run a report (see sections below)
+```
+
+### Windows
+
+```powershell
+# 2)  Create a virtual environment
+$ py -3.10 -m venv --prompt hdose venv
+
+# 3)  Upgrade pip, wheel, and setuptools (recommended)
+$ .\venv\Scripts\python -m pip install --upgrade pip wheel setuptools
+
+# 4)  Activate the virtual environment
+$ .\venv\Scripts\activate
+
+# 5)  Install the project (this installs all dependencies from pyproject.toml)
+$ .\venv\Scripts\pip install -e .
+
+# 6)  Run a report (see sections below)
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
