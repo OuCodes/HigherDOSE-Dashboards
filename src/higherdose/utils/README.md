@@ -190,8 +190,7 @@ your-project/
 │   ├── logs/
 │   └── ...
 ├── config.ini       # Auto-generated config
-├── main.py          # Your application
-└── requirements.txt
+└── main.py          # Your application
 ```
 
 ### 3. Example integration
