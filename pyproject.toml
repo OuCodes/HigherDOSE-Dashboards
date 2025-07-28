@@ -6,8 +6,8 @@ authors = [{name = "HigherDOSE"}]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "pandas==2.2.3,
-    "numpy==2.26",
+    "pandas==2.2.3",
+    "numpy==2.2.6",
     "google-api-python-client==2.176.0",
     "google-auth-httplib2==0.2.0",
     "google-auth-oauthlib==1.2.2",
@@ -33,4 +33,4 @@ hd-email = "higherdose.mail.gmail_archive:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta" 
+build-backend = "setuptools.build_meta"
