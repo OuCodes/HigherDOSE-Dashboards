@@ -2,14 +2,16 @@
 """Test to map Facebook Page IDs to page information using Playwright.
 
 This test extracts unique Page IDs from comment data files and uses Playwright
-to scrape page information directly from Facebook URLs. This provides much more
-reliable data extraction than HTTP requests.
+to scrape page information directly from Facebook URLs. Uses concurrent processing
+for dramatically faster execution with detailed timing metrics.
 
 Results are stored in data/facebook/pages-{timestamp}.json.
 
 Usage:
-    python tests/test_page_mapping.py
-    python tests/test_page_mapping.py --headless  # Run browser in background
+    python tests/test_page_mapping.py                    # Default: 3 concurrent, headless, with about pages
+    python tests/test_page_mapping.py --concurrent 5     # Use 5 concurrent browser contexts
+    python tests/test_page_mapping.py --no-headless      # Run with visible browser UI
+    python tests/test_page_mapping.py --no-about         # Skip about page scraping for speed
 """
 
 from __future__ import annotations
@@ -184,6 +186,7 @@ class FacebookPageScraper:
     
     async def scrape_facebook_page(self, page_id: str, force_about: bool = False) -> Dict[str, Any]:
         """Scrape Facebook page information using Playwright."""
+        start_time = time.perf_counter()
         url = f"https://www.facebook.com/{page_id}"
         
         page_data = {
@@ -201,10 +204,13 @@ class FacebookPageScraper:
             
             if not response or response.status >= 400:
                 page_data['error'] = f"HTTP {response.status if response else 'timeout'}"
+                duration = time.perf_counter() - start_time
+                page_data['scrape_duration_seconds'] = round(duration, 2)
+                logger.warning("Page %s failed in %.2f seconds: %s", page_id, duration, page_data['error'])
                 return page_data
             
-            # Wait a bit for JavaScript to load
-            await self.page.wait_for_timeout(2000)
+            # Reduced wait time for faster processing
+            await self.page.wait_for_timeout(1000)  # Reduced from 2000ms to 1000ms
             
             # Get final URL after any redirects (e.g., page ID -> username)
             final_url = self.page.url
@@ -319,28 +325,62 @@ class FacebookPageScraper:
             ]):
                 page_data['accessible'] = False
                 page_data['error'] = 'Page not accessible or private'
+                duration = time.perf_counter() - start_time
+                page_data['scrape_duration_seconds'] = round(duration, 2)
+                logger.warning("Page %s not accessible (%.2f seconds)", page_id, duration)
                 return page_data
             else:
                 page_data['accessible'] = True
                 page_data['scrape_success'] = True
             
             # If description is missing or too short, try the /about/ page
+            # BUT only if force_about is True (respect --no-about flag completely)
             current_description = page_data.get('description', '')
-            if force_about or not current_description or len(current_description) < 50:
+            if force_about and (not current_description or len(current_description) < 50):
+                about_start = time.perf_counter()
                 about_data = await self.scrape_about_page(page_id, page_data.get('username'))
+                about_duration = time.perf_counter() - about_start
+                
                 if about_data:
                     # Merge about page data
                     page_data.update(about_data)
                     page_data['about_page_scraped'] = True
+                    page_data['about_scrape_duration_seconds'] = round(about_duration, 2)
+                    logger.info("About page for %s scraped in %.2f seconds", page_id, about_duration)
                 else:
                     page_data['about_page_scraped'] = False
+                    page_data['about_scrape_duration_seconds'] = round(about_duration, 2)
+            elif force_about:
+                # Force about page even if description exists
+                about_start = time.perf_counter()
+                about_data = await self.scrape_about_page(page_id, page_data.get('username'))
+                about_duration = time.perf_counter() - about_start
+                
+                if about_data:
+                    # Merge about page data
+                    page_data.update(about_data)
+                    page_data['about_page_scraped'] = True
+                    page_data['about_scrape_duration_seconds'] = round(about_duration, 2)
+                    logger.info("About page for %s scraped in %.2f seconds", page_id, about_duration)
+                else:
+                    page_data['about_page_scraped'] = False
+                    page_data['about_scrape_duration_seconds'] = round(about_duration, 2)
+            else:
+                # --no-about specified: skip about page completely
+                page_data['about_page_scraped'] = False
+                logger.info("About page scraping skipped for %s (--no-about specified)", page_id)
             
+            duration = time.perf_counter() - start_time
+            page_data['scrape_duration_seconds'] = round(duration, 2)
+            logger.info("Page %s scraped successfully in %.2f seconds", page_id, duration)
             return page_data
             
         except Exception as e:
-            logger.error("Error scraping page %s: %s", page_id, str(e))
+            duration = time.perf_counter() - start_time
+            logger.error("Error scraping page %s after %.2f seconds: %s", page_id, duration, str(e))
             page_data['error'] = str(e)
             page_data['accessible'] = False
+            page_data['scrape_duration_seconds'] = round(duration, 2)
             return page_data
     
     async def scrape_about_page(self, page_id: str, username: Optional[str] = None) -> Optional[Dict[str, Any]]:
@@ -357,13 +397,13 @@ class FacebookPageScraper:
         for about_url in about_urls:
             try:
                 logger.info("Trying about page: %s", about_url)
-                response = await self.page.goto(about_url, wait_until='domcontentloaded', timeout=10000)
+                response = await self.page.goto(about_url, wait_until='domcontentloaded', timeout=8000)  # Reduced from 10000ms
                 
                 if not response or response.status >= 400:
                     continue
                 
-                # Wait for content to load
-                await self.page.wait_for_timeout(2000)
+                # Reduced wait for content to load
+                await self.page.wait_for_timeout(1000)  # Reduced from 2000ms
                 
                 # Extract description/bio from about page
                 about_selectors = [
@@ -560,25 +600,70 @@ class FacebookPageScraper:
             return url
 
 
-async def scrape_facebook_pages(page_ids: Set[str], headless: bool = True, force_about: bool = False) -> Dict[str, Dict[str, Any]]:
-    """Scrape multiple Facebook pages using Playwright."""
-    scraper = FacebookPageScraper()
-    await scraper.start(headless=headless)
+async def scrape_facebook_pages_concurrent(page_ids: Set[str], headless: bool = True, force_about: bool = False, max_concurrent: int = 3) -> Dict[str, Dict[str, Any]]:
+    """Scrape multiple Facebook pages concurrently using multiple Playwright contexts."""
+    from playwright.async_api import async_playwright
     
+    overall_start = time.perf_counter()
     scraped_data = {}
     
+    # Create semaphore to limit concurrent operations
+    semaphore = asyncio.Semaphore(max_concurrent)
+    
+    async def scrape_single_page(page_id: str, playwright_instance) -> tuple[str, Dict[str, Any]]:
+        """Scrape a single page with its own browser context."""
+        async with semaphore:  # Limit concurrent operations
+            scraper = FacebookPageScraper()
+            
+            # Create new browser for this page (or reuse if available)
+            browser = await playwright_instance.chromium.launch(
+                headless=headless,
+                args=['--no-sandbox', '--disable-dev-shm-usage']
+            )
+            
+            context = await browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                viewport={'width': 1920, 'height': 1080}
+            )
+            
+            page = await context.new_page()
+            await page.set_extra_http_headers({
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+            })
+            
+            # Set up the scraper with this context
+            scraper.browser = browser
+            scraper.context = context
+            scraper.page = page
+            
+            try:
+                page_data = await scraper.scrape_facebook_page(page_id, force_about=force_about)
+                return page_id, page_data
+            finally:
+                await scraper.close()
+    
     try:
-        for i, page_id in enumerate(sorted(page_ids), 1):
-            print(f"  [{i}/{len(page_ids)}] Scraping: {ansi.cyan}{page_id}{ansi.reset}")
-            
-            page_data = await scraper.scrape_facebook_page(page_id, force_about=force_about)
+        playwright = await async_playwright().start()
+        
+        # Create tasks for all pages
+        tasks = [scrape_single_page(page_id, playwright) for page_id in sorted(page_ids)]
+        
+        print(f"  🚀 Starting {len(tasks)} concurrent scraping operations (max {max_concurrent} at once)...")
+        
+        # Process tasks and show progress
+        completed = 0
+        for task in asyncio.as_completed(tasks):
+            page_id, page_data = await task
             scraped_data[page_id] = page_data
+            completed += 1
             
-            # Show results
+            # Show results as they complete
             if page_data.get('scrape_success'):
                 name = page_data.get('name', 'Unknown')
                 category = page_data.get('category', 'Unknown')
-                print(f"    {ansi.green}✅ {name}{ansi.reset} ({category})")
+                duration = page_data.get('scrape_duration_seconds', 0)
+                print(f"    [{completed}/{len(tasks)}] {ansi.green}✅ {name}{ansi.reset} ({category}) - {ansi.cyan}{duration}s{ansi.reset}")
                 
                 if page_data.get('username'):
                     print(f"    {ansi.blue}   @{page_data['username']}{ansi.reset}")
@@ -589,7 +674,8 @@ async def scrape_facebook_pages(page_ids: Set[str], headless: bool = True, force
                 
                 # Show about page info if available
                 if page_data.get('about_page_scraped'):
-                    print(f"    {ansi.cyan}   📋 About page data extracted{ansi.reset}")
+                    about_duration = page_data.get('about_scrape_duration_seconds', 0)
+                    print(f"    {ansi.cyan}   📋 About page data extracted ({about_duration}s){ansi.reset}")
                     
                     if page_data.get('about_description'):
                         desc_preview = page_data['about_description'][:60] + "..." if len(page_data['about_description']) > 60 else page_data['about_description']
@@ -608,20 +694,25 @@ async def scrape_facebook_pages(page_ids: Set[str], headless: bool = True, force
                         print(f"    {ansi.cyan}   📍 {location_preview}{ansi.reset}")
             else:
                 error = page_data.get('error', 'Unknown error')
-                print(f"    {ansi.red}❌ Error: {error}{ansi.reset}")
-            
-            # Be respectful to Facebook - small delay between requests
-            if i < len(page_ids):
-                await asyncio.sleep(2)
+                duration = page_data.get('scrape_duration_seconds', 0)
+                print(f"    [{completed}/{len(tasks)}] {ansi.red}❌ {page_id}{ansi.reset}: {error} - {ansi.cyan}{duration}s{ansi.reset}")
     
     finally:
         try:
-            await scraper.close()
+            await playwright.stop()
         except Exception as e:
-            # Don't let cleanup errors crash the script
-            logger.debug("Error during scraper cleanup: %s", e)
+            logger.debug("Error stopping playwright: %s", e)
+    
+    overall_duration = time.perf_counter() - overall_start
+    print(f"\n  {ansi.magenta}⚡ Total operation completed in {overall_duration:.2f} seconds{ansi.reset}")
+    logger.info("Concurrent scraping completed in %.2f seconds", overall_duration)
     
     return scraped_data
+
+
+async def scrape_facebook_pages(page_ids: Set[str], headless: bool = True, force_about: bool = False) -> Dict[str, Dict[str, Any]]:
+    """Scrape multiple Facebook pages using Playwright (concurrent version for speed)."""
+    return await scrape_facebook_pages_concurrent(page_ids, headless, force_about)
 
 
 def save_page_mapping(page_data: Dict[str, Dict[str, Any]], output_dir: str = "data/facebook") -> str:
@@ -663,55 +754,83 @@ async def main_async(argv: Optional[List[str]] = None):
     parser.add_argument("--output-dir", default="data/facebook", help="Directory to save page mapping")
     parser.add_argument("--no-headless", action="store_true", help="Run browser with visible UI (default: headless)")
     parser.add_argument("--no-about", action="store_true", help="Skip about page scraping (default: scrape about pages)")
+    parser.add_argument("--concurrent", type=int, default=3, help="Number of concurrent browser contexts (default: 3)")
     args = parser.parse_args(argv)
 
     # Set defaults (opposite of the no- flags)
     headless = not args.no_headless
     force_about = not args.no_about
 
+    script_start = time.perf_counter()
     emoji = "🕷️" if not force_about else "🕷️📋"
     action = "scraping" if not force_about else "scraping with about pages"
     mode = "headless" if headless else "visible"
-    print(f"{emoji} Mapping Page IDs using Playwright {action} ({mode} mode)\n")
+    print(f"{emoji} Mapping Page IDs using Playwright {action} ({mode} mode, {args.concurrent} concurrent)\n")
 
     # Extract Page IDs from comment files
     print(f"{ansi.blue}Step 1:{ansi.reset} Extracting Page IDs from comment files...")
+    step1_start = time.perf_counter()
     page_ids = extract_page_ids_from_comment_files(args.data_dir)
+    step1_duration = time.perf_counter() - step1_start
     
     if not page_ids:
         print(f"{ansi.yellow}No Page IDs found to process.{ansi.reset}")
         return
 
+    print(f"  {ansi.cyan}✅ Extracted {len(page_ids)} Page IDs in {step1_duration:.2f} seconds{ansi.reset}")
+
     # Count posts per page for analytics
     print(f"\n{ansi.blue}Step 2:{ansi.reset} Analyzing post distribution per page...")
+    step2_start = time.perf_counter()
     page_post_counts = count_posts_per_page(args.data_dir)
+    step2_duration = time.perf_counter() - step2_start
     
-    print("\nFound Page IDs with post counts:")
+    print(f"\nFound Page IDs with post counts:")
     for page_id in sorted(page_ids):
         post_count = page_post_counts.get(page_id, 0)
         print(f"  • {ansi.cyan}{page_id}{ansi.reset} ({ansi.yellow}{post_count} posts{ansi.reset})")
 
+    print(f"  {ansi.cyan}✅ Analysis completed in {step2_duration:.2f} seconds{ansi.reset}")
+
     # Scrape Facebook pages
     print(f"\n{ansi.blue}Step 3:{ansi.reset} Scraping Facebook pages with Playwright...")
-    scraped_data = await scrape_facebook_pages(page_ids, headless=headless, force_about=force_about)
+    step3_start = time.perf_counter()
+    scraped_data = await scrape_facebook_pages_concurrent(page_ids, headless=headless, force_about=force_about, max_concurrent=args.concurrent)
+    step3_duration = time.perf_counter() - step3_start
     
     # Add post count analytics to scraped data
     for page_id, page_info in scraped_data.items():
         page_info['post_count_in_data'] = page_post_counts.get(page_id, 0)
 
+    print(f"  {ansi.cyan}✅ Scraping completed in {step3_duration:.2f} seconds{ansi.reset}")
+
     # Save results
     print(f"\n{ansi.blue}Step 4:{ansi.reset} Saving page mapping...")
+    step4_start = time.perf_counter()
     output_path = save_page_mapping(scraped_data, args.output_dir)
+    step4_duration = time.perf_counter() - step4_start
     print(f"Page mapping saved to: {ansi.cyan}{output_path}{ansi.reset}")
+    print(f"  {ansi.cyan}✅ Saved in {step4_duration:.2f} seconds{ansi.reset}")
 
     # Summary
     successful = len([p for p in scraped_data.values() if p.get('scrape_success')])
     failed = len([p for p in scraped_data.values() if not p.get('scrape_success')])
     
+    total_script_duration = time.perf_counter() - script_start
+    
     print(f"\n{ansi.green}✅ Playwright scraping completed!{ansi.reset}")
     print(f"  Total pages processed: {ansi.yellow}{len(scraped_data)}{ansi.reset}")
     print(f"  Successfully scraped: {ansi.green}{successful}{ansi.reset}")
     print(f"  Failed to scrape: {ansi.red}{failed}{ansi.reset}")
+    print(f"  {ansi.magenta}🚀 Total script time: {total_script_duration:.2f} seconds{ansi.reset}")
+    
+    # Performance breakdown
+    avg_page_time = step3_duration / len(page_ids) if page_ids else 0
+    print(f"\n{ansi.blue}⏱️  Performance Breakdown:{ansi.reset}")
+    print(f"  • Page extraction: {ansi.cyan}{step1_duration:.2f}s{ansi.reset}")
+    print(f"  • Post counting: {ansi.cyan}{step2_duration:.2f}s{ansi.reset}")
+    print(f"  • Concurrent scraping: {ansi.cyan}{step3_duration:.2f}s{ansi.reset} ({ansi.yellow}{avg_page_time:.2f}s avg/page{ansi.reset})")
+    print(f"  • Data saving: {ansi.cyan}{step4_duration:.2f}s{ansi.reset}")
     
     if successful > 0:
         print(f"\n{ansi.magenta}📋 Successfully identified pages:{ansi.reset}")
@@ -722,7 +841,8 @@ async def main_async(argv: Optional[List[str]] = None):
                 post_count = page_info['post_count_in_data']
                 username = page_info.get('username', '')
                 username_display = f" (@{username})" if username else ""
-                print(f"  • {ansi.yellow}{name}{ansi.reset}{username_display} - {category} ({post_count} posts)")
+                duration = page_info.get('scrape_duration_seconds', 0)
+                print(f"  • {ansi.yellow}{name}{ansi.reset}{username_display} - {category} ({post_count} posts, {duration}s)")
     
     # Highlight the page with most posts
     if page_post_counts:
@@ -730,6 +850,8 @@ async def main_async(argv: Optional[List[str]] = None):
         max_page_id, max_count = max_page
         max_page_name = scraped_data.get(max_page_id, {}).get('name', 'Unknown')
         print(f"\n{ansi.magenta}🎯 Most active page:{ansi.reset} {ansi.yellow}{max_page_name}{ansi.reset} ({ansi.cyan}{max_page_id}{ansi.reset}) - {ansi.yellow}{max_count} posts{ansi.reset}")
+
+    logger.info("Script completed in %.2f seconds with %d successful scrapes", total_script_duration, successful)
 
 
 def main(argv: Optional[List[str]] = None):
