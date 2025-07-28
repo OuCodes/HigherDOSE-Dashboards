@@ -28,6 +28,8 @@ import glob
 import re
 from urllib.parse import urlparse
 
+from playwright.async_api import async_playwright
+
 from higherdose.utils.style import ansi
 from higherdose.utils.logs import report
 
@@ -50,19 +52,19 @@ def extract_page_ids_from_comment_files(data_dir: str = "data/facebook") -> Set[
     """Extract all unique Page IDs from comment JSON files."""
     page_ids = set()
     comment_files = glob.glob(f"{data_dir}/comments-*.json")
-    
+
     if not comment_files:
         print(f"{ansi.yellow}No comment files found in {data_dir}{ansi.reset}")
         return page_ids
-    
+
     print(f"Found {len(comment_files)} comment file(s) to process:")
-    
+
     for file_path in comment_files:
         print(f"  Processing: {ansi.cyan}{Path(file_path).name}{ansi.reset}")
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-            
+
             # Extract from ad_to_posts mapping
             if 'ad_to_posts' in data:
                 for post_list in data['ad_to_posts'].values():
@@ -71,12 +73,12 @@ def extract_page_ids_from_comment_files(data_dir: str = "data/facebook") -> Set[
                     else:
                         # Handle case where it might be a single string
                         page_ids.update(extract_page_ids_from_posts([post_list]))
-            
+
             # Extract from ad_to_post mapping (single post per ad)
             if 'ad_to_post' in data:
                 post_ids = list(data['ad_to_post'].values())
                 page_ids.update(extract_page_ids_from_posts(post_ids))
-            
+
             # Extract from any other post ID fields that might exist
             if 'posts' in data:
                 post_ids = []
@@ -84,11 +86,11 @@ def extract_page_ids_from_comment_files(data_dir: str = "data/facebook") -> Set[
                     if 'post_id' in post_data:
                         post_ids.append(post_data['post_id'])
                 page_ids.update(extract_page_ids_from_posts(post_ids))
-                        
+
         except (json.JSONDecodeError, FileNotFoundError, KeyError) as e:
             print(f"    {ansi.red}Error processing {file_path}: {e}{ansi.reset}")
             logger.error("Error processing %s: %s", file_path, e)
-    
+
     print(f"Extracted {ansi.yellow}{len(page_ids)}{ansi.reset} unique Page IDs")
     return page_ids
 
@@ -97,12 +99,12 @@ def count_posts_per_page(data_dir: str = "data/facebook") -> Dict[str, int]:
     """Count how many posts each page has across all comment files."""
     page_post_counts = {}
     comment_files = glob.glob(f"{data_dir}/comments-*.json")
-    
+
     for file_path in comment_files:
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-            
+
             # Count from ad_to_posts mapping
             if 'ad_to_posts' in data:
                 for post_list in data['ad_to_posts'].values():
@@ -115,60 +117,52 @@ def count_posts_per_page(data_dir: str = "data/facebook") -> Dict[str, int]:
                         if '_' in post_list:
                             page_id = post_list.split('_')[0]
                             page_post_counts[page_id] = page_post_counts.get(page_id, 0) + 1
-            
+
             # Count from ad_to_post mapping
             if 'ad_to_post' in data:
                 for post_id in data['ad_to_post'].values():
                     if '_' in post_id:
                         page_id = post_id.split('_')[0]
                         page_post_counts[page_id] = page_post_counts.get(page_id, 0) + 1
-                        
+
         except (json.JSONDecodeError, FileNotFoundError, KeyError) as e:
             logger.error("Error counting posts in %s: %s", file_path, e)
-    
+
     return page_post_counts
 
 
 class FacebookPageScraper:
     """Playwright-based Facebook page scraper."""
-    
+
     def __init__(self):
         self.browser = None
         self.context = None
         self.page = None
-    
+
     async def start(self, headless: bool = True):
-        """Start Playwright browser."""
-        try:
-            from playwright.async_api import async_playwright
-        except ImportError:
-            print(f"{ansi.red}Error: Playwright not installed.{ansi.reset}")
-            print("Install with: pip install playwright && playwright install chromium")
-            sys.exit(1)
-        
         playwright = await async_playwright().start()
-        
+
         # Launch browser with realistic user agent
         self.browser = await playwright.chromium.launch(
             headless=headless,
             args=['--no-sandbox', '--disable-dev-shm-usage']
         )
-        
+
         self.context = await self.browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
             viewport={'width': 1920, 'height': 1080}
         )
-        
+
         self.page = await self.context.new_page()
-        
+
         # Set up some realistic headers and behavior
         await self.page.set_extra_http_headers({
             'Accept-Language': 'en-US,en;q=0.9',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
         })
-        
+
         logger.info("Playwright browser started successfully")
-    
+
     async def close(self):
         """Close browser and cleanup."""
         try:
@@ -183,55 +177,55 @@ class FacebookPageScraper:
         except Exception as e:
             # Ignore cleanup errors - they're not critical
             logger.debug("Error during browser cleanup: %s", e)
-    
+
     async def scrape_facebook_page(self, page_id: str, force_about: bool = False) -> Dict[str, Any]:
         """Scrape Facebook page information using Playwright."""
         start_time = time.perf_counter()
         url = f"https://www.facebook.com/{page_id}"
-        
+
         page_data = {
             'page_id': page_id,
             'url_original': url,
             'scrape_timestamp': datetime.now().isoformat(),
             'scrape_success': False
         }
-        
+
         try:
             logger.info("Scraping Facebook page: %s", page_id)
-            
+
             # Navigate to the page
             response = await self.page.goto(url, wait_until='domcontentloaded', timeout=15000)
-            
+
             if not response or response.status >= 400:
                 page_data['error'] = f"HTTP {response.status if response else 'timeout'}"
                 duration = time.perf_counter() - start_time
                 page_data['scrape_duration_seconds'] = round(duration, 2)
                 logger.warning("Page %s failed in %.2f seconds: %s", page_id, duration, page_data['error'])
                 return page_data
-            
+
             # Reduced wait time for faster processing
             await self.page.wait_for_timeout(1000)  # Reduced from 2000ms to 1000ms
-            
+
             # Get final URL after any redirects (e.g., page ID -> username)
             final_url = self.page.url
             page_data['url_final'] = final_url
-            
+
             # Extract username from final URL if it changed
             if final_url != url:
                 username_match = re.search(r'facebook\.com/([^/?]+)', final_url)
                 if username_match:
                     page_data['username'] = username_match.group(1)
-            
+
             # Extract page title
             title = await self.page.title()
             page_data['page_title'] = title
-            
+
             # Try to extract page name from title (remove " | Facebook" suffix)
             if title:
                 clean_name = re.sub(r'\s*[\|\-]\s*Facebook.*$', '', title, flags=re.IGNORECASE)
                 if clean_name and clean_name != title:
                     page_data['name'] = clean_name.strip()
-            
+
             # Try to extract page name from h1 or other selectors
             name_selectors = [
                 'h1[data-testid="page_title"]',
@@ -240,7 +234,7 @@ class FacebookPageScraper:
                 '[role="main"] h1',
                 '.x1e56ztr span'  # Alternative page name selector
             ]
-            
+
             for selector in name_selectors:
                 try:
                     name_element = await self.page.query_selector(selector)
@@ -251,7 +245,7 @@ class FacebookPageScraper:
                             break
                 except:
                     continue
-            
+
             # Try to extract category
             category_selectors = [
                 '[data-testid="page_category"]',
@@ -259,7 +253,7 @@ class FacebookPageScraper:
                 'span:has-text("Category") + span',
                 '.x1lliihq:has-text("·")'  # Often categories are after a bullet point
             ]
-            
+
             for selector in category_selectors:
                 try:
                     category_element = await self.page.query_selector(selector)
@@ -270,7 +264,7 @@ class FacebookPageScraper:
                             break
                 except:
                     continue
-            
+
             # Try to extract description/about
             description_selectors = [
                 '[data-testid="page_description"]',
@@ -278,7 +272,7 @@ class FacebookPageScraper:
                 '[role="main"] .x1lliihq:not(h1)',
                 '.x1e56ztr .x1lliihq'
             ]
-            
+
             for selector in description_selectors:
                 try:
                     desc_element = await self.page.query_selector(selector)
@@ -289,14 +283,14 @@ class FacebookPageScraper:
                             break
                 except:
                     continue
-            
+
             # Try to extract follower count
             follower_patterns = [
                 r'([\d,]+)\s+(?:followers?|likes?)',
                 r'([\d,]+)\s+people like this',
                 r'([\d,]+)\s+people follow this'
             ]
-            
+
             page_content = await self.page.content()
             for pattern in follower_patterns:
                 match = re.search(pattern, page_content, re.IGNORECASE)
@@ -307,14 +301,14 @@ class FacebookPageScraper:
                         break
                     except ValueError:
                         continue
-            
+
             # Check if page is verified (blue checkmark)
             try:
                 verified_element = await self.page.query_selector('[aria-label*="Verified"]')
                 page_data['verified'] = verified_element is not None
             except:
                 page_data['verified'] = False
-            
+
             # Check if page is accessible (not private/restricted)
             page_content_lower = page_content.lower()
             if any(phrase in page_content_lower for phrase in [
@@ -332,7 +326,7 @@ class FacebookPageScraper:
             else:
                 page_data['accessible'] = True
                 page_data['scrape_success'] = True
-            
+
             # If description is missing or too short, try the /about/ page
             # BUT only if force_about is True (respect --no-about flag completely)
             current_description = page_data.get('description', '')
@@ -340,7 +334,7 @@ class FacebookPageScraper:
                 about_start = time.perf_counter()
                 about_data = await self.scrape_about_page(page_id, page_data.get('username'))
                 about_duration = time.perf_counter() - about_start
-                
+
                 if about_data:
                     # Merge about page data
                     page_data.update(about_data)
@@ -355,7 +349,7 @@ class FacebookPageScraper:
                 about_start = time.perf_counter()
                 about_data = await self.scrape_about_page(page_id, page_data.get('username'))
                 about_duration = time.perf_counter() - about_start
-                
+
                 if about_data:
                     # Merge about page data
                     page_data.update(about_data)
@@ -369,12 +363,12 @@ class FacebookPageScraper:
                 # --no-about specified: skip about page completely
                 page_data['about_page_scraped'] = False
                 logger.info("About page scraping skipped for %s (--no-about specified)", page_id)
-            
+
             duration = time.perf_counter() - start_time
             page_data['scrape_duration_seconds'] = round(duration, 2)
             logger.info("Page %s scraped successfully in %.2f seconds", page_id, duration)
             return page_data
-            
+
         except Exception as e:
             duration = time.perf_counter() - start_time
             logger.error("Error scraping page %s after %.2f seconds: %s", page_id, duration, str(e))
@@ -382,29 +376,29 @@ class FacebookPageScraper:
             page_data['accessible'] = False
             page_data['scrape_duration_seconds'] = round(duration, 2)
             return page_data
-    
+
     async def scrape_about_page(self, page_id: str, username: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """Scrape additional information from the Facebook page's /about/ section."""
         about_data = {}
-        
+
         # Try different about page URL formats
         about_urls = []
         if username and username != 'people':
             about_urls.append(f"https://www.facebook.com/{username}/about/")
         about_urls.append(f"https://www.facebook.com/pg/{page_id}/about/")
         about_urls.append(f"https://www.facebook.com/{page_id}/about/")
-        
+
         for about_url in about_urls:
             try:
                 logger.info("Trying about page: %s", about_url)
                 response = await self.page.goto(about_url, wait_until='domcontentloaded', timeout=8000)  # Reduced from 10000ms
-                
+
                 if not response or response.status >= 400:
                     continue
-                
+
                 # Reduced wait for content to load
                 await self.page.wait_for_timeout(1000)  # Reduced from 2000ms
-                
+
                 # Extract description/bio from about page
                 about_selectors = [
                     '[data-testid="about_page_description"]',
@@ -414,7 +408,7 @@ class FacebookPageScraper:
                     'div[dir="auto"] span',
                     '.x1e56ztr .x193iq5w'
                 ]
-                
+
                 for selector in about_selectors:
                     try:
                         elements = await self.page.query_selector_all(selector)
@@ -433,11 +427,11 @@ class FacebookPageScraper:
                             break
                     except:
                         continue
-                
+
                 # Extract website/contact info
                 external_websites = []
                 social_media_links = []
-                
+
                 # Look for external links with better filtering
                 link_selectors = [
                     'a[href^="http"]:not([href*="facebook.com"])',  # External HTTP/HTTPS links, not Facebook
@@ -448,21 +442,21 @@ class FacebookPageScraper:
                     'a[rel="noopener"]',  # Often used for external business links
                     'a[target="_blank"]:not([href*="facebook.com"])'  # External links opening in new tab
                 ]
-                
+
                 for selector in link_selectors:
                     try:
                         elements = await self.page.query_selector_all(selector)
                         for element in elements:
                             href = await element.get_attribute('href')
                             text = await element.text_content()
-                            
+
                             if not href:
                                 continue
-                            
+
                             # Clean up the URL
                             if href.startswith('www.'):
                                 href = f"https://{href}"
-                            
+
                             # Skip Facebook internal links
                             facebook_internal_patterns = [
                                 'facebook.com/',
@@ -489,14 +483,14 @@ class FacebookPageScraper:
                                 '/developers/',
                                 '/support/'
                             ]
-                            
+
                             # Also skip if it's a relative URL starting with / (likely Facebook internal)
                             if href.startswith('/') and not href.startswith('//'):
                                 continue
-                            
+
                             if any(pattern in href.lower() for pattern in facebook_internal_patterns):
                                 continue
-                            
+
                             # Categorize social media vs business websites
                             social_media_domains = [
                                 'instagram.com',
@@ -508,16 +502,16 @@ class FacebookPageScraper:
                                 'pinterest.com',
                                 'snapchat.com'
                             ]
-                            
+
                             is_social_media = any(domain in href.lower() for domain in social_media_domains)
-                            
+
                             # Create link entry
                             link_entry = {
                                 'url': href,
                                 'text': text.strip() if text else href,
                                 'domain': self._extract_domain(href)
                             }
-                            
+
                             # Avoid duplicates
                             existing_urls = [link['url'] for link in external_websites + social_media_links]
                             if href not in existing_urls:
@@ -527,14 +521,14 @@ class FacebookPageScraper:
                                     external_websites.append(link_entry)
                     except:
                         continue
-                
+
                 # Store the filtered results
                 if external_websites:
                     about_data['external_websites'] = external_websites
-                
+
                 if social_media_links:
                     about_data['social_media_links'] = social_media_links
-                
+
                 # Extract business hours if present
                 try:
                     hours_elements = await self.page.query_selector_all('text[contains(., "Mon")] | text[contains(., "Hours")]')
@@ -543,12 +537,12 @@ class FacebookPageScraper:
                         text = await element.text_content()
                         if text and any(day in text for day in ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']):
                             hours_text.append(text.strip())
-                    
+
                     if hours_text:
                         about_data['business_hours'] = hours_text
                 except:
                     pass
-                
+
                 # Extract location/address
                 try:
                     location_selectors = [
@@ -556,7 +550,7 @@ class FacebookPageScraper:
                         '.x1i10hfl:has-text("Get directions")',
                         'span:has-text("·") + span'  # Often address follows a bullet point
                     ]
-                    
+
                     for selector in location_selectors:
                         elements = await self.page.query_selector_all(selector)
                         for element in elements:
@@ -573,7 +567,7 @@ class FacebookPageScraper:
                             break
                 except:
                     pass
-                
+
                 # If we found substantial information, return it
                 if any(key in about_data for key in ['about_description', 'external_websites', 'social_media_links', 'business_hours', 'location']):
                     # Clean up about_description if it looks like a URL with "Website" suffix
@@ -582,15 +576,15 @@ class FacebookPageScraper:
                         # Remove "Website" suffix from URLs
                         if desc.startswith(('http://', 'https://', 'www.')) and desc.endswith('Website'):
                             about_data['about_description'] = desc[:-7].rstrip('/')  # Remove "Website" and trailing slash
-                    
+
                     return about_data
-                
+
             except Exception as e:
                 logger.debug("Failed to scrape about page %s: %s", about_url, str(e))
                 continue
-        
+
         return None
-    
+
     def _extract_domain(self, url: str) -> str:
         """Extracts the domain from a URL."""
         try:
@@ -602,93 +596,92 @@ class FacebookPageScraper:
 
 async def scrape_facebook_pages_concurrent(page_ids: Set[str], headless: bool = True, force_about: bool = False, max_concurrent: int = 3) -> Dict[str, Dict[str, Any]]:
     """Scrape multiple Facebook pages concurrently using multiple Playwright contexts."""
-    from playwright.async_api import async_playwright
-    
+
     overall_start = time.perf_counter()
     scraped_data = {}
-    
+
     # Create semaphore to limit concurrent operations
     semaphore = asyncio.Semaphore(max_concurrent)
-    
+
     async def scrape_single_page(page_id: str, playwright_instance) -> tuple[str, Dict[str, Any]]:
         """Scrape a single page with its own browser context."""
         async with semaphore:  # Limit concurrent operations
             scraper = FacebookPageScraper()
-            
+
             # Create new browser for this page (or reuse if available)
             browser = await playwright_instance.chromium.launch(
                 headless=headless,
                 args=['--no-sandbox', '--disable-dev-shm-usage']
             )
-            
+
             context = await browser.new_context(
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
                 viewport={'width': 1920, 'height': 1080}
             )
-            
+
             page = await context.new_page()
             await page.set_extra_http_headers({
                 'Accept-Language': 'en-US,en;q=0.9',
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
             })
-            
+
             # Set up the scraper with this context
             scraper.browser = browser
             scraper.context = context
             scraper.page = page
-            
+
             try:
                 page_data = await scraper.scrape_facebook_page(page_id, force_about=force_about)
                 return page_id, page_data
             finally:
                 await scraper.close()
-    
+
     try:
         playwright = await async_playwright().start()
-        
+
         # Create tasks for all pages
         tasks = [scrape_single_page(page_id, playwright) for page_id in sorted(page_ids)]
-        
+
         print(f"  🚀 Starting {len(tasks)} concurrent scraping operations (max {max_concurrent} at once)...")
-        
+
         # Process tasks and show progress
         completed = 0
         for task in asyncio.as_completed(tasks):
             page_id, page_data = await task
             scraped_data[page_id] = page_data
             completed += 1
-            
+
             # Show results as they complete
             if page_data.get('scrape_success'):
                 name = page_data.get('name', 'Unknown')
                 category = page_data.get('category', 'Unknown')
                 duration = page_data.get('scrape_duration_seconds', 0)
                 print(f"    [{completed}/{len(tasks)}] {ansi.green}✅ {name}{ansi.reset} ({category}) - {ansi.cyan}{duration}s{ansi.reset}")
-                
+
                 if page_data.get('username'):
                     print(f"    {ansi.blue}   @{page_data['username']}{ansi.reset}")
-                    
+
                 if page_data.get('follower_count'):
                     followers = f"{page_data['follower_count']:,}"
                     print(f"    {ansi.yellow}   {followers} followers{ansi.reset}")
-                
+
                 # Show about page info if available
                 if page_data.get('about_page_scraped'):
                     about_duration = page_data.get('about_scrape_duration_seconds', 0)
                     print(f"    {ansi.cyan}   📋 About page data extracted ({about_duration}s){ansi.reset}")
-                    
+
                     if page_data.get('about_description'):
                         desc_preview = page_data['about_description'][:60] + "..." if len(page_data['about_description']) > 60 else page_data['about_description']
                         print(f"    {ansi.cyan}   💬 {desc_preview}{ansi.reset}")
-                    
+
                     if page_data.get('external_websites'):
                         website_count = len(page_data['external_websites'])
                         print(f"    {ansi.cyan}   🌐 {website_count} website(s) found{ansi.reset}")
-                    
+
                     if page_data.get('social_media_links'):
                         social_media_count = len(page_data['social_media_links'])
                         print(f"    {ansi.cyan}   👥 {social_media_count} social media links found{ansi.reset}")
-                    
+
                     if page_data.get('location'):
                         location_preview = page_data['location'][:40] + "..." if len(page_data['location']) > 40 else page_data['location']
                         print(f"    {ansi.cyan}   📍 {location_preview}{ansi.reset}")
@@ -696,17 +689,17 @@ async def scrape_facebook_pages_concurrent(page_ids: Set[str], headless: bool = 
                 error = page_data.get('error', 'Unknown error')
                 duration = page_data.get('scrape_duration_seconds', 0)
                 print(f"    [{completed}/{len(tasks)}] {ansi.red}❌ {page_id}{ansi.reset}: {error} - {ansi.cyan}{duration}s{ansi.reset}")
-    
+
     finally:
         try:
             await playwright.stop()
         except Exception as e:
             logger.debug("Error stopping playwright: %s", e)
-    
+
     overall_duration = time.perf_counter() - overall_start
     print(f"\n  {ansi.magenta}⚡ Total operation completed in {overall_duration:.2f} seconds{ansi.reset}")
     logger.info("Concurrent scraping completed in %.2f seconds", overall_duration)
-    
+
     return scraped_data
 
 
@@ -720,14 +713,14 @@ def save_page_mapping(page_data: Dict[str, Dict[str, Any]], output_dir: str = "d
     timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
     filename = f"pages-{timestamp}.json"
     output_path = Path(output_dir) / filename
-    
+
     # Ensure output directory exists
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     # Calculate success metrics
     successful = len([p for p in page_data.values() if p.get('scrape_success')])
     failed = len([p for p in page_data.values() if not p.get('scrape_success')])
-    
+
     # Prepare output data
     output_data = {
         'metadata': {
@@ -740,10 +733,10 @@ def save_page_mapping(page_data: Dict[str, Dict[str, Any]], output_dir: str = "d
         },
         'pages': page_data
     }
-    
+
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
-    
+
     return str(output_path)
 
 
@@ -772,7 +765,7 @@ async def main_async(argv: Optional[List[str]] = None):
     step1_start = time.perf_counter()
     page_ids = extract_page_ids_from_comment_files(args.data_dir)
     step1_duration = time.perf_counter() - step1_start
-    
+
     if not page_ids:
         print(f"{ansi.yellow}No Page IDs found to process.{ansi.reset}")
         return
@@ -784,7 +777,7 @@ async def main_async(argv: Optional[List[str]] = None):
     step2_start = time.perf_counter()
     page_post_counts = count_posts_per_page(args.data_dir)
     step2_duration = time.perf_counter() - step2_start
-    
+
     print(f"\nFound Page IDs with post counts:")
     for page_id in sorted(page_ids):
         post_count = page_post_counts.get(page_id, 0)
@@ -797,7 +790,7 @@ async def main_async(argv: Optional[List[str]] = None):
     step3_start = time.perf_counter()
     scraped_data = await scrape_facebook_pages_concurrent(page_ids, headless=headless, force_about=force_about, max_concurrent=args.concurrent)
     step3_duration = time.perf_counter() - step3_start
-    
+
     # Add post count analytics to scraped data
     for page_id, page_info in scraped_data.items():
         page_info['post_count_in_data'] = page_post_counts.get(page_id, 0)
@@ -815,15 +808,15 @@ async def main_async(argv: Optional[List[str]] = None):
     # Summary
     successful = len([p for p in scraped_data.values() if p.get('scrape_success')])
     failed = len([p for p in scraped_data.values() if not p.get('scrape_success')])
-    
+
     total_script_duration = time.perf_counter() - script_start
-    
+
     print(f"\n{ansi.green}✅ Playwright scraping completed!{ansi.reset}")
     print(f"  Total pages processed: {ansi.yellow}{len(scraped_data)}{ansi.reset}")
     print(f"  Successfully scraped: {ansi.green}{successful}{ansi.reset}")
     print(f"  Failed to scrape: {ansi.red}{failed}{ansi.reset}")
     print(f"  {ansi.magenta}🚀 Total script time: {total_script_duration:.2f} seconds{ansi.reset}")
-    
+
     # Performance breakdown
     avg_page_time = step3_duration / len(page_ids) if page_ids else 0
     print(f"\n{ansi.blue}⏱️  Performance Breakdown:{ansi.reset}")
@@ -831,7 +824,7 @@ async def main_async(argv: Optional[List[str]] = None):
     print(f"  • Post counting: {ansi.cyan}{step2_duration:.2f}s{ansi.reset}")
     print(f"  • Concurrent scraping: {ansi.cyan}{step3_duration:.2f}s{ansi.reset} ({ansi.yellow}{avg_page_time:.2f}s avg/page{ansi.reset})")
     print(f"  • Data saving: {ansi.cyan}{step4_duration:.2f}s{ansi.reset}")
-    
+
     if successful > 0:
         print(f"\n{ansi.magenta}📋 Successfully identified pages:{ansi.reset}")
         for page_id, page_info in scraped_data.items():
@@ -843,7 +836,7 @@ async def main_async(argv: Optional[List[str]] = None):
                 username_display = f" (@{username})" if username else ""
                 duration = page_info.get('scrape_duration_seconds', 0)
                 print(f"  • {ansi.yellow}{name}{ansi.reset}{username_display} - {category} ({post_count} posts, {duration}s)")
-    
+
     # Highlight the page with most posts
     if page_post_counts:
         max_page = max(page_post_counts.items(), key=lambda x: x[1])
@@ -859,7 +852,7 @@ def main(argv: Optional[List[str]] = None):
     if sys.platform == "win32":
         # Better event loop handling for Windows
         asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
-    
+
     try:
         asyncio.run(main_async(argv))
         # Script completed successfully - any warnings below are just Windows cleanup noise
