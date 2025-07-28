@@ -74,8 +74,9 @@ _Exported on DATE from Tool (Version)_
 |---------|-------|-------------|
 | [📝 Section Name](#section-name) | Brief topic description | User |
 | [💡 Another Section](#another-section) | What this section covers | Cursor |
-| [🔍 Investigation](#investigation) | Problem solving steps | Cursor |
+| [🔍 Investigation](#investigation) | Problem solving steps | User |
 
+---
 ---
 
 ## Section Name
@@ -95,12 +96,13 @@ Assistant's response goes here...
 Content can be multiple paragraphs, code blocks, etc.
 
 ---
+---
 
 ## Investigation
 
-### 🤖 **Cursor**
+### 🤖 **User**
 
-More detailed technical content...
+More detailed technical response...
 
 ```
 
@@ -200,6 +202,8 @@ Sure! Here's how...
 
 **Enhanced Format:**
 ```markdown
+---
+---
 ## Initial Request
 
 ### 👤 **User**
@@ -231,6 +235,7 @@ Question...
 ### 🤖 **Cursor** 
 Answer...
 
+---
 ---
 
 ## Topic Two
@@ -307,6 +312,7 @@ Here's the solution...
 
 This should solve your issue!
 
+---
 ---  <!-- Turn ends here -->
 
 ## Follow-up Question
