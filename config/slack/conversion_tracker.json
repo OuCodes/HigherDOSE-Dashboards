@@ -1,4 +1,21 @@
 {
+  "conversions": {
+    "slack/raw_exports/slack-2.json": {
+      "file_hash": "bf552614dd69b1fa3369bee2ef365535",
+      "output_path": "slack/processed/dm_ingrid_jourdan/dm_ingrid_jourdan.md",
+      "message_count": 28,
+      "converted_at": "2025-07-14T01:22:50.549435",
+      "file_size": 45991
+    },
+    "slack/raw_exports/slack.json": {
+      "file_hash": "953ecf7e479ea038bc2a26f8220fe102",
+      "output_path": "slack/processed/sb-higherdose/sb-higherdose.md",
+      "message_count": 28,
+      "converted_at": "2025-07-14T01:22:50.551989",
+      "file_size": 162940
+    }
+  },
+  "last_updated": "2025-07-14T01:22:50.552000",
   "channels": {
     "C092D2U5CD6": 1752863856.277509,
     "D09430T3YBF": 1752785618.820169,

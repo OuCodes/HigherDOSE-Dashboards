@@ -116,10 +116,7 @@ pip install -r requirements.txt
 ```
 src/higherdose/slack/
 ├── slack_fetcher_playwright.py    # Main Playwright-based fetcher
-├── setup_playwright.py            # Setup script for Playwright
-├── fetch_cookie_md.py             # Legacy cookie-based fetcher (backup)
-├── update_credentials.py          # Credential management for legacy method
-├── track_conversions.py           # Conversation tracking utilities
+├── fetch_cookie_md.py             # Alternative cookie-based fetcher
 └── README.md                      # This file
 
 config/slack/
