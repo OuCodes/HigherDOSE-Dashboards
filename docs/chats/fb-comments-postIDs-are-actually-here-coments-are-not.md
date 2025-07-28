@@ -12,6 +12,7 @@ _Exported on 7/28/2025 at 14:46:46 CDT from Cursor (1.2.4)_
 | [🕵️ Investigation](#investigation) | Debugging permissions and API access | Cursor |
 
 ---
+---
 
 ## Initial Request
 
