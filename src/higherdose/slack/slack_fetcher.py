@@ -19,6 +19,11 @@ import requests
 from playwright.async_api import async_playwright, Page, Request, Route
 
 from higherdose.slack._playwright_setup import ensure_chromium_installed
+from higherdose.utils.logs import report
+from higherdose.utils.style import ansi
+
+# Initialize logging
+logger = report.settings(__file__)
 
 
 # -------------- Config -------------------------------------------------------
@@ -254,7 +259,7 @@ class SlackBrowser:
 
             # Debug: Log all API calls
             if "/api/" in request.url:
-                print(f"🔍 Intercepted API call: {request.url}")
+                logger.debug("Intercepted API call: %s", request.url)
 
             # If this is an API call we're interested in, store the response
             if any(endpoint in request.url for endpoint in [
@@ -277,7 +282,7 @@ class SlackBrowser:
                         "timestamp": time.time()
                     })
 
-                    print(f"💾 Stored response from: {request.url}")
+                    logger.debug("Stored API response: %s (%d bytes)", request.url, len(response_text))
 
                     # Update credentials from response if it contains user/team info
                     self.credentials.update_from_request(request, response_data)
@@ -561,7 +566,7 @@ class SlackBrowser:
 
                 # Check search.modules.channels - this might contain channel names
                 if "search.modules.channels" in url and response.get("ok"):
-                    print("🔍 Processing search.modules.channels response...")
+                    logger.debug("Processing search.modules.channels response")
                     if "channels" in response:
                         search_channels = response["channels"]
                         if isinstance(search_channels, list):
@@ -571,11 +576,11 @@ class SlackBrowser:
                                     ch_name = ch.get("name", "")
                                     if ch_id and ch_name:
                                         channels[ch_id] = f"#{ch_name}"
-                                        print(f"  Found search channel: {ch_id} -> #{ch_name}")
+                                        logger.debug("Found search channel: %s -> #%s", ch_id, ch_name)
 
                 # Check client.counts response - it showed 4 channels
                 if "client.counts" in url and response.get("ok"):
-                    print("🔍 Processing client.counts response...")
+                    logger.debug("Processing client.counts response")
                     if "channels" in response:
                         counts_channels = response["channels"]
                         if isinstance(counts_channels, dict):
@@ -584,7 +589,7 @@ class SlackBrowser:
                                     ch_name = ch_data.get("name", "")
                                     if ch_name:
                                         channels[ch_id] = f"#{ch_name}"
-                                        print(f"  Found counts channel: {ch_id} -> #{ch_name}")
+                                        logger.debug("Found counts channel: %s -> #%s", ch_id, ch_name)
                                     else:
                                         # Try other fields that might contain the name
                                         fields_to_try = [
@@ -597,9 +602,7 @@ class SlackBrowser:
                                                 ch_name = ch_data[field]
                                                 if ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    msg = (f"  Found counts channel ({field}): "
-                                                          f"{ch_id} -> #{ch_name}")
-                                                    print(msg)
+                                                    logger.debug("Found counts channel (%s): %s -> #%s", field, ch_id, ch_name)
                                                     break
                         elif isinstance(counts_channels, list):
                             for ch in counts_channels:
@@ -608,12 +611,11 @@ class SlackBrowser:
                                     ch_name = ch.get("name", "")
                                     if ch_id and ch_name:
                                         channels[ch_id] = f"#{ch_name}"
-                                        print(f"  Found counts channel (list): "
-                                              f"{ch_id} -> #{ch_name}")
+                                        logger.debug("Found counts channel (list): %s -> #%s", ch_id, ch_name)
 
                 # Check client.userBoot and client.counts for comprehensive channel data
                 if "client.userBoot" in url and response.get("ok"):
-                    print("🔍 Processing client.userBoot response...")
+                    logger.debug("Processing client.userBoot response")
                     # Look for channels in various structures
                     for key in ["channels", "ims", "groups", "team"]:
                         if key in response:
@@ -628,8 +630,7 @@ class SlackBrowser:
                                                 ch_name = ch_data.get("name", "")
                                                 if ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    print(f"  Found team channel: "
-                                                          f"{ch_id} -> #{ch_name}")
+                                                    logger.debug("Found team channel: %s -> #%s", ch_id, ch_name)
                                 elif key == "channels":
                                     # Direct channels structure
                                     if isinstance(data_section, dict):
@@ -638,8 +639,7 @@ class SlackBrowser:
                                                 ch_name = ch_data.get("name", "")
                                                 if ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    print(f"  Found direct channel: "
-                                                          f"{ch_id} -> #{ch_name}")
+                                                    logger.debug("Found direct channel: %s -> #%s", ch_id, ch_name)
                                     elif isinstance(data_section, list):
                                         for ch_data in data_section:
                                             if isinstance(ch_data, dict):
@@ -647,12 +647,11 @@ class SlackBrowser:
                                                 ch_name = ch_data.get("name", "")
                                                 if ch_id and ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    print(f"  Found list channel: "
-                                                          f"{ch_id} -> #{ch_name}")
+                                                    logger.debug("Found list channel: %s -> #%s", ch_id, ch_name)
 
                 # Check team.info response - might contain channel information
                 if "team.info" in url and response.get("ok"):
-                    print("🔍 Processing team.info response...")
+                    logger.debug("Processing team.info response")
                     if "team" in response:
                         team_data = response["team"]
                         if isinstance(team_data, dict) and "channels" in team_data:
@@ -663,8 +662,7 @@ class SlackBrowser:
                                         ch_name = ch_data.get("name", "")
                                         if ch_name:
                                             channels[ch_id] = f"#{ch_name}"
-                                            print(f"  Found team.info channel: "
-                                                  f"{ch_id} -> #{ch_name}")
+                                            logger.debug("Found team.info channel: %s -> #%s", ch_id, ch_name)
 
                 # Check conversations.list and channels.list
                 endpoints = ["conversations.list", "channels.list"]
@@ -675,8 +673,7 @@ class SlackBrowser:
                             channel_name = channel.get("name")
                             if channel_id and channel_name:
                                 channels[channel_id] = f"#{channel_name}"
-                                print(f"  Found API channel: "
-                                      f"{channel_id} -> #{channel_name}")
+                                logger.debug("Found API channel: %s -> #%s", channel_id, channel_name)
 
                 # Check for channel data in client.boot
                 if "client.boot" in url and response.get("ok"):
@@ -689,8 +686,7 @@ class SlackBrowser:
                                     channel_name = channel_data.get("name")
                                     if channel_name:
                                         channels[channel_id] = f"#{channel_name}"
-                                        print(f"  Found boot channel: "
-                                              f"{channel_id} -> #{channel_name}")
+                                        logger.debug("Found boot channel: %s -> #%s", channel_id, channel_name)
 
                 # Check individual conversations in responses
                 if "conversations" in response and isinstance(response["conversations"], list):
@@ -700,10 +696,10 @@ class SlackBrowser:
                             conv_name = conv.get("name")
                             if conv_id and conv_name:
                                 channels[conv_id] = f"#{conv_name}"
-                                print(f"  Found conv channel: "
-                                      f"{conv_id} -> #{conv_name}")
+                                logger.debug("Found conv channel: %s -> #%s", conv_id, conv_name)
 
-            print(f"✅ Found {len(channels)} channels")
+            print(f"✅ Found {ansi.green}{len(channels)}{ansi.reset} channels")
+            logger.info("Channel discovery completed: %d channels found", len(channels))
 
         except Exception as e:
             print(f"❌ Error loading channels: {e}")
@@ -743,20 +739,20 @@ class SlackBrowser:
 
         conversations = {}
 
-        # Debug: Print some API response data
-        print(f"🔍 Debug: Found {len(self.intercepted_data)} intercepted API calls")
-        for data in self.intercepted_data[-10:]:  # Show last 10 calls
+        # Debug: Log API response data
+        logger.debug("Found %d intercepted API calls for conversation discovery", len(self.intercepted_data))
+        for data in self.intercepted_data[-10:]:  # Log last 10 calls
             url = data.get("url", "")
             if "client.userBoot" in url or "client.counts" in url or "conversations" in url:
-                print(f"  API: {url}")
+                logger.debug("Processing API response: %s", url)
                 response = data.get("response", {})
                 if isinstance(response, dict):
-                    print(f"    Keys: {list(response.keys())}")
+                    logger.debug("Response keys: %s", list(response.keys()))
                     if "channels" in response:
                         channels_count = (len(response['channels'])
                                         if isinstance(response['channels'], list)
                                         else 'dict')
-                        print(f"    Channels found: {channels_count}")
+                        logger.debug("Channels in response: %s", channels_count)
 
         # Extract conversations from intercepted data
         for data in self.intercepted_data:
@@ -896,8 +892,7 @@ class SlackBrowser:
             for selector in channel_selectors:
                 try:
                     elements = await self.page.query_selector_all(selector)
-                    print(f"  🔍 Found {len(elements)} elements with selector: "
-                          f"{selector}")
+                    logger.debug("Found %d elements with selector: %s", len(elements), selector)
 
                     for element in elements:
                         # Try to get channel name and ID from various attributes
@@ -957,20 +952,20 @@ class SlackBrowser:
                         # If we found both name and ID, or at least a name, add it
                         if name and channel_id:
                             channels[name] = channel_id
-                            print(f"    📌 Found channel: #{name} ({channel_id})")
+                            logger.debug("Found channel via DOM: #%s (%s)", name, channel_id)
                         elif name and len(name) > 0 and not name.isspace():
                             # Use a placeholder ID if we can't find the real one
                             channels[name] = f"C_PLACEHOLDER_{name}"
-                            print(f"    📌 Found channel: #{name} (placeholder ID)")
+                            logger.debug("Found channel via DOM: #%s (placeholder ID)", name)
 
                     if elements:
                         break  # If we found elements with this selector, don't try others
 
                 except Exception as e:
-                    print(f"  ⚠️  Error with selector {selector}: {e}")
+                    logger.debug("Error with DOM selector %s: %s", selector, e)
                     continue
 
-            print(f"🔍 DOM extraction found {len(channels)} channels")
+            logger.debug("DOM extraction found %d channels", len(channels))
 
         except Exception as e:
             print(f"⚠️  Error extracting channels from DOM: {e}")
@@ -1027,7 +1022,7 @@ class SlackBrowser:
                     for element in elements:
                         is_visible = await element.is_visible()
                         if is_visible:
-                            print(f"🔍 Found modal element, closing: {selector}")
+                            logger.debug("Found modal element, closing: %s", selector)
                             await element.click()
                             await self.page.wait_for_timeout(500)
                             return True  # Found and closed a modal
@@ -1118,11 +1113,14 @@ class SlackBrowser:
             try:
                 api_msgs = await self.fetch_history_via_api(channel_id, oldest_ts)
                 if api_msgs:
-                    print(f"✅ Retrieved {len(api_msgs)} messages via direct API")
+                    print(f"✅ Retrieved {ansi.green}{len(api_msgs)}{ansi.reset} messages via direct API")
+                    logger.info("Retrieved %d messages via direct API for channel %s", len(api_msgs), channel_id)
                     return api_msgs
                 print("⚠️  API returned no messages - falling back to UI scroll…")
+                logger.info("API returned no messages for channel %s, falling back to UI scroll", channel_id)
             except Exception as e:
                 print(f"⚠️  API pagination failed ({e}) - falling back to UI scroll…")
+                logger.warning("API pagination failed for channel %s: %s - falling back to UI scroll", channel_id, e)
 
         # 2) UI scroll fallback (original behaviour)
         if not self.page:
@@ -1166,7 +1164,8 @@ class SlackBrowser:
             max_scroll_attempts = 50  # Increased from 10 to 50
             no_new_messages_count = 0
 
-            print(f"🔄 Starting aggressive scrolling (up to {max_scroll_attempts} attempts)")
+            print(f"🔄 Starting message history scroll (up to {max_scroll_attempts} attempts)")
+            logger.info("Starting aggressive scrolling for channel %s (up to %d attempts)", channel_id, max_scroll_attempts)
 
             for attempt in range(max_scroll_attempts):
                 try:
@@ -1195,11 +1194,12 @@ class SlackBrowser:
                     # Check if we've stopped loading new messages
                     if current_message_count == previous_message_count:
                         no_new_messages_count += 1
-                        print(f"🔍 No new messages loaded in attempt {attempt + 1} (count: {no_new_messages_count})")
+                        logger.debug("No new messages loaded in attempt %d (count: %d)", attempt + 1, no_new_messages_count)
 
                         # Only stop if we've had no new messages for 8 attempts (increased from 3)
                         if no_new_messages_count >= 8:
-                            print("✅ Reached the beginning of channel history (no new messages for 8 attempts)")
+                            print("✅ Reached the beginning of channel history")
+                            logger.info("Reached beginning of channel history after %d attempts", attempt + 1)
                             break
 
                         # Try more aggressive scrolling methods when no new messages
@@ -1240,7 +1240,7 @@ class SlackBrowser:
                     else:
                         no_new_messages_count = 0
                         new_messages = current_message_count - previous_message_count
-                        print(f"🔍 Loaded {new_messages} new messages (total: {current_message_count})")
+                        logger.debug("Loaded %d new messages (total: %d) in attempt %d", new_messages, current_message_count, attempt + 1)
 
                         # Reset no new messages counter since we found new messages
                         no_new_messages_count = 0
@@ -1264,14 +1264,14 @@ class SlackBrowser:
                         await scroll_methods[method_index]()
                         await self.page.wait_for_timeout(800)  # Increased wait time
                     except Exception as e:
-                        print(f"⚠️  Scrolling method {method_index} failed: {e}")
+                        logger.debug("Scrolling method %d failed: %s", method_index, e)
                         # Fallback to basic PageUp
                         await self.page.keyboard.press("PageUp")
                         await self.page.wait_for_timeout(800)
 
                     # Every 10 attempts, try to refresh the channel view to trigger more API calls
                     if attempt > 0 and attempt % 10 == 0:
-                        print(f"🔄 Refreshing channel view (attempt {attempt})")
+                        logger.debug("Refreshing channel view (attempt %d)", attempt)
                         # Dismiss modals before refreshing
                         await self._dismiss_modals()
                         current_url = self.page.url
@@ -1297,7 +1297,8 @@ class SlackBrowser:
                                     if oldest_message_found:
                                         break
                         if oldest_message_found:
-                            print(f"✅ Reached oldest timestamp target ({oldest_ts})")
+                            print(f"✅ Reached oldest timestamp target")
+                            logger.info("Reached oldest timestamp target (%s)", oldest_ts)
                             break
 
                     # Enhanced check for reaching the beginning
@@ -1305,14 +1306,15 @@ class SlackBrowser:
                         # Calculate how old the earliest message is
                         current_time = time.time()
                         message_age_days = (current_time - earliest_timestamp) / (24 * 60 * 60)
-                        print(f"🔍 Earliest message is {message_age_days:.1f} days old")
+                        logger.debug("Earliest message is %.1f days old", message_age_days)
 
                         # If messages are very old, we might be at the beginning
                         if message_age_days > 30:  # More than 30 days old
-                            print("✅ Reached old messages, likely near channel beginning")
+                            logger.debug("Reached old messages (%.1f days), likely near channel beginning", message_age_days)
                             # But continue for a few more attempts to be sure
                             if attempt > 25:
-                                print("✅ Stopping - reached very old messages")
+                                print("✅ Reached very old messages - stopping scroll")
+                                logger.info("Stopping scroll after reaching very old messages (%.1f days)", message_age_days)
                                 break
 
                 except Exception as e:
@@ -1322,7 +1324,7 @@ class SlackBrowser:
                     # Continue with next attempt
                     continue
 
-            print(f"🔄 Completed {min(attempt + 1, max_scroll_attempts)} scroll attempts")
+            logger.info("Completed %d scroll attempts for channel %s", min(attempt + 1, max_scroll_attempts), channel_id)
 
             # Final modal dismissal before thread extraction
             await self._dismiss_modals()
@@ -1332,24 +1334,25 @@ class SlackBrowser:
 
             # Try to click on threads to load replies
             try:
-                print("🔄 Clicking on threads to load replies...")
+                print("🔄 Loading thread replies...")
+                logger.info("Starting thread reply extraction for channel %s", channel_id)
 
                 # First, let's inspect the page to find thread elements
                 try:
                     # Try to get all elements that might be thread indicators
                     all_thread_elements = await self.page.query_selector_all('*[data-qa*="thread"]')
-                    print(f"🔍 Found {len(all_thread_elements)} elements with 'thread' in data-qa")
+                    logger.debug("Found %d elements with 'thread' in data-qa", len(all_thread_elements))
 
                     # Try to find elements with reply text
                     reply_elements = await self.page.query_selector_all('*:has-text("replies")')
-                    print(f"🔍 Found {len(reply_elements)} elements containing 'replies'")
+                    logger.debug("Found %d elements containing 'replies'", len(reply_elements))
 
                     # Try to find elements with reply count
                     reply_count_elements = await self.page.query_selector_all('*:has-text("reply")')
-                    print(f"🔍 Found {len(reply_count_elements)} elements containing 'reply'")
+                    logger.debug("Found %d elements containing 'reply'", len(reply_count_elements))
 
                 except Exception as e:
-                    print(f"⚠️  Error inspecting page: {e}")
+                    logger.debug("Error inspecting page for threads: %s", e)
 
                 # Try multiple selectors for thread buttons
                 selectors_to_try = [
@@ -1389,7 +1392,7 @@ class SlackBrowser:
                     try:
                         elements = await self.page.query_selector_all(selector)
                         if elements:
-                            print(f"🔍 Found {len(elements)} elements with selector: {selector}")
+                            logger.debug("Found %d thread elements with selector: %s", len(elements), selector)
                             thread_buttons.extend(elements)
                     except Exception as _e:
                         # Some selectors might not work, that's okay
@@ -1401,11 +1404,11 @@ class SlackBrowser:
                     if button not in unique_buttons:
                         unique_buttons.append(button)
 
-                print(f"🔍 Found {len(unique_buttons)} unique thread buttons")
+                logger.debug("Found %d unique thread buttons", len(unique_buttons))
 
                 for i, button in enumerate(unique_buttons[:5]):  # Limit to first 5 threads
                     try:
-                        print(f"🔄 Clicking thread {i+1}...")
+                        logger.debug("Clicking thread %d/%d", i+1, min(len(unique_buttons), 5))
 
                         # Try to scroll the button into view first
                         try:
@@ -1416,7 +1419,7 @@ class SlackBrowser:
 
                         # Check if button is visible and clickable
                         is_visible = await button.is_visible()
-                        print(f"🔍 Button {i+1} visible: {is_visible}")
+                        logger.debug("Thread button %d visible: %s", i+1, is_visible)
 
                         if is_visible:
                             await button.click()
@@ -1443,7 +1446,7 @@ class SlackBrowser:
                                     try:
                                         thread_scroll_area = await self.page.query_selector(selector)
                                         if thread_scroll_area:
-                                            print(f"🔍 Found thread scroll area with: {selector}")
+                                            logger.debug("Found thread scroll area with: %s", selector)
                                             break
                                     except Exception:
                                         continue
@@ -1453,12 +1456,12 @@ class SlackBrowser:
                                         await thread_scroll_area.scroll_into_view_if_needed()
                                         await self.page.keyboard.press("PageDown")
                                         await self.page.wait_for_timeout(1000)
-                                        print(f"🔄 Thread scroll attempt {scroll_attempt + 1}")
+                                        logger.debug("Thread scroll attempt %d", scroll_attempt + 1)
                                 else:
-                                    print("⚠️  Could not find thread scroll area")
+                                    logger.debug("Could not find thread scroll area")
 
                             except Exception as e:
-                                print(f"⚠️  Error scrolling thread: {e}")
+                                logger.debug("Error scrolling thread: %s", e)
 
                             # Close the thread panel
                             try:
@@ -1476,7 +1479,7 @@ class SlackBrowser:
                                     try:
                                         close_button = await self.page.query_selector(selector)
                                         if close_button:
-                                            print(f"🔍 Found close button with: {selector}")
+                                            logger.debug("Found close button with: %s", selector)
                                             break
                                     except Exception:
                                         continue
@@ -1486,24 +1489,24 @@ class SlackBrowser:
                                     await self.page.wait_for_timeout(500)
                                 else:
                                     # Try pressing escape to close
-                                    print("🔍 Trying Escape key to close thread")
+                                    logger.debug("Trying Escape key to close thread")
                                     await self.page.keyboard.press("Escape")
                                     await self.page.wait_for_timeout(500)
 
                             except Exception as e:
-                                print(f"⚠️  Error closing thread: {e}")
+                                logger.debug("Error closing thread: %s", e)
                                 # Try pressing escape as backup
                                 await self.page.keyboard.press("Escape")
                                 await self.page.wait_for_timeout(500)
                         else:
-                            print(f"⚠️  Button {i+1} not visible, skipping")
+                            logger.debug("Thread button %d not visible, skipping", i+1)
 
                     except Exception as e:
-                        print(f"⚠️  Error clicking thread {i+1}: {e}")
+                        logger.debug("Error clicking thread %d: %s", i+1, e)
                         continue
 
             except Exception as e:
-                print(f"⚠️  Error loading threads: {e}")
+                logger.debug("Error loading threads: %s", e)
 
             # Wait a bit more for thread API calls
             await self.page.wait_for_timeout(3000)
@@ -1570,16 +1573,17 @@ class SlackBrowser:
 
             unique_messages.sort(key=lambda x: float(x.get("ts", "0")))
 
-            print(f"✅ Found {len(unique_messages)} new messages")
+            print(f"✅ Found {ansi.green}{len(unique_messages)}{ansi.reset} messages")
+            logger.info("Message extraction completed for channel %s: %d unique messages", channel_id, len(unique_messages))
 
-            # Print some debug info about message types
+            # Log debug info about message types
             if unique_messages:
                 subtypes = {}
                 for msg in unique_messages:
                     subtype = msg.get("subtype", "regular")
                     subtypes[subtype] = subtypes.get(subtype, 0) + 1
 
-                print(f"📊 Message types: {dict(subtypes)}")
+                logger.debug("Message types extracted: %s", dict(subtypes))
 
             return unique_messages
 
@@ -1647,7 +1651,8 @@ class SlackBrowser:
                 users[uid] = name
                 missing_count += 1
 
-        print(f"👥 Total users loaded: {len(users)} ({missing_count} filled from rolodex fallback)")
+        print(f"👥 Loaded {ansi.green}{len(users)}{ansi.reset} users")
+        logger.info("User discovery completed: %d total users (%d from live API, %d from rolodex fallback)", len(users), len(users) - missing_count, missing_count)
         return users
 
     async def save_credentials(self):
@@ -1759,12 +1764,12 @@ class SlackBrowser:
                     if "user_id" in person and "name" in person:
                         user_mapping[person["user_id"]] = person["name"]
 
-                print(f"📋 Loaded {len(user_mapping)} user mappings from rolodex")
+                logger.debug("Loaded %d user mappings from rolodex", len(user_mapping))
                 return user_mapping
-            print("📋 No rolodex file found (searched 'rolodex.json' and 'data/rolodex.json'), using basic user mapping")
+            logger.debug("No rolodex file found (searched 'rolodex.json' and 'data/rolodex.json'), using basic user mapping")
             return {}
         except Exception as e:
-            print(f"⚠️ Error loading rolodex: {e}")
+            logger.warning("Error loading rolodex: %s", e)
             return {}
 
     # ------------------------------------------------------------------ #
@@ -1794,7 +1799,7 @@ class SlackBrowser:
             r.raise_for_status()
             return r.json()
         except Exception as exc:
-            print(f"⚠️  API call {endpoint} failed: {exc}")
+            logger.error("API call %s failed: %s", endpoint, exc)
             return {}
 
     def _get_dm_participants_sync(self, channel_id: str, users: Dict[str, str]) -> List[str]:
@@ -2171,18 +2176,22 @@ async def _export_single_channel(
 
     if not channel_id:
         print(f"⚠️  Skipping '{channel_input_raw}': unable to resolve channel.")
+        logger.warning("Skipping channel '%s': unable to resolve channel ID", channel_input_raw)
         return
 
-    print(f"\n📥 Fetching messages for {channel_name or channel_id} …")
+    print(f"\n📥 Fetching messages for {ansi.cyan}{channel_name or channel_id}{ansi.reset}")
+    logger.info("Fetching messages for channel: %s (ID: %s)", channel_name or channel_id, channel_id)
 
     try:
         messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
     except Exception as exc:
         print(f"⚠️  Failed to fetch history for {channel_input_raw}: {exc}")
+        logger.error("Failed to fetch history for channel '%s': %s", channel_input_raw, exc)
         return
 
     if not messages:
-        print(f"📭 No new messages for {channel_name or channel_id}.")
+        print(f"📭 No new messages for {ansi.yellow}{channel_name or channel_id}{ansi.reset}")
+        logger.info("No new messages found for channel: %s", channel_name or channel_id)
         return
 
     # Improve placeholder names when possible
@@ -2222,16 +2231,21 @@ async def _export_single_channel(
     tracker.setdefault("channels", {})[channel_id] = highest_ts
     _save_tracker(tracker)
 
-    print(f"✅ Exported {len(messages)} messages → {md_path}")
+    print(f"✅ Exported {ansi.green}{len(messages)}{ansi.reset} messages → {ansi.cyan}{md_path.name}{ansi.reset}")
+    logger.info("Exported %d messages to %s for channel %s", len(messages), md_path, channel_name or channel_id)
 
 
 # -------------- Main Script -------------------------------------------------
 
 async def main():
     """Main async function."""
-    print("🚀 Playwright-based Slack Fetcher")
-    print(f"📍 Workspace: {WORKSPACE_URL}")
+    log_file = Path("src/higherdose/logs/slack_fetcher.log")
+    print(f"🚀 {ansi.cyan}Playwright-based Slack Fetcher{ansi.reset}")
+    print(f"📍 Workspace: {ansi.yellow}{WORKSPACE_URL}{ansi.reset}")
+    print(f"📝 Detailed logs: {ansi.grey}{log_file.absolute()}{ansi.reset}")
     print()
+    
+    logger.info("Slack fetcher started for workspace: %s", WORKSPACE_URL)
 
     browser = SlackBrowser()
 
@@ -2242,6 +2256,7 @@ async def main():
         # Ensure we're logged in
         if not await browser.ensure_logged_in():
             print("❌ Failed to log in. Exiting.")
+            logger.error("Failed to log in to Slack workspace")
             return
 
         # Ask user what they want to extract
@@ -2261,15 +2276,18 @@ async def main():
 
         # If more than one entry, switch to batch processing and exit early
         if len(channel_inputs) > 1:
-            print(f"🔄 Processing {len(channel_inputs)} channels…")
+            print(f"🔄 Processing {ansi.cyan}{len(channel_inputs)}{ansi.reset} channels…")
+            logger.info("Starting batch processing for %d channels", len(channel_inputs))
             users = await browser.get_user_list()
             conversations = await browser.get_conversations()
             for target in channel_inputs:
                 await _export_single_channel(browser, target, users, conversations)
+            logger.info("Completed batch processing for %d channels", len(channel_inputs))
             return
 
         if not channel_inputs:
             print("❌ No channel specified. Exiting.")
+            logger.error("No channel specified by user")
             return
 
         # Clean up the input
@@ -2283,7 +2301,8 @@ async def main():
         if channel_input.startswith(('C', 'D', 'G')) and len(channel_input) > 8:
             channel_id = channel_input
             channel_name = f"channel_{channel_id}"
-            print(f"🎯 Using channel ID: {channel_id}")
+            print(f"🎯 Using channel ID: {ansi.cyan}{channel_id}{ansi.reset}")
+            logger.info("Using direct channel ID: %s", channel_id)
         else:
             # Try to find by name in conversations
             if 'conversations' in locals():
@@ -2292,7 +2311,8 @@ async def main():
                     if conv_info.name.lstrip("#@").lower() == channel_input.lower():
                         channel_id = conv_info.id
                         channel_name = conv_info.name
-                        print(f"🎯 Found channel: {conv_info}")
+                        print(f"🎯 Found channel: {ansi.green}{conv_info}{ansi.reset}")
+                        logger.info("Found exact channel match: %s (ID: %s)", conv_info.name, conv_info.id)
                         break
 
                 # If no exact match, try partial match
@@ -2305,9 +2325,11 @@ async def main():
                     if len(matches) == 1:
                         channel_id = matches[0].id
                         channel_name = matches[0].name
-                        print(f"🎯 Found matching channel: {matches[0]}")
+                        print(f"🎯 Found matching channel: {ansi.green}{matches[0]}{ansi.reset}")
+                        logger.info("Found partial channel match: %s (ID: %s)", matches[0].name, matches[0].id)
                     elif len(matches) > 1:
                         print(f"❌ Multiple channels match '{channel_input}':")
+                        logger.warning("Multiple channels match '%s': %d matches found", channel_input, len(matches))
                         for conv_info in matches:
                             print(f"    {conv_info}")
                         print("Please be more specific.")
@@ -2316,21 +2338,24 @@ async def main():
             # If still not found, try loading conversations
             if not channel_id:
                 print("🔍 Searching for channel...")
+                logger.info("Loading conversations to search for channel: %s", channel_input)
                 conversations = await browser.get_conversations()
 
                 for _, conv_info in conversations.items():
                     if conv_info.name.lstrip("#@").lower() == channel_input.lower():
                         channel_id = conv_info.id
                         channel_name = conv_info.name
-                        print(f"🎯 Found channel: {conv_info}")
+                        print(f"🎯 Found channel: {ansi.green}{conv_info}{ansi.reset}")
+                        logger.info("Found channel after conversation reload: %s (ID: %s)", conv_info.name, conv_info.id)
                         break
 
             # Last resort: assume it's a channel name and try to find it
             if not channel_id:
                 # Use the input as channel name and let the API try to find it
                 channel_name = f"#{channel_input}"
-                print(f"🎯 Attempting to extract channel: {channel_name}")
+                print(f"🎯 Attempting to extract channel: {ansi.yellow}{channel_name}{ansi.reset}")
                 print("    (Channel ID will be determined from API calls)")
+                logger.info("Channel ID not found, attempting discovery via API calls for: %s", channel_name)
 
         # Get users for better formatting
         print("👥 Loading user list...")
@@ -2342,8 +2367,9 @@ async def main():
         if channel_id:
             # Validate the channel ID format before using it
             if not _is_valid_slack_id(channel_id):
-                print(f"❌ Invalid Slack ID format: {channel_id}")
+                print(f"❌ Invalid Slack ID format: {ansi.red}{channel_id}{ansi.reset}")
                 print("    Slack IDs should start with C (channels), D (DMs), or G (groups)")
+                logger.error("Invalid Slack ID format: %s", channel_id)
                 return
 
             messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
@@ -2351,6 +2377,7 @@ async def main():
             # If we don't have a valid ID, we need to find it through API calls
             # Don't try to navigate to invalid URLs that cause Slack to glitch
             print("🔍 Channel ID not found. Browsing workspace to discover channel IDs...")
+            logger.info("Channel ID not found, browsing workspace to discover channel IDs")
 
             try:
                 # Navigate to safer URLs that are more likely to work
@@ -2364,7 +2391,8 @@ async def main():
 
                 for url in safe_urls:
                     try:
-                        print(f"🌐 Navigating to {url}")
+                        print(f"🌐 Navigating to {ansi.cyan}{url}{ansi.reset}")
+                        logger.debug("Navigating to URL: %s", url)
                         await browser.page.goto(url, timeout=10000)
                         await browser.page.wait_for_timeout(3000)
 
@@ -2376,7 +2404,8 @@ async def main():
                             if conv_info.name.lstrip("#@").lower() == channel_input.lower():
                                 channel_id = conv_info.id
                                 channel_name = conv_info.name
-                                print(f"✅ Found channel: {conv_info} (ID: {channel_id})")
+                                print(f"✅ Found channel: {ansi.green}{conv_info}{ansi.reset} (ID: {ansi.cyan}{channel_id}{ansi.reset})")
+                                logger.info("Found channel via workspace navigation: %s (ID: %s)", conv_info.name, channel_id)
                                 channel_found = True
                                 break
 
@@ -2385,16 +2414,18 @@ async def main():
 
                     except Exception as e:
                         print(f"⚠️  Failed to load {url}: {e}")
+                        logger.debug("Failed to load URL %s: %s", url, e)
                         continue
 
                 if not channel_found:
-                    print(f"❌ Could not find channel '{channel_input}'.")
+                    print(f"❌ Could not find channel '{ansi.red}{channel_input}{ansi.reset}'.")
                     print("Available channels:")
+                    logger.error("Could not find channel '%s'", channel_input)
                     conversations = await browser.get_conversations()
                     for _, conv_info in list(conversations.items())[:10]:  # Show first 10
                         print(f"    {conv_info}")
                     if len(conversations) > 10:
-                        print(f"    ... and {len(conversations) - 10} more")
+                        print(f"    ... and {ansi.grey}{len(conversations) - 10} more{ansi.reset}")
                     return
 
                 # Now fetch with the proper ID
@@ -2402,10 +2433,12 @@ async def main():
 
             except Exception as e:
                 print(f"❌ Error finding channel: {e}")
+                logger.error("Error finding channel: %s", e)
                 return
 
         if not messages:
             print("📭 No messages found. The channel might be empty or inaccessible.")
+            logger.info("No messages found for channel %s (ID: %s)", channel_name or channel_input, channel_id)
             return
 
         # Try to improve channel_name if it's still a generic placeholder
@@ -2426,11 +2459,14 @@ async def main():
             if old_path.exists() and old_path != md_path:
                 try:
                     old_path.rename(md_path)
-                    print(f"🔄 Renamed {old_path.name} -> {md_path.name}")
+                    print(f"🔄 Renamed {ansi.yellow}{old_path.name}{ansi.reset} -> {ansi.cyan}{md_path.name}{ansi.reset}")
+                    logger.info("Renamed old file %s to %s", old_path.name, md_path.name)
                 except Exception as e:
                     print(f"⚠️  Could not rename old file: {e}")
+                    logger.warning("Could not rename old file: %s", e)
 
         write_mode = "a" if md_path.exists() else "w"
+        logger.info("Writing messages to file: %s (mode: %s)", md_path, write_mode)
         with md_path.open(write_mode, encoding="utf-8") as f:
             if write_mode == "w":
                 f.write(f"# {channel_name or channel_input}\n\n")
@@ -2450,17 +2486,22 @@ async def main():
             highest_ts = max(float(m["ts"]) for m in messages)
             tracker["channels"][channel_id] = highest_ts
             _save_tracker(tracker)
+            logger.debug("Updated tracker with latest timestamp: %f for channel %s", highest_ts, channel_id)
 
-        print(f"✅ Exported {len(messages)} messages to {md_path}")
-        print(f"📁 File saved: {md_path.absolute()}")
+        print(f"✅ Exported {ansi.green}{len(messages)}{ansi.reset} messages to {ansi.cyan}{md_path.name}{ansi.reset}")
+        print(f"📁 File saved: {ansi.grey}{md_path.absolute()}{ansi.reset}")
+        logger.info("Export completed successfully: %d messages to %s", len(messages), md_path.absolute())
 
     except KeyboardInterrupt:
         print("\n⚠️  Interrupted by user")
+        logger.warning("Script interrupted by user")
     except Exception as e:
         print(f"❌ Error: {e}")
+        logger.error("Unexpected error occurred: %s", e, exc_info=True)
         traceback.print_exc()
     finally:
         await browser.close()
+        logger.info("Slack fetcher session ended")
 
 
 def run_main():
