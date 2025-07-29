@@ -7,7 +7,7 @@ Strong typing is provided via a frozen dataclass for IDE support.
 from dataclasses import dataclass
 
 # ------------------------------------------------------- #
-# Do not edit the following code.                         #
+# Do not edit the following code:                         #
 # ------------------------------------------------------- #
 
 @dataclass(frozen=True)
@@ -26,7 +26,7 @@ def validate_workspace() -> bool:
     return True
 
 # ------------------------------------------------------- #
-# Edit the two values below                               #
+# Edit the two values below:                              #
 # ------------------------------------------------------- #
 
 CONFIG = WorkspaceConfig(

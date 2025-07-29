@@ -6,6 +6,10 @@ Strong typing is provided via a frozen dataclass for IDE support.
 
 from dataclasses import dataclass
 
+# ------------------------------------------------------- #
+# Do not edit the following code:                         #
+# ------------------------------------------------------- #
+
 @dataclass(frozen=True)
 class WorkspaceConfig:
     """Identifiers required to access a Slack workspace."""
@@ -21,9 +25,10 @@ def validate_workspace() -> bool:
         )
     return True
 
-# --------------------------------------------------------------------------- #
-# Edit the two values below                                                   #
-# --------------------------------------------------------------------------- #
+# ------------------------------------------------------- #
+# Edit the two values below:                              #
+# ------------------------------------------------------- #
+
 CONFIG = WorkspaceConfig(
     url="https://higherdosemanagement.slack.com",
     team_id="TA97020CV",
