@@ -13,8 +13,9 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 
+from higherdose.slack._playwright_setup import ensure_chromium_installed
+
 from playwright.async_api import async_playwright, Page, Request, Route
-from ._playwright_setup import ensure_chromium_installed
 import requests
 
 
