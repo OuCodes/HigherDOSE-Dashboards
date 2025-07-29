@@ -705,6 +705,18 @@ class SlackBrowser:
             print(f"✅ Found {ansi.green}{len(channels)}{ansi.reset} channels")
             logger.info("Channel discovery completed: %d channels found", len(channels))
 
+            if self.credentials.token and self.credentials.cookies:
+                placeholder_ids = [cid for cid, cname in channels.items()
+                                   if cname.lower().startswith("#channel_")]
+
+                for cid in placeholder_ids:
+                    info = self._api_post_sync("conversations.info", {"channel": cid})
+                    if info.get("ok") and isinstance(info.get("channel"), dict):
+                        real_name = info["channel"].get("name") or info["channel"].get("normalized_name")
+                        if real_name:
+                            channels[cid] = f"#{real_name}"
+                            logger.debug("Resolved placeholder channel name: %s -> #%s", cid, real_name)
+
         except Exception as e:
             print(f"❌ Error loading channels: {e}")
 
