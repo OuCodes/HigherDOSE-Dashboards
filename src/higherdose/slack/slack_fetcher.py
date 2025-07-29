@@ -2233,15 +2233,39 @@ async def _export_single_channel(
     print(f"\n📥 Fetching messages for {ansi.cyan}{channel_name or channel_id}{ansi.reset}")
     logger.info("Fetching messages for channel: %s (ID: %s)", channel_name or channel_id, channel_id)
 
+    # ------------------------------------------------------------------
+    # Incremental mode – determine the oldest timestamp we already have
+    # ------------------------------------------------------------------
+    tracker = _load_tracker()
+    last_ts = tracker.get("channels", {}).get(channel_id, 0)
+    if last_ts:
+        print(
+            f"🔄 Incremental mode: fetching messages newer than "
+            f"{datetime.fromtimestamp(last_ts).strftime('%Y-%m-%d %H:%M:%S')}"
+        )
+        logger.info("Incremental fetch – oldest ts for channel %s is %s", channel_id, last_ts)
+    else:
+        print("�� First-time export: fetching full history")
+        logger.info("First-time export – no existing tracker ts for channel %s", channel_id)
+
+    # ------------------------------------------------------------------
+    # Fetch messages (API or UI scroll) using the tracker timestamp
+    # ------------------------------------------------------------------
     try:
-        messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
+        raw_messages = await browser.fetch_conversation_history(channel_id, oldest_ts=last_ts)
     except Exception as exc:
         print(f"⚠️  Failed to fetch history for {channel_input_raw}: {exc}")
         logger.error("Failed to fetch history for channel '%s': %s", channel_input_raw, exc)
         return
 
+    # Filter out messages that we've already exported (UI-scroll fallback
+    # can still return older items even when oldest_ts is passed).
+    messages = [m for m in raw_messages if float(m.get("ts", 0)) > last_ts]
+
     if not messages:
-        print(f"📭 No new messages for {ansi.yellow}{channel_name or channel_id}{ansi.reset}")
+        print(
+            f"📭 No new messages for {ansi.yellow}{channel_name or channel_id}{ansi.reset}"
+        )
         logger.info("No new messages found for channel: %s", channel_name or channel_id)
         return
 
