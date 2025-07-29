@@ -84,6 +84,19 @@ class ConversationInfo:
         member_info = f" ({self.member_count} members)" if self.member_count > 0 else ""
         return f"{symbol}{self.name}{private_marker}{member_info}"
 
+# ---------------- Timing Helper -------------------------------------------
+class Stopwatch:
+    """Tiny helper for ad-hoc performance tracing (seconds precision)."""
+    def __init__(self, prefix: str = "") -> None:
+        self.t0 = time.perf_counter()
+        self.prefix = prefix
+
+    def lap(self, label: str) -> float:
+        """Log the elapsed time since the stopwatch was created."""
+        elapsed = time.perf_counter() - self.t0
+        logger.debug("%s%s: %.2fs", self.prefix, label, elapsed)
+        print(f"⏱️  {self.prefix}{label}: {ansi.yellow}{elapsed:.2f}s{ansi.reset}")
+        return elapsed
 
 # -------------- Credential Management ----------------------------------------
 
@@ -308,18 +321,24 @@ class SlackBrowser:
         try:
             # Navigate to the workspace
             print(f"🌐 Navigating to {WORKSPACE_URL}")
+            sw = Stopwatch("login ")
             await self.page.goto(WORKSPACE_URL)
+            sw.lap("page.goto")
 
             # First, try to bypass any launch screen that tries to open the desktop app
             await self._bypass_launch_screen()
+            sw.lap("bypass")
 
             # Check if we're already logged in by waiting for API calls
             print("⏳ Waiting for workspace to load...")
             await self.page.wait_for_timeout(1500)
+            sw.lap("wait 1.5s #1")
             print("   Loading Slack interface...")
             await self.page.wait_for_timeout(1500)
+            sw.lap("wait 1.5s #2")
             print("   Checking authentication status...")
             await self.page.wait_for_timeout(2000)  # Wait for API calls to start
+            sw.lap("wait 2s auth")
 
             # If we're intercepting API calls, we're likely logged in
             if len(self.intercepted_data) > 0:
