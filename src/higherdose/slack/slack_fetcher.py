@@ -15,12 +15,15 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 
-import requests
 from playwright.async_api import async_playwright, Page, Request, Route
+import requests
 
-from higherdose.slack._playwright_setup import ensure_chromium_installed
-from higherdose.utils.logs import report
 from higherdose.utils.style import ansi
+from higherdose.utils.logs import report
+from higherdose.slack._playwright_setup import ensure_chromium_installed
+
+from config.slack.workspace import validate_workspace
+from config.slack.workspace import CONFIG
 
 # Initialize logging
 logger = report.settings(__file__)
@@ -29,17 +32,17 @@ logger = report.settings(__file__)
 # -------------- Config -------------------------------------------------------
 # Updated path to align with new repository structure
 EXPORT_DIR = Path("data/slack/exports")
-TRACK_FILE = Path("config/slack/conversion_tracker.json")
 ROLODEX_FILE = Path("data/rolodex.json")
+TRACK_FILE = Path("config/slack/conversion_tracker.json")
 CREDENTIALS_FILE = Path("config/slack/playwright_creds.json")
-WORKSPACE_CONFIG_FILE = Path("config/slack/workspace_id.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
-with open(WORKSPACE_CONFIG_FILE, 'r', encoding='utf-8') as f:
-    workspace_config = json.load(f)
-WORKSPACE_URL = workspace_config["workspace"]["url"]
-TEAM_ID = workspace_config["workspace"]["team_id"]
+# Validate configuration values
+CONFIG_VALIDATED = validate_workspace()
 
+# Workspace configuration
+WORKSPACE_URL = CONFIG.url
+TEAM_ID = CONFIG.team_id
 
 # -------------- Conversation Type Enum ---------------------------------------
 
