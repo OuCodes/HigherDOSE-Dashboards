@@ -21,7 +21,7 @@ import requests
 # Updated path to align with new repository structure
 EXPORT_DIR = Path("data/slack/exports")
 TRACK_FILE = Path("config/slack/conversion_tracker.json")
-ROLODEX_FILE = Path("rolodex.json")
+ROLODEX_FILE = Path("data/rolodex.json")
 CREDENTIALS_FILE = Path("config/slack/playwright_creds.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
