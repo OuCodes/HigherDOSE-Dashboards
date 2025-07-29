@@ -3,17 +3,18 @@
 Slack conversation extractor using Playwright for HigherDOSE workspace.
 """
 
-import asyncio
-import json
 import os
 import re
 import time
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import json
+import asyncio
 from enum import Enum
-from dataclasses import dataclass
-from playwright.async_api import async_playwright, Browser, Page, Request, Route
+from pathlib import Path
+from datetime import datetime
+from typing import Dict, List, Any, Optional
+
+from playwright.async_api import async_playwright, Page, Request, Route
+from ._playwright_setup import ensure_chromium_installed
 import requests
 
 
@@ -2436,6 +2437,7 @@ async def main():
 
 def run_main():
     """Run the async main function."""
+    ensure_chromium_installed()
     asyncio.run(main())
 
 
