@@ -6,7 +6,7 @@ This short guide explains **why** we use *console-script entry points* and shows
 
 ---
 
-## 1&nbsp; What’s an *Entry Point*?
+## 1 What’s an *Entry Point*?
 
 A *console-script entry point* is a small, automatically-generated wrapper that makes a Python function available as a shell command **anywhere in your virtual-environment**.  For example, the entry point:
 
@@ -18,7 +18,7 @@ creates an executable called `hd-weekly` that imports `higherdose.analysis.weekl
 
 ---
 
-## 2&nbsp; Declaring Entry Points
+## 2 Declaring Entry Points
 
 1. Open `pyproject.toml`.
 2. Scroll (or add) to the **`[project.scripts]`** table.
@@ -45,7 +45,7 @@ hd-email  = "higherdose.mail.gmail_archive:main"
 
 ---
 
-## 3&nbsp; Installing / Rebuilding the Package
+## 3 Installing / Rebuilding the Package
 
 After **every** change to `pyproject.toml` you must reinstall the project so that `pip` regenerates the wrapper scripts.
 
@@ -64,7 +64,7 @@ Why *editable*? Because it symlinks your source tree into the venv, so changes a
 
 ---
 
-## 4&nbsp; Verifying Everything Works
+## 4 Verifying Everything Works
 
 With the venv active:
 
@@ -77,7 +77,7 @@ For async modules (`hd-slack`) we expose a synchronous wrapper function like `ru
 
 ---
 
-## 5&nbsp; Common Tasks
+## 5 Common Tasks
 
 ### Add a new command
 1. Create a `main()` (or `run()`/`cli()`) function in the relevant module.
@@ -101,7 +101,7 @@ If you **didn’t** touch `[project.scripts]`, a normal `pip install -e .` will 
 
 ---
 
-## 6&nbsp; Troubleshooting
+## 6 Troubleshooting
 
 | Issue | Cause | Fix |
 |-------|-------|-----|
@@ -112,7 +112,7 @@ If you **didn’t** touch `[project.scripts]`, a normal `pip install -e .` will 
 
 ---
 
-## 7&nbsp; Reference Links
+## 7 Reference Links
 
 * [PEP 621] – Standardising project metadata in `pyproject.toml`
 * [Setuptools – Entry Points](https://setuptools.pypa.io/en/stable/userguide/entry_point.html)
