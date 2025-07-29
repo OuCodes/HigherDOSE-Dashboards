@@ -819,8 +819,9 @@ def main():
 
     try:
         # Previous-year daily exports (static for now)
-        google_prev_path = os.path.join("stats", "google-2024-account-level-daily report.csv")
-        meta_prev_path   = os.path.join("stats", "meta-daily-export-jan-1-2024-to-dec-31-2024.csv")
+        # Location of 2024 daily exports has moved to data/ads/
+        google_prev_path = os.path.join("data", "ads", "google-2024-account-level-daily report.csv")
+        meta_prev_path   = os.path.join("data", "ads", "meta-daily-export-jan-1-2024-to-dec-31-2024.csv")
 
         def _summarize_google(cur_path: str | None, prev_path: str):
             """Return dict with spend, revenue, conversions, roas for current & previous year MTD."""

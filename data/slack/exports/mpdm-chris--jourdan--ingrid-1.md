@@ -513,3 +513,89 @@ I’m in TT so can assign additional permissions
 - **2025-07-24 14:23** *Chris Jacob*: wild from Google earnings yesterday
 - **2025-07-24 14:23** *Chris Jacob*: YouTube Shorts “now earn as much revenue per watch-hour as traditional in-stream [ads] on YouTube. And in some countries, it now even exceeds in-stream’s rate”.
 - **2025-07-24 15:21** *Jourdan*: I can believe it! So much easier to consume short form content for hours vs watching multiple long form videos. I catch myself getting stuck in a loop sometimes with shorts and reels
+- **2025-06-13 08:50** *Chris Jacob*: <!channel> I've given access to Shopify and Northbeam ping me here as additional accesses are noted
+- **2025-06-13 09:09** *Chris Jacob*: @Jourdan can you also confirm current address so I can ship you product suite
+- **2025-06-13 12:19** *Jourdan*: Sweet! Thank you and 3387 Central Ave. Spring valley, CA 91977
+- **2025-06-13 13:09** *Ingrid*: Hey @Chris Jacob let's add Jourdan's HD email to all the ad accounts, please: Meta, Google, Pinterest, Twitter/x, TT/TT Shop
+- **2025-06-13 13:11** *Ingrid*: Also, not ads related he will need access to: Klaviyo, Attentive, Postscript, Decile, Bark AI (i can email if you don't do this)
+- **2025-06-13 13:43** *Ingrid*: also, Motion please
+- **2025-06-13 13:47** *Ingrid*: also GA4
+- **2025-06-13 14:43** *Chris Jacob*: @Ingrid what google ad account # do you access i'm confused by why i dont see you in either the ad account or ad manager account but i have historically had issues granting acces in it
+- **2025-06-13 14:45** *Chris Jacob*: @Jourdan what email do you prefer meta ad access through
+- **2025-06-13 14:46** *Jourdan*: lets go with the work email @Chris Jacob
+- **2025-06-13 14:47** *Ingrid*: [https://analytics.google.com/analytics/web/#/a79715439p387804387/admin](https://analytics.google.com/analytics/web/#/a79715439p387804387/admin)
+- **2025-06-13 14:48** *Ingrid*: 📎 **Screenshot 2025-06-13 at 12.47.58 PM.png** (png, 196.5KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091CKQ47T7/screenshot_2025-06-13_at_12.47.58___pm.png)
+- **2025-06-13 14:50** *Chris Jacob* 💬 1 reply: do you only access in analytics and not [ads.google.com](http://ads.google.com)?
+- **2025-06-13 14:59** *Chris Jacob*: @Jourdan let me know once you get in TT ads I have to assign additional permissions after you'r ein
+- **2025-06-13 15:33** *Chris Jacob*: @Jourdan when you get the products please take some picture in and out of boxes we always like to check how warehouse did packing stuff
+- **2025-06-13 15:46** *Chris Jacob*: i think i gave all access except i dont access twitter think maybe katie has?
+- **2025-06-13 15:46** *Chris Jacob*: @Jourdan let me know as you encounter any roadblocks with specific permissioning
+- **2025-06-16 09:58** *Chris Jacob*: <!channel>  
+• We are due our periodic discussion with Northbeam but I cancelled until @Jourdan gets up to speed so let me know when you want that scheduled  
+• As Applovin is new channel last week, it goes into any "total spend" setups in NB but you may need to make sure it's manually added on other dashboards if they have broken down info
+- **2025-06-16 10:07** *Jourdan*: @Chris Jacob can you resend Klaviyo and Attentive invites? They have a short expiration window.  
+  
+I’m in TT so can assign additional permissions
+- **2025-06-16 10:14** *Chris Jacob*: @Jourdan done
+- **2025-06-16 10:17** *Jourdan*: Thank you sir :saluting_face:
+- **2025-06-16 10:31** *Chris Jacob*: @Jourdan regarding NB, the affiliate platforms AWIN and ShopMy are non automated. My team member Josan manually inputs overnight (she's in PHP) but sometimes a lag on weekends FYI. This would result in those channels on particular days (and then total spend) being below reality.  All the paid channels are automated
+- **2025-06-16 10:33** *Jourdan*: Okay thank you for the clarity on that. Something like [https://www.sarasanalytics.com/saras-daton/sources](https://www.sarasanalytics.com/saras-daton/sources) could help automate that but if those platforms are small then they may not have connectors either\n\n**sarasanalytics.com**\n🔗 **[200+ Data Connectors for Ecommerce and D2C Brands | Saras Analytics](https://www.sarasanalytics.com/saras-daton/sources)**\n> Discover 200+ plug-and-play connectors for Shopify, Amazon, Meta, TikTok, and more. Sync data to your warehouse in minutes with Saras Daton.
+- **2025-06-16 10:34** *Chris Jacob*: Don't see them. Both are terrible at backend stuff.  AWIN fully replaced ShareaSale that they acquired at some point its a mess
+- **2025-06-16 10:34** *Chris Jacob*: Josan is helpful in general if and when you find any tasks that are manual data work
+- **2025-06-16 15:18** *Jourdan*: i still need access to motion, is that something you can help with? @Chris Jacob
+- **2025-06-16 15:46** *Chris Jacob*: @Ingrid I still never got access to admin or anything
+- **2025-06-16 15:57** *Ingrid*: lemme try
+- **2025-06-16 15:58** *Ingrid*: i think i just sent you an invite - we are on together in 2 min so we can donfirm
+- **2025-06-16 16:01** *Jourdan*: invite accepted :saluting_face:
+- **2025-06-16 16:09** *Chris Jacob*: @Jourdan they don't let me touch creative cuz all the ads would just be a still image that says "hey if you want to buy anything let us know"
+- **2025-06-16 16:18** *Ingrid*: lmao he's right
+- **2025-06-18 08:00** *Chris Jacob*: also if you haven't seen there's this no idea what it means\n\n📎 **image.png** (png, 265.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091XS2NBSN/image.png)
+- **2025-06-18 09:01** *Jourdan*: Interesting, ill check it out. Probably just a UI refresh
+- **2025-07-16 09:50** *Chris Jacob*: You are getting invites to Buxton, this is through elevar based on our Ga4 data they output Personas, limited in scope but Buxton is the go to in the health and wellness industry for demographic data if hepful
+- **2025-07-16 12:43** *Ingrid*: yep, just signed up!
+- **2025-07-16 12:44** *Ingrid*: I saw "Scount" in the workspace, what is that?
+- **2025-07-16 20:56** *Chris Jacob*: where do you see that
+- **2025-07-17 13:31** *Chris Jacob*: fyi if something needs to be done here\n\n📎 **image.png** (png, 129.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09699XUHRB/image.png)
+- **2025-07-17 13:38** *Jourdan*: Everything is showing as approved in the dash
+- **2025-07-17 13:38** *Jourdan*: 📎 **Screenshot 2025-07-17 at 13.38.36.png** (png, 115.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096803N7N2/screenshot_2025-07-17_at_13.38.36.png)
+- **2025-07-17 13:39** *Chris Jacob*: i think its this step @Jourdan\n\n📎 **image.png** (png, 72.4KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096BAU4RK4/image.png)
+- **2025-07-17 13:39** *Ingrid*: i did this this morning
+- **2025-07-17 13:40** *Ingrid*: they are forcing a call, which i think is part of the onbaording anyway
+- **2025-07-17 13:40** *Ingrid*: like it wont let me just verify
+- **2025-07-17 13:40** *Ingrid* 💬 1 reply: will it let you, Jourdan?
+- **2025-07-17 13:40** *Ingrid*: i accepted the inputs earlier
+- **2025-07-17 13:40** *Chris Jacob*: i have ability to do so i think?
+- **2025-07-17 13:40** *Chris Jacob*: 📎 **image.png** (png, 141.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F097030DYKS/image.png)
+- **2025-07-17 13:41** *Ingrid*: when you hit submit it will make you schedule a call
+- **2025-07-17 13:41** *Ingrid*: try?
+- **2025-07-17 13:42** *Chris Jacob*: goes to this but then still doesnt unlock that stuff
+- **2025-07-17 13:42** *Chris Jacob*: so probably
+- **2025-07-17 13:42** *Chris Jacob*: 📎 **image.png** (png, 254.4KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0965Q68HB5/image.png)
+- **2025-07-17 13:42** *Chris Jacob*: numbers look right to me pinterest is slightly low
+- **2025-07-17 13:42** *Chris Jacob*: do we need to do anything with the affilitae stuff manually? josan can enter stuff like shes already doing for Northbeam if so
+- **2025-07-17 13:43** *Ingrid*: we shouldn't, but let me confirm when we meet with them
+- **2025-07-17 13:43** *Ingrid*: pinterest was turned off/down for low performance so that makes sense
+- **2025-07-17 13:46** *Chris Jacob*: was referring to mismatch in this time period but its actually northbeam thats lower than prescient, which matches the platform\n\n*Reactions: :white_check_mark: Ingrid*
+- **2025-07-17 13:48** *Jourdan*: Yeah NB would be lower than prescient because NB wasn’t implemented last year\n\n*Reactions: :white_check_mark: Ingrid*
+- **2025-07-17 13:57** *Ingrid*: yay for new toys
+- **2025-07-21 17:24** *Chris Jacob*: @Jourdan pinging you before I ask them because I've had various challenges with Northbeam support.  Despite multiple discussions they continue to include $0 orders in certain ways (like this recent AOV/comp order issue)
+- **2025-07-21 17:24** *Chris Jacob*: In your experience should they be able to succefully remove them as if they don't exist from their side?
+- **2025-07-21 17:25** *Jourdan*: They should have a feature to exclude $0 orders so it doesn’t skew ad data but sounds like they’ve been difficult in the past and haven’t/wont add this feature?
+- **2025-07-21 17:25** *Jourdan*: At least allow us to exclude $0 orders from performance data if they don’t want to build an account level switch
+- **2025-07-21 17:26** *Chris Jacob*: they said they do but then its probably being based on something else since the issue here was instead of native $0 skus they were discounted to $0
+- **2025-07-21 17:26** *Chris Jacob*: also
+- **2025-07-21 17:26** *Jourdan*: Ahhh i see yeah they may have applied different logic
+- **2025-07-21 17:28** *Chris Jacob*: they do this thing where they are removing certain refunded orders or - something - I only use NB for cash-based stuff so not sure how this affects the way you look at things but at the highest level example YTD cash-based is $15.2 million when I would consider it to be $16.2 and exclude refunds from this type of analysis
+- **2025-07-21 17:43** *Jourdan*: I optimize on Accrual but look at Cash for reporting and big picture perspective
+- **2025-07-21 17:44** *Jourdan*: Do the refunded orders they’re removing have anything in common other than being refunds?
+- **2025-07-21 17:44** *Chris Jacob*: i knew they natively remove orders that get refunded same day but now its a larger list than that I'm working on some reconciliation
+- **2025-07-21 17:44** *Chris Jacob*: for short period management it wouldn't be huge issue but ifyou're doing a look back over any long period it does change things a bit
+- **2025-07-21 17:45** *Jourdan*: Ahh okay i can see how that’ll skew things and not line up when you’re looking at NB vs Platform Data and trying to match to Shopify
+- **2025-07-22 07:06** *Chris Jacob* 💬 1 reply: I believe it would affect the accrual data too but not sure how often you need to reference historical periods. I'm not fully sure but I think that if you look at X report this week/month as you do, and then access it again in a couple months the nubmers will have changed
+- **2025-07-22 07:06** *Chris Jacob* 💬 5 replies: @Jourdan we need to align on the use of Bark vs something else because I have concerns about their data and noted you mentioned needing to talk to them with Sharma.  I need a fuller understanding of what they are providing that other platforms arent to decide if we're going to keep using them
+- **2025-07-24 10:25** *Chris Jacob*: @Jourdan do you have any particular items that you're not getting anywhere and/or other tools like this you've used and liked in the past?
+- **2025-07-24 10:56** *Jourdan*: I would say this is the most tools I’ve had access to for a brand so no nothing I’m missing I just need to leverage what we have effective 
+- **2025-07-24 14:23** *Chris Jacob*: wild from Google earnings yesterday
+- **2025-07-24 14:23** *Chris Jacob*: YouTube Shorts “now earn as much revenue per watch-hour as traditional in-stream [ads] on YouTube. And in some countries, it now even exceeds in-stream’s rate”.
+- **2025-07-24 15:21** *Jourdan*: I can believe it! So much easier to consume short form content for hours vs watching multiple long form videos. I catch myself getting stuck in a loop sometimes with shorts and reels
+- **2025-07-25 10:31** *Ingrid*: I’m VERY bullish on YouTube as a whole (shorts, longs, everything). We are going hard into this in August/Sept ahead of holiday 

@@ -170,3 +170,44 @@ I think this is a good test so im happy your onboard.
 - **2025-07-14 16:59** *Jourdan*: Tech Sheet submitted
 - **2025-07-14 17:00** *Anastasia*: sorry i should have messaged on here too - but added you on an email saying you didn't need to submit as they can go directly through AWIN. All good, hope it didn't take up too much time!
 - **2025-07-14 17:09** *Jourdan*: Okay sweet and no it didn’t!
+- **2025-07-01 12:04** *Jourdan*: Hey @Anastasia, do you have projected Affiliate spend numbers for July?
+- **2025-07-01 12:31** *Anastasia*: it's hard to give an accurate number, but if we go on what we spent in June + July partnerships, it will come up to around 97,500 that includes commission and platform and all agency fees.
+- **2025-07-01 12:31** *Jourdan*: Thats perfect! thank youuu
+- **2025-07-01 12:33** *Anastasia*: Did you see the email response from Checkmate? let me know if there is a time that works best for you. They should help with retention as well.
+- **2025-07-01 12:34** *Jourdan*: Yes ma’am, we should be jumping on tomorrow\n\n*Reactions: :+1: Anastasia*
+- **2025-07-01 12:34** *Jourdan*: 930 PST
+- **2025-07-02 11:53** *Jourdan*: Thank you for that! Very solid tool and will help brining out blended numbers down
+- **2025-07-02 11:53** *Anastasia*: so glad you mentioned Honey - that saved us alot
+- **2025-07-02 11:53** *Jourdan*: You’re on top of it! 15% is heavy so that was a good tactic to bring it down
+- **2025-07-02 11:53** *Anastasia*: some months honey bring sin 300-500K in sales
+- **2025-07-02 11:53** *Jourdan*: Wow :exploding_head:
+- **2025-07-02 11:54** *Anastasia*: I know - mostly Q4 but still.  
+I think this is a good test so im happy your onboard.
+- **2025-07-02 11:54** *Jourdan*: Yeah especially because its low hanging fruit for them. So much in their ecosystem already and i doubt they’re applying tech like checkmate to validate these are new to brand customers or that we couldn’t convert the consumer on our own
+- **2025-07-02 11:54** *Jourdan*: That i really like
+- **2025-07-02 11:55** *Jourdan*: and we’re already partnered with them through AWIN right? so like concept is proven
+- **2025-07-02 11:58** *Anastasia*: yea, but we haven't fully tested them because they aren't integrated into Shopify. They must really want to work with us because they have waived everything and gave us alot of extras.
+- **2025-07-02 12:20** *Jourdan*: Yeah we’ve for sure got leverage.  He knocked that 5% off a little too easy lol
+- **2025-07-02 12:20** *Jourdan*: Im really curious about the SMS program. I think that will be huge during sale periods
+- **2025-07-02 12:20** *Jourdan*: and we’re already working with today show
+- **2025-07-02 12:20** *Jourdan*: Solid partnership all around
+- **2025-07-02 12:25** *Anastasia*: Great!
+- **2025-07-14 09:04** *Jourdan*: Hey @Anastasia are you waiting on the zoom link also?
+- **2025-07-14 09:18** *Anastasia*: do you know how we are contracted to TrueMed?
+- **2025-07-14 09:24** *Anastasia*: pretty small, but don't really see an issue here, let me know your thoughts.
+- **2025-07-14 09:26** *Anastasia*: I thought it was a little bigger and connected to a wellness credit card.
+- **2025-07-14 09:48** *Jourdan*: Hey, no I’m not sure how the truemed partnership works 
+- **2025-07-14 09:49** *Jourdan*: But yeah it’s just offering a discount their community with no other cost to us so should be an easy win 
+- **2025-07-14 13:43** *Jourdan*: Hey @Anastasia can we keep pushing Awin spend up
+- **2025-07-14 13:43** *Jourdan*: We’re pulling spend from less performing channels and reallocating
+- **2025-07-14 13:44** *Anastasia*: confirming that means I should spend more money with AWIN correct?
+- **2025-07-14 13:44** *Jourdan*: AWIN  for sure and ShopMyShelf if you have more ability to spend there
+- **2025-07-14 13:44** *Jourdan*: i know that channel can be more volatile
+- **2025-07-14 13:45** *Anastasia*: OK, is this to get numbers up for July or can this carry over for August too?
+- **2025-07-14 13:46** *Jourdan*: Get numbers up for July but if performance is there we will continue allocating more spend towards affiliate channels
+- **2025-07-14 14:03** *Anastasia*: ok, lets see what we can do!
+- **2025-07-14 14:04** *Anastasia*: Also we can move forward with the TvScientific tech sheet you started on.
+- **2025-07-14 14:13** *Jourdan*: Okay sounds good 
+- **2025-07-14 16:59** *Jourdan*: Tech Sheet submitted
+- **2025-07-14 17:00** *Anastasia*: sorry i should have messaged on here too - but added you on an email saying you didn't need to submit as they can go directly through AWIN. All good, hope it didn't take up too much time!
+- **2025-07-14 17:09** *Jourdan*: Okay sweet and no it didn’t!
