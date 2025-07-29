@@ -45,6 +45,7 @@
 
 ## Slack
 
-- [ ] Remove any references to requirements.txt in slack
-- [ ] Get Slack working on another machine
+- [x] Remove any references to requirements.txt in slack
+- [x] Get Slack working on another machine
 - [x] Move `WORKSPACE_URL` and `TEAM_ID` into `config/slack` to make it easier to use on another machine.
+- [ ] Examine blob [`9b793ab7`](https://github.com/chrischcodes/HigherDOSE/tree/9b793ab7716bd546cf3237d686f847343eb962b5) for legacy slack code that may have been useful.
