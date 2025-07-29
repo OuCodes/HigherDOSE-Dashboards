@@ -8,15 +8,17 @@ import re
 import time
 import json
 import asyncio
+import traceback
+import urllib.parse
 from enum import Enum
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 
-from higherdose.slack._playwright_setup import ensure_chromium_installed
-
-from playwright.async_api import async_playwright, Page, Request, Route
 import requests
+from playwright.async_api import async_playwright, Page, Request, Route
+
+from higherdose.slack._playwright_setup import ensure_chromium_installed
 
 
 # -------------- Config -------------------------------------------------------
@@ -35,6 +37,7 @@ TEAM_ID = "TA97020CV"
 # -------------- Conversation Type Enum ---------------------------------------
 
 class ConversationType(Enum):
+    """Enum for different types of Slack conversations."""
     CHANNEL = "channel"
     DM = "dm"
     MULTI_PERSON_DM = "multi_person_dm"
@@ -44,20 +47,21 @@ class ConversationType(Enum):
 # -------------- Conversation Data Structure ---------------------------------
 
 class ConversationInfo:
-    def __init__(self, 
-                 name: str, 
-                 id: str, 
+    """Data structure to hold information about a Slack conversation (channel, DM, etc.)."""
+    def __init__(self,
+                 name: str,
+                 conversation_id: str,
                  conversation_type: ConversationType,
                  is_private: bool = False,
                  member_count: int = 0,
                  members: List[str] = None):
         self.name = name
-        self.id = id
+        self.id = conversation_id
         self.conversation_type = conversation_type
         self.is_private = is_private
         self.member_count = member_count
         self.members = members or []
-    
+
     def __repr__(self):
         type_symbol = {
             ConversationType.CHANNEL: "#",
@@ -74,20 +78,21 @@ class ConversationInfo:
 # -------------- Credential Management ----------------------------------------
 
 class SlackCredentials:
+    """Manages Slack authentication credentials including cookies and tokens."""
     def __init__(self):
         self.cookies: Dict[str, str] = {}
         self.token: str = ""
         self.user_id: str = ""
         self.team_id: str = ""
         self.last_updated: float = 0
-        
+
     def is_valid(self) -> bool:
         """Check if credentials are recent and have required fields."""
         if not self.token or not self.cookies:
             return False
         # Consider credentials stale after 1 hour
         return (time.time() - self.last_updated) < 3600
-    
+
     def save(self):
         """Save credentials to file."""
         data = {
@@ -97,15 +102,15 @@ class SlackCredentials:
             "team_id": self.team_id,
             "last_updated": self.last_updated
         }
-        CREDENTIALS_FILE.write_text(json.dumps(data, indent=2))
-    
+        CREDENTIALS_FILE.write_text(json.dumps(data, indent=2), encoding='utf-8')
+
     @classmethod
     def load(cls) -> 'SlackCredentials':
         """Load credentials from file."""
         creds = cls()
         if CREDENTIALS_FILE.exists():
             try:
-                data = json.loads(CREDENTIALS_FILE.read_text())
+                data = json.loads(CREDENTIALS_FILE.read_text(encoding='utf-8'))
                 creds.cookies = data.get("cookies", {})
                 creds.token = data.get("token", "")
                 creds.user_id = data.get("user_id", "")
@@ -114,7 +119,7 @@ class SlackCredentials:
             except Exception as e:
                 print(f"⚠️  Error loading credentials: {e}")
         return creds
-    
+
     def update_from_request(self, request: Request, response_data: Dict[str, Any] = None):
         """Update credentials from intercepted request."""
         # Extract token from request
@@ -131,9 +136,9 @@ class SlackCredentials:
                     token_match = re.search(r'(xox[a-z]-[a-zA-Z0-9-]+)', post_data)
                     if token_match:
                         self.token = token_match.group(1)
-            except:
+            except (AttributeError, TypeError, ValueError):
                 pass
-        
+
         # Extract from headers or cookies
         headers = request.headers
         if "cookie" in headers:
@@ -143,25 +148,24 @@ class SlackCredentials:
                 if "=" in cookie_pair:
                     key, value = cookie_pair.strip().split("=", 1)
                     self.cookies[key] = value
-                    
+
                     # Extract token from 'd' cookie if present
                     if key == "d" and value and not self.token:
                         try:
-                            import urllib.parse
                             decoded = urllib.parse.unquote(value)
                             if decoded.startswith(('xox',)):
                                 # cookie sometimes holds xoxd- or xoxc-/xoxe-, accept any
                                 self.token = decoded
-                        except:
+                        except (ValueError, TypeError):
                             pass
-        
+
         # Update from response data if available
         if response_data:
             if "user_id" in response_data:
                 self.user_id = response_data["user_id"]
             if "team_id" in response_data:
                 self.team_id = response_data["team_id"]
-        
+
         if self.token:  # Only update timestamp if we got something useful
             self.last_updated = time.time()
 
@@ -169,41 +173,48 @@ class SlackCredentials:
 # -------------- Playwright Browser Manager ----------------------------------
 
 class SlackBrowser:
+    """Manages a Playwright browser instance for automated Slack data extraction."""
     def __init__(self):
         self.page: Optional[Page] = None
         self.context = None
         self.browser = None
         self.credentials = SlackCredentials.load()
         self.intercepted_data: List[Dict[str, Any]] = []
-        
+
     async def start(self, headless: bool = False, use_existing_profile: bool = True):
         """Start browser and setup interception."""
         playwright = await async_playwright().start()
-        
+
         if use_existing_profile:
             # Use your existing Chrome profile where you're already logged into Slack
             chrome_profile_path = os.path.expanduser("~/Library/Application Support/Google/Chrome/Default")
-            
+
             # Check if Chrome profile exists
             if os.path.exists(chrome_profile_path):
                 print(f"🔗 Using existing Chrome profile: {chrome_profile_path}")
+                user_agent = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                             "AppleWebKit/537.36 (KHTML, like Gecko) "
+                             "Chrome/137.0.0.0 Safari/537.36")
                 self.context = await playwright.chromium.launch_persistent_context(
                     user_data_dir=chrome_profile_path,
                     headless=headless,
-                    user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+                    user_agent=user_agent
                 )
                 self.browser = self.context.browser
             else:
                 print("⚠️  Chrome profile not found, falling back to new browser")
                 use_existing_profile = False
-        
+
         if not use_existing_profile:
             # Fallback to new browser instance
             self.browser = await playwright.chromium.launch(headless=headless)
+            user_agent = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                         "AppleWebKit/537.36 (KHTML, like Gecko) "
+                         "Chrome/137.0.0.0 Safari/537.36")
             self.context = await self.browser.new_context(
-                user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+                user_agent=user_agent
             )
-        
+
         # Get or create page
         if use_existing_profile and hasattr(self.context, 'pages') and self.context.pages:
             # Use existing page from persistent context
@@ -213,7 +224,7 @@ class SlackBrowser:
             # Create new page
             self.page = await self.context.new_page()
             print("📄 Created new browser page")
-            
+
             # Restore cookies if we have them (only for new contexts)
             if self.credentials.cookies:
                 cookies = []
@@ -225,27 +236,27 @@ class SlackBrowser:
                         "path": "/"
                     })
                 await self.context.add_cookies(cookies)
-        
+
         # Setup request/response interception
         await self.page.route("**/api/**", self._intercept_api_call)
         print("🔍 Set up API interception for **/api/**")
-        
+
     async def _intercept_api_call(self, route: Route, request: Request):
         """Intercept Slack API calls to extract credentials and data."""
         try:
             # Continue the request
             response = await route.fetch()
-            
+
             # Update credentials from this request
             self.credentials.update_from_request(request)
-            
+
             # Debug: Log all API calls
             if "/api/" in request.url:
                 print(f"🔍 Intercepted API call: {request.url}")
-            
+
             # If this is an API call we're interested in, store the response
             if any(endpoint in request.url for endpoint in [
-                "conversations.history", "conversations.list", "users.list", 
+                "conversations.history", "conversations.list", "users.list",
                 "conversations.info", "conversations.replies", "conversations.listPrefs",
                 "conversations.browse", "conversations.search", "channels.list",
                 "channels.info", "channels.browse", "channels.search",
@@ -255,7 +266,7 @@ class SlackBrowser:
                 try:
                     response_text = await response.text()
                     response_data = json.loads(response_text)
-                    
+
                     self.intercepted_data.append({
                         "url": request.url,
                         "method": request.method,
@@ -263,58 +274,58 @@ class SlackBrowser:
                         "response": response_data,
                         "timestamp": time.time()
                     })
-                    
+
                     print(f"💾 Stored response from: {request.url}")
-                    
+
                     # Update credentials from response if it contains user/team info
                     self.credentials.update_from_request(request, response_data)
-                    
+
                 except Exception as e:
                     print(f"⚠️  Error parsing API response: {e}")
-            
+
             # Continue with the response
             await route.fulfill(response=response)
-            
+
         except Exception as e:
             print(f"⚠️  Error intercepting request: {e}")
             await route.continue_()
-    
+
     async def ensure_logged_in(self) -> bool:
         """Ensure we're logged in to Slack workspace."""
         if not self.page:
             return False
-        
+
         try:
             # Navigate to the workspace
             print(f"🌐 Navigating to {WORKSPACE_URL}")
             await self.page.goto(WORKSPACE_URL)
-            
+
             # First, try to bypass any launch screen that tries to open the desktop app
             await self._bypass_launch_screen()
-            
+
             # Check if we're already logged in by waiting for API calls
             print("⏳ Waiting for workspace to load...")
             await self.page.wait_for_timeout(5000)  # Wait for API calls to start
-            
+
             # If we're intercepting API calls, we're likely logged in
             if len(self.intercepted_data) > 0:
                 print("✅ Login detected via API interception!")
-                
+
                 # Look for specific API calls that indicate successful login
                 logged_in_apis = [
-                    "client.userBoot", "client.counts", "team.info", 
+                    "client.userBoot", "client.counts", "team.info",
                     "users.prefs", "conversations", "search.modules"
                 ]
-                
+
                 for data in self.intercepted_data:
                     url = data.get("url", "")
                     if any(api in url for api in logged_in_apis):
                         print(f"✅ Confirmed login with API call: {url}")
                         return True
-            
+
             # Fallback: Try to find elements that indicate we're logged in
             await self.page.wait_for_timeout(3000)
-            
+
             logged_in_selectors = [
                 '[data-qa="workspace_name"]',
                 '[data-qa="team_name"]',
@@ -329,65 +340,65 @@ class SlackBrowser:
                 '.p-message_input',
                 '[data-qa="message_input"]'
             ]
-            
+
             for selector in logged_in_selectors:
                 try:
                     element = await self.page.wait_for_selector(selector, timeout=2000)
                     if element:
                         print(f"✅ Login confirmed via DOM element: {selector}")
                         return True
-                except:
+                except Exception:  # Playwright timeout or other selector errors
                     continue
-            
+
             # If we got here but have API data, we're probably logged in
             if len(self.intercepted_data) > 0:
                 print("✅ Assuming login success based on API activity")
                 return True
-            
+
             # Check current URL for login indicators
             current_url = self.page.url
             if "signin" in current_url or "login" in current_url:
                 print("🔐 Login page detected. Please authenticate manually.")
                 print("💡 This script requires existing authentication via browser profile.")
                 return False
-            
+
             # If we can navigate and have some API activity, consider it logged in
             if "slack.com" in current_url and len(self.intercepted_data) > 0:
                 print("✅ Login assumed successful (on Slack domain with API activity)")
                 return True
-            
+
             print("❌ Unable to verify login status")
             return False
-            
+
         except Exception as e:
             print(f"❌ Error checking login status: {e}")
             return False
-    
+
     def _parse_conversation_data(self, conv_data: Dict[str, Any]) -> Optional[ConversationInfo]:
         """Parse conversation data and return ConversationInfo object."""
         if not isinstance(conv_data, dict):
             return None
-            
+
         name = conv_data.get("name", "")
         conv_id = conv_data.get("id", "")
-        
+
         if not conv_id:
             return None
-        
+
         # Get user and channel mappings for better naming
         user_mappings = getattr(self, 'user_mappings', {})
         channel_mappings = getattr(self, 'channel_mappings', {})
-        
+
         # Determine conversation type based on ID and other properties
         conversation_type = ConversationType.UNKNOWN
-        
+
         # Check for multi-person DM patterns in the name FIRST (before checking ID)
         if name and ("mpdm-" in name or "--" in name):
             conversation_type = ConversationType.MULTI_PERSON_DM
             # Fix name format for multi-person DMs
             if not name.startswith("@"):
                 name = f"@{name}"
-        
+
         # Check if it's a DM (starts with D)
         elif conv_id.startswith('D'):
             # Check if it's a multi-person DM
@@ -419,7 +430,7 @@ class SlackBrowser:
                         name = f"@{user_mappings[user_id]}"
                     else:
                         name = f"@dm_{conv_id}"
-        
+
         # Check if it's a channel (starts with C)
         elif conv_id.startswith('C'):
             conversation_type = ConversationType.CHANNEL
@@ -430,7 +441,7 @@ class SlackBrowser:
                 name = f"#{name}"
             else:
                 name = f"#channel_{conv_id}"
-        
+
         # Check if it's a group (starts with G)
         elif conv_id.startswith('G'):
             conversation_type = ConversationType.MULTI_PERSON_DM
@@ -440,7 +451,7 @@ class SlackBrowser:
                 name = f"#{name}"
             else:
                 name = f"#group_{conv_id}"
-        
+
         # Fallback naming
         if not name:
             if conversation_type == ConversationType.CHANNEL:
@@ -451,31 +462,31 @@ class SlackBrowser:
                 name = f"@group_{conv_id}"
             else:
                 name = f"unknown_{conv_id}"
-        
+
         # Get member count
         member_count = 0
         if "num_members" in conv_data:
             member_count = conv_data["num_members"]
         elif "members" in conv_data and isinstance(conv_data["members"], list):
             member_count = len(conv_data["members"])
-        
+
         # Get members list
         members = []
         if "members" in conv_data and isinstance(conv_data["members"], list):
             members = conv_data["members"]
-        
+
         # Check if private
         is_private = conv_data.get("is_private", False)
-        
+
         return ConversationInfo(
             name=name,
-            id=conv_id,
+            conversation_id=conv_id,
             conversation_type=conversation_type,
             is_private=is_private,
             member_count=member_count,
             members=members
         )
-    
+
     def _print_conversation_summary(self, conversations: Dict[str, ConversationInfo]):
         """Print a summary of conversations by type."""
         type_counts = {
@@ -484,37 +495,36 @@ class SlackBrowser:
             ConversationType.MULTI_PERSON_DM: 0,
             ConversationType.UNKNOWN: 0
         }
-        
+
         for conv_info in conversations.values():
             type_counts[conv_info.conversation_type] += 1
-        
-        print(f"\n📊 Conversation Summary:")
+
+        print("\n📊 Conversation Summary:")
         print(f"  📁 Channels: {type_counts[ConversationType.CHANNEL]}")
         print(f"  💬 DMs: {type_counts[ConversationType.DM]}")
         print(f"  👥 Multi-person DMs: {type_counts[ConversationType.MULTI_PERSON_DM]}")
         print(f"  ❓ Unknown: {type_counts[ConversationType.UNKNOWN]}")
         print(f"  🔢 Total: {sum(type_counts.values())}")
-        
+
         # Show examples of each type
         examples = {conv_type: [] for conv_type in ConversationType}
         for conv_info in conversations.values():
             if len(examples[conv_info.conversation_type]) < 3:
                 examples[conv_info.conversation_type].append(str(conv_info))
-        
+
         for conv_type, example_list in examples.items():
             if example_list:
                 print(f"  Examples of {conv_type.value}: {', '.join(example_list)}")
         print()
-    
+
     async def get_channel_list(self) -> Dict[str, str]:
         """Get channel list from processed files and API data."""
         print("🔗 Getting channel list...")
-        
+
         channels = {}
-        
+
         try:
             # Check processed directories for known channel names
-            import os
             processed_dir = os.path.join(os.path.dirname(__file__), 'processed')
             if os.path.exists(processed_dir):
                 for item in os.listdir(processed_dir):
@@ -527,8 +537,8 @@ class SlackBrowser:
                         elif item.startswith('dm_'):
                             # This is a DM name
                             channels[item] = f"@{item}"
-            
-            # Also check exports directory 
+
+            # Also check exports directory
             if EXPORT_DIR.exists():
                 for item in os.listdir(EXPORT_DIR):
                     if item.endswith('.md'):
@@ -538,18 +548,18 @@ class SlackBrowser:
                             channels[name] = f"#{name}"
                         elif name.startswith('dm_'):
                             channels[name] = f"@{name}"
-            
+
             # Extract channels from API data - enhanced extraction
             for data in self.intercepted_data:
                 url = data.get("url", "")
                 response = data.get("response", {})
-                
+
                 if not isinstance(response, dict):
                     continue
-                
+
                 # Check search.modules.channels - this might contain channel names
                 if "search.modules.channels" in url and response.get("ok"):
-                    print(f"🔍 Processing search.modules.channels response...")
+                    print("🔍 Processing search.modules.channels response...")
                     if "channels" in response:
                         search_channels = response["channels"]
                         if isinstance(search_channels, list):
@@ -560,10 +570,10 @@ class SlackBrowser:
                                     if ch_id and ch_name:
                                         channels[ch_id] = f"#{ch_name}"
                                         print(f"  Found search channel: {ch_id} -> #{ch_name}")
-                
+
                 # Check client.counts response - it showed 4 channels
                 if "client.counts" in url and response.get("ok"):
-                    print(f"🔍 Processing client.counts response...")
+                    print("🔍 Processing client.counts response...")
                     if "channels" in response:
                         counts_channels = response["channels"]
                         if isinstance(counts_channels, dict):
@@ -575,12 +585,19 @@ class SlackBrowser:
                                         print(f"  Found counts channel: {ch_id} -> #{ch_name}")
                                     else:
                                         # Try other fields that might contain the name
-                                        for field in ["display_name", "real_name", "canonical_name"]:
+                                        fields_to_try = [
+                                            "display_name",
+                                            "real_name",
+                                            "canonical_name"
+                                        ]
+                                        for field in fields_to_try:
                                             if field in ch_data:
                                                 ch_name = ch_data[field]
                                                 if ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    print(f"  Found counts channel ({field}): {ch_id} -> #{ch_name}")
+                                                    msg = (f"  Found counts channel ({field}): "
+                                                          f"{ch_id} -> #{ch_name}")
+                                                    print(msg)
                                                     break
                         elif isinstance(counts_channels, list):
                             for ch in counts_channels:
@@ -589,11 +606,12 @@ class SlackBrowser:
                                     ch_name = ch.get("name", "")
                                     if ch_id and ch_name:
                                         channels[ch_id] = f"#{ch_name}"
-                                        print(f"  Found counts channel (list): {ch_id} -> #{ch_name}")
-                
+                                        print(f"  Found counts channel (list): "
+                                              f"{ch_id} -> #{ch_name}")
+
                 # Check client.userBoot and client.counts for comprehensive channel data
                 if "client.userBoot" in url and response.get("ok"):
-                    print(f"🔍 Processing client.userBoot response...")
+                    print("🔍 Processing client.userBoot response...")
                     # Look for channels in various structures
                     for key in ["channels", "ims", "groups", "team"]:
                         if key in response:
@@ -608,7 +626,8 @@ class SlackBrowser:
                                                 ch_name = ch_data.get("name", "")
                                                 if ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    print(f"  Found team channel: {ch_id} -> #{ch_name}")
+                                                    print(f"  Found team channel: "
+                                                          f"{ch_id} -> #{ch_name}")
                                 elif key == "channels":
                                     # Direct channels structure
                                     if isinstance(data_section, dict):
@@ -617,7 +636,8 @@ class SlackBrowser:
                                                 ch_name = ch_data.get("name", "")
                                                 if ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    print(f"  Found direct channel: {ch_id} -> #{ch_name}")
+                                                    print(f"  Found direct channel: "
+                                                          f"{ch_id} -> #{ch_name}")
                                     elif isinstance(data_section, list):
                                         for ch_data in data_section:
                                             if isinstance(ch_data, dict):
@@ -625,11 +645,12 @@ class SlackBrowser:
                                                 ch_name = ch_data.get("name", "")
                                                 if ch_id and ch_name:
                                                     channels[ch_id] = f"#{ch_name}"
-                                                    print(f"  Found list channel: {ch_id} -> #{ch_name}")
-                
+                                                    print(f"  Found list channel: "
+                                                          f"{ch_id} -> #{ch_name}")
+
                 # Check team.info response - might contain channel information
                 if "team.info" in url and response.get("ok"):
-                    print(f"🔍 Processing team.info response...")
+                    print("🔍 Processing team.info response...")
                     if "team" in response:
                         team_data = response["team"]
                         if isinstance(team_data, dict) and "channels" in team_data:
@@ -640,18 +661,21 @@ class SlackBrowser:
                                         ch_name = ch_data.get("name", "")
                                         if ch_name:
                                             channels[ch_id] = f"#{ch_name}"
-                                            print(f"  Found team.info channel: {ch_id} -> #{ch_name}")
-                
+                                            print(f"  Found team.info channel: "
+                                                  f"{ch_id} -> #{ch_name}")
+
                 # Check conversations.list and channels.list
-                if any(endpoint in url for endpoint in ["conversations.list", "channels.list"]) and response.get("ok"):
+                endpoints = ["conversations.list", "channels.list"]
+                if any(endpoint in url for endpoint in endpoints) and response.get("ok"):
                     for channel in response.get("channels", []):
                         if isinstance(channel, dict):
                             channel_id = channel.get("id")
                             channel_name = channel.get("name")
                             if channel_id and channel_name:
                                 channels[channel_id] = f"#{channel_name}"
-                                print(f"  Found API channel: {channel_id} -> #{channel_name}")
-                
+                                print(f"  Found API channel: "
+                                      f"{channel_id} -> #{channel_name}")
+
                 # Check for channel data in client.boot
                 if "client.boot" in url and response.get("ok"):
                     team = response.get("team", {})
@@ -663,8 +687,9 @@ class SlackBrowser:
                                     channel_name = channel_data.get("name")
                                     if channel_name:
                                         channels[channel_id] = f"#{channel_name}"
-                                        print(f"  Found boot channel: {channel_id} -> #{channel_name}")
-                
+                                        print(f"  Found boot channel: "
+                                              f"{channel_id} -> #{channel_name}")
+
                 # Check individual conversations in responses
                 if "conversations" in response and isinstance(response["conversations"], list):
                     for conv in response["conversations"]:
@@ -673,47 +698,49 @@ class SlackBrowser:
                             conv_name = conv.get("name")
                             if conv_id and conv_name:
                                 channels[conv_id] = f"#{conv_name}"
-                                print(f"  Found conv channel: {conv_id} -> #{conv_name}")
-                
+                                print(f"  Found conv channel: "
+                                      f"{conv_id} -> #{conv_name}")
+
             print(f"✅ Found {len(channels)} channels")
-            
+
         except Exception as e:
             print(f"❌ Error loading channels: {e}")
-            
+
         return channels
-    
+
     async def get_conversations(self) -> Dict[str, ConversationInfo]:
         """Get all conversations (channels, DMs, group DMs) with proper ConversationInfo objects."""
         print("🔍 Getting conversations...")
-        
+
         # Get user and channel mappings for better naming
         users = await self.get_user_list()
         channels = await self.get_channel_list()
-        
+
         # Store mappings for use in parsing
         self.user_mappings = users
         self.channel_mappings = channels
-        
+
         # Navigate to channels page to trigger channel list API calls
         try:
             print("🔍 Navigating to channels page to get channel data...")
-            await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}/browse-channels", timeout=10000)
+            url = f"https://app.slack.com/client/{TEAM_ID}/browse-channels"
+            await self.page.goto(url, timeout=10000)
             await self.page.wait_for_timeout(3000)
-            
+
             # Also try the main channels view
             await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}/channels", timeout=10000)
             await self.page.wait_for_timeout(3000)
-            
+
             # Refresh channel mappings after navigation
             print("🔍 Refreshing channel mappings after navigation...")
             channels = await self.get_channel_list()
             self.channel_mappings = channels
-            
+
         except Exception as e:
             print(f"⚠️  Error navigating to channels page: {e}")
-        
+
         conversations = {}
-        
+
         # Debug: Print some API response data
         print(f"🔍 Debug: Found {len(self.intercepted_data)} intercepted API calls")
         for data in self.intercepted_data[-10:]:  # Show last 10 calls
@@ -724,20 +751,23 @@ class SlackBrowser:
                 if isinstance(response, dict):
                     print(f"    Keys: {list(response.keys())}")
                     if "channels" in response:
-                        print(f"    Channels found: {len(response['channels']) if isinstance(response['channels'], list) else 'dict'}")
-        
+                        channels_count = (len(response['channels'])
+                                        if isinstance(response['channels'], list)
+                                        else 'dict')
+                        print(f"    Channels found: {channels_count}")
+
         # Extract conversations from intercepted data
         for data in self.intercepted_data:
             url = data.get("url", "")
             response = data.get("response", {})
-            
+
             if not isinstance(response, dict):
                 continue
-                
+
             # Check various API endpoints that might contain conversation data
             conversation_endpoints = [
                 "conversations.list",
-                "conversations.info", 
+                "conversations.info",
                 "channels.list",
                 "channels.info",
                 "im.list",
@@ -748,7 +778,7 @@ class SlackBrowser:
                 "search.modules.people",
                 "conversations.genericInfo"
             ]
-            
+
             # Extract conversations from different API responses
             if any(endpoint in url for endpoint in conversation_endpoints) and response.get("ok"):
                 # Handle conversations.list, channels.list, etc.
@@ -759,7 +789,7 @@ class SlackBrowser:
                                 conv_info = self._parse_conversation_data(conv_data)
                                 if conv_info:
                                     conversations[conv_info.name] = conv_info
-                
+
                 # Handle client.boot and client.userBoot responses
                 if "client.boot" in url or "client.userBoot" in url:
                     # Look for conversation data in various nested structures
@@ -781,7 +811,7 @@ class SlackBrowser:
                                         parsed_conv = self._parse_conversation_data(conv_info)
                                         if parsed_conv:
                                             conversations[parsed_conv.name] = parsed_conv
-                
+
                 # Handle im.list specifically
                 if "im.list" in url and "ims" in response:
                     for im_data in response["ims"]:
@@ -789,7 +819,7 @@ class SlackBrowser:
                             conv_info = self._parse_conversation_data(im_data)
                             if conv_info:
                                 conversations[conv_info.name] = conv_info
-        
+
         # Create fallback conversations for known channels from processed directories
         processed_dir = os.path.join(os.path.dirname(__file__), 'processed')
         if os.path.exists(processed_dir):
@@ -806,23 +836,23 @@ class SlackBrowser:
                     else:
                         conv_type = ConversationType.UNKNOWN
                         name = item
-                    
+
                     conversations[name] = ConversationInfo(
                         name=name,
-                        id=item,
+                        conversation_id=item,
                         conversation_type=conv_type,
                         is_private=False,
                         member_count=0,
                         members=[]
                     )
-        
+
         print(f"✅ Found {len(conversations)} conversations")
         return conversations
-    
+
     async def extract_channels_from_dom(self) -> Dict[str, str]:
         """Extract channels directly from the DOM elements."""
         channels = {}
-        
+
         try:
             # Try multiple selectors that might contain channel information
             channel_selectors = [
@@ -860,25 +890,28 @@ class SlackBrowser:
                 '[aria-label*="channel"]',
                 '[aria-label*="Channel"]'
             ]
-            
+
             for selector in channel_selectors:
                 try:
                     elements = await self.page.query_selector_all(selector)
-                    print(f"  🔍 Found {len(elements)} elements with selector: {selector}")
-                    
+                    print(f"  🔍 Found {len(elements)} elements with selector: "
+                          f"{selector}")
+
                     for element in elements:
                         # Try to get channel name and ID from various attributes
                         name = ""
                         channel_id = ""
-                        
+
                         # Try to get from href attribute
                         href = await element.get_attribute('href')
                         if href:
                             if '/archives/' in href:
-                                channel_id = href.split('/archives/')[-1].split('?')[0].split('/')[0]
+                                parts = href.split('/archives/')[-1].split('?')[0].split('/')
+                                channel_id = parts[0]
                             elif '/channels/' in href:
-                                channel_id = href.split('/channels/')[-1].split('?')[0].split('/')[0]
-                        
+                                parts = href.split('/channels/')[-1].split('?')[0].split('/')
+                                channel_id = parts[0]
+
                         # Try to get from data attributes
                         if not channel_id:
                             for attr in ['data-qa-channel-id', 'data-channel-id', 'data-qa']:
@@ -886,7 +919,7 @@ class SlackBrowser:
                                 if attr_value and attr_value.startswith('C'):
                                     channel_id = attr_value
                                     break
-                        
+
                         # Try to get channel name from text content
                         text = await element.text_content()
                         if text:
@@ -895,14 +928,20 @@ class SlackBrowser:
                             if text.startswith('#'):
                                 potential_name = text[1:]  # Remove #
                                 # Only accept if it looks like a channel name (no spaces, reasonable length)
-                                if len(potential_name) > 0 and len(potential_name) < 50 and ' ' not in potential_name:
+                                conditions = (len(potential_name) > 0 and
+                                            len(potential_name) < 50 and
+                                            ' ' not in potential_name)
+                                if conditions:
                                     name = potential_name
-                            elif text and len(text) < 50 and not text.startswith('+') and not text.startswith('@'):
+                            elif (text and len(text) < 50 and
+                                  not text.startswith('+') and
+                                  not text.startswith('@')):
                                 # Simple text that might be a channel name
                                 # Avoid message content (which tends to be longer)
-                                if not any(word in text.lower() for word in ['am', 'pm', 'yesterday', 'ago', 'reply', 'thread', 'edited']):
+                                avoid_words = ['am', 'pm', 'yesterday', 'ago', 'reply', 'thread', 'edited']
+                                if not any(word in text.lower() for word in avoid_words):
                                     name = text
-                        
+
                         # Try to get name from aria-label
                         if not name:
                             aria_label = await element.get_attribute('aria-label')
@@ -912,7 +951,7 @@ class SlackBrowser:
                                     name = aria_label.lower().replace('channel', '').strip()
                                 elif aria_label.startswith('#'):
                                     name = aria_label[1:]
-                        
+
                         # If we found both name and ID, or at least a name, add it
                         if name and channel_id:
                             channels[name] = channel_id
@@ -921,26 +960,26 @@ class SlackBrowser:
                             # Use a placeholder ID if we can't find the real one
                             channels[name] = f"C_PLACEHOLDER_{name}"
                             print(f"    📌 Found channel: #{name} (placeholder ID)")
-                    
+
                     if elements:
                         break  # If we found elements with this selector, don't try others
-                        
+
                 except Exception as e:
                     print(f"  ⚠️  Error with selector {selector}: {e}")
                     continue
-            
+
             print(f"🔍 DOM extraction found {len(channels)} channels")
-            
+
         except Exception as e:
             print(f"⚠️  Error extracting channels from DOM: {e}")
-        
+
         return channels
-    
+
     async def _dismiss_modals(self):
         """Dismiss any modal dialogs that might interfere with scrolling."""
         if not self.page:
             return
-        
+
         try:
             # Common modal selectors to try closing
             modal_selectors = [
@@ -948,38 +987,38 @@ class SlackBrowser:
                 '[data-qa="channel_overview_modal"] .c-button--close',
                 '[data-qa="channel_overview_modal"] .c-icon--times',
                 '[data-qa="channel_overview_modal"] [aria-label="Close"]',
-                
+
                 # Generic modal close buttons
                 '.c-modal__close',
                 '.c-modal__close_button',
                 '.c-dialog__close',
                 '.c-dialog__close_button',
-                
+
                 # Slack-specific modal patterns
                 '.c-sk-modal__close',
                 '.c-sk-modal__close_button',
                 '[data-qa="modal_close_button"]',
                 '[data-qa="close_modal"]',
                 '[data-qa="dialog_close"]',
-                
+
                 # Generic close icons
                 '.c-icon--times',
                 '.c-icon--close',
                 '[aria-label="Close"]',
                 '[aria-label="Close dialog"]',
                 '[aria-label="Close modal"]',
-                
+
                 # Overlay/backdrop elements (click to close)
                 '.c-modal__backdrop',
                 '.c-sk-modal__backdrop',
                 '.c-dialog__backdrop',
-                
+
                 # Specific known modals
                 '[data-qa="channel_browser_modal"] .c-button--close',
                 '[data-qa="member_profile_modal"] .c-button--close',
                 '[data-qa="thread_view_modal"] .c-button--close',
             ]
-            
+
             for selector in modal_selectors:
                 try:
                     elements = await self.page.query_selector_all(selector)
@@ -990,17 +1029,17 @@ class SlackBrowser:
                             await element.click()
                             await self.page.wait_for_timeout(500)
                             return True  # Found and closed a modal
-                except Exception as e:
+                except Exception as _e:
                     # Some selectors might not work, that's okay
                     continue
-            
+
             # Try pressing Escape key as a fallback
             await self.page.keyboard.press("Escape")
             await self.page.wait_for_timeout(300)
-            
+
         except Exception as e:
             print(f"⚠️  Error dismissing modals: {e}")
-        
+
         return False
 
     # ------------------------------------------------------------------ #
@@ -1010,7 +1049,6 @@ class SlackBrowser:
         """Blocking helper that paginates conversations.history using the
         fresh token & cookies captured during interception. Mirrors the
         old fetch_cookie_md.py flow so we aren't dependent on UI scrolling."""
-        import requests, time
 
         # Require both token and cookies
         if not (self.credentials.token and self.credentials.cookies):
@@ -1069,7 +1107,6 @@ class SlackBrowser:
 
     async def fetch_history_via_api(self, channel_id: str, oldest_ts: float = 0) -> List[Dict[str, Any]]:
         """Async wrapper around the sync helper so we don't block Playwright."""
-        import asyncio
         return await asyncio.to_thread(self._fetch_history_via_api_sync, channel_id, oldest_ts)
 
     async def fetch_conversation_history(self, channel_id: str, oldest_ts: float = 0) -> List[Dict[str, Any]]:
@@ -1095,11 +1132,11 @@ class SlackBrowser:
 
         try:
             # Do NOT clear earlier intercepted data – we keep user/channel maps
-            start_intercept_index = len(self.intercepted_data)
-            
+            _start_intercept_index = len(self.intercepted_data)
+
             # Navigate to the channel to trigger history loading
             channel_url = f"{WORKSPACE_URL}/archives/{channel_id}"
-            
+
             try:
                 await self.page.goto(channel_url, timeout=30000)
             except Exception as e:
@@ -1112,87 +1149,87 @@ class SlackBrowser:
                 except Exception as e2:
                     print(f"❌ Failed to navigate with alternative URL: {e2}")
                     return []
-            
+
             # Wait for initial messages to load
             await self.page.wait_for_timeout(3000)
-            
+
             # Dismiss any modals that might interfere with scrolling
             print("🔍 Checking for and dismissing any modal dialogs...")
             await self._dismiss_modals()
-            
+
             # Improved scrolling to load more history
             print("🔄 Scrolling to load more message history...")
-            
+
             # Try to scroll to the very top to load all history
             previous_message_count = 0
             max_scroll_attempts = 50  # Increased from 10 to 50
             no_new_messages_count = 0
-            
+
             print(f"🔄 Starting aggressive scrolling (up to {max_scroll_attempts} attempts)")
-            
+
             for attempt in range(max_scroll_attempts):
                 try:
                     # Every few attempts, dismiss any launch screens or popups
                     if attempt % 3 == 0:  # Every 3rd attempt
                         await self._bypass_launch_screen()
                         await self._dismiss_modals()
-                    
+
                     # Get current message count from intercepted data
                     current_message_count = 0
                     earliest_timestamp = None
-                    
+
                     for data in self.intercepted_data:
                         if "conversations.history" in data["url"]:
                             response = data.get("response", {})
                             if response.get("ok"):
                                 messages = response.get("messages", [])
                                 current_message_count += len(messages)
-                                
+
                                 # Track earliest timestamp to detect if we've reached the beginning
                                 for msg in messages:
                                     msg_ts = float(msg.get("ts", "0"))
                                     if earliest_timestamp is None or msg_ts < earliest_timestamp:
                                         earliest_timestamp = msg_ts
-                    
+
                     # Check if we've stopped loading new messages
                     if current_message_count == previous_message_count:
                         no_new_messages_count += 1
                         print(f"🔍 No new messages loaded in attempt {attempt + 1} (count: {no_new_messages_count})")
-                        
+
                         # Only stop if we've had no new messages for 8 attempts (increased from 3)
                         if no_new_messages_count >= 8:
                             print("✅ Reached the beginning of channel history (no new messages for 8 attempts)")
                             break
-                            
+
                         # Try more aggressive scrolling methods when no new messages
                         if attempt > 5:
                             # First dismiss any modals that might be blocking
                             await self._dismiss_modals()
-                            
+
                             # Try multiple Page Up presses
                             for i in range(5):
                                 await self.page.keyboard.press("PageUp")
                                 await self.page.wait_for_timeout(200)
-                            
+
                             # Try pressing Home key to go to the beginning
                             await self.page.keyboard.press("Home")
                             await self.page.wait_for_timeout(500)
-                            
+
                             # Try Ctrl+Home as alternative
                             await self.page.keyboard.press("Control+Home")
                             await self.page.wait_for_timeout(500)
-                            
+
                             # Try scrolling to absolute top
                             await self.page.evaluate("window.scrollTo(0, 0)")
                             await self.page.wait_for_timeout(500)
-                            
+
                             # Try clicking at the very top of the message area
                             try:
                                 await self.page.click('[data-qa="message_pane"]', position={'x': 100, 'y': 10})
                                 await self.page.wait_for_timeout(500)
                             except Exception:
                                 pass
-                                
+
                             # Try clicking on the channel name to refresh
                             try:
                                 await self.page.click('[data-qa="channel_name"]')
@@ -1203,10 +1240,10 @@ class SlackBrowser:
                         no_new_messages_count = 0
                         new_messages = current_message_count - previous_message_count
                         print(f"🔍 Loaded {new_messages} new messages (total: {current_message_count})")
-                        
+
                         # Reset no new messages counter since we found new messages
                         no_new_messages_count = 0
-                    
+
                     # Use multiple scrolling methods for better coverage
                     scroll_methods = [
                         lambda: self.page.keyboard.press("PageUp"),
@@ -1219,7 +1256,7 @@ class SlackBrowser:
                         lambda: self.page.evaluate("document.querySelector('.c-message_list__scrollbar')?.scrollTo(0, 0)"),
                         lambda: self.page.evaluate("document.querySelector('.c-message_list__scrollbar_hider')?.scrollTo(0, 0)"),
                     ]
-                    
+
                     # Use different scrolling methods on different attempts
                     method_index = attempt % len(scroll_methods)
                     try:
@@ -1230,7 +1267,7 @@ class SlackBrowser:
                         # Fallback to basic PageUp
                         await self.page.keyboard.press("PageUp")
                         await self.page.wait_for_timeout(800)
-                    
+
                     # Every 10 attempts, try to refresh the channel view to trigger more API calls
                     if attempt > 0 and attempt % 10 == 0:
                         print(f"🔄 Refreshing channel view (attempt {attempt})")
@@ -1241,9 +1278,9 @@ class SlackBrowser:
                         await self.page.wait_for_timeout(3000)
                         # Dismiss modals after refreshing
                         await self._dismiss_modals()
-                    
+
                     previous_message_count = current_message_count
-                    
+
                     # If we've reached the oldest timestamp, stop scrolling
                     if oldest_ts > 0:
                         oldest_message_found = False
@@ -1261,15 +1298,14 @@ class SlackBrowser:
                         if oldest_message_found:
                             print(f"✅ Reached oldest timestamp target ({oldest_ts})")
                             break
-                    
+
                     # Enhanced check for reaching the beginning
                     if earliest_timestamp and attempt > 15:
                         # Calculate how old the earliest message is
-                        import time
                         current_time = time.time()
                         message_age_days = (current_time - earliest_timestamp) / (24 * 60 * 60)
                         print(f"🔍 Earliest message is {message_age_days:.1f} days old")
-                        
+
                         # If messages are very old, we might be at the beginning
                         if message_age_days > 30:  # More than 30 days old
                             print("✅ Reached old messages, likely near channel beginning")
@@ -1277,43 +1313,43 @@ class SlackBrowser:
                             if attempt > 25:
                                 print("✅ Stopping - reached very old messages")
                                 break
-                
+
                 except Exception as e:
                     print(f"⚠️  Error during scroll attempt {attempt + 1}: {e}")
                     # Try to dismiss modals in case of error
                     await self._dismiss_modals()
                     # Continue with next attempt
                     continue
-            
+
             print(f"🔄 Completed {min(attempt + 1, max_scroll_attempts)} scroll attempts")
-            
+
             # Final modal dismissal before thread extraction
             await self._dismiss_modals()
-            
+
             # Final wait for any remaining API calls
             await self.page.wait_for_timeout(5000)  # Increased from 2000 to 5000
-            
+
             # Try to click on threads to load replies
             try:
                 print("🔄 Clicking on threads to load replies...")
-                
+
                 # First, let's inspect the page to find thread elements
                 try:
                     # Try to get all elements that might be thread indicators
                     all_thread_elements = await self.page.query_selector_all('*[data-qa*="thread"]')
                     print(f"🔍 Found {len(all_thread_elements)} elements with 'thread' in data-qa")
-                    
+
                     # Try to find elements with reply text
                     reply_elements = await self.page.query_selector_all('*:has-text("replies")')
                     print(f"🔍 Found {len(reply_elements)} elements containing 'replies'")
-                    
+
                     # Try to find elements with reply count
                     reply_count_elements = await self.page.query_selector_all('*:has-text("reply")')
                     print(f"🔍 Found {len(reply_count_elements)} elements containing 'reply'")
-                    
+
                 except Exception as e:
                     print(f"⚠️  Error inspecting page: {e}")
-                
+
                 # Try multiple selectors for thread buttons
                 selectors_to_try = [
                     '[data-qa="thread_reply_bar"]',
@@ -1346,7 +1382,7 @@ class SlackBrowser:
                     '.c-message__thread_actions',
                     '.c-message_kit__thread_actions'
                 ]
-                
+
                 thread_buttons = []
                 for selector in selectors_to_try:
                     try:
@@ -1354,40 +1390,40 @@ class SlackBrowser:
                         if elements:
                             print(f"🔍 Found {len(elements)} elements with selector: {selector}")
                             thread_buttons.extend(elements)
-                    except Exception as e:
+                    except Exception as _e:
                         # Some selectors might not work, that's okay
                         continue
-                
+
                 # Remove duplicates
                 unique_buttons = []
                 for button in thread_buttons:
                     if button not in unique_buttons:
                         unique_buttons.append(button)
-                
+
                 print(f"🔍 Found {len(unique_buttons)} unique thread buttons")
-                
+
                 for i, button in enumerate(unique_buttons[:5]):  # Limit to first 5 threads
                     try:
                         print(f"🔄 Clicking thread {i+1}...")
-                        
+
                         # Try to scroll the button into view first
                         try:
                             await button.scroll_into_view_if_needed()
                             await self.page.wait_for_timeout(500)
                         except Exception:
                             pass
-                        
+
                         # Check if button is visible and clickable
                         is_visible = await button.is_visible()
                         print(f"🔍 Button {i+1} visible: {is_visible}")
-                        
+
                         if is_visible:
                             await button.click()
                             await self.page.wait_for_timeout(2000)  # Wait for replies to load
-                            
+
                             # Wait for the thread panel to load
                             await self.page.wait_for_timeout(1000)
-                            
+
                             # Scroll within the thread to load more replies
                             try:
                                 # Try multiple selectors for thread panels
@@ -1400,7 +1436,7 @@ class SlackBrowser:
                                     '.c-message_list__scrollbar',
                                     '.c-message_list__scrollbar_hider'
                                 ]
-                                
+
                                 thread_scroll_area = None
                                 for selector in thread_panel_selectors:
                                     try:
@@ -1410,7 +1446,7 @@ class SlackBrowser:
                                             break
                                     except Exception:
                                         continue
-                                
+
                                 if thread_scroll_area:
                                     for scroll_attempt in range(3):
                                         await thread_scroll_area.scroll_into_view_if_needed()
@@ -1419,10 +1455,10 @@ class SlackBrowser:
                                         print(f"🔄 Thread scroll attempt {scroll_attempt + 1}")
                                 else:
                                     print("⚠️  Could not find thread scroll area")
-                                        
+
                             except Exception as e:
                                 print(f"⚠️  Error scrolling thread: {e}")
-                                
+
                             # Close the thread panel
                             try:
                                 close_selectors = [
@@ -1433,7 +1469,7 @@ class SlackBrowser:
                                     '.c-icon--times',
                                     '.c-icon--close'
                                 ]
-                                
+
                                 close_button = None
                                 for selector in close_selectors:
                                     try:
@@ -1443,7 +1479,7 @@ class SlackBrowser:
                                             break
                                     except Exception:
                                         continue
-                                
+
                                 if close_button:
                                     await close_button.click()
                                     await self.page.wait_for_timeout(500)
@@ -1452,7 +1488,7 @@ class SlackBrowser:
                                     print("🔍 Trying Escape key to close thread")
                                     await self.page.keyboard.press("Escape")
                                     await self.page.wait_for_timeout(500)
-                                    
+
                             except Exception as e:
                                 print(f"⚠️  Error closing thread: {e}")
                                 # Try pressing escape as backup
@@ -1460,25 +1496,25 @@ class SlackBrowser:
                                 await self.page.wait_for_timeout(500)
                         else:
                             print(f"⚠️  Button {i+1} not visible, skipping")
-                            
+
                     except Exception as e:
                         print(f"⚠️  Error clicking thread {i+1}: {e}")
                         continue
-                        
+
             except Exception as e:
                 print(f"⚠️  Error loading threads: {e}")
-            
+
             # Wait a bit more for thread API calls
             await self.page.wait_for_timeout(3000)
-            
+
             # Extract messages from intercepted API calls
             all_messages = []
-            threads_data = {}  # Store thread replies
-            
+            _threads_data = {}  # Store thread replies
+
             for data in self.intercepted_data:
                 try:
                     url = data["url"]
-                    
+
                     # Handle main conversation history
                     if "conversations.history" in url:
                         response = data.get("response", {})
@@ -1487,7 +1523,7 @@ class SlackBrowser:
                             for msg in messages:
                                 if float(msg.get("ts", "0")) > oldest_ts:
                                     all_messages.append(msg)
-                    
+
                     # Handle thread replies
                     elif "conversations.replies" in url:
                         response = data.get("response", {})
@@ -1497,10 +1533,10 @@ class SlackBrowser:
                             for msg in messages[1:]:
                                 if float(msg.get("ts", "0")) > oldest_ts:
                                     all_messages.append(msg)
-                    
+
                     # Handle other message-related endpoints
                     elif any(endpoint in url for endpoint in [
-                        "conversations.info", 
+                        "conversations.info",
                         "conversations.members",
                         "files.info",
                         "reactions.get"
@@ -1512,12 +1548,12 @@ class SlackBrowser:
                                 msg = response["message"]
                                 if float(msg.get("ts", "0")) > oldest_ts:
                                     all_messages.append(msg)
-                
+
                 except Exception as e:
                     print(f"⚠️  Error processing intercepted data: {e}")
                     # Continue with next data item
                     continue
-            
+
             # Remove duplicates and sort by timestamp
             seen_ts = set()
             unique_messages = []
@@ -1530,28 +1566,27 @@ class SlackBrowser:
                 except Exception as e:
                     print(f"⚠️  Error processing message: {e}")
                     continue
-            
+
             unique_messages.sort(key=lambda x: float(x.get("ts", "0")))
-            
+
             print(f"✅ Found {len(unique_messages)} new messages")
-            
+
             # Print some debug info about message types
             if unique_messages:
                 subtypes = {}
                 for msg in unique_messages:
                     subtype = msg.get("subtype", "regular")
                     subtypes[subtype] = subtypes.get(subtype, 0) + 1
-                
+
                 print(f"📊 Message types: {dict(subtypes)}")
-            
+
             return unique_messages
-            
+
         except Exception as e:
             print(f"❌ Error fetching conversation history: {e}")
-            import traceback
             traceback.print_exc()
             return []
-    
+
     async def get_user_list(self) -> Dict[str, str]:
         """Get user list from intercepted data and rolodex with **live data taking precedence**.
         Previously, rolodex entries overwrote the freshest Slack profile info which led to
@@ -1561,7 +1596,7 @@ class SlackBrowser:
         users: Dict[str, str] = {}
 
         # ------------------------------------------------------------------
-        # 1) Gather from intercepted bootstrap payloads                      
+        # 1) Gather from intercepted bootstrap payloads
         # ------------------------------------------------------------------
         for data in self.intercepted_data:
             resp = data.get("response", {})
@@ -1573,10 +1608,9 @@ class SlackBrowser:
                     users[uid] = name
 
         # ------------------------------------------------------------------
-        # 2) Enrich via users.list API when token is present                 
+        # 2) Enrich via users.list API when token is present
         # ------------------------------------------------------------------
         if self.credentials.token and self.credentials.cookies:
-            import asyncio
             cursor = None
             while True:
                 payload = {"limit": 1000}
@@ -1603,7 +1637,7 @@ class SlackBrowser:
                 await asyncio.sleep(0.2)
 
         # ------------------------------------------------------------------
-        # 3) Fallback to rolodex for any **missing** ids                     
+        # 3) Fallback to rolodex for any **missing** ids
         # ------------------------------------------------------------------
         rolodex_users = self._load_rolodex()
         missing_count = 0
@@ -1614,24 +1648,24 @@ class SlackBrowser:
 
         print(f"👥 Total users loaded: {len(users)} ({missing_count} filled from rolodex fallback)")
         return users
-    
+
     async def save_credentials(self):
         """Save intercepted credentials."""
         if self.credentials.token:
             self.credentials.save()
             print("💾 Saved fresh credentials")
-    
+
     async def close(self):
         """Close browser and save credentials."""
         await self.save_credentials()
         if self.browser:
             await self.browser.close()
-    
+
     async def _bypass_launch_screen(self):
         """Bypass the Slack launch screen that tries to open the desktop app."""
         if not self.page:
             return
-        
+
         try:
             # Check if we're on the launch screen by looking for common elements
             launch_screen_selectors = [
@@ -1639,40 +1673,40 @@ class SlackBrowser:
                 'button:has-text("Continue in browser")',
                 'a:has-text("Continue in browser")',
                 '[data-qa="continue_in_browser"]',
-                
+
                 # "Use Slack in your browser" button
                 'button:has-text("Use Slack in your browser")',
                 'a:has-text("Use Slack in your browser")',
-                
+
                 # "Open in browser" button
                 'button:has-text("Open in browser")',
                 'a:has-text("Open in browser")',
-                
+
                 # Skip app download
                 'button:has-text("Skip")',
                 'a:has-text("Skip")',
-                
+
                 # Generic "browser" link
                 'a:has-text("browser")',
-                
+
                 # App download dismissal
                 '.p-download_page__cta--skip',
                 '.p-download_page__skip',
-                
+
                 # App prompt dismissal
                 'button:has-text("Not now")',
                 'button:has-text("Maybe later")',
                 'button:has-text("No thanks")',
-                
+
                 # Close buttons on app prompts
                 '[data-qa="app-download-banner-close"]',
                 '[data-qa="download-banner-close"]',
-                
+
                 # Generic close on overlays
                 '.c-banner__close',
                 '.c-alert__close',
             ]
-            
+
             for selector in launch_screen_selectors:
                 try:
                     element = await self.page.wait_for_selector(selector, timeout=1000)
@@ -1682,9 +1716,9 @@ class SlackBrowser:
                         print("✅ Dismissed app launcher/popup")
                         await self.page.wait_for_timeout(1000)
                         return True
-                except:
+                except Exception:  # Element not found or not clickable
                     continue
-            
+
             # Check for app download banner in URL and dismiss
             current_url = self.page.url
             if any(term in current_url for term in ["/getting-started", "/download", "/app"]):
@@ -1692,16 +1726,16 @@ class SlackBrowser:
                 await self.page.goto(WORKSPACE_URL)
                 await self.page.wait_for_timeout(2000)
                 return True
-            
+
             # Try pressing Escape to dismiss any overlays
             try:
                 await self.page.keyboard.press("Escape")
                 await self.page.wait_for_timeout(500)
-            except:
+            except Exception:  # Keyboard action might fail
                 pass
-            
+
             return False
-            
+
         except Exception as e:
             print(f"⚠️ Error handling app launcher: {e}")
             return False
@@ -1717,13 +1751,13 @@ class SlackBrowser:
             if rolodex_path.exists():
                 with open(rolodex_path, 'r', encoding='utf-8') as f:
                     rolodex = json.load(f)
-                
+
                 # Create user_id -> name mapping
                 user_mapping = {}
                 for person in rolodex.get("people", []):
                     if "user_id" in person and "name" in person:
                         user_mapping[person["user_id"]] = person["name"]
-                
+
                 print(f"📋 Loaded {len(user_mapping)} user mappings from rolodex")
                 return user_mapping
             else:
@@ -1785,7 +1819,6 @@ class SlackBrowser:
 
     async def get_dm_participants(self, channel_id: str, users: Dict[str, str]) -> List[str]:
         """Async wrapper for participant lookup."""
-        import asyncio
         return await asyncio.to_thread(self._get_dm_participants_sync, channel_id, users)
 
     # ------------------------------------------------------------------ #
@@ -1793,7 +1826,6 @@ class SlackBrowser:
     # ------------------------------------------------------------------ #
     async def conversation_filename(self, channel_id: str, channel_name: str, users: Dict[str, str], messages: List[Dict[str, Any]] | None = None) -> str:
         """Return a human-friendly, filesystem-safe filename for this conversation."""
-        import re
 
         # Detect D or G => DM / MPDM
         if channel_id and channel_id[0] in {"D", "G"}:
@@ -1838,7 +1870,7 @@ class SlackBrowser:
         return None
 
     async def get_channel_name(self, channel_id: str) -> str | None:
-        import asyncio
+        """Get readable channel name for a given channel ID."""
         return await asyncio.to_thread(self._get_channel_name_sync, channel_id)
 
 
@@ -1847,7 +1879,7 @@ class SlackBrowser:
 def _load_tracker() -> Dict[str, Any]:
     """Load conversation tracking data."""
     if TRACK_FILE.exists():
-        data = json.loads(TRACK_FILE.read_text())
+        data = json.loads(TRACK_FILE.read_text(encoding='utf-8'))
         if "channels" not in data:
             data["channels"] = {}
         return data
@@ -1857,79 +1889,78 @@ def _load_tracker() -> Dict[str, Any]:
 def _save_tracker(data: Dict[str, Any]) -> None:
     """Save conversation tracking data."""
     TRACK_FILE.parent.mkdir(parents=True, exist_ok=True)
-    TRACK_FILE.write_text(json.dumps(data, indent=2))
+    TRACK_FILE.write_text(json.dumps(data, indent=2), encoding='utf-8')
 
 
 def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
     """Convert message to markdown line with enhanced formatting."""
     ts_float = float(msg["ts"])
     ts_str = datetime.fromtimestamp(ts_float).strftime("%Y-%m-%d %H:%M")
-    
+
     user_id = msg.get("user", "")
     user_name = users.get(user_id, f"User_{user_id[-6:]}" if user_id else "System")
-    
+
     # Handle different message types
     subtype = msg.get("subtype", "")
-    
+
     # Handle system messages
     if subtype in ["channel_join", "channel_leave", "channel_topic", "channel_purpose"]:
         action = {
             "channel_join": "joined the channel",
-            "channel_leave": "left the channel", 
+            "channel_leave": "left the channel",
             "channel_topic": "changed the channel topic",
             "channel_purpose": "changed the channel purpose"
         }.get(subtype, "performed an action")
         return f"- **{ts_str}** *{user_name}* {action}"
-    
+
     # Handle bot messages
     if msg.get("bot_id") or subtype == "bot_message":
         bot_name = msg.get("username", "Bot")
         user_name = f"🤖 {bot_name}"
-    
+
     # Get message text
     text = msg.get("text", "")
-    
+
     # Process Slack formatting in text
     if text:
         # Handle user mentions (<@U123456>)
-        import re
         def replace_user_mention(match):
             user_id = match.group(1)
             mentioned_user = users.get(user_id, f"User_{user_id[-6:]}")
             return f"@{mentioned_user}"
-        
+
         text = re.sub(r'<@([A-Z0-9]+)>', replace_user_mention, text)
-        
+
         # Handle channel mentions (<#C123456|channel-name>)
         def replace_channel_mention(match):
             channel_name = match.group(2) if match.group(2) else match.group(1)
             return f"#{channel_name}"
-        
+
         text = re.sub(r'<#([A-Z0-9]+)(?:\|([^>]+))?>', replace_channel_mention, text)
-        
+
         # Handle URLs (<https://example.com|Link Text>)
         def replace_url(match):
             url = match.group(1)
             link_text = match.group(2) if match.group(2) else url
             return f"[{link_text}]({url})"
-        
+
         text = re.sub(r'<(https?://[^>|]+)(?:\|([^>]+))?>', replace_url, text)
-        
+
         # Handle bold text (*text*)
         text = re.sub(r'(?<!\\)\*([^*]+)\*', r'**\1**', text)
-        
+
         # Handle italic text (_text_)
         text = re.sub(r'(?<!\\)_([^_]+)_', r'*\1*', text)
-        
+
         # Handle strikethrough (~text~)
         text = re.sub(r'(?<!\\)~([^~]+)~', r'~~\1~~', text)
-        
+
         # Handle inline code (`text`)
         text = re.sub(r'(?<!\\)`([^`]+)`', r'`\1`', text)
-        
+
         # Handle code blocks (```text```)
         text = re.sub(r'(?<!\\)```([^`]+)```', r'```\n\1\n```', text)
-    
+
     # Handle file attachments
     attachments = msg.get("files", [])
     if attachments:
@@ -1939,7 +1970,7 @@ def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
             file_type = file_data.get("filetype", "")
             file_size = file_data.get("size", 0)
             file_url = file_data.get("url_private", "")
-            
+
             # Format file size
             if file_size > 1024 * 1024:
                 size_str = f"{file_size / (1024 * 1024):.1f}MB"
@@ -1947,36 +1978,36 @@ def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
                 size_str = f"{file_size / 1024:.1f}KB"
             else:
                 size_str = f"{file_size}B"
-            
+
             # Create a nice file description
             if file_type:
                 file_desc = f"📎 **{file_name}** ({file_type}, {size_str})"
             else:
                 file_desc = f"📎 **{file_name}** ({size_str})"
-            
+
             # Add URL if available
             if file_url:
                 file_desc += f" - [Download]({file_url})"
-            
+
             file_info.append(file_desc)
-        
+
         if text:
             text += "\\n\\n" + "\\n".join(file_info)
         else:
             text = "\\n".join(file_info)
-    
+
     # Handle message attachments (rich content)
     message_attachments = msg.get("attachments", [])
     if message_attachments:
         for attachment in message_attachments:
             attachment_parts = []
-            
+
             # Add service name/author
             if attachment.get("service_name"):
                 attachment_parts.append(f"**{attachment['service_name']}**")
             elif attachment.get("author_name"):
                 attachment_parts.append(f"**{attachment['author_name']}**")
-            
+
             # Add attachment title
             if attachment.get("title"):
                 title = attachment["title"]
@@ -1985,11 +2016,11 @@ def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
                     attachment_parts.append(f"🔗 **[{title}]({title_link})**")
                 else:
                     attachment_parts.append(f"🔗 **{title}**")
-            
+
             # Add attachment text/description
             if attachment.get("text"):
                 attachment_parts.append(f"> {attachment['text']}")
-            
+
             # Add fields if present
             if attachment.get("fields"):
                 for field in attachment["fields"]:
@@ -1997,7 +2028,7 @@ def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
                     field_value = field.get("value", "")
                     if field_title and field_value:
                         attachment_parts.append(f"**{field_title}:** {field_value}")
-            
+
             # Add footer info
             footer_parts = []
             if attachment.get("footer"):
@@ -2005,13 +2036,13 @@ def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
             if attachment.get("ts"):
                 footer_ts = datetime.fromtimestamp(float(attachment["ts"])).strftime("%Y-%m-%d %H:%M")
                 footer_parts.append(footer_ts)
-            
+
             if footer_parts:
                 attachment_parts.append(f"*{' | '.join(footer_parts)}*")
-            
+
             if attachment_parts:
                 text += "\\n\\n" + "\\n".join(attachment_parts)
-    
+
     # Handle reactions
     reactions = msg.get("reactions", [])
     if reactions:
@@ -2020,7 +2051,7 @@ def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
             emoji = reaction.get("name", "")
             count = reaction.get("count", 0)
             users_who_reacted = reaction.get("users", [])
-            
+
             if emoji and count > 0:
                 # Show who reacted if it's a small number
                 if count <= 3 and users_who_reacted:
@@ -2030,25 +2061,25 @@ def _markdown_line(msg: Dict[str, Any], users: Dict[str, str]) -> str:
                     reaction_summary.append(f":{emoji}: {', '.join(user_names)}")
                 else:
                     reaction_summary.append(f":{emoji}: {count}")
-        
+
         if reaction_summary:
             text += f"\\n\\n*Reactions: {', '.join(reaction_summary)}*"
-    
+
     # Handle thread info
     thread_info = ""
     if msg.get("reply_count", 0) > 0:
         reply_count = msg["reply_count"]
         thread_info = f" 💬 {reply_count} {'reply' if reply_count == 1 else 'replies'}"
-    
+
     # Replace newlines for markdown formatting
     text = text.replace("\n", "  \n")
-    
+
     # Indent replies for threads
     prefix = "    " if msg.get("parent_user_id") else ""
-    
+
     # Add thread indicator for replies
     thread_indicator = "↳ " if msg.get("parent_user_id") else ""
-    
+
     return f"{prefix}- **{ts_str}** *{user_name}*{thread_info}: {thread_indicator}{text}"
 
 
@@ -2059,15 +2090,15 @@ def _create_safe_filename(channel_name: str, channel_id: str) -> str:
         # Remove # or @ prefixes
         clean_name = channel_name.lstrip("#@")
         # Replace problematic characters
-        safe_name = re.sub(r'[<>:"/\\|?*]', '_', clean_name)
+        safe_name = re.sub(r'[<>:"/\\|?*@]', '_', clean_name)
         # Remove consecutive underscores
         safe_name = re.sub(r'_+', '_', safe_name)
         # Remove leading/trailing underscores
         safe_name = safe_name.strip('_')
-        
+
         if safe_name:
             return safe_name
-    
+
     # Fallback to using channel ID
     return f"channel_{channel_id}"
 
@@ -2076,10 +2107,9 @@ def _is_valid_slack_id(slack_id: str) -> bool:
     """Check if a string is a valid Slack conversation ID format."""
     if not slack_id or not isinstance(slack_id, str):
         return False
-    
+
     # Slack IDs should start with C (channels), D (DMs), G (groups), or U (users)
     # and be followed by alphanumeric characters, typically 9-11 characters total
-    import re
     pattern = r'^[CDGU][A-Z0-9]{8,10}$'
     return bool(re.match(pattern, slack_id))
 
@@ -2088,8 +2118,6 @@ def _is_valid_slack_id(slack_id: str) -> bool:
 # This lightweight helper lets us update **multiple** channels in a single
 # run.  It re-implements the essentials of the one-off export flow but without
 # any interactive prompts so we can be safely called in a loop.
-
-from typing import Optional  # already imported above but re-importing is safe
 
 
 async def _export_single_channel(
@@ -2128,17 +2156,17 @@ async def _export_single_channel(
         if conversations_cache is None:
             conversations_cache = await browser.get_conversations()
 
-        for conv in conversations_cache.values():
-            if conv.name.lstrip("#@").lower() == channel_input.lower():
-                channel_id = conv.id
-                channel_name = conv.name
+        for _, conv_info in conversations_cache.items():
+            if conv_info.name.lstrip("#@").lower() == channel_input.lower():
+                channel_id = conv_info.id
+                channel_name = conv_info.name
                 break
 
         if not channel_id:
-            for conv in conversations_cache.values():
-                if channel_input.lower() in conv.name.lower():
-                    channel_id = conv.id
-                    channel_name = conv.name
+            for _, conv_info in conversations_cache.items():
+                if channel_input.lower() in conv_info.name.lower():
+                    channel_id = conv_info.id
+                    channel_name = conv_info.name
                     break
 
     if not channel_id:
@@ -2204,26 +2232,26 @@ async def main():
     print("🚀 Playwright-based Slack Fetcher")
     print(f"📍 Workspace: {WORKSPACE_URL}")
     print()
-    
+
     browser = SlackBrowser()
-    
+
     try:
         # Start browser (headless=False to allow manual login if needed)
         await browser.start(headless=False)
-        
+
         # Ensure we're logged in
         if not await browser.ensure_logged_in():
             print("❌ Failed to log in. Exiting.")
             return
-        
+
         # Ask user what they want to extract
         print("\nWhat would you like to extract?")
         print("  • Enter a channel name (e.g., 'general' or '#general')")
         print("  • Enter a channel ID (e.g., 'C1234567890')")
         print("  • Enter 'list' to see available channels first")
-        
+
         user_input = input("\nTarget channel(s): ").strip()
-        
+
         # ------------------------------------------------------------------
         # Batch mode – allow comma-separated list so we can update multiple
         # conversations in one run.
@@ -2239,18 +2267,18 @@ async def main():
             for target in channel_inputs:
                 await _export_single_channel(browser, target, users, conversations)
             return
-        
+
         if not channel_inputs:
             print("❌ No channel specified. Exiting.")
             return
-            
+
         # Clean up the input
         channel_input = channel_inputs[0].lstrip("#@")
-        
+
         # Try to find the channel
         channel_id = None
         channel_name = None
-        
+
         # If it looks like a channel ID (starts with C, D, or G)
         if channel_input.startswith(('C', 'D', 'G')) and len(channel_input) > 8:
             channel_id = channel_input
@@ -2260,20 +2288,20 @@ async def main():
             # Try to find by name in conversations
             if 'conversations' in locals():
                 # Look for exact match first
-                for name, conv_info in conversations.items():
+                for _, conv_info in conversations.items():
                     if conv_info.name.lstrip("#@").lower() == channel_input.lower():
                         channel_id = conv_info.id
                         channel_name = conv_info.name
                         print(f"🎯 Found channel: {conv_info}")
                         break
-                
+
                 # If no exact match, try partial match
                 if not channel_id:
                     matches = []
-                    for name, conv_info in conversations.items():
+                    for _, conv_info in conversations.items():
                         if channel_input.lower() in conv_info.name.lower():
                             matches.append(conv_info)
-                    
+
                     if len(matches) == 1:
                         channel_id = matches[0].id
                         channel_name = matches[0].name
@@ -2284,46 +2312,46 @@ async def main():
                             print(f"    {conv_info}")
                         print("Please be more specific.")
                         return
-            
+
             # If still not found, try loading conversations
             if not channel_id:
                 print("🔍 Searching for channel...")
                 conversations = await browser.get_conversations()
-                
-                for name, conv_info in conversations.items():
+
+                for _, conv_info in conversations.items():
                     if conv_info.name.lstrip("#@").lower() == channel_input.lower():
                         channel_id = conv_info.id
                         channel_name = conv_info.name
                         print(f"🎯 Found channel: {conv_info}")
                         break
-            
+
             # Last resort: assume it's a channel name and try to find it
             if not channel_id:
                 # Use the input as channel name and let the API try to find it
                 channel_name = f"#{channel_input}"
                 print(f"🎯 Attempting to extract channel: {channel_name}")
                 print("    (Channel ID will be determined from API calls)")
-        
+
         # Get users for better formatting
         print("👥 Loading user list...")
         users = await browser.get_user_list()
-        
+
         # Fetch messages
         print(f"📥 Fetching messages from {channel_name or channel_input}...")
-        
+
         if channel_id:
             # Validate the channel ID format before using it
             if not _is_valid_slack_id(channel_id):
                 print(f"❌ Invalid Slack ID format: {channel_id}")
                 print("    Slack IDs should start with C (channels), D (DMs), or G (groups)")
                 return
-            
+
             messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
         else:
             # If we don't have a valid ID, we need to find it through API calls
             # Don't try to navigate to invalid URLs that cause Slack to glitch
             print("🔍 Channel ID not found. Browsing workspace to discover channel IDs...")
-            
+
             try:
                 # Navigate to safer URLs that are more likely to work
                 safe_urls = [
@@ -2331,55 +2359,55 @@ async def main():
                     f"https://app.slack.com/client/{TEAM_ID}/browse-channels",  # Browse channels
                     WORKSPACE_URL  # Fallback to main URL
                 ]
-                
+
                 channel_found = False
-                
+
                 for url in safe_urls:
                     try:
                         print(f"🌐 Navigating to {url}")
                         await browser.page.goto(url, timeout=10000)
                         await browser.page.wait_for_timeout(3000)
-                        
+
                         # Load conversations to get the real IDs
                         conversations = await browser.get_conversations()
-                        
+
                         # Try to find the channel by name in the loaded conversations
-                        for name, conv_info in conversations.items():
+                        for _, conv_info in conversations.items():
                             if conv_info.name.lstrip("#@").lower() == channel_input.lower():
                                 channel_id = conv_info.id
                                 channel_name = conv_info.name
                                 print(f"✅ Found channel: {conv_info} (ID: {channel_id})")
                                 channel_found = True
                                 break
-                        
+
                         if channel_found:
                             break
-                            
+
                     except Exception as e:
                         print(f"⚠️  Failed to load {url}: {e}")
                         continue
-                
+
                 if not channel_found:
                     print(f"❌ Could not find channel '{channel_input}'.")
                     print("Available channels:")
                     conversations = await browser.get_conversations()
-                    for name, conv_info in list(conversations.items())[:10]:  # Show first 10
+                    for _, conv_info in list(conversations.items())[:10]:  # Show first 10
                         print(f"    {conv_info}")
                     if len(conversations) > 10:
                         print(f"    ... and {len(conversations) - 10} more")
                     return
-                
+
                 # Now fetch with the proper ID
                 messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
-                
+
             except Exception as e:
                 print(f"❌ Error finding channel: {e}")
                 return
-        
+
         if not messages:
             print("📭 No messages found. The channel might be empty or inaccessible.")
             return
-        
+
         # Try to improve channel_name if it's still a generic placeholder
         if channel_id and (not channel_name or channel_name.startswith("channel_")):
             looked_up = await browser.get_channel_name(channel_id)
@@ -2415,22 +2443,21 @@ async def main():
             # Append new messages
             for msg in messages:
                 f.write(_markdown_line(msg, users) + "\n")
-        
+
         # Update tracker
         if messages and channel_id:
             tracker = _load_tracker()
             highest_ts = max(float(m["ts"]) for m in messages)
             tracker["channels"][channel_id] = highest_ts
             _save_tracker(tracker)
-        
+
         print(f"✅ Exported {len(messages)} messages to {md_path}")
         print(f"📁 File saved: {md_path.absolute()}")
-    
+
     except KeyboardInterrupt:
         print("\n⚠️  Interrupted by user")
     except Exception as e:
         print(f"❌ Error: {e}")
-        import traceback
         traceback.print_exc()
     finally:
         await browser.close()
@@ -2443,4 +2470,4 @@ def run_main():
 
 
 if __name__ == "__main__":
-    run_main() 
+    run_main()
