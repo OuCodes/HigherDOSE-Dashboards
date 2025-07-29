@@ -28,7 +28,7 @@ dependencies = [
 # Alternative shorter names (uncomment if you prefer these)
 hd-weekly = "higherdose.analysis.weekly_products:main"
 hd-h1 = "higherdose.analysis.h1:main" 
-hd-slack = "higherdose.slack.slack_fetcher_playwright:run_main"
+hd-slack = "higherdose.slack.slack_fetcher:run_main"
 hd-email = "higherdose.mail.gmail_archive:main"
 
 [build-system]
