@@ -47,3 +47,4 @@
 
 - [ ] Remove any references to requirements.txt in slack
 - [ ] Get Slack working on another machine
+- [ ] Move `WORKSPACE_URL` and `TEAM_ID` into `config/slack` to make it easier to use on another machine.
