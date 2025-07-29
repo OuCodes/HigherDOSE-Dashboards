@@ -25,6 +25,6 @@ def validate_workspace() -> bool:
 # Edit the two values below                                                   #
 # --------------------------------------------------------------------------- #
 CONFIG = WorkspaceConfig(
-    url="https://aidotengineer.slack.com",
-    team_id="T05FR5N2LF5",
+    url="https://higherdosemanagement.slack.com",
+    team_id="TA97020CV",
 )
