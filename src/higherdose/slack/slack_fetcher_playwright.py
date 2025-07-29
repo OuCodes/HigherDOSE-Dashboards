@@ -27,11 +27,13 @@ EXPORT_DIR = Path("data/slack/exports")
 TRACK_FILE = Path("config/slack/conversion_tracker.json")
 ROLODEX_FILE = Path("data/rolodex.json")
 CREDENTIALS_FILE = Path("config/slack/playwright_creds.json")
+WORKSPACE_CONFIG_FILE = Path("config/slack/workspace_id.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Slack workspace config
-WORKSPACE_URL = "https://higherdosemanagement.slack.com"
-TEAM_ID = "TA97020CV"
+with open(WORKSPACE_CONFIG_FILE, 'r', encoding='utf-8') as f:
+    workspace_config = json.load(f)
+WORKSPACE_URL = workspace_config["workspace"]["url"]
+TEAM_ID = workspace_config["workspace"]["team_id"]
 
 
 # -------------- Conversation Type Enum ---------------------------------------
@@ -1118,10 +1120,9 @@ class SlackBrowser:
                 if api_msgs:
                     print(f"✅ Retrieved {len(api_msgs)} messages via direct API")
                     return api_msgs
-                else:
-                    print("⚠️  API returned no messages – falling back to UI scroll…")
+                print("⚠️  API returned no messages - falling back to UI scroll…")
             except Exception as e:
-                print(f"⚠️  API pagination failed ({e}) – falling back to UI scroll…")
+                print(f"⚠️  API pagination failed ({e}) - falling back to UI scroll…")
 
         # 2) UI scroll fallback (original behaviour)
         if not self.page:
@@ -1760,9 +1761,8 @@ class SlackBrowser:
 
                 print(f"📋 Loaded {len(user_mapping)} user mappings from rolodex")
                 return user_mapping
-            else:
-                print("📋 No rolodex file found (searched 'rolodex.json' and 'data/rolodex.json'), using basic user mapping")
-                return {}
+            print("📋 No rolodex file found (searched 'rolodex.json' and 'data/rolodex.json'), using basic user mapping")
+            return {}
         except Exception as e:
             print(f"⚠️ Error loading rolodex: {e}")
             return {}
