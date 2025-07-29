@@ -312,7 +312,11 @@ class SlackBrowser:
 
             # Check if we're already logged in by waiting for API calls
             print("⏳ Waiting for workspace to load...")
-            await self.page.wait_for_timeout(5000)  # Wait for API calls to start
+            await self.page.wait_for_timeout(1500)
+            print("   Loading Slack interface...")
+            await self.page.wait_for_timeout(1500)
+            print("   Checking authentication status...")
+            await self.page.wait_for_timeout(2000)  # Wait for API calls to start
 
             # If we're intercepting API calls, we're likely logged in
             if len(self.intercepted_data) > 0:
@@ -2244,7 +2248,7 @@ async def main():
     print(f"📍 Workspace: {ansi.yellow}{WORKSPACE_URL}{ansi.reset}")
     print(f"📝 Detailed logs: {ansi.grey}{log_file.absolute()}{ansi.reset}")
     print()
-    
+
     logger.info("Slack fetcher started for workspace: %s", WORKSPACE_URL)
 
     browser = SlackBrowser()
@@ -2259,11 +2263,46 @@ async def main():
             logger.error("Failed to log in to Slack workspace")
             return
 
+        # Load and display available channels
+        print(f"\n🔍 {ansi.cyan}Discovering available channels...{ansi.reset}")
+        conversations = await browser.get_conversations()
+
+        # Separate and sort different conversation types
+        channels = []
+        dms = []
+        groups = []
+
+        for conv_info in conversations.values():
+            if conv_info.conversation_type == ConversationType.CHANNEL:
+                channels.append(conv_info.name.lstrip("#"))
+            elif conv_info.conversation_type == ConversationType.DM:
+                dms.append(conv_info.name.lstrip("@"))
+            elif conv_info.conversation_type == ConversationType.MULTI_PERSON_DM:
+                groups.append(conv_info.name.lstrip("@"))
+
+        # Display channels in a nice format
+        print(f"\n📁 {ansi.green}Available Channels:{ansi.reset}")
+        if channels:
+            channels.sort()
+            # Display in columns for better readability
+            for i in range(0, len(channels), 3):
+                row_channels = channels[i:i+3]
+                formatted_channels = [f"#{ch}" for ch in row_channels]
+                print(f"  {' • '.join(formatted_channels)}")
+        else:
+            print("  No public channels found")
+
+        if dms:
+            print(f"\n💬 {ansi.yellow}Direct Messages:{ansi.reset} {len(dms)} conversations")
+
+        if groups:
+            print(f"\n👥 {ansi.magenta}Group Messages:{ansi.reset} {len(groups)} conversations")
+
         # Ask user what they want to extract
-        print("\nWhat would you like to extract?")
+        print(f"\n{ansi.cyan}What would you like to extract?{ansi.reset}")
         print("  • Enter a channel name (e.g., 'general' or '#general')")
         print("  • Enter a channel ID (e.g., 'C1234567890')")
-        print("  • Enter 'list' to see available channels first")
+        print("  • Enter multiple channels separated by commas")
 
         user_input = input("\nTarget channel(s): ").strip()
 
