@@ -43,6 +43,7 @@ CONFIG_VALIDATED = validate_workspace()
 # Workspace configuration
 WORKSPACE_URL = CONFIG.url
 TEAM_ID = CONFIG.team_id
+APP_CLIENT_URL = f"https://app.slack.com/client/{TEAM_ID}"
 
 # -------------- Conversation Type Enum ---------------------------------------
 
@@ -330,15 +331,17 @@ class SlackBrowser:
             sw.lap("bypass")
 
             # Check if we're already logged in by waiting for API calls
-            print("⏳ Waiting for workspace to load...")
-            await self.page.wait_for_timeout(1500)
-            sw.lap("wait 1.5s #1")
-            print("   Loading Slack interface...")
-            await self.page.wait_for_timeout(1500)
-            sw.lap("wait 1.5s #2")
-            print("   Checking authentication status...")
-            await self.page.wait_for_timeout(2000)  # Wait for API calls to start
-            sw.lap("wait 2s auth")
+            print("⏳ Waiting for workspace to load (networkidle)…")
+            try:
+                await self.page.wait_for_load_state("networkidle", timeout=6000)
+            except Exception:
+                # Network might stay busy; continue anyway
+                pass
+            sw.lap("networkidle")
+
+            print("   Checking authentication status…")
+            await self.page.wait_for_timeout(500)  # brief pause to let API calls begin
+            sw.lap("post-check 0.5s")
 
             # If we're intercepting API calls, we're likely logged in
             if len(self.intercepted_data) > 0:
@@ -1711,7 +1714,15 @@ class SlackBrowser:
             return
 
         try:
-            # Check if we're on the launch screen by looking for common elements
+            # 0. Quick check – if we already got shunted to Slack's download / getting-started page
+            current_url = self.page.url
+            if any(term in current_url for term in ["/getting-started", "/download", "/app"]):
+                print("🔍 Detected app download page, navigating back to web client…")
+                await self.page.goto(APP_CLIENT_URL)
+                await self.page.wait_for_timeout(500)
+                return True
+
+            # 1. Scan for dismiss / continue buttons
             launch_screen_selectors = [
                 # "Continue in browser" button
                 'button:has-text("Continue in browser")',
@@ -1753,14 +1764,16 @@ class SlackBrowser:
 
             for selector in launch_screen_selectors:
                 try:
-                    element = await self.page.wait_for_selector(selector, timeout=1000)
+                    # Non-blocking lookup – returns immediately if element not present
+                    element = await self.page.query_selector(selector)
                     if element:
                         print(f"🔍 Found app launcher element: {selector}")
                         await element.click()
                         print("✅ Dismissed app launcher/popup")
-                        await self.page.wait_for_timeout(1000)
+                        await self.page.wait_for_timeout(500)
                         return True
-                except Exception:  # Element not found or not clickable
+                except Exception:
+                    # Some selectors can raise due to syntax or detached nodes
                     continue
 
             # Check for app download banner in URL and dismiss
