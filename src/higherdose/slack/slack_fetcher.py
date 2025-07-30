@@ -12,7 +12,7 @@ import traceback
 import urllib.parse
 from enum import Enum
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, UTC
 from typing import Dict, List, Any, Optional
 
 from playwright.async_api import async_playwright, Page, Request, Route
@@ -35,6 +35,7 @@ EXPORT_DIR = Path("data/slack/exports")
 ROLODEX_FILE = Path("data/rolodex.json")
 TRACK_FILE = Path("config/slack/conversion_tracker.json")
 CREDENTIALS_FILE = Path("config/slack/playwright_creds.json")
+CHANNEL_MAP_FILE = Path("data/slack/channel_map.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Validate configuration values
@@ -78,12 +79,17 @@ class ConversationInfo:
             ConversationType.CHANNEL: "#",
             ConversationType.DM: "@",
             ConversationType.MULTI_PERSON_DM: "👥",
-            ConversationType.UNKNOWN: "?"
+            ConversationType.UNKNOWN: "?",
         }
         symbol = type_symbol.get(self.conversation_type, "?")
         private_marker = "🔒" if self.is_private else ""
         member_info = f" ({self.member_count} members)" if self.member_count > 0 else ""
-        return f"{symbol}{self.name}{private_marker}{member_info}"
+
+        display_name = self.name or ""
+        if display_name.startswith(symbol):
+            display_name = display_name[len(symbol):]
+
+        return f"{symbol}{display_name}{private_marker}{member_info}"
 
 # ---------------- Timing Helper -------------------------------------------
 class Stopwatch:
@@ -557,7 +563,14 @@ class SlackBrowser:
         """Get channel list from processed files and API data."""
         print("🔗 Getting channel list...")
 
-        channels = {}
+        channels: Dict[str, str] = {}
+        # Pre-populate with entries from persistent channel map
+        try:
+            for cid, cname in self._load_channel_map().items():
+                if cid and cname:
+                    channels[cid] = f"#{cname.lstrip('#')}"
+        except Exception as exc:
+            logger.debug("Failed to load persistent channel map: %s", exc)
 
         try:
             # Check processed directories for known channel names
@@ -584,6 +597,33 @@ class SlackBrowser:
                             channels[name] = f"#{name}"
                         elif name.startswith('dm_'):
                             channels[name] = f"@{name}"
+
+            # --------------- Direct Web API list fast-path -----------------
+            if self.credentials.token and self.credentials.cookies:
+                try:
+                    cursor = None
+                    while True:
+                        payload = {
+                            "limit": 1000,
+                            "types": "public_channel,private_channel"
+                        }
+                        if cursor:
+                            payload["cursor"] = cursor
+                        resp = self._api_post_sync("conversations.list", payload)
+                        if not resp.get("ok"):
+                            break
+                        for ch in resp.get("channels", []):
+                            if isinstance(ch, dict):
+                                ch_id = ch.get("id")
+                                ch_name = ch.get("name")
+                                if ch_id and ch_name:
+                                    channels[ch_id] = f"#{ch_name}"
+                        cursor = resp.get("response_metadata", {}).get("next_cursor")
+                        if not cursor:
+                            break
+                    logger.debug("Loaded %d channels via conversations.list fast path", len(channels))
+                except Exception as exc:
+                    logger.debug("conversations.list fast path failed: %s", exc)
 
             # Extract channels from API data - enhanced extraction
             for data in self.intercepted_data:
@@ -729,10 +769,29 @@ class SlackBrowser:
 
             print(f"✅ Found {ansi.green}{len(channels)}{ansi.reset} channels")
             logger.info("Channel discovery completed: %d channels found", len(channels))
+            print(f"🔑 Credentials present? token={'✅' if self.credentials.token else '❌'}, cookies={'✅' if bool(self.credentials.cookies) else '❌'}")
+            logger.debug("Credentials status: token=%s cookies=%s", bool(self.credentials.token), bool(self.credentials.cookies))
+            if not (self.credentials.token and self.credentials.cookies):
+                print("⚠️  Placeholder channel name resolution skipped (credentials missing)")
+                logger.debug("Skipping placeholder fix-up due to missing credentials")
 
             if self.credentials.token and self.credentials.cookies:
-                placeholder_ids = [cid for cid, cname in channels.items()
-                                   if cname.lower().startswith("#channel_")]
+                                # Broaden placeholder detection beyond '#channel_'
+                placeholder_ids = []
+                for cid, cname in channels.items():
+                    if not cname:
+                        placeholder_ids.append(cid)
+                        continue
+                    lower = cname.lower()
+                    # Strip leading # for easier checks
+                    stripped = lower.lstrip("#")
+                    if (
+                        stripped.startswith(("channel_", "group_"))
+                        or stripped == cid.lower()  # name is literally the ID
+                        or (stripped.startswith(("c", "g")) and len(stripped) == len(cid))
+                        or cname in {"#", ""}
+                    ):
+                        placeholder_ids.append(cid)
 
                 for cid in placeholder_ids:
                     info = self._api_post_sync("conversations.info", {"channel": cid})
@@ -744,6 +803,12 @@ class SlackBrowser:
 
         except Exception as e:
             print(f"❌ Error loading channels: {e}")
+
+        # Persist any resolved channel names to the channel map
+        try:
+            self._save_channel_map(channels)
+        except Exception as exc:
+            logger.debug("Failed to save channel map: %s", exc)
 
         return channels
 
@@ -1178,13 +1243,13 @@ class SlackBrowser:
             channel_url = f"{WORKSPACE_URL}/archives/{channel_id}"
 
             try:
-                await self.page.goto(channel_url, timeout=30000)
+                await self.page.goto(channel_url, timeout=10000)
             except Exception as e:
                 print(f"⚠️  Failed to navigate to channel: {e}")
                 # Try alternative URL format
                 try:
                     alt_url = f"https://app.slack.com/client/{TEAM_ID}/{channel_id}"
-                    await self.page.goto(alt_url, timeout=30000)
+                    await self.page.goto(alt_url, timeout=10000)
                     print("✅ Successfully navigated using alternative URL")
                 except Exception as e2:
                     print(f"❌ Failed to navigate with alternative URL: {e2}")
@@ -1694,6 +1759,11 @@ class SlackBrowser:
 
         print(f"👥 Loaded {ansi.green}{len(users)}{ansi.reset} users")
         logger.info("User discovery completed: %d total users (%d from live API, %d from rolodex fallback)", len(users), len(users) - missing_count, missing_count)
+        # Persist any newly discovered users to rolodex for future runs
+        try:
+            self._save_rolodex(users)
+        except Exception as e:
+            logger.warning("Failed to save rolodex: %s", e)
         return users
 
     async def save_credentials(self):
@@ -1824,6 +1894,72 @@ class SlackBrowser:
             return {}
 
     # ------------------------------------------------------------------ #
+    def _save_rolodex(self, user_mapping: Dict[str, str]) -> None:
+        """Persist new user_id→name pairs into rolodex.json (append-only)."""
+        try:
+            rolodex_path = Path("rolodex.json")
+            if not rolodex_path.exists():
+                rolodex_path = Path("data/rolodex.json")
+            # Load existing data or create fresh structure
+            if rolodex_path.exists():
+                rolodex_data = json.loads(rolodex_path.read_text(encoding="utf-8"))
+            else:
+                rolodex_data = {}
+            if "people" not in rolodex_data or not isinstance(rolodex_data.get("people"), list):
+                rolodex_data["people"] = []
+            existing_ids = {p.get("user_id") for p in rolodex_data["people"] if isinstance(p, dict)}
+            new_entries = 0
+            for uid, name in user_mapping.items():
+                if uid not in existing_ids:
+                    rolodex_data["people"].append({"user_id": uid, "name": name})
+                    new_entries += 1
+            if new_entries:
+                rolodex_path.parent.mkdir(parents=True, exist_ok=True)
+                rolodex_path.write_text(json.dumps(rolodex_data, indent=2), encoding="utf-8")
+                logger.debug("Saved %d new user mappings to rolodex", new_entries)
+        except Exception as exc:
+            logger.warning("Error saving rolodex: %s", exc)
+
+    # ------------------------------------------------------------------ #
+    #  Channel map helpers                                              #
+    # ------------------------------------------------------------------ #
+    def _load_channel_map(self) -> Dict[str, str]:
+        """Load persistent channel ID → name mapping."""
+        try:
+            if CHANNEL_MAP_FILE.exists():
+                data = json.loads(CHANNEL_MAP_FILE.read_text(encoding="utf-8"))
+                return {cid: name for cid, name in data.items() if not cid.startswith("_")}
+        except Exception as exc:
+            logger.debug("Error loading channel map: %s", exc)
+        return {}
+
+    def _save_channel_map(self, channel_dict: Dict[str, str]) -> None:
+        """Append newly-resolved channels to persistent map.
+
+        Expects channel_dict in the form {id: "#name"}
+        """
+        try:
+            existing = self._load_channel_map()
+            updated = False
+            for cid, cname in channel_dict.items():
+                if not cid or not cname or not cname.startswith("#"):
+                    continue
+                name_plain = cname.lstrip("#")
+                # Skip obvious placeholders
+                if name_plain.lower().startswith(("channel_", "group_")) or name_plain.lower() == cid.lower():
+                    continue
+                if cid not in existing or existing[cid] != name_plain:
+                    existing[cid] = name_plain
+                    updated = True
+            # flush changes
+            if updated:
+                existing["_updated"] = datetime.now(UTC).isoformat()
+                CHANNEL_MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
+                CHANNEL_MAP_FILE.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+                logger.debug("Channel map updated with %d entries (total %d)", len(channel_dict), len(existing) - 1)
+        except Exception as exc:
+            logger.warning("Error saving channel map: %s", exc)
+
     #  Helper: lightweight Web-API POST using captured creds              #
     # ------------------------------------------------------------------ #
     def _api_post_sync(self, endpoint: str, payload: Dict[str, Any]) -> Dict[str, Any]:
