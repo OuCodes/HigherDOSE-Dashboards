@@ -216,3 +216,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+data/ads/*.crdownload.csv # prevent future adds
