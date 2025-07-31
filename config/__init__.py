@@ -1,1 +1,0 @@
-# Allows importing `config` as a regular Python package 

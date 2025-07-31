@@ -1,1 +1,0 @@
-# Allows importing `config.slack` as a package 
