@@ -20,12 +20,6 @@ dependencies = [
 
 # CLI entry points - these will be available as commands after installation
 [project.scripts]
-# higherdose-weekly = "higherdose.analysis.weekly_products:main"
-# higherdose-h1 = "higherdose.analysis.h1:main"
-# higherdose-slack = "higherdose.slack.slack_fetcher_playwright:run_main"
-# higherdose-email = "higherdose.mail.gmail_archive:main"
-
-# Alternative shorter names (uncomment if you prefer these)
 hd-weekly = "higherdose.analysis.weekly_products:main"
 hd-h1 = "higherdose.analysis.h1:main" 
 hd-slack = "higherdose.slack.slack_fetcher:run_main"
