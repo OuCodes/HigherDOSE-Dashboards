@@ -10397,3 +10397,5540 @@ Ends Tuesday 9/2\n\n*Reactions: :white_check_mark: User_5S72LT, :bangbang: User_
 - **2025-07-25 14:13** *User_2Z9G95*: Uploading tomorrow's and will get the preview sent shortly
 - **2025-07-28 08:00** *Chris Jacob* 💬 1 reply: 📎 **image.png** (png, 98.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09814778GZ/image.png)
 - **2025-07-28 10:07** *Chris Jacob*: <!channel> did we notice any oddities with marketing emails over the weekend/
+- **2025-03-24 11:09** *Berkeley Clark* joined the channel
+- **2025-03-24 11:09** *User_5S72LT* joined the channel
+- **2025-03-24 11:09** *User_D8QGMP* joined the channel
+- **2025-04-01 13:22** *🤖 slackbot*: **elyse** from **HigherDOSE Management** was added to this channel by **swara**. You can review their permissions in Channel Details. Happy collaborating!
+- **2025-04-01 13:22** *Elyse* joined the channel
+- **2025-04-01 13:22** *Ari Murray* joined the channel
+- **2025-04-01 13:22** *User_LT8N4T* joined the channel
+- **2025-04-01 13:22** *User_PT7LCE* joined the channel
+- **2025-04-01 13:22** *User_4PNMDE* joined the channel
+- **2025-04-01 13:22** *User_CDDP51* joined the channel
+- **2025-04-01 20:35** *User_D8QGMP*: Hi @Elyse great speaking with you and Ingrid today!  
+  
+Here is the [CRM Process Doc](https://docs.google.com/document/d/1j4IVG1zPUpbSucbvgoKxeSnkk7IE8awyanryiFQ_Jgk/edit?usp=sharing) we discussed earlier. We have also shared your asana board with you. We aim to have our Flow Audit done by Friday and will follow up on our next steps for the flows then.  
+  
+In the meantime - please grant account access to Klaviyo + Attentive to the accounts listed in the document so our team can be ready to go. Let me know if you have any questions on that!  
+  
+Thank you again!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-04-02 09:02** *Elyse*: will do! @User_D8QGMP
+- **2025-04-02 09:02** *Ingrid* joined the channel
+- **2025-04-08 13:18** *User_D8QGMP* 💬 3 replies: Hi @Elyse please add <mailto:crm@sharmabrands.com|crm@sharmabrands.com> attentive whenever you have a chance. Thank you so much!\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-04-08 13:34** *Elyse*: On it!
+- **2025-04-08 13:51** *User_D8QGMP*: Hi @Elyse &amp; @Ingrid times for our welcome series strategy call:  
+  
+1. Thursday 4/8 - 11:30 AM PST / 2:30 PM EST  
+2. Monday 4/14 - 10 AM PST / 1 PM EST  
+3. Monday 4/14  - 11 AM PST / 2 PM EST  
+Let me know if any of the following times work for your team!
+- **2025-04-08 16:00** *Ingrid* 💬 1 reply: let's do Monday 10am PST! please include Lauren and Jess
+- **2025-04-10 12:18** *User_4PNMDE*: Hi @Elyse! Whenever you get a moment could you please add <mailto:jesrin@sharmabrands.com|jesrin@sharmabrands.com> to the klaviyo account for access? Thank you so much!
+- **2025-04-10 12:39** *Elyse*: on it!\n\n*Reactions: :pray: User_4PNMDE, User_D8QGMP*
+- **2025-04-14 10:26** *User_2Z9G95* joined the channel
+- **2025-04-14 13:30** *User_4PNMDE*: Hi @Elyse! One more person to add (whenever you get a moment). Could you please add <mailto:hannah@sharmabrands.com|hannah@sharmabrands.com> to Klaviyo for access?  Thank you :slightly*smiling*face:
+- **2025-04-14 13:53** *Elyse*: you got it, will do!\n\n*Reactions: :heart: User_4PNMDE*
+- **2025-04-15 10:42** *Elyse*: Also added a few emails to the email inspo folder\n\n*Reactions: :heart-cinnamon: User_5S72LT*
+- **2025-04-15 11:15** *Elyse* 💬 7 replies: Added all team members on CRM Process doc to klaviyo\n\n*Reactions: :heart-cinnamon: User_5S72LT, User_D8QGMP*
+- **2025-04-15 11:15** *User_5S72LT*: thank you so much! @Elyse
+- **2025-04-15 11:16** *Elyse*: no prob!
+- **2025-04-15 11:16** *Elyse*: yep done!
+- **2025-04-15 11:16** *Elyse*: re hannah @User_5S72LT\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-04-15 11:17** *User_5S72LT*: perfect!! thank you
+- **2025-04-15 12:29** *User_D8QGMP*: Hi @Elyse @Ingrid  
+  
+I’m reaching out with a bit of a bittersweet update — I’ll be leaving Sharma Brands as of Monday and moving on to a new chapter. I'm incredibly grateful to have learned so much about your company and to have started working with you on the revamp of your flows.  
+  
+The good news: you’re in amazing hands moving forward. I’m thrilled to introduce you to @User*2Z9G95, who will be taking over your account, working closely with @User*4PNMDE and has already been working on your audit behind the scenes. She’s an amazing email strategist, and I know you’re going to love working with her.  
+  
+The rest of the CRM and creative team — including our designers and copywriter — will remain the same, so you’re in excellent hands all around.  
+  
+We’re working closely behind the scenes to ensure a smooth and seamless transition, and I’ll be around to support during this handoff period as well.  
+  
+Thank you so much again — wishing you continued success, and I hope our paths cross again in the future.  
+Best,  
+Lisa Skaggs\n\n*Reactions: :heart-cinnamon: User_5S72LT, Elyse, User_CDDP51*
+- **2025-04-15 12:31** *Elyse*: Thank you for the heads up @User_D8QGMP! Best of luck in your next endeavor!! \n\n*Reactions: :heart-cinnamon: User_5S72LT, User_D8QGMP*
+- **2025-04-15 12:31** *Elyse*: Great to be connected @User_2Z9G95 excited to make some magic happen! \n\n*Reactions: :magic_wand: User_5S72LT, User_D8QGMP, :sparkling_heart: User_2Z9G95*
+- **2025-04-15 15:02** *Ingrid*: Thank you Lisa, and Welcome Hannah!  
+Lisa we wish you the absolute best in your next adventure!\n\n*Reactions: :yellow_heart: Berkeley Clark, User_D8QGMP, :sparkling_heart: User_2Z9G95, User_D8QGMP*
+- **2025-04-15 15:25** *User_2Z9G95*: Thank you, both! Excited to dive in!
+- **2025-04-15 16:02** *Elyse*: <!here> **[Product Usage Matrix](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?usp=sharing)** - first tab is not done (customer concerns, use cases), but check out second tab (product catalog, sku names, bundle contents, shipping eligibility, subscription eligibility)\n\n📎 **Product Usage Matrix** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?usp=sharing)\n\n*Reactions: :yellow_heart: Berkeley Clark, User_5S72LT, User_2Z9G95*
+- **2025-04-18 11:24** *Elyse*: Hi @User_2Z9G95 happy Friday! We’re evaluating overall email performance YoY, and want to gain a better understanding of why email is the only channel thats down 40% YoY. Can you put together an analysis for us please? Ideally looking for opportunities for go forward growth, as well as analysis on the last year.
+- **2025-04-18 11:25** *Elyse*: Also @User_2Z9G95 we should be meeting internally on Monday for May messaging, so will have some key content themes for you/for May email calendar by Tuesday.
+- **2025-04-18 17:23** *User_2Z9G95*: Hi @Elyse — thank you for letting us know! Absolutely. We'll put together some insights and a go-forward strategy for our call on Tuesday. A few clarifying questions:  
+• Where are you finding these results? Given attribution differences across platforms, we want to better understand where you're pulling your numbers.   
+• What's the exact timeframe you're looking at? Are you looking at year-to-date data? To clarify, you're seeing a 40% drop in performance from Jan - Apr 2025 compared to Jan - Apr 2024?   
+As a side — we've built out the briefs for the [Welcome Flow](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp*RqwH24hTFey*5XqJP_zbqQ/edit?tab=t.0) and [Replenishment Flow](https://docs.google.com/document/d/1-iCIB6Cvc43jP1k-EAYnWvCXr4Ge0Jkl13ihjW1YnT8/edit?tab=t.0), which are ready for your review. This is a high-level summary of what we're briefing out to our copywriters, so if there's any specific call-outs or any specific narratives we should be sharing, please add comments directly into the document. Once drafted, we'll pass them back to you all for final review and then we'll brief them out to our designers.  
+  
+Next week, we'll dive into optimizations within your Site Abandonment, Cart Abandonment, and Browse Abandonment flows — which will then follow a similar process. [I've created this CRM Tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958) that will keep track of everything we're working on: Flows, Campaigns, and SMS (including any tests we're running). Please feel free to reference this if you have any questions in regards to status updates (of course, you can always reach out, too!).  
+  
+We'll standby for the updated May messaging.  
+  
+Please let me know if you have any questions, thanks!\n\n📎 **HigherDOSE CRM | Welcome Flow Audit, V2** (gdoc, 155.4KB) - [Download](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp_RqwH24hTFey_5XqJP_zbqQ/edit?tab=t.0)\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-04-19 08:28** *Elyse*: @Ingrid can you chime in on where you saw the 40% drop please? 
+- **2025-04-19 16:21** *Ingrid*: It was in our weekly marketing report from last week 
+- **2025-04-20 01:25** *Elyse*: Oh duh lol - I can send that slide over to you on Monday @User_2Z9G95 \n\n*Reactions: :+1: User_2Z9G95, :heart-cinnamon: User_5S72LT*
+- **2025-04-21 14:45** *Elyse*: @User*2Z9G95 [https://docs.google.com/presentation/d/1BSVPuvosAz0aoDE*MjQ6HnRCCg-z09piuYyb*JMKmxQ/edit?usp=sharing](https://docs.google.com/presentation/d/1BSVPuvosAz0aoDE*MjQ6HnRCCg-z09piuYyb_JMKmxQ/edit?usp=sharing)\n\n📎 **Copy of Weekly Marketing Reporting: April 6 - April 12** (gpres, 716.2KB) - [Download](https://docs.google.com/presentation/d/1BSVPuvosAz0aoDE_MjQ6HnRCCg-z09piuYyb_JMKmxQ/edit?usp=sharing)\n\n*Reactions: :heart-cinnamon: User_5S72LT, :white_check_mark: User_2Z9G95*
+- **2025-04-21 14:46** *Elyse*: I made a copy of the deck with just the appropriate slides on email performance
+- **2025-04-21 14:48** *Elyse* 💬 1 reply: @User_2Z9G95 time parameters for slide 4  
+• 4/6 - 4/12/2024 for LY  
+• 4/6 - 4/12/2025 for this year  
+• 3/30 - 4/5/25 for WoW
+- **2025-04-22 10:18** *User_2Z9G95*: Hi @Elyse! I wanted to follow up on these two flows to see if you had any last minute notes/call-outs: [Welcome Flow](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp*RqwH24hTFey*5XqJP_zbqQ/edit?tab=t.0) and [Replenishment Flow](https://docs.google.com/document/d/1-iCIB6Cvc43jP1k-EAYnWvCXr4Ge0Jkl13ihjW1YnT8/edit?tab=t.0). Our copywriter is working through them now, but we wanted to see if there were any specific call-outs or specific narratives we should be sharing. If not, we'll send through the copy docs once they're ready! Thanks!\n\n📎 **HigherDOSE CRM | Welcome Flow Audit, V2** (gdoc, 155.4KB) - [Download](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp_RqwH24hTFey_5XqJP_zbqQ/edit?tab=t.0)\n📎 **HigherDOSE CRM | Replenishment Flow** (gdoc, 152.4KB) - [Download](https://docs.google.com/document/d/1-iCIB6Cvc43jP1k-EAYnWvCXr4Ge0Jkl13ihjW1YnT8/edit?tab=t.0)
+- **2025-04-22 10:18** *Elyse* 💬 1 reply: Sweet will review quickly today thanks for the bump!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-22 13:28** *User_2Z9G95*: @Elyse @Ingrid — Thank you so much for the time today! [Here's a link to the data lookback we chatted through](https://docs.google.com/document/d/1gs0yqttllYhEsd8qVCJjo-lDpbXbE1SdORZEBGnUkUw/edit?tab=t.0). If you have any additional questions, please let us know!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-04-22 13:51** *Elyse*: @User_2Z9G95  
+[Mother’s Day Gift Guide](https://higherdose.com/pages/mothers-day-gift-guide?srsltid=AfmBOooD0B2RHExX-GClKdhdB6suc3XTeiWGnLwkHormaUulLeQhMcYC)  
+  
+**Mother’s Day Bundles - bundle discount upped to 25% off during MD sale period, no code**  
+[Sweat it Out Bundle](https://higherdose.com/products/the-sweat-it-out-bundle)  
+[After Bedtime Bundle](https://higherdose.com/products/after-bedtime-bundle)  
+[Super Mom Bundle](https://higherdose.com/products/the-supermom-bundle)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-22 17:11** *User_2Z9G95*: Hi @Elyse — [I'm excited to share we have 3 emails from the Welcome Flow ready for copy review](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0). As a reminder, we're having four separate customer journeys, so this is email one for the Relaxation &amp; Stress Relief journey, the Detox and Cleanse Journey, and the Beauty and Skincare journey. The Recovery and Muscle Relief is in works along with the other 5 in the series. Please feel free to comment directly with any thoughts and as always, let us know if you have any questions. Thank you!\n\n*Reactions: :yellow_heart: Berkeley Clark*
+- **2025-04-22 19:18** *Elyse*: Sweet thank you!\n\n*Reactions: :yellow_heart: Berkeley Clark, User_2Z9G95*
+- **2025-04-24 17:21** *User_2Z9G95*: Hi @Elyse — Quick update for you: We're still moving through the Welcome Flow and are hoping to have additional emails for you to review by tomorrow EOD — stay tuned here! *EDIT: Just saw your feedback, we're going to revisit emails 1a-1c that we already sent through first prior to building out the rest to make sure you all feel good about where we're heading. Thank you!*  
+  
+We're also in the process of building out May's content calendar. I see that your other agency has content scheduled through April 30th — is that the last email they will have scheduled? Are there any campaign narratives in particular you're looking for us to support in May outside of the sale? We're still working through campaign idea recommendations, but here's a high-level schedule of what we're envisioning:\n\n📎 **Screenshot 2025-04-24 at 3.19.33 PM.png** (png, 135.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08P60TGZV5/screenshot_2025-04-24_at_3.19.33_pm.png)
+- **2025-04-25 08:37** *Elyse*: Yes! Will send through content themes shortly\n\n*Reactions: :heart: User_2Z9G95*
+- **2025-04-25 12:09** *Elyse* 💬 2 replies: @User_2Z9G95 Getting organized here - we have offboarding agency covering email through 5/2. Originally had an SMS planned for 5/3 as “one more day to shop the sale” and then email/sms for 5/4 as “last day, sale ending” so would love to have Sharma pick those two up if possible
+- **2025-04-25 12:11** *Elyse*: and sounds good re revisiting the welcome flow copy. Shoot me a ping when ready and I’ll get those reviewed quickly on our end @User_2Z9G95
+- **2025-04-25 13:23** *Elyse* 💬 8 replies: @User_2Z9G95 I’m on the Sharma CRM asana board - currently adding in what’s on our calendar for next week for the team’s reference\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-04-25 16:39** *Elyse* 💬 1 reply: @User_2Z9G95 tell me if these don’t work  
+[Busy Mom’s Guide to Self Care](https://www.figma.com/design/8SfoPiv7xYKHOAUSu8S2ja/Higher-Dose---Busy-Mom%E2%80%99s-Guide-to-Self-Care?node-id=0-1&amp;t=3AL6WMhWhx2gHCUk-1) - [Mother’s Day Gift Guide](https://www.figma.com/design/SdiH6PJqQbKXPCxHnFJP93/Mother%E2%80%99s-Day-Gift-Guide?node-id=0-1&amp;t=VbJSrcgXk1Y1A43M-1)\n\n**Figma**\n🔗 **[Higher Dose-  Busy Mom’s Guide to Self Care](https://www.figma.com/design/8SfoPiv7xYKHOAUSu8S2ja/Higher-Dose---Busy-Mom%E2%80%99s-Guide-to-Self-Care?node-id=0-1&t=3AL6WMhWhx2gHCUk-1)**\n> Created with Figma\n\n**Figma**\n🔗 **[Mother’s Day Gift Guide](https://www.figma.com/design/SdiH6PJqQbKXPCxHnFJP93/Mother%E2%80%99s-Day-Gift-Guide?node-id=0-1&t=VbJSrcgXk1Y1A43M-1)**\n> Created with Figma
+- **2025-04-25 16:50** *User_2Z9G95* 💬 2 replies: @Elyse — One more thing! We really want to make sure we're nailing the vibe, tone, and messaging of the Welcome Series prior to building out the rest of it. [Would you and the team be able to take a quick pass at this updated version](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0) of email 1A and share any thoughts/feedback? From there, we'll get going on the rest!\n\n📎 **HigherDOSE CRM | Welcome Flow** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0)
+- **2025-04-25 16:50** *Elyse*: awesome, will circulate to team now
+- **2025-04-25 16:51** *Elyse* 💬 1 reply: @User_2Z9G95 separately, you have access to Q2 Marketing Strategy deck already right?
+- **2025-04-25 16:52** *Elyse* 💬 1 reply: Slides 28-29 are recap slides of May 2024 that I just put in if helpful for the team\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-25 16:53** *Elyse*: working on june for Monday
+- **2025-04-25 16:57** *Elyse* 💬 1 reply: Slides 5-7 are from our co-founder Lauren’s ideas for May/June content, but we’ll be fleshing those out to add in some of the cultural moments listed on slide 8, as well as sales\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-25 17:04** *Elyse*: @User_2Z9G95 Also want to make sure you have promo dates  
+• Mother’s Day 1st round: 4/27 - 5/4  
+• Mother’s Day 2nd round: 5/9 - 5/11  
+    ◦ Discount drops to 15% off for the weekend with code DOSEMAMA  
+    ◦ Bundles will go back down to 20% off, no code necessary  
+    ◦ Goal here is more around “self-gifting”, gift cards  
+• Memorial Day weekend 5/22 - 5/26  
+    ◦ 20% off sitewide, code tbd will circle back when I have it  
+    ◦ 5/22 will be VIP early access, but this will likely mean access to email/sms subscribers only  
+        ▪︎ Ad support, social support, affiliate etc will begin on 5/23\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-25 17:06** *Elyse*: @User_2Z9G95 I’m brain dumping a bit right now - but while I have you lol! Something also on our minds, we’d love to get more before/after photos for the RL Hat and the RL Mask. Can the team put together a few campaign ideas around that as well please? I’ll be thinking through some good incentives next week so no mega mega rush but its on the priority list for May/June as well. cc @Ingrid\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-04-25 17:08** *Elyse* 💬 2 replies: And lastttttly, we’ll also have our Microcurrent Body Sculptor launch, I know we’ve spoken about that a bunch on our calls so far - I think we’re currently slated for mid May launch date so should mold May EMC around that, but know that date is tentative/could change. @User_2Z9G95\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-04-25 17:10** *Elyse*: @User_2Z9G95 We’ll be meeting internally on Thursday to discuss where we land omnichannel-ly lol for May/June content so I’ll keep you posted as more fleshes out! But would love your preliminary thoughts on May EMC as we get into quick ramp up on campaigns\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-04-25 17:10** *🤖 Bot* 💬 1 reply: and scene\n\n*Reactions: :joy: User_2Z9G95*
+- **2025-04-28 13:06** *Elyse*: @User_2Z9G95 feedback on welcome flow copy from Lauren on our end:  
+  
+• Phrases like “grueling 9–5” and “life admin” feel a little cliché and casual. HigherDOSE typically feels more aspirational and less whiny about life’s stressors.  
+• Some copy feels a bit basic (“Life is tiring. It’s never-ending.“) HigherDOSE usually sounds smarter, more energized, and more magnetic.  
+• It’s missing a bit of that “sexy science” vibe — the feeling that you’re unlocking ancient wisdom and cutting-edge tech, and being seduced into self-care.  
+• Good that they’re describing how you’ll feel but it could paint the sensory experience more! (HigherDOSE often invites you into a “felt” transformation!  
+
+- **2025-04-28 16:01** *User_2Z9G95*: Hey @Elyse — we have the remainder of the Mother's Day sale content for review, too. If you could please provide feedback by EOD tomorrow, we can get them into design right after! Feel free to comment any thoughts/feedback directly.  
+• Saturday, 5/3: [Mother's Day 24 Hours Remaining SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0)    
+• Sunday, 5/4: [Mother's Day Last Chance Email and SMS](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-04-28 16:02** *Elyse*: Fabulish! Thank you, will circulate now!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-28 16:17** *Elyse*: Added copy notes from team to first SMS @User_2Z9G95
+- **2025-04-28 16:22** *Elyse* 💬 1 reply: Added prelim notes to 5/4 email, but may have more from team
+- **2025-04-29 10:38** *User_2Z9G95* 💬 1 reply: Hi @Elyse! We made some revisions to both. Feel free to take a look/circulate internally and let us know what you think!  
+• [Saturday, 5/3: Mother's Day 24 Hours Remaining SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0)  
+• [Sunday, 5/4: Mother's Day Last Chance Email and SMS](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-04-29 11:01** *Elyse*: @User_2Z9G95 confirmed 30K drop off was list cleaning \n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-29 15:19** *Elyse* 💬 1 reply: @User_2Z9G95 also for May FYI - “every day is mother’s day” giveaway  
+Brands: [Boobcube](https://www.boobcube.co/), [Hampton Grocer](http://hamptongrocer.com/), [HATCH](http://hatchcollection.com/), [Needed](http://thisisneeded.com/), and [Sorette](https://shopsorette.com/). [waiting to confirm 2-3 others]  
+dates: 5/12 - 5/18\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-29 15:20** *Elyse*: Will circle back with more info when I know what our email obligation is
+- **2025-04-29 15:21** *Elyse*: but think there’s email and social components\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-04-29 15:21** *User_2Z9G95*: Perfect! Disregard my other slack, haha
+- **2025-04-29 15:21** *User_2Z9G95*: keep us posted!
+- **2025-04-29 15:21** *Elyse*: haha we’re on same wavelength\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-29 15:21** *🤖 Bot*: groovy\n\n*Reactions: :heart-cinnamon: User_5S72LT, User_2Z9G95, :bangbang: User_2Z9G95*
+- **2025-04-29 15:22** *Elyse*: Circulated both to team - these look much better\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-04-29 16:58** *User_2Z9G95*: @Elyse — [Here's the link for the campaign ideas we've put together](https://docs.google.com/document/d/1OVCAIizHNxz0SQDXAKUpE-idYsrV8QmIdB28VrZwi8Q/edit?tab=t.0). Feel free to let us know how these pan out after your call tomorrow!\n\n📎 **HigherDOSE Campaign Ideas 2025** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1OVCAIizHNxz0SQDXAKUpE-idYsrV8QmIdB28VrZwi8Q/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-04-29 16:59** *Elyse*: ty ty!
+- **2025-04-29 17:02** *User_2Z9G95*: You're welcome! It's very WIP, but we'll keep building it out!
+- **2025-04-30 08:00** *User_2Z9G95*: Hi @Elyse! Good morning. [We have a revised version of the welcome flow](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0), email #1 for your and the team's review. We went the route of stronger narrative storytelling coupled with education. It's a much longer, denser version, but we're happy to go this route if the team would like. If not, we can certainly condense, too. Our copywriter, Chandler, left a few questions in there if you would be able to provide some context that would be fantastic. Thank you!\n\n📎 **HigherDOSE CRM | Welcome Flow** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0)
+- **2025-04-30 08:39** *Elyse*: Awesome! Thanks @User_2Z9G95 will review and circulate to team!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 13:08** *Elyse* 💬 1 reply: @User_2Z9G95 lmk if you have any thoughts here please  
+  
+Also want to keep this in mind for strategy going forward. I know we’re blitzing for the sale this week, but otherwise\n\n**Grace Luna**\n> Hi <!here> <mailto:georgiabrisco@gmail.com|georgiabrisco@gmail.com> _"I enjoy your platform and products overall, and want to keep up to date, but the emails are a lot. One every 24 hours is objectively insane, marketing-wise (I'm a Head of Content). Any way I can lessen them without unsubscribing completely?"_ Please advise, thank you!\n*Thread in Slack Conversation | 2025-04-30 08:40*
+- **2025-04-30 13:09** *Elyse*: also LOL do they not get 100 emails from brands all week long?\n\n*Reactions: :joy: User_2Z9G95*
+- **2025-04-30 17:39** *Elyse* 💬 1 reply: @User*2Z9G95 end of the day hello! We had a great meeting internally, we didn’t get to cover everything so we’re meeting again early next week - also to revise our current ideas to fit more synergistically now seeing what other channels are doing. But sharing this deck and my current calendar draft - would loooooove your thoughts on May (not finished with June) - so I can add any notes/revisions in before next team meeting:  
+**[Q2 Marketing Strategy](https://docs.google.com/presentation/d/1LmV6WE7LMUlNKjmm5Ee5iBZqMujvKh*a3IZ-n62GYSA/edit?usp=sharing)**   
+**[May/June CRM Calendar Draft](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing)** \n\n📎 **Q2 Marketing Strategy** (gpres, 0B) - [Download](https://docs.google.com/presentation/d/1LmV6WE7LMUlNKjmm5Ee5iBZqMujvKh_a3IZ-n62GYSA/edit?usp=sharing)\n📎 **June CRM Calendar Draft** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 17:39** *User_2Z9G95*: Hi @Elyse! Thanks so much for passing this along. Apologies for the delay, I wanted to do a deeper dive to see what I could find. We have a few thoughts to share: It turns out this customer is actually based in the UK — so they haven't been receiving any of the promotional messaging, they've only received campaigns and flows. It does look like this customer received two flow emails (Site and Browse) on the same day. To prevent this from happening in the future, we can add more specific profile filters (i.e. if customer is in X flow, prevent them from entering Y flow).  In addition, we also recommend turning on smart sending for all campaigns to help prevent this overlap. With Klaviyo's smart sending feature on — it prevents someone from receiving multiple emails within a 16 hour period. Because this wasn't in place, they've received all flow and campaign communication, which is likely what prompted them to reach out. We can also certainly create a preference page should people choose to customize their exclusions — we don't typically recommend relying solely on this — but with a strategic campaign segmentation strategy we should be able to prevent this from happening in the future!  
+  
+The good news: Klaviyo's unsubscribe rate is only up 7% L7 days over the previous 7 days, so the send rate isn't having too large of an impact on the rest of our community. In regards to long-term strategy implications — best practice is between 2-3 campaign sends per week, 4 can be pushing it, unless strategically segmented. We can put together a stronger segmentation strategy based what people viewed, previously ordered, etc. This is the strategy we recommend implementing moving forward. In regards to the campaigns themselves, given the feedback we've heard to date from you all, we're recommending a quality over quantity approach, where we'll be able to dive deeper into the stories, narratives, and data. We'll, of course, want to A/B test more longer-form content against shorter-form content to find what resonates most with our community, but regardless, we're excited about implementing this new longer-form, educational approach.  
+  
+I hope that helps provide some context! If there's anything else I can help clarify or dive deeper into, please let me know.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-04-30 17:40** *User_2Z9G95*: Love this! Thank you so much for the update. We'll discuss internally and let you know our thoughts! Excited!
+- **2025-04-30 17:40** *Elyse*: Ok perfect yesss love all of that\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 17:41** *Elyse*: That’ll help stretch out what I have for May/June calendar draft too if doing 2-3 campaigns a week. Love that tremendously\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 17:41** *Elyse*: will make those adjustments to it as well in the morning
+- **2025-04-30 17:41** *User_2Z9G95*: Amazing!
+- **2025-05-01 08:00** *User_2Z9G95* 💬 3 replies: Good Morning, @Elyse! We have some more Mother's Day content for your review. Did you get a chance to look at the remaining ones for this weekend? Let us know if there's any thoughts on the [5/3 SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0) and the [5/4 Email + SMS](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0). We need to get them into design ASAP, so we can review and QA! In addition, we have next week's Mother's Day copy ready for review. Please take a look and let us know your thoughts.  
+• [5/9 - Launch](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.0)  
+• [5/10 - One Day Left](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.unwnjs7izkff) - 2 options  
+• [5/11 - Last Chance](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.l7zwf3nl7ull) - 2 options  
+In addition — this calendar draft is fantastic! Any additional copy or context you can share for the emails on 5/6 and 5/7 would be fantastic. We'll want to get those briefed out this week!\n\n📎 **HigherDOSE CRM | Mother's Day Sale #2 Emails** (gdoc, 97.5KB) - [Download](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.l7zwf3nl7ull)\n📎 **HigherDOSE CRM | Mother's Day - Last Chance** (gdoc, 0B) - [Download](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-05-01 08:08** *Elyse*: Perfect! Will review now
+- **2025-05-01 08:08** *Elyse*: Will also follow up w team for any notes on the ones you’d sent previously
+- **2025-05-01 08:15** *User_2Z9G95*: Amazing, thank you!
+- **2025-05-01 10:55** *Ingrid* 💬 3 replies: @User_2Z9G95 have you worked with Orita at all?
+- **2025-05-01 10:56** *Ingrid*: we are on a call with them and their solution seems really interesting as a decision making layer we've been looking for
+- **2025-05-01 12:07** *Elyse* 💬 1 reply: @User_2Z9G95 [Mother's Day Last Chance](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)  - added notes to this, good to go\n\n📎 **HigherDOSE CRM | Mother's Day - Last Chance** (gdoc, 108.3KB) - [Download](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-05-01 12:08** *User_2Z9G95*: Hi @Ingrid! We have used them in the past and it could be a great solution. We'd love to get on your next call with them or if you'd be able to pass along your contact we can schedule a high-level demo to get a refresh/any software updates!
+- **2025-05-01 12:10** *Elyse*: booking a second call with them as we didnt get to cover everything, so will add you all to it @User_2Z9G95\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 12:10** *Elyse* 💬 2 replies: @User_2Z9G95 also [Saturday, 5/3: Mother's Day 24 Hours Remaining SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0) good to go with any of the revisions, all look good\n\n📎 **HigherDOSE CRM | 24 Hours Remaining SMS Mother's Day** (gdoc, 130.9KB) - [Download](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 12:11** *Elyse*: @User*2Z9G95 re Orita:  [Here is the call recording](https://d2rjpm04.na1.hs-sales-engage.com/Ctc/W3+23284/d2rjPM04/Jll2-6qcW7Y8-PT6lZ3pjW35tc5b7ksrh*W91JFgz84PL6QW6Tx71r4nMrN1W83gX_*7Qr86NW6ZVcGk1clD-yW1JxkDD6Pj8B9W4yRt1C7M97PvW2wq*rL7qwTmkW5VvC7L4y46v3W2vbBnZ7WF41fW3Nt7557SkhDbW873dnJ6FwGB5VqMgdw5Z*ScCW5SY*VX7Fq7w9W4z5tK61q0P4xW12BDsh6V518GW13W-H070gD5VW8TgL551*rbzlW2BKNZ73YvppfVxSdKt3klFp1W90hZqW6kFzj7VfcPk221Ylq1W8124G4699tSKW5xJwM419xSb9W5tGNs34ZN*z2N3brJBmyzjxVf8bqpgM04)\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-01 12:11** *Elyse*: summary from audit results\n\n📎 **image.png** (png, 1.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08R7MNMPSL/image.png)
+- **2025-05-01 12:35** *User_2Z9G95*: @Elyse — Just sent two SMS for review! The first one is for Saturday, and the second is for Sunday.
+- **2025-05-01 13:17** *Elyse* 💬 1 reply: Both good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 13:22** *Elyse* 💬 1 reply: @User_2Z9G95 left notes on 5/9 5/10 5/11, we're good to move forward w these edits
+- **2025-05-01 13:26** *Elyse* 💬 1 reply: @User_2Z9G95 also - replenishment flow, we're good on the brief can move to copy\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-01 13:26** *Elyse* 💬 1 reply: Welcome 1 we had some more notes, so will forward that over to you now
+- **2025-05-01 15:34** *User_2Z9G95*: This is great, thank you! Sending this to design for early next week!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-01 15:34** *User_2Z9G95*: Perfect, briefing this out today, too.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-01 15:34** *User_2Z9G95*: Thank you! I replied with some follow ups via email!\n\n*Reactions: :eyes: Elyse*
+- **2025-05-01 15:36** *User_2Z9G95*: @Elyse One note RE SMS — I saw that there's an existing EU audience, CA audience, and UK audience excluded — I assume this is intentional because of international fees? If so, I'll leave them excluded, unless otherwise noted!
+- **2025-05-01 15:38** *Elyse*: So with international, we have them separated because some products don't ship there
+- **2025-05-01 15:39** *Elyse* 💬 1 reply: So for example, anything really in a bundle is largely gonna be for USA. The only bundle that ships internationally is the Best Seller Bundle. Anything with body care, supplements in it doesn't ship internationally
+- **2025-05-01 15:40** *Elyse* 💬 1 reply: Re these specific campaigns, I was under the impression that EU and Canada had the same Mother's Day as us and that it was just UK that had theirs in March
+- **2025-05-01 15:42** *Elyse*: I just googled EU mother's day and it seems like it ranges from first/second sunday of may to last sunday of may. so I'm okay with leaving EU and Canada in for these MD campaigns
+- **2025-05-01 15:43** *User_2Z9G95*: My thoughts exactly! We're on the same page :slightly*smiling*face:
+- **2025-05-01 15:48** *Elyse*: fab fab!
+- **2025-05-01 15:49** *Elyse*: so also while I have you
+- **2025-05-01 15:50** *Elyse*: I'm adding a "cover" sheet so to speak to the [CRM calendar draft](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing) with some key thoughts on it, some in progress things to look out for etc that might be helpful for the team  
+cc @Ingrid check this out when you get a chance, let me know if there's anything you'd like to add\n\n📎 **June CRM Calendar Draft** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 16:01** *User_2Z9G95*: @Elyse — Both SMS for this weekend are scheduled! We'll keep the same time the others have been sent and can explore more A/B tests for future campaigns.\n\n📎 **Screenshot 2025-05-01 at 2.00.54 PM.png** (png, 117.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QCBQ6BU6/screenshot_2025-05-01_at_2.00.54_pm.png)
+- **2025-05-01 16:03** *Elyse* 💬 1 reply: fab, tysm for picking these up!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 16:04** *Elyse* 💬 2 replies: @User_2Z9G95 I'll be out for a bit tomorrow afternoon for a doctor's appointment at 1 but will have my phone on me if anything needs my urgent attention. 20 week anatomy scan woo woo!
+- **2025-05-01 16:05** *User_2Z9G95*: Hope it all goes well! We may need your eyes on the Sunday Mother's Day email design if it's not done by EOD PT today — our team is still working on it! Will keep you posted!
+- **2025-05-02 08:00** *User_2Z9G95*: Good morning @Elyse! Do you have any more context into these two upcoming campaigns? Given that they're next week, we need to get copy finalized today, so they can get pushed to design.  
+• 5/6 - [EMAIL] Katie’s Mom PEMF Mat Review [revamp]  
+    ◦ PEMF Pro Mat Starter Kit  
+    ◦ Super Mom Bundle  
+• 5/7 - [EMAIL/BLOG] Lauren’s Motherhood blog feature  
+    ◦ Let’s make this design really pared down, simple so that the words can shine through  
+    ◦ Hyperlink sauna blanket, red light therapy
+- **2025-05-02 08:00** *Elyse* 💬 1 reply: Yes! So Katie’s mom is a revamp from last year
+- **2025-05-02 08:01** *Elyse* 💬 1 reply: Should be able to pull up on klaviyo 
+- **2025-05-02 08:01** *Elyse*: Want to just switch the products over to those bundles and refresh/optimize any copy
+- **2025-05-02 08:02** *Elyse*: And then Lauren’s blog I should have the link hang on
+- **2025-05-02 08:03** *Elyse*: Want to just pull some info from there
+- **2025-05-02 08:05** *Elyse*: Dang, preview link expired hang tight will get new one
+- **2025-05-02 08:06** *Elyse* 💬 1 reply: But anyway in it she talks about her story w motherhood and how it took major medical issues to turn everything around w caring for herself 
+- **2025-05-02 08:06** *Elyse*: Mentions blanket, sauna, red light
+- **2025-05-02 08:35** *User_2Z9G95*: Hi @Elyse — We have this Sunday's last chance email ready for review in Figma [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=33332-2180&amp;p=f). Please take a look when you get the chance adn we'll get it tested and scheduled ASAP.\n\n*Reactions: :eyes: Elyse*
+- **2025-05-02 09:09** *Elyse*: Looks great, love it
+- **2025-05-02 09:09** *Elyse* 💬 1 reply: Added one typo note
+- **2025-05-02 09:23** *Elyse* 💬 1 reply: @User_2Z9G95 also - good to move forward w edit notes I put on the google doc for Mother’s Day Sale #2 emails, team didn’t have anything to add
+- **2025-05-02 10:57** *User_2Z9G95*: Hi @Elyse — Just sent the test preview! If all looks good, we'll schedule it for Sunday at 10a local time. Confirming we've updated the segment to include CA and EU customers.\n\n📎 **Screenshot 2025-05-02 at 8.56.45 AM.png** (png, 47.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QGEYLEHL/screenshot_2025-05-02_at_8.56.45_am.png)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-02 11:21** *Elyse*: @User_2Z9G95 looks great, only call out is the footer
+- **2025-05-02 11:21** *Elyse*: Since we closed our spa location, we had changed the footer to be DOSE CLUB Rewards, shop all, be an affiliate
+- **2025-05-02 11:22** *Elyse*: Footer also has old info on it - has discount end date as dec 2nd
+- **2025-05-02 11:22** *Elyse*: and doesn’t have exclusion of subscription orders within disclaimer
+- **2025-05-02 11:24** *User_2Z9G95*: Hi @Elyse! Great shout! Sending our designer the updated one from the previous Mother's Day emails.
+- **2025-05-02 11:27** *User_2Z9G95*: @Elyse — Just to confirm, does the offer end at 11:59p PST on May 4th or May 5th? The current sale disclaimer says May 5th, but I was under the assumption the sale ended May 4th. Please advise!
+- **2025-05-02 14:12** *User_2Z9G95*: Hi @Elyse! Just sent the updated email for review — LMK how that looks!
+- **2025-05-02 14:20** *User_2Z9G95*: This is perfect, thank you! Working on this now, so let us know if you're able to find the link!
+- **2025-05-02 15:00** *Elyse* 💬 1 reply: Fresh test good to go @User_2Z9G95 \n\n*Reactions: :yellow_heart: Berkeley Clark, User_2Z9G95*
+- **2025-05-02 15:04** *Elyse*: <!here> \n\n**Ester Barril**\n> hi team requesting to unsubscribe email : <mailto:pollyruns@gmail.com|pollyruns@gmail.com> thank you in advance!\n*Slack Conversation | 2025-05-02 10:51*
+- **2025-05-02 15:04** *Elyse* 💬 2 replies: Any specific process for these requests @User_2Z9G95 ?
+- **2025-05-02 18:31** *User_2Z9G95* 💬 3 replies: Hi @Elyse — I apologize for the late night note, but if [you're able to review the new copy for Katie's Mom's PEMF Mat Review email](https://docs.google.com/document/d/1jobW7RTUQiUY425bWslbHiYsqwLythwK3p1DiaASCWo/edit?tab=t.0) for Tuesday on Monday, that would be great! One version includes a PEMF Mat CTA in addition the the bundles and the other does not. Let us know your preference here!
+- **2025-05-02 19:09** *Elyse*: Sounds good! Will jump on computer in the morning and check it out! @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-02 19:10** *User_2Z9G95*: Have a great weekend! 
+- **2025-05-05 11:33** *Elyse* 💬 4 replies: @User_2Z9G95 if you don’t mind, could you send me a consolidated list of anything outstanding on our end? Getting organized today and want to make sure we don’t owe you anything, besides answer to your welcome flow questions!\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-05 12:15** *Elyse* 💬 8 replies: @User*2Z9G95 lauren’s blog preview for wednesday [https://w6vbs0wy3f902low-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=2989f660201e8c4e57077769c7b87864](https://w6vbs0wy3f902low-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=2989f660201e8c4e57077769c7b87864)\n\n**w6vbs0wy3f902low-22626551.shopifypreview.com**\n🔗 **[How Motherhood Is The Most Selfless Thing | HigherDOSE](https://w6vbs0wy3f902low-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=2989f660201e8c4e57077769c7b87864)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-05 16:01** *Elyse* 💬 1 reply: @User_2Z9G95 I’d also love if you guys could take a look at our SMS campaign segmentation for last week - something feels off to me. We have a subscriber list of over 50K and sale SMS campaigns were all only sent to under 8K
+- **2025-05-05 16:02** *Elyse*: Last email agency mentioned this was due to exclusions of international audience, but I just can’t fathom our international audience is over 40K.. Doesn’t make sense to me
+- **2025-05-05 16:05** *User_2Z9G95*: Hey @Elyse — Definitely! Let me take a look and we can chat through it on our sync tomorrow.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-05 16:05** *Elyse*: ty ty!
+    - **2025-05-05 17:21** *User_2Z9G95*: ↳ @Elyse — This one from the email last year!\n\n📎 **Screenshot 2025-05-05 at 3.20.53 PM.png** (png, 373.2KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QTPAFHRC/screenshot_2025-05-05_at_3.20.53_pm.png)
+- **2025-05-05 19:01** *Elyse*: Oh! Let me ask Katie quickly hang on\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-05 19:07** *Elyse* 💬 1 reply: Need a little crop to get off screenshot stuff but here’s a new image Katie sent! \n\n📎 **IMG_1491.png** (jpg, 3.5MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08RCL456L9/img_1491.png)\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-05 19:09** *Elyse*: Here’s original image - but peep the screenshot for Katie’s preference on crop please!\n\n📎 **FullSizeRender.heic** (jpg, 3.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08QU2NFDSS/fullsizerender.heic)\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-05-06 09:00** *User_2Z9G95*: Hi @Elyse — Good morning! A few updates for you below:  
+• Copy for Lauren's blog email is ready [HERE](https://docs.google.com/document/d/1pqyUArAZeYSTQYTUlhD_rVw98lZtK2RvhrVCkVPDl0A/edit?tab=t.0) — there's two versions, a shorter and longer one — please review when you get the chance and let us know your thoughts!  
+• Design for today's email [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37053-3&amp;p=f&amp;t=tNxqPUsO8AMG0moL-0). We'll plan to send this to our 90 day engaged segment, and can send through a test preview + schedule it whenever it's ready.  
+• Copy for the Detox Drops replenishment email is [HERE](https://docs.google.com/document/d/1lx0SGkpydlwPb7D6m3pLmuvxnUcuXZ7MWF12gn0kcpg/edit?tab=t.0). As a reminder, the goal here is to drive subscription purchases, so that's the focus. \n\n📎 **HigherDOSE CRM | Lauren's Motherhood Blog** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1pqyUArAZeYSTQYTUlhD_rVw98lZtK2RvhrVCkVPDl0A/edit?tab=t.0)\n📎 **7 (1 email): Detox Drops** (gdoc, 80.6KB) - [Download](https://docs.google.com/document/d/1lx0SGkpydlwPb7D6m3pLmuvxnUcuXZ7MWF12gn0kcpg/edit?tab=t.0)
+- **2025-05-06 09:00** *Elyse*: Thank you @User_2Z9G95! Will dive into these now
+- **2025-05-06 09:23** *Elyse*: Shared all with team! Will have notes by EOD\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-06 09:24** *User_2Z9G95*: Sounds great, thank you!
+- **2025-05-06 09:24** *User_2Z9G95*: Just granted access, FYI!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-06 13:33** *User_2Z9G95*: @Elyse — [Link to today's agenda for review](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)!\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n\n*Reactions: :gratitude-thank-you: Elyse*
+- **2025-05-06 15:13** *User_2Z9G95*: @Elyse – Just sent you the preview for today! Since it's later EST, let's hold on the A/B test until we can get a proper morning/evening test. We'd recommend scheduling this at 5p ET. We're targeting our engaged L90 day list for this one.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-06 15:13** *Elyse*: @User_2Z9G95 looking at test now\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-05-06 15:14** *Elyse*: one thing I didn’t catch during preview - the two bundles are still listed on the website as 25% off, so would need to update CTA buttons there to bundle &amp; save 25%\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-06 15:15** *Elyse*: otherwise generally looks fine. i’d maybe change the header link and the PEMF block with lauren laying on the mat to the pemf collection [https://higherdose.com/collections/pemf-devices?ic=nav*click](https://higherdose.com/collections/pemf-devices?ic=nav*click)\n\n**higherdose.com**\n🔗 **[PEMF Therapy Collection                      – HigherDOSE](https://higherdose.com/collections/pemf-devices?ic=nav_click)**\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-06 15:17** *User_2Z9G95*: Updating now
+- **2025-05-06 15:26** *User_2Z9G95*: Just re-sent the test!
+- **2025-05-06 15:27** *Elyse*: good to fly
+- **2025-05-06 15:29** *User_2Z9G95*: @Elyse — good to go! Thank you!\n\n📎 **Screenshot 2025-05-06 at 1.28.49 PM.png** (png, 35.3KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QRQ631QX/screenshot_2025-05-06_at_1.28.49_pm.png)
+- **2025-05-06 15:29** *Elyse*: :crossed_fingers::skin-tone-3::rocket:
+- **2025-05-07 09:59** *User_2Z9G95*: Hey @Elyse — Our 3 x Mother's Day email designs should be ready this afternoon for review! Any update on Lauren's blog? Let us know how we can further support!
+- **2025-05-07 10:18** *Elyse*: fabulish! will keep my eye out for quick turnaround on approvals
+- **2025-05-07 10:19** *Elyse*: I know Lauren is shooting today so may not get an answer right away but I’ll text and keep you posted!
+- **2025-05-07 10:19** *User_2Z9G95*: No worries! Happy to push to tomorrow, too? It's not ideal with the back-to-back sale emails, but I can see what we can do from a segmentation standpoint.
+- **2025-05-07 10:22** *Elyse*: let’s see, hopefully can keep online for today. i just texted\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-07 10:26** *Elyse*: ok we have an answer! woo!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-07 10:27** *User_2Z9G95*: Lovely!
+- **2025-05-07 11:26** *Elyse*: ok we’re gonna go with the shorter one but gonna take a Quick Look once more and see if we need any notes added, give me a few
+- **2025-05-07 11:32** *User_2Z9G95*: Sounds great! Thank you so much!
+- **2025-05-07 13:07** *Elyse*: ok just looked through - only thing we need to add is a read more button and some kind of sentence leading into that CTA like read more about my journey into motherhood on our blog or something
+- **2025-05-07 13:07** *Elyse*: will let Chandler finesse that
+- **2025-05-07 13:08** *User_2Z9G95*: Fabulous!
+- **2025-05-07 13:09** *User_2Z9G95*: Confirming you still want to move forward with the shorter one, right?\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-07 13:42** *User_2Z9G95*: @Elyse — We're re-working this now and then we'll send through the final email (copy + design) for review! Hoping to schedule the send for 4p ET today, will keep you posted.
+- **2025-05-07 13:59** *User_2Z9G95*: @Elyse — Did Lauren's blog post already go live? If so, can you share the link? Thank you!
+- **2025-05-07 14:47** *User_2Z9G95*: @Elyse – Just sent you the preview. We just need the blog link that I can add to that button! Let me know if there's any thoughts/feedback (the last two paragraphs are new, so please review those!). Since this is still a text-based email, we have pretty limited control in terms of the background design, so we went with more of a beige/off-white background color to add some dimension.
+- **2025-05-07 14:54** *Elyse*: bckground fine by me\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-07 14:57** *Elyse*: one note - we say “might resonate” twice so thinking for bottom blurb:  
+  
+Even though I’m better able to prioritize self-care now, getting to this point wasn’t easy. I ignored so many warning signs until my body physically forced me to stop with a grand mal seizure. If you’re curious about my journey through motherhood, you can read my full blog post below.  
+  
+Happy Mother’s Day–to every woman discovering that choosing herself is not selfish, but one of the most powerful ways she can show up for the people she loves.  
+--Lauren
+- **2025-05-07 14:58** *Elyse*: live blog link: [https://higherdose.com/blogs/the-high-life-blog/how-motherhood-taught-me-that-self-care-is-the-most-selfless-thing](https://higherdose.com/blogs/the-high-life-blog/how-motherhood-taught-me-that-self-care-is-the-most-selfless-thing)\n\n**higherdose.com**\n🔗 **[Self Care For Moms &amp; How Self Care Is The Most Selfless Thing                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/how-motherhood-taught-me-that-self-care-is-the-most-selfless-thing)**
+- **2025-05-07 15:11** *User_2Z9G95*: @Elyse — Updated preview sent!
+- **2025-05-07 15:15** *Elyse*: Bottom blurb is still the same for happy Mother’s Day part
+- **2025-05-07 15:15** *Elyse*: 📎 **IMG_0707.jpg** (jpg, 1.3MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08RA89498D/img_0707.jpg)
+- **2025-05-07 15:15** *Elyse*: Before I sign off part
+- **2025-05-07 15:18** *User_2Z9G95*: Sorry, I missed that note in your feedback! Just updated and re-sent! 
+- **2025-05-07 15:20** *Elyse*: Perfecto fixed
+- **2025-05-07 15:20** *Elyse*: Sent to Lauren for quick review
+- **2025-05-07 15:21** *User_2Z9G95*: Perfect, keep me posted!
+- **2025-05-07 16:40** *User_2Z9G95*: @Elyse — I'm thinking it's better to send this tomorrow rather than a late night send tonight, unless you feel differently?
+- **2025-05-07 16:42** *Elyse*: Agreed
+- **2025-05-07 16:43** *Elyse*: Lauren’s 6 hours ahead so think she’ll see design in the morning
+- **2025-05-07 16:44** *Elyse*: What do we think about a dual Friday send? Add discount info in and send this Friday AM and second planned email in the PM?
+- **2025-05-07 16:44** *Elyse*: To avoid back to back days?
+- **2025-05-07 16:48** *Elyse*: Or skip Friday’s designed one
+- **2025-05-07 16:48** *Elyse*: I’m open
+- **2025-05-07 16:56** *User_2Z9G95*: Yes, I like the idea of combining!
+- **2025-05-07 16:57** *User_2Z9G95*: Let me re-work it today and get you something in the AM to review!
+- **2025-05-07 17:36** *Elyse*: Ok cool! Will let Lb know
+- **2025-05-08 09:34** *User_2Z9G95* 💬 6 replies: Morning @Elyse! Altered the subject and preview lines slightly, and [added a blurb at the bottom of the email](https://docs.google.com/document/d/1pqyUArAZeYSTQYTUlhD_rVw98lZtK2RvhrVCkVPDl0A/edit?tab=t.bram9mw0ss79). Let me know your thoughts!
+- **2025-05-08 10:00** *User_2Z9G95*: I also made a few design tweaks to the email with some text colors and things to make it feel a bit more branded, let me know when to send it through so you can take a look!
+- **2025-05-08 10:41** *User_2Z9G95*: Another update @Elyse! We have the sale design emails ready for this weekend for review. Please take a look and let us know what you think!  
+• [5/10: Ends Tomorrow](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37111-2526&amp;t=JAYL7IXytMiu2Gw8-1) - 3 variations; let us know if you prefer any hero images over the other; I would recommend the GIF  
+• [5/11: Last Chance](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37122-5338&amp;t=HUtTiJdKN4h7AmsE-1) - 2 variations; I would recommend the black to help us differentiate from the Friday send
+- **2025-05-08 10:55** *Elyse*: Ok fab! On it!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-08 12:43** *User_2Z9G95*: HI @Elyse — Confirming the below is still the plan for next week right? Getting these briefed out right now! Per our conversation, after the launch, we'll be able to operate much more ahead — appreciate your patience here. Let us know if the blog content is ready, too and we can pull from there!  
+  
+5/13 - [EMAIL] The New Summer Body  
+5/14 - [EMAIL/BLOG] Summer Body Starts with Flow  
+5/15 -  [EMAIL/SMS] Microcurrent Body Sculptor Launch  
+5/16 - [EMAIL] Microcurrent Body Sculptor Launch support
+- **2025-05-08 12:47** *Elyse*: Yes, just got confirmation this morning launch is on for 5/15\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 12:47** *Elyse*: need to get a few specifics so will circle back asap\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 12:47** *Elyse*: but as far as i know right now, this is a presale with plans to begin shipping 6/30
+- **2025-05-08 12:47** *Elyse*: so its a long presale, so we’ll want to make sure we’re explicit in our comms that these are presale/shipping in june etc
+- **2025-05-08 12:49** *Elyse*: also we’re setting up a CS team product training in the next week so I’ll get you guys added to it so you get the full scope of the product’s functionality, special features, ingredient info on the conductor gel, merchandising info etc all the deets\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 12:54** *Ari Murray*: hii @Elyse @Ingrid do you both have time to TB on this pivot today for 15? want to flag a few reservations on our side and want to chat through - let us know and appreciate your time!  
+  
+would 2:45pm ET or 4:30pm ET or 5:30pm work well? 
+- **2025-05-08 12:54** *Ari Murray*: hannah + carly + berk + i will join on our side 
+- **2025-05-08 12:54** *Elyse*: yep totes\n\n*Reactions: :heart: Ari Murray, Berkeley Clark, Ingrid*
+- **2025-05-08 12:54** *Elyse*: we can both do 5:30
+- **2025-05-08 12:55** *Ari Murray*: amazing sending now - THANK YOU!!
+- **2025-05-08 12:55** *Elyse*: thank youuu excited to hear your thoughts\n\n*Reactions: :tulip: Ari Murray*
+- **2025-05-08 13:32** *Elyse*: @User_2Z9G95  
+• 5/9 design good to go  
+• 5/10 agreed lets go with GIF header, left two notes for corrections on it  
+• 5/11 agreed on black version, good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 13:35** *Elyse*: @User_2Z9G95 also just forwarded you feedback on replen flow - detox drops
+- **2025-05-08 13:48** *User_2Z9G95*: @Elyse — Just sent updated preview. Added some blue accents for the links + a blue link break to help break up the paragraphs – let me know what you think! Happy to revert back to the original if you prefer, but this allows us to have more of those owned accents throughout.
+- **2025-05-08 13:48** *Elyse*: Fab just forwarded to LB
+- **2025-05-08 13:49** *User_2Z9G95*: Perfect!
+- **2025-05-08 14:40** *Elyse*: @User*2Z9G95 in the meantime, we’re waiting on finalized dojomojo link for mother’s day giveaway but here are the assets we’re using for social [https://drive.google.com/drive/folders/1ukT96k8tmvAIPQ21FNmn9tkid0YRq5kV?usp=drive*link](https://drive.google.com/drive/folders/1ukT96k8tmvAIPQ21FNmn9tkid0YRq5kV?usp=drive_link)\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-08 16:08** *Elyse*: @User_2Z9G95 Microcurrent body sculptor education deck: [https://docs.google.com/presentation/d/1mvXwsMXakdZCtWhZFSOxwhaFoKGXMnmmE-ar7QjwThE/edit?usp=sharing](https://docs.google.com/presentation/d/1mvXwsMXakdZCtWhZFSOxwhaFoKGXMnmmE-ar7QjwThE/edit?usp=sharing)\n\n📎 **HIGHERDOSE BODY SCULPTOR EDU** (gpres, 797.7KB) - [Download](https://docs.google.com/presentation/d/1mvXwsMXakdZCtWhZFSOxwhaFoKGXMnmmE-ar7QjwThE/edit?usp=sharing)\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-08 16:09** *User_2Z9G95*: Thank you!!
+- **2025-05-08 17:07** *Elyse*: @User_2Z9G95 just to confirm - klaviyo can create a ton of unique one time use codes right? vaguely remember doing it myself a few times but wanted to confirm for MBS launch\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-08 17:07** *Elyse*: want those codes to be unique, one time use for 20% off the MBS only
+- **2025-05-08 17:07** *Elyse*: 5/15 - 5/19
+- **2025-05-08 17:08** *Elyse*: i’m gonna sit tomorrow and look at May email calendar draft and just double check we have emails to support this thru 5/19. will funnel over notes asap
+- **2025-05-08 17:13** *User_2Z9G95*: Yes!
+- **2025-05-09 08:49** *User_2Z9G95*: @Elyse — Confirming today's email is scheduled to send at 12p ET. We curated a broad list of engaged and unengaged users — excited to see how it performs!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-09 08:55** *User_2Z9G95*: @Elyse — I also just sent a test MMS — let me know how it looks, we added one of the paid graphics to make the launch more engaging! We'll keep the last chance to an SMS.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-09 10:01** *Elyse* 💬 1 reply: MMS good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-09 10:06** *User_2Z9G95*: Scheduled for 12:10p ET!
+- **2025-05-09 10:46** *User_2Z9G95*: @Elyse — getting this weekend's emails queued up — I'll have previews for you in the early afternoon!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-09 10:56** *User_2Z9G95*: @Elyse — When you get the chance, can you add one of our other designers into Klaviyo?  
+<mailto:nero@sharmabrands.com|nero@sharmabrands.com>  
+She's about to upload those emails! Thank you so much!
+- **2025-05-09 11:15** *Elyse*: Fab will do rn
+- **2025-05-09 11:16** *User_2Z9G95*: Thank you!
+- **2025-05-09 11:35** *Elyse*: @User_2Z9G95 says nero already exists as a user
+- **2025-05-09 11:36** *Elyse*: i resent invite
+- **2025-05-09 11:36** *User_2Z9G95*: Ahh I think she missed the email notification, so you'll need to re-send
+- **2025-05-09 11:37** *User_2Z9G95*: yesssss, thank you so much!!
+- **2025-05-09 11:40** *User_2Z9G95*: We're in!! Thank you!!
+- **2025-05-09 11:49** *Elyse*: @User_2Z9G95 link for mothers day giveaway for next week: [https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa) *corrected link\n\n**giveaways.dojomojo.com**\n🔗 **[Every day is Mother's Day Giveaway](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa)**\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-09 13:14** *User_2Z9G95*: Thank you! Which day do you want this sent out? Are you able to share the prizes/prize value/brands involved? This is all I'm able to see!\n\n📎 **Screenshot 2025-05-09 at 11.14.47 AM.png** (png, 879.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08RRSJEMUJ/screenshot_2025-05-09_at_11.14.47_am.png)
+- **2025-05-09 13:15** *User_2Z9G95*: I also just sent you a test preview of tomorrow's sale email @Elyse! Working on Sunday's now.
+- **2025-05-09 14:19** *User_2Z9G95*: Hi @Elyse — I also just sent you an updated preview of the 5/11 email (please disregard the first one, sorry!) In your inbox you should have:  
+• 5/10: One day remaining  
+• 5/11: Last chance + founder letter  
+Let me know if I need to re-send and I can, happily!
+- **2025-05-09 14:34** *Elyse*: reviewing quick now
+- **2025-05-09 14:37** *User_2Z9G95*: Just sent Sunday's SMS, too!
+- **2025-05-09 14:43** *Elyse*: 5/10 good to go @User_2Z9G95\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-09 14:43** *Elyse*: 5/11 good to go
+- **2025-05-09 14:44** *Elyse*: 5/11 is there any way, i know this is last minute
+- **2025-05-09 14:44** *Elyse*: but is there any way we could see a quick version that has photo of lauren/her kids, katie/her mom
+- **2025-05-09 14:45** *User_2Z9G95*: Let me see!
+- **2025-05-09 14:49** *User_2Z9G95*: @Elyse — Is the SMS good to go?
+- **2025-05-09 14:49** *Elyse*: yes yes
+- **2025-05-09 14:50** *Elyse*: sorry forgot that
+- **2025-05-09 14:50** *Elyse*: just looked at it, good to go
+- **2025-05-09 14:50** *User_2Z9G95*: Perfect, thank you!
+- **2025-05-09 15:07** *User_2Z9G95*: Still seeing what we can do, but in the meantime, I also wanted to share copy for two emails for next week:  
+• 5/13: [The New Summer Body](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H*RRHEu1GpqyzucBtLvlgUw/edit?tab=t.0)  
+• 5/14: [Summer Body Starts with Flow](https://docs.google.com/document/d/1d2*-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0) - let us know if there's still going to be a blog this one will link out to   
+We're working through 5/15 and 5/16 today. When you get the chance can you let us know where the giveaway content is going to fit in so we can prioritize that if needed.\n\n📎 **13 Email: The New Summer Body** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H_RRHEu1GpqyzucBtLvlgUw/edit?tab=t.oawte1gc2qgw)\n📎 **14 Email: Summer Body Starts with Flow (BLOG PUSH)** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1d2_-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0)
+- **2025-05-09 15:18** *Elyse*: I’m hoping there will still be a blog for that one - but don’t think we’re gonna have that ready in time for the email
+- **2025-05-09 15:19** *Elyse*: giveaway should get squeezed into bottom of 5/13\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-09 15:28** *Elyse*: Shared both 5/13 and 5/14 with team for review
+- **2025-05-09 15:29** *User_2Z9G95*: Confirming:  
+• 5/10 email is scheduled to send at 11a local tomorrow to a broad list of engaged + unengaged, that's just slightly more targeted than the one that was sent today  
+• 5/11 email is pending - working on an updated version - since this won't be a plain text, we can customize the name - would you like us to say "Hi HigherDOSE Family", "Hi Friend", "Hi There", or just leave the "Hi [name]" off?   
+• 5/11 SMS is scheduled to send at 12p local time Sunday among a broad engaged group
+- **2025-05-09 15:29** *Elyse*: 5/10 great
+- **2025-05-09 15:30** *Elyse*: 5/11 email cool, will stay tuned for updated version and will get you quick approval on that
+- **2025-05-09 15:30** *Elyse*: 5/11 sms cool
+- **2025-05-09 15:47** *User_2Z9G95*: @Elyse — [Here's the updated one for Sunday](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37122-5338&amp;t=XQameyly0WD6PbCR-1)! Let us know what you think and we'll get it uploaded and a preview sent ASAP.
+- **2025-05-09 17:38** *Elyse*: new version is perfect, let it fly
+- **2025-05-09 17:38** *Elyse*: thank you @User_2Z9G95
+- **2025-05-09 17:39** *Elyse*: <!here> and team!! appreciate the quick swap!!\n\n*Reactions: :heart: User_5S72LT, Ari Murray*
+- **2025-05-09 17:39** *User_2Z9G95*: wooohoooo!
+- **2025-05-09 17:42** *User_2Z9G95*: sending preview just so you can quadruple confirm, but confirming this is scheduled for Sunday, 12p local - with a similar engaged + unengaged list as Saturday!
+- **2025-05-09 19:59** *Elyse*: Perfect @User_2Z9G95 good to go\n\n*Reactions: :sparkling_heart: User_2Z9G95, User_5S72LT*
+- **2025-05-12 10:06** *User_2Z9G95*: Morning @Elyse! I wanted to check in here in regards to our campaign sends this week. Did you get any feedback? Re-circulating the outstanding ones below:  
+• [5/13: The New Summer Body](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H*RRHEu1GpqyzucBtLvlgUw/edit?tab=t.0) - COPY PENDING APPROVAL  
+• [5/14: Summer Body Starts with Flow](http://Summer%20Body%20Starts%20with%20Flow) - COPY PENDING APPROVAL  
+• [5/15: Microcurrent Body Sculptor Launch](https://docs.google.com/document/d/1vSZJ*r2NyQWIRbMMiG7rxYzmOn_iCr7eOPX0ERP41rg/edit?tab=t.0) - COPY PENDING APPROVAL\n\n📎 **13 Email: The New Summer Body** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H_RRHEu1GpqyzucBtLvlgUw/edit?tab=t.oawte1gc2qgw)\n📎 **15 Email: Microcurrent body sculptor launch + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1vSZJ_r2NyQWIRbMMiG7rxYzmOn_iCr7eOPX0ERP41rg/edit?tab=t.0)
+- **2025-05-12 10:09** *Elyse*: Meeting with the team today, will circle back as soon as I have the info
+- **2025-05-12 10:10** *User_2Z9G95*: Perfect! Keep us posted. Thank you!
+- **2025-05-12 10:31** *Elyse*: <!channel> hot off the press - we are aiming to move body sculptor launch to Monday 5/19 to give everyone more time\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-12 10:33** *User_2Z9G95*: Noted! Thank you for letting us know. Confirming we're still moving forward with the VIP only plan (email + SMS)?\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-12 10:37** *Elyse*: @User_2Z9G95 i am reworking email calendar as we speak, meeting with team at 12 so will keep you posted as this unfolds in real time\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-12 10:38** *User_2Z9G95*: Thank you!! Will standby
+- **2025-05-12 11:09** *Elyse* 💬 1 reply: @User*2Z9G95 just got this from graphics team - a few gorginaaaa visuals [https://docs.google.com/presentation/d/1ctyb**bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true](https://docs.google.com/presentation/d/1ctyb*_bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true)\n\n📎 **HD_Body Planer Visuals.pptx** (pptx, 557.1KB) - [Download](https://docs.google.com/presentation/d/1ctyb__bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&ouid=112250301403411587700&rtpof=true&sd=true)
+- **2025-05-12 11:10** *Elyse*: i think this deck is being beefed up so keep an eye on it
+- **2025-05-12 11:11** *Elyse*: but there’s the visual vibe
+- **2025-05-12 11:23** *Elyse*: @User*2Z9G95 top 30 photo selects [https://drive.google.com/drive/u/0/folders/1Q0VipJqwGg0SeXrrQiBeMiw9d9ogX**C](https://drive.google.com/drive/u/0/folders/1Q0VipJqwGg0SeXrrQiBeMiw9d9ogX*_C)
+- **2025-05-12 11:25** *Elyse*: @User_2Z9G95 new photoshoot [https://drive.google.com/drive/folders/1vbAZ3LVU6jVxgZGVbPKZ4g6yve0vnXkK?usp=sharing](https://drive.google.com/drive/folders/1vbAZ3LVU6jVxgZGVbPKZ4g6yve0vnXkK?usp=sharing)
+- **2025-05-12 11:26** *Elyse*: for updating rest of the tech, accessories etc
+- **2025-05-12 11:26** *Elyse*: and then has that top 30 folder for body sculptor
+- **2025-05-12 13:16** *Elyse*: Thanks for joining that @User_2Z9G95! :heartpulse:\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-12 13:20** *User_2Z9G95*: Of course! They’re looking great. I’m excited! 
+- **2025-05-12 15:23** *Elyse*: @User_2Z9G95 to keep in mind - body sculptor will not immediately be available in Canada, so will need to exclude Canadian audience on campaign sends\n\n**Sumish Khadka**\n> USA, UK and EU to start\n*Slack Conversation | 2025-05-12 15:22*\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-13 12:41** *Elyse*: <!channel> fresh news\n\n📎 **image.png** (png, 64.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08S4MWFQUV/image.png)\n\n*Reactions: :bangbang: User_2Z9G95, :heart: Berkeley Clark*
+- **2025-05-13 14:47** *User_2Z9G95*: @Elyse @Ingrid — Here's the link to our agenda from today: [https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)  
+  
+As next steps, we'll:  
+• Look at top-performing evergreen campaigns from last year (+ continue building out the campaign calendar)  
+• Provide a weekly reporting summary to keep track of YoY performance  
+• Keep flows moving ASAP\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :raised_hands: Ingrid*
+- **2025-05-13 18:04** *User_2Z9G95*: @Elyse — Just an FYI, outside of the promos, the following were the top revenue-driving campaigns from mid-May to mid-June last year — no surprise, most are red light hat related, so I think a takeaway here is to replicate some (or all) of these stories post MBS launch:  
+• Infrared saunas vs. traditional saunas  
+• Red light hat before and after (this would be good pre-Father's Day)  
+• Red light hat customer feature (also good pre-Father's Day)  
+• Red light FAQs  
+• Frequency matters - Frequency FAQ\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-14 11:47** *User_2Z9G95*: Hi @Elyse — Looking forward to our copy chat this afternoon! If the team is able to share (either live on the call or after) examples that really nail down the tone of voice that would be helpful. Having a visual/seeing the examples IRL makes it much easier for us to understand. If there's any old email examples, pages on your site, or blog posts we can dissect together that would be fabulous.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :eyes: Elyse*
+- **2025-05-14 11:50** *User_2Z9G95*: Plus — if there's any email inspo you've shared recently that she's really loved — we can dive deeper into that, too!
+- **2025-05-14 12:55** *Ingrid* 💬 2 replies: @Elyse - did we share the tone/voice deck with them?
+- **2025-05-14 12:55** *Ingrid*: we should make sure they have access to our email inspo folder
+- **2025-05-14 12:55** *Elyse*: They definitely have access to email inspo folder\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-14 12:56** *User_2Z9G95*: Yes, we do!
+- **2025-05-14 12:56** *Elyse*: And I’ve been forwarding over inspo as it comes in as well
+- **2025-05-14 12:56** *Elyse*: so have it on both ends
+- **2025-05-14 13:02** *Ingrid*: coming now
+- **2025-05-14 13:28** *Ingrid*: does this link work for yall?
+- **2025-05-14 13:28** *Ingrid*: [https://www.figma.com/proto/TMBZop8dwdSItpMF0gOTk2/Stylescapes?page-id=182%3A999&amp;no[…]=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=227%3A2](https://www.figma.com/proto/TMBZop8dwdSItpMF0gOTk2/Stylescapes?page-id=182%3A999&amp;node-id=317-53&amp;viewport=272%2C-121%2C0.12&amp;t=Qn7iYRsA9atFUSaC-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=227%3A2)
+- **2025-05-14 13:28** *User_2Z9G95*: Just requested access!
+- **2025-05-14 13:28** *Elyse*: 📎 **Brand Guidelines May 2025.pdf** (pdf, 5.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08T27E93G8/brand_guidelines_may_2025.pdf)\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-14 14:46** *User_2Z9G95*: @Elyse — [Updated copy for tomorrow here](https://docs.google.com/document/d/17yd0soHtAn30UOyGxXtA4cJM4BigP5iNxUe2arLIanQ/edit?tab=t.0)! We'll push this to design to keep things moving, but can happily modify the copy as we see fit.
+- **2025-05-14 15:52** *Elyse*: Ok perfect will jump into this now
+- **2025-05-14 16:08** *Elyse*: @User_2Z9G95 love this, lmk when design is ready. will get you quick eyes on that as well\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-14 16:16** *User_2Z9G95*: @Elyse — Do you have any additional info for the email on Friday? PEMF + Magnesium? I think there's a good amount on the website, but wasn't sure if there were any other internal resources about the benefits of magnesium, etc.!
+- **2025-05-14 16:16** *Elyse*: gimme two secs to do a dive into the abyss that is my google drive
+- **2025-05-14 16:16** *Elyse*: i could’ve sworn we had some info somewhere about how mag spray is great for amplifying pemf
+- **2025-05-14 16:17** *User_2Z9G95*: Jess just shared like a tid bit on that call we were just on, but it was more narrative not like hard fact — no rush, tho, let me know!
+- **2025-05-14 16:19** *Elyse*: this is an old doc - not the one i’m looking for, but has some good info in it too [https://docs.google.com/document/d/1F9Fp4e7XYoRhJZDQx1cLarRidnxTimIq/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true](https://docs.google.com/document/d/1F9Fp4e7XYoRhJZDQx1cLarRidnxTimIq/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true)\n\n📎 **TRansdermal_mag_spray.docx** (docx, 155.0KB) - [Download](https://docs.google.com/document/d/1F9Fp4e7XYoRhJZDQx1cLarRidnxTimIq/edit?usp=sharing&ouid=112250301403411587700&rtpof=true&sd=true)
+- **2025-05-14 16:19** *Elyse*: another oldie [https://docs.google.com/document/d/1pfjbsqZBbcmXIpQmQ8KxejBbygYDCMQ*hfuwJMElMEs/edit?usp=sharing](https://docs.google.com/document/d/1pfjbsqZBbcmXIpQmQ8KxejBbygYDCMQ*hfuwJMElMEs/edit?usp=sharing)\n\n📎 **25 | Up Your DOSE PEMF Edition** (gdoc, 98.9KB) - [Download](https://docs.google.com/document/d/1pfjbsqZBbcmXIpQmQ8KxejBbygYDCMQ_hfuwJMElMEs/edit?usp=sharing)
+- **2025-05-14 16:20** *User_2Z9G95*: This is great, thank you!
+- **2025-05-14 16:23** *Elyse*: this is also an old ass one sheeter [https://drive.google.com/file/d/1yTt4stYyq9tPimG1lTk2zHGnJ1gjIRXL/view?usp=sharing](https://drive.google.com/file/d/1yTt4stYyq9tPimG1lTk2zHGnJ1gjIRXL/view?usp=sharing)\n\n📎 **GET_SALTY_ONE_SHEET_FULL.pdf** (pdf, 374.2KB) - [Download](https://drive.google.com/file/d/1yTt4stYyq9tPimG1lTk2zHGnJ1gjIRXL/view?usp=sharing)
+- **2025-05-14 16:23** *Elyse*: but chock full of info there too
+- **2025-05-14 16:23** *Elyse*: probably a good amount of overlap w whats on the other docs though
+- **2025-05-14 16:24** *User_2Z9G95*: This is perfect! Thank you!
+- **2025-05-14 16:27** *Elyse*: gonna also pull some reviews for you
+- **2025-05-14 16:29** *Elyse*: 📎 **Screenshot 2025-05-14 at 5.29.29 PM.png** (png, 80.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08SGNC70LA/screenshot_2025-05-14_at_5.29.29___pm.png)
+- **2025-05-14 16:29** *Elyse*: 📎 **Screenshot 2025-05-14 at 5.29.43 PM.png** (png, 53.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08SJBARAH2/screenshot_2025-05-14_at_5.29.43___pm.png)
+- **2025-05-14 16:30** *Elyse*: 📎 **Screenshot 2025-05-14 at 5.29.59 PM.png** (png, 37.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08SJBDPD52/screenshot_2025-05-14_at_5.29.59___pm.png)
+- **2025-05-14 16:33** *User_2Z9G95*: Lovely, thank you!!
+- **2025-05-15 09:20** *User_2Z9G95*: Morning @Elyse! [Here's our email for today](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37215-3&amp;t=04okBXDftB0r6WhD-1)! Let us know if you have any thoughts/which is your favorite. I like 2 and 3.
+- **2025-05-15 10:43** *Elyse*: omg i was like i wonder when hannah’s gonna send me design\n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-05-15 10:44** *Elyse*: and it was sitting here all along :woman-facepalming::skin-tone-2:
+- **2025-05-15 10:44** *Elyse*: looking at this now\n\n*Reactions: :eyes: User_2Z9G95*
+- **2025-05-15 10:45** *User_2Z9G95*: Hahah, yay! Thank you!
+- **2025-05-15 10:48** *Elyse*: 2 good to go, left some notes for quick tweaks on it
+- **2025-05-15 10:51** *Elyse*: also @User_2Z9G95 i sent over google doc access to founder’s picks for monday’s email. waiting on a pic from Lauren but i’ll pull some options in the meantime
+- **2025-05-15 12:04** *Elyse*: @User_2Z9G95 FYI hot off the press - changing MDW sale  
+• 5/20-5/22 early access for email subscribers  
+• 5/22-5/26 public access
+- **2025-05-15 12:08** *User_2Z9G95*: Noted! @Elyse — Is the plan to also send the 5/19 email, or just keep next week to sale only content
+- **2025-05-15 12:13** *Elyse*: reviewing that now, maybe scrap
+- **2025-05-15 12:14** *User_2Z9G95*: ok cool, i'm thinking the same - but keep me posted
+- **2025-05-15 12:16** *Elyse*: yeah i think i’ll maybe flesh that out a bit more and use it for blog/social and we scrap that email
+- **2025-05-15 12:16** *Elyse*: looking at the week now, didn’t realize it was back to back. thank you for pointing that out
+- **2025-05-15 12:16** *User_2Z9G95*: for sure!
+- **2025-05-15 12:21** *Elyse*: just updated the week on google doc - let me know if I should add cards to Asana for may/june emails @User_2Z9G95 aiming to finish rework of calendar today/tomorrow\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-15 12:31** *User_2Z9G95*: @Elyse — Preview sent for review! We added in some additional GAW elements to make it stand out a bit more to drive engagement! Excited to see how it performs for you all! Let us know how this looks and we'll get it scheduled for 2p ET today.
+- **2025-05-15 12:33** *Elyse*: @User_2Z9G95 looks perfecto
+- **2025-05-15 12:34** *Elyse*: just want to double check giveaway link
+- **2025-05-15 12:35** *Elyse*: confirming its this link? [https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa)\n\n**giveaways.dojomojo.com**\n🔗 **[Every day is Mother's Day Giveaway](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa)**
+- **2025-05-15 12:35** *Elyse*: thats the dedicated newsletter link
+- **2025-05-15 12:35** *Elyse*: yep looks correct
+- **2025-05-15 12:35** *Elyse*: good to go @User_2Z9G95
+- **2025-05-15 12:36** *User_2Z9G95*: I think so, but I'll swap it for that one you sent just to be extra sure
+- **2025-05-15 12:39** *User_2Z9G95*: Sent one more for good measure!
+- **2025-05-15 12:40** *Elyse*: good to go!
+- **2025-05-15 12:42** *User_2Z9G95*: Excluding the usuals (bounced, spam, apple privacy), and sending to our 90d engaged segment! Scheduled for 2p ET today. Thanks!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-15 13:47** *User_2Z9G95*: Hi @Elyse — [Email copy for tomorrow HERE](https://docs.google.com/document/d/19Fo9c5wZt5t3I-gDa5EaifPBFmJ_0vItpNRwBN9xDbY/edit?tab=t.0)! Let us know your thoughts, regardless, we'll push it through to design and can modify copy in real time. Thanks!\n\n📎 **16: PEMF + Magnesium = Mental Health Dynamic Duo** (gdoc, 96.6KB) - [Download](https://docs.google.com/document/d/19Fo9c5wZt5t3I-gDa5EaifPBFmJ_0vItpNRwBN9xDbY/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-15 13:49** *Elyse*: @User_2Z9G95 can you add comment access pls
+- **2025-05-15 13:52** *User_2Z9G95*: Sent!
+- **2025-05-15 13:56** *Elyse*: added notes
+- **2025-05-15 13:59** *User_2Z9G95*: Love! Will get this updated ASAP
+- **2025-05-16 15:39** *User_2Z9G95*: @Elyse — Email coming in 10, so sorry for the delay.
+- **2025-05-16 15:59** *User_2Z9G95*: @Elyse — Design here! [https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekl[…]igns-%E2%80%93-May-2025?node-id=37254-276&amp;t=TVxa2v8S7LopSmYX-1](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37254-276&amp;t=TVxa2v8S7LopSmYX-1)
+- **2025-05-16 16:00** *User_2Z9G95*: We can certainly do an evening send for 6p tonight or tomorrow morning could also be good since this is the last message before the sale.
+- **2025-05-16 16:12** *Elyse*: Peeping this now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-16 16:21** *Elyse*: @User_2Z9G95 do the reviews move?
+- **2025-05-16 16:21** *Elyse*: is that a gif or static
+- **2025-05-16 16:21** *Elyse*: or do you swipe
+- **2025-05-16 16:21** *User_2Z9G95*: GIF: [https://www.figma.com/proto/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly[…]12&amp;t=ofH4Kijou4bowkjx-1&amp;scaling=min-zoom&amp;content-scaling=fixed](https://www.figma.com/proto/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?page-id=37254%3A276&amp;node-id=37254-277&amp;viewport=-179%2C-205%2C0.12&amp;t=ofH4Kijou4bowkjx-1&amp;scaling=min-zoom&amp;content-scaling=fixed)
+- **2025-05-16 16:21** *Elyse*: im like i sense theres movement here but im not sure how haha\n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-05-16 16:21** *User_2Z9G95*: But I think it moves too fast, so we should just lean into the one that's there!
+- **2025-05-16 16:22** *Elyse*: yeah i dig that
+- **2025-05-16 16:22** *Elyse*: inflammation review
+- **2025-05-16 16:22** *User_2Z9G95*: yes
+- **2025-05-16 16:22** *Elyse*: looks great overall, good by me
+- **2025-05-16 16:23** *🤖 Bot*: let it fly\n\n*Reactions: :joy: User_5S72LT, :heart: User_5S72LT*
+- **2025-05-16 16:23** *User_2Z9G95*: love it! Does a 6p ET send work?
+- **2025-05-16 16:23** *Elyse*: fab
+- **2025-05-16 16:24** *User_2Z9G95*: will send preview shortly, thank YOU!
+- **2025-05-16 16:29** *Elyse*: kk ill keep an eye out!
+- **2025-05-16 16:35** *User_2Z9G95*: @Elyse — Just sent!
+- **2025-05-16 17:13** *User_2Z9G95*: Hi @Elyse — Just wanted to make sure you got the preview! Let me know how it looks!
+- **2025-05-16 17:17** *Elyse*: Good to go
+- **2025-05-16 17:19** *User_2Z9G95*: Scheduled for 6:30p ET to our 90d engaged with normal exclusions! Thank you! Enjoy the weekend!!
+- **2025-05-16 18:15** *Elyse*: @User_2Z9G95 might be too late but did we exclude international on that one?
+- **2025-05-16 18:15** *Elyse*: As mag spray doesn’t ship internationally
+- **2025-05-16 18:15** *Elyse*: Not huge deal for one send but note for future
+- **2025-05-16 18:17** *User_2Z9G95*: oh good shout — we did not, but I definitely will next time. I'll make sure to triple check the list of products you sent through to make sure we exclude/include the correct countries.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-16 20:29** *User_2Z9G95*: [FOR MONDAY] Hi @Elyse!  We have some MDW creative/copy ready for your review! [Please review this document](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958) and the blocks highlighted in red need your review and approval. If you left feedback, please check the box in column L, and if approved, please check the box in column M. Feel free to check both if it's approved with tweaks. Here's what's ready for review. More to come!  
+1. Revised welcome #2 design  
+2. Revised welcome #3 design  
+3. 5/20 Early Access email design   
+4. 5/20 Early Access SMS copy  
+5. 5/21: Best-Sellers + Bundle design  
+6. 5/22: Red Light Hat email copy  
+7. 5/22: PEMF email copy  
+8. 5/22: Red Light SMS copy  
+9. 5/23: Summer Glow Up email copy  
+10. 5/23: Bundle push SMS copy
+- **2025-05-17 07:06** *Elyse*: Perfect will check shortly
+- **2025-05-17 15:23** *Elyse*: @User_2Z9G95 welcome designs are just revised designs right or copy too?
+- **2025-05-17 15:25** *User_2Z9G95*: Mainly designs but added in sales messaging! Any branded messaging was directly copied over 
+- **2025-05-17 15:25** *Elyse*: yes ok fab other than sale copy i meant
+- **2025-05-17 15:25** *Elyse*: ok sweet
+- **2025-05-17 15:26** *Elyse*: on #3 now, just left a typo note on #2\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-17 15:49** *Elyse*: just ran thru em all woooo @User_2Z9G95
+- **2025-05-17 16:07** *User_2Z9G95*: You’re the best! Thank you so much. I’ll do another review of them all, too and will send through more as they are ready. \n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-19 12:40** *Elyse*: @User*2Z9G95 studio shots for body sculptor: [https://drive.google.com/drive/folders/1nEpdVR*qJ1lj9mfDke9dgBIKUgx6KX9r?usp=drive*link](https://drive.google.com/drive/folders/1nEpdVR*qJ1lj9mfDke9dgBIKUgx6KX9r?usp=drive_link)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 12:42** *Elyse*: @User*2Z9G95 body sculptor visuals being updated on this deck as well: [https://docs.google.com/presentation/d/1ctyb**bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true](https://docs.google.com/presentation/d/1ctyb*_bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true). some stuff has changed since i last sent\n\n📎 **HD_Body Planer Visuals.pptx** (pptx, 557.1KB) - [Download](https://docs.google.com/presentation/d/1ctyb__bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&ouid=112250301403411587700&rtpof=true&sd=true)
+- **2025-05-19 13:02** *Berkeley Clark*: Hi @Ingrid @Elyse, just wanted to confirm that we are still launching paid on 5/21 as detailed [in our plan doc here](https://docs.google.com/document/d/1HIM62VuEVzgaNKz0FClHa3v0Ckvmcg-4JlDRVh*MX00/edit?tab=t.0)?  
+  
+I think potentially a launch on paid of 5/22 was mentioned, but our formal recco is to move forward with 5/21 as a lot of the market is already on sale and the longer period will benefit the ad learnings! cc @Ari Murray @User*2Z9G95\n\n📎 **HigherDOSE MDW Plan** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1HIM62VuEVzgaNKz0FClHa3v0Ckvmcg-4JlDRVh_MX00/edit?tab=t.0)\n\n*Reactions: :pray: Ari Murray*
+- **2025-05-19 13:03** *Elyse*: I was under the impression email was early access for 5/20 - 5/22 and public access on 5/22, so will let @Ingrid clarify here\n\n*Reactions: :yellow_heart: Berkeley Clark*
+- **2025-05-19 13:04** *Elyse*: I defer to you all on recommendation to start earlier obviously so just lmk so I can update on my end as well
+- **2025-05-19 13:56** *User_2Z9G95*: @Elyse @Ingrid — Customer flow for early access [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37324-177&amp;t=aR9u8IMnrHZwS2Cl-1) in Figma.  
+  
+When we switch to full launch, we'll just swap out the early access messaging in the subject line for email 1 and the early access messaging in the SMS copy.  
+  
+Other than that, this is what our welcome flow will be for the promo! Please add in any comments directly. @Elyse — I left one comment for you about bolding the reviews, let me know your thoughts!
+- **2025-05-19 14:30** *Elyse*: Fab reviewing now thanks @User_2Z9G95 
+- **2025-05-19 15:03** *Ari Murray*: hiii @Elyse @User_2Z9G95 tb'd with ingrid live and confirming paid support of MDW will begin wednesday the 21st - so only 1 day of early access - thank you so much! :heart:\n\n*Reactions: :yellow_heart: Berkeley Clark, :white_check_mark: User_2Z9G95, Elyse*
+- **2025-05-19 15:28** *Elyse*: Ok cool
+- **2025-05-19 16:01** *User_2Z9G95*: Hi @Elyse — ready to send through previews for the welcome flow! Just uploading tomorrow and Wednesday's into Klaviyo and then I can pass those off, too. LMK if I can send through now!
+- **2025-05-19 16:10** *Elyse*: good to send
+- **2025-05-19 16:26** *User_2Z9G95*: @Elyse — Just sent the 3 in the new welcome series!
+- **2025-05-19 16:29** *User_2Z9G95*: Also sent 5/20 and 5/21. Reminder the 5/21 and welcome #3 are the same email — we're going to put a filter on the welcome #3 email so that people who received the campaign will not get that third email in the flow!
+- **2025-05-19 16:34** *Elyse*: ok fab reviewing now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 16:40** *User_2Z9G95*: SMS test was also just sent!
+- **2025-05-19 16:41** *Elyse*: sms good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 16:44** *Elyse*: founder note welcome email good to go
+- **2025-05-19 16:44** *Elyse*: subject: you’ve got early access
+- **2025-05-19 16:45** *Elyse* 💬 1 reply: Meet your higher self - can we blur out her nipples a bit please. otherwise cool
+- **2025-05-19 16:46** *Elyse*: “wonderful healing mat” subject - good to go
+- **2025-05-19 16:56** *Elyse* 💬 1 reply: “you’ve got the in” is good to go - but we should consider changing the endorphin oil to maybe the hydration powder or the sweatband, as the endo oil is included in the SB starter kit
+- **2025-05-19 16:56** *Elyse*: “supercharge your self care with up to 25% off” is the same as “wonderful healing mat” right? or am i buggin?
+- **2025-05-19 16:57** *User_2Z9G95*: They are the same!
+- **2025-05-19 16:57** *User_2Z9G95*: We'll have exclusions in place so people don't get it double!
+- **2025-05-19 16:57** *Elyse*: Haha ok fab it’s good to go
+- **2025-05-19 16:57** *User_2Z9G95*: Reviewing your notes now!
+- **2025-05-19 17:13** *User_2Z9G95*: @Elyse Re-sent with the blur! LMK!
+- **2025-05-19 17:18** *Elyse*: Much better thank you\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-19 17:22** *User_2Z9G95*: I like the sweatband! Updating now.
+- **2025-05-19 17:56** *User_2Z9G95* 💬 1 reply: @Elyse Re-sent the preview!
+- **2025-05-19 18:04** *User_2Z9G95*: @Elyse — Here's our broad segmentation strategy for review! Last year, each email that was sent to the same broad engaged segment reached about 150,000 people, so this year we're broadening it to closer to 290,000. You'll see we have a mix of engaged, unengaged, and lapsed customers:  
+  
+**Engaged:**  
+• 365 days engaged (broadening to people who engaged all year — they're likely waiting for this sale period!)  
+• Purchasers (All Time)  
+• 180 days engaged, never purchased (Targeted + Broad - difference here depends on how many emails they've received from us; targeted means they received more emails, so they're slightly more engaged)  
+• Clicked/opened at least once in the last 365 days, never bought  
+**Unengaged:**  
+• 180 days unengaged (don't want this to be too broad (365), so we can ensure we're reaching people who haven't engaged without sacrificing engagement too much)  
+• Never purchased   
+• Never engaged, subscribed 60+ days ago  
+**Lapsed:**  
+• VIPs - Purchased more than once, but not in the last 60 days  
+• Was engaged 30-60 days ago, but not recently (have purchased at somepoint)  
+• Purchased once at least 60 days ago, but hasn't opened or clicked in the last 90  
+I'll be able to follow up with the re-send segmentation strategy tomorrow once we get some data, but it will likely be those who didn't open and/or didn't click + didn't purchase.  
+  
+We'll monitor performance and if we need to remove some of the broad unengaged segments, we certainly can! Will keep you posted.  
+  
+***Question: Any other exclusions we should be aware of? Is the Red Light Hat available abroad? I looked at the sheet you initially shared, but the row isn't filled out. I think that's the only product that's getting a spotlight.*** \n\n📎 **Screenshot 2025-05-19 at 2.41.40 PM.png** (png, 176.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08T56Q129G/screenshot_2025-05-19_at_2.41.40___pm.png)
+- **2025-05-19 18:10** *User_2Z9G95*: **Plan for tomorrow:**  
+• 10a ET - MDW pop-up goes live (QA + tested)  
+• 10a ET - Lead Generation ads go-live  
+• 12p ET - Early Access email + SMS gets sent  
+• 7p-9p ET - Early Access email gets re-sent  
+Please let us know if you have any questions! @Elyse — Once you confirm the segmentation strategy and the revised early access email I will get those scheduled.
+- **2025-05-19 18:59** *Elyse*: Segmentation good by me\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 18:59** *Elyse*: Hat is available abroad!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 19:00** *Elyse*: Should pop up go live earlier? Or think it’s fine as is?
+- **2025-05-19 19:01** *User_2Z9G95*: The ads won't be approved right away, so we should be perfect on time! I'll be online early and can check in and manually turn it on earlier, too, if ready.  
+  
+I'll connect with Cory in the AM!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-19 19:03** *Elyse*: Sounds good let’s do it\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-20 08:13** *User_2Z9G95*: Morning! @Elyse — Can you please confirm the discount code is up and running? I just tried it and it doesn't look like it is!
+- **2025-05-20 08:39** *Elyse*: That’s odd
+- **2025-05-20 08:39** *Elyse*: Lemme check hang on
+- **2025-05-20 08:39** *Elyse*: What did you try to use it on btw
+- **2025-05-20 08:39** *User_2Z9G95*: MDW2025
+- **2025-05-20 08:39** *User_2Z9G95*: oh and the hat!
+- **2025-05-20 08:39** *User_2Z9G95*: and the PEMF mat
+- **2025-05-20 08:40** *Elyse*: Ok cool let me tweak it we prob didn’t update it w the date change
+- **2025-05-20 08:40** *User_2Z9G95*: Ok fab!
+- **2025-05-20 08:41** *Elyse*: Ok try now I fixed
+- **2025-05-20 08:42** *User_2Z9G95*: Lovely, thank you!!
+- **2025-05-20 08:47** *User_2Z9G95*: @Elyse — Just sent you the SMS welcome! Realized I forgot to send it yesterday
+- **2025-05-20 08:47** *Elyse*: Good to go\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-20 09:44** *User_2Z9G95*: Confirming both email and SMS are scheduled for 12p ET today!
+- **2025-05-20 09:46** *🤖 Bot*: woo woo\n\n*Reactions: :partying_face: Berkeley Clark, :yellow_heart: Berkeley Clark*
+- **2025-05-20 09:51** *User_2Z9G95*: @Elyse — [More content for review here](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)! Please review the ones highlighted in red — the SMS will be finalized today and I'll let you know when those are ready for review, too!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-20 09:52** *Elyse*: sweet diving in now
+- **2025-05-20 10:02** *Elyse*: added notes to red light spotlight\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-20 10:11** *Elyse*: requested access on red light hero 5/24 and 5/27
+- **2025-05-20 10:14** *Elyse*: @User_2Z9G95  
+• 5/22 red light - left notes  
+• 5/22 pemf - left notes  
+• 5/24 hat hero - alt 2 for header, otherwise good to go. lmk if you have access to folder w before and afters in it  
+• 5/27 extension - i like subject/previews 2 and 3, good to go otherwise
+- **2025-05-20 10:15** *User_2Z9G95*: Granted access!
+- **2025-05-20 10:16** *Elyse*: \n\n**Sumish Khadka**\n> My wife's hair in 6 months after using the hat 10 mins daily. IT WORKS\n*Slack Conversation | 2025-02-14 11:02*\n\n*Reactions: :fire: User_5S72LT*
+- **2025-05-20 10:16** *Elyse*: 📎 **HAT_B&A_005.png** (png, 1.5MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08DDJTSFTL/hat_b_a_005.png)\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-20 10:16** *Elyse*: also have one in this folder [https://drive.google.com/drive/folders/1orsBe7d-7notsmB9KNlFMxLUGtVFTSGy](https://drive.google.com/drive/folders/1orsBe7d-7notsmB9KNlFMxLUGtVFTSGy)
+- **2025-05-20 13:50** *User_2Z9G95*: Hi @Elyse @Ingrid — thank you so much for the time today!  
+• [Link to agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)  
+• [Link to reporting](https://docs.google.com/spreadsheets/d/1qtJOU2541YSnoXC7ccA-RRUy2E*ctEOXQUXO3AdPWU4/edit?gid=1343857531#gid=1343857531)  
+Immediate next steps:  
+• [Elyse to review SMS here](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958) (highlighted in red)  
+• Hannah to duplicate flows and add banners - will send tests to Elyse by EOD today + get ready to turn on tomorrow.    
+@Elyse – **Can you please confirm what time the site changes will go live tomorrow? We'll need to ensure paid and the pop-up are ready to support accordingly!** We typically send the email at 12p ET, which feels like a great launch time, if we want to keep it at that.\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-20 14:43** *Elyse*: @User_2Z9G95 some video footage from Capetown MBS shoot [https://next.frame.io/project/2bec461a-9b14-4c3c-9247-e4365b115e6a/5a6a2048-24e6-4a3a-827b-608e7f5df263](https://next.frame.io/project/2bec461a-9b14-4c3c-9247-e4365b115e6a/5a6a2048-24e6-4a3a-827b-608e7f5df263)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-20 14:44** *Elyse*: Would love to take some of these and cut them up for gifs
+- **2025-05-20 15:29** *Elyse*: @User_2Z9G95  
+• Web changes being made midnight tonight  
+• SMS Review  
+    ◦ 5/22 RL spotlight sms - alt good to go, left comment on it  
+    ◦ 5/23 bundle push - 2nd alt good to go, left comment on it  
+    ◦ 5/24 rl hat hero - left notes  
+    ◦ 5/25 hat and pemf - good to go, left note for a photo on it  
+    ◦ 5/26 final hours - good to go  
+    ◦ 5/26 last chance - radiant glow instead of makeup free, otherwise good to go
+- **2025-05-20 15:56** *User_2Z9G95*: @Elyse - THANK YOU! Confirming midnight EST correct?
+- **2025-05-20 15:57** *Elyse*: Yep\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-05-20 16:37** *User_2Z9G95*: HI @Elyse! New flows are ready for review! Let me know when I can send through the tests — there's 5 of them!
+- **2025-05-20 16:54** *User_2Z9G95*: Just sent in the following order from first to recent — let me know if you get a chance to review!  
+• Abandoned Cart  
+• Abandoned Checkout 1  
+• Abandoned Checkout 2  
+• Active on Site  
+• Abandoned Browse
+- **2025-05-20 16:55** *Elyse*: Perfect on it rn\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-20 16:58** *User_2Z9G95*: Thank you!!
+- **2025-05-20 16:59** *Elyse*: All great
+- **2025-05-20 17:00** *User_2Z9G95*: Perfect! Thank you! Confirming we'll get these swapped in for the existing ones at midnight ET tonight — along with the new welcome and pop-up.
+- **2025-05-20 17:08** *Elyse*: Thank you!
+- **2025-05-20 18:16** *User_2Z9G95*: Hi @Elyse — Just for visibility, for this re-send we're going to send to the same list and add an additional exclusion for the segment: "People who received the MDW Early Access email **and** opened, **or** clicked". Thanks!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-20 18:39** *User_2Z9G95*: Confirming the re-send is scheduled for 8p ET! CC: @Elyse\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-20 23:17** *User_2Z9G95*: :white*check*mark: Pop-up launched + new welcome flows triggering perfectly  
+:white*check*mark: Evergreen site, cart, checkout, browse flows are paused  
+:white*check*mark: MDW site, cart, checkout, browse flows are launched  
+:white*check*mark: 5/21 email scheduled for 12:30p\n\n*Reactions: :heart: 4, :celebrate: Elyse, Berkeley Clark*
+- **2025-05-21 08:15** *User_2Z9G95*: Morning @Elyse! [More content ready for your review here in RED](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958).  We're still waiting on the below:  
+• 5/22: Revisions  
+• 5/23: Design  
+• 5/26: Design  
+• 5/27: Design \n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-21 09:40** *Elyse*: Sweet, diving in now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-21 10:16** *Elyse*: @User_2Z9G95  
+• 5/24 hat hero - this is a bomb AF email, love it  
+• 5/24 hat sms - new alt is fab, good to go  
+• 5/25 fathers day gifting - love, good to go  
+• 5/27 extension sms - 3rd alt, good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-21 13:04** *User_2Z9G95*: Thank you @Elyse!
+- **2025-05-21 13:07** *User_2Z9G95*: Update for the team: Based on initial insights, we're proposing an SMS send at 3p ET this afternoon. We have an SMS scheduled for everyday except today, so we'll bump up the bundle SMS to today and get another one drafted in its place (see attached).  
+  
+Additionally — the site, browse, and cart abandonment flows we copied each have one campaign, however, to further target these high-intent purchasers, we're recommending adding an additional campaign to be sent 25 hours after the first initial send. We've gone ahead and copied existing flows to create these campaigns and @Elyse — I would love to send those through for review ASAP so we can get them live!  
+  
+Let me know if there's any thoughts/feedback on the above. Thank you all!\n\n📎 **Screenshot 2025-05-21 at 11.05.22 AM.png** (png, 104.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08T6CH1JP5/screenshot_2025-05-21_at_11.05.22___am.png)\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-21 13:15** *Elyse*: aligned! @User_2Z9G95
+- **2025-05-21 13:57** *Elyse* 💬 4 replies: @User*2Z9G95 Separately, here’s a list of emails we collected over the weekend at an event in Miami at Ject.  
+• Can we get them added to our master list, and send them the welcome flow but with a special code in it and some copy around like “great to meet you at the Ject Miami event. Welcome to the higherdose community” etc something along those lines. here’s a code to use for a week   
+• Code will be HDJect30 from lmk when we can get this email out to a week from then  
+[https://docs.google.com/spreadsheets/d/1vHZ*fUbqmAN25zdYRmeYOSiwBo0CeGAdR92c4S6NGCQ/edit?usp=sharing*eil&amp;ts=682c89cf&amp;urp=gmail*link](https://docs.google.com/spreadsheets/d/1vHZ*fUbqmAN25zdYRmeYOSiwBo0CeGAdR92c4S6NGCQ/edit?usp=sharing*eil&amp;ts=682c89cf&amp;urp=gmail_link) - may need to request access to sheet, I just did lmk if it gives you any trouble I can always copy the sheet once I get access
+- **2025-05-21 15:25** *User_2Z9G95*: Hi @Elyse: Previews for those flows coming through! Let me know if you have any thoughts and I can get them switched on!  
+1. SL: Don't miss your moment to feel amazing - Abandoned Cart #2  
+2. SL: You gave it the eyes - Abandoned Browse #2  
+3. SL: Supercharge your routine - Active on Site #2 \n\n*Reactions: :eyes: Elyse*
+- **2025-05-21 15:54** *Elyse*: all flows good to go @User_2Z9G95
+- **2025-05-21 16:05** *User_2Z9G95*: Awesome, thank you!
+- **2025-05-21 16:05** *Elyse*: @User*2Z9G95 PDP preview: [https://8x8oz2uu89zgeehg-22626551.shopifypreview.com/products*preview?preview*key=faf2e87791d6d50ec0e69c6c81a833e5](https://8x8oz2uu89zgeehg-22626551.shopifypreview.com/products*preview?preview_key=faf2e87791d6d50ec0e69c6c81a833e5)\n\n**8x8oz2uu89zgeehg-22626551.shopifypreview.com**\n🔗 **[BODY SCULPTOR RITUAL SET                      – HigherDOSE](https://8x8oz2uu89zgeehg-22626551.shopifypreview.com/products_preview?preview_key=faf2e87791d6d50ec0e69c6c81a833e5)**\n\n*Reactions: :fire: User_2Z9G95*
+- **2025-05-21 16:05** *Elyse*: let us know if you see anything requiring a fix
+- **2025-05-21 16:06** *Elyse*: i started a google doc here with my notes\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-21 16:06** *Elyse*: [https://docs.google.com/document/d/18IpQSaDJC6VKsYVjoD9570PHfd7mgBMnFMKgFNSsfds/edit?usp=sharing](https://docs.google.com/document/d/18IpQSaDJC6VKsYVjoD9570PHfd7mgBMnFMKgFNSsfds/edit?usp=sharing)\n\n📎 **MBS PDP Notes** (gdoc, 0B) - [Download](https://docs.google.com/document/d/18IpQSaDJC6VKsYVjoD9570PHfd7mgBMnFMKgFNSsfds/edit?usp=sharing)
+- **2025-05-21 16:06** *User_2Z9G95*: Ahh exciting!!
+- **2025-05-21 16:06** *🤖 Bot*: its happening
+- **2025-05-21 16:06** *User_2Z9G95*: [Also two more emails ready for review highlighted in RED](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)! One more will be coming through tomorrow.\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-21 16:06** *User_2Z9G95*: Best meme ever
+- **2025-05-21 16:07** *Elyse*: sick will take a break from proofreading pdp and jump into this rn
+- **2025-05-21 16:11** *Elyse*: @User_2Z9G95  
+• 5/23 summer glow up - love, good to go  
+• 5/26 last chance - need to correct end date on promo disclaimer, otherwise good to go
+- **2025-05-21 16:12** *User_2Z9G95*: Great shout! We actually have the footer all templatized in Klaviyo so no issues there, but will double confirm, thank you!!!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-21 16:22** *Elyse*: @User_2Z9G95 I spoke to Katie she’s aligned on sending JECT email post sale :+1: 
+- **2025-05-21 16:23** *User_2Z9G95*: ok fab! We'll get it queued up for right after!
+- **2025-05-21 16:38** *User_2Z9G95*: HI @Elyse — best practice for resends is to modify the subject and preview — here's this evening's below — let us know how it looks! I'll add in all modified SLs and PTs into the sheet for you to review tomorrow, too\n\n📎 **Screenshot 2025-05-21 at 2.37.26 PM.png** (png, 864.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08T7EN4XQB/screenshot_2025-05-21_at_2.37.26___pm.png)\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-21 16:38** *Elyse*: good by me
+- **2025-05-21 16:38** *User_2Z9G95*: 5/22 previews coming to you shortly!
+- **2025-05-21 16:39** *User_2Z9G95*: Planning to build out the rest of the campaigns this evening, so we'll be ahead for the week. Thanks!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-21 16:40** *User_2Z9G95*: Scheduling the resend for 7p ET tonight. Same segment w/ exlcusions, but adding in exclusions for people who opened and clicked yesterday and today's email, plus purchasers.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-21 17:11** *User_2Z9G95*: @Elyse — Previews sent!
+- **2025-05-21 20:11** *Elyse*: PEMF preview good to go @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-21 20:17** *Elyse*: Red light preview good to go too @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-21 20:19** *User_2Z9G95*: Holding on scheduling PEMF since that's our re-send for tomorrow, but scheduling red light for 11a ET\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-22 09:21** *User_2Z9G95*: @Elyse — Just sent SMS preview for today!
+- **2025-05-22 09:56** *Elyse*: good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-22 09:59** *User_2Z9G95*: Scheduled for 11:30a ET today! Thank you!
+- **2025-05-22 11:27** *Elyse*: @User_2Z9G95 lmk what date we want to plug in for the Ject folks, making the code rn
+- **2025-05-22 11:28** *User_2Z9G95*: We can do 5/28 or 5/29!
+- **2025-05-22 11:29** *Elyse*: ok cool
+- **2025-05-22 11:33** *Elyse*: ok i made code 5/28 - 6/4 HDJect30\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-22 11:34** *User_2Z9G95*: Will it be available on the MBS too for when that launches or excluded 
+- **2025-05-22 11:35** *Elyse*: yep sitewide, excluding bundles, subscriptions, and full spec sauna\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-22 11:35** *User_2Z9G95*: Cool! 
+- **2025-05-22 12:17** *Thila* joined the channel
+- **2025-05-22 12:17** *Elyse*: @User_2Z9G95 adding my right hand gal @Thila here, she manages CS team\n\n*Reactions: :raised_hands::skin-tone-3: Thila*
+- **2025-05-22 12:17** *Elyse*: Mentioned an issue with unsubscribe link in recent email
+- **2025-05-22 12:17** *Elyse*: T do you know which email?
+- **2025-05-22 12:20** *Thila*: Yes! So we received this email from this client and they tried unsubscribing through this newsletter but it was not working\n\n📎 **Will B.pdf** (pdf, 312.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08TCQLU4DR/will_b.pdf)\n📎 **Screenshot 2025-05-22 at 1.19.43 PM.png** (png, 651.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08TNN2JF6W/screenshot_2025-05-22_at_1.19.43___pm.png)\n📎 **Screenshot 2025-05-22 at 1.19.53 PM.png** (png, 81.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08T7H137V5/screenshot_2025-05-22_at_1.19.53___pm.png)
+- **2025-05-22 12:21** *User_2Z9G95*: Ah, yes — I see, the hyperlink didn't pull in! Apologies for that. This is a templatized block and it's been fine on the others so not sure what happened here. Please send me their emails and I'll manually unsubscribe them. Sorry about that! Will triple check all the others right now.
+- **2025-05-22 12:23** *Thila*: No worries thank you so much @User_2Z9G95 the clients email is <mailto:waberardino@gmail.com|waberardino@gmail.com>
+- **2025-05-22 12:27** *User_2Z9G95*: They are removed! That was the only one with the missing hyperlink (among flows + campaigns) so we're good to go!\n\n*Reactions: :ty: Thila*
+- **2025-05-22 13:31** *User_2Z9G95*: Hi @Elyse — Three email previews coming your way! Let me know if they're good to schedule.  
+5/23: SL: Your summer glow (on sale)  
+5/24: SL: Supercharge your scalp health  
+5/25: SL: Get dad what he wants for Father’s Day
+- **2025-05-22 13:31** *🤖 Bot*: i'm ready
+- **2025-05-22 13:34** *Elyse*: all three good to go
+- **2025-05-22 13:39** *User_2Z9G95*: Woohoo! And then we have two options for the plain text last chance email on 5/26 — I noticed that in the past HD sends an actual plain-text email, but our team also designed one. Sending through both for you to see which feels better! Alternatively, we can send on in the AM and one in the PM for a last min re-send opportunity.  
+  
+These are templates, not the campaigns so ignore the subject and preview for now.
+- **2025-05-22 13:39** *Elyse*: cool on it
+- **2025-05-22 13:41** *Elyse*: good on both
+- **2025-05-22 13:41** *Elyse*: i
+- **2025-05-22 13:41** *Elyse*: i’m good w sending 1 AM and resend the other PM
+- **2025-05-22 13:42** *User_2Z9G95*: That's what we're thinking, too — perfect! Will keep you posted on a recco for which one first.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-22 15:39** *User_2Z9G95*: Hey @Elyse — we're getting the SMS ready for tomorrow and wanted to confirm we're good to push a PEMF spotlight? We don't mention it apart from being included in bundles, so we think a mini PEMF spotlight would be great to include.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-22 16:57** *User_2Z9G95*: Hi @Elyse — Link to SMS copy for tomorrow [HERE](https://docs.google.com/document/d/1Q7ifA-HFk3rcwP78KTAhDc9etdZa9hCvVD2Iay_WvKY/edit?tab=t.0)! Let me know which you prefer and we'll get it scheduled.\n\n*Reactions: :eyes: Elyse*
+- **2025-05-22 16:58** *Elyse*: fine with all
+- **2025-05-22 16:58** *Elyse*: love the drop into euphoria\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-22 16:58** *Elyse*: very hd coded
+- **2025-05-22 16:58** *User_2Z9G95*: Agree!
+- **2025-05-22 16:58** *Elyse*: maybe first one
+- **2025-05-22 16:58** *User_2Z9G95*: Yes\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-22 17:12** *User_2Z9G95*: @Elyse — SMS preview for tomorrow sent!
+- **2025-05-22 17:20** *User_2Z9G95*: @Elyse — Final email preview coming through!
+- **2025-05-22 18:22** *Elyse*: SMS good to go
+- **2025-05-22 19:23** *Elyse*: Email good to go
+- **2025-05-23 08:32** *User_2Z9G95*: Morning @Elyse — We added in some MMS to diversify the SMS strategy – pulling some creative from the emails! I added in an image to this SMS for today, so I just re-sent it. Let me know your thoughts!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 08:33** *Elyse*: good to go\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-23 08:36** *User_2Z9G95*: Scheduled for 12p ET! Summer glow is also scheduled for 12p ET!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 08:38** *User_2Z9G95*: Ok, all of the SMS are ready to test!  
+  
+Based on our recommendation yesterday, we needed two additional SMS sends — one on the 25th and one on the 27th, so we've added those in and I'll send those through first for your review since you haven't seen them yet! Let me know when you have a sec this AM to review.  
+  
+From there, I'll send through the remaining 5!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 08:38** *Elyse*: lets do ittttt\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-23 08:40** *User_2Z9G95*: Red light is for 5/25 evening and last chance is for 5/27 evening!
+- **2025-05-23 08:40** *Elyse*: red light g2g
+- **2025-05-23 08:40** *Elyse*: last chance g2g
+- **2025-05-23 08:41** *User_2Z9G95*: perfect, other five coming in, in this order:  
+  
+• 5/24: Red Light Hat Hero  
+• 5/25: Father's Day  
+• 5/26: Last Chance  
+• 5/26: Last Chance 2  
+• 5/27: Extended
+- **2025-05-23 08:52** *Elyse*: all g2g
+- **2025-05-23 08:53** *User_2Z9G95*: Amazing, we'll get these scheduled today and get the rest of the emails scheduled. We're making some tweaks to the email segmentation, so I'll keep you posted on that!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 15:10** *User_2Z9G95*: Hi @Elyse! CC: @Ingrid Letting you know everything for this weekend is scheduled and updated [HERE](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958). We made a few tweaks to this weekend's segments. Since these emails are more product-focused and narrative in messaging, we tweaked the segments to be more engaged-driven. We removed any unengaged segments from this (which will ideally help drive click and open rate back up). We also included engaged, product-focused segments, focusing on those with higher-intent — see below:  
+  
+• Red Light Hat Spotlight: Added: Engaged L180, but never purchased Red Light Hat  
+• PEMF Spotlight: Added: Engaged L180, but never purchased anything from the PEMF collection  
+• Father's Day Gifting: Added: Engaged L180, but never purchased anything from the PEMF or Red Light collection  
+I've included the full segment breakdown in the sheet if you want to see the others! Let us know if you have any thoughts, but we think targeting engaged segments for the weekend sends will put us in a great place engagement and conversion wise come Monday and Tuesday, when we're ready to double down on last minute/extended sale messaging to our initial broad audience.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 15:12** *Elyse*: @User_2Z9G95 just found a typo in final hours email
+- **2025-05-23 15:13** *Elyse*: hat section [https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekl[…]%E2%80%93-May-2025?node-id=37542-2959&amp;p=f&amp;t=HN6lSOGUIOaoGkRe-0](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37542-2959&amp;p=f&amp;t=HN6lSOGUIOaoGkRe-0) should be thick and **luscious**\n\n**Figma**\n🔗 **[HigherDOSE – Weekly Campaigns – May 2025](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37542-2959&p=f&t=HN6lSOGUIOaoGkRe-0)**\n> Created with Figma\n\n*Reactions: :raised_hands: User_2Z9G95, Ingrid*
+- **2025-05-23 15:13** *Elyse*: otherwise all looks good
+- **2025-05-23 15:14** *User_2Z9G95*: Updating now, thank you!!
+- **2025-05-23 15:23** *User_2Z9G95*: Updated and rescheduled!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :raised_hands: Ingrid*
+- **2025-05-26 14:36** *User_2Z9G95*: Hi @Elyse! I hope you're having a great holiday weekend! Apologies for the weekend ping, but since we've seen such strong performance on SMS, we're recommending a third later evening re-send to capture any last-minute, high-intent shoppers (excluding purchasers, of course). Please see the SMS below and I'm happy to pass along a preview for you to review when you get the chance. If all looks good, we'll schedule for 8p ET. Thank you!\n\n📎 **Screenshot 2025-05-26 at 12.34.46 PM.png** (png, 71.0KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UR5DPCQ0/screenshot_2025-05-26_at_12.34.46___pm.png)
+- **2025-05-26 14:37** *Elyse*: Good by me
+- **2025-05-26 14:37** *Elyse*: I’m ready for test
+- **2025-05-26 14:37** *User_2Z9G95*: Perf, coming shortly!
+- **2025-05-26 14:38** *User_2Z9G95*: Sent!
+- **2025-05-26 14:39** *Elyse*: Good to go
+- **2025-05-26 14:43** *User_2Z9G95*: Scheduled for 8p ET, thank you!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-27 09:46** *User_2Z9G95*: Good morning @Elyse! I hope you had a fantastic holiday weekend. We have the Miami event + launch content copy ready for your review [HERE](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958). Please take a look when you get the chance — we'll get these moving into production today, Thank you!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-27 09:46** *Elyse*: sweet, will do!
+- **2025-05-27 09:47** *User_2Z9G95*: Only note is we're waiting on founder context for 6/3.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-27 09:57** *Elyse*: @User*2Z9G95 can you update editing access please! can’t leave comments on this doc [https://docs.google.com/document/d/1GsXufRDjYqNRZj5iBMIitpk5MQ-L*OqF1hxUAntarZs/edit?tab=t.0](https://docs.google.com/document/d/1GsXufRDjYqNRZj5iBMIitpk5MQ-L_OqF1hxUAntarZs/edit?tab=t.0)\n\n📎 **28 Email: Three welcome emails for new subscribers (Miami event list)** (gdoc, 92.0KB) - [Download](https://docs.google.com/document/d/1GsXufRDjYqNRZj5iBMIitpk5MQ-L_OqF1hxUAntarZs/edit?tab=t.0)
+- **2025-05-27 09:57** *User_2Z9G95* 💬 7 replies: Ah yes, updating them all now, thank you!
+- **2025-05-27 11:07** *User_2Z9G95* 💬 7 replies: @Elyse — I see you added in 6/2-6/9 for the JECT Miami code. Initially you mentioned 5/28-6/4 — has this changed? If so, we'll want to change the dates we send the emails to correspond with the code activation!
+- **2025-05-27 11:09** *User_2Z9G95* 💬 2 replies: @Elyse — I know the MDW code is live until 5/28 at 6am ET — for the pop-up + welcome flow + abandoned flows, everything needs to be manually updated. Is there a way to extend this until 9am ET or 10a ET tomorrow morning, so that I can manually update everything first thing in the AM? Let me know if this would be possible!
+- **2025-05-27 11:14** *Elyse*: Think we should be fine w that, let me double check internally
+- **2025-05-27 13:32** *Elyse*: @User_2Z9G95 whewww IMC, Jess and I left notes on all launch items thus far. Think we need a redirection overall &gt; want this to feel empowering, bold, inspiring, and thoughtful
+- **2025-05-27 13:43** *User_2Z9G95*: Hi @Elyse — Noted! Thank you (+ Ingrid &amp; Jess) for taking the time to go through each one. We'll review your notes in the docs directly and will work on a redirection today — we'll let you know if we have any additional questions on anything shared!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-27 15:44** *Elyse* 💬 1 reply: @User_2Z9G95 \n\n**Sumish Khadka**\n> We might have some flow through customers. The site will have the messaging removed tomorrow morning by 9 AM EST.\n*Slack Conversation | 2025-05-27 15:43*\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-27 15:49** *User_2Z9G95*: @Elyse — I'll reach out to Cory RE pop-up changes. What are your thoughts on updating the pop-up to be around the new product launch? I can ask Cory if they have any other brands that have seen success with that for inspo, but we'd likely include the evergreen 10% off with the coming soon messaging.
+- **2025-05-27 15:51** *Elyse*: let me check with ingrid on that when shes back in office tomorrow. think we’d be okay with it as we’re starting social teasers earlier than email
+- **2025-05-27 15:52** *User_2Z9G95*: That works! In the interim, we'll have Cory revert to the default and can talk strategy on our call tomorrow, too.
+- **2025-05-27 15:52** *Elyse*: perfect tysm!
+- **2025-05-27 17:22** *User_2Z9G95*: Hi @Elyse — We've made revisions on the following that are ready for your review when you get the chance:  
+• [5/29](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H*RRHEu1GpqyzucBtLvlgUw/edit?tab=t.0) - updated all comments  
+• [5/30](https://docs.google.com/document/d/1d2*-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0) - no feedback here, is this good to go?  
+• [6/2](https://docs.google.com/document/d/1vSZJ*r2NyQWIRbMMiG7rxYzmOn*iCr7eOPX0ERP41rg/edit?tab=t.0) - re-wrote  
+• [6/4](https://docs.google.com/document/d/14WNXke3SMNfXECcQdrjDFHSSI2dzw3Dr1awNSdLgSls/edit?tab=t.0) - re-wrote  
+We're still working on 6/5. Thanks!\n\n📎 **14 Email: Summer Body Starts with Flow (BLOG PUSH)** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1d2_-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0)\n📎 **4 Email: Microcurrent Body Sculptor: Body, Electric ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/14WNXke3SMNfXECcQdrjDFHSSI2dzw3Dr1awNSdLgSls/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-27 17:41** *Elyse*: Ok perfect will review
+- **2025-05-28 08:38** *User_2Z9G95*: FYI — All MDW flows/pop-up are reverted back, QA'd and tested. Thanks!\n\n*Reactions: :celebrate: Elyse, :heart: Ari Murray*
+- **2025-05-28 10:05** *Elyse*: Thank you @User_2Z9G95 ! Appreciate your work there!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-28 14:37** *Elyse*: @User_2Z9G95 @Ingrid and I just went through and gave notes on revisions!
+- **2025-05-28 14:37** *Elyse*: I have a few questions on i think the 6/4 email for Jess so flagged to her to get her answer today
+- **2025-05-28 15:54** *Elyse* 💬 2 replies: 📎 **IMG_1157.jpg** (jpg, 1.7MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V488M2JU/img_1157.jpg)\n\n*Reactions: :jiggly_wow: Thila, User_5S72LT*
+- **2025-05-28 15:54** *Elyse*: Here’s one!!
+- **2025-05-28 15:55** *Elyse*: 📎 **IMG_1158.MOV** (mp4, 4.7MB) - [Download](https://files.slack.com/files-tmb/TA97020CV-F08V48EKVLY-66e0886fe4/img_1158.mp4)\n\n*Reactions: :face_holding_back_tears: Thila, User_5S72LT, User_2Z9G95*
+- **2025-05-28 15:55** *Ari Murray*: OMG - SO LITTLE!!!!!!!!!
+- **2025-05-28 16:03** *Elyse*: National Geographic calling me for my investigative work :rolling*on*the*floor*laughing: \n\n*Reactions: :joy: User_5S72LT*
+- **2025-05-28 17:40** *User_2Z9G95*: Hi team! [Here's the link to the agenda we reviewed today](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0). Thanks!\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)
+- **2025-05-28 18:08** *Elyse*: Thank you @User_2Z9G95 and team!
+- **2025-05-29 09:21** *User_2Z9G95*: Hi @Elyse — [Per Jessica's note in this sheet](https://docs.google.com/document/d/1d2_-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0) about sharing a fascia graphic, i never saw an email come through — did she share one?
+- **2025-05-29 09:22** *User_2Z9G95*: We're finalizing the design for today's teaser email this morning and then the one for tomorrow shortly after, so I'll let you know when they're ready for review.
+- **2025-05-29 09:24** *User_2Z9G95*: Also — Do you have the blog content link for the fascia email tomorrow? Thanks!
+- **2025-05-29 10:24** *User_2Z9G95*: @Elyse — First teaser ready for review [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37650-8613&amp;t=X0QsJ3Et8YLVuv7Z-1). As discussed, there's two versions. each with a GIF. Do you know what time it's launching on Monday? We have a Klaviyo integration that let's us design timers, so we just need to know the time to accurately build this out.  
+  
+Let us know your thoughts!\n\n*Reactions: :eyes: Elyse*
+- **2025-05-29 10:33** *Elyse*: Just got home from doc, diving in!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-29 11:08** *User_2Z9G95*: @Elyse — Second teaser ready for review [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37623-6584&t=Vt0cpJjusV2xNAAi-1). We just need the fascia image from Jessica and the blog link. Thanks!
+- **2025-05-29 11:54** *Elyse*: MBS will be live by 9AM ET or sooner, just confirmed with Sumish\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-29 12:09** *Elyse*: @User*2Z9G95 edited LB photos with MBS [https://drive.google.com/drive/folders/1mzgu4whv8wRMT*5HsIfLhjv5WuOtJecE](https://drive.google.com/drive/folders/1mzgu4whv8wRMT_5HsIfLhjv5WuOtJecE)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-29 12:11** *Elyse*: @User_2Z9G95 edited LB/her husband photos with MBS [https://drive.google.com/drive/folders/1YJoWc1nVQKU7uZvYb6yuYF9wWnn2Dw6D](https://drive.google.com/drive/folders/1YJoWc1nVQKU7uZvYb6yuYF9wWnn2Dw6D)
+- **2025-05-29 12:11** *Elyse*: THere’s also a video on there - don’t think we need to use it for anything, but was interesting to hear jess and lb’s convo about leaving the gel on post session and not washing it off
+- **2025-05-29 12:11** *Elyse*: so itll absorb into your skin throughout the day
+- **2025-05-29 12:11** *Elyse*: good note to keep in mind for email copy
+- **2025-05-29 12:13** *User_2Z9G95*: Oh awesome!
+- **2025-05-29 12:13** *Elyse*: also @User_2Z9G95 i just sent you the blog briefs for Shelly Marshall and Lo Roxburgh
+- **2025-05-29 12:13** *Elyse*: I’m diving into their answers today and getting them up on the blog asap
+- **2025-05-29 12:13** *Elyse*: so will shoot over link once i have it published
+- **2025-05-29 12:13** *User_2Z9G95*: Perfect, thank you!
+- **2025-05-29 12:14** *Elyse*: also will send their answers beforehand so you can at least see the vibe they went with
+- **2025-05-29 12:14** *User_2Z9G95*: yes, that's perfect, thank you!
+- **2025-05-29 12:14** *Elyse*: i’m gonna make a copy of both docs so we can mock that up however we need to and not have the talent see us tearing their work up lol!\n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-05-29 12:14** *User_2Z9G95*: Good call!
+- **2025-05-29 12:53** *Elyse* 💬 1 reply: ok! @User_2Z9G95 just met with Ingrid and Fiona  
+• left a few notes on both teasers  
+• teaser 1: love the ladies hanging out on the rock version, gif is sublime  
+• teaser 2: love the shadow verson, absolutely nails the teaser vibe  
+    ◦ top link we want to direct to a JOIN THE WAITLIST cta - how can we do this on klaviyo? want to be able to tag those customers as having signed up thru this campaign, even though we’re gonna send it wide anyway  
+    ◦ bottom link - we’re gonna make a quick category on the blog home page to have all lymphatic/microcurrent/“flow” related blogs in one place so will link to that landing page there\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-29 12:55** *Elyse* 💬 3 replies: @User_2Z9G95 did we fire off ject email yet? just looked at design and saw a typo
+- **2025-05-29 12:55** *Elyse*: otherwise that one is gorgina too
+- **2025-05-29 12:56** *User_2Z9G95*: Noted on the 9a ET activation, however, we typically recommend email/SMS sends to be slightly later (1) to give us time to full activate/troubleshoot any issues (especially since pre-orders can be finicky) and (2) to not send it too early to allow people time to wake up and shop. Are you open to a 10a ET launch for both email and SMS?\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-29 12:56** *Elyse*: yep fab by me\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-29 12:57** *User_2Z9G95*: Reviewing teaser 1 now, then will review teaser 2 shortly!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-29 13:06** *User_2Z9G95*: @Elyse — RE join the waitlist strategy — can I ask the why behind this? Since we already have their emails, what are you looking to do with the information? Segment them and/or send the announcement to them early?  
+  
+I would maybe propose an SMS push, where we can get people to join SMS for early access. We can send the SMS at like 9:45am ET to give them a bit of a head start before email goes out?
+- **2025-05-29 13:06** *Elyse*: @Ingrid ^^ thoughts?
+- **2025-05-29 13:30** *User_2Z9G95* 💬 3 replies: To answer your question about logistics tho, the easiest way is through Attentive, but since that contract is ending soon, we can also do it in Klaviyo!
+- **2025-05-29 13:38** *User_2Z9G95*: Jumping on a call, but will send email + SMS previews for you around 3:30-4p ET. @Elyse\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-29 13:43** *User_2Z9G95*: @Elyse — I just tried testing the code HDJECT30, but it wasn't working. Can you please confirm? Thank you!
+- **2025-05-29 13:43** *Elyse*: checking rn
+- **2025-05-29 13:43** *Elyse*: what product did you try
+- **2025-05-29 13:43** *User_2Z9G95*: red light hat and sauna blanket
+- **2025-05-29 13:44** *Elyse*: it would help if i created the code\n\n*Reactions: :face_holding_back_tears: User_2Z9G95*
+- **2025-05-29 13:44** *Elyse*: :woman-facepalming::skin-tone-2:
+- **2025-05-29 13:44** *Elyse*: on it rn
+- **2025-05-29 13:44** *User_2Z9G95*: Thank you!!
+- **2025-05-29 13:44** *Elyse*: remind me what end date was
+- **2025-05-29 13:44** *Elyse*: 4?
+- **2025-05-29 13:44** *User_2Z9G95*: It was 5/28-6/4, but since we're sending today, do you want to extend to 6/5?
+- **2025-05-29 13:44** *Elyse*: well since we’re going out with it today i can make it 5
+- **2025-05-29 13:44** *Elyse*: yes fa\n\n*Reactions: :handshake: User_2Z9G95*
+- **2025-05-29 13:44** *Elyse*: fab
+- **2025-05-29 13:46** *Elyse*: ah i did create it! on 5/22 whew not going crazy
+- **2025-05-29 13:46** *Elyse*: adjusting dates
+- **2025-05-29 13:46** *User_2Z9G95*: Perfect, thank you!
+- **2025-05-29 13:46** *Elyse*: fixed, try now
+- **2025-05-29 13:55** *User_2Z9G95*: Yesss, thank you!
+- **2025-05-29 15:16** *User_2Z9G95*: @Elyse — Ject Miami Email #1 preview sent!
+- **2025-05-29 15:19** *Elyse*: perfecto @User_2Z9G95 let er rip
+- **2025-05-29 15:19** *User_2Z9G95*: Scheduled for 5p ET!
+- **2025-05-29 15:27** *Elyse*: <!here> just got note from Sumish - the MBS and Sculpting Activator Gel will only be available to the US to start
+- **2025-05-29 16:02** *User_2Z9G95*: Great shout! Will update exclusions.
+- **2025-05-29 16:29** *User_2Z9G95*: Just sent A/B test of the teaser email! @Elyse — let us know how they look!
+- **2025-05-29 16:29** *User_2Z9G95*: Will get these scheduled ASAP. There was an issue with the timer, that took longer than envisioned, but everything is working great now!
+- **2025-05-29 16:39** *User_2Z9G95*: @Elyse 5/30 design is also updated for you [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37623-6584&amp;t=vgME02w3aeSdnGN6-1). Thank you!
+- **2025-05-29 17:37** *Elyse*: Fab! Checking all now\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-29 17:42** *User_2Z9G95*: Also just sent the SMS for review. I think the SMS should go out tomorrow morning vs. this afternoon since we see the most SMS engagement during 9-5 — let me know if you're aligned! If we also want to push for a Fri/Sat send we can definitely do that, too!
+- **2025-05-29 17:48** *Elyse*: I was just thinking this, I sent off to Lauren Katie and Ingrid for final sign off so I agree moving to tomorrow and Saturday seems like the move. Also the SMS looks great. Just check the GIF I think it says tone instead of toned
+- **2025-05-29 17:48** *Elyse*: @User_2Z9G95 I just forwarded you the Father’s Day sale details, hot off the press \n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-29 17:49** *User_2Z9G95*: Great! Aligned there and thank you for that! Will get the GIF updated ASAP.
+- **2025-05-29 17:49** *Elyse*: Gonna look at email calendar in the morning and see what tweaks we have to make to include it
+- **2025-05-29 17:49** *User_2Z9G95*: Just saw! Perfect, will get this briefed out\n\n*Reactions: :thank-you: Elyse*
+- **2025-05-29 17:49** *User_2Z9G95*: Thank you!
+- **2025-05-29 18:03** *User_2Z9G95*: Oh and keep me posted on the lead gen CTA for Saturday's email. I created this landing page in Attentive that will add a tag to everyone who enters. We can ask for email and/or SMS! I would recommend SMS over email, or the both together.\n\n📎 **Screenshot 2025-05-29 at 4.01.33 PM.png** (png, 1.1MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UZ5VGVJ5/screenshot_2025-05-29_at_4.01.33___pm.png)\n📎 **Screenshot 2025-05-29 at 4.01.47 PM.png** (png, 1.1MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UF867E3Y/screenshot_2025-05-29_at_4.01.47___pm.png)\n📎 **Screenshot 2025-05-29 at 4.01.53 PM.png** (png, 1.1MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UE8T1E1H/screenshot_2025-05-29_at_4.01.53___pm.png)
+- **2025-05-29 18:18** *Elyse*: Yeah agreed
+- **2025-05-29 18:18** *Elyse*: I’ll confirm with IMC but agreed on SMS
+- **2025-05-29 18:19** *Elyse*: Also think we could then use that link for social
+- **2025-05-29 18:19** *Elyse*: @María José Castro FYI ^^
+- **2025-05-29 18:19** *María José Castro* joined the channel
+- **2025-05-29 18:19** *User_2Z9G95*: Yes totally!
+- **2025-05-29 18:22** *Elyse*: @Ingrid are you aligned w that? We already have these folks’ emails so would be redundant to collect again, but we can prompt them to sign up for SMS and then push launch SMS a little earlier than the email 
+- **2025-05-29 18:23** *Elyse*: @María José Castro can share this link over social as well to collect numbers. Maybe on stories?
+- **2025-05-29 18:23** *Elyse*: @User_2Z9G95 maybe link @María José Castro uses can collect email and sms 
+- **2025-05-29 18:23** *Elyse*: And link we use for email can just collect sms 
+- **2025-05-29 18:24** *User_2Z9G95* 💬 9 replies: That works!
+- **2025-05-30 09:00** *User_2Z9G95*: Morning @Elyse — RE discount codes, I was connecting with a Klaviyo and Attentive rep to figure out the best way to go about generating the coupon codes for each platform. They both recommended we create a list of unique codes through Shopify and then upload that list to both Klaviyo and Attentive to pull from. We'd need to select "one use per customer” for the code settings to ensure people can only use one code (even if they get sent two (i.e. if they got one code from Attentive and one from Klaviyo)).  
+  
+Thoughts? This is likely the best way to ensure people can only use one code, while still leveraging both platforms.  
+  
+If so, here's what we'd need you to do in Shopify:  
+**Go to:** Shopify Admin → **Discounts**  
+Click **“Create Discount” → “Discount Code”**  
+Choose:  
+• Discount Type: e.g., **15% off**  
+• Applies to: e.g., all products or your launch collection  
+• Limit to one use per customer (highly recommended)  
+Under **"Discount Code"**, choose:  
+• **“Generate a batch of codes”**  
+• Example format: `LAUNCH15-XXXX` (Shopify will auto-randomize)  
+• Generate enough for both platforms (e.g., 10,000 codes)  
+Save and export the codes as a **CSV**.  
+  
+From there, I can upload to both Klaviyo and Attentive and get the campaigns scheduled. Let me know what you think, so we can get this going! Thanks!
+- **2025-05-30 09:01** *Elyse*: Teaser 1 is good to go @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 09:02** *Elyse*: Ok I’ll get started on codes!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-30 09:29** *User_2Z9G95*: Let me know if you have any questions!
+- **2025-05-30 10:09** *User_2Z9G95*: @Elyse — Teaser #1 scheduled for 12p ET with the following segments. Confirming all international segments are excluded!\n\n📎 **Screenshot 2025-05-30 at 8.01.47 AM.png** (png, 120.7KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UJ0F43AP/screenshot_2025-05-30_at_8.01.47___am.png)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-30 10:13** *User_2Z9G95*: @Elyse — One final SMS preview sent for good measure with updated GIF!
+- **2025-05-30 10:14** *Elyse*: just saw - good to go
+- **2025-05-30 10:17** *User_2Z9G95*: Scheduled for today at 12p ET!
+- **2025-05-30 10:21** *Elyse*: Ok codes are underway!
+- **2025-05-30 10:21** *Elyse*: using our bulk discount code generator
+- **2025-05-30 10:21** *Elyse*: its importing!
+- **2025-05-30 10:21** *User_2Z9G95*: fabulous!
+- **2025-05-30 10:24** *User_2Z9G95*: @Elyse — Updated teaser #2 email ready for review [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37623-6584&amp;t=JF9XtgGasNy1QAnQ-1). What CTA are you using on social for the sign up? Want to keep it consistent: join the waitlist, get early access, etc.?\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 10:29** *Elyse*: @María José Castro can you chime in here please
+- **2025-05-30 10:32** *María José Castro* 💬 5 replies: Hey hey, could you share the link i should use to promote on stories? We’ll use “get early access” as the CTA
+- **2025-05-30 10:32** *Elyse*: @User_2Z9G95 blog link for bottom of teaser 2: [https://higherdose.com/blogs/the-high-life-blog/tagged/flow](https://higherdose.com/blogs/the-high-life-blog/tagged/flow)
+- **2025-05-30 10:33** *Elyse*: New blog category called Flow will house all lymphatic health, fascia, microcurrent, MBS related articles
+- **2025-05-30 11:05** *Elyse*: @User_2Z9G95 codes\n\n📎 **Body Sculptor Launch-export-5-30-2025-12-04-47-PM.csv** (csv, 117.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UBHA2ER5/body_sculptor_launch-export-5-30-2025-12-04-47-pm.csv)
+- **2025-05-30 11:11** *Jessica Alcalde* joined the channel
+- **2025-05-30 11:26** *User_2Z9G95*: @Elyse — Can you confirm codes are live 6/2-6/5 only right?
+- **2025-05-30 11:26** *Elyse*: i started them today so we could test if need be
+- **2025-05-30 11:26** *Elyse*: but yes only til 6/5
+- **2025-05-30 11:26** *User_2Z9G95*: ok great!
+- **2025-05-30 11:27** *User_2Z9G95*: Working with attentive and klaviyo to get them activated, so will ping when we're ready to QA
+- **2025-05-30 11:39** *User_2Z9G95*: @Elyse — The two sign up units are ready for review and QA! If you can go into both and QA them that would be great. If you have any feedback on the messaging, let me know, too!  
+  
+[LINK TO IG SIGN UP](https://higherdose.attn.tv/p/MV1/landing-page)  
+[LINK TO 5/31 EMAIL SIGN UP](https://higherdose.attn.tv/p/lDy/landing-page)
+- **2025-05-30 11:40** *User_2Z9G95*: @Elyse — I also think we should update pop-up to reflect the launch + create a new welcome flow. Are you aligned/can I let Alia know? We can create the email + SMS once the codes are uploaded.
+- **2025-05-30 11:41** *Elyse*: aligned!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-30 12:23** *User_2Z9G95*: Hi @Elyse — Are those sign ups good to go?
+- **2025-05-30 12:23** *Elyse*: checking rn! thank you for ping!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 12:23** *Elyse*: both look good
+- **2025-05-30 12:25** *User_2Z9G95* 💬 1 reply: This is the SMS they'll get upon joining, and the email they get will be the one we sent today with this SL and PT:  
+  
+SL: You've got early access!  
+PT: VIP Pre-Sale dropping June 2nd at 10am EST\n\n📎 **Screenshot 2025-05-30 at 10.24.09 AM.png** (png, 78.2KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08V3NKQS49/screenshot_2025-05-30_at_10.24.09___am.png)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-30 12:25** *User_2Z9G95*: @María José Castro — You're good to share this link in Stories. Thank you!! [https://higherdose.attn.tv/p/MV1/landing-page](https://higherdose.attn.tv/p/MV1/landing-page)
+- **2025-05-30 12:26** *María José Castro*: amazing, thanks!
+- **2025-05-30 12:51** *Elyse*: @User_2Z9G95 any ETA on launch email designs?
+- **2025-05-30 12:51** *User_2Z9G95*: Yes! [6/2 ready for review HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;p=f&amp;t=JTfP9B2oYmmIlMxw-0).
+- **2025-05-30 12:51** *Elyse*: @User_2Z9G95 teaser #2 can we move to preview email so I can send to lb/kk for final eyes?
+- **2025-05-30 12:51** *User_2Z9G95*: Yes, getting this uploaded as we speak!
+- **2025-05-30 12:52** *Elyse*: ok fab, ingrid/jess and i just reviewed, looks good want to send to them for final eyes
+- **2025-05-30 12:52** *User_2Z9G95*: There's 2 versions for 6/2 with the alt header/body messaging!
+- **2025-05-30 12:58** *Elyse*: @User_2Z9G95 Design for 6/2 email is veryyyyy underwhelming. Just reviewed with Ingrid and Jess - we’d love to see stronger images overall, much more exciting. This is the grand reveal, need it to feel exciting and compelling. Needs a rework overall please
+- **2025-05-30 13:02** *User_2Z9G95* 💬 2 replies: Confirming receipt! Updating creative ASAP. Copy is good, tho?
+- **2025-05-30 13:19** *User_2Z9G95*: @Elyse 5/31 email preview sent!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-30 13:27** *Elyse*: shared with execs\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-30 13:49** *User_2Z9G95*: @Elyse — Can you re-share a Body Sculptor Ritual Set PDP preview link when you get the chance? The previous one expired!
+- **2025-05-30 13:49** *Elyse*: on it
+- **2025-05-30 13:50** *Elyse*: [https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=8f0401eec0b6b5f6ecfaf9bb2f36708b](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=8f0401eec0b6b5f6ecfaf9bb2f36708b)\n\n**g47flg7x4slgxnmv-22626551.shopifypreview.com**\n🔗 **[Body Sculptor Ritual Set                      – HigherDOSE](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products_preview?preview_key=8f0401eec0b6b5f6ecfaf9bb2f36708b)**
+- **2025-05-30 13:50** *Elyse*: [https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=5a24d4595ddc3c8504cd1c50a8b6d41a](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=5a24d4595ddc3c8504cd1c50a8b6d41a)\n\n**g47flg7x4slgxnmv-22626551.shopifypreview.com**\n🔗 **[Transdermal Magnesium Spray | HigherDOSE](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products_preview?preview_key=5a24d4595ddc3c8504cd1c50a8b6d41a)**
+- **2025-05-30 13:50** *User_2Z9G95*: Thank you!
+- **2025-05-30 13:51** *Elyse*: @Sumish Khadka btw that still says trans mag spray on the activator gel page ^^
+- **2025-05-30 13:51** *Sumish Khadka* joined the channel
+- **2025-05-30 13:51** *Elyse*: oh whole page still has mag spray info on it
+- **2025-05-30 13:52** *Elyse*: disregard that second link for now @User_2Z9G95 for the gel
+- **2025-05-30 13:53** *User_2Z9G95*: Got it!
+- **2025-05-30 13:58** *User_2Z9G95*: @Elyse — [6/4 email HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=fTKN4FdBNuvgBJ50-1). We haven't integrated your previous feedback, so we'll update the images to make them pop, feel sexier, etc., but if there's any additional feedback, let us know!\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 14:31** *Elyse*: @User_2Z9G95 @Ari Murray can we make sure across sms/ads/etc wherever else it may be that we pull anything having to do with text10 code please\n\n**Chris Jacob**\n> <@U01C255NN3F> in all these new setups can we get rid of text 10 ASAP\n*Slack Conversation | 2025-05-30 14:31*
+- **2025-05-30 14:32** *User_2Z9G95*: @Elyse — For just the purpose of this campaign or for everything?
+- **2025-05-30 14:32** *Elyse*: everything
+- **2025-05-30 14:32** *User_2Z9G95*: Perfect, yep!
+- **2025-05-30 14:32** *User_2Z9G95*: Updating right now
+- **2025-05-30 14:32** *Elyse*: code got leaked online, so have seen some abuse\n\n*Reactions: :shark: Ari Murray*
+- **2025-05-30 14:32** *User_2Z9G95*: On it\n\n*Reactions: :pray: Ari Murray*
+- **2025-05-30 14:33** *User_2Z9G95*: Is it already turned off in Shopify?
+- **2025-05-30 14:33** *Elyse*: double checking now
+- **2025-05-30 15:00** *Elyse*: deactivated now @User_2Z9G95
+- **2025-05-30 15:01** *User_2Z9G95*: @Elyse — Revised 6/2 [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;t=iM06sBmYshRwCx7x-1), with the proto [HERE](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;t=iM06sBmYshRwCx7x-1) - to see the GIFs.\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 15:02** *Elyse*: reviewing!
+- **2025-05-30 15:03** *User_2Z9G95*: Revised 6/4 [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=IY1kZp5WY3aRt0aM-1) with the proto [HERE](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=IY1kZp5WY3aRt0aM-1).
+- **2025-05-30 15:07** *User_2Z9G95*: @Elyse UPDATE RE CODES:  
+  
+Attentive initially said that they could integrate them so that the same customer via email and SMS would get the same code (awesome!). Now it's sounding like there's a chance it won't work (we'll know shortly), but if it doesn't their recommendation is that the coupon code can only be provided via email *or* SMS.  
+  
+Since they aren't totally sure, our recommendation is to pivot to a singular Shopify code that doesn't stack with any other discount (i.e. SCULPT20) - that way we're ensuring its a cohesive experience between both CRM channels and SMS isn't left out because of this code consistency issue. Plus, we want this to be a success and it will only be activated for three days and it's product-specific so the risk of a leak is much lower, yet the risk on the customer is much higher if any of the unique ones are broken.  
+  
+Please let us know your thoughts on this ASAP and we'll update accordingly.
+- **2025-05-30 15:10** *Elyse*: ugh lordy
+- **2025-05-30 15:10** *Elyse*: ok sounds like we don’t have a choice
+- **2025-05-30 15:10** *Elyse*: Will see if we already have a sculpt20 activated, if not fine to do\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-30 15:14** *User_2Z9G95*: Ok, keep me posted!
+- **2025-05-30 15:38** *User_2Z9G95*: @Elyse — Let me know if 6/2 is good to upload for previews!
+- **2025-05-30 15:39** *Elyse*: 6/2 version 1
+- **2025-05-30 15:39** *Elyse*: is fab
+- **2025-05-30 15:39** *Elyse*: These are significantly better! Thank you all for the rework!!
+- **2025-05-30 15:40** *Elyse*: 6/4 good for preview too
+- **2025-05-30 15:50** *User_2Z9G95*: Perf, working on these now, thank you!
+- **2025-05-30 16:13** *User_2Z9G95*: @Elyse — Do you have the PDP link that you know will be used for me to link in the email?
+- **2025-05-30 16:19** *User_2Z9G95*: @Elyse – Test sent for 6/2! Please note, there's no links as we'll wait for the PDP link.
+- **2025-05-30 16:20** *Elyse*: wait 6/2 i think we have the wrong version on this test
+- **2025-05-30 16:21** *Elyse*: should be blue bikini girl
+- **2025-05-30 16:21** *Elyse*: version
+- **2025-05-30 16:21** *Elyse*: this version\n\n📎 **Screenshot 2025-05-30 at 5.21.38 PM.png** (png, 202.4KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UV06ULP6/screenshot_2025-05-30_at_5.21.38___pm.png)
+- **2025-05-30 16:21** *User_2Z9G95*: Oh, this one??\n\n📎 **Screenshot 2025-05-30 at 2.21.39 PM.png** (png, 274.2KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0902BRR9PA/screenshot_2025-05-30_at_2.21.39___pm.png)\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-30 16:22** *User_2Z9G95*: Fab!! Getting this updated rn, sorry about that
+- **2025-05-30 16:22** *Elyse*: also hang on one sec
+- **2025-05-30 16:22** *Elyse*: putting one copy tweak on the promo portion
+- **2025-05-30 16:22** *Elyse*: i put this same note on 6/4 and didnt put it on 6/2
+- **2025-05-30 16:23** *Elyse*: lets copy this text please\n\n📎 **Screenshot 2025-05-30 at 5.23.09 PM.png** (png, 262.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UV0BQUSY/screenshot_2025-05-30_at_5.23.09___pm.png)
+- **2025-05-30 16:23** *Elyse*: just the text
+- **2025-05-30 16:23** *Elyse*: where in 6/2 we have as a dose vip sentence
+- **2025-05-30 16:24** *Elyse*: yep perfecto
+- **2025-05-30 16:24** *Elyse*: what you have there
+- **2025-05-30 16:24** *Elyse*: lemme confirm rn on sculpt 20
+- **2025-05-30 16:25** *User_2Z9G95*: thank you!
+- **2025-05-30 16:28** *Elyse*: ok done its live
+- **2025-05-30 16:28** *Elyse*: should i deactivate the bulk codes from before?
+- **2025-05-30 16:29** *User_2Z9G95*: Yes, good call
+- **2025-05-30 16:29** *Elyse*: and i’ll deactivate the 200k codes from klaviyo?
+- **2025-05-30 16:30** *User_2Z9G95*: yes!
+- **2025-05-30 16:30** *Elyse*: fab both done
+- **2025-05-30 16:30** *User_2Z9G95*: thank you so much!!\n\n*Reactions: :heartpulse: Elyse*
+- **2025-05-30 16:33** *User_2Z9G95*: 6/2 preview sent!
+- **2025-05-30 16:36** *Elyse*: fab sent to lb/kk for final eyes\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 16:42** *User_2Z9G95*: Just sent 2 SMS variations for review! LMK if you prefer one over the other
+- **2025-05-30 16:42** *User_2Z9G95*: Link will be added when ready, too
+- **2025-05-30 16:43** *Elyse*: second one
+- **2025-05-30 16:43** *User_2Z9G95*: sorry which was the second one I sent haha i forgot :sweat_smile:
+- **2025-05-30 16:43** *Elyse*: benefits list
+- **2025-05-30 16:43** *User_2Z9G95*: love!
+- **2025-05-30 16:51** *User_2Z9G95*: Note RE Segments: The strategy with this is to treat it as a mini sale period, so still focusing on our most engaged but opening it up slightly — to those showing the next highest intent. We have great data from MDW, so we're recommending we send to the same list as the engaged MDW segment that drove the strongest performance with some additions (VIPs, MDW purchasers, etc). Confirming all International will be excluded, too.\n\n📎 **Screenshot 2025-05-30 at 2.49.35 PM.png** (png, 245.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08V4V4SJV7/screenshot_2025-05-30_at_2.49.35___pm.png)
+- **2025-05-30 17:02** *Elyse*: Sounds good
+- **2025-05-30 17:02** *Elyse*: @Ingrid good by you? ^^
+- **2025-05-30 17:04** *User_2Z9G95*: Confirming we'll A/B test these headlines for 6/4 email, but just sent through the preview with one for review/to pass along to the team!\n\n📎 **Screenshot 2025-05-30 at 3.03.55 PM.png** (png, 75.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UM0NJ0T0/screenshot_2025-05-30_at_3.03.55___pm.png)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 17:05** *Elyse*: looks great, sent to team\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 17:06** *User_2Z9G95*: We'll hold on scheduling until we have the live links! If it's easier to wait until Monday morning, happy to do that, too.
+- **2025-05-30 17:49** *User_2Z9G95*: @Elyse — FYI: Teaser 2 scheduled for tomorrow at 12p ET!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-01 18:56** *Elyse*: @User_2Z9G95 launch email good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-01 18:57** *User_2Z9G95*: Added in the links, too, so we're good to go!
+- **2025-06-02 07:23** *User_2Z9G95*: Good Morning, @Elyse! Sharing a list of outstanding items needed for launch this AM:  
+• I just sent you previews of updated email and SMS with the links for today — just to double confirm. If all looks good — let's send the SMS at 9:45a ET and the email at 10 ET.   
+• We need a photo for the pop-up that Corey shared — let me know if you have one in mind!  
+Confirming we've:  
+• Updated the email welcome series to support the pop-up: It will have two emails sent 1 day apart, [our launch email](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;t=czCfFCuK9e0cc5Ev-0) and [this one](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=D6SzCbOgdz9DX6XT-0). Happy to send through previews when you're ready to review.   
+• Updated the SMS welcome series to support the pop-up (attached) — Can also send through a preview when you're ready for review. \n\n📎 **Screenshot 2025-06-01 at 3.04.56 PM.png** (png, 123.7KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08USTHRRLK/screenshot_2025-06-01_at_3.04.56___pm.png)
+- **2025-06-02 07:24** *Elyse*: Morning! @User_2Z9G95 ! Text is good to go
+- **2025-06-02 07:25** *Elyse*: Looking at email again now
+- **2025-06-02 07:27** *Elyse*: 📎 **File.jpg** (jpg, 193.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UTSNDY30/file.jpg)
+- **2025-06-02 07:28** *Elyse*: @User_2Z9G95 I don’t remember us having the same summer’s here copy back to back can you check that please
+- **2025-06-02 07:32** *Elyse*: For pop up for now let’s use this image minus all the text please\n\n📎 **File.jpg** (jpg, 139.0KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UTTF46TG/file.jpg)
+- **2025-06-02 07:33** *Elyse* 💬 1 reply: Should be easy to grab within the folder, lmk if you can’t find I’ll dig
+- **2025-06-02 07:34** *User_2Z9G95*: Good shout — it's still in the Figma file, but will update since we don't need it. What about the 650nm portion?\n\n📎 **Slice 17.jpg** (jpg, 662.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UXDKG03X/slice_17.jpg)
+- **2025-06-02 07:35** *Elyse*: Keep that\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-06-02 07:35** *User_2Z9G95*: Perfect
+- **2025-06-02 07:37** *Elyse*: @User_2Z9G95 on my end  
+• updating Lauren’s blog post with photos today, will send thru live link once finished  
+• Adding photos and uploading Shelly Marshall blog today  
+• Adding photos and uploading Lo Rox blog today  
+Will send live links for all once up!   
+  
+Ping me when 6/3 founders note email is ready to review I’ll get quick eyes on it\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:39** *User_2Z9G95*: Re-sent preview!
+- **2025-06-02 07:39** *Elyse*: Yep good to rock
+- **2025-06-02 07:39** *🤖 Bot*: excited\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:41** *User_2Z9G95*: We have the rest of the MBS content ready for review in this sheet [HERE](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958), also outlined below:  
+• [6/3: MBS Founder's Note + 20% off MBS](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-3912)  
+• [6/4: MBS: Body, Electric + 20% off MBS](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&p=f&t=alBHWHH8p3JB34V9-0)  
+• [6/5: New Subscribers: Miami Event #3](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39026-11452)  
+• [6/5: Activator Gel Spotlight + 20% off MBS](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-14419&p=f&t=1EmZigsA7c7eHxx7-0)  
+• [6/5: Last Chance: Microcurrent Body Sculptor Launch + 20% off MBS](https://docs.google.com/document/d/1Sxhco-fwFJisvZCFD7fG1a7kyER2IUmK94jQq_gslIU/edit?tab=t.n6u8vd1ad4ju)
+- **2025-06-02 07:41** *Elyse*: Perfection. I’ll take Quick Look now and then will grab Ingrid/jess/whoever else is available for second set of eyes\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:42** *Elyse*: So Founder’s note we’ll want to link to Lauren’s blog post at the end, I don’t see that cta and we’ll need some kind of greeting/closing. This is just copy/paste the text I sent over
+- **2025-06-02 07:43** *Elyse*: But overall design looks good, think I like the first one better
+- **2025-06-02 07:43** *User_2Z9G95*: Yes I added a comment in there to add that!
+- **2025-06-02 07:44** *Elyse*: Ok fab thank you
+- **2025-06-02 07:44** *User_2Z9G95*: Are you able to re-send the preview link? I can review and try to pull something now
+- **2025-06-02 07:44** *Elyse*: Sorry looking on my phone so not seeing the comments
+- **2025-06-02 07:44** *User_2Z9G95*: No worries!
+- **2025-06-02 07:44** *Elyse*: Yep for sure hang tight
+- **2025-06-02 07:45** *Elyse* 💬 2 replies: [https://goc3qomj9eh9zlxw-22626551.shopifypreview.com/blogs/the-high-life-blog/body-sculptor-new-summer-body](https://goc3qomj9eh9zlxw-22626551.shopifypreview.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:47** *User_2Z9G95*: Just sent a preview for the JECT Launch specific email. All content is the same except for the 20% off is replaced with 30%, the code is updated, and the disclaimer is updated.
+- **2025-06-02 07:47** *Elyse*: Ok cool
+- **2025-06-02 07:49** *Elyse*: Yep good to fly\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:49** *User_2Z9G95*: **One other thing we noticed, we wanted to get your thoughts on:**  
+It looks like 29 email subscribers and 11 SMS subscribers already purchased the Ritual Body Sculptor Kit, prior to us officially launching via email and SMS. Since they bought full price without the promotion, I can foresee there being some complaints if they find out they can get it for 20% off (after having purchased it at full price).  
+  
+**Wanted to get your thoughts on two options for how to handle:**  
+1. Exclude them from all MBS emails this week since they already purchased (we're going to exclude purchasers from ongoing emails regardless, but there's still a chance they could find out about the 20% off promotion, so we'd need a customer service plan in place to manage complaints if so)  
+2. Include them in the MBS email messaging and have a customer service plan in place for people who reach out about purchasing the product prior to receiving the discount and wanting to get the 20% off on their purchase.  
+Please let us know how to proceed with the segmenting of these customers!
+- **2025-06-02 07:50** *Elyse*: Wow interesting
+- **2025-06-02 07:50** *Elyse*: I wonder how they got it
+- **2025-06-02 07:51** *Elyse*: Can you spit me out a list of those peeps please
+- **2025-06-02 07:51** *User_2Z9G95*: Yes!\n\n*Reactions: :thank-you: Elyse*
+- **2025-06-02 07:51** *Elyse*: Otherwise I’m good with #2 we can honor it
+- **2025-06-02 07:51** *Elyse*: Since they purchased prior to launch, I’d want them to get the launch emails and see what it’s all about officially
+- **2025-06-02 07:51** *User_2Z9G95*: I agree with that!
+- **2025-06-02 07:54** *User_2Z9G95*: Looks like I have to contact support to download the lists, so working on that now! Please standby.
+- **2025-06-02 07:54** *Elyse*: Ok no problem don’t go nuts
+- **2025-06-02 07:54** *Elyse*: Just curious
+- **2025-06-02 07:54** *User_2Z9G95*: For sure!
+- **2025-06-02 08:05** *User_2Z9G95*: Maybe one of these could work for the pop-up?\n\n📎 **HigherDose_House_01_052.jpg** (jpg, 3.0MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UT5UMW8K/higherdose_house_01_052.jpg)\n📎 **HigherDose_House_03_291.jpg** (jpg, 2.8MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08VC41V5R7/higherdose_house_03_291.jpg)
+- **2025-06-02 08:05** *Elyse*: Yep let’s try em 
+- **2025-06-02 08:05** *Elyse*: Both look cool/show the tech in use\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 08:23** *User_2Z9G95* 💬 1 reply: @Elyse Confirming:  
+• SMS is scheduled for 9:45a ET - all subscribers  
+• Email is scheduled for 10a ET - segment threaded  
+• JECT Miami email is scheduled for 10a ET - JECT list\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-02 08:24** *User_2Z9G95*: Here's the segment from Attentive. I can't actually download the Klaviyo one because I only have Manager permissions!\n\n📎 **MBS_Launch_Purchasers - 6.2.25 - Attentive.csv** (csv, 423B) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UXLEDMQD/mbs_launch_purchasers_-_6.2.25_-_attentive.csv)
+- **2025-06-02 08:25** *Elyse*: Ok sweet will check it out
+- **2025-06-02 08:37** *User_2Z9G95*: I just snagged a screenshot for the email purchasers for a quick glance!\n\n📎 **Screenshot 2025-06-02 at 6.37.15 AM.png** (png, 208.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0909BZE2KS/screenshot_2025-06-02_at_6.37.15___am.png)
+- **2025-06-02 08:38** *Elyse*: Hm ok no names stand out to me
+- **2025-06-02 08:38** *Elyse*: Was curious if any of them were like press or brand friendlies etc
+- **2025-06-02 08:39** *User_2Z9G95*: Oh yeah good shout
+- **2025-06-02 08:39** *Elyse*: Wiskybj@aol is a funny email \n\n*Reactions: :joy: User_2Z9G95, :skull: User_2Z9G95*
+- **2025-06-02 08:39** *Elyse*: I thought my elysef99@aol was bad
+- **2025-06-02 08:40** *User_2Z9G95*: Hilarious
+- **2025-06-02 08:42** *User_2Z9G95*: Oh shoot — this sent me to a 404!
+- **2025-06-02 08:58** *Ari Murray*: hi @Elyse @Ingrid our main channel seems to have disconnected from slack so sharing here - would it make sense to hide reviews on the body sculptor ritual set for now on your site? it's new so showing 0 - but probably best to show nothing until reviews are collected?\n\n📎 **Screenshot 2025-06-02 at 9.58.49 AM.png** (png, 15.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08VCDBM7DX/screenshot_2025-06-02_at_9.58.49___am.png)
+- **2025-06-02 08:59** *Ari Murray*: and then a "new" badge could be in it's place?
+- **2025-06-02 08:59** *Elyse*: @Sumish Khadka can you check this out please\n\n*Reactions: :heart: Ari Murray*
+- **2025-06-02 09:49** *Ingrid*: Sumish in my email I had asked to switch that to “write a review”
+- **2025-06-02 09:50** *Ingrid*: (I’ll text him now)\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-02 10:28** *Elyse*: @User_2Z9G95 can we double check that @Jessica Alcalde is on the email list please
+- **2025-06-02 10:28** *Elyse*: She said she didn’t get launch email
+- **2025-06-02 10:34** *Elyse* 💬 2 replies: @User*2Z9G95 try this link for blog post [https://r6bipd351ackddn3-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=dcc269dc6573be1298dcab26cb47c0c2](https://r6bipd351ackddn3-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=dcc269dc6573be1298dcab26cb47c0c2)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 10:40** *User_2Z9G95*: It looks like she was unsubscribed April 11th, 2024. I can manually resubscribe her if she would like!\n\n📎 **Screenshot 2025-06-02 at 8.40.01 AM.png** (png, 363.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UYJV3Q93/screenshot_2025-06-02_at_8.40.01___am.png)
+- **2025-06-02 10:41** *Elyse*: so bizarre!
+- **2025-06-02 10:41** *Elyse* 💬 2 replies: yes please thank you
+- **2025-06-02 11:23** *Elyse*: <!channel> 911 - can anyone else see this? just got a note from a brand friendly that website was down?
+- **2025-06-02 11:24** *Elyse*: @Chris Jacob @Ingrid @Sumish Khadka
+- **2025-06-02 11:24** *Chris Jacob* joined the channel
+- **2025-06-02 11:24** *Ingrid*: I’m on the site now
+- **2025-06-02 11:24** *User_5S72LT*: site is working for me!
+- **2025-06-02 11:24** *Ingrid*: It’s not down 
+- **2025-06-02 11:24** *User_2Z9G95*: Me, too! Not down!
+- **2025-06-02 11:24** *Ingrid*: Video up though! Looking grade 
+- **2025-06-02 11:24** *Elyse*: what daaaaa
+- **2025-06-02 11:24** *Elyse*: i asked her to send screenshot
+- **2025-06-02 11:24** *Elyse*: maybe its just on her end/computer
+- **2025-06-02 11:25** *User_2Z9G95*: Video looks sooooo good!
+- **2025-06-02 11:34** *Elyse*: whew ok sorry for false alarm
+- **2025-06-02 11:34** *Elyse*: thanks all for checking\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-02 11:35** *Elyse*: <!here> our WWD exclusive is live as well! [EXCLUSIVE: Wellness Tech Company HigherDose Launches Three-in-one Sculpting Body Recovery Device](https://wwd.com/beauty-industry-news/wellness/higherdose-body-recovery-device-launch-red-light-lymphatic-1237873623/)\n\n**WWD**\n🔗 **[EXCLUSIVE: Wellness Tech Company HigherDose Launches Three-in-one Sculpting Body Recovery Device](https://wwd.com/beauty-industry-news/wellness/higherdose-body-recovery-device-launch-red-light-lymphatic-1237873623/)**\n> Wellness technology company HigherDose is launching a body recovery device with red light and micro current to address lymphatic, fascia and muscle.\n*2025-06-02 00:00*\n\n*Reactions: :bangbang: User_2Z9G95, Ari Murray, :light-blue-heart: User_PT7LCE, Ari Murray*
+- **2025-06-02 11:35** *Elyse*: full clip\n\n📎 **WWD x HigherDOSE 6.2.25.pdf** (pdf, 2.9MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UUDP55H9/wwd_x_higherdose_6.2.25.pdf)
+- **2025-06-02 11:47** *Elyse*: Diving into design review rn @User_2Z9G95\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 12:48** *Elyse*: @User_2Z9G95 6/4 email can you send me proto version so we can see the gif in action please
+- **2025-06-02 12:49** *Elyse*: on a screenshare with team as we speak
+- **2025-06-02 12:49** *User_2Z9G95*: Yes!
+- **2025-06-02 12:49** *User_2Z9G95*: @Elyse — [https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly[…]gns-%E2%80%93-June-2025?node-id=39015-551&amp;t=Y262Pn2muJbze4f7-1](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=Y262Pn2muJbze4f7-1)
+- **2025-06-02 13:23** *Elyse*: @User_2Z9G95 dropped in notes  
+• 6/3 I’m gonna edit LB’s text to shorten it a bit, lot of text visually  
+• 6/4 added a note at the bottom  
+• 6/5 miami reviewing now  
+• 6/5 activator gel left some notes there as well  
+• 6/5 text, left notes there\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 13:24** *Elyse* 💬 1 reply: also we LOVED the “little bit of foreplay goes a long way”\n\n*Reactions: :fire: User_2Z9G95, User_5S72LT, User_PT7LCE*
+- **2025-06-02 13:24** *Elyse*: very hd coded\n\n*Reactions: :fire: User_2Z9G95, User_5S72LT, User_PT7LCE*
+- **2025-06-02 13:24** *User_2Z9G95*: All feedback is with design! Thank YOU!
+- **2025-06-02 13:52** *User_2Z9G95*: Hi @Elyse — Do you all have a time for the Father's Day sale launch? 11a-12p ET is a typically good timeframe (not too late, not too early). Let us know!
+- **2025-06-02 13:53** *Elyse*: yeah should be good - I’d imagine we’ll have it live on site for midnight EST so whenever you think is good for email we’re down with\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-06-02 14:01** *User_2Z9G95*: @Elyse – Keep me posted on condensed copy for tomorrow's email, too!
+- **2025-06-02 14:01** *Elyse*: Inhaling some lunch and jumping into it\n\n*Reactions: :green_salad: User_2Z9G95*
+- **2025-06-02 14:01** *Elyse*: Launch day vibes! :rolling*on*the*floor*laughing: :tada: \n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-06-02 14:57** *Elyse*: Launch SMS is crushinggggg\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 14:57** *Elyse* 💬 6 replies: @User_2Z9G95 i just dropped revisions into 6/3 google doc and sent to team for review. lmk any prelim thoughts while we wait for team!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 14:58** *User_2Z9G95*: Getting a second SMS queued up for tomorrow!
+- **2025-06-02 14:58** *User_2Z9G95*: Thank you, will take a look!
+- **2025-06-02 14:59** *🤖 Bot*: hell yeah
+- **2025-06-02 14:59** *Elyse*: to sms for tomorrow
+- **2025-06-02 15:02** *Elyse*: on second thought, @Ingrid would like to space it out by another day to avoid fatigue with non purchasers
+- **2025-06-02 15:04** *User_2Z9G95*: That works!
+- **2025-06-02 15:25** *User_2Z9G95*: @Elyse — 6/3 updated design [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-3912&amp;t=q9tswgj64w3QybKx-1). If all looks good, I'll get it uploaded for a preview.
+- **2025-06-02 15:30** *Elyse*: sent to team, but left two notes on it in the meantime\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-06-02 15:33** *User_2Z9G95*: Thank you!!
+- **2025-06-02 15:36** *Elyse*: good to move to preview
+- **2025-06-02 15:36** *Elyse*: once we add little closing sign off from lb/kk
+- **2025-06-02 15:36** *User_2Z9G95*: Perfect!
+- **2025-06-02 15:36** *Elyse*: once in preview i’ll shoot to lb/kk for final eyes and we can schedule
+- **2025-06-02 15:37** *Elyse*: i am waiting for a few photos from our graphic designer but in the meantime gonna publish this article as is so you have live link
+- **2025-06-02 15:38** *Elyse*: [https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)\n\n**higherdose.com**\n🔗 **[Introducing the HIGHERDOSE Body Sculptor                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)**
+- **2025-06-02 15:38** *User_2Z9G95*: Thank you!
+- **2025-06-02 15:48** *User_2Z9G95*: Uploading now!
+- **2025-06-02 16:04** *User_2Z9G95*: Preview sent! We didn't discuss SL and PTs, so happy to modify! Some alts:  
+  
+SL: Thank you for the support!  
+PT: Meet the magic of microcurrent  
+  
+SL: Meet the magic of microcurrent  
+PT: Sculpt. Tone. Release  
+  
+SL: Meet the magic of microcurrent  
+PT: 20% off is ending soon  
+  
+SL: Thank you for the support!  
+PT: Your 20% off is ending soon
+- **2025-06-02 16:32** *Elyse*: 2
+- **2025-06-02 16:32** *Elyse*: actually
+- **2025-06-02 16:32** *Elyse*: can we a/b test 2 and 3
+- **2025-06-02 16:34** *User_2Z9G95*: For sure!
+- **2025-06-02 18:02** *Elyse*: @User_2Z9G95 notes from Fiona on founders note \n\n📎 **IMG_1238.png** (png, 273.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V0SELPPF/img_1238.png)
+- **2025-06-02 18:46** *User_2Z9G95*: Fab! Getting this updated, thank you!
+- **2025-06-03 07:08** *Elyse*: @User_2Z9G95 got word that HdJect30 got leaked online
+- **2025-06-03 07:14** *Elyse*: But not worried, I just checked it’s only been used once
+- **2025-06-03 08:33** *User_2Z9G95*: Thank you for letting me know! Let’s keep monitoring it for sure. 
+- **2025-06-03 08:52** *User_2Z9G95*: @Elyse — Just sent an updated preview with the A/B test for the founders note email for today!
+- **2025-06-03 09:56** *Elyse*: Checking it out
+- **2025-06-03 09:58** *Elyse*: So @User_2Z9G95 we’re missing the closing sign off - like thanks, Lauren, Katie and the HigherDose team
+- **2025-06-03 09:58** *Elyse*: That was my note yesterday about sign off, I meant like an actual closing of the “letter”
+- **2025-06-03 09:59** *User_2Z9G95*: Got it, updating now
+- **2025-06-03 10:00** *User_2Z9G95*: @Elyse — Should it go at the very end after visit our blog here?
+- **2025-06-03 10:00** *Elyse*: What do you think?
+- **2025-06-03 10:01** *Elyse*: Or before the cta button?
+- **2025-06-03 10:01** *Elyse*: I’m neutral
+- **2025-06-03 10:01** *User_2Z9G95*: I'll look at both
+- **2025-06-03 10:13** *User_2Z9G95*: @Elyse – [Updated](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-3912&amp;p=f&amp;t=1fpRDC6C0Hpy6sKq-0)! I think the one with it above the CTA looks best.
+- **2025-06-03 10:23** *Elyse*: Agreed above button FTW\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 10:34** *User_2Z9G95*: @Elyse — Updated sent for review!
+- **2025-06-03 10:36** *Elyse*: Fab will look rn\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 11:05** *Elyse*: Looks good, just sent to team for quick review\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 12:23** *User_2Z9G95*: @Elyse — Just passed along the following previews for review!  
+• 6/4 Version A - Body, Electric  
+• 6/4 Version B - Body, Electric  
+• 6/5 Activator Gel Spotlight  
+• 6/5 JECT Miami Last Chance  
+[6/4 MMS copy is ready for your review here, too](https://docs.google.com/document/d/14WNXke3SMNfXECcQdrjDFHSSI2dzw3Dr1awNSdLgSls/edit?tab=t.mbioth74bdcz)! We'll have it paired with a reviews GIF.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-03 12:25** *Elyse*: Diving into this in one sec!
+- **2025-06-03 12:31** *User_2Z9G95*: @Elyse — Also when you get a chance can you confirm if this email is driving to a blog post or if the email itself should be a tad more long-form?\n\n📎 **Screenshot 2025-06-03 at 10.31.12 AM.png** (png, 176.3KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08V9ECS7C4/screenshot_2025-06-03_at_10.31.12___am.png)
+- **2025-06-03 12:51** *Elyse*: will drive to blog post
+- **2025-06-03 12:52** *Elyse*: but would love to see that info sprinkled in there
+- **2025-06-03 12:53** *User_2Z9G95*: Will it be on of these? Or a separate one?  
+• Shelly Marshall   
+• Lo Rox
+- **2025-06-03 12:53** *Elyse*: separate, dedicated to that topic
+- **2025-06-03 12:54** *Elyse*: will send you the brief hang on
+- **2025-06-03 13:46** *Elyse*: Body Electric’s good to go
+- **2025-06-03 13:49** *Elyse*: @User_2Z9G95 can you resend both 6/5 emails for me please
+- **2025-06-03 13:49** *Elyse*: Can’t seem to find in my inbox
+- **2025-06-03 13:50** *User_2Z9G95*: Confirming today's is scheduled for 3p ET!
+- **2025-06-03 13:50** *User_2Z9G95*: Yes, re-sending now!
+- **2025-06-03 13:55** *Elyse*: [https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body) live with new photos!\n\n**higherdose.com**\n🔗 **[Introducing the HIGHERDOSE Body Sculptor                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)**
+- **2025-06-03 13:55** *Elyse*: just in time
+- **2025-06-03 13:58** *Elyse*: @User_2Z9G95 gel activator email needs the L in Gel in bold
+- **2025-06-03 13:58** *Elyse*: 📎 **Screenshot 2025-06-03 at 2.58.21 PM.png** (png, 789.0KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V6A24M2R/screenshot_2025-06-03_at_2.58.21___pm.png)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 13:59** *User_2Z9G95*: Looks so good!
+- **2025-06-03 14:01** *Elyse*: after that format fix, good to go on that one
+- **2025-06-03 14:02** *Elyse*: 6/5 ject gucci to go too
+- **2025-06-03 14:03** *Elyse*: left note on doc for 6/4 sms
+- **2025-06-03 14:03** *User_2Z9G95*: Re-sent 6/5 with Gel bolded to triple confirm
+- **2025-06-03 14:03** *Elyse*: only thing on ject email, needs promo disclaimer at the bottom
+- **2025-06-03 14:05** *Elyse*: perfecto on Gel!
+- **2025-06-03 14:06** *User_2Z9G95*: Re-sent JECT with updated disclaimer!
+- **2025-06-03 14:07** *Elyse*: perfecto, good to go
+- **2025-06-03 14:15** *User_2Z9G95*: Woohoo, thank you! Just sent the preview for tomorrow's SMS, too. Confirming:  
+• 6/4 scheduled for 10a local  
+• Both 6/5 scheduled for 11a local
+- **2025-06-03 14:16** *Elyse*: good to go
+- **2025-06-03 14:36** *User_2Z9G95*: 6/4 SMS is scheduled for tomorrow at 10a local!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-03 15:45** *User_2Z9G95*: @Elyse @Ingrid — I'm so sorry, I misspoke on the attribution window for Attentive. I thought 3 days was the default, but I realized the brand I worked on previously had manually updated that. I just triple checked in our account and the default in Attentive, which is what we have is: 1 day view thru and 30 days click thru. As we onboard to Postscript we can figure out what theirs is and modify if we see fit.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-03 15:47** *Elyse*: @User_2Z9G95 @Ari Murray would also love your thoughts on Alia vs Postscript for popup - if we think Alia’s performance is strong enough to continue beyond free trial or if we think Postscript’s capabilities are just as good and under one roof?  
+cc @Ingrid @Chris Jacob
+- **2025-06-03 15:54** *Ari Murray*: @Elyse our preferred stack is alia popup + postscript backend. we don't use the postscript popup when we have the option for alia as we've historically seen the best results with alia as popup and postscript behind it! cc @User_2Z9G95\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-03 16:18** *Elyse*: @User_2Z9G95 Shelly Marshall blog [https://higherdose.com/blogs/the-high-life-blog/fascia-lymphatic-shelly-marshall-interview](https://higherdose.com/blogs/the-high-life-blog/fascia-lymphatic-shelly-marshall-interview)\n\n**higherdose.com**\n🔗 **[Beauty, Fascia &amp; Lymphatic Healing with Shelly Marshall                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/fascia-lymphatic-shelly-marshall-interview)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 16:22** *User_2Z9G95*: Thank you! Also — when you get the chance do you mind reviewing the following?:  
+• [Father's Day Flash copy is ready for your review](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)  
+• Can you please share the blog for the 6/12 send: Dad's who DOSE  
+• Can you please share the blog/additional context for the 6/15 send: Dad's who DOSE (David)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-03 16:23** *Elyse*: On it!
+- **2025-06-03 16:30** *Elyse*: Content brief for RL therapy blog [https://docs.google.com/document/d/1ArSBGKKfj1FME6gblXXUXEUWsJgN6uyrftl*xhJD2RU/edit?tab=t.0](https://docs.google.com/document/d/1ArSBGKKfj1FME6gblXXUXEUWsJgN6uyrftl*xhJD2RU/edit?tab=t.0)\n\n📎 **HigherDOSE Content Brief** (gdoc, 108.1KB) - [Download](https://docs.google.com/document/d/1ArSBGKKfj1FME6gblXXUXEUWsJgN6uyrftl_xhJD2RU/edit?tab=t.0)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 16:31** *Elyse*: Sitting with talent, content due date of 6/9\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 16:37** *Elyse*: @User*2Z9G95 david’s content - I’m gonna edit a little bit but here’s raw cut [https://docs.google.com/document/d/1hwzi4*Hm4MtQzyDt2BXidu1F*oz9-XeywmaqmlfKYaM/edit?tab=t.0](https://docs.google.com/document/d/1hwzi4*Hm4MtQzyDt2BXidu1F_oz9-XeywmaqmlfKYaM/edit?tab=t.0)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 08:18** *Elyse*: Morning all! @User_2Z9G95 something to add to our flow revamp list - the wonderment emails about shipping. I just got an order shipped email and it needs the new footer and the Zoe kravitz pic removed \n\n📎 **IMG_1279.png** (png, 1.0MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V6DWR79U/img_1279.png)
+- **2025-06-04 09:32** *User_2Z9G95*: @Elyse — Confirming any emails with the outdated footer are good to be updated with the new footer? I'll start compiling a list and can get these swapped out ASAP\n\n*Reactions: :+1::skin-tone-3: Elyse, :+1: Ingrid*
+- **2025-06-04 11:21** *User_2Z9G95* 💬 4 replies: Hi @Elyse — [Father's Day flash content is ready for review (highlighted in green)](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)! Let us know if you have any thoughts/feedback before we pass to design. Thank you!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-06-04 11:35** *Elyse*: 📎 **Screenshot 2025-06-04 at 12.35.14 PM.png** (png, 124.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08VC6Z4JPP/screenshot_2025-06-04_at_12.35.14___pm.png)
+- **2025-06-04 11:35** *Elyse*: will dive into father’s day stuff now!
+- **2025-06-04 12:29** *User_2Z9G95*: @Elyse — Granted! Sorry for the hold up.
+- **2025-06-04 12:30** *Elyse*: all good np
+- **2025-06-04 12:30** *Elyse*: leaving comments now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 12:30** *User_2Z9G95*: Nice! based on your screenshot, I noticed some things will need to be updated! So yes please make any copy tweaks and we'll give it another pass through after!
+- **2025-06-04 12:31** *Elyse*: across the board we need to update copy around code usage
+- **2025-06-04 12:31** *Elyse*: its the same as mdw basically, where its no code for the bundles but yes code for the solo tech
+- **2025-06-04 12:31** *User_2Z9G95*: Ok, fab! Yep we will get this updated ASAP
+- **2025-06-04 12:42** *User_2Z9G95*: @Elyse — I think the collections page with homepage CTA is a good idea! Let me know if you end up doing that, we would want to drive all emails to that page.
+- **2025-06-04 12:43** *Elyse*: totally
+- **2025-06-04 12:43** *Elyse*: Sumish is putting it together, will circulate link when its ready!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 12:45** *User_2Z9G95*: Dad's who dose for 6/12 copy is also ready [HERE](https://docs.google.com/document/d/1q8OKM*SGEGIJjPqxtcwbK*l6Q5cxNS2YwFdvk3-frfM/edit?tab=t.0)! Access granted.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :eyes: Elyse*
+- **2025-06-04 12:45** *User_2Z9G95*: Updating Father's Day now
+- **2025-06-04 13:12** *User_2Z9G95*: @Elyse — [Father's Day is updated](https://docs.google.com/document/d/1Lf6zZN9SEpJZCqSYfDVki6EsmMLDVZyOK7sMw8dd-44/edit?tab=t.kny4eaz90qri). Thank you!\n\n*Reactions: :eyes: Elyse*
+- **2025-06-04 13:29** *Elyse*: I think we also have to be careful/mindful of our use of “pain relief” from legal perspective. Using that a lot in the father’s day stuff
+- **2025-06-04 13:32** *User_2Z9G95*: Ok good shout! What has legal said specifically? Should we avoid it altogether? What can we say instead? Eases paid, eases sore muscles, etc.?
+- **2025-06-04 13:32** *Elyse*: Just that its a bold/medical claim
+- **2025-06-04 13:32** *Elyse*: so eases sore muscles, soothes tense muscles etc\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 13:34** *Elyse*: things of that nature
+- **2025-06-04 13:34** *Elyse*: like with MBS, people reported pain relief - we can’t say that, but talent can
+- **2025-06-04 13:35** *Elyse*: so if influencer posts oh relieved pain in my sore xyz thats fine, but we can’t say will relieve xyz pain
+- **2025-06-04 13:35** *Elyse*: so just wanna be mindful of our use there
+- **2025-06-04 13:37** *Elyse*: I’d love if we could take a second spin through Father’s Day doc with that in mind @User_2Z9G95
+- **2025-06-04 13:38** *Elyse*: I left a few notes on the doc, circulating to team now as well
+- **2025-06-04 13:44** *Elyse*: Gave first round notes on 6/12 as well @User_2Z9G95
+- **2025-06-04 14:12** *Elyse*: @User_2Z9G95 can you update access on site abandonment flow as well pls
+- **2025-06-04 14:14** *Elyse*: also @User_2Z9G95 father’s day flash sale should be 48 hours instead of 24
+- **2025-06-04 14:33** *Elyse*: @User_2Z9G95 just went through all the flows except welcome, will dive into that shortly. Left a bunch of notes but also circulated to the team so feel free to not make any adjustments yet til we get some more eyes on these\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 14:33** *User_2Z9G95*: Thank you so much!!!!
+- **2025-06-04 16:13** *User_2Z9G95*: @Elyse — [Father's Day emails have been updated](https://docs.google.com/document/d/1Lf6zZN9SEpJZCqSYfDVki6EsmMLDVZyOK7sMw8dd-44/edit?tab=t.0)!
+- **2025-06-05 08:20** *Elyse*: Fab! Will dive in first thing this morning
+- **2025-06-05 09:25** *User_2Z9G95*: Thank you! As a side — I was going through the rest of the existing flows yesterday and wanted to get some clarity on additional ones we can update:  
+1. All of the subscription related ones — how recently were those updated? Are you interested in a full redesign or just updating the footer?  
+2. What is Reclaim? Are those flows still active and being used? They haven't triggered anything this year so I'm assuming not, but want to check! Safe to say we can disregard those?  
+3. Loyalty Lion flows — how recently were those updated? Same note as subscription, we're happy to redesign!
+- **2025-06-05 10:04** *Elyse*: All flows probably last updated within maybe a year or two. Could definitely use a full refresh across the board\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-05 10:04** *Elyse*: I’d love your thoughts on the Loyalty Lion ones, if there’s anything we can be optimizing there
+- **2025-06-05 11:08** *User_2Z9G95*: Perfect! This is super helpful context. We’ll keep prioritizing the pre purchase ones (cart, welcome, etc). and will get optimizations integrated for those, too! 
+- **2025-06-05 11:43** *User_2Z9G95*: @Elyse — Just saw this feedback from a customer via Attentive. Do you know if she already reached out via email?\n\n📎 **Screenshot 2025-06-05 at 9.42.44 AM.png** (png, 95.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F090JQ0K8SV/screenshot_2025-06-05_at_9.42.44___am.png)
+- **2025-06-05 11:43** *Elyse*: hm whats phone number/contact info
+- **2025-06-05 11:43** *Elyse*: i’m sure if she got that reply of reach out via email she probably did and we honored
+- **2025-06-05 11:43** *User_2Z9G95*: Ope! Sorry i cropped it out on accident
+- **2025-06-05 11:44** *Elyse*: but would love to check anyway
+- **2025-06-05 11:44** *User_2Z9G95*: Aimee McBain  
+<tel:+19086192624|+1 908-619-2624>
+- **2025-06-05 11:44** *Elyse*: fab just forwarded to cs team\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-05 11:44** *Elyse*: great catch ty!
+- **2025-06-05 11:45** *User_2Z9G95*: Of course!
+- **2025-06-05 11:53** *Elyse*: just finished adding in notes/approvals for Fath’ers Day doc
+- **2025-06-05 11:53** *Elyse*: oh ok thats where i’m punctuating father’s day\n\n*Reactions: :skull: 4*
+- **2025-06-05 11:53** *Elyse*: happy thursday everyone
+- **2025-06-05 11:53** *Elyse*: :melting_face:
+- **2025-06-05 11:54** *User_2Z9G95*: It’s little Friday :hugging_face: 
+- **2025-06-05 11:54** *Elyse*: it really is
+- **2025-06-05 13:01** *User_2Z9G95*: Hi @Elyse — Just sent the SMS preview for this afternoon's SMS for the last chance 20% off. Confirming we're excluding purchasers and non-US subscribers. The 6p and 8p ET send performed well for us for the MDW last chance messaging, so we'll plan to send it at 6p ET today.
+- **2025-06-05 13:01** *Elyse*: good to fly\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-05 13:02** *User_2Z9G95*: Woohoo! Letting Cory know now about the pop-up switch. I think you mentioned the code is live until tomorrow, but let's plan to still revert everything back 11:59p ET tonight?\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-05 14:25** *User_2Z9G95*: Confirming SMS is scheduled for today at 6p ET.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-06-05 15:40** *User_2Z9G95*: @Elyse — [Added more context into Father's Day sale email #1 for review](https://docs.google.com/document/d/1Lf6zZN9SEpJZCqSYfDVki6EsmMLDVZyOK7sMw8dd-44/edit?tab=t.0)!\n\n*Reactions: :eyes: Elyse*
+- **2025-06-05 15:57** *Elyse* 💬 1 reply: added note\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-05 17:58** *User_2Z9G95*: @Elyse — If you get the chance, two Father's Day emails are ready for review!  
+• 6/8:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=5b7vG2eKvTpPOmrB-1)  
+    ◦ [PROTO](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=HsFCB2NgYxEeQfy9-1)  
+• 6/9 [AM]:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39475-4205&amp;t=5b7vG2eKvTpPOmrB-1)  
+Just waiting on 6/9 PM, which we should have later this evening, so I'll pass it along tomorrow along with the SMS tests. Let me know if you have any questions, thank you and have a great evening!
+- **2025-06-06 07:46** *Elyse* 💬 3 replies: @User_2Z9G95  
+• 6/8:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=5b7vG2eKvTpPOmrB-1) - added a couple notes  
+    ◦ [PROTO](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=HsFCB2NgYxEeQfy9-1) - gifs look great  
+• 6/9 [AM]:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39475-4205&amp;t=5b7vG2eKvTpPOmrB-1) - looks good, added on capitalization correction  
+\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-06 08:32** *User_2Z9G95*: FYI pop up and welcome were reverted last night! Thanks! 
+- **2025-06-06 12:50** *User_2Z9G95*: Hi @Elyse! Following up here with our finalized Father's Day Strategy. We recommend holding on the third SMS and segmenting the first one to ensure we're targeting those who are engaged first, and then broadening it (to avoid fatigue and overcommunication). Please let us know if you have any thoughts/questions.  
+  
+• Email 6/8:  
+    ◦ Engaged segments (purchasers + non-purchasers)  
+• MMS 6/8:  
+    ◦ Engaged L365  
+• Email 6/9:  
+    ◦ Engaged segments (purchasers + non-purchasers), but exclude anyone who just purchased during the sale  
+• SMS 6/9:  
+    ◦ All subscribers, exclude purchasers  
+• Email 6/9: [PM] Engaged segments (purchasers + non-purchasers), but exclude anyone who just purchased during the sale  
+With that, these are the two SMS we recommend sending. Please let us know if you're aligned!\n\n📎 **Screenshot 2025-06-06 at 10.40.00 AM.png** (png, 261.4KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F09067TU96J/screenshot_2025-06-06_at_10.40.00___am.png)\n📎 **Screenshot 2025-06-06 at 10.40.11 AM.png** (png, 88.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F090B135085/screenshot_2025-06-06_at_10.40.11___am.png)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-06 12:53** *Elyse*: let’s roll
+- **2025-06-06 13:04** *Sumish Khadka*: @Elyse Here is the link for the collection that will have products with Father's Day Deal
+- **2025-06-06 13:04** *Sumish Khadka*: [https://higherdose.com/collections/fathers-day-deals](https://higherdose.com/collections/fathers-day-deals)\n\n**higherdose.com**\n🔗 **[FATHER'S DAY DEALS                      – HigherDOSE](https://higherdose.com/collections/fathers-day-deals)**
+- **2025-06-06 13:08** *User_2Z9G95*: Was just about to ask!!!! Thank you!!
+- **2025-06-06 13:32** *User_2Z9G95*: Hi @Elyse — Final Father's Day email design ready for review [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39473-282&amp;t=dO0p2PfzDqvIhe14-1). Two versions. I also commented some of my feedback.
+- **2025-06-06 13:32** *Elyse*: @User_2Z9G95 Now live: Fascia &amp; Body Intelligence with Lauren Roxburgh [https://higherdose.com/blogs/the-high-life-blog/fascia-body-intelligence-lauren-roxburgh-interview](https://higherdose.com/blogs/the-high-life-blog/fascia-body-intelligence-lauren-roxburgh-interview)\n\n**higherdose.com**\n🔗 **[Fascia &amp; Body Intelligence with Lo Roxburgh                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/fascia-body-intelligence-lauren-roxburgh-interview)**
+- **2025-06-06 13:35** *Elyse*: lowkey great article, chock full of good info on fascia\n\n*Reactions: :fire: User_2Z9G95*
+- **2025-06-06 13:35** *Elyse*: for anyone looking for a friday afternoon read
+- **2025-06-06 14:14** *User_2Z9G95* 💬 1 reply: @Elyse — Preview for Sunday's email sent!\n\n*Reactions: :eyes: Elyse, :white_check_mark: Elyse*
+- **2025-06-06 14:14** *User_2Z9G95* 💬 3 replies: + Final Father's Day email design ready for review [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39473-282&amp;t=dO0p2PfzDqvIhe14-1). Two versions. I also commented some of my feedback.\n\n*Reactions: :eyes: Elyse*
+- **2025-06-06 14:17** *Elyse*: @Sumish Khadka on that collections page, I would maybe remove the bundles bc then there’s also the bundle &amp; save category below it
+- **2025-06-06 14:17** *Elyse*: so it shows the same bundles twice
+- **2025-06-06 14:18** *Elyse*: because **all** of the bundles are getting 25% off right?
+- **2025-06-06 14:23** *User_2Z9G95* 💬 1 reply: @Elyse — Monday AM email preview just sent!
+- **2025-06-06 14:24** *Sumish Khadka*: @Elyse The link is still under work and I will have it fixed.
+- **2025-06-06 14:24** *Elyse*: ok cool thanks SK!
+- **2025-06-06 14:37** *User_2Z9G95* 💬 10 replies: @Elyse — Just sent the two SMS for review. The MMS is for Sunday and the SMS is for Monday. If you want, we can add in the GIF for the Monday one, too.\n\n📎 **ezgif.com-animated-gif-maker (1).gif** (gif, 492.7KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0906AFRGBV/ezgif.com-animated-gif-maker__1_.gif)
+- **2025-06-06 14:53** *Elyse*: only thing i’d wanna remove is order toda to receive by 6/15
+- **2025-06-06 14:53** *Elyse*: juuuust in case
+- **2025-06-06 14:53** *Elyse*: otherwise both good
+- **2025-06-06 14:55** *User_2Z9G95*: That's fair!
+- **2025-06-06 14:57** *Elyse*: updated preview great\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-06 15:08** *User_2Z9G95*: Hi @Ingrid @Elyse — Happy Friday! Following up with the May CRM deep-dive. [Here's a link to our weekly agenda with May YoY performance and insights at the top](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0), along with our [CRM Reporting Tracker with MoM totals](https://docs.google.com/spreadsheets/d/1qtJOU2541YSnoXC7ccA-RRUy2E*ctEOXQUXO3AdPWU4/edit?gid=1153635090#gid=1153635090).  
+  
+**May YoY Summary:**  
+TLDR; the biggest areas impacting May's performance are a lot of what we've already discussed. We aren't changing much with segmentation apart from broadening where it makes sense and in terms of traffic/recipient's receiving communications, it's all very in-line with last year's metrics. Regardless, here's what heavily impacted that performance:  
+  
+• Not having a new product launch (like last year)  
+• Lower Mother's Day performance (consumers love a gift with purchase)  
+• Flows (mainly abandoned checkout, abandoned browse, welcome flow)  
+• Broadened campaign segmentation strategy impacted click rates, but allowed us to reach more people and drive significant growth for MDW  
+In addition to getting new flow content live ASAP, as an immediate next step, we're going to take a deeper look and how each flow is set up to make sure they're firing correctly. We will keep you posted on findings here!  
+  
+**On the upside, SMS drove a 100% increase YoY**, so we're going to continue to double down on driving growth and engagement through this channel. If we look at this year's total performance, **May was our strongest month (for both email and SMS), with the lowest declines to date (just 10%).**  
+  
+**June MTD Summary:**  
+**From Shopify — I'm also happy to report that we've sold 758 Body Sculptor Ritual Sets so far, generating $249,711.02 in net sales. We've already driven $111,080.83 from Klaviyo and $86,029.15 from Attentive. Together, we're already 65% towards our CRM revenue goal for June — let's keep it up!**  
+  
+I hope this information is helpful — as always, please don't hesitate to reach out with any questions!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-06 18:01** *User_2Z9G95*: Last thing! @Elyse — Do you know when the code is set to go live? I just want to set a reminder to confirm it's working correctly before the first email goes out. Thank you!
+- **2025-06-06 18:03** *Ingrid*: It’s likely live now - Sumish set up it
+- **2025-06-06 18:04** *Ingrid*: Can you test?
+- **2025-06-06 18:04** *User_2Z9G95*: Yes!
+- **2025-06-06 18:05** *User_2Z9G95*: Not working for me — just tried all four inidividual products.
+- **2025-06-06 18:47** *Ingrid*: Please hold 
+- **2025-06-06 18:52** *Ingrid*: Ok text now plz 
+- **2025-06-06 18:52** *Ingrid*: Test 
+- **2025-06-06 18:53** *User_2Z9G95* 💬 2 replies: Yes, it works! Just on those four items, perfect. Thank you!
+- **2025-06-09 07:21** *Elyse*: Morning all! @User_2Z9G95 very random but do you guys know how to change our icon? It’s been the rainbow triangle since we changed it for pride legit years ago\n\n📎 **Image from iOS.jpg** (jpg, 33.5KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091A91NAHW/image_from_ios.jpg)
+- **2025-06-09 09:26** *User_2Z9G95*: Morning @Elyse! Thanks for flagging! I'll look in Klaviyo and see if there's a way to update there, but since the send from email tied to the account is <mailto:hello@higherdose.com|hello@higherdose.com>, you may have to edit through that email's settings!
+- **2025-06-09 10:12** *Elyse*: Ok sounds good will check it out
+- **2025-06-09 11:31** *User_2Z9G95*: Hi @Elyse — Just sent a preview for this afternoon's last chance email. If all looks good, I'll schedule for 6p ET!
+- **2025-06-09 11:34** *Elyse* 💬 1 reply: @User_2Z9G95 only notes are for design  
+• would love to somehow be able to see both the hat and the mask for RL Starter Kit  
+• and then for blanket starter kit it should have the three vials for the cleaner kit, same like the pro mat\n\n📎 **Screenshot 2025-06-09 at 12.33.32 PM.png** (png, 337.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090ETNV7GB/screenshot_2025-06-09_at_12.33.32___pm.png)\n📎 **Screenshot 2025-06-09 at 12.33.52 PM.png** (png, 786.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090ETR0S5R/screenshot_2025-06-09_at_12.33.52___pm.png)
+- **2025-06-09 11:34** *Elyse*: like best seller bundle looks cool w the mask and hat side by side both clearly visible ya know\n\n📎 **Screenshot 2025-06-09 at 12.34.20 PM.png** (png, 395.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090EU2J554/screenshot_2025-06-09_at_12.34.20___pm.png)\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-09 12:27** *User_2Z9G95*: @Elyse — Updated preview sent!
+- **2025-06-09 12:28** *Elyse*: yep looks great
+- **2025-06-09 12:28** *Elyse*: good to fly
+- **2025-06-09 13:59** *User_2Z9G95*: Scheduled for 6p ET. Thank you!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-09 15:40** *Elyse*: @User*2Z9G95 dads who dose: david [https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=318aa5a3ae20c065d0c0bf2db975914c](https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=318aa5a3ae20c065d0c0bf2db975914c) waiting on photos from him/lb
+- **2025-06-09 15:41** *Elyse*: @User*2Z9G95 red light therapy for hair growth preview, text will be finished by EOD - have to figure out images [https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=eb7c122071144aa0084191119e0d8b8e](https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=eb7c122071144aa0084191119e0d8b8e)
+- **2025-06-09 15:59** *User_2Z9G95*: Thank you!! On that topic, 6/15 email copy is ready for review [HERE](https://docs.google.com/document/d/1xvBfOFdpNTu6iMVckQLalV-zhpHrDHGEmbwSfO-uUB8/edit?tab=t.0), 6/12 is in design.
+- **2025-06-09 15:59** *User_2Z9G95*: As a side — do you have any additional details on the Montauk/Omayo partnership? We're working on that email now.
+- **2025-06-09 19:07** *Elyse*: I should! Let me get to you in the morning I’ll sync with Fiona tn
+- **2025-06-09 19:07** *Elyse*: What kind of info would be helpful?
+- **2025-06-09 19:07** *Elyse*: I think I have the booking link that has more service offering info on it
+- **2025-06-09 19:08** *User_2Z9G95*: Yes, that would be helpful! Is the CTA "book now" and we can link the booking link? Mainly this section is what we need more info on: *Sign up for wellness programming classes, workshops and events (more info to come).* Thank you!
+- **2025-06-10 09:43** *Chris Jacob* 💬 7 replies: 📎 **image.png** (png, 151.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090UJFL57C/image.png)
+- **2025-06-10 09:48** *User_TS27JN* joined the channel
+- **2025-06-10 11:51** *Ingrid*: here <!channel> can we please get a little CRM comparison between the Red Light Hat and Body Sculptor launch emails/launch week on CRM?\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-10 12:00** *User_2Z9G95*: @Ingrid — Yes!\n\n*Reactions: :heartpulse: Elyse*
+- **2025-06-10 12:09** *Ingrid*: thank you! also, can I please have a summary of our SMS strategy and performance shifts from those shifts?
+- **2025-06-10 12:10** *Ingrid*: trying to educate our exec team/board on the new direction\n\n*Reactions: :heart: Ari Murray*
+- **2025-06-10 12:18** *Elyse*: @User_2Z9G95 separately here is info for the hydration powder mocktail in one of june newsletters [https://www.dropbox.com/scl/fo/k9brwlga6nw63zzsb5uwz/AE5q-iu9QYcn-KxfnYLH0PM?rlkey=jy56iy1udwto42qj0sifdesuj&amp;e=1&amp;dl=0](https://www.dropbox.com/scl/fo/k9brwlga6nw63zzsb5uwz/AE5q-iu9QYcn-KxfnYLH0PM?rlkey=jy56iy1udwto42qj0sifdesuj&amp;e=1&amp;dl=0)\n\n**Dropbox**\n🔗 **[Higher Dose](https://www.dropbox.com/scl/fo/k9brwlga6nw63zzsb5uwz/AE5q-iu9QYcn-KxfnYLH0PM?rlkey=jy56iy1udwto42qj0sifdesuj&e=1&dl=0)**\n> Shared with Dropbox
+- **2025-06-10 12:20** *Elyse*: from creator: Would love a link to my instagram [@katheats](https://www.instagram.com/katheats/) or blog [katheats.com](http://katheats.com) or both.
+- **2025-06-10 12:47** *Elyse*: @User_2Z9G95 just sent you an email with Omayo info on it
+- **2025-06-10 12:50** *User_2Z9G95*: Thank you! So confirming the CTA is reply back to this email?
+- **2025-06-10 12:51** *Elyse*: oh no sorry i should have clarified, that text was prepped for affiliates who can visit/reply to book comp sessions with us
+- **2025-06-10 12:51** *Elyse*: cta there should be a booking link for Omayo in there i believe
+- **2025-06-10 12:51** *User_2Z9G95*: Perfect
+- **2025-06-10 13:06** *User_2Z9G95*: Hi @Ingrid — [Linking this for you here](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0).
+- **2025-06-10 13:24** *User_2Z9G95* 💬 5 replies: @Elyse — 6/15: [Email for review here](https://docs.google.com/document/d/1xvBfOFdpNTu6iMVckQLalV-zhpHrDHGEmbwSfO-uUB8/edit?tab=t.0)!\n\n*Reactions: :eyes: Elyse*
+- **2025-06-10 13:43** *Elyse*: @User_2Z9G95 sending you info on Well &amp; Good pop up shop Abbot Kinney. Fiona wants to know if we can slot in a local LA email/sms emphasizing urgency in opportunity to buy an MBS in person before it begins shipping\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-10 13:43** *Elyse*: for june
+- **2025-06-10 13:43** *Elyse*: lmk when you think that makes sense
+- **2025-06-10 13:43** *User_2Z9G95*: Love that!
+- **2025-06-10 14:01** *Elyse* 💬 2 replies: @User_2Z9G95 @Ari Murray can you help us pull some stats on Instant performance ahead of tomorrow’s call?
+- **2025-06-10 15:28** *Elyse*: @User_2Z9G95 i got great pics for David’s email - incoming\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-10 15:29** *User_2Z9G95*: Yes! And do you mean Thursday's call with Instant.
+- **2025-06-10 15:29** *Elyse*: 📎 **IMG_0253.HEIC** (jpg, 4.6MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090NK3STB5/img_0253.heic)
+- **2025-06-10 15:29** *Elyse*: 📎 **IMG_7696.heic** (jpg, 2.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090WBZ5NSY/img_7696.heic)
+- **2025-06-10 15:29** *Elyse*: 📎 **IMG_7757.heic** (jpg, 1.8MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091JSPGEG0/img_7757.heic)
+- **2025-06-10 15:30** *Elyse*: 📎 **IMG_7796.heic** (jpg, 2.1MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0917TNEZ0R/img_7796.heic)
+- **2025-06-10 15:51** *Elyse*: @User_2Z9G95 published article [https://higherdose.com/blogs/the-high-life-blog/dads-who-dose-david-nicomini](https://higherdose.com/blogs/the-high-life-blog/dads-who-dose-david-nicomini)\n\n**higherdose.com**\n🔗 **[Dads Who DOSE: Meet David Nicomini                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/dads-who-dose-david-nicomini)**
+- **2025-06-10 16:32** *Elyse*: @User_2Z9G95 RL blog for hair growth: [https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth-how-it-works-benefits](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth-how-it-works-benefits)\n\n**higherdose.com**\n🔗 **[Red Light Therapy for Hair Growth: How It Works &amp; Benefits                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth-how-it-works-benefits)**
+- **2025-06-10 16:33** *Elyse*: I’m still in the process of adding some photos to the actual body of the text, but published it so you could use for email
+- **2025-06-10 16:34** *Elyse*: hang on
+- **2025-06-10 16:34** *Elyse*: editing link
+- **2025-06-10 16:38** *Elyse*: NEW LINK: [https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth)\n\n**higherdose.com**\n🔗 **[Red Light Therapy for Hair Growth: How It Works &amp; Benefits                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth)**
+- **2025-06-10 17:31** *User_2Z9G95*: Thank you!!!!
+- **2025-06-11 09:54** *User_2Z9G95*: Hi @Elyse Email updates [ready for your review in the doc](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958), highlighted in red! I also created an LA-based segment for the pop-up and we have just over 9K people, so we're happy to get an email drafted for them! I would say we can slate this in the 17th or the 19th (if we wanted to bump the travel to the 17th). Let me know how that sounds and we'll get it going.\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n\n*Reactions: :eyes: Elyse*
+- **2025-06-11 16:08** *Elyse*: @User_2Z9G95 couple notes post tb with Ingrid  
+• no to promoting nordstrom sale on email  
+• big no to promoting amazon sale on email  
+• would love some stats on Instant before our call with them, and Sharma analysis on whether we should continue post free trial  
+    ◦ same thing with Alia, would love to see stats and Sharma’s analysis on performance thus far
+- **2025-06-11 16:09** *User_2Z9G95*: Thank you! Confirming I will get this to you by EOD PT today. Getting the Dad's who DOSE email for tomorrow ready for a preview right now!
+- **2025-06-11 16:09** *Elyse*: fab!
+- **2025-06-11 16:25** *User_2Z9G95*: @Elyse — Preview sent!
+- **2025-06-11 16:26** *Elyse*: its great, good to schedule
+- **2025-06-11 16:44** *User_2Z9G95*: Perfect! Confirming this has been scheduled to our 90 days engaged segment. Confirming we've also added a send time A/B test. Looking at L365 on Shopify, we see the most orders/sessions come in between 12p-2p ET and 8p-10p ET. So we've added the test for 12p vs. 8p ET to see if there's any statistically significant differences.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-11 18:48** *User_2Z9G95*: Hi @Elyse — thanks for your patience here. Please see high-level data and reccos below.  
+  
+**Summary:**  
+TLDR; given our growth goals and what we want to achieve this year, we feel that Alia and Instant would be great integrations to help get us there. Together, both of these will help us better understand our customer journey because we'll have the high-converting pop-up (converting even more new users to subscribers) coupled with engaging flows capturing anonymous users. Both will help expand our lists and get new subscribers further down the funnel (with targeted messaging). Plus, they're both month-to-month, so there's no long-term contracts involved, and are reasonably priced within the market. Plus they have great customer support teams we greatly trust!  
+  
+**Instant Audiences:**  
+I don't have access to Instant's full dashboard (I'm sure we'll get some insight tomorrow), but according to Klaviyo (L30 days), these are the Instant Audience Flows that generated the most revenue:  
+• $27,223.08 in additional Klaviyo revenue from their Abandoned Checkout Flow (didn't outperform the regular Abandoned Checkout Flow ($53K), but still contributed incremental revenue)  
+• $20,789.18 in additional Klaviyo revenue from their MDW Sale Abandoned Checkout Flow (didn't outperform the regular MDW Sale Abandoned Checkout Flow ($41K), but still contributed incremental revenue)  
+• $10,901.45 in additional Klaviyo revenue from their MDW Sale Abandoned Cart Flow (outperformed the regular MDW Sale Abandoned Cart Flow ($8K))  
+• $7,729.69 in additional Klaviyo revenue from their Browse Abandonment Flow ((didn't outperform the regular Abandoned Checkout Flow ($30K), but still contributed incremental revenue)  
+We're seeing the greatest success from the checkout and cart abandonment flow (which makes sense as this is the furthest down the funnel), but we're eager to get Instant Audience Flows integrated with our new Abandonment Flows that are being designed.  
+  
+**Alia:**  
+For Alia (L30 days), we're seeing:  
+• 6.36% email sign up rate  
+• 4.62% SMS sign up rate  
+In Klaviyo specifically, we hav:  
+• 2,373 customers tagged with beauty & skincare  
+• 1,961 customers tagged with detox & cleanse  
+• 1,569 customers tagged with recovery & muscle relief  
+• 1,161 customers tagged with relaxation & stress relief  
+• and in total we've captured 10,206 new subscribers from Alia-specific pop-ups  
+In Attentive specifically, we have:  
+• 779 customers tagged with beauty & skincare  
+• 621 customers tagged with detox & cleanse  
+• 472 customers tagged with recovery & muscle relief  
+• 331 customers tagged with relaxation & stress relief  
+• and in total, we've captured 2,757 new subscribers from the Alia-specific pop-ups  
+From our previous evergreen Attentive pop-up, we saw about 3%-4% opt-in for email and a 1%-2% opt-in for SMS, so we're definitely seeing improvements with Alia. If there's a concern around how often it's triggering, let's tell the team we want it to only show to new visitors or exclude those who sign up — we have a lot of control in terms of how we want the pop-ups to look/function and Alia gives us a dedicated contact to work through that with us (which is definitely one of the perks!). Having Alia's strong functionality coupled with our new, more personalized welcome flow will also provide an ever better brand intro and customer journey.
+- **2025-06-11 19:26** *Elyse*: Thank you @User_2Z9G95 !! Will review\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-12 09:49** *User_2Z9G95*: Morning @Elyse! Confirming 6/15 preview was just sent for review. Let me know what you think. We'll get it scheduled for Sunday 11a local to our 90D engaged audience. Please see remaining June campaign updates below ([also in the tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)):  
+• 6/17: Well+Good LA Pop-Up - Copywriting (will be done EOD)  
+• 6/19: Impact of Travel - Copy ready for review (granted access :sweat_smile:)  
+• 6/23: Hi-Dration is key to flow - Copywriting (will be done EOD)  
+• 6/26: Electrify your Summer Detox - Copywriting (should be done EOD)  
+• 6/30: Reignite your Mind-Body Connection - Copywriting (should be done EOD)
+- **2025-06-12 09:52** *Elyse*: 6/15 preview good to go
+- **2025-06-12 10:00** *User_2Z9G95*: @Elyse — [I also started building this doc for July concepts](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB_p2M/edit?tab=t.0). We'd love to have these concepts locked in by tomorrow EOD, so we can start briefing the ideas out. They don't need to be fully fleshed out yet, we just want high-level concept approval! I left a note for you at the top — this was all pulled from the Q3 strategy, so please let me know if there's anything else we need/want to integrate. Left Prime/Nordstrom support out per your note yesterday.\n\n📎 **HigherDOSE <> CRM Calendar Concepts** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB_p2M/edit?tab=t.0)
+- **2025-06-12 10:01** *Elyse*: fab will review rn
+- **2025-06-12 10:01** *Elyse*: leaving notes on 6/19\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-06-12 10:02** *User_2Z9G95*: Thank you!
+- **2025-06-12 10:12** *User_2Z9G95*: Also I'm not sure if I missed it, but if you could send the blog spreadsheet that would be great!
+- **2025-06-12 10:12** *Elyse*: sending you two
+- **2025-06-12 10:12** *Elyse*: [https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing)\n\n📎 **Higher Dose Blog Content Gap Analysis** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK_NDmYpc8aVSCfS-FpGzEP8U/edit?gid=426573794#gid=426573794)
+- **2025-06-12 10:12** *Elyse*: This one is the one we use with the SEO agency
+- **2025-06-12 10:13** *Elyse*: Tab 2 shows whats in the pipeline in terms of monthly deliverables
+- **2025-06-12 10:13** *Elyse*: They’re contracted for 2-3 pieces of work per month - can be 1 new content brief, 1 refresh existing content brief, 2 new etc
+- **2025-06-12 10:14** *Elyse*: So tab 2 shows what I’ve picked for them and topics we’ll take on internally to handle brief creation, etc
+- **2025-06-12 10:14** *Elyse*: Tab 3 HD Work these are all HD talent ones, things we’re working on
+- **2025-06-12 10:20** *Elyse*: so for June SEO blogs we have:  
+• NEW Fascia Stretching: What You Should Know  
+• NEW What’s EMS training?  
+• NEW What is lymphatic drainage? From scientific perspective  
+• REFRESH Infrared Light Therapy for Weight Loss: Does It Work?\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-12 10:25** *Elyse*: June talent blogs  
+• Lauren Roxburgh: Fascia &amp; Body Intelligence with Lauren Roxburgh  
+• David Nicomini: Dads Who DOSE  
+• Patrick Frost: Dads who DOSE: Father’s Guide to Biohacking (brief WIP)  
+July SEO blogs  
+• NEW: What is the Mind-Body Connection?  
+• NEW: What is Body Sculpting?  
+• NEW: When to use Red Light Therapy for the Best Results  
+July talent blogs  
+• Julia McCabe: Strength Within (Importance of Mind-Body Connection and Activating Dormant Muscles  
+• Helen Leland: Mind-Body Connection, Postural Support (What are postural muscles? Her techniques for activation)  
+• Talent TBC: Impact of Travel: Flight to Flow  
+• Talent TBC: Highdration is Key to Flow  
+• HD Talent/Talent TBC: Electrify your Summer Detox  
+August SEO blogs  
+• NEW: The Difference Between Infrared and Red Light Therapy  
+• NEW: How to Create a Morning Routine that Helps You Thrive  
+• REFRESH: Benefits of Using At-Home Red Light Therapy Devices [HERE](https://higherdose.com/blogs/the-high-life-blog/benefits-of-using-at-home-red-light-therapy-device)
+- **2025-06-12 13:09** *User_2Z9G95*: Hi @Elyse — [Well+Good pop-up event is ready for copy review](https://docs.google.com/document/d/1tk7-HoJHBifpkfCxJsynjAe7mKEM43vF0K3yj3psUoc/edit?tab=t.0)! Access granted!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :eyes: Elyse*
+- **2025-06-12 13:32** *User_2Z9G95*: @Elyse – Are you on the meeting? I keep getting an error when I try to join!
+- **2025-06-12 13:32** *Ari Murray*: I just made it in!
+- **2025-06-12 13:32** *Ari Murray*: but im alone lol
+- **2025-06-12 13:32** *Elyse*: Running!
+- **2025-06-12 13:32** *User_2Z9G95*: Restarting and retrying\n\n*Reactions: :tulip: Ari Murray*
+- **2025-06-12 13:32** *Ari Murray*: it was being weird for me
+- **2025-06-12 13:33** *Ari Murray*: now it wont work for me lol
+- **2025-06-12 13:33** *User_2Z9G95*: on the zoom!
+- **2025-06-12 13:33** *User_2Z9G95*: she just re-sent an invite
+- **2025-06-12 13:33** *Ari Murray*: oh ily
+- **2025-06-12 13:55** *Elyse* 💬 6 replies: @User_2Z9G95 @Sumish Khadka can you check this out please\n\n**Thilakawathy Subramuniam**\n> <@U01C255NN3F> this customer got this text for the body sculptor, order #287705. Are you able to see on your end if some body sculptor customers got similar text? Looks like it was sent in error\n*Slack Conversation | 2025-06-12 13:17*
+- **2025-06-12 13:56** *Elyse*: these orders 287705 and 287963
+- **2025-06-12 13:56** *Elyse*: 📎 **image.png** (png, 164.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091197730T/image.png)
+- **2025-06-12 13:56** *Elyse*: both orders are for the MBS only, which hasn’t shipped. weird that it would send this msg
+- **2025-06-12 13:57** *User_2Z9G95*: I seeeee, so at first glance, I think it has to do with how the order is updated in Shopify. I can't see order data in Shopify, so if someone could show me what those orders show as the most recent update, that would be helpful
+- **2025-06-12 14:44** *Elyse*: heres another one 287716
+- **2025-06-12 14:44** *Elyse*: 📎 **Screenshot 2025-06-12 at 3.44.07 PM.png** (png, 173.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0916E8NB37/screenshot_2025-06-12_at_3.44.07___pm.png)
+- **2025-06-12 14:44** *Elyse*: status is paid but unfulfilled
+- **2025-06-12 14:44** *Elyse*: 📎 **Screenshot 2025-06-12 at 3.44.28 PM.png** (png, 109.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09193L6H1Q/screenshot_2025-06-12_at_3.44.28___pm.png)
+- **2025-06-12 14:45** *Elyse*: same for 287705 and 287963
+- **2025-06-12 14:45** *Elyse*: no actual update to the order
+- **2025-06-12 14:50** *Elyse*: separately @User_2Z9G95 just got this from fiona for a july giveaway:  
+**Glow &amp; Glam Launching  July 2025**   
+Affluence: High. Gender: Women. Age Range: 35-65. These women lead with intention and live with balance. They embrace a lifestyle where wellness, culture, and sophistication intertwine. Whether she’s curating her home, planning a getaway, or selecting the perfect gift, every decision reflects her refined taste and thoughtful nature.  
+  
+**Confirmed/Interested brands:**  
+    ◦ Tanya Taylor - Confirmed    
+    ◦ Defanage - Confirmed   
+    ◦ Behno - Confirmed   
+    ◦ Vella Box  - Interested    
+    ◦ Caviar Co - Interested  
+
+- **2025-06-12 14:51** *Elyse*: from the team organizing:  
+The launch for Glow &amp; Glam would be a launch period of July 10th-18th. It will be a 6-week campaign, and you will have the first 2 weeks to send 1 dedicated email about the giveaway. We will notify you 5 days ahead of the actual launch date. On our launch day, you will receive the media toolkit with editable assets, templated emails, and trackable links. Your opt-in goal is 1000 opt-ins, by sending 1-4 dedicated emails about the giveaway and (optional) posting on social.
+- **2025-06-12 15:11** *Elyse*: @User_2Z9G95 also fyi - so we don’t necessarily need to slot this in for 7/10\n\n📎 **Screenshot 2025-06-12 at 4.10.58 PM.png** (png, 195.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091LJZ9SFK/screenshot_2025-06-12_at_4.10.58___pm.png)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-12 15:20** *Elyse*: MBS for LA looks good to me - just sent to Fiona and team to review, will circle back w any notes
+- **2025-06-16 08:07** *Elyse*: @User_2Z9G95 I am working on some slides for our monthly team call this morning and then will jump into the q3 calendar concepts again with fresh eyes\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-16 08:30** *User_2Z9G95*: That’s perfect, thank you so much! 
+- **2025-06-16 10:38** *User_H1H31B* joined the channel
+- **2025-06-16 15:50** *Ingrid*: hey <!channel> do you have the total CRM sales that happened for July 2024 (both Klaviyo/Attentive and Shopify?)
+- **2025-06-16 15:50** *User_2Z9G95*: I can get these for you now!
+- **2025-06-16 15:51** *Ingrid*: thank you!
+- **2025-06-16 15:51** *Ingrid*: both campaigns and flows\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-06-16 16:17** *User_2Z9G95*: Hi @Ingrid! Please see below:  
+  
+**Shopify:**  
+Klaviyo: $90,307.26  
+Attentive: $33,139.30  
+Total: $123,446.56  
+  
+**Klaviyo-Attributed (In-Platform):**  
+Flow: $248,004.32  
+Campaign: $205,908.98  
+Total: $453,913.30  
+  
+**Attentive-Attributed (In-Platform):**  
+Total: $210,848.82  
+  
+**Attentive- + Klaviyo-Attributed (In-Platform)**:  
+Total: $664,762.12
+- **2025-06-16 19:53** *Ingrid*: Thank you!!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-17 14:08** *User_2Z9G95*: @Elyse — Previews for today sent!
+- **2025-06-17 14:15** *Elyse*: SMS looks good\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-17 14:15** *Elyse*: Checking email now
+- **2025-06-17 14:16** *Elyse*: Email good to go
+- **2025-06-17 14:24** *User_2Z9G95*: @Elyse — Perfect, thank you! And I just wanted to confirm that all of the links took you directly to the Instagram post correct? I've seen it get a bit finicky before, but mine worked great, so just wanted to make sure. I'll have 1-2 Sharma members test it out, too, just to double confirm!
+- **2025-06-17 14:33** *Elyse*: Yes same!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-17 14:56** *User_2Z9G95*: Perfect, thank you! Double confirmed with Sharma peeps, and we're all good! Scheduled for 4:15p ET / 1:15p PT to our LA-based segments.
+- **2025-06-17 15:14** *User_2Z9G95* 💬 6 replies: Hi @Elyse — Just got the notification from Attentive that we're out of the GetDosed10 codes — are you able to download more when you get the chance? Not sure if there's a cap you can share, but maybe 10K?
+- **2025-06-17 17:04** *User_2Z9G95* 💬 5 replies: Hi team — sharing a quick status update from our call today. Link to the agenda **[HERE](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)**. High-level summary below:  
+  
+Account Health:  
+The biggest thing I wanted to share with you is that we saw some funky things in the WoW data and after doing a deep dive noticed there was a huge influx in bot clicks this time last year, which is inflating last year's data (making it seem like this year is significantly down when it isn't!). No worries though, nothing is being impacted in our account right now, we just noticed that influx heavily skewed last year's metrics.  
+  
+*There is an action we can take in the account to remove bot clicks from our data — happy to chat through that more to see if we'd want to do that!*  
+  
+Flows:  
+Flows are moving along — we have a handful [ready for review in the tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958).  
+  
+Campaigns:  
+Elyse — if you get a chance to look at [July concepts](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB*p2M/edit?tab=t.0) this week that would be amazing!  
+  
+LMK if you have any questions. Have a great evening!\n\n*Reactions: :heart: User_5S72LT, Elyse*
+    - **2025-06-17 18:34** *User_2Z9G95*: ↳ Hi @Elyse — Following up on this! There's a Post-Purchase Flow live that is triggering that message. The trigger is "made a purchase", so that's why they got it. Does this flow ring a bell to you? If not, I would recommend we turn it off.\n\n📎 **Screenshot 2025-06-17 at 4.34.04 PM.png** (png, 92.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F091R6H0LLW/screenshot_2025-06-17_at_4.34.04___pm.png)
+- **2025-06-17 18:36** *Elyse*: So @User_2Z9G95 am I understanding this correctly - anyone who makes a purchase at all gets this?
+- **2025-06-17 18:39** *User_2Z9G95*: Correct. It's slated to send 10 days after the purchase, so ideally the product has arrived by then, which shouldn't be an issue. But in this case it is. There's a few post-purchase flows live right now. Will take a look at them and see where we need to optimize.
+- **2025-06-17 18:39** *Elyse*: Ahhhh ok got it
+- **2025-06-17 18:40** *Elyse*: I wonder, is there no way on attentive (which note to self let’s check out on post script) to make the trigger more directly connected to a Shopify action (like tracking add/marked as fulfilled) vs just the general timeline of 10 days?
+- **2025-06-17 18:41** *Elyse*: Thinking about orders that arrive sooner but also orders that are on back order or just generally take longer 
+- **2025-06-17 18:42** *Elyse*: I mean there’s probably a very very rare scenario where someone gets an order more than ten days later that isn’t related to a back order or preorder 
+- **2025-06-17 18:43** *Elyse*: But thinking about when people buy saunas too, that’s def a longer turnaround time than ten days
+- **2025-06-17 18:43** *User_2Z9G95*: Yes! There are the same transactional triggers as in Klaviyo (order shipped, order delivered, out for delivery, etc.) — not sure why whoever set this one up did it that way, maybe there was a reason, but we will definitely update when we migrate.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-18 12:07** *User_2Z9G95*: Hi @Elyse — Let me know when you get a chance to download the codes and I'll upload ASAP!
+- **2025-06-18 12:09** *User_2Z9G95*: Hi @Elyse — Also let us know RE Friday's email when you get the chance! Design [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39669-740&p=f&t=HdcldXowa8GqqSn4-0), Proto [HERE](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39669-741&t=8DULUgRwoukSQUJJ-1).
+- **2025-06-18 12:24** *Elyse*: Diving in now!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-18 12:28** *Elyse*: i love friday’s email!!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-18 12:28** *Elyse*: sending to team for quick review\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-18 12:33** *User_2Z9G95*: Us, too!
+- **2025-06-18 13:39** *Elyse*: @User_2Z9G95 are you guys having any trouble with figma rn?
+- **2025-06-18 13:39** *Elyse*: was just flying thru the replen flows and all of a sudden figma won’t open for me
+- **2025-06-18 13:39** *Elyse*: keeps saying page unresponsive
+- **2025-06-18 13:39** *Elyse*: for oxytocin oil
+- **2025-06-18 13:39** *User_2Z9G95*: Looking!
+- **2025-06-18 13:40** *User_2Z9G95*: It seems to be working ok for me! Maybe it's the link? [https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180&amp;t=nniYowRuXvTUqELu-1](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180&amp;t=nniYowRuXvTUqELu-1)
+- **2025-06-18 13:41** *Elyse*: that worked! tysm!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-18 14:22** *User_2Z9G95*: Hi @Elyse — Since the GetDOSED10 code ran out, new customers aren't getting any codes — are you able to update ASAP and I can manually reply with the codes to these customers? Thank you!
+- **2025-06-18 14:24** *Elyse*: Jumping on that now!
+- **2025-06-18 14:25** *Elyse*: Sorry was in the weeds reviewing replenishment flows
+- **2025-06-18 14:25** *User_2Z9G95*: Amazing, thank you! No worries — you're the best
+- **2025-06-18 14:31** *Elyse*: generating 10k as we speak
+- **2025-06-18 14:31** *Elyse*: says two mins
+- **2025-06-18 14:31** *User_2Z9G95*: Thank you!!!
+- **2025-06-18 14:38** *Elyse*: 54% done
+- **2025-06-18 14:40** *User_2Z9G95*: Fab!!
+- **2025-06-18 14:40** *Elyse*: in the meantime, got notes from team on travel email so dropping those in now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-18 14:50** *Elyse*: figma is doing wacky things for me today so let me know if my comments don’t make sense
+- **2025-06-18 14:51** *Elyse*: i put them in the right spots and then refreshed the page and next thing i know the comment bubbles were all over
+- **2025-06-18 14:52** *Elyse*: fiona sending me pic for omayo swap
+- **2025-06-18 14:52** *Elyse*: export queued on codes
+- **2025-06-18 14:52** *Elyse*: lol at this app saying two mins\n\n*Reactions: :sob: User_2Z9G95*
+- **2025-06-18 14:54** *Elyse* 💬 2 replies: 📎 **GetDosed10-export-6-18-2025-3-54-20-PM.csv** (csv, 236.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F092RKS3R4Y/getdosed10-export-6-18-2025-3-54-20-pm.csv)
+- **2025-06-18 15:09** *Elyse*: 📎 **PNG image.jpeg** (jpg, 381.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091WRK53J7/png_image.jpeg)
+- **2025-06-18 15:10** *Elyse*: @User_2Z9G95 omayo pic ^
+- **2025-06-18 16:14** *Elyse*: @User_2Z9G95 lauren working on blog post for summer detox tomorrow\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-18 16:29** *User_2Z9G95*: Hi @Elyse — 6/20 email updated! Ready for review [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39669-740&amp;t=gCMKxQg6qtaOSyif-1).\n\n*Reactions: :eyes: Elyse*
+- **2025-06-18 16:58** *Elyse*: Made a quick note
+- **2025-06-18 16:59** *Elyse*: otherwise good to go
+- **2025-06-18 16:59** *Elyse*: i’m aiming to finish up blog tomorrow morning, so we’ll have link to include for travel smarter cta
+- **2025-06-18 17:00** *Elyse*: also gonna do q3 concepts in the morinng
+- **2025-06-18 17:00** *Elyse*: so will have a few things back to you, attempting to use tm morning to catch up!
+- **2025-06-18 17:00** *User_2Z9G95*: That's perfect. Thank you so much!
+- **2025-06-18 17:11** *Elyse* 💬 5 replies: <!channel> yallll :sob: :sob: :sob: :sob:  thank you so so much for these gorgeous flowers!!! They are divine and exactly the sunshine I needed this week. So so so kind of you!! Xoxoxox\n\n*Reactions: :sunflower: 4*
+- **2025-06-20 09:26** *User_2Z9G95*: Good morning @Elyse! Just sent a preview for today's email — just waiting on the blog link! Let me know how it looks.
+- **2025-06-23 12:37** *Elyse*: <!here> hi all! in catch up mode!  
+  
+@User*2Z9G95 let me know if I owe you anything timely, will hop on it.  
+  
+Otherwise here’s some PDP info I just got on the two new bundles:  
+**Bundle 1: Summer Travel Glow Kit**  
+**Summary + How To Use:**  
+Indulge in high-performance wellness—anytime, anywhere. The **Summer Travel Glow Kit** brings together four of our most transformative essentials to help you radiate confidence, restore hydration, and protect your energy while on the move.  
+Curated for jetsetters and glow-getters, this set features our award-winning Red Light Face Mask, the travel-ready Red Light Activated Glow Serum, electrolyte-rich High-dration Powder, and our EMF-Blocking Fanny Pack designed to shield and style. Whether you’re poolside, on a plane, or navigating a new city, this bundle is your passport to feeling and looking your absolute best.  
+**Bullets:**  
+• Red Light Face Mask: Spa-grade skin rejuvenation in 10 minutes—stimulating collagen, smoothing fine lines, and restoring post-travel glow. Charged and ready for use anywhere from the airplane to the chaise lounge in the sand.   
+• Red Light Activated Glow Serum (TSA Friendly!): Peptide-Powered and enhances the effects of red light therapy while hydrating and brightening for dewy, lit-from-within skin.  
+• Hydration Powder: Made with watermelon-derived electrolytes and trace minerals to replenish fluids, support energy, and beat bloat—plus, it tastes *delicious_.  
+• EMF-Blocking Fanny Pack: A sleek, hands-free accessory with EMF-shielding technology to protect your vital energy while keeping essentials within reach.  
+**Bundle 2: (New) Summer Body Recover &amp; Sculpt**  
+Elevate your summer sculpt with this powerhouse trio designed to tone, tighten, and transform—from the inside out. The **(New) Summer Body Sculpt Bundle** pairs our revolutionary Microcurrent Body Sculptor with the signature HigherDOSE Sweatband and our delicious, watermelon-derived Hydration Powder to help you sweat smarter, recover faster, and reveal your most radiant body yet.  
+Whether you’re traveling, training, or lounging in the sun, this bundle supports circulation, lymphatic drainage, and deep cellular hydration—giving your body the boost it craves for definition, detox, and glow.  
+**Bullets:**  
+• Microcurrent Body Sculptor: A first-of-its-kind tool that uses targeted microcurrents to stimulate muscles, support lymphatic flow, and visibly tone and tighten skin.  
+• HigherDOSE Sweatband: Designed to amplify your sweat sessions by increasing core temperature and boosting circulation—perfect for travel, workouts, or recovery days.  
+• Hydration Powder: Made with watermelon-derived electrolytes and trace minerals to replenish, rehydrate, and support glowing, energized skin from the inside out—plus it tastes incredible.  
+\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-23 12:51** *Elyse*: also <!here> is the updated full product collection deck, if helpful!\n\n**María José Castro**\n> <!channel> <https://docs.google.com/presentation/d/1q_B-7oKS5qb8on7itTHkTi1IJXg3ccqKqDphGTLOaNU/mobilepresent?slide=id.g279ceeae50a_0_9|HERE> are the slides with product info and FAQs\n*Slack Conversation | 2025-06-23 12:18*
+- **2025-06-23 15:43** *User_2Z9G95*: Hi @Elyse! Thank you for this! [The tracker has been updated](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958): Items that need attention in red. Here's what's outstanding/in the pipeline for the first half of July:  
+  
+**Campaigns:**  
+• 6/24: Hi-Dration is key to flow (In design)  
+    ◦ Blog needed   
+    ◦ Design approval needed  
+    ◦ SMS approval needed ([HERE](https://docs.google.com/document/d/1cWdY*7uLrlOxBImgWp*4OSzuoxRpTdolskMDu4HfwZ8/edit?tab=t.0))  
+• 6/26: Electrify your Summer Detox (In design)  
+    ◦ Design approval needed  
+• 6/30: What is DOSE? (Copywriting)  
+    ◦ Copy approval needed  
+• 7/2: Reignite your Mind-Body Connection (Copywriting)  
+    ◦ Blog needed  
+7/6: Alchemize Club at Surf Lodge (Copywriting)  
+• Do we want a dedicated email for this? If so, can you please provide more context here.   
+7/8, 7/9, 7/10: Travel Series (Copywriting)  
+• Can you please add some additional insight into the highlighted [travel series concepts for July](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB*p2M/edit?tab=t.0)? If any of these are linking to a blog, please let us know!  
+7/15: Giveaway (Copywriting)  
+• Can you double confirm this date works?  
+7/16, 7/18, 7/21: Glow from Within (Copywriting)  
+• Can you please add some additional insight into the highlighted [glow from within series concepts for July](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB*p2M/edit?tab=t.0)? If any of these are linking to a blog, please let us know!  
+**Flows:**  
+• [Welcome flow](https://docs.google.com/document/d/1hmB6mhjdTjPnPlGgN0TQ2aAlPTnC-IVfBnzlARCFGys/edit?tab=t.0) - Ready for review  
+• [Detox Drops](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180) - Feedback from team?  
+• [Checkout abandonment](https://docs.google.com/document/d/1Rh6WKL3zZmV850dvCHoERoO746l8tt2WLkmwg8e-SLc/edit?tab=t.0) - Feedback from team?  
+• [Cart abandonment](https://docs.google.com/document/d/11vKHPtpHRIVPfyuB6RYHFZVoldI0-zo0iSzKRSvobBU/edit?tab=t.0) - Feedback from team?  
+• [Browse abandonment](https://docs.google.com/document/d/1H8xCmhIWFHeVYqH4kgwNGFWkBTt1LMGRVjJN95jLO5w/edit?tab=t.0) - Feedback from team?  
+Please let me know if you have any questions! Thank you so much.\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n📎 **HIGHERDOSE New Welcome Flow Working Doc** (gdoc, 114.8KB) - [Download](https://docs.google.com/document/d/1hmB6mhjdTjPnPlGgN0TQ2aAlPTnC-IVfBnzlARCFGys/edit?tab=t.0)\n📎 **23: Hi-Dration is key to flow Email + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1cWdY_7uLrlOxBImgWp_4OSzuoxRpTdolskMDu4HfwZ8/edit?tab=t.0)
+- **2025-06-23 16:01** *Elyse*: sweet, will dive into this\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-24 14:56** *User_2Z9G95*: Hi @Elyse — In addition to our campaigns/blog posts, please see additional action items below!  
+• Please review [this SMS copy doc](https://docs.google.com/document/d/1RpTFVyUZJ8mE70BrQ7DnZCcyXoeLRoEkvK5Gob1uoiI/edit?tab=t.0) for the 10% off and let us know when we're good to launch  
+• Please review [this post purchase and order confirmation flow](https://docs.google.com/document/d/1aKiXBnhrTqh-Qsno2fZFtTIWDuF5Gfuw2jUHJ85SsUo/edit?tab=t.w3j05m770vhf) and let us know your thoughts  
+@Ingrid — I confirmed no lead gen ads are live, but we'll discuss internally and share a proposed plan!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-24 14:58** *Elyse* 💬 1 reply: left note on SMS copy, do you need me to create a code quick?
+- **2025-06-24 15:20** *Elyse*: <!here> from Sumish  
+Summer Body recover &amp; Sculpt -[ https://higherdose.com/products/new-summer-body-recover-sculpt](https://higherdose.com/products/new-summer-body-recover-sculpt)  
+Summer Travel Glow Kit - [https://higherdose.com/products/summer-travel-glow-kit](https://higherdose.com/products/summer-travel-glow-kit)\n\n**higherdose.com**\n🔗 **[(New) Summer Body Recover &amp; Sculpt                      – HigherDOSE](https://higherdose.com/products/new-summer-body-recover-sculpt)**\n\n**higherdose.com**\n🔗 **[Summer Travel Glow Kit                      – HigherDOSE](https://higherdose.com/products/summer-travel-glow-kit)**
+- **2025-06-25 09:21** *User_2Z9G95*: Morning @Elyse! Making the last few design tweaks for the email this AM. Do you have an update on the blog? We also updated the email design for Friday [here](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39823-7115&amp;p=f&amp;t=k4I4uBQOeTqO3Ofu-0). Keep us posted on that blog, too!
+- **2025-06-25 10:53** *User_2Z9G95* 💬 1 reply: Hi @Elyse — [today's email ready for review here](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39814-1760&amp;t=qV1BjGtGDGst8OhE-1)! Let us know what you think.\n\n*Reactions: :eyes: Elyse*
+- **2025-06-25 11:31** *User_2Z9G95*: @Elyse — I also sent the test SMS around 1:45p for today — sorry forgot to ping the head's up! Let me know how that looks and we can get it scheduled ASAP!
+- **2025-06-25 11:31** *Elyse*: SMS looks great for code people
+- **2025-06-25 11:31** *Elyse*: diving into email stuff now. finishing up blog and getting it uploaded to shopify as we speak
+- **2025-06-25 11:32** *User_2Z9G95*: Love it! Let me know if I can help at all.
+- **2025-06-25 11:34** *User_2Z9G95*: SMS scheduled for 1p ET today!
+- **2025-06-25 12:09** *Elyse*: @User_2Z9G95 note from Helen Leland’s team: Helen’s new business officially launches the week of July 7th, which feels perfectly aligned with the theme of the interview. Would it be possible for her to answer that final question in the doc about the launch and have the feature go live that same week?
+- **2025-06-25 12:25** *User_2Z9G95*: Hi @Elyse — Aligned! Thinking we can move the Travel Bundle push up to its current place on 7/3 since [the copy is already ready for review](https://docs.google.com/document/d/18r50RevQGaU4vkRZL9mP3d-ozbdI_X2TdCEAbawI9wA/edit?tab=t.0). And we can push hers to the week of 7/7, either on 7/7, 7/9 or 7/11. Let me know how that sounds!
+- **2025-06-25 12:26** *Elyse*: ok fab yep that works
+- **2025-06-25 12:27** *User_2Z9G95*: I got the PDPs, but are they already live on the site? I'm not seeing them under the Bundles or Bundle &amp; Save tabs!
+- **2025-06-25 12:30** *User_2Z9G95*: Email is uploaded to Klaviyo and the preview is ready once we get the blog link! Confirming this will be sen to 90 days engaged and all intl will be excluded as it's high-dration powder. Let me know if there's any other caveats to be aware of! @Elyse
+- **2025-06-25 12:41** *Elyse*: fab fab, nope that covers it\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-27 15:27** *Elyse*: @User_2Z9G95 fyi just read an email thread it should be alchemize house not club, my b
+- **2025-06-27 15:27** *Elyse*: also getting some more partner info from them for that email
+- **2025-06-27 15:27** *Elyse* 💬 2 replies: from their team: We are partnering with Daybreaker and Peloton, there should be a link next week that we’d love for you to push to your community. It will be a beautiful event.
+- **2025-06-27 15:28** *Elyse*: Victoria mentioned they have go mats, not pro mats so we’ll need to tweak that in the copy as well please
+- **2025-06-27 15:41** *User_2Z9G95*: Perfect, we will update this ASAP! Thank you!
+- **2025-06-27 15:42** *User_2Z9G95*: FYI — DOSE copy is updated [HERE](https://docs.google.com/document/d/1lSndlJgFpFuhFmEtE2sDpB7zrq3bjL7nYPk_nvBQ5wg/edit?tab=t.0). We just need one more product recco for Endorphins so that each section has 4!
+- **2025-06-27 15:52** *Elyse*: ok sweet
+- **2025-06-27 15:52** *User_2Z9G95*: Made this initial tweaks [here](https://docs.google.com/document/d/1poZG9RwUZHJ_swcoBm9vcvQZl0HI1DC01xGTX0hW0Ng/edit?tab=t.0). Will standby for more!
+- **2025-06-27 17:21** *User_2Z9G95*: Hi @Elyse — [Here's a link to all of HigherDOSE's Attentive Data](https://drive.google.com/drive/folders/1IR0YQzmq7wKddFgifuDlrIHG1iHUGtYu?usp=drive_link)! There's data organized by year and also all-time depending on how you need to reference it. Let me know if I can provide anything else!
+- **2025-06-30 08:29** *Elyse* 💬 1 reply: Awesome! Thank you @User_2Z9G95 are they gonna send us an updated version today in case there were any changes?
+- **2025-06-30 09:16** *User_2Z9G95*: Hi @Elyse — [The design for our email today is ready for review](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39970-125&amp;t=qUNM4nCFjyxUPibt-0)! Please take a look when you get the chance and let us know if you have any feedback. [Here's the proto](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39970-125&amp;t=2UQpJnFu2jh9Y7q7-1) so you can see the GIF, too.\n\n*Reactions: :eyes: Elyse*
+- **2025-06-30 09:20** *User_2Z9G95* 💬 2 replies: Also @Elyse — I have a conflict with the Klaviyo SMS call this afternoon, but I think we decided to cancel for now, right?
+- **2025-06-30 10:41** *Elyse*: @User_2Z9G95 for today’s email, overall looks great just needs some quick tweaks. left notes on proto. biggest thing is wherever pro mat is titled, go mat is pictured\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-30 10:50** *User_2Z9G95*: Ah, good shout — thank you! Getting this updated now.
+- **2025-06-30 12:23** *Elyse*: @User_2Z9G95 just took a look at the proto to see if updated - wanted to note, for oxytocin section we now have go mat as title but pro mat as photo lol
+- **2025-06-30 12:24** *User_2Z9G95*: looking!!
+- **2025-06-30 12:24** *User_2Z9G95*: sorry was back-to-back this AM, getting this finalized rn
+- **2025-06-30 12:24** *Elyse*: all good np at all
+- **2025-06-30 12:24** *Elyse*: so can keep go mat title in oxytocin section, but need to switch pic to go mat
+- **2025-06-30 12:24** *Elyse*: other than that, looks great
+- **2025-06-30 12:26** *User_2Z9G95*: Oh yes, I wasn't sure where the body, not dry comment was referring to — was it for the copper brush?
+- **2025-06-30 12:26** *Elyse*: yes yes
+- **2025-06-30 12:26** *User_2Z9G95*: perf
+- **2025-06-30 12:26** *Elyse*: it said dry brush instead of body brush
+- **2025-06-30 12:26** *Elyse*: so thats corrected, done there
+- **2025-06-30 12:26** *User_2Z9G95*: perfect
+- **2025-06-30 12:29** *User_2Z9G95*: Ok, updated! [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39970-124&amp;p=f&amp;t=FNHePxyblBBDOvKn-0).
+- **2025-06-30 12:30** *Elyse*: yep great good to go
+- **2025-06-30 12:31** *Elyse*: [https://higherdose.com/blogs/the-high-life-blog/what-is-dose-the-four-key-chemicals](https://higherdose.com/blogs/the-high-life-blog/what-is-dose-the-four-key-chemicals)\n\n**higherdose.com**\n🔗 **[DOSE Meaning: Unlocking Happy Brain Chemicals | HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/what-is-dose-the-four-key-chemicals)**
+- **2025-06-30 12:31** *Elyse*: if we want for that top cta
+- **2025-06-30 12:32** *User_2Z9G95*: Perf
+- **2025-06-30 12:52** *User_2Z9G95*: Preview coming shortly
+- **2025-06-30 13:04** *User_2Z9G95*: Preview sent! Thinking we can AB test the two subject lines to see if a question outperforms a statement:  
+  
+**Subject:** Putting the “dose” in HigherDOSE  
+**Preview:** Dopamine, oxytocin, serotonin, endorphins  
+  
+Alt:  
+**Subject:** What does “DOSE” mean?  
+**Preview:** Dopamine, oxytocin, serotonin, endorphins\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-30 14:25** *Elyse*: @User_2Z9G95 looks good\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-30 14:30** *User_2Z9G95*: Scheduled for 4p ET to our 90 day engaged segment!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-30 14:37** *Elyse*: diving into some weekly reporting @User_2Z9G95 but let me know what else I owe you for this week. crm sheet is updated i assume? I’ll peek into that before i log off tonight
+- **2025-06-30 14:37** *Elyse*: alchemize i think is the only thing left for this week right?
+- **2025-06-30 14:37** *User_2Z9G95*: It's like you're actually inside of my mind
+- **2025-06-30 14:37** *User_2Z9G95*: Drafting a slack for you as we speak with updates/needed items!!
+- **2025-06-30 14:38** *🤖 Bot*: in sync
+- **2025-06-30 14:38** *Elyse*: us\n\n*Reactions: :sob: User_2Z9G95, :joy: User_2Z9G95, :man_dancing: User_2Z9G95, :man_dancing::skin-tone-3: Elyse*
+- **2025-06-30 14:51** *User_2Z9G95*: Hi @Elyse — Please see some updates + outstanding items below (also updated in the [tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)):  
+• 7/2: Alchemize Surf Club — Updated copy ready for review [HERE](https://docs.google.com/document/d/1poZG9RwUZHJ*swcoBm9vcvQZl0HI1DC01xGTX0hW0Ng/edit?tab=t.0). Let us know today if there's any feedback/additional details needed so we can push this through to design.   
+• 7/7: Travel bundles — Updated copy ready for review [HERE](https://docs.google.com/document/d/18r50RevQGaU4vkRZL9mP3d-ozbdI*X2TdCEAbawI9wA/edit?tab=t.0). Let us know today if there's any feedback so we can push this through to design.   
+• 7/9: Travel series — Copy ready for review [HERE](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)  
+• 7/11: WTF is EMF? — Copy ready for review [HERE](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)  
+• 7/14: Giveaway — Have you received any new info?  
+• 7/16: Helen Leland blog — Have you received an updated ETA?   
+Additionally — can you please add <mailto:Jeremyd@sharmabrands.com|Jeremyd@sharmabrands.com> and <mailto:jake@sharmabrands.com|jake@sharmabrands.com> to Klaviyo when you get the chance? They're going to upload customer lists to Meta/TT!  
+  
+Thank you!!!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n📎 **9: Travel Series (Wellness On-the-go) Email + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/19nheMCxQGxTRC_6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)\n📎 **11: WTF is EMF? Fanny Pack Highlight** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL_on2ArFDVfjtovH4w/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse, :raised_hands::skin-tone-3: Elyse*
+- **2025-06-30 14:53** *Elyse* 💬 2 replies: Jake and Jeremy both added\n\n*Reactions: :raised_hands: User_2Z9G95, User_TS27JN*
+- **2025-06-30 14:55** *Elyse*: Helen Leland - got content back on Friday, heres link  
+• brief we sent [https://docs.google.com/document/d/1cC970sZ1EODQOh8qdHDbnjqasZRg6JMrZPq4bPnd504/edit?usp=sharing](https://docs.google.com/document/d/1cC970sZ1EODQOh8qdHDbnjqasZRg6JMrZPq4bPnd504/edit?usp=sharing)  
+• answers she sent [https://docs.google.com/document/d/1ZOwz-AIHdibTrG5briiW-XNETEHEWVkJXmcrYkehsiY/edit?usp=sharing](https://docs.google.com/document/d/1ZOwz-AIHdibTrG5briiW-XNETEHEWVkJXmcrYkehsiY/edit?usp=sharing)
+- **2025-07-01 07:06** *Elyse*: @User_2Z9G95 got this note from Alchemize team:\n\n📎 **Screenshot 2025-07-01 at 8.06.14 AM.png** (png, 65.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F093VCGRMHQ/screenshot_2025-07-01_at_8.06.14___am.png)
+- **2025-07-01 09:19** *User_2Z9G95*: Hi @Elyse — Noted! Looks like we need to move some things around in the cal. We can move the travel bundles email up, I just got the design this AM, or if the other travel email or EMF copy looks good, we can move that to design today to share tomorrow! Let me know — options below:  
+• [Travel Bundles](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847&amp;t=iULy7VSxwRIxSHwU-0), [proto 1](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847&amp;t=iULy7VSxwRIxSHwU-1), [proto 2](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-704&amp;t=iULy7VSxwRIxSHwU-1) (they're the same gif, just a diff image)  
+• [Travel On-the-go](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)  
+• [WTF is EMF](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)?
+- **2025-07-01 09:22** *Elyse*: Sounds good will dive in now!
+- **2025-07-01 09:23** *Elyse* 💬 1 reply: @User_2Z9G95 Luke from attentive said we’d need to remove attentive tag from site. Is that already done? Do we need to do anything for that?
+- **2025-07-01 09:49** *User_2Z9G95*: Yes! So the tag needs to be removed from the theme's code. I don't have access to do that, but is there someone on your team who handles dev? There's a script that looks something like this that needs to be removed. I think searching for attn in the theme.liquid will locate it!  
+`&lt;script src="[https://cdn.attn.tv/EXAMPLE/dtag.js](https://cdn.attn.tv/EXAMPLE/dtag.js)"&gt;&lt;/script&gt;`
+- **2025-07-01 09:54** *Elyse*: Ok cool I have Michael our web guy tackle\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 09:55** *User_2Z9G95*: Thank you!!
+- **2025-07-01 12:10** *Elyse*: ok code is removed\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 12:15** *User_2Z9G95*: Thank you!!
+- **2025-07-01 12:39** *Elyse*: @User_2Z9G95 going to tweak end of July schedule a bit - we want to add in some retention tests identifying people who have purchased tech but not accessories/cpg and send them an offer. will confirm more details and get back to you shortly\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 12:44** *User_2Z9G95*: Sounds great! We can chat live on the call, too!
+- **2025-07-01 12:52** *User_2Z9G95*: @Elyse — Just an FYI, I just noticed this spacing issue on the homepage!:\n\n📎 **Screenshot 2025-07-01 at 10.52.36 AM.png** (png, 939.5KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F093S6D9JDC/screenshot_2025-07-01_at_10.52.36___am.png)
+- **2025-07-01 12:53** *Elyse*: i mentioned that to the team a while back i thought they fixed\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-01 12:53** *Elyse*: thanks for flagging
+- **2025-07-01 13:58** *User_2Z9G95*: Hi @Elyse @Ingrid — Thank you so much for the time today as always! [Here's a link to the agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0) for review. I added in an analysis of the unsubscribe rate. TLDR; The major daily spikes in follower loss fell on our heavy promotional days (MBS launch, Father's Day Flash) — no surprise there!  
+  
+While total unsubscribes increased compared to last year, list growth remains positive (we're bringing in more people than those who are leaving!):  
+• Average daily unsubscribes: 144  
+• Average daily new subscribers: 296  
+    ◦ This shows a strong net growth, with the list expanding at nearly a 2:1 rate.  
+And if we look at a average YoY comparison, it’s actually proportional to increased campaign volume and list size. As reach expands, higher unsubscribe rates are expected.  
+• June 2024: 193 new subscribers per day, 104 unsubscribes per day  
+• June 2025: 296 new subscribers per day, 144 unsubscribes per day  
+In sum, there isn't anything alarming — we'll continue to monitor the declines MoM, but everything we're seeing is just a result of more promotional campaigns + an expanding list (which is good!).\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-01 14:02** *User_2Z9G95*: I can add in new subscribers to the reporting as well, so we can have the bigger picture of overall list growth moving forward!
+- **2025-07-01 15:02** *User_2Z9G95* 💬 11 replies: Hi @Elyse — Keep me posted on the copy for the [Alchemize House](https://docs.google.com/document/d/1poZG9RwUZHJ_swcoBm9vcvQZl0HI1DC01xGTX0hW0Ng/edit?tab=t.0) emails! Chandler is working on the second email copy now. I do want to flag that getting two emails ready may be tight for tomorrow. Pending copy approval, we'll keep you posted, but is there a chance we bump to 7/3? Or we could even get one sent out tomorrow and one on the third — let us know!  
+  
+Plus we still need the booking link from Cole! So keep me posted there, too!\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-07-01 15:04** *Elyse*: @User_2Z9G95 @Ingrid I dug this up from 2023 [https://docs.google.com/spreadsheets/d/1AGhNsjI4P6sd1DRWOKP7t9B3arhQe8-kBEl6Y0qTRAM/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1AGhNsjI4P6sd1DRWOKP7t9B3arhQe8-kBEl6Y0qTRAM/edit?usp=sharing)\n\n📎 **Summer Retention Email Project** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1AGhNsjI4P6sd1DRWOKP7t9B3arhQe8-kBEl6Y0qTRAM/edit?usp=sharing)\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-01 15:07** *Elyse*: let me also text fiona rn re those dates
+- **2025-07-01 15:08** *Elyse*: so we know for copy
+- **2025-07-01 16:33** *Elyse*: @User_2Z9G95 yes to moving to 7/3
+- **2025-07-01 16:33** *Elyse*: fiona catching up from ooo last week, said she’ll prioritize reading this over for us to ensure we’ve got the right info
+- **2025-07-01 16:36** *Elyse*: @User_2Z9G95 the everyone else version is good
+- **2025-07-01 16:36** *Elyse*: to use for wide send\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 16:46** *User_2Z9G95*: Fabulous, thank you!
+- **2025-07-01 16:47** *Elyse*: @User*2Z9G95 preview link on travel blog [https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=ce644793154f9f72fb25a9ac9bf8a62c](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=ce644793154f9f72fb25a9ac9bf8a62c)\n\n**sqkg7apn4g7vv3mu-22626551.shopifypreview.com**\n🔗 **[6 Airplane Travel Tips: In Flight &amp; Recovery | HigherDOSE](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=ce644793154f9f72fb25a9ac9bf8a62c)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 16:47** *Elyse*: Selecting photos rn
+- **2025-07-01 17:16** *Elyse*: @User*2Z9G95 [https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=03c60c69a6e81c8d56f539706e7b0c2d](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=03c60c69a6e81c8d56f539706e7b0c2d) what do you think of these photos\n\n**sqkg7apn4g7vv3mu-22626551.shopifypreview.com**\n🔗 **[6 Airplane Travel Tips: In Flight &amp; Recovery | HigherDOSE](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=03c60c69a6e81c8d56f539706e7b0c2d)**
+- **2025-07-01 17:18** *User_2Z9G95*: Looks great!!
+- **2025-07-02 07:59** *Elyse*: @User_2Z9G95 live link for blog post: [https://higherdose.com/blogs/the-high-life-blog/airplane-travel-recovery-tips](https://higherdose.com/blogs/the-high-life-blog/airplane-travel-recovery-tips)\n\n**higherdose.com**\n🔗 **[6 Airplane Travel Tips: In Flight &amp; Recovery | HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/airplane-travel-recovery-tips)**
+- **2025-07-02 07:59** *Elyse*: will review emails on tracker in a sec!
+- **2025-07-02 09:33** *Elyse*: @User_2Z9G95 I’m working on june EOM recap slides - could you help me with YoY subscriber growth for email and sms please?
+- **2025-07-02 10:10** *User_2Z9G95*: Yes, on it!
+- **2025-07-02 10:11** *User_2Z9G95*: Will also add this to our monthly reporting, so it's an easy pull\n\n*Reactions: :gratitude-thank-you: Elyse*
+- **2025-07-02 10:14** *User_2Z9G95*: Email:  
+June 2024:  
+• 5,810 new subscribers  
+• 3,170 removed subscribers  
+• 179,009 total  
+June 2025:  
+• 8881 new subscribers  
+• 4334 removed subscribers  
+• 212,535 total\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-02 10:16** *User_2Z9G95*: SMS:  
+• June 2024:  
+    ◦ 1,480 subscribes  
+    ◦ 532 unsubscribes  
+    ◦ 47,615 total  
+• June 2025:  
+    ◦ 3,558 subscribes  
+    ◦ 1,700 unsubscribes  
+    ◦ 51,930 total\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-02 10:16** *User_2Z9G95*: @Elyse Here you go!!^
+- **2025-07-02 10:27** *User_2Z9G95*: Context for SMS unsubscribes is the same as email! Sending more promo campaigns, bringing more people in, so naturally more people will unsubscribe overall — nothing to be concerned about!\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-07-02 13:17** *Chris Jacob*: Had to hop le me know my logistical to dos
+- **2025-07-02 13:17** *Elyse*: CJ Just adding payment method to account please!
+- **2025-07-02 13:40** *User_2Z9G95*: @Elyse — RE the Klaviyo code exclusion update, it's all dependent on the collection the code is tied to. The collection it's tied to is called "Can be discounted" so I would assume bundles shouldn't be in there. I don't have access, but can you take a look at that collection and see if bundles are in there? It may be best to remove them, or I can select a different collection if there's a better one to use!
+- **2025-07-02 13:50** *Chris Jacob*: not sure if applicable but noting that products have to be proactively added as sales channels for instant or PS\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-02 13:51** *Elyse* 💬 1 reply: yes so bundles aren’t in “can be discounted” @User_2Z9G95
+- **2025-07-02 13:51** *Chris Jacob*: billing added
+- **2025-07-02 13:51** *Chris Jacob*: 📎 **image.png** (png, 51.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0945H6ML20/image.png)
+- **2025-07-02 13:52** *Chris Jacob*: also looking at PS integratoins below things we use if you want me to connect let me know  
+Yotpo  
+Loyalty Lion  
+Klaviyo  
+Wonderment
+- **2025-07-02 13:52** *Chris Jacob*: Kustomer
+- **2025-07-02 13:52** *Elyse*: yes to all please
+- **2025-07-02 13:52** *Chris Jacob*: SLack  
+Northbeam  
+StayAI
+- **2025-07-02 13:52** *Elyse*: Julia was gonna send us a list but if you see those available already that would be super helpful to connect
+- **2025-07-02 13:52** *Chris Jacob*: Elevar  
+Alia
+- **2025-07-02 13:53** *User_2Z9G95*: That would be fantastic! I can handle Alia and Klaviyo!
+- **2025-07-02 13:53** *Chris Jacob*: ok
+- **2025-07-02 13:53** *Elyse*: you da bomb CJ
+- **2025-07-02 13:53** *User_2Z9G95*: Thank you!!
+- **2025-07-02 13:56** *Chris Jacob*: Elevar connected but requires this flow creation in PS when yu're ready
+- **2025-07-02 13:56** *Chris Jacob*: [https://help.postscript.io/hc/en-us/articles/22270156915227-Set-Up-Your-Elevar-Integration#01F9MF5S5W0HJ0QRFK4V3NBPXF](https://help.postscript.io/hc/en-us/articles/22270156915227-Set-Up-Your-Elevar-Integration#01F9MF5S5W0HJ0QRFK4V3NBPXF)
+- **2025-07-02 13:56** *Chris Jacob*: Elyse probably have you do this with CS side [https://help.postscript.io/hc/en-us/articles/1260804682429-Set-Up-Your-Kustomer-Integration#Disable-Message-Threading-in-Kustomer](https://help.postscript.io/hc/en-us/articles/1260804682429-Set-Up-Your-Kustomer-Integration#Disable-Message-Threading-in-Kustomer)
+- **2025-07-02 13:56** *Elyse*: fab will do
+- **2025-07-02 14:02** *Chris Jacob*: Sharma team are you familiar with NB connection this doesn't really say how to do it
+- **2025-07-02 14:02** *Chris Jacob*: [https://help.postscript.io/hc/en-us/articles/14218351707931-Set-Up-Your-Northbeam-Integration](https://help.postscript.io/hc/en-us/articles/14218351707931-Set-Up-Your-Northbeam-Integration)
+- **2025-07-02 14:03** *User_2Z9G95*: Let me look!
+- **2025-07-02 14:05** *User_2Z9G95*: Ah, I see! @Chris Jacob – No action is required. Northbeam will just auto track our default UTM parameters, so we should be good to go there!
+- **2025-07-02 14:06** *Chris Jacob*: I'll leave Wonderment to you all its not clear thats useful\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-07-02 14:10** *Chris Jacob*: The Alia setup requires choosing a keyword [https://help.postscript.io/hc/en-us/articles/27155704671899-Set-Up-Your-Alia-Integration#Create-a-Postscript-Keyword](https://help.postscript.io/hc/en-us/articles/27155704671899-Set-Up-Your-Alia-Integration#Create-a-Postscript-Keyword)
+- **2025-07-02 14:16** *User_2Z9G95*: Yes! Our Alia contact said they will do it for us :pray:
+- **2025-07-02 14:38** *Elyse*: thank you @User_2Z9G95 for those subscriber metrics!
+- **2025-07-02 14:40** *User_2Z9G95*: Back-logged everything [here](https://docs.google.com/spreadsheets/d/1qtJOU2541YSnoXC7ccA-RRUy2E_ctEOXQUXO3AdPWU4/edit?gid=1153635090#gid=1153635090), too!
+- **2025-07-02 14:53** *Elyse*: @User_2Z9G95 for SMS with the attentive data folder, which file do you think I should be using?
+- **2025-07-02 14:54** *Elyse*: i’m looking at campaign performance for YoY comparison. which doc would you use
+- **2025-07-02 14:54** *Elyse*: do you think it matters?
+- **2025-07-02 14:56** *User_2Z9G95*: Like June 2025 campaign performance vs. June 2024 campaign performance? What metrics do you need specifically?
+- **2025-07-02 14:56** *User_2Z9G95*: Engagement is going to be harder to get just because Attentive doesn't pull it in nicely, but conversions, revenue is easier to find!
+- **2025-07-02 14:58** *Elyse*: so for my email slides, i did top 3 campaigns with the creative for june 2025
+- **2025-07-02 14:58** *Elyse*: and then a pivot with all the campaigns
+- **2025-07-02 14:58** *Elyse*: hang on will show you
+- **2025-07-02 14:59** *Elyse*: looking to hopefully replicate for sms
+- **2025-07-02 15:00** *Elyse*: 📎 **Screenshot 2025-07-02 at 3.59.13 PM.png** (png, 713.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0942KZRMK7/screenshot_2025-07-02_at_3.59.13___pm.png)\n📎 **Screenshot 2025-07-02 at 3.59.24 PM.png** (png, 1.3MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F093QMR937H/screenshot_2025-07-02_at_3.59.24___pm.png)
+- **2025-07-02 15:01** *User_2Z9G95*: OH, so do you need June 2024 data?
+- **2025-07-02 15:01** *Elyse*: both for sms
+- **2025-07-02 15:02** *Elyse*: june 2024 and 2025
+- **2025-07-02 15:02** *User_2Z9G95*: perf
+- **2025-07-02 15:02** *User_2Z9G95*: one moment
+- **2025-07-02 15:02** *Elyse*: i was looking at the campaign performance folder and saw there were a bunch of the same file but split by week year day etc
+- **2025-07-02 15:02** *Elyse*: wasnt sure if i should use one file over the other
+- **2025-07-02 15:05** *User_2Z9G95*: 2025 &gt; Campaign Performance &gt; Campaign Performance 2025 (Month) &gt; Make a copy of that file &gt; Title it June &gt; Delete all month's except June (already did this for you [HERE](https://docs.google.com/spreadsheets/d/1CM0GI*ywWN*nds6dOOAlNqqnr40RMIE-4MRY3yNF-Yo/edit?gid=2010495223#gid=2010495223)).  
+  
+2024 &gt; Campaign Performance &gt; Campaign Performance 2024 (Month) &gt; Make a copy of that file &gt; Title it June &gt; Delete all month's except June (already did this for you [HERE](https://docs.google.com/spreadsheets/d/12jQCd-xzLaHExyIUmexzmLHzBXtzM-v5oODKgYB6RZM/edit?gid=1970150482#gid=1970150482)).\n\n📎 **Campaign Performance 2024 (June)** (gsheet, 156.4KB) - [Download](https://docs.google.com/spreadsheets/d/12jQCd-xzLaHExyIUmexzmLHzBXtzM-v5oODKgYB6RZM/edit?gid=1970150482#gid=1970150482)\n📎 **Campaign Performance 2025 (June)** (gsheet, 45.6KB) - [Download](https://docs.google.com/spreadsheets/d/1CM0GI_ywWN_nds6dOOAlNqqnr40RMIE-4MRY3yNF-Yo/edit?gid=2010495223#gid=2010495223)
+- **2025-07-02 15:05** *User_2Z9G95*: The files are just aggregates! So I think the easiest way to group is to make duplicates and then filter by the info needed!
+- **2025-07-02 15:05** *Elyse*: ok perfect
+- **2025-07-02 15:06** *User_2Z9G95*: There was only 1 SMS sent last June, so that's why there's only one SMS, BTW!
+- **2025-07-02 15:06** *Elyse*: yoy comp gonna look ballerrrrr then\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-02 15:06** *Elyse*: love that
+- **2025-07-02 15:16** *Elyse*: @User_2Z9G95 do we have a folder with all the creative in it by chance?
+- **2025-07-02 15:21** *User_2Z9G95*: I don’t… they didn’t include creative reporting with their data downloads, but let me reach out and see what we can do. 
+- **2025-07-02 15:21** *Elyse*: ok cool thank you
+- **2025-07-02 15:21** *Elyse*: that would be super helpful
+- **2025-07-02 15:21** *Elyse*: i’m surprised its not automatically included
+- **2025-07-02 15:21** *Elyse*: i’ll see what i can pull from my weekly reports too
+- **2025-07-02 15:22** *Elyse*: ok so only creative i don’t have for the sake of this report is the father’s day sale sms on 6/8
+- **2025-07-02 15:22** *User_2Z9G95*: The one from last year, right?
+- **2025-07-02 15:22** *Elyse*: from this year!
+- **2025-07-02 15:23** *User_2Z9G95*: oh! I have that in my SMS messages
+- **2025-07-02 15:24** *User_2Z9G95*: Slack is having an issue sending files over, so I just texted it to you!!
+- **2025-07-02 15:24** *Elyse*: ok officially bffs now having your number\n\n*Reactions: :selfie: User_2Z9G95, :blob-hearts: User_2Z9G95*
+- **2025-07-02 15:25** *User_2Z9G95*: Just reached out RE creative and will keep you posted
+- **2025-07-02 15:43** *User_2Z9G95*: @Elyse — [Alchemize House email design ready for review](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42028-299&amp;p=f&amp;t=94SubLn7Vs7WOlnS-0)! I left a few tweaks in there already, but please add in any feedback + we can easily swap out photos if we get more/others.
+- **2025-07-03 09:08** *Elyse*: Jumping on this now @User_2Z9G95 \n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-03 09:23** *Elyse*: @User_2Z9G95 top header “take some for yourself” think that should say take some time for yourself\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-07-03 09:48** *Elyse*: Email looks good
+- **2025-07-03 09:48** *Elyse*: Gonna find out what the story is with the link
+- **2025-07-03 09:48** *Elyse*: Also where do we have mojito link directing to?
+- **2025-07-03 10:06** *User_2Z9G95*: Ah, thanks for the reminder! Sorry I meant to send a follow up earlier asking if she shared the recipe on socials/her blog? I was just looking and can't seem to find anything live - if not, thinking we can just remove the "get the recipe" CTA and add in a push for high-dration powder - (i.e. Make your own zero-proof mocktail! Our go-to: shake up a stick of High-dration powder with water, pour over ice and top with lime and mint for a refreshing and hydrating drink to sip while you DOSE).
+- **2025-07-03 10:08** *Elyse*: Yeah that works!
+- **2025-07-03 10:09** *User_2Z9G95*: Updating!
+- **2025-07-03 10:09** *Elyse*: What did we put in the hydration email for the recipe
+- **2025-07-03 10:09** *Elyse*: Oh the watermelon is in the hydration powder ok nvm
+- **2025-07-03 10:10** *Elyse*: I was like wait do we need to tell people to add watermelon :woman-facepalming::skin-tone-2: \n\n*Reactions: :joy: User_2Z9G95*
+- **2025-07-03 10:10** *User_2Z9G95*: Yes the flavor!!
+- **2025-07-03 10:11** *User_2Z9G95*: I can put Watermelon High-Dration Powder if that's clearer + sounds better? It's just not merchandised on the site that way, but happy to!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-03 10:14** *User_2Z9G95*: Design is being updated, will ping when it's ready! Keep me posted on the link!
+- **2025-07-03 10:18** *Elyse*: Will do
+- **2025-07-03 10:18** *Elyse*: Emailed the surf lodge team saying like yo gimme a dang link already please or we’re just gonna link to surf lodge website\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-03 10:19** *User_2Z9G95*: perf@!
+- **2025-07-03 10:39** *User_2Z9G95*: @Elyse — [Updated design here](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42028-299&amp;p=f&amp;t=aMS4QP9wKqSLkc8D-0)!
+- **2025-07-03 11:06** *Elyse*: Perfect
+- **2025-07-03 11:19** *User_2Z9G95*: Preview sent with surf lodge email homepage as the stand in link!
+- **2025-07-03 11:37** *Elyse*: Ok cool will check now
+- **2025-07-03 11:39** *Elyse*: Looks good
+- **2025-07-03 11:49** *User_2Z9G95*: Should we schedule or you want to give it a little to see if they respond?
+- **2025-07-03 12:17** *Elyse*: Ugh
+- **2025-07-03 12:17** *Elyse*: What do you think
+- **2025-07-03 12:17** *Elyse*: I’m half of the mind to just fire it off as is
+- **2025-07-03 12:17** *Elyse*: Let me give them til 2
+- **2025-07-03 12:17** *User_2Z9G95*: ALigned!
+- **2025-07-03 12:27** *User_2Z9G95*: @Elyse — [Let me know if there's any feedback on the travel bundle email for Monday](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847)! I see the bundles are live which is perfect.
+- **2025-07-03 12:33** *User_2Z9G95*: Additionally, the other emails for next week's copy are ready for review! We'll want to get them into design ASAP since it's a short week!  
+• [7/9](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)  
+• [7/11](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)
+- **2025-07-03 12:40** *Elyse*: Perfect will hop into these now
+- **2025-07-03 13:19** *User_2Z9G95*: Thank you! Thinking we should probably schedule the email for 3p ET, but let me know if you feel otherwise!
+- **2025-07-03 13:22** *User_2Z9G95*: We usually send to an engaged 90 day list, but for this one, we're recommending a send to a L60 engaged to see if a more targeted engaged list could help increase opens/clicks — plus this is a fun, engaging piece that will likely resonate most with our most engaged subscribers.  
+  
+I've also included a Tri-State area segment and excluded CAN/EU, given the Montauk inclusion, but if you feel like we should include them, let me know!
+- **2025-07-03 13:43** *Elyse*: Yeah let’s do it re 3pm
+- **2025-07-03 13:43** *Elyse*: Done waiting for them lol
+- **2025-07-03 13:43** *Elyse*: Also good on segmenting\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-03 14:36** *Elyse*: @User_2Z9G95 my only note for Monday’s email - 1 maybe we move to Tuesday just bc its long weekend, people may be settling back in/not as in tune w their inbox on monday/in catch up mode\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-03 14:36** *Elyse*: and 2 lets try to differentiate the copy for hydration powder on the second bundle
+- **2025-07-03 14:36** *Elyse*: the beginning and end of the sentence are almost identical to blurb about it in first bundle
+- **2025-07-03 14:37** *Elyse*: also first design - second design features the blanket bag/blanket isn’t included in either bundle
+- **2025-07-03 14:39** *Elyse*: reuqested comment access on 7/9
+- **2025-07-03 14:40** *User_2Z9G95*: Granted!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-03 14:52** *Elyse*: ok i added some notes to emf one
+- **2025-07-03 14:52** *Elyse*: but want to look at it again with fresh eyes
+- **2025-07-03 14:52** *Elyse*: so can tweak based on initial notes
+- **2025-07-03 15:38** *User_2Z9G95*: I will take a look at everything and am aligned on a Tuesday send!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-07 14:07** *User_2Z9G95*: Hi @Elyse — I hope you had a great weekend! Let me know if you had any additional thoughts on the [email for tomorrow](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847&amp;t=djwgsOD94sKWXehh-0). I can get it scheduled ASAP. Thank you!  
+  
+Will send through a status update/what's needed for the week in the next hour!\n\n*Reactions: :eyes: Elyse*
+- **2025-07-07 14:59** *Elyse*: @User_2Z9G95 looks good by me
+- **2025-07-07 14:59** *Elyse*: note that this should stay domestic, as the cpg doesn’t ship internationally
+- **2025-07-07 18:55** *User_2Z9G95* 💬 1 reply: Hi Elyse! I'm so sorry for the delay here. Please see immediate campaign action items for this week below. Everything is updated in the [tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958). I will follow up with flow needs and next steps tomorrow. Enjoy your evening!  
+  
+**Campaigns:**  
+• 7/8: Preview sent — Confirming this will be sent to our 90 days engaged list, with non-US exclusions  
+• 7/9: Pushed to design, let me know ASAP if you have [any copy feedback](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)!  
+• 7/11: Copy feedback sent to Chandler — will edit + push to design. Let us know if you have [any other feedback](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)!  
+• 7/14: Giveaway - Do you have any assets or additional details?  
+• 7/16: Mind body connection - [Copy ready here](https://docs.google.com/document/d/1nPaex3squNKgDiXFixreJc2OS7hooZ5X4xjPbShxt3g/edit?tab=t.0)  
+• 7/18: Glow from within - [Copy ready here](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)  
+• 7/21: Microcurrent for Macro results (Julia McCabe blog) - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/23: Permission to Play - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/25: Serotonin Supper - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/28: Permission to Play - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/30 - Summer skin - Copywriting  
+• 8/1 - Summer skin - Copywriting  
+• TBD: Red Light Up-Sell; we will get this briefed out tomorrow
+- **2025-07-07 20:21** *Elyse*: Sweet, will jump on it!
+- **2025-07-08 08:30** *User_2Z9G95*: RE Flow updates, the tracker is updated with action items highlighted in red!  
+• Welcome - Copy feedback pending  
+• Replenishment - Copy/design feedback pending  
+• Checkout - Copy feedback pending  
+• Cart - Copy feedback pending  
+• Browse - Copy feedback pending  
+• Loyalty Lion Revamp: Monthly Reward Reminder - Copy feedback pending  
+• Loyalty Lion Revamp: You got a reward - Copy feedback pending  
+• Loyalty Lion Revamp: Welcome - Copy feedback pending  
+• 02 | Wonderment | Shipping | Shipment Picked Up - Copy feedback pending  
+• 04 | Wonderment | Shipping | Delivered - Copy feedback pending  
+• 06 | Wonderment | Attempted Delivery - Copy feedback pending
+- **2025-07-08 09:51** *Elyse*: ok perfecto
+- **2025-07-08 09:51** *Elyse*: I am finishing weekly report and then spending the day on crm!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-08 11:01** *User_2Z9G95*: Hi @Elyse — Just re-sent today's preview! LMK how it looks and will get it scheduled ASAP.
+- **2025-07-08 11:47** *Elyse*: good to go @User_2Z9G95
+- **2025-07-08 11:53** *User_2Z9G95*: Scheduled for 1:30p ET to 90 days engaged (intl exclusions!) — thank you!
+- **2025-07-08 11:53** *Elyse*: perfecto
+- **2025-07-08 12:21** *Elyse*: ok diving in
+- **2025-07-08 12:21** *Elyse*: which do you want me to look at first?
+- **2025-07-08 12:21** *Elyse*: email or PS automations?
+- **2025-07-08 12:22** *User_2Z9G95*: Let's do email! Let's chat through a plan for PS automations on our call to make it easy for us
+- **2025-07-08 12:22** *Elyse*: ok sweet
+- **2025-07-08 12:58** *Elyse*: @User_2Z9G95 would hold on design for 7/9. see my notes on the google doc please!
+- **2025-07-08 14:25** *User_2Z9G95*: Hi @Elyse — Thanks so much for the time today! [Here's a link to the initial postscript automations for review](https://docs.google.com/document/d/19U*x-DHbtn7dNwNq7JL8xHdkMHOMkOAl8kY0G8o2Wjg/edit?tab=t.0). Let me know if you have any questions! @Ingrid — Feel free to review our weekly summary below + [agenda here](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)!  
+  
+Shopify Summary:  
+• This year MTD: 0.21% to goal with $30K in revenue   
+• Last year MTD: 0.23% to goal with $27K in revenue  
+Key Performance Insights:  
+• Klaviyo-attributed campaign revenue is down 17% mainly because we've only sent two campaigns so far (two additional will be sent to help us round out the week)  
+• Klaviyo-attributed flow revenue is up 53% YoY mainly attributed to our welcome and browse abandonment flows. We saw 150% more recipients receiving these flows which means more people are entering our funnel and are flows are converting them!   
+    ◦ After speaking with the paid team, this increase in flow performance/sessions could be attributed to more customers coming in from the combo of AppLovin' and TikTok — adding more touch points into the customer journey.   
+• We don't have any SMS-attributed revenue because we're still onboarding. We're hoping to be fully live by tomorrow EOD, so we can start generating revenue from our new campaigns and automations.   
+Instant will be joining our next call on Tuesday, so we'll plan to start with an Instant summary at the beginning of that call (5-10 mins) prior to jumping into our weekly.\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n📎 **FOR REVIEW: Postscript Automations** (gdoc, 107.9KB) - [Download](https://docs.google.com/document/d/19U_x-DHbtn7dNwNq7JL8xHdkMHOMkOAl8kY0G8o2Wjg/edit?tab=t.0)
+- **2025-07-08 15:39** *Elyse*: Thank you @User_2Z9G95 !! 
+- **2025-07-08 15:40** *Elyse*: Compiling team travel hacks rn!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-08 17:32** *Elyse*: @User_2Z9G95 just added in team travel hacks to google doc and the last of my notes to travel email now
+- **2025-07-08 17:47** *User_2Z9G95*: Looks great! RE higherdose hacks, I think we can just have one CTA for each: [Shop Katie's Pick's], [Shop Jessica's Picks], [Shop Anastasia's Picks] and have each one link to the collections page. Thoughts?
+- **2025-07-08 17:50** *Elyse*: ok i’m cool w that!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-08 17:53** *User_2Z9G95*: I updated the blurb at the top, too, based on the blog!
+- **2025-07-09 10:07** *Elyse* 💬 1 reply: @User_2Z9G95 i’m doing one piece of admin work and then diving into our list\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 12:57** *Elyse* 💬 1 reply: left notes on postscript list - going to show ingrid in a few mins so may have more notes @User_2Z9G95
+- **2025-07-09 14:56** *Elyse*: @User*2Z9G95 Ingrid and I just went through all the flows. Here are our notes:  
+  
+Big takeaway - the abandon series feels very generic/vague with subject lines and preview text. We’d love to run that whole series, plus welcome emails through the **[new product pillars doc](https://docs.google.com/document/d/1TviOjzGtgGUhRuFDcaCLu3ePCtHVB0RDgFUrFvS1bhE/edit?usp=sharing)**. I just saw this for the first time today and think it’s spot on for language and where we want these flows to be. Here’s also the **[new manifesto doc](https://docs.google.com/document/d/1w*C60nIHyiDn_VoDrXSXTJw46C6MyhGS-yrIZMw5AuI/edit?usp=sharing)** - it’s very much a working doc but is a great reference of the voice we want to be speaking in  
+  
+With replen flow - left notes on figma, but one note for the Shop By Goal design: we’d love to see which version performs better via email campaign. So want to think about where we can put that block into an appropriate email and test whether the lifestyle photo vs product photo does better with engagement and then implement that into the flows  
+  
+I’m setting up a call with Lauren to review design and everything as a whole for Monday/Tuesday so if we can somehow get outstanding copy polished up before then so I can present everything at once would be sick\n\n📎 **HIGHERDOSE PRODUCT PILLARS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1TviOjzGtgGUhRuFDcaCLu3ePCtHVB0RDgFUrFvS1bhE/edit?usp=sharing)\n📎 **HigherDOSE Manifesto_v3** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1w_C60nIHyiDn_VoDrXSXTJw46C6MyhGS-yrIZMw5AuI/edit?usp=sharing)
+- **2025-07-09 15:01** *Elyse*: Replen flows  
+• glow serum email is underwhelming. want to swap out for better photos, and left notes for ingredient highlights  
+• detox drops email looks good, want to swap the bottom shop by goal photos a bit so that its not beige beige beige blue  
+• oxytocin oil email is missing ingredient breakdown and review highlight  
+• highdration powder we loved the ingredient highlight design, and decided for the reviews we’d like to do a single review static image instead of the gif so its not too much to read while in reviews in motion  
+    ◦ any emails that are still in copy, we picked which review we want on the doc
+- **2025-07-09 15:12** *Elyse*: Same thing for Postscript automations copy - would love to toss that to Chandler and rework through new pillars/manifesto language @User_2Z9G95 I put some notes directly on the doc but want to revisit overall now having those two new docs
+- **2025-07-09 15:15** *Elyse*: Diving in to wonderment and loyalty lion emails now
+- **2025-07-09 15:31** *Elyse*: @User_2Z9G95 Loyalty Lion emails - would also love to run through those again with the new lens of the pillars/manifesto docs. They feel very generic loyalty, especially the subject lines. Want them to feel more elevated/high end/luxury brand, more exclusive, and more community nurturing if that makes sense
+- **2025-07-09 15:33** *Elyse*: Subject line of “Score” is wildly off brand for HD, so must must must rework those
+- **2025-07-09 15:42** *Elyse* 💬 1 reply: @User_2Z9G95 could you do me a favor please? Can you send me a test of the order shipped, out for delivery, and delivered emails as they are now please? Want to be able to compare
+- **2025-07-09 15:46** *User_2Z9G95*: Thank you so much for this detailed feedback @Elyse! Will pass the Product Pillars and Manifesto doc around so that everyone has access to it for anything needed RE brand voice. This is super helpful!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-09 15:47** *Elyse*: can share with Maham too\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 15:47** *Elyse*: i thought it was so helpful too\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 15:47** *Elyse*: a good brand voice refresh\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 15:47** *User_2Z9G95*: I see you put "left lots of notes 7/8 <mailto:hannah@sharmabrands.com|hannah@sharmabrands.com>" for the 7/10 email. We implemented all of your feedback yesterday! Is there anything new we should integrate from today or is it good to push to design?
+- **2025-07-09 15:47** *User_2Z9G95*: Sending tests now!
+- **2025-07-09 15:48** *Elyse*: can you look me to that copy pls
+- **2025-07-09 15:48** *Elyse*: i’m blanking on what it is now
+- **2025-07-09 15:48** *User_2Z9G95*: Oh yes, sorry! [This one](https://docs.google.com/document/d/19nheMCxQGxTRC_6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)!
+- **2025-07-09 15:49** *User_2Z9G95*: I left the comments in there, just so I can double check everything in the designed version, but everything was updated!'
+- **2025-07-09 17:09** *Elyse*: Can you look me lmao just realized what I wrote :woman-facepalming::skin-tone-2: 
+- **2025-07-09 17:09** *Elyse*: Reading thru updates quickly now
+- **2025-07-09 17:11** *Elyse*: @User_2Z9G95 good to move to design
+- **2025-07-09 18:04** *User_2Z9G95*: Thank you!! @Elyse  
+• 7/10 design here: [Proto](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?page-id=42125%3A301&amp;node-id=42125-1176&amp;viewport=-1666%2C-658%2C0.39&amp;t=CJ5X1dBZ8KXSm5iT-1&amp;scaling=min-zoom&amp;content-scaling=fixed), [Figma](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42125-301&amp;p=f&amp;t=17nMvJzVHkNllLcj-0)  
+    ◦ Left some comments for you in there!  
+• 7/11: Design here: [Figma](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?t=KDGCNtmQ1o8p7sT1-0)
+- **2025-07-09 18:28** *Elyse*: Ok fab will be home in a sec and will look
+- **2025-07-09 20:18** *Elyse*: answered questions on 7/10\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 20:18** *Elyse*: but otherwise looks great
+- **2025-07-09 20:19** *Elyse*: 7/11 is fire, love it\n\n*Reactions: :heart: Ari Murray, :raised_hands: User_2Z9G95*
+- **2025-07-10 10:39** *User_2Z9G95*: Preview for today's email sent, @Elyse !\n\n*Reactions: :eyes: Elyse*
+- **2025-07-10 10:42** *User_2Z9G95*: Also sent B version for the SL + PT!
+- **2025-07-10 10:42** *Elyse*: peeping both rn
+- **2025-07-10 10:45** *Elyse*: @User_2Z9G95 higherdose hacks has glow serum blurb underneath it!
+- **2025-07-10 10:45** *Elyse*: 📎 **Screenshot 2025-07-10 at 11.45.35 AM.png** (png, 560.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0959NCGC4C/screenshot_2025-07-10_at_11.45.35___am.png)
+- **2025-07-10 10:46** *User_2Z9G95*: Ah updating now\n\n*Reactions: :gratitude-thank-you: Elyse*
+- **2025-07-10 11:16** *User_2Z9G95*: Previews re-sent! @Elyse
+- **2025-07-10 11:23** *Elyse*: great today’s good to go
+- **2025-07-10 11:23** *User_2Z9G95*: Previews for tomorrow also sent!
+- **2025-07-10 11:25** *Elyse*: both good to go
+- **2025-07-10 11:27** *User_2Z9G95*: It looks like the last few emails we sent out between 330-4p ET drove above average opens (over 60%) consistently! We'll plan to do a send-time test after these two subject line ab tests, but I would recommend we send both of these at that time!  
+  
+Confirming we should exclude intl from the EMF one since fanny pack is US only? Should we also exclude from travel since we feature a lot fo US only products?
+- **2025-07-10 11:27** *Elyse*: fanny pack can go wide, thats available internationally
+- **2025-07-10 11:27** *Elyse*: but yes to travel for intl excl
+- **2025-07-10 11:28** *User_2Z9G95*: Oh! The sheet you initially shared said US only, so I'll update it!
+- **2025-07-10 11:39** *Elyse*: oh really
+- **2025-07-10 11:39** *Elyse*: ok hang on
+- **2025-07-10 11:39** *Elyse*: let me triple check\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-10 11:40** *User_2Z9G95*: Ok, LMK!
+- **2025-07-10 11:41** *User_2Z9G95*: [This is what I've been referencing](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?gid=1171637223#gid=1171637223)!
+- **2025-07-10 11:42** *Elyse*: yes fanny international confirmed\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-10 11:43** *Elyse*: oo i have to add the new bundles to that thanks for resurfacing @User_2Z9G95
+- **2025-07-10 11:43** *User_2Z9G95*: oh yes, thank you!
+- **2025-07-10 11:44** *User_2Z9G95*: • 7/10: Scheduled for today, 3p ET, 90D engaged, intl excl  
+• 7/11: Scheduled for tomorrow 3:30p ET, 90D engaged\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-10 12:44** *User_2Z9G95*: Hi @Elyse — A few things for you!  
+• Do you have any additional context in regards to the remaining [July concepts](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?tab=t.pgznx7hfmnnk)? We'd love to get copy finalized this week.   
+• Would you like some support in regards to August concepts? Happy to start putting some ideas in if that would be helpful. We would love to have concepts finalized by early next week (at least the first half), so that we can start briefing those out.   
+• I'll dive into your feedback on all flow-related items this afternoon!  
+• Chandler is working on the Postscript copy today, so I'll let you know when that's ready for review.   
+• 7/15 copy ready for review [here](https://docs.google.com/document/d/1nPaex3squNKgDiXFixreJc2OS7hooZ5X4xjPbShxt3g/edit?tab=t.0)  
+• 7/17 copy ready for review [here](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0) (let us know when these are good to push to design!)\n\n📎 **16: Redefining the Summer Body Email + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1nPaex3squNKgDiXFixreJc2OS7hooZ5X4xjPbShxt3g/edit?tab=t.0)\n📎 **18: Glow from within: Body Sculpting** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)
+- **2025-07-10 14:16** *Elyse*: @User_2Z9G95 you read my mind! just finished eating some lunch, diving into remainder of July first, will review those two emails, then jumping into uploading helen’s blog to Shopify
+- **2025-07-10 14:16** *Elyse*: aiming to start tackling august tm!
+- **2025-07-10 14:22** *User_2Z9G95*: Love it! Thank you so much!!
+- **2025-07-10 16:43** *User_2Z9G95*: HI @Elyse! Postscript SMS for review [HERE](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0). Suggestions in green!\n\n📎 **NEW EDITS: Postscript Automations** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0)
+- **2025-07-10 16:44** *Elyse*: lets goooooooo
+- **2025-07-10 16:44** *Elyse*: ok will dive in rn\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-10 16:44** *Elyse*: i started reviewing 7/15
+- **2025-07-10 16:44** *Elyse*: also in a moment of diversion, i updated the blog organization sheet [https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing)\n\n📎 **Higher Dose Blog Content Gap Analysis** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK_NDmYpc8aVSCfS-FpGzEP8U/edit?gid=426573794#gid=426573794)
+- **2025-07-10 16:45** *Elyse*: **HD Work** tab has new upcoming SEO blogs
+- **2025-07-10 16:45** *Elyse*: so can keep in mind for august CRM inclusion where appropriate
+- **2025-07-10 16:46** *Elyse*: got new brief from SEO team on “when to use red light therapy for best results” (line 18) so will send that off to our writer tomorrow\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-11 09:08** *Elyse*: @User_2Z9G95 morning gal! give me a holler when I should take a peek at tracker for any flow updates please!\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-11 09:32** *Elyse*: @User_2Z9G95 just looked a postscript updated copy - moving in a better direction. so i do love the “lit up, deeply restored, and unapologetically radiant” i just think we shouldn’t say it back to back in like a handful of different texts. like imagine you’re a customer and get it in the welcome flow, then you abandon something you’re seeing that copy again, etc it feels redundant in a spot where we have opportunity to say something different each time  
+@Ingrid do you have any thoughts here? [Here](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0) are the updates\n\n📎 **NEW EDITS: Postscript Automations** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0)
+- **2025-07-11 09:34** *Elyse*: @User_2Z9G95 i’m diving into uploading helen leland’s blog, will circle back with live link shortly!
+- **2025-07-11 12:07** *User_2Z9G95* 💬 3 replies: Hi @Elyse! I just connected with Chandler and she's working through the flows today and early next week. Given that some of the emails need to be completely re-thought and re-done, we won't be able to have everything ready by Monday or Tuesday next week. Here's a summary of what we can do though:  
+• By Monday EOD:  
+    ◦ 7/21 campaign  
+    ◦ 7/25 campaign  
+    ◦ Replenishment flows  
+    ◦ Abandoned Cart  
+    ◦ Abandoned Checkout  
+• By Tuesday EOD:  
+    ◦ Abandoned Browse  
+• By Wednesday EOD:  
+    ◦ Wonderment flows  
+    ◦ Loyalty Lion flows  
+Given that the Welcome needs another re-write with the new TOV doc, we won't be able to have that done for early next week. We're moving to keep pushing these along as quickly as we can and appreciate your patience as we continue to work through these.  
+  
+We also had a few questions on some feedback left:  
+• I saw you left a comment in [this Figma file](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180&amp;p=f&amp;t=AyOdrmbkH5d1DFMB-0) about providing copy. Is the plan just to condense that's already in there? Or what exactly needs to be modified? Thank you!  
+• And for [this one](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=39049-706&amp;t=E9aBNCdqOehg4OEI-0), do you have the one-liner about being fragrance-free/the scent we can add?  
+I just realized I never sent you the tests for order update emails — so sorry! I actually can't send previews of transactional emails that are live, so I'll thread screenshots for you now, so you can review [those](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)! Keep us posted on feedback there.  
+  
+One other outstanding item:  
+1. We're waiting on some more context for the [Permission to Play](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?tab=t.pgznx7hfmnnk) concepts for July.  
+**One note from us:** Chandler will be OOO 7/21-7/25 and we're hoping to have the first week of August content in hand ASAP so she can get copy drafted for them. I see something about the Red Light Wrap Launch — if that's happening we need to have all context by early next week for us to work on the copy (+ we'd need to pause work on flows to accommodate that new product launch). Please let us know ASAP on that!  
+  
+Let me know if you have any questions! Thank you!\n\n📎 **Summer 2025 CRM Calendar Draft** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?tab=t.pgznx7hfmnnk)
+- **2025-07-11 13:04** *Elyse*: Fab thank you @User_2Z9G95 all good on ETA for flows, I’ll move meeting I set up to early week after or late next week. Thank you for that update
+- **2025-07-11 13:08** *Elyse* 💬 4 replies: re Figma file - which one should I be looking at? I think its the “crafted with” section right?
+    - **2025-07-11 13:11** *User_2Z9G95*: ↳ Ah, yes! It looks like Nero updated it from a design perspective based on your caption, but if we still need to shorten/condense, let us know!\n\n📎 **Screenshot 2025-07-11 at 11.10.33 AM.png** (png, 396.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0951GCRR47/screenshot_2025-07-11_at_11.10.33___am.png)
+- **2025-07-11 14:18** *Elyse*: @User*2Z9G95 blog preview for helen [https://lc4pxt5qwd9w2yfy-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=e5a470e276da72f33b2e99d821a740ab](https://lc4pxt5qwd9w2yfy-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=e5a470e276da72f33b2e99d821a740ab)\n\n**lc4pxt5qwd9w2yfy-22626551.shopifypreview.com**\n🔗 **[Posture, Flow &amp; Inner Vitality with Helen Leland                      – HigherDOSE](https://lc4pxt5qwd9w2yfy-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=e5a470e276da72f33b2e99d821a740ab)**
+- **2025-07-11 14:27** *Elyse* 💬 1 reply: @User_2Z9G95 left notes on 7/15 email doc
+- **2025-07-11 14:39** *Elyse* 💬 2 replies: @User_2Z9G95 confirming you saw Fiona’s response to serotonin supper email?
+- **2025-07-11 14:44** *Elyse* 💬 2 replies: separately, making a mental note for august crm - we’ll want to include katie’s new biohackhers episode on her mold detox
+- **2025-07-11 14:56** *Elyse*: oh Katie also mentioned to me for future - we should use her updated headshots from this folder [https://drive.google.com/drive/u/0/folders/1CcO9P1IGPFfXvE263bP9sA04OPGm49yv](https://drive.google.com/drive/u/0/folders/1CcO9P1IGPFfXvE263bP9sA04OPGm49yv) @User_2Z9G95\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-11 14:57** *Elyse*: @User_2Z9G95 i added a bunch of notes to 7/17 as well
+- **2025-07-11 15:05** *Elyse*: diving in to fleshing out details for remainder of july crm
+- **2025-07-11 15:16** *User_2Z9G95*: Thank you!! Do you have any context/updates RE the Red Light Wrap launch? Are we planning that for July or August? (Q3 strategy says August!)
+- **2025-07-11 15:16** *Elyse*: we’re having an internal marketing kick off meeting on tuesday re that\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-11 15:16** *Elyse*: so will relay any info as soon as i get it!
+- **2025-07-11 15:16** *User_2Z9G95*: Fabbbb
+- **2025-07-11 15:23** *Elyse*: just emailed fiona for some help with 7/23 PTP email lol
+- **2025-07-11 15:24** *Elyse*: and then will get my ask together for the team staff picks on monday, once fiona gives us a little more guidance there
+- **2025-07-11 15:52** *Elyse*: Ok fab she responded\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-11 15:54** *User_2Z9G95*: Love it! Thank you!!
+- **2025-07-14 09:24** *Elyse*: Morning team! @User_2Z9G95 live link for helen [https://higherdose.com/blogs/the-high-life-blog/posture-with-helen-leland](https://higherdose.com/blogs/the-high-life-blog/posture-with-helen-leland)\n\n**higherdose.com**\n🔗 **[Posture, Flow &amp; Inner Vitality with Helen Leland                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/posture-with-helen-leland)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-14 09:26** *Elyse*: @User_2Z9G95 this morning I have to do weekly report and then I’m diving into CRM tracker\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-14 09:26** *Elyse*: and august calendar\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-14 09:59** *Elyse*: also got confirmation we should have Julia McCabe’s blog content back by 7/17
+- **2025-07-14 11:47** *User_2Z9G95*: @Elyse — [7/17 edits are in](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)!\n\n📎 **18: Glow from within: Body Sculpting** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-07-14 14:00** *User_2Z9G95*: Hi @Elyse ! We're working to evolve our internal briefing process and were thinking we could also implement this to help streamline our approval process with you all, too! As you're building out August concepts, would you be able to integrate this framework for them so that we can ensure we're giving the team as much information upfront as possible? I know we don't always have access to the info this far in advance (totally fine), but the more info we can share the better! I'm also happy to support where needed — let me know your thoughts!  
+  
+• Campaign overview:  
+• Goal of the email:  
+• Products to feature:  
+• If this campaign has multiple themes or blocks (i.e. a blog and a product feature), what is the hierarchy of messaging?  
+• If additional research is needed from our team, please link any helpful resources (or let us know where we should be diving deeper):  
+• Do you need to source any additional information internally before we get started?  
+• CTAs:
+- **2025-07-14 14:01** *Elyse*: Absolutely, love this\n\n*Reactions: :raised_hands: User_2Z9G95, :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-14 14:17** *User_2Z9G95*: Fab!!
+- **2025-07-14 14:47** *User_2Z9G95*: Keep me posted on the postscript copy — LMK if there's anything I can do to support there, but we can likely schedule the initial SMS for tomorrow or wednesday!
+- **2025-07-14 14:53** *Elyse*: Will jump into that rn
+- **2025-07-14 16:01** *Elyse*: @User_2Z9G95 left notes on 7/17 email, generally good to go there with a few tweaks\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 09:31** *Elyse*: Morning team! @User_2Z9G95 I’m flying through postscript copy now, leaving notes should be done in next ten mins
+- **2025-07-15 09:38** *Elyse*: done @User_2Z9G95 basically all of them are good to go
+- **2025-07-15 09:41** *User_2Z9G95*: Looking now!!
+- **2025-07-15 09:44** *Elyse*: Sent Maham the doc so she can start uploading
+- **2025-07-15 09:46** *User_2Z9G95*: Looks great, thank you!!
+- **2025-07-15 09:49** *User_2Z9G95*: @Elyse — Email design for today ready for review [here](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?page-id=42205%3A120&amp;node-id=42205-121&amp;viewport=-2%2C-520%2C0.38&amp;t=2YkIcuVGCTtIgIrU-1&amp;scaling=min-zoom&amp;content-scaling=fixed).\n\n*Reactions: :eyes: Elyse*
+- **2025-07-15 09:50** *Elyse*: on it
+- **2025-07-15 09:51** *Elyse*: love it @User_2Z9G95
+- **2025-07-15 09:51** *Elyse*: another banger @Nero!\n\n*Reactions: :bangbang: User_2Z9G95, :star-struck: User_5S72LT, :heart: Ari Murray*
+- **2025-07-15 09:54** *Elyse*: Postscript new number campaign good to go too @User_2Z9G95\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-15 09:57** *User_2Z9G95*: Fab!! 
+- **2025-07-15 09:57** *Elyse*: we’re zip zip zippping today\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-15 09:57** *Elyse* 💬 1 reply: I sent permission to play email copy to fiona for second set of eyes, but reviewing myself now
+- **2025-07-15 09:57** *Elyse*: same re dose dinner
+- **2025-07-15 09:59** *User_2Z9G95*: Perf, on the topic, for the Permission to Play 7/28, supporting your body concept, I tried looking in Klaviyo for the email with some search terms but nothing showed up. Do you recall when it was sent?  
+  
+*Sauna blanket for improved heat tolerance for days spent having fun in the sun (we should have a historical email on hormesis, heat shock proteins - had great info in it*
+- **2025-07-15 09:59** *Elyse*: i’ll dig in!
+- **2025-07-15 10:01** *Elyse* 💬 1 reply: @User*2Z9G95 [https://docs.google.com/document/d/1662CPKmotDWWaDIyfS5-pqyBW6bH4HETjVW*1*Wox-8/edit?usp=sharing](https://docs.google.com/document/d/1662CPKmotDWWaDIyfS5-pqyBW6bH4HETjVW*1_Wox-8/edit?usp=sharing)\n\n📎 **Copy of HD email: Longevity is HOT** (gdoc, 135.5KB) - [Download](https://docs.google.com/document/d/1662CPKmotDWWaDIyfS5-pqyBW6bH4HETjVW_1_Wox-8/edit?usp=sharing)
+- **2025-07-15 10:01** *Elyse*: @User_2Z9G95 zombie cells email [https://docs.google.com/document/d/1fxkn0pbvH9czZkk3S8iJNcr7ZsfqLThr00IKytRps0I/edit?usp=sharing](https://docs.google.com/document/d/1fxkn0pbvH9czZkk3S8iJNcr7ZsfqLThr00IKytRps0I/edit?usp=sharing)\n\n📎 **Copy of HD email: Zombie Cells** (gdoc, 151.0KB) - [Download](https://docs.google.com/document/d/1fxkn0pbvH9czZkk3S8iJNcr7ZsfqLThr00IKytRps0I/edit?usp=sharing)
+- **2025-07-15 10:02** *Elyse*: unrelated but was a fan favorite amongst the hd team, for keeping in back pocket\n\n*Reactions: :zombie: User_2Z9G95*
+- **2025-07-15 10:02** *Elyse*: maybe october/halloween timing\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-15 10:34** *User_2Z9G95*: @Elyse @Ingrid — FYI, just a reminder, we will have Daniella from Instant joining us today on the first 5-10ish minutes on the call today!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-15 11:09** *User_2Z9G95* 💬 1 reply: Thank you for the quick flow updates!! @Elyse Here's what's outstanding:  
+• [Checkout](https://docs.google.com/document/d/1Rh6WKL3zZmV850dvCHoERoO746l8tt2WLkmwg8e-SLc/edit?tab=t.0)  
+• [Cart](https://docs.google.com/document/d/11vKHPtpHRIVPfyuB6RYHFZVoldI0-zo0iSzKRSvobBU/edit?tab=t.0)  
+• [Browse](https://docs.google.com/document/d/1H8xCmhIWFHeVYqH4kgwNGFWkBTt1LMGRVjJN95jLO5w/edit?tab=t.0)  
+• [Loyalty Lion Revamp: Monthly Reward Reminder](https://docs.google.com/document/d/1JNA18XujltkKknSSlxihFUjtiFT_wO4Rs1GBVzXloIc/edit?tab=t.0)  
+• [Loyalty Lion Revamp: You got a reward](https://docs.google.com/document/d/1n7UMSKzFJNbUXHYIDUEVeGkiICmlEmBQrW-N2H4ftBw/edit?tab=t.0)  
+• [Loyalty Lion Revamp: Welcome](https://docs.google.com/document/d/1AHydo8IF-ipfJoUJBoUCSGzzYIO8iKxssTklcqal7XE/edit?tab=t.0)  
+• [02 | Wonderment | Shipping | Shipment Picked Up](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)  
+• [04 | Wonderment | Shipping | Delivered](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)  
+• [06 | Wonderment | Attempted Delivery](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)  
+RE Welcome Flow, we'll have on revised email ready to chat through live.\n\n📎 **HigherDOSE CRM | Abandon Checkout** (gdoc, 91.6KB) - [Download](https://docs.google.com/document/d/1Rh6WKL3zZmV850dvCHoERoO746l8tt2WLkmwg8e-SLc/edit?tab=t.0)\n📎 **HigherDOSE CRM | Abandon Browse** (gdoc, 107.5KB) - [Download](https://docs.google.com/document/d/1H8xCmhIWFHeVYqH4kgwNGFWkBTt1LMGRVjJN95jLO5w/edit?tab=t.0)\n📎 **HigherDOSE CRM | Flow Revamp: Loyalty Lion Monthly Reward Reminder: REDEEM YOUR POINTS** (gdoc, 103.0KB) - [Download](https://docs.google.com/document/d/1JNA18XujltkKknSSlxihFUjtiFT_wO4Rs1GBVzXloIc/edit?tab=t.0)\n📎 **HigherDOSE CRM | Abandon Cart** (gdoc, 117.5KB) - [Download](https://docs.google.com/document/d/11vKHPtpHRIVPfyuB6RYHFZVoldI0-zo0iSzKRSvobBU/edit?tab=t.0)\n📎 **HigherDOSE CRM | Flow Revamp: Loyalty Lion Reward Available** (gdoc, 90.0KB) - [Download](https://docs.google.com/document/d/1n7UMSKzFJNbUXHYIDUEVeGkiICmlEmBQrW-N2H4ftBw/edit?tab=t.0)
+- **2025-07-15 11:11** *User_2Z9G95*: Re-surfacing existing Wonderment flows so you can compare @Elyse!\n\n**Hannah Winfrey**\n> Order Delivered:\n*Thread in Slack Conversation | 2025-07-11 12:07*
+- **2025-07-15 11:34** *User_2Z9G95*: Today's preview coming shortly @Elyse!
+- **2025-07-15 11:54** *User_2Z9G95*: A/B test previews sent! Is there a data point in particular you're looking for with the A/B test? The "Finally here" one feels pretty promotional and doesn't give much context into what's inside the email (which is a really cool Q&amp;A). I'm wondering if the initial version that calls out Helen Leland is better to lean into here? Or maybe we can modify it slightly to A/B test leaning with the product in the subject versus leading with the narrative in the subject. Curious if calling out Q&amp;A directly drives stronger engagement, too, since we typically see those perform well!  
+  
+**Version A: Original**  
+**Subject:** Finally here: The Microcurrent Body Sculptor  
+**Preview:** Shipping is live — grab yours now  
+  
+**Version A: NEW**  
+**Subject:** Now Shipping: The Microcurrent Body Sculptor  
+**Preview:** + A Q&amp;A with Helen Leland  
+  
+**Version B:**   
+**Subject:** The (new) summer body with Helen Leland  
+**Preview:** Activate your postural muscles with the Microcurrent Body Sculptor  
+  
+This is what we had for the Father's Day Q&amp;A, that drove a really high open rate.  
+Subject: Dads who DOSE: Meet David  
+Preview text: A Father’s Day Q&amp;A  
+  
+LMK your thoughts! Will get it scheduled ASAP.
+- **2025-07-15 11:55** *Elyse*: Yep agreed love the new A and B
+- **2025-07-15 11:55** *User_2Z9G95*: Updating!
+- **2025-07-15 11:55** *Elyse*: Perfect I’m on it!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 11:57** *User_2Z9G95*: Previews re-sent!
+- **2025-07-15 12:11** *User_2Z9G95*: Hi @Elyse — We're still on track to get the Julia McCabe blog on Thursday, right?
+- **2025-07-15 12:12** *Elyse*: I’ll check in but as far as I know yes\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 12:29** *User_2Z9G95*: Hi @Elyse — [Revised welcome email #1 is ready for review](https://docs.google.com/document/d/1yMrxIj5Z9PFMTTJmfKgazWyz9VEMXnIkwHCs2o72CPk/edit?tab=t.0)! Let's plan to discuss it live, so if you have any initial thoughts/feedback, please bring it to the call and we'll chat!
+- **2025-07-15 12:36** *Elyse*: Perfect 
+- **2025-07-15 13:39** *User_2Z9G95*: @Elyse — Is today's email good to schedule? LMK if I need to re-send the previews
+- **2025-07-15 13:39** *Elyse*: peeping previews rn\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-15 14:06** *User_2Z9G95*: Hi @Elyse, @Ingrid — Thanks so much for the time today, as always.  
+  
+[Here's a link to our agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0) — I included a high-level summary of our flows at the top, and a summary below:  
+  
+• Welcome Series: IN COPYWRITING (4 emails to start)  
+    ◦ 1 of 4 READY FOR V4 COPY REVIEW [HERE](https://docs.google.com/document/d/1yMrxIj5Z9PFMTTJmfKgazWyz9VEMXnIkwHCs2o72CPk/edit?tab=t.0)  
+    ◦ *From there, we will build out #1b-#1d this week and next week (will keep you posted on ETA pending feedback). We can get the first emails live ASAP, and then we will build out emails #2-#5._   
+• Replenishment Flow: READY FOR V3 DESIGN REVIEW (7 emails)  
+• Abandonment Flows: READY FOR V2 COPY REVIEW (7 emails)  
+• Loyalty Lion: READY FOR V2 COPY REVIEW (3 emails)  
+• Wonderment: READY FOR V2 COPY REVIEW (3 emails)  
+I will follow up on Friday with a MTD data summary. Thank you!\n\n📎 **HigherDOSE | Welcome Email #1 (July 2025)** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1yMrxIj5Z9PFMTTJmfKgazWyz9VEMXnIkwHCs2o72CPk/edit?tab=t.0)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-15 15:23** *Elyse*: @User_2Z9G95  
+Loyalty Lion  
+• monthly reward reminder: left notes on doc, good to go to design  
+• you got a reward: left notes on doc, good to go to design\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 15:37** *User_2Z9G95*: Hi @Elyse! CC: @Ingrid Just wanted to give you a heads up that I'll be OOO on Friday, so for our Postscript meeting I can send through times on Thursday or Monday/Tuesday next week to chat strategy! Will do that in our thread.  
+  
+I'll of course be available if anything comes up, but we should be in a really good place by Thursday with things approved/scheduled out. Let's stay close! Feel free to tag @User_5S72LT with any edit requests or questions while I'm out/for an extra set of eyes. Thank you, both!! CC: @Ari Murray
+- **2025-07-15 15:41** *Elyse*: fab fab lets do early next week re strat w PS\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-15 15:42** *Elyse*: love a three day weekend for you Hans!\n\n*Reactions: :sparkling_heart: User_2Z9G95, User_5S72LT, User_PT7LCE, :cupid: Ari Murray*
+- **2025-07-15 16:10** *User_2Z9G95*: Hi @Elyse — LMK what you think of this GIF for our welcome flow!\n\n📎 **ezgif.com-animated-gif-maker (15).gif** (gif, 683.4KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F095VM6NU78/ezgif.com-animated-gif-maker__15_.gif)
+- **2025-07-15 16:12** *Elyse* 💬 1 reply: Good by me. @Ingrid any thoughts?
+- **2025-07-15 16:31** *Elyse*: @User_2Z9G95 wonderment series good to move to design\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 16:32** *Elyse*: i left a note or two on google doc for quick tweaks\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 11:04** *User_2Z9G95* 💬 2 replies: Hi @Elyse — SMS preview sent! LMK what you think
+- **2025-07-16 11:05** *User_2Z9G95*: I just realized there's no photo on the contact card, let me see the process for getting that
+- **2025-07-16 12:19** *Chris Jacob*: Hi all can you advise on any key outbound email dates planned for the next week? We need to rollover the domain hosting which could cause a hiccup in this regard and we should probably also test a small outbound email once its setup new to make sure there's no issues
+- **2025-07-16 12:23** *Elyse*: Nothing major major happening. Have emails scheduled for 7/18, 21 23 and 25 I believe
+- **2025-07-16 12:23** *Elyse*: But all content/general product pushes no major initiatives
+- **2025-07-16 14:07** *User_2Z9G95* 💬 1 reply: Hi @Chris Jacob — yes, we can definitely do that. Just building off what Elyse said, here's our email/SMS plan. Should we move anything around? Is there a day the rollover is happening? We can plan to not send any emails/SMS then.  
+  
+• 7/17: Email  
+• 7/18: SMS  
+• 7/21: Email + SMS  
+• 7/23: Email + SMS  
+• 7/25: Email
+- **2025-07-16 14:08** *User_2Z9G95* 💬 1 reply: Speaking of @Elyse - Tomorrow's email is ready for review [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42253-112#1341041499).\n\n*Reactions: :eyes: Elyse*
+- **2025-07-16 14:09** *User_2Z9G95* 💬 5 replies: Also question — I think a blog was planning to be built out for our summer skin care series for the end of the month — is that still in the works?
+- **2025-07-16 14:48** *Elyse*: love this, gorginaaaaa!
+- **2025-07-16 14:48** *Elyse*: Nero two back to back bangers\n\n*Reactions: :sparkling_heart: User_2Z9G95, User_PT7LCE*
+- **2025-07-16 14:49** *Elyse*: leaving notes on it now
+- **2025-07-16 15:35** *Elyse*: @User_2Z9G95 good to schedule\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 16:55** *Elyse*: @User_2Z9G95 haaaaaannnaaahhhhhhh
+- **2025-07-16 16:55** *Elyse*: Ingrid and I just went through about 12 emails together lmao
+- **2025-07-16 16:55** *Elyse*: I’m updating the tracker with what’s what
+- **2025-07-16 16:55** *User_2Z9G95*: lay it on me!!!!
+- **2025-07-16 16:55** *Elyse*: Plan for tomorrow is I’m gonna show Lauren the replenishment flows first, because they’re designed and generally ready to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 16:57** *Elyse*: Overall copy is way better this round
+- **2025-07-16 16:59** *Elyse*: Left notes/approvals on:  
+• Replen flow glow serum, quick tweak  
+• Abandon checkout emails 1 and 2  
+• Abandon cart emails 1 and 2  
+• Site abandonment design two small tweaks  
+• Browse abandonment emails 1 and 2  
+• Loyalty Lion welcome  
+• Welcome series email 1
+- **2025-07-16 17:02** *User_2Z9G95*: fabulous!! I will take a look this afternoon
+- **2025-07-16 17:02** *User_2Z9G95*: Anything immediate we can assist with / provide?
+- **2025-07-16 17:03** *Elyse*: most of the notes are all approvals on which of the alts we liked better
+- **2025-07-16 17:03** *Elyse*: so should be quick going thru it\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 17:05** *Elyse*: absolutely fried, will look at 7/21 julia in a little bit or first thing in the morning
+- **2025-07-16 17:07** *User_2Z9G95*: No worries, this is perfect, thank you so much for the sprint here! I did send tomorrow's test emails for review (AB test SL/PT), but we can also review in the AM — PM sends have been working really well for us (again, will AB test when we have the chance), so it won't go out until a bit later!
+- **2025-07-16 18:09** *Elyse*: @User_2Z9G95 both previews good to go
+- **2025-07-17 13:42** *User_2Z9G95*: Hi @Elyse + @Ingrid — I wanted to share some notes on a discount strategy for our abandoned flows. I've included what is live today and what we'd recommend changing below. Based on your feedback, I think we're all on the same page, but let us know if you have any other thoughts:  
+  
+• WELCOME10:  
+    ◦ 10% off code that is live in Welcome Email #1, Site Abandonment Email #1, #2, and #3  
+        ▪︎ We'd recommend including this in at least one other Welcome Email as well (last chance/driving urgency)  
+        ▪︎ We'd recommend removing this from all Site Abandonment emails (top of funnel is focused on awareness/brand)  
+• HIGHERSELF10:  
+    ◦ 10% off code that is live in Abandoned Checkout Email #1 and Email #2  
+    ◦ We'd recommend removing it from Abandoned Checkout email #1 and leaving it in just email #2.   
+• FLASH10:  
+    ◦ 10% off code that is live in Abandoned Browse Email #2, and Abandoned Cart Email #2  
+    ◦ We'd recommend removing this from all Abandoned Browse emails (top of funnel is focused on awareness/brand)  
+    ◦ We'd recommend leaving it in just Abandoned Cart email #2.   
+I know we mentioned wanting to remove all FLASH messaging as well — if you'd like us to create a new code to put in the abandoned cart emails, let us know!  
+  
+All copy docs have been updated to reflect this strategy, but I just wanted to cover off on the updates we're making from the existing flows. Let us know if you have any questions!
+- **2025-07-17 13:52** *Elyse*: Aligned on all of the above
+- **2025-07-17 13:52** *Elyse*: @Ingrid confirm good by you?
+- **2025-07-17 19:27** *Ingrid*: Yes - let’s also get these codes to Anastasia as she monitors abuse of codes \n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-18 09:19** *Chris Jacob*: **<!channel>** we have begun domain hosting transfer this may cause interruptions in a variety of ways. If you face any tech issues at all please advise me here and if I don't respond to my personal email/phone as higherdose email could be interrupted
+- **2025-07-18 09:19** *Chris Jacob*: <mailto:christophertjacob@gmail.com|christophertjacob@gmail.com> 3163718984\n\n*Reactions: :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-18 09:20** *User_5S72LT*: Thanks @Chris Jacob! We’ll keep an eye out
+- **2025-07-18 14:34** *User_5S72LT*: Happy happy friday @Elyse! The following are ready for review [in the tracker ](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?usp=sharing)(highlighted in red) and linked below:  
+  
+• **[Welcome #1b](https://docs.google.com/document/d/1LfKll5hXnjXsPwv*zm*v6Ju7zR-tbWpvbw2YIwUYV6M/edit?tab=t.0)** – copy ready for review  
+• **[Welcome #1c](https://docs.google.com/document/d/1BWhkF5cMy8QjhJ5KSS*dzvZQFwPkUT93U13oq3XEP*0/edit?tab=t.0)**[ ](https://docs.google.com/document/d/1BWhkF5cMy8QjhJ5KSS*dzvZQFwPkUT93U13oq3XEP*0/edit?tab=t.0)– copy ready for review  
+• **[Welcome #1d](https://docs.google.com/document/d/1bsE1H0r7UBDn3S2JpF-z*JMFUfJ-pqYvDvQXqXkn6AE/edit?tab=t.0)** – copy ready for review  
+• **[7/23 Permission to Play 101](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42341-2249&amp;t=DqDmQSVokuKnIDgi-1)** – design ready for review  
+Let us know if you have any questions &amp; thank you!:sunflower: cc: @User*2Z9G95
+- **2025-07-18 14:34** *Elyse*: woo woo! thank you!
+- **2025-07-18 14:34** *Elyse*: working on august crm calendar as we speak\n\n*Reactions: :cherry_blossom: User_5S72LT*
+- **2025-07-18 14:35** *User_5S72LT*: perfect!!
+- **2025-07-18 15:12** *Elyse*: @User_5S72LT left notes on v2 7/23
+- **2025-07-18 15:12** *Elyse*: will review the welcome copy on monday
+- **2025-07-18 15:12** *Elyse*: can you remind me what chandler’s ooo dates are @User_5S72LT
+- **2025-07-18 15:12** *User_5S72LT*: perfecto!! ty :heart:
+- **2025-07-18 15:12** *Elyse*: trying to finish up august crm in time before she leaves
+- **2025-07-18 15:16** *User_5S72LT*: she's out all of next week but we'll have the greater team to support so we should be all good either way!
+- **2025-07-18 15:16** *Elyse*: ok cool
+- **2025-07-18 15:17** *Elyse*: dang it i missed my self imposed deadline of having this ready for her by mid week\n\n*Reactions: :joy: User_5S72LT*
+- **2025-07-18 15:17** *Elyse*: but we made major progress on the flows this week
+- **2025-07-18 15:17** *Elyse*: so big victory there
+- **2025-07-18 15:17** *User_5S72LT*: hugeeee victory on that!! appreciate the hustle so much
+- **2025-07-18 15:17** *User_5S72LT*: dream team right here
+- **2025-07-18 16:07** *Elyse*: @User_5S72LT for 7/21 - can we shift that to 7/22, 7/23 to 7/24 and try 7/25 on 7/26?\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-18 16:07** *Elyse*: I’m waiting for review on Julia’s blog content
+- **2025-07-18 16:07** *Elyse*: it’s a little all over the place, so punted to SEO team to tell us where we should cut, what we should keep, etc
+- **2025-07-18 16:08** *Elyse*: I’m anticipating they’ll get it back to me monday, and if not i’ll pull whatever i can for the email
+- **2025-07-18 16:08** *User_5S72LT*: yes totally!
+- **2025-07-18 16:09** *User_5S72LT*: will make note of this
+- **2025-07-18 16:12** *Elyse* 💬 1 reply: i also tagged you on the CRM doc @User_2Z9G95 and I use\n\n*Reactions: :raised_hands: User_2Z9G95, :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-18 16:12** *Elyse*: to see adjustments i put on for next week
+- **2025-07-18 16:12** *Elyse*: and first week of august
+- **2025-07-18 16:12** *Elyse*: finishing up second week now\n\n*Reactions: :raised_hands: User_2Z9G95, :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-18 17:10** *User_2Z9G95*: Hi @Elyse + @Ingrid! As discussed, I wanted to pass along an update of where we're at MTD. So far, we're up 32% YoY (email + SMS combined). Now that we've launched Postscript, we're pacing closer to our goal. We're 58% through the month and we're 64% to our goal. We have a strong content marketing strategy planned for the rest of the month, so we're confident in maintaining momentum. We'll continue to monitor performance closely and optimize in real time to ensure we finish strong. We've made great progress on the email flows this week and are excited to hear Lauren's thoughts next week. Let us know if you have any questions. Enjoy the weekend!\n\n*Reactions: :raised_hands: Sumish Khadka, :raised_hands::skin-tone-3: Elyse*
+- **2025-07-21 12:43** *User_2Z9G95*: Hi @Elyse! I hope you had a great weekend! Confirming I've updated the campaign schedule for this week based on your request. Do you have an update on the blog content? If we wanted, we could move the Permission to Play email for 7/24 up to tomorrow and push the blog to 7/24 instead.  
+I've updated [the sheet](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958) with everything that is ready for review!
+- **2025-07-21 13:23** *Elyse*: Hey @User_2Z9G95 on with Lauren and Jess right now reviewing the replen flow. Have a ton of notes here, compiling and will circle back\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-07-21 13:31** *Elyse*: @User_2Z9G95 just got off call. I’m gonna put the notes into a Google doc with links to photo options etc. will get that to you this week\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-21 14:53** *User_2Z9G95*: Thank you so much!
+- **2025-07-21 15:01** *Elyse*: @User_2Z9G95 @Thila just flagged an SMS issue we’re getting into CS inbox\n\n*Reactions: :rotating_light: User_2Z9G95*
+- **2025-07-21 15:02** *Elyse*: @Thila can you send screenshot of customer complaint
+- **2025-07-21 15:02** *Elyse*: I think people are not getting the confirm your opt-in text and because of that then not getting discount code 
+- **2025-07-21 15:03** *User_2Z9G95*: I was just gonna say let's reach out to postscript asap, so that's perfect, thank you!!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-21 15:05** *Thila*: Sure! Hi @User_2Z9G95 So we received some of these complaints regarding the mystery discount.  
+  
+One of our agents tested it out earlier but did not receive a text where they can reply “Y” and get the discount code\n\n📎 **Screenshot 2025-07-21 at 4.03.39 PM.png** (png, 9.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096RK2HL4D/screenshot_2025-07-21_at_4.03.39___pm.png)\n📎 **Screenshot 2025-07-21 at 4.03.44 PM.png** (png, 8.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0976Q9123B/screenshot_2025-07-21_at_4.03.44___pm.png)\n📎 **Screenshot 2025-07-21 at 4.03.50 PM.png** (png, 11.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0976Q8PDL1/screenshot_2025-07-21_at_4.03.50___pm.png)\n📎 **image (32).png** (png, 169.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096CPMEL15/image__32_.png)
+- **2025-07-21 15:06** *Elyse*: Just forwarded this to postscript channel\n\n*Reactions: :bangbang: User_2Z9G95, :ty: Thila*
+- **2025-07-21 15:08** *User_2Z9G95*: Thank you!
+- **2025-07-21 15:09** *Thila*: Thanks @Elyse I just tested it out myself and did not receive text to reply “Y”
+- **2025-07-22 11:02** *User_2Z9G95*: Good morning @Elyse! Any updates on the blog? Would love to get this week's content scheduled out! Here's where we're at:  
+• 7/22 email: Need blog info, design ready [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42377-903&amp;t=Fl32FztYIYuOpYrn-0)  
+• 7/22 SMS: Ready [HERE](https://app.postscript.io/campaigns/flows/cb58395f-482e-49c6-8c79-83813d7f8cb2?sourceType=CAMPAIGN_FLOW&amp;flowId=cb58395f-482e-49c6-8c79-83813d7f8cb2)  
+• 7/24 email: Design ready [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42341-2249&amp;p=f&amp;t=Nm4FxR2oMB9grGPF-0)  
+• 7/24 SMS: Ready [HERE](https://app.postscript.io/campaigns/flows/51c8e873-db6d-4afa-aa38-5a5411705f1e)  
+• 7/26: Design [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42323-538&amp;p=f&amp;t=EET8NHigp5l6Rrds-0)
+- **2025-07-22 11:05** *Elyse*: Uploading blog to Shopify as we speak!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-22 11:24** *Elyse*: reviewing remainder rn
+- **2025-07-22 11:25** *Elyse*: 7/22 SMS good to go
+- **2025-07-22 11:26** *User_2Z9G95*: FYI — I noticed 7/22 and 7/24 are both MBS back to back (plus we sent MBS last week, too) — should we try to space it out a bit? Maybe we swap in 7/30 SMS for this week? Or switch the travel SMS to not be just MBS-related?
+- **2025-07-22 11:28** *Elyse*: 7/24 design good to go
+- **2025-07-22 11:33** *Elyse*: just left note on 7/30 copy adjustments
+- **2025-07-22 11:33** *Elyse*: for the email
+- **2025-07-22 11:34** *Elyse*: sms copy good to go, i’m down with swapping that in for this week
+- **2025-07-22 11:36** *Elyse*: 7/26 serotonin supper email design looks good to me. i sent to fiona for quick look yesterday
+- **2025-07-22 12:23** *User_2Z9G95*: @Elyse — All three SMS previews sent for review!  
+• 7/22: Defined Arms  
+• 7/24: Sun-Kissed Skin  
+• 7/30: MBS Travel
+- **2025-07-22 12:24** *Elyse*: All good to go
+- **2025-07-22 12:24** *Elyse*: @User_2Z9G95 I shared the doc for Julia’s blog post
+- **2025-07-22 12:25** *Elyse*: As you can see lol SEO team is slicing and dicing it up
+- **2025-07-22 12:25** *Elyse*: I was initially trying to upload and then make edits as they made them but quickly saw the level of edits meant I should just wait
+- **2025-07-22 12:25** *Elyse*: So jumping back into upload now
+- **2025-07-22 12:26** *Elyse*: Gonna pick the questions now too and highlight those/tag you to get them into the email
+- **2025-07-22 12:26** *User_2Z9G95*: Ok fab!!!
+- **2025-07-22 12:26** *User_2Z9G95*: Thank you!!
+- **2025-07-22 14:42** *User_2Z9G95*: Hi @Elyse — Just confirming we're good to schedule the SMS? If so, I'll get it scheduled for 4p ET today! I don't think we need to wait for the blog to be posted, right?  
+  
+Sending to our engaged L90 customers and prospects (excluding intl since it's MBS)\n\n📎 **Screenshot 2025-07-22 at 12.41.35 PM.png** (png, 578.3KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F09700QASEN/screenshot_2025-07-22_at_12.41.35___pm.png)
+- **2025-07-22 14:42** *Elyse*: Yes good to go
+- **2025-07-22 14:52** *User_2Z9G95*: Scheduled!
+- **2025-07-22 14:53** *User_2Z9G95*: Looking at the email now
+- **2025-07-22 15:12** *Elyse*: Also @User_2Z9G95 idk if we should even include the blog in the email right now
+- **2025-07-22 15:13** *Elyse*: Rereading through it and I feel like there’s some bold claims in it
+- **2025-07-22 15:13** *Elyse*: About microcurrent healing
+- **2025-07-22 15:13** *Elyse*: That we had a two year long study, idk if that’s even true
+- **2025-07-22 15:13** *Elyse*: If we wanna move up 7/24 and 7/26 and leave this for end of the week to give us a little more time to review it
+- **2025-07-22 15:14** *Elyse*: I’m down w that
+- **2025-07-22 15:14** *User_2Z9G95*: Yeah I'm trying to pull some things from it, but it's not great
+- **2025-07-22 15:14** *Elyse*: I wanna have @Chris Jacob review it and I shared with Jessica on products team to verify some of the claims on the study etc
+- **2025-07-22 15:14** *User_2Z9G95*: Totally
+- **2025-07-22 15:14** *Elyse*: Just don’t wanna send it and risk it
+- **2025-07-22 15:14** *User_2Z9G95*: For sure
+- **2025-07-22 15:15** *Elyse*: I was saving it to Shopify and I was like holllld on idk if we can say all of this legally
+- **2025-07-22 15:15** *User_2Z9G95*: Totally
+- **2025-07-22 15:18** *User_2Z9G95*: Ok we can move up 7/24
+- **2025-07-22 15:18** *User_2Z9G95*: getting it uploaded to klaviyo now and will send a test shortly
+- **2025-07-22 15:27** *User_2Z9G95*: @Elyse — What's loudcrowd? I see they built some templates in Klaviyo!
+- **2025-07-22 15:28** *Elyse*: yes ok fab glad you asked
+- **2025-07-22 15:28** *Elyse*: i just got connected w them this morning through Anastasia our affiliates manager
+- **2025-07-22 15:28** *Elyse*: basically its gonna be part of the affiliate program, where creators can sign up to have their own hd storefront
+- **2025-07-22 15:28** *Elyse*: if i understood that correctly
+- **2025-07-22 15:29** *User_2Z9G95*: oh, cool!
+- **2025-07-22 15:29** *Elyse*: and their templates are supposed to be going only to the creators
+- **2025-07-22 15:29** *Elyse*: but i told her load the templates in and ping us when ready
+- **2025-07-22 15:29** *Elyse*: so we can review branding etc make sure we’re good w everything these say
+- **2025-07-22 15:29** *Elyse*: before they go out
+- **2025-07-22 15:30** *User_2Z9G95*: Love it!
+- **2025-07-22 15:45** *User_2Z9G95*: @Elyse — Preview sent!
+- **2025-07-22 15:48** *Elyse*: good to go
+- **2025-07-22 15:55** *User_2Z9G95*: Scheduled for 5:15p ET to 60 day engaged audience!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-22 18:51** *User_2Z9G95*: Hey team! Sorry for the delay — [here's a link to the agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0) we reviewed today and a high-level summary below:  
+  
+We're 70% through the month and 77% to our goal, so we're still pacing above and maintaining good momentum. We've driven $109K so far, so we're looking to drive $33K more. We have 6 more emails going out and 2 more SMS, so we should be in a good place.  
+  
+In regards to the flows, we went through all of the feedback and have put together this go-forward plan:  
+• Hannah to build out templates of all 7 emails based on feedback  
+• Hannah to send templates to Elyse for review/approval  
+• Once approved, Elyse will get approval from Ingrid/Lauren/all stakeholders  
+• Once approved, Hannah/Chandler will update copy over the next week + pass along to Elyse to review/approve with Ingrid/Lauren/all stakeholders  
+• Once approved, Hannah will pass to design  
+I'm hoping to have the templates done tomorrow, so you can have those ready to review and we can keep moving these along.\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n\n*Reactions: :1000: Elyse*
+- **2025-07-22 19:42** *Elyse*: Thank you so much @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-23 16:37** *Elyse*: @User_2Z9G95 LDW Sale  
+20% off sitewide, 25% off bundles  
+VIP Wed 8/27 - early access for CRM subscribers  
+Public Launch 8/28  
+Ends Tuesday 9/2\n\n*Reactions: :white_check_mark: User_5S72LT, :bangbang: User_2Z9G95*
+- **2025-07-23 16:42** *Elyse*: @User_2Z9G95 if you guys could take a look at what we did last year in terms of emails that did well and lmk that would be super helpful! finishing up august calendar tomorrow, made great progress today\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-23 16:50** *User_2Z9G95*: Thank you!!!!
+- **2025-07-23 16:51** *Elyse*: Also have approvals on emails for 7/31-8/15 so can get those in the works
+- **2025-07-23 16:51** *Elyse*: I’m working on red light mat launch week so take a look at those too and let me know if you have any thoughts\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-24 07:39** *Chris Jacob*: <!channel> the domain transfer completed this morning we are updating some records but it is now that you may encounter issues please keep us apprised\n\n*Reactions: :raised_hands::skin-tone-3: Berkeley Clark, :+1::skin-tone-3: Elyse, :white_check_mark: User_2Z9G95*
+- **2025-07-24 08:29** *Chris Jacob* 💬 1 reply: Email did experience downtime I think we need to review klaviyo dns settings. Sharma team I don't know if you have thoughts on best practices for dmarc but I'm not sure one really existed
+- **2025-07-24 08:48** *🤖 Bot*: mercury retrograde
+- **2025-07-24 08:52** *Chris Jacob*: <!channel> please pause any outbound campaign this is still an issue\n\n*Reactions: :white_check_mark: User_5S72LT*
+- **2025-07-24 08:56** *User_5S72LT*: Confirming receipt, we’ll pause ASAP!
+- **2025-07-24 09:10** *User_2Z9G95*: As a side — @Elyse  [Here's a link to the replenishment flow template](https://docs.google.com/document/d/10w9NkuKrw8b0pmPlpR*pAlKKFvP4dzW7BOLP*5_wy8o/edit?tab=t.0). We'd love to have your and all stakeholder approval to move forward with this email structure. Once approved, we'll get copy built out for each one! Feel free to add any additional notes and feedback! Thanks!
+- **2025-07-24 10:25** *Elyse*: Perfect will share thanks @User_2Z9G95 
+- **2025-07-24 10:31** *Chris Jacob* 💬 14 replies: can you send a test campaign to an audience with  
+<mailto:chris@higherdose.com|chris@higherdose.com>  
+<mailto:christophertjacob@gmail.com|christophertjacob@gmail.com>  
+<mailto:chris@jacobliquor.com|chris@jacobliquor.com>  
+<mailto:chris@integritysq.com|chris@integritysq.com>
+- **2025-07-24 10:48** *User_5S72LT*: Hey @Elyse the edits have been made for the Microcurrent email linked [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42377-903&amp;t=B2a5SlnbtyUs4hhR-1) - once the dmarc issues are resolved we can schedule for tomorrow! cc: @User_2Z9G95
+- **2025-07-24 10:48** *Elyse*: fab checking it out rn\n\n*Reactions: :heart: User_5S72LT*
+- **2025-07-24 11:53** *Chris Jacob*: @User_4PNMDE does your team have knowledge of splitting DKIM issue is the gmail admin dkim is 2048 bit so its longer than 255 characters
+- **2025-07-24 14:12** *Elyse*: @User_5S72LT design looks good for micro/macro
+- **2025-07-24 14:15** *User_5S72LT*: woohoo! thanks @Elyse we'll get it built out / test sent asap
+- **2025-07-25 09:45** *Jourdan* joined the channel
+- **2025-07-25 09:46** *Elyse*: @User_2Z9G95 morning! could you tell me how many campaigns we did for July last year?
+- **2025-07-25 09:48** *User_2Z9G95*: Looking!
+- **2025-07-25 09:50** *User_2Z9G95* 💬 15 replies: 13 to a broad audience and 1 to a tri-state only audience (with a visit us in NYC CTA), so 14 in total!
+- **2025-07-25 09:56** *User_2Z9G95*: Hi @Chris Jacob &amp; @User_5S72LT — Thank you for troubleshooting while I was out! Just want to get caught up from yesterday — It looks like we're pretty much good to go, but likely need one more test send to make sure? I can put a list together of our team members and your team members to confirm everything is working correctly?
+- **2025-07-25 09:56** *Chris Jacob*: I think we're good I'd just send as usual and monitor any oddities\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-25 09:57** *User_2Z9G95*: Sounds perfect, thank you so much!
+- **2025-07-25 10:03** *User_2Z9G95*: @Elyse — Confirming Red Light SMS for yesterday is rescheduled for today at 12p ET!
+- **2025-07-25 10:03** *User_2Z9G95*: Working on uploading content + sending previews for today and tomorrow's emails now!
+- **2025-07-25 10:04** *Elyse*: @User_2Z9G95 lets do the test w our team members you mentioned anyway
+- **2025-07-25 10:04** *Elyse*: just to be on safe side
+- **2025-07-25 10:04** *Elyse*: mercury be mercurying
+- **2025-07-25 10:04** *User_2Z9G95*: Aligned! If you could just pass along relevant emails, I'll put a list together
+- **2025-07-25 10:12** *User_2Z9G95*: We don't need any additional SMS tests, right? Just paused it to be on the safe side yesterday, but it's just email that we can re-test?
+- **2025-07-25 10:12** *Elyse*: lets do me  
+<mailto:chris@higherdose.com|chris@higherdose.com>  
+<mailto:christophertjacob@gmail.com|christophertjacob@gmail.com>  
+<mailto:chris@jacobliquor.com|chris@jacobliquor.com>  
+<mailto:chris@integritysq.com|chris@integritysq.com>  
+<mailto:sumish@higherdose.com|sumish@higherdose.com>  
+<mailto:thila@higherdose.com|thila@higherdose.com>
+- **2025-07-25 10:13** *Elyse*: send me sms test just to be on safe side too
+- **2025-07-25 10:13** *User_2Z9G95*: will do rn!
+- **2025-07-25 10:14** *User_2Z9G95*: Instead of a test, I'm going to create a segment with just our two phone numbers to make sure everything is triggering correctly!
+- **2025-07-25 10:14** *Elyse*: ok perfect
+- **2025-07-25 11:16** *User_2Z9G95*: FYI — the postscript segment build is a bit more technical than I thought — working with their support team now to get this setup for us, then I will send the SMS!
+- **2025-07-25 11:29** *User_2Z9G95*: @Elyse — SMS sent! LMK if you got it/how it looks\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-25 11:30** *User_2Z9G95*: Everything looks good on my end!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-25 12:33** *Elyse*: yesssirrr lets firee it off\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-25 12:45** *User_2Z9G95*: Scheduled for 2p ET!
+- **2025-07-25 12:51** *User_2Z9G95*: Email preview sent!
+- **2025-07-25 12:52** *User_2Z9G95*: I had to change the SL + PT since the originals were all for the blog, so if you have any feedback there LMK!
+- **2025-07-25 13:11** *Elyse*: @User_2Z9G95 i didn’t get it uh oh
+- **2025-07-25 13:12** *User_2Z9G95*: Didn't get what
+- **2025-07-25 13:12** *Elyse*: email preview
+- **2025-07-25 13:12** *User_2Z9G95*: ope!
+- **2025-07-25 13:12** *User_2Z9G95*: Let me re-send, sorry!
+- **2025-07-25 13:13** *User_2Z9G95*: Just re-sent!
+- **2025-07-25 13:30** *Elyse*: still nothing!
+- **2025-07-25 13:30** *Elyse*: i checked my spam too
+- **2025-07-25 13:30** *Elyse*: nada
+- **2025-07-25 13:32** *User_2Z9G95*: so weird
+- **2025-07-25 13:33** *User_2Z9G95*: it's <mailto:elyse@higherdose.com|elyse@higherdose.com> right???
+- **2025-07-25 13:33** *Elyse*: yep
+- **2025-07-25 13:33** *User_2Z9G95*: Just re-sent again, but that's so weird not sure what the issue could be
+- **2025-07-25 13:34** *Elyse*: @Chris Jacob fyi ^^
+- **2025-07-25 13:34** *Elyse*: in case this is indicative of anything
+- **2025-07-25 13:34** *User_2Z9G95*: i just sent you an email from my sharma email
+- **2025-07-25 13:34** *User_2Z9G95*: did you get that
+- **2025-07-25 13:34** *Elyse*: yes!
+- **2025-07-25 13:35** *User_5S72LT*: yeah it must have to do with the changes from yesterday hmmm
+- **2025-07-25 13:35** *User_2Z9G95*: ok well that's good at least
+- **2025-07-25 13:35** *User_5S72LT*: @User_2Z9G95 can you send me a test too?
+- **2025-07-25 13:36** *User_2Z9G95*: @Elyse — I'll just launch the test campaign to all of our emails and lmk if you get that one!
+- **2025-07-25 13:39** *User_2Z9G95*: Sent!
+- **2025-07-25 13:39** *User_2Z9G95*: Also @Chris Jacob — Sent to your emails, too, let me know if you got it
+- **2025-07-25 13:41** *Elyse*: separately @User_2Z9G95 first draft of timing is everything SEO blog is up on the doc [https://docs.google.com/document/d/1Xis2plvijfNa2itjZ9FH2KJrxMT3IvCbzma5wrmXcFc/edit?usp=sharing](https://docs.google.com/document/d/1Xis2plvijfNa2itjZ9FH2KJrxMT3IvCbzma5wrmXcFc/edit?usp=sharing) writer just sent to me\n\n📎 **HigherDOSE Content Brief - When To Use Red Light Therapy For The Best Results** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1Xis2plvijfNa2itjZ9FH2KJrxMT3IvCbzma5wrmXcFc/edit?usp=sharing)
+- **2025-07-25 13:43** *User_2Z9G95*: @User_5S72LT — Sent to you, too!
+- **2025-07-25 13:45** *User_5S72LT*: did not receive it ahhh
+- **2025-07-25 13:45** *Elyse*: me neither
+- **2025-07-25 13:45** *User_2Z9G95*: whaaaaa
+- **2025-07-25 13:45** *User_2Z9G95*: did you also check spam?
+- **2025-07-25 13:46** *Elyse*: neither
+- **2025-07-25 13:46** *User_5S72LT*: not in spam either
+- **2025-07-25 13:46** *User_2Z9G95* 💬 1 reply: i put <mailto:swara@higherdose.com|swara@higherdose.com> so that's insane\n\n*Reactions: :rolling_on_the_floor_laughing: User_5S72LT*
+- **2025-07-25 13:47** *User_2Z9G95*: It looks like Chris received! @Elyse — it didn't send to you! I have no idea why!
+- **2025-07-25 13:47** *Elyse*: its chris’ way of telling me i have the afternoon off, he’s got email covered\n\n*Reactions: :skull: User_2Z9G95, User_5S72LT, Ari Murray*
+- **2025-07-25 13:48** *Elyse*: lmao promise im kidding cj
+- **2025-07-25 13:48** *User_2Z9G95*: ahhhh @Elyse you were suppressed :face*holding*back_tears:
+- **2025-07-25 13:49** *Elyse*: big brother klaviyo tryna keep me down\n\n*Reactions: :joy: Ari Murray, User_PT7LCE, User_2Z9G95*
+- **2025-07-25 13:53** *User_2Z9G95*: ok just re-sent the preview, to see if that update (making you subscribed) worked!
+- **2025-07-25 13:53** *User_2Z9G95*: From there, I'll send the live campaign
+- **2025-07-25 13:54** *Elyse*: ayyyyy i got it
+- **2025-07-25 13:54** *User_2Z9G95*: omggggg
+- **2025-07-25 13:54** *User_2Z9G95*: ok crazy
+- **2025-07-25 13:54** *User_2Z9G95*: but phew
+- **2025-07-25 13:54** *Elyse*: whew praise be
+- **2025-07-25 13:54** *User_2Z9G95*: So yes, had to change the SL + PT, so let me know if you have feedback there!
+- **2025-07-25 13:56** *Elyse*: good to go
+- **2025-07-25 13:56** *User_2Z9G95*: Just pushed the test campaign live one more time
+- **2025-07-25 13:56** *User_2Z9G95*: just to double confirm!
+- **2025-07-25 13:56** *Elyse* 💬 1 reply: and note should exclude international too @User_2Z9G95\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-25 13:56** *User_2Z9G95*: so you should have one more coming
+- **2025-07-25 13:57** *User_2Z9G95*: in the next like 2 mins let me know
+- **2025-07-25 13:57** *User_2Z9G95*: you, too @User_5S72LT\n\n*Reactions: :white_check_mark: User_5S72LT*
+- **2025-07-25 13:57** *Elyse*: got it!
+- **2025-07-25 13:57** *🤖 Bot*: got it\n\n*Reactions: :bangbang: User_5S72LT*
+- **2025-07-25 14:11** *User_2Z9G95*: Today's email scheduled for 4p ET!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-25 14:13** *User_2Z9G95*: Uploading tomorrow's and will get the preview sent shortly
+- **2025-07-28 08:00** *Chris Jacob* 💬 2 replies: 📎 **image.png** (png, 98.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09814778GZ/image.png)
+- **2025-07-28 10:07** *Chris Jacob* 💬 3 replies: <!channel> did we notice any oddities with marketing emails over the weekend/
+- **2025-07-28 12:01** *User_2Z9G95*: ~~Morning @Elyse! Do you have the blog ready for the 7/31 Summer Skin Care email? Briefing this out for copy today!~~  Disregard, found it!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-28 14:25** *User_2Z9G95* 💬 3 replies: Hi @Elyse — I have a few outstanding items for when you get the chance!  
+• Sent today's preview for review - let me know if it's good to schedule!  
+• 7/29 SMS preview sent — let me know if it's good to schedule!  
+• 7/30 design will be ready tomorrow  
+• 7/31 copy will be ready tomorrow  
+One additional thing — I just want to make sure we get the most out of our time together on tomorrow's call. Can you confirm Lauren has already seen the welcome emails and will be able to share ***all*** feedback live together? If she hasn't had a chance to review them, we may want to push the call, so we can ensure it's the most impactful. Let me know your thoughts here!
+- **2025-07-28 14:25** *Elyse*: Preview good to go Hans \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-28 14:26** *Elyse*: SMS preview good too
+- **2025-07-28 14:28** *User_2Z9G95*: Since we aligned on driving to sauna blanket starter kit, we should remove intl correct? That's what [the sheet](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?gid=1171637223#gid=1171637223) says!\n\n*Reactions: :+1::skin-tone-3: Elyse, :+1: User_2Z9G95*
+- **2025-07-28 14:40** *User_2Z9G95*: Confirming email + SMS are scheduled!
+- **2025-07-28 15:02** *User_2Z9G95*: Also @Elyse — When you get the chance I wanted to follow up on the [template](https://docs.google.com/document/d/10w9NkuKrw8b0pmPlpR*pAlKKFvP4dzW7BOLP*5_wy8o/edit?tab=t.0) for our replenishment flows. Do you/the team have any feedback or questions on this new structure? Let me know so we can start re-building!
+- **2025-07-28 15:37** *Ingrid*: hi! Elyse is out today but I'm good with this template!\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-28 15:37** *Ingrid*: also, please dont remove the discount incentive
+- **2025-07-28 15:37** *User_2Z9G95*: Ah! Thank you for letting me know! All sounds great, thank you!
+- **2025-07-28 17:04** *Elyse*: Thank you IMC @Ingrid \n\n*Reactions: :heart: Ingrid*
+- **2025-07-29 07:27** *Elyse* 💬 3 replies: morning all! i’m catching up this morning - just got word from LB that she won’t be able to make today’s call and but said she’s happy to review and send her thoughts\n\n*Reactions: :light-blue-heart: User_PT7LCE*
+- **2025-07-29 08:28** *Elyse* 💬 1 reply: 📎 **File.jpg** (jpg, 173.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F097W3H79SS/file.jpg)
+- **2025-07-29 10:48** *User_2Z9G95*: Hi @Elyse! For this week we have:  
+• 7/29 SMS: Travel  
+• 7/29 Email: Nothing/TBD  
+• 7/30 Email: Summer Skin Care  
+• 7/31 Email: Summer Skin Care   
+• 7/31 SMS: Summer Skin Care   
+We added that SMS last week per your note, so I think we're good to go for SMS. I was looking at this year's top performing campaigns to date and they are:  
+• Cortisol FAQ  
+• Holiday Hangover (Lauren's Picks) - could repurpose this as a mid-summer slump  
+• HSA/FSA specific  
+The HSA/FSA specific would be a super low lift and that one we could target our normal engaged segment and lean into 40% off messaging or I think the mid-summer slump would work really well for the last day of July. We could bump 7/30 and 7/31 up so we can have this ready for the 31st.  
+  
+Let me know your thoughts on either of those and we'll get them going!
+- **2025-07-29 10:57** *Elyse*: Yep love FSA/HSA can perhaps highlight some bundles?\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-29 10:58** *User_2Z9G95*: That's perfect!
+- **2025-07-29 10:59** *User_2Z9G95*: Will get copy for FSA/HSA going right now and we'll keep you posted on 7/30 design so we can bump that up to today.
+- **2025-07-29 10:59** *Elyse*: ok perfect
+- **2025-07-29 10:59** *Elyse*: i’ll be ready for quick approvals
+- **2025-07-29 10:59** *User_2Z9G95*: Thank you!! Just asked for an ETA on 7/30 design so will keep you posted
+- **2025-07-29 10:59** *Elyse*: fab!
+- **2025-07-29 11:01** *Elyse*: Two things I’m prioritizing today  
+• reviewing those email flows from Anastasia/loud croud  
+• blog for 7/31
+- **2025-07-29 11:03** *User_2Z9G95*: Perfect, thank you! Let me know if you want me to take a look at those emails, too!
+- **2025-07-29 11:03** *Elyse*: yes please would love that
+- **2025-07-29 11:04** *User_2Z9G95*: Perfect, will do!
+- **2025-07-29 11:19** *Elyse*: and @User_2Z9G95 we’re good on august crm right?
+- **2025-07-29 11:20** *Elyse*: In case I didn’t send latest version: [https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.cutoxidefzl1](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.cutoxidefzl1)
+- **2025-07-29 11:20** *Elyse*: August 7/18 tab
+- **2025-07-29 11:20** *User_2Z9G95*: Yes, this all looks great! I wanted to take a few mins to discuss it live, too, on the call today, but we'll get this all briefed out this afternoon!
+- **2025-07-29 11:20** *Elyse*: ok perfect
+- **2025-07-29 11:28** *Elyse*: @User_2Z9G95 i’m sending the welcome email copy to lauren now, can you just confirm what the time is for these emails? how long after signing up do you receive 1, then when do you get 1a, b, c, d?
+- **2025-07-29 11:33** *Elyse*: ohhhhhh ok now reviewing this, realizing that 1a is relaxation/stress relief, 1b is detox/cleanse, got it
+- **2025-07-29 11:33** *Elyse*: nvm
+- **2025-07-29 11:34** *User_2Z9G95*: Yes! So it will be immediate — just want to get confirmation on email 1 and then we'll get 2-4 built out once we get the tone/etc aligned!
+- **2025-07-29 11:37** *User_2Z9G95* 💬 7 replies: @Elyse — Do we have any specific bundles we want featured in the HSA email? And just for my knowledge — can you get 40% off the bundles with HSA/FSA, too? Or is it just certain products that are eligible?
+- **2025-07-29 14:00** *Elyse* 💬 2 replies: @User*2Z9G95 @User*PT7LCE updates  
+• current ship date projected for end of August, early September &gt; so for messaging we’ll want to say early September IMO, post holiday weekend  
+• Ingrid confirmed we should mimic MBS launch and do 20% off for email/sms on mat launch\n\n*Reactions: :light-blue-heart: User_PT7LCE, User_2Z9G95*
+- **2025-07-29 14:00** *Elyse*: and lastly, confirmed website redesign is launching just before LDW\n\n*Reactions: :light-blue-heart: User_PT7LCE, User_2Z9G95*
+- **2025-07-29 14:14** *User_2Z9G95*: Thank you!! Will update everything accordingly.
+- **2025-07-29 14:15** *User_2Z9G95*: Today's design [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42598-230&amp;t=oOFdafVjL4X9ZR7s-0)! @Elyse
+- **2025-07-29 14:20** *User_2Z9G95*: ohhh i forgot we added the FSA/HSA block here — should we remove from this one since we have the email tomorrow focusing on it?
+- **2025-07-29 14:21** *Elyse*: mm yeah makes sense
+- **2025-07-29 14:21** *Elyse*: good catch @User_2Z9G95
+- **2025-07-29 14:32** *User_2Z9G95*: Perf
+- **2025-07-29 14:32** *User_2Z9G95* 💬 1 reply: Copy for tomorrow's email [HERE](https://docs.google.com/document/d/1qyvCRdogcN39KyJD4aXftbKk67DEbkSzRsyLxLT2L8g/edit?tab=t.0).
+- **2025-07-29 14:32** *Elyse*: also booked time on Maham’s calendar for when i’m “back” on the 11th\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-29 14:33** *Elyse* 💬 1 reply: added you and @User_5S72LT to that if you’re free
+- **2025-07-29 14:33** *Elyse*: design on today looks good, made one copy note
+- **2025-07-29 14:33** *User_2Z9G95*: Updated! Thank you!
+- **2025-07-29 14:33** *User_2Z9G95*: Getting this uploaded now
+- **2025-07-29 14:35** *User_2Z9G95*: 7/31: Copy doc [HERE](https://docs.google.com/document/d/1hUo-bpFhYWmBN05yA0bSy9sk5gRs2bq4BgroaF-xNeA/edit?tab=t.0).
+- **2025-07-29 14:54** *User_2Z9G95*: Hi @Elyse —  [RE your note in this doc](https://docs.google.com/document/d/1qyvCRdogcN39KyJD4aXftbKk67DEbkSzRsyLxLT2L8g/edit?tab=t.0) about MBS not being FSA eligible, I think it's ok to still include because the structure of this section is like "don't have hsa/fsa, that's ok! you can still save" — so I was thinking it's ok to leave in? Unless we should change the structure altogether! Let me know!\n\n📎 **HSA** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qyvCRdogcN39KyJD4aXftbKk67DEbkSzRsyLxLT2L8g/edit?tab=t.0)
+- **2025-03-24 11:09** *Berkeley Clark* joined the channel
+- **2025-03-24 11:09** *User_5S72LT* joined the channel
+- **2025-03-24 11:09** *User_D8QGMP* joined the channel
+- **2025-04-01 13:22** *🤖 slackbot*: **elyse** from **HigherDOSE Management** was added to this channel by **swara**. You can review their permissions in Channel Details. Happy collaborating!
+- **2025-04-01 13:22** *Elyse* joined the channel
+- **2025-04-01 13:22** *Ari Murray* joined the channel
+- **2025-04-01 13:22** *User_LT8N4T* joined the channel
+- **2025-04-01 13:22** *User_PT7LCE* joined the channel
+- **2025-04-01 13:22** *User_4PNMDE* joined the channel
+- **2025-04-01 13:22** *User_CDDP51* joined the channel
+- **2025-04-01 20:35** *User_D8QGMP*: Hi @Elyse great speaking with you and Ingrid today!  
+  
+Here is the [CRM Process Doc](https://docs.google.com/document/d/1j4IVG1zPUpbSucbvgoKxeSnkk7IE8awyanryiFQ_Jgk/edit?usp=sharing) we discussed earlier. We have also shared your asana board with you. We aim to have our Flow Audit done by Friday and will follow up on our next steps for the flows then.  
+  
+In the meantime - please grant account access to Klaviyo + Attentive to the accounts listed in the document so our team can be ready to go. Let me know if you have any questions on that!  
+  
+Thank you again!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-04-02 09:02** *Elyse*: will do! @User_D8QGMP
+- **2025-04-02 09:02** *Ingrid* joined the channel
+- **2025-04-08 13:18** *User_D8QGMP* 💬 3 replies: Hi @Elyse please add <mailto:crm@sharmabrands.com|crm@sharmabrands.com> attentive whenever you have a chance. Thank you so much!\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-04-08 13:34** *Elyse*: On it!
+- **2025-04-08 13:51** *User_D8QGMP*: Hi @Elyse &amp; @Ingrid times for our welcome series strategy call:  
+  
+1. Thursday 4/8 - 11:30 AM PST / 2:30 PM EST  
+2. Monday 4/14 - 10 AM PST / 1 PM EST  
+3. Monday 4/14  - 11 AM PST / 2 PM EST  
+Let me know if any of the following times work for your team!
+- **2025-04-08 16:00** *Ingrid* 💬 1 reply: let's do Monday 10am PST! please include Lauren and Jess
+- **2025-04-10 12:18** *User_4PNMDE*: Hi @Elyse! Whenever you get a moment could you please add <mailto:jesrin@sharmabrands.com|jesrin@sharmabrands.com> to the klaviyo account for access? Thank you so much!
+- **2025-04-10 12:39** *Elyse*: on it!\n\n*Reactions: :pray: User_4PNMDE, User_D8QGMP*
+- **2025-04-14 10:26** *User_2Z9G95* joined the channel
+- **2025-04-14 13:30** *User_4PNMDE*: Hi @Elyse! One more person to add (whenever you get a moment). Could you please add <mailto:hannah@sharmabrands.com|hannah@sharmabrands.com> to Klaviyo for access?  Thank you :slightly*smiling*face:
+- **2025-04-14 13:53** *Elyse*: you got it, will do!\n\n*Reactions: :heart: User_4PNMDE*
+- **2025-04-15 10:42** *Elyse*: Also added a few emails to the email inspo folder\n\n*Reactions: :heart-cinnamon: User_5S72LT*
+- **2025-04-15 11:15** *Elyse* 💬 7 replies: Added all team members on CRM Process doc to klaviyo\n\n*Reactions: :heart-cinnamon: User_5S72LT, User_D8QGMP*
+- **2025-04-15 11:15** *User_5S72LT*: thank you so much! @Elyse
+- **2025-04-15 11:16** *Elyse*: no prob!
+- **2025-04-15 11:16** *Elyse*: yep done!
+- **2025-04-15 11:16** *Elyse*: re hannah @User_5S72LT\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-04-15 11:17** *User_5S72LT*: perfect!! thank you
+- **2025-04-15 12:29** *User_D8QGMP*: Hi @Elyse @Ingrid  
+  
+I’m reaching out with a bit of a bittersweet update — I’ll be leaving Sharma Brands as of Monday and moving on to a new chapter. I'm incredibly grateful to have learned so much about your company and to have started working with you on the revamp of your flows.  
+  
+The good news: you’re in amazing hands moving forward. I’m thrilled to introduce you to @User*2Z9G95, who will be taking over your account, working closely with @User*4PNMDE and has already been working on your audit behind the scenes. She’s an amazing email strategist, and I know you’re going to love working with her.  
+  
+The rest of the CRM and creative team — including our designers and copywriter — will remain the same, so you’re in excellent hands all around.  
+  
+We’re working closely behind the scenes to ensure a smooth and seamless transition, and I’ll be around to support during this handoff period as well.  
+  
+Thank you so much again — wishing you continued success, and I hope our paths cross again in the future.  
+Best,  
+Lisa Skaggs\n\n*Reactions: :heart-cinnamon: User_5S72LT, Elyse, User_CDDP51*
+- **2025-04-15 12:31** *Elyse*: Thank you for the heads up @User_D8QGMP! Best of luck in your next endeavor!! \n\n*Reactions: :heart-cinnamon: User_5S72LT, User_D8QGMP*
+- **2025-04-15 12:31** *Elyse*: Great to be connected @User_2Z9G95 excited to make some magic happen! \n\n*Reactions: :magic_wand: User_5S72LT, User_D8QGMP, :sparkling_heart: User_2Z9G95*
+- **2025-04-15 15:02** *Ingrid*: Thank you Lisa, and Welcome Hannah!  
+Lisa we wish you the absolute best in your next adventure!\n\n*Reactions: :yellow_heart: Berkeley Clark, User_D8QGMP, :sparkling_heart: User_2Z9G95, User_D8QGMP*
+- **2025-04-15 15:25** *User_2Z9G95*: Thank you, both! Excited to dive in!
+- **2025-04-15 16:02** *Elyse*: <!here> **[Product Usage Matrix](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?usp=sharing)** - first tab is not done (customer concerns, use cases), but check out second tab (product catalog, sku names, bundle contents, shipping eligibility, subscription eligibility)\n\n📎 **Product Usage Matrix** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?usp=sharing)\n\n*Reactions: :yellow_heart: Berkeley Clark, User_5S72LT, User_2Z9G95*
+- **2025-04-18 11:24** *Elyse*: Hi @User_2Z9G95 happy Friday! We’re evaluating overall email performance YoY, and want to gain a better understanding of why email is the only channel thats down 40% YoY. Can you put together an analysis for us please? Ideally looking for opportunities for go forward growth, as well as analysis on the last year.
+- **2025-04-18 11:25** *Elyse*: Also @User_2Z9G95 we should be meeting internally on Monday for May messaging, so will have some key content themes for you/for May email calendar by Tuesday.
+- **2025-04-18 17:23** *User_2Z9G95*: Hi @Elyse — thank you for letting us know! Absolutely. We'll put together some insights and a go-forward strategy for our call on Tuesday. A few clarifying questions:  
+• Where are you finding these results? Given attribution differences across platforms, we want to better understand where you're pulling your numbers.   
+• What's the exact timeframe you're looking at? Are you looking at year-to-date data? To clarify, you're seeing a 40% drop in performance from Jan - Apr 2025 compared to Jan - Apr 2024?   
+As a side — we've built out the briefs for the [Welcome Flow](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp*RqwH24hTFey*5XqJP_zbqQ/edit?tab=t.0) and [Replenishment Flow](https://docs.google.com/document/d/1-iCIB6Cvc43jP1k-EAYnWvCXr4Ge0Jkl13ihjW1YnT8/edit?tab=t.0), which are ready for your review. This is a high-level summary of what we're briefing out to our copywriters, so if there's any specific call-outs or any specific narratives we should be sharing, please add comments directly into the document. Once drafted, we'll pass them back to you all for final review and then we'll brief them out to our designers.  
+  
+Next week, we'll dive into optimizations within your Site Abandonment, Cart Abandonment, and Browse Abandonment flows — which will then follow a similar process. [I've created this CRM Tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958) that will keep track of everything we're working on: Flows, Campaigns, and SMS (including any tests we're running). Please feel free to reference this if you have any questions in regards to status updates (of course, you can always reach out, too!).  
+  
+We'll standby for the updated May messaging.  
+  
+Please let me know if you have any questions, thanks!\n\n📎 **HigherDOSE CRM | Welcome Flow Audit, V2** (gdoc, 155.4KB) - [Download](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp_RqwH24hTFey_5XqJP_zbqQ/edit?tab=t.0)\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-04-19 08:28** *Elyse*: @Ingrid can you chime in on where you saw the 40% drop please? 
+- **2025-04-19 16:21** *Ingrid*: It was in our weekly marketing report from last week 
+- **2025-04-20 01:25** *Elyse*: Oh duh lol - I can send that slide over to you on Monday @User_2Z9G95 \n\n*Reactions: :+1: User_2Z9G95, :heart-cinnamon: User_5S72LT*
+- **2025-04-21 14:45** *Elyse*: @User*2Z9G95 [https://docs.google.com/presentation/d/1BSVPuvosAz0aoDE*MjQ6HnRCCg-z09piuYyb*JMKmxQ/edit?usp=sharing](https://docs.google.com/presentation/d/1BSVPuvosAz0aoDE*MjQ6HnRCCg-z09piuYyb_JMKmxQ/edit?usp=sharing)\n\n📎 **Copy of Weekly Marketing Reporting: April 6 - April 12** (gpres, 716.2KB) - [Download](https://docs.google.com/presentation/d/1BSVPuvosAz0aoDE_MjQ6HnRCCg-z09piuYyb_JMKmxQ/edit?usp=sharing)\n\n*Reactions: :heart-cinnamon: User_5S72LT, :white_check_mark: User_2Z9G95*
+- **2025-04-21 14:46** *Elyse*: I made a copy of the deck with just the appropriate slides on email performance
+- **2025-04-21 14:48** *Elyse* 💬 1 reply: @User_2Z9G95 time parameters for slide 4  
+• 4/6 - 4/12/2024 for LY  
+• 4/6 - 4/12/2025 for this year  
+• 3/30 - 4/5/25 for WoW
+- **2025-04-22 10:18** *User_2Z9G95*: Hi @Elyse! I wanted to follow up on these two flows to see if you had any last minute notes/call-outs: [Welcome Flow](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp*RqwH24hTFey*5XqJP_zbqQ/edit?tab=t.0) and [Replenishment Flow](https://docs.google.com/document/d/1-iCIB6Cvc43jP1k-EAYnWvCXr4Ge0Jkl13ihjW1YnT8/edit?tab=t.0). Our copywriter is working through them now, but we wanted to see if there were any specific call-outs or specific narratives we should be sharing. If not, we'll send through the copy docs once they're ready! Thanks!\n\n📎 **HigherDOSE CRM | Welcome Flow Audit, V2** (gdoc, 155.4KB) - [Download](https://docs.google.com/document/d/1KwAEJZIfJ302SX-vD8Lp_RqwH24hTFey_5XqJP_zbqQ/edit?tab=t.0)\n📎 **HigherDOSE CRM | Replenishment Flow** (gdoc, 152.4KB) - [Download](https://docs.google.com/document/d/1-iCIB6Cvc43jP1k-EAYnWvCXr4Ge0Jkl13ihjW1YnT8/edit?tab=t.0)
+- **2025-04-22 10:18** *Elyse* 💬 1 reply: Sweet will review quickly today thanks for the bump!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-22 13:28** *User_2Z9G95*: @Elyse @Ingrid — Thank you so much for the time today! [Here's a link to the data lookback we chatted through](https://docs.google.com/document/d/1gs0yqttllYhEsd8qVCJjo-lDpbXbE1SdORZEBGnUkUw/edit?tab=t.0). If you have any additional questions, please let us know!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-04-22 13:51** *Elyse*: @User_2Z9G95  
+[Mother’s Day Gift Guide](https://higherdose.com/pages/mothers-day-gift-guide?srsltid=AfmBOooD0B2RHExX-GClKdhdB6suc3XTeiWGnLwkHormaUulLeQhMcYC)  
+  
+**Mother’s Day Bundles - bundle discount upped to 25% off during MD sale period, no code**  
+[Sweat it Out Bundle](https://higherdose.com/products/the-sweat-it-out-bundle)  
+[After Bedtime Bundle](https://higherdose.com/products/after-bedtime-bundle)  
+[Super Mom Bundle](https://higherdose.com/products/the-supermom-bundle)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-22 17:11** *User_2Z9G95*: Hi @Elyse — [I'm excited to share we have 3 emails from the Welcome Flow ready for copy review](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0). As a reminder, we're having four separate customer journeys, so this is email one for the Relaxation &amp; Stress Relief journey, the Detox and Cleanse Journey, and the Beauty and Skincare journey. The Recovery and Muscle Relief is in works along with the other 5 in the series. Please feel free to comment directly with any thoughts and as always, let us know if you have any questions. Thank you!\n\n*Reactions: :yellow_heart: Berkeley Clark*
+- **2025-04-22 19:18** *Elyse*: Sweet thank you!\n\n*Reactions: :yellow_heart: Berkeley Clark, User_2Z9G95*
+- **2025-04-24 17:21** *User_2Z9G95*: Hi @Elyse — Quick update for you: We're still moving through the Welcome Flow and are hoping to have additional emails for you to review by tomorrow EOD — stay tuned here! *EDIT: Just saw your feedback, we're going to revisit emails 1a-1c that we already sent through first prior to building out the rest to make sure you all feel good about where we're heading. Thank you!*  
+  
+We're also in the process of building out May's content calendar. I see that your other agency has content scheduled through April 30th — is that the last email they will have scheduled? Are there any campaign narratives in particular you're looking for us to support in May outside of the sale? We're still working through campaign idea recommendations, but here's a high-level schedule of what we're envisioning:\n\n📎 **Screenshot 2025-04-24 at 3.19.33 PM.png** (png, 135.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08P60TGZV5/screenshot_2025-04-24_at_3.19.33_pm.png)
+- **2025-04-25 08:37** *Elyse*: Yes! Will send through content themes shortly\n\n*Reactions: :heart: User_2Z9G95*
+- **2025-04-25 12:09** *Elyse* 💬 2 replies: @User_2Z9G95 Getting organized here - we have offboarding agency covering email through 5/2. Originally had an SMS planned for 5/3 as “one more day to shop the sale” and then email/sms for 5/4 as “last day, sale ending” so would love to have Sharma pick those two up if possible
+- **2025-04-25 12:11** *Elyse*: and sounds good re revisiting the welcome flow copy. Shoot me a ping when ready and I’ll get those reviewed quickly on our end @User_2Z9G95
+- **2025-04-25 13:23** *Elyse* 💬 8 replies: @User_2Z9G95 I’m on the Sharma CRM asana board - currently adding in what’s on our calendar for next week for the team’s reference\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-04-25 16:39** *Elyse* 💬 1 reply: @User_2Z9G95 tell me if these don’t work  
+[Busy Mom’s Guide to Self Care](https://www.figma.com/design/8SfoPiv7xYKHOAUSu8S2ja/Higher-Dose---Busy-Mom%E2%80%99s-Guide-to-Self-Care?node-id=0-1&amp;t=3AL6WMhWhx2gHCUk-1) - [Mother’s Day Gift Guide](https://www.figma.com/design/SdiH6PJqQbKXPCxHnFJP93/Mother%E2%80%99s-Day-Gift-Guide?node-id=0-1&amp;t=VbJSrcgXk1Y1A43M-1)\n\n**Figma**\n🔗 **[Higher Dose-  Busy Mom’s Guide to Self Care](https://www.figma.com/design/8SfoPiv7xYKHOAUSu8S2ja/Higher-Dose---Busy-Mom%E2%80%99s-Guide-to-Self-Care?node-id=0-1&t=3AL6WMhWhx2gHCUk-1)**\n> Created with Figma\n\n**Figma**\n🔗 **[Mother’s Day Gift Guide](https://www.figma.com/design/SdiH6PJqQbKXPCxHnFJP93/Mother%E2%80%99s-Day-Gift-Guide?node-id=0-1&t=VbJSrcgXk1Y1A43M-1)**\n> Created with Figma
+- **2025-04-25 16:50** *User_2Z9G95* 💬 2 replies: @Elyse — One more thing! We really want to make sure we're nailing the vibe, tone, and messaging of the Welcome Series prior to building out the rest of it. [Would you and the team be able to take a quick pass at this updated version](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0) of email 1A and share any thoughts/feedback? From there, we'll get going on the rest!\n\n📎 **HigherDOSE CRM | Welcome Flow** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0)
+- **2025-04-25 16:50** *Elyse*: awesome, will circulate to team now
+- **2025-04-25 16:51** *Elyse* 💬 1 reply: @User_2Z9G95 separately, you have access to Q2 Marketing Strategy deck already right?
+- **2025-04-25 16:52** *Elyse* 💬 1 reply: Slides 28-29 are recap slides of May 2024 that I just put in if helpful for the team\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-25 16:53** *Elyse*: working on june for Monday
+- **2025-04-25 16:57** *Elyse* 💬 1 reply: Slides 5-7 are from our co-founder Lauren’s ideas for May/June content, but we’ll be fleshing those out to add in some of the cultural moments listed on slide 8, as well as sales\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-25 17:04** *Elyse*: @User_2Z9G95 Also want to make sure you have promo dates  
+• Mother’s Day 1st round: 4/27 - 5/4  
+• Mother’s Day 2nd round: 5/9 - 5/11  
+    ◦ Discount drops to 15% off for the weekend with code DOSEMAMA  
+    ◦ Bundles will go back down to 20% off, no code necessary  
+    ◦ Goal here is more around “self-gifting”, gift cards  
+• Memorial Day weekend 5/22 - 5/26  
+    ◦ 20% off sitewide, code tbd will circle back when I have it  
+    ◦ 5/22 will be VIP early access, but this will likely mean access to email/sms subscribers only  
+        ▪︎ Ad support, social support, affiliate etc will begin on 5/23\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-25 17:06** *Elyse*: @User_2Z9G95 I’m brain dumping a bit right now - but while I have you lol! Something also on our minds, we’d love to get more before/after photos for the RL Hat and the RL Mask. Can the team put together a few campaign ideas around that as well please? I’ll be thinking through some good incentives next week so no mega mega rush but its on the priority list for May/June as well. cc @Ingrid\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-04-25 17:08** *Elyse* 💬 2 replies: And lastttttly, we’ll also have our Microcurrent Body Sculptor launch, I know we’ve spoken about that a bunch on our calls so far - I think we’re currently slated for mid May launch date so should mold May EMC around that, but know that date is tentative/could change. @User_2Z9G95\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-04-25 17:10** *Elyse*: @User_2Z9G95 We’ll be meeting internally on Thursday to discuss where we land omnichannel-ly lol for May/June content so I’ll keep you posted as more fleshes out! But would love your preliminary thoughts on May EMC as we get into quick ramp up on campaigns\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-04-25 17:10** *🤖 Bot* 💬 1 reply: and scene\n\n*Reactions: :joy: User_2Z9G95*
+- **2025-04-28 13:06** *Elyse*: @User_2Z9G95 feedback on welcome flow copy from Lauren on our end:  
+  
+• Phrases like “grueling 9–5” and “life admin” feel a little cliché and casual. HigherDOSE typically feels more aspirational and less whiny about life’s stressors.  
+• Some copy feels a bit basic (“Life is tiring. It’s never-ending.“) HigherDOSE usually sounds smarter, more energized, and more magnetic.  
+• It’s missing a bit of that “sexy science” vibe — the feeling that you’re unlocking ancient wisdom and cutting-edge tech, and being seduced into self-care.  
+• Good that they’re describing how you’ll feel but it could paint the sensory experience more! (HigherDOSE often invites you into a “felt” transformation!  
+
+- **2025-04-28 16:01** *User_2Z9G95*: Hey @Elyse — we have the remainder of the Mother's Day sale content for review, too. If you could please provide feedback by EOD tomorrow, we can get them into design right after! Feel free to comment any thoughts/feedback directly.  
+• Saturday, 5/3: [Mother's Day 24 Hours Remaining SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0)    
+• Sunday, 5/4: [Mother's Day Last Chance Email and SMS](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-04-28 16:02** *Elyse*: Fabulish! Thank you, will circulate now!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-28 16:17** *Elyse*: Added copy notes from team to first SMS @User_2Z9G95
+- **2025-04-28 16:22** *Elyse* 💬 1 reply: Added prelim notes to 5/4 email, but may have more from team
+- **2025-04-29 10:38** *User_2Z9G95* 💬 1 reply: Hi @Elyse! We made some revisions to both. Feel free to take a look/circulate internally and let us know what you think!  
+• [Saturday, 5/3: Mother's Day 24 Hours Remaining SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0)  
+• [Sunday, 5/4: Mother's Day Last Chance Email and SMS](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-04-29 11:01** *Elyse*: @User_2Z9G95 confirmed 30K drop off was list cleaning \n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-29 15:19** *Elyse* 💬 1 reply: @User_2Z9G95 also for May FYI - “every day is mother’s day” giveaway  
+Brands: [Boobcube](https://www.boobcube.co/), [Hampton Grocer](http://hamptongrocer.com/), [HATCH](http://hatchcollection.com/), [Needed](http://thisisneeded.com/), and [Sorette](https://shopsorette.com/). [waiting to confirm 2-3 others]  
+dates: 5/12 - 5/18\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-29 15:20** *Elyse*: Will circle back with more info when I know what our email obligation is
+- **2025-04-29 15:21** *Elyse*: but think there’s email and social components\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-04-29 15:21** *User_2Z9G95*: Perfect! Disregard my other slack, haha
+- **2025-04-29 15:21** *User_2Z9G95*: keep us posted!
+- **2025-04-29 15:21** *Elyse*: haha we’re on same wavelength\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-29 15:21** *🤖 Bot*: groovy\n\n*Reactions: :heart-cinnamon: User_5S72LT, User_2Z9G95, :bangbang: User_2Z9G95*
+- **2025-04-29 15:22** *Elyse*: Circulated both to team - these look much better\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-04-29 16:58** *User_2Z9G95*: @Elyse — [Here's the link for the campaign ideas we've put together](https://docs.google.com/document/d/1OVCAIizHNxz0SQDXAKUpE-idYsrV8QmIdB28VrZwi8Q/edit?tab=t.0). Feel free to let us know how these pan out after your call tomorrow!\n\n📎 **HigherDOSE Campaign Ideas 2025** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1OVCAIizHNxz0SQDXAKUpE-idYsrV8QmIdB28VrZwi8Q/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-04-29 16:59** *Elyse*: ty ty!
+- **2025-04-29 17:02** *User_2Z9G95*: You're welcome! It's very WIP, but we'll keep building it out!
+- **2025-04-30 08:00** *User_2Z9G95*: Hi @Elyse! Good morning. [We have a revised version of the welcome flow](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0), email #1 for your and the team's review. We went the route of stronger narrative storytelling coupled with education. It's a much longer, denser version, but we're happy to go this route if the team would like. If not, we can certainly condense, too. Our copywriter, Chandler, left a few questions in there if you would be able to provide some context that would be fantastic. Thank you!\n\n📎 **HigherDOSE CRM | Welcome Flow** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LP8iKgjG9EB4DNpi003zOms9mbxqU51BZGtqAQhg0Q8/edit?tab=t.0)
+- **2025-04-30 08:39** *Elyse*: Awesome! Thanks @User_2Z9G95 will review and circulate to team!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 13:08** *Elyse* 💬 1 reply: @User_2Z9G95 lmk if you have any thoughts here please  
+  
+Also want to keep this in mind for strategy going forward. I know we’re blitzing for the sale this week, but otherwise\n\n**Grace Luna**\n> Hi <!here> <mailto:georgiabrisco@gmail.com|georgiabrisco@gmail.com> _"I enjoy your platform and products overall, and want to keep up to date, but the emails are a lot. One every 24 hours is objectively insane, marketing-wise (I'm a Head of Content). Any way I can lessen them without unsubscribing completely?"_ Please advise, thank you!\n*Thread in Slack Conversation | 2025-04-30 08:40*
+- **2025-04-30 13:09** *Elyse*: also LOL do they not get 100 emails from brands all week long?\n\n*Reactions: :joy: User_2Z9G95*
+- **2025-04-30 17:39** *Elyse* 💬 1 reply: @User*2Z9G95 end of the day hello! We had a great meeting internally, we didn’t get to cover everything so we’re meeting again early next week - also to revise our current ideas to fit more synergistically now seeing what other channels are doing. But sharing this deck and my current calendar draft - would loooooove your thoughts on May (not finished with June) - so I can add any notes/revisions in before next team meeting:  
+**[Q2 Marketing Strategy](https://docs.google.com/presentation/d/1LmV6WE7LMUlNKjmm5Ee5iBZqMujvKh*a3IZ-n62GYSA/edit?usp=sharing)**   
+**[May/June CRM Calendar Draft](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing)** \n\n📎 **Q2 Marketing Strategy** (gpres, 0B) - [Download](https://docs.google.com/presentation/d/1LmV6WE7LMUlNKjmm5Ee5iBZqMujvKh_a3IZ-n62GYSA/edit?usp=sharing)\n📎 **June CRM Calendar Draft** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 17:39** *User_2Z9G95*: Hi @Elyse! Thanks so much for passing this along. Apologies for the delay, I wanted to do a deeper dive to see what I could find. We have a few thoughts to share: It turns out this customer is actually based in the UK — so they haven't been receiving any of the promotional messaging, they've only received campaigns and flows. It does look like this customer received two flow emails (Site and Browse) on the same day. To prevent this from happening in the future, we can add more specific profile filters (i.e. if customer is in X flow, prevent them from entering Y flow).  In addition, we also recommend turning on smart sending for all campaigns to help prevent this overlap. With Klaviyo's smart sending feature on — it prevents someone from receiving multiple emails within a 16 hour period. Because this wasn't in place, they've received all flow and campaign communication, which is likely what prompted them to reach out. We can also certainly create a preference page should people choose to customize their exclusions — we don't typically recommend relying solely on this — but with a strategic campaign segmentation strategy we should be able to prevent this from happening in the future!  
+  
+The good news: Klaviyo's unsubscribe rate is only up 7% L7 days over the previous 7 days, so the send rate isn't having too large of an impact on the rest of our community. In regards to long-term strategy implications — best practice is between 2-3 campaign sends per week, 4 can be pushing it, unless strategically segmented. We can put together a stronger segmentation strategy based what people viewed, previously ordered, etc. This is the strategy we recommend implementing moving forward. In regards to the campaigns themselves, given the feedback we've heard to date from you all, we're recommending a quality over quantity approach, where we'll be able to dive deeper into the stories, narratives, and data. We'll, of course, want to A/B test more longer-form content against shorter-form content to find what resonates most with our community, but regardless, we're excited about implementing this new longer-form, educational approach.  
+  
+I hope that helps provide some context! If there's anything else I can help clarify or dive deeper into, please let me know.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-04-30 17:40** *User_2Z9G95*: Love this! Thank you so much for the update. We'll discuss internally and let you know our thoughts! Excited!
+- **2025-04-30 17:40** *Elyse*: Ok perfect yesss love all of that\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 17:41** *Elyse*: That’ll help stretch out what I have for May/June calendar draft too if doing 2-3 campaigns a week. Love that tremendously\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-04-30 17:41** *Elyse*: will make those adjustments to it as well in the morning
+- **2025-04-30 17:41** *User_2Z9G95*: Amazing!
+- **2025-05-01 08:00** *User_2Z9G95* 💬 3 replies: Good Morning, @Elyse! We have some more Mother's Day content for your review. Did you get a chance to look at the remaining ones for this weekend? Let us know if there's any thoughts on the [5/3 SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0) and the [5/4 Email + SMS](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0). We need to get them into design ASAP, so we can review and QA! In addition, we have next week's Mother's Day copy ready for review. Please take a look and let us know your thoughts.  
+• [5/9 - Launch](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.0)  
+• [5/10 - One Day Left](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.unwnjs7izkff) - 2 options  
+• [5/11 - Last Chance](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.l7zwf3nl7ull) - 2 options  
+In addition — this calendar draft is fantastic! Any additional copy or context you can share for the emails on 5/6 and 5/7 would be fantastic. We'll want to get those briefed out this week!\n\n📎 **HigherDOSE CRM | Mother's Day Sale #2 Emails** (gdoc, 97.5KB) - [Download](https://docs.google.com/document/d/1jihOHzVXbTDyIapfU0Zt43d8VgTBG0NPUDRsUAoz1tM/edit?tab=t.l7zwf3nl7ull)\n📎 **HigherDOSE CRM | Mother's Day - Last Chance** (gdoc, 0B) - [Download](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-05-01 08:08** *Elyse*: Perfect! Will review now
+- **2025-05-01 08:08** *Elyse*: Will also follow up w team for any notes on the ones you’d sent previously
+- **2025-05-01 08:15** *User_2Z9G95*: Amazing, thank you!
+- **2025-05-01 10:55** *Ingrid* 💬 3 replies: @User_2Z9G95 have you worked with Orita at all?
+- **2025-05-01 10:56** *Ingrid*: we are on a call with them and their solution seems really interesting as a decision making layer we've been looking for
+- **2025-05-01 12:07** *Elyse* 💬 1 reply: @User_2Z9G95 [Mother's Day Last Chance](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)  - added notes to this, good to go\n\n📎 **HigherDOSE CRM | Mother's Day - Last Chance** (gdoc, 108.3KB) - [Download](https://docs.google.com/document/d/115mE78gmrsQkq9ecjnFeVUpTnDBxUDba9S2HbnZxUfU/edit?tab=t.0)
+- **2025-05-01 12:08** *User_2Z9G95*: Hi @Ingrid! We have used them in the past and it could be a great solution. We'd love to get on your next call with them or if you'd be able to pass along your contact we can schedule a high-level demo to get a refresh/any software updates!
+- **2025-05-01 12:10** *Elyse*: booking a second call with them as we didnt get to cover everything, so will add you all to it @User_2Z9G95\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 12:10** *Elyse* 💬 2 replies: @User_2Z9G95 also [Saturday, 5/3: Mother's Day 24 Hours Remaining SMS](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0) good to go with any of the revisions, all look good\n\n📎 **HigherDOSE CRM | 24 Hours Remaining SMS Mother's Day** (gdoc, 130.9KB) - [Download](https://docs.google.com/document/d/1-ksjMSbhfpP9ZmP4fltVJiahjhJIPRKlcIUlIpcpS0Q/edit?tab=t.0)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 12:11** *Elyse*: @User*2Z9G95 re Orita:  [Here is the call recording](https://d2rjpm04.na1.hs-sales-engage.com/Ctc/W3+23284/d2rjPM04/Jll2-6qcW7Y8-PT6lZ3pjW35tc5b7ksrh*W91JFgz84PL6QW6Tx71r4nMrN1W83gX_*7Qr86NW6ZVcGk1clD-yW1JxkDD6Pj8B9W4yRt1C7M97PvW2wq*rL7qwTmkW5VvC7L4y46v3W2vbBnZ7WF41fW3Nt7557SkhDbW873dnJ6FwGB5VqMgdw5Z*ScCW5SY*VX7Fq7w9W4z5tK61q0P4xW12BDsh6V518GW13W-H070gD5VW8TgL551*rbzlW2BKNZ73YvppfVxSdKt3klFp1W90hZqW6kFzj7VfcPk221Ylq1W8124G4699tSKW5xJwM419xSb9W5tGNs34ZN*z2N3brJBmyzjxVf8bqpgM04)\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-01 12:11** *Elyse*: summary from audit results\n\n📎 **image.png** (png, 1.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08R7MNMPSL/image.png)
+- **2025-05-01 12:35** *User_2Z9G95*: @Elyse — Just sent two SMS for review! The first one is for Saturday, and the second is for Sunday.
+- **2025-05-01 13:17** *Elyse* 💬 1 reply: Both good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 13:22** *Elyse* 💬 1 reply: @User_2Z9G95 left notes on 5/9 5/10 5/11, we're good to move forward w these edits
+- **2025-05-01 13:26** *Elyse* 💬 1 reply: @User_2Z9G95 also - replenishment flow, we're good on the brief can move to copy\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-01 13:26** *Elyse* 💬 1 reply: Welcome 1 we had some more notes, so will forward that over to you now
+- **2025-05-01 15:34** *User_2Z9G95*: This is great, thank you! Sending this to design for early next week!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-01 15:34** *User_2Z9G95*: Perfect, briefing this out today, too.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-01 15:34** *User_2Z9G95*: Thank you! I replied with some follow ups via email!\n\n*Reactions: :eyes: Elyse*
+- **2025-05-01 15:36** *User_2Z9G95*: @Elyse One note RE SMS — I saw that there's an existing EU audience, CA audience, and UK audience excluded — I assume this is intentional because of international fees? If so, I'll leave them excluded, unless otherwise noted!
+- **2025-05-01 15:38** *Elyse*: So with international, we have them separated because some products don't ship there
+- **2025-05-01 15:39** *Elyse* 💬 1 reply: So for example, anything really in a bundle is largely gonna be for USA. The only bundle that ships internationally is the Best Seller Bundle. Anything with body care, supplements in it doesn't ship internationally
+- **2025-05-01 15:40** *Elyse* 💬 1 reply: Re these specific campaigns, I was under the impression that EU and Canada had the same Mother's Day as us and that it was just UK that had theirs in March
+- **2025-05-01 15:42** *Elyse*: I just googled EU mother's day and it seems like it ranges from first/second sunday of may to last sunday of may. so I'm okay with leaving EU and Canada in for these MD campaigns
+- **2025-05-01 15:43** *User_2Z9G95*: My thoughts exactly! We're on the same page :slightly*smiling*face:
+- **2025-05-01 15:48** *Elyse*: fab fab!
+- **2025-05-01 15:49** *Elyse*: so also while I have you
+- **2025-05-01 15:50** *Elyse*: I'm adding a "cover" sheet so to speak to the [CRM calendar draft](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing) with some key thoughts on it, some in progress things to look out for etc that might be helpful for the team  
+cc @Ingrid check this out when you get a chance, let me know if there's anything you'd like to add\n\n📎 **June CRM Calendar Draft** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?usp=sharing)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 16:01** *User_2Z9G95*: @Elyse — Both SMS for this weekend are scheduled! We'll keep the same time the others have been sent and can explore more A/B tests for future campaigns.\n\n📎 **Screenshot 2025-05-01 at 2.00.54 PM.png** (png, 117.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QCBQ6BU6/screenshot_2025-05-01_at_2.00.54_pm.png)
+- **2025-05-01 16:03** *Elyse* 💬 1 reply: fab, tysm for picking these up!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-01 16:04** *Elyse* 💬 2 replies: @User_2Z9G95 I'll be out for a bit tomorrow afternoon for a doctor's appointment at 1 but will have my phone on me if anything needs my urgent attention. 20 week anatomy scan woo woo!
+- **2025-05-01 16:05** *User_2Z9G95*: Hope it all goes well! We may need your eyes on the Sunday Mother's Day email design if it's not done by EOD PT today — our team is still working on it! Will keep you posted!
+- **2025-05-02 08:00** *User_2Z9G95*: Good morning @Elyse! Do you have any more context into these two upcoming campaigns? Given that they're next week, we need to get copy finalized today, so they can get pushed to design.  
+• 5/6 - [EMAIL] Katie’s Mom PEMF Mat Review [revamp]  
+    ◦ PEMF Pro Mat Starter Kit  
+    ◦ Super Mom Bundle  
+• 5/7 - [EMAIL/BLOG] Lauren’s Motherhood blog feature  
+    ◦ Let’s make this design really pared down, simple so that the words can shine through  
+    ◦ Hyperlink sauna blanket, red light therapy
+- **2025-05-02 08:00** *Elyse* 💬 1 reply: Yes! So Katie’s mom is a revamp from last year
+- **2025-05-02 08:01** *Elyse* 💬 1 reply: Should be able to pull up on klaviyo 
+- **2025-05-02 08:01** *Elyse*: Want to just switch the products over to those bundles and refresh/optimize any copy
+- **2025-05-02 08:02** *Elyse*: And then Lauren’s blog I should have the link hang on
+- **2025-05-02 08:03** *Elyse*: Want to just pull some info from there
+- **2025-05-02 08:05** *Elyse*: Dang, preview link expired hang tight will get new one
+- **2025-05-02 08:06** *Elyse* 💬 1 reply: But anyway in it she talks about her story w motherhood and how it took major medical issues to turn everything around w caring for herself 
+- **2025-05-02 08:06** *Elyse*: Mentions blanket, sauna, red light
+- **2025-05-02 08:35** *User_2Z9G95*: Hi @Elyse — We have this Sunday's last chance email ready for review in Figma [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=33332-2180&amp;p=f). Please take a look when you get the chance adn we'll get it tested and scheduled ASAP.\n\n*Reactions: :eyes: Elyse*
+- **2025-05-02 09:09** *Elyse*: Looks great, love it
+- **2025-05-02 09:09** *Elyse* 💬 1 reply: Added one typo note
+- **2025-05-02 09:23** *Elyse* 💬 1 reply: @User_2Z9G95 also - good to move forward w edit notes I put on the google doc for Mother’s Day Sale #2 emails, team didn’t have anything to add
+- **2025-05-02 10:57** *User_2Z9G95*: Hi @Elyse — Just sent the test preview! If all looks good, we'll schedule it for Sunday at 10a local time. Confirming we've updated the segment to include CA and EU customers.\n\n📎 **Screenshot 2025-05-02 at 8.56.45 AM.png** (png, 47.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QGEYLEHL/screenshot_2025-05-02_at_8.56.45_am.png)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-02 11:21** *Elyse*: @User_2Z9G95 looks great, only call out is the footer
+- **2025-05-02 11:21** *Elyse*: Since we closed our spa location, we had changed the footer to be DOSE CLUB Rewards, shop all, be an affiliate
+- **2025-05-02 11:22** *Elyse*: Footer also has old info on it - has discount end date as dec 2nd
+- **2025-05-02 11:22** *Elyse*: and doesn’t have exclusion of subscription orders within disclaimer
+- **2025-05-02 11:24** *User_2Z9G95*: Hi @Elyse! Great shout! Sending our designer the updated one from the previous Mother's Day emails.
+- **2025-05-02 11:27** *User_2Z9G95*: @Elyse — Just to confirm, does the offer end at 11:59p PST on May 4th or May 5th? The current sale disclaimer says May 5th, but I was under the assumption the sale ended May 4th. Please advise!
+- **2025-05-02 14:12** *User_2Z9G95*: Hi @Elyse! Just sent the updated email for review — LMK how that looks!
+- **2025-05-02 14:20** *User_2Z9G95*: This is perfect, thank you! Working on this now, so let us know if you're able to find the link!
+- **2025-05-02 15:00** *Elyse* 💬 1 reply: Fresh test good to go @User_2Z9G95 \n\n*Reactions: :yellow_heart: Berkeley Clark, User_2Z9G95*
+- **2025-05-02 15:04** *Elyse*: <!here> \n\n**Ester Barril**\n> hi team requesting to unsubscribe email : <mailto:pollyruns@gmail.com|pollyruns@gmail.com> thank you in advance!\n*Slack Conversation | 2025-05-02 10:51*
+- **2025-05-02 15:04** *Elyse* 💬 2 replies: Any specific process for these requests @User_2Z9G95 ?
+- **2025-05-02 18:31** *User_2Z9G95* 💬 3 replies: Hi @Elyse — I apologize for the late night note, but if [you're able to review the new copy for Katie's Mom's PEMF Mat Review email](https://docs.google.com/document/d/1jobW7RTUQiUY425bWslbHiYsqwLythwK3p1DiaASCWo/edit?tab=t.0) for Tuesday on Monday, that would be great! One version includes a PEMF Mat CTA in addition the the bundles and the other does not. Let us know your preference here!
+- **2025-05-02 19:09** *Elyse*: Sounds good! Will jump on computer in the morning and check it out! @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-02 19:10** *User_2Z9G95*: Have a great weekend! 
+- **2025-05-05 11:33** *Elyse* 💬 4 replies: @User_2Z9G95 if you don’t mind, could you send me a consolidated list of anything outstanding on our end? Getting organized today and want to make sure we don’t owe you anything, besides answer to your welcome flow questions!\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-05 12:15** *Elyse* 💬 8 replies: @User*2Z9G95 lauren’s blog preview for wednesday [https://w6vbs0wy3f902low-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=2989f660201e8c4e57077769c7b87864](https://w6vbs0wy3f902low-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=2989f660201e8c4e57077769c7b87864)\n\n**w6vbs0wy3f902low-22626551.shopifypreview.com**\n🔗 **[How Motherhood Is The Most Selfless Thing | HigherDOSE](https://w6vbs0wy3f902low-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=2989f660201e8c4e57077769c7b87864)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-05 16:01** *Elyse* 💬 1 reply: @User_2Z9G95 I’d also love if you guys could take a look at our SMS campaign segmentation for last week - something feels off to me. We have a subscriber list of over 50K and sale SMS campaigns were all only sent to under 8K
+- **2025-05-05 16:02** *Elyse*: Last email agency mentioned this was due to exclusions of international audience, but I just can’t fathom our international audience is over 40K.. Doesn’t make sense to me
+- **2025-05-05 16:05** *User_2Z9G95*: Hey @Elyse — Definitely! Let me take a look and we can chat through it on our sync tomorrow.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-05 16:05** *Elyse*: ty ty!
+    - **2025-05-05 17:21** *User_2Z9G95*: ↳ @Elyse — This one from the email last year!\n\n📎 **Screenshot 2025-05-05 at 3.20.53 PM.png** (png, 373.2KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QTPAFHRC/screenshot_2025-05-05_at_3.20.53_pm.png)
+- **2025-05-05 19:01** *Elyse*: Oh! Let me ask Katie quickly hang on\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-05 19:07** *Elyse* 💬 1 reply: Need a little crop to get off screenshot stuff but here’s a new image Katie sent! \n\n📎 **IMG_1491.png** (jpg, 3.5MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08RCL456L9/img_1491.png)\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-05 19:09** *Elyse*: Here’s original image - but peep the screenshot for Katie’s preference on crop please!\n\n📎 **FullSizeRender.heic** (jpg, 3.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08QU2NFDSS/fullsizerender.heic)\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-05-06 09:00** *User_2Z9G95*: Hi @Elyse — Good morning! A few updates for you below:  
+• Copy for Lauren's blog email is ready [HERE](https://docs.google.com/document/d/1pqyUArAZeYSTQYTUlhD_rVw98lZtK2RvhrVCkVPDl0A/edit?tab=t.0) — there's two versions, a shorter and longer one — please review when you get the chance and let us know your thoughts!  
+• Design for today's email [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37053-3&amp;p=f&amp;t=tNxqPUsO8AMG0moL-0). We'll plan to send this to our 90 day engaged segment, and can send through a test preview + schedule it whenever it's ready.  
+• Copy for the Detox Drops replenishment email is [HERE](https://docs.google.com/document/d/1lx0SGkpydlwPb7D6m3pLmuvxnUcuXZ7MWF12gn0kcpg/edit?tab=t.0). As a reminder, the goal here is to drive subscription purchases, so that's the focus. \n\n📎 **HigherDOSE CRM | Lauren's Motherhood Blog** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1pqyUArAZeYSTQYTUlhD_rVw98lZtK2RvhrVCkVPDl0A/edit?tab=t.0)\n📎 **7 (1 email): Detox Drops** (gdoc, 80.6KB) - [Download](https://docs.google.com/document/d/1lx0SGkpydlwPb7D6m3pLmuvxnUcuXZ7MWF12gn0kcpg/edit?tab=t.0)
+- **2025-05-06 09:00** *Elyse*: Thank you @User_2Z9G95! Will dive into these now
+- **2025-05-06 09:23** *Elyse*: Shared all with team! Will have notes by EOD\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-06 09:24** *User_2Z9G95*: Sounds great, thank you!
+- **2025-05-06 09:24** *User_2Z9G95*: Just granted access, FYI!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-06 13:33** *User_2Z9G95*: @Elyse — [Link to today's agenda for review](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)!\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n\n*Reactions: :gratitude-thank-you: Elyse*
+- **2025-05-06 15:13** *User_2Z9G95*: @Elyse – Just sent you the preview for today! Since it's later EST, let's hold on the A/B test until we can get a proper morning/evening test. We'd recommend scheduling this at 5p ET. We're targeting our engaged L90 day list for this one.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-06 15:13** *Elyse*: @User_2Z9G95 looking at test now\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-05-06 15:14** *Elyse*: one thing I didn’t catch during preview - the two bundles are still listed on the website as 25% off, so would need to update CTA buttons there to bundle &amp; save 25%\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-06 15:15** *Elyse*: otherwise generally looks fine. i’d maybe change the header link and the PEMF block with lauren laying on the mat to the pemf collection [https://higherdose.com/collections/pemf-devices?ic=nav*click](https://higherdose.com/collections/pemf-devices?ic=nav*click)\n\n**higherdose.com**\n🔗 **[PEMF Therapy Collection                      – HigherDOSE](https://higherdose.com/collections/pemf-devices?ic=nav_click)**\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-06 15:17** *User_2Z9G95*: Updating now
+- **2025-05-06 15:26** *User_2Z9G95*: Just re-sent the test!
+- **2025-05-06 15:27** *Elyse*: good to fly
+- **2025-05-06 15:29** *User_2Z9G95*: @Elyse — good to go! Thank you!\n\n📎 **Screenshot 2025-05-06 at 1.28.49 PM.png** (png, 35.3KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08QRQ631QX/screenshot_2025-05-06_at_1.28.49_pm.png)
+- **2025-05-06 15:29** *Elyse*: :crossed_fingers::skin-tone-3::rocket:
+- **2025-05-07 09:59** *User_2Z9G95*: Hey @Elyse — Our 3 x Mother's Day email designs should be ready this afternoon for review! Any update on Lauren's blog? Let us know how we can further support!
+- **2025-05-07 10:18** *Elyse*: fabulish! will keep my eye out for quick turnaround on approvals
+- **2025-05-07 10:19** *Elyse*: I know Lauren is shooting today so may not get an answer right away but I’ll text and keep you posted!
+- **2025-05-07 10:19** *User_2Z9G95*: No worries! Happy to push to tomorrow, too? It's not ideal with the back-to-back sale emails, but I can see what we can do from a segmentation standpoint.
+- **2025-05-07 10:22** *Elyse*: let’s see, hopefully can keep online for today. i just texted\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-07 10:26** *Elyse*: ok we have an answer! woo!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-07 10:27** *User_2Z9G95*: Lovely!
+- **2025-05-07 11:26** *Elyse*: ok we’re gonna go with the shorter one but gonna take a Quick Look once more and see if we need any notes added, give me a few
+- **2025-05-07 11:32** *User_2Z9G95*: Sounds great! Thank you so much!
+- **2025-05-07 13:07** *Elyse*: ok just looked through - only thing we need to add is a read more button and some kind of sentence leading into that CTA like read more about my journey into motherhood on our blog or something
+- **2025-05-07 13:07** *Elyse*: will let Chandler finesse that
+- **2025-05-07 13:08** *User_2Z9G95*: Fabulous!
+- **2025-05-07 13:09** *User_2Z9G95*: Confirming you still want to move forward with the shorter one, right?\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-07 13:42** *User_2Z9G95*: @Elyse — We're re-working this now and then we'll send through the final email (copy + design) for review! Hoping to schedule the send for 4p ET today, will keep you posted.
+- **2025-05-07 13:59** *User_2Z9G95*: @Elyse — Did Lauren's blog post already go live? If so, can you share the link? Thank you!
+- **2025-05-07 14:47** *User_2Z9G95*: @Elyse – Just sent you the preview. We just need the blog link that I can add to that button! Let me know if there's any thoughts/feedback (the last two paragraphs are new, so please review those!). Since this is still a text-based email, we have pretty limited control in terms of the background design, so we went with more of a beige/off-white background color to add some dimension.
+- **2025-05-07 14:54** *Elyse*: bckground fine by me\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-07 14:57** *Elyse*: one note - we say “might resonate” twice so thinking for bottom blurb:  
+  
+Even though I’m better able to prioritize self-care now, getting to this point wasn’t easy. I ignored so many warning signs until my body physically forced me to stop with a grand mal seizure. If you’re curious about my journey through motherhood, you can read my full blog post below.  
+  
+Happy Mother’s Day–to every woman discovering that choosing herself is not selfish, but one of the most powerful ways she can show up for the people she loves.  
+--Lauren
+- **2025-05-07 14:58** *Elyse*: live blog link: [https://higherdose.com/blogs/the-high-life-blog/how-motherhood-taught-me-that-self-care-is-the-most-selfless-thing](https://higherdose.com/blogs/the-high-life-blog/how-motherhood-taught-me-that-self-care-is-the-most-selfless-thing)\n\n**higherdose.com**\n🔗 **[Self Care For Moms &amp; How Self Care Is The Most Selfless Thing                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/how-motherhood-taught-me-that-self-care-is-the-most-selfless-thing)**
+- **2025-05-07 15:11** *User_2Z9G95*: @Elyse — Updated preview sent!
+- **2025-05-07 15:15** *Elyse*: Bottom blurb is still the same for happy Mother’s Day part
+- **2025-05-07 15:15** *Elyse*: 📎 **IMG_0707.jpg** (jpg, 1.3MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08RA89498D/img_0707.jpg)
+- **2025-05-07 15:15** *Elyse*: Before I sign off part
+- **2025-05-07 15:18** *User_2Z9G95*: Sorry, I missed that note in your feedback! Just updated and re-sent! 
+- **2025-05-07 15:20** *Elyse*: Perfecto fixed
+- **2025-05-07 15:20** *Elyse*: Sent to Lauren for quick review
+- **2025-05-07 15:21** *User_2Z9G95*: Perfect, keep me posted!
+- **2025-05-07 16:40** *User_2Z9G95*: @Elyse — I'm thinking it's better to send this tomorrow rather than a late night send tonight, unless you feel differently?
+- **2025-05-07 16:42** *Elyse*: Agreed
+- **2025-05-07 16:43** *Elyse*: Lauren’s 6 hours ahead so think she’ll see design in the morning
+- **2025-05-07 16:44** *Elyse*: What do we think about a dual Friday send? Add discount info in and send this Friday AM and second planned email in the PM?
+- **2025-05-07 16:44** *Elyse*: To avoid back to back days?
+- **2025-05-07 16:48** *Elyse*: Or skip Friday’s designed one
+- **2025-05-07 16:48** *Elyse*: I’m open
+- **2025-05-07 16:56** *User_2Z9G95*: Yes, I like the idea of combining!
+- **2025-05-07 16:57** *User_2Z9G95*: Let me re-work it today and get you something in the AM to review!
+- **2025-05-07 17:36** *Elyse*: Ok cool! Will let Lb know
+- **2025-05-08 09:34** *User_2Z9G95* 💬 6 replies: Morning @Elyse! Altered the subject and preview lines slightly, and [added a blurb at the bottom of the email](https://docs.google.com/document/d/1pqyUArAZeYSTQYTUlhD_rVw98lZtK2RvhrVCkVPDl0A/edit?tab=t.bram9mw0ss79). Let me know your thoughts!
+- **2025-05-08 10:00** *User_2Z9G95*: I also made a few design tweaks to the email with some text colors and things to make it feel a bit more branded, let me know when to send it through so you can take a look!
+- **2025-05-08 10:41** *User_2Z9G95*: Another update @Elyse! We have the sale design emails ready for this weekend for review. Please take a look and let us know what you think!  
+• [5/10: Ends Tomorrow](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37111-2526&amp;t=JAYL7IXytMiu2Gw8-1) - 3 variations; let us know if you prefer any hero images over the other; I would recommend the GIF  
+• [5/11: Last Chance](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37122-5338&amp;t=HUtTiJdKN4h7AmsE-1) - 2 variations; I would recommend the black to help us differentiate from the Friday send
+- **2025-05-08 10:55** *Elyse*: Ok fab! On it!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-08 12:43** *User_2Z9G95*: HI @Elyse — Confirming the below is still the plan for next week right? Getting these briefed out right now! Per our conversation, after the launch, we'll be able to operate much more ahead — appreciate your patience here. Let us know if the blog content is ready, too and we can pull from there!  
+  
+5/13 - [EMAIL] The New Summer Body  
+5/14 - [EMAIL/BLOG] Summer Body Starts with Flow  
+5/15 -  [EMAIL/SMS] Microcurrent Body Sculptor Launch  
+5/16 - [EMAIL] Microcurrent Body Sculptor Launch support
+- **2025-05-08 12:47** *Elyse*: Yes, just got confirmation this morning launch is on for 5/15\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 12:47** *Elyse*: need to get a few specifics so will circle back asap\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 12:47** *Elyse*: but as far as i know right now, this is a presale with plans to begin shipping 6/30
+- **2025-05-08 12:47** *Elyse*: so its a long presale, so we’ll want to make sure we’re explicit in our comms that these are presale/shipping in june etc
+- **2025-05-08 12:49** *Elyse*: also we’re setting up a CS team product training in the next week so I’ll get you guys added to it so you get the full scope of the product’s functionality, special features, ingredient info on the conductor gel, merchandising info etc all the deets\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 12:54** *Ari Murray*: hii @Elyse @Ingrid do you both have time to TB on this pivot today for 15? want to flag a few reservations on our side and want to chat through - let us know and appreciate your time!  
+  
+would 2:45pm ET or 4:30pm ET or 5:30pm work well? 
+- **2025-05-08 12:54** *Ari Murray*: hannah + carly + berk + i will join on our side 
+- **2025-05-08 12:54** *Elyse*: yep totes\n\n*Reactions: :heart: Ari Murray, Berkeley Clark, Ingrid*
+- **2025-05-08 12:54** *Elyse*: we can both do 5:30
+- **2025-05-08 12:55** *Ari Murray*: amazing sending now - THANK YOU!!
+- **2025-05-08 12:55** *Elyse*: thank youuu excited to hear your thoughts\n\n*Reactions: :tulip: Ari Murray*
+- **2025-05-08 13:32** *Elyse*: @User_2Z9G95  
+• 5/9 design good to go  
+• 5/10 agreed lets go with GIF header, left two notes for corrections on it  
+• 5/11 agreed on black version, good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-08 13:35** *Elyse*: @User_2Z9G95 also just forwarded you feedback on replen flow - detox drops
+- **2025-05-08 13:48** *User_2Z9G95*: @Elyse — Just sent updated preview. Added some blue accents for the links + a blue link break to help break up the paragraphs – let me know what you think! Happy to revert back to the original if you prefer, but this allows us to have more of those owned accents throughout.
+- **2025-05-08 13:48** *Elyse*: Fab just forwarded to LB
+- **2025-05-08 13:49** *User_2Z9G95*: Perfect!
+- **2025-05-08 14:40** *Elyse*: @User*2Z9G95 in the meantime, we’re waiting on finalized dojomojo link for mother’s day giveaway but here are the assets we’re using for social [https://drive.google.com/drive/folders/1ukT96k8tmvAIPQ21FNmn9tkid0YRq5kV?usp=drive*link](https://drive.google.com/drive/folders/1ukT96k8tmvAIPQ21FNmn9tkid0YRq5kV?usp=drive_link)\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-08 16:08** *Elyse*: @User_2Z9G95 Microcurrent body sculptor education deck: [https://docs.google.com/presentation/d/1mvXwsMXakdZCtWhZFSOxwhaFoKGXMnmmE-ar7QjwThE/edit?usp=sharing](https://docs.google.com/presentation/d/1mvXwsMXakdZCtWhZFSOxwhaFoKGXMnmmE-ar7QjwThE/edit?usp=sharing)\n\n📎 **HIGHERDOSE BODY SCULPTOR EDU** (gpres, 797.7KB) - [Download](https://docs.google.com/presentation/d/1mvXwsMXakdZCtWhZFSOxwhaFoKGXMnmmE-ar7QjwThE/edit?usp=sharing)\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-08 16:09** *User_2Z9G95*: Thank you!!
+- **2025-05-08 17:07** *Elyse*: @User_2Z9G95 just to confirm - klaviyo can create a ton of unique one time use codes right? vaguely remember doing it myself a few times but wanted to confirm for MBS launch\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-08 17:07** *Elyse*: want those codes to be unique, one time use for 20% off the MBS only
+- **2025-05-08 17:07** *Elyse*: 5/15 - 5/19
+- **2025-05-08 17:08** *Elyse*: i’m gonna sit tomorrow and look at May email calendar draft and just double check we have emails to support this thru 5/19. will funnel over notes asap
+- **2025-05-08 17:13** *User_2Z9G95*: Yes!
+- **2025-05-09 08:49** *User_2Z9G95*: @Elyse — Confirming today's email is scheduled to send at 12p ET. We curated a broad list of engaged and unengaged users — excited to see how it performs!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-09 08:55** *User_2Z9G95*: @Elyse — I also just sent a test MMS — let me know how it looks, we added one of the paid graphics to make the launch more engaging! We'll keep the last chance to an SMS.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-09 10:01** *Elyse* 💬 1 reply: MMS good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-09 10:06** *User_2Z9G95*: Scheduled for 12:10p ET!
+- **2025-05-09 10:46** *User_2Z9G95*: @Elyse — getting this weekend's emails queued up — I'll have previews for you in the early afternoon!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-09 10:56** *User_2Z9G95*: @Elyse — When you get the chance, can you add one of our other designers into Klaviyo?  
+<mailto:nero@sharmabrands.com|nero@sharmabrands.com>  
+She's about to upload those emails! Thank you so much!
+- **2025-05-09 11:15** *Elyse*: Fab will do rn
+- **2025-05-09 11:16** *User_2Z9G95*: Thank you!
+- **2025-05-09 11:35** *Elyse*: @User_2Z9G95 says nero already exists as a user
+- **2025-05-09 11:36** *Elyse*: i resent invite
+- **2025-05-09 11:36** *User_2Z9G95*: Ahh I think she missed the email notification, so you'll need to re-send
+- **2025-05-09 11:37** *User_2Z9G95*: yesssss, thank you so much!!
+- **2025-05-09 11:40** *User_2Z9G95*: We're in!! Thank you!!
+- **2025-05-09 11:49** *Elyse*: @User_2Z9G95 link for mothers day giveaway for next week: [https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa) *corrected link\n\n**giveaways.dojomojo.com**\n🔗 **[Every day is Mother's Day Giveaway](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa)**\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-09 13:14** *User_2Z9G95*: Thank you! Which day do you want this sent out? Are you able to share the prizes/prize value/brands involved? This is all I'm able to see!\n\n📎 **Screenshot 2025-05-09 at 11.14.47 AM.png** (png, 879.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08RRSJEMUJ/screenshot_2025-05-09_at_11.14.47_am.png)
+- **2025-05-09 13:15** *User_2Z9G95*: I also just sent you a test preview of tomorrow's sale email @Elyse! Working on Sunday's now.
+- **2025-05-09 14:19** *User_2Z9G95*: Hi @Elyse — I also just sent you an updated preview of the 5/11 email (please disregard the first one, sorry!) In your inbox you should have:  
+• 5/10: One day remaining  
+• 5/11: Last chance + founder letter  
+Let me know if I need to re-send and I can, happily!
+- **2025-05-09 14:34** *Elyse*: reviewing quick now
+- **2025-05-09 14:37** *User_2Z9G95*: Just sent Sunday's SMS, too!
+- **2025-05-09 14:43** *Elyse*: 5/10 good to go @User_2Z9G95\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-09 14:43** *Elyse*: 5/11 good to go
+- **2025-05-09 14:44** *Elyse*: 5/11 is there any way, i know this is last minute
+- **2025-05-09 14:44** *Elyse*: but is there any way we could see a quick version that has photo of lauren/her kids, katie/her mom
+- **2025-05-09 14:45** *User_2Z9G95*: Let me see!
+- **2025-05-09 14:49** *User_2Z9G95*: @Elyse — Is the SMS good to go?
+- **2025-05-09 14:49** *Elyse*: yes yes
+- **2025-05-09 14:50** *Elyse*: sorry forgot that
+- **2025-05-09 14:50** *Elyse*: just looked at it, good to go
+- **2025-05-09 14:50** *User_2Z9G95*: Perfect, thank you!
+- **2025-05-09 15:07** *User_2Z9G95*: Still seeing what we can do, but in the meantime, I also wanted to share copy for two emails for next week:  
+• 5/13: [The New Summer Body](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H*RRHEu1GpqyzucBtLvlgUw/edit?tab=t.0)  
+• 5/14: [Summer Body Starts with Flow](https://docs.google.com/document/d/1d2*-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0) - let us know if there's still going to be a blog this one will link out to   
+We're working through 5/15 and 5/16 today. When you get the chance can you let us know where the giveaway content is going to fit in so we can prioritize that if needed.\n\n📎 **13 Email: The New Summer Body** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H_RRHEu1GpqyzucBtLvlgUw/edit?tab=t.oawte1gc2qgw)\n📎 **14 Email: Summer Body Starts with Flow (BLOG PUSH)** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1d2_-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0)
+- **2025-05-09 15:18** *Elyse*: I’m hoping there will still be a blog for that one - but don’t think we’re gonna have that ready in time for the email
+- **2025-05-09 15:19** *Elyse*: giveaway should get squeezed into bottom of 5/13\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-09 15:28** *Elyse*: Shared both 5/13 and 5/14 with team for review
+- **2025-05-09 15:29** *User_2Z9G95*: Confirming:  
+• 5/10 email is scheduled to send at 11a local tomorrow to a broad list of engaged + unengaged, that's just slightly more targeted than the one that was sent today  
+• 5/11 email is pending - working on an updated version - since this won't be a plain text, we can customize the name - would you like us to say "Hi HigherDOSE Family", "Hi Friend", "Hi There", or just leave the "Hi [name]" off?   
+• 5/11 SMS is scheduled to send at 12p local time Sunday among a broad engaged group
+- **2025-05-09 15:29** *Elyse*: 5/10 great
+- **2025-05-09 15:30** *Elyse*: 5/11 email cool, will stay tuned for updated version and will get you quick approval on that
+- **2025-05-09 15:30** *Elyse*: 5/11 sms cool
+- **2025-05-09 15:47** *User_2Z9G95*: @Elyse — [Here's the updated one for Sunday](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37122-5338&amp;t=XQameyly0WD6PbCR-1)! Let us know what you think and we'll get it uploaded and a preview sent ASAP.
+- **2025-05-09 17:38** *Elyse*: new version is perfect, let it fly
+- **2025-05-09 17:38** *Elyse*: thank you @User_2Z9G95
+- **2025-05-09 17:39** *Elyse*: <!here> and team!! appreciate the quick swap!!\n\n*Reactions: :heart: User_5S72LT, Ari Murray*
+- **2025-05-09 17:39** *User_2Z9G95*: wooohoooo!
+- **2025-05-09 17:42** *User_2Z9G95*: sending preview just so you can quadruple confirm, but confirming this is scheduled for Sunday, 12p local - with a similar engaged + unengaged list as Saturday!
+- **2025-05-09 19:59** *Elyse*: Perfect @User_2Z9G95 good to go\n\n*Reactions: :sparkling_heart: User_2Z9G95, User_5S72LT*
+- **2025-05-12 10:06** *User_2Z9G95*: Morning @Elyse! I wanted to check in here in regards to our campaign sends this week. Did you get any feedback? Re-circulating the outstanding ones below:  
+• [5/13: The New Summer Body](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H*RRHEu1GpqyzucBtLvlgUw/edit?tab=t.0) - COPY PENDING APPROVAL  
+• [5/14: Summer Body Starts with Flow](http://Summer%20Body%20Starts%20with%20Flow) - COPY PENDING APPROVAL  
+• [5/15: Microcurrent Body Sculptor Launch](https://docs.google.com/document/d/1vSZJ*r2NyQWIRbMMiG7rxYzmOn_iCr7eOPX0ERP41rg/edit?tab=t.0) - COPY PENDING APPROVAL\n\n📎 **13 Email: The New Summer Body** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H_RRHEu1GpqyzucBtLvlgUw/edit?tab=t.oawte1gc2qgw)\n📎 **15 Email: Microcurrent body sculptor launch + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1vSZJ_r2NyQWIRbMMiG7rxYzmOn_iCr7eOPX0ERP41rg/edit?tab=t.0)
+- **2025-05-12 10:09** *Elyse*: Meeting with the team today, will circle back as soon as I have the info
+- **2025-05-12 10:10** *User_2Z9G95*: Perfect! Keep us posted. Thank you!
+- **2025-05-12 10:31** *Elyse*: <!channel> hot off the press - we are aiming to move body sculptor launch to Monday 5/19 to give everyone more time\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-12 10:33** *User_2Z9G95*: Noted! Thank you for letting us know. Confirming we're still moving forward with the VIP only plan (email + SMS)?\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-12 10:37** *Elyse*: @User_2Z9G95 i am reworking email calendar as we speak, meeting with team at 12 so will keep you posted as this unfolds in real time\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-12 10:38** *User_2Z9G95*: Thank you!! Will standby
+- **2025-05-12 11:09** *Elyse* 💬 1 reply: @User*2Z9G95 just got this from graphics team - a few gorginaaaa visuals [https://docs.google.com/presentation/d/1ctyb**bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true](https://docs.google.com/presentation/d/1ctyb*_bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true)\n\n📎 **HD_Body Planer Visuals.pptx** (pptx, 557.1KB) - [Download](https://docs.google.com/presentation/d/1ctyb__bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&ouid=112250301403411587700&rtpof=true&sd=true)
+- **2025-05-12 11:10** *Elyse*: i think this deck is being beefed up so keep an eye on it
+- **2025-05-12 11:11** *Elyse*: but there’s the visual vibe
+- **2025-05-12 11:23** *Elyse*: @User*2Z9G95 top 30 photo selects [https://drive.google.com/drive/u/0/folders/1Q0VipJqwGg0SeXrrQiBeMiw9d9ogX**C](https://drive.google.com/drive/u/0/folders/1Q0VipJqwGg0SeXrrQiBeMiw9d9ogX*_C)
+- **2025-05-12 11:25** *Elyse*: @User_2Z9G95 new photoshoot [https://drive.google.com/drive/folders/1vbAZ3LVU6jVxgZGVbPKZ4g6yve0vnXkK?usp=sharing](https://drive.google.com/drive/folders/1vbAZ3LVU6jVxgZGVbPKZ4g6yve0vnXkK?usp=sharing)
+- **2025-05-12 11:26** *Elyse*: for updating rest of the tech, accessories etc
+- **2025-05-12 11:26** *Elyse*: and then has that top 30 folder for body sculptor
+- **2025-05-12 13:16** *Elyse*: Thanks for joining that @User_2Z9G95! :heartpulse:\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-12 13:20** *User_2Z9G95*: Of course! They’re looking great. I’m excited! 
+- **2025-05-12 15:23** *Elyse*: @User_2Z9G95 to keep in mind - body sculptor will not immediately be available in Canada, so will need to exclude Canadian audience on campaign sends\n\n**Sumish Khadka**\n> USA, UK and EU to start\n*Slack Conversation | 2025-05-12 15:22*\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-13 12:41** *Elyse*: <!channel> fresh news\n\n📎 **image.png** (png, 64.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08S4MWFQUV/image.png)\n\n*Reactions: :bangbang: User_2Z9G95, :heart: Berkeley Clark*
+- **2025-05-13 14:47** *User_2Z9G95*: @Elyse @Ingrid — Here's the link to our agenda from today: [https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)  
+  
+As next steps, we'll:  
+• Look at top-performing evergreen campaigns from last year (+ continue building out the campaign calendar)  
+• Provide a weekly reporting summary to keep track of YoY performance  
+• Keep flows moving ASAP\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :raised_hands: Ingrid*
+- **2025-05-13 18:04** *User_2Z9G95*: @Elyse — Just an FYI, outside of the promos, the following were the top revenue-driving campaigns from mid-May to mid-June last year — no surprise, most are red light hat related, so I think a takeaway here is to replicate some (or all) of these stories post MBS launch:  
+• Infrared saunas vs. traditional saunas  
+• Red light hat before and after (this would be good pre-Father's Day)  
+• Red light hat customer feature (also good pre-Father's Day)  
+• Red light FAQs  
+• Frequency matters - Frequency FAQ\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-14 11:47** *User_2Z9G95*: Hi @Elyse — Looking forward to our copy chat this afternoon! If the team is able to share (either live on the call or after) examples that really nail down the tone of voice that would be helpful. Having a visual/seeing the examples IRL makes it much easier for us to understand. If there's any old email examples, pages on your site, or blog posts we can dissect together that would be fabulous.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :eyes: Elyse*
+- **2025-05-14 11:50** *User_2Z9G95*: Plus — if there's any email inspo you've shared recently that she's really loved — we can dive deeper into that, too!
+- **2025-05-14 12:55** *Ingrid* 💬 2 replies: @Elyse - did we share the tone/voice deck with them?
+- **2025-05-14 12:55** *Ingrid*: we should make sure they have access to our email inspo folder
+- **2025-05-14 12:55** *Elyse*: They definitely have access to email inspo folder\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-14 12:56** *User_2Z9G95*: Yes, we do!
+- **2025-05-14 12:56** *Elyse*: And I’ve been forwarding over inspo as it comes in as well
+- **2025-05-14 12:56** *Elyse*: so have it on both ends
+- **2025-05-14 13:02** *Ingrid*: coming now
+- **2025-05-14 13:28** *Ingrid*: does this link work for yall?
+- **2025-05-14 13:28** *Ingrid*: [https://www.figma.com/proto/TMBZop8dwdSItpMF0gOTk2/Stylescapes?page-id=182%3A999&amp;no[…]=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=227%3A2](https://www.figma.com/proto/TMBZop8dwdSItpMF0gOTk2/Stylescapes?page-id=182%3A999&amp;node-id=317-53&amp;viewport=272%2C-121%2C0.12&amp;t=Qn7iYRsA9atFUSaC-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=227%3A2)
+- **2025-05-14 13:28** *User_2Z9G95*: Just requested access!
+- **2025-05-14 13:28** *Elyse*: 📎 **Brand Guidelines May 2025.pdf** (pdf, 5.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08T27E93G8/brand_guidelines_may_2025.pdf)\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-14 14:46** *User_2Z9G95*: @Elyse — [Updated copy for tomorrow here](https://docs.google.com/document/d/17yd0soHtAn30UOyGxXtA4cJM4BigP5iNxUe2arLIanQ/edit?tab=t.0)! We'll push this to design to keep things moving, but can happily modify the copy as we see fit.
+- **2025-05-14 15:52** *Elyse*: Ok perfect will jump into this now
+- **2025-05-14 16:08** *Elyse*: @User_2Z9G95 love this, lmk when design is ready. will get you quick eyes on that as well\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-14 16:16** *User_2Z9G95*: @Elyse — Do you have any additional info for the email on Friday? PEMF + Magnesium? I think there's a good amount on the website, but wasn't sure if there were any other internal resources about the benefits of magnesium, etc.!
+- **2025-05-14 16:16** *Elyse*: gimme two secs to do a dive into the abyss that is my google drive
+- **2025-05-14 16:16** *Elyse*: i could’ve sworn we had some info somewhere about how mag spray is great for amplifying pemf
+- **2025-05-14 16:17** *User_2Z9G95*: Jess just shared like a tid bit on that call we were just on, but it was more narrative not like hard fact — no rush, tho, let me know!
+- **2025-05-14 16:19** *Elyse*: this is an old doc - not the one i’m looking for, but has some good info in it too [https://docs.google.com/document/d/1F9Fp4e7XYoRhJZDQx1cLarRidnxTimIq/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true](https://docs.google.com/document/d/1F9Fp4e7XYoRhJZDQx1cLarRidnxTimIq/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true)\n\n📎 **TRansdermal_mag_spray.docx** (docx, 155.0KB) - [Download](https://docs.google.com/document/d/1F9Fp4e7XYoRhJZDQx1cLarRidnxTimIq/edit?usp=sharing&ouid=112250301403411587700&rtpof=true&sd=true)
+- **2025-05-14 16:19** *Elyse*: another oldie [https://docs.google.com/document/d/1pfjbsqZBbcmXIpQmQ8KxejBbygYDCMQ*hfuwJMElMEs/edit?usp=sharing](https://docs.google.com/document/d/1pfjbsqZBbcmXIpQmQ8KxejBbygYDCMQ*hfuwJMElMEs/edit?usp=sharing)\n\n📎 **25 | Up Your DOSE PEMF Edition** (gdoc, 98.9KB) - [Download](https://docs.google.com/document/d/1pfjbsqZBbcmXIpQmQ8KxejBbygYDCMQ_hfuwJMElMEs/edit?usp=sharing)
+- **2025-05-14 16:20** *User_2Z9G95*: This is great, thank you!
+- **2025-05-14 16:23** *Elyse*: this is also an old ass one sheeter [https://drive.google.com/file/d/1yTt4stYyq9tPimG1lTk2zHGnJ1gjIRXL/view?usp=sharing](https://drive.google.com/file/d/1yTt4stYyq9tPimG1lTk2zHGnJ1gjIRXL/view?usp=sharing)\n\n📎 **GET_SALTY_ONE_SHEET_FULL.pdf** (pdf, 374.2KB) - [Download](https://drive.google.com/file/d/1yTt4stYyq9tPimG1lTk2zHGnJ1gjIRXL/view?usp=sharing)
+- **2025-05-14 16:23** *Elyse*: but chock full of info there too
+- **2025-05-14 16:23** *Elyse*: probably a good amount of overlap w whats on the other docs though
+- **2025-05-14 16:24** *User_2Z9G95*: This is perfect! Thank you!
+- **2025-05-14 16:27** *Elyse*: gonna also pull some reviews for you
+- **2025-05-14 16:29** *Elyse*: 📎 **Screenshot 2025-05-14 at 5.29.29 PM.png** (png, 80.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08SGNC70LA/screenshot_2025-05-14_at_5.29.29___pm.png)
+- **2025-05-14 16:29** *Elyse*: 📎 **Screenshot 2025-05-14 at 5.29.43 PM.png** (png, 53.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08SJBARAH2/screenshot_2025-05-14_at_5.29.43___pm.png)
+- **2025-05-14 16:30** *Elyse*: 📎 **Screenshot 2025-05-14 at 5.29.59 PM.png** (png, 37.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08SJBDPD52/screenshot_2025-05-14_at_5.29.59___pm.png)
+- **2025-05-14 16:33** *User_2Z9G95*: Lovely, thank you!!
+- **2025-05-15 09:20** *User_2Z9G95*: Morning @Elyse! [Here's our email for today](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37215-3&amp;t=04okBXDftB0r6WhD-1)! Let us know if you have any thoughts/which is your favorite. I like 2 and 3.
+- **2025-05-15 10:43** *Elyse*: omg i was like i wonder when hannah’s gonna send me design\n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-05-15 10:44** *Elyse*: and it was sitting here all along :woman-facepalming::skin-tone-2:
+- **2025-05-15 10:44** *Elyse*: looking at this now\n\n*Reactions: :eyes: User_2Z9G95*
+- **2025-05-15 10:45** *User_2Z9G95*: Hahah, yay! Thank you!
+- **2025-05-15 10:48** *Elyse*: 2 good to go, left some notes for quick tweaks on it
+- **2025-05-15 10:51** *Elyse*: also @User_2Z9G95 i sent over google doc access to founder’s picks for monday’s email. waiting on a pic from Lauren but i’ll pull some options in the meantime
+- **2025-05-15 12:04** *Elyse*: @User_2Z9G95 FYI hot off the press - changing MDW sale  
+• 5/20-5/22 early access for email subscribers  
+• 5/22-5/26 public access
+- **2025-05-15 12:08** *User_2Z9G95*: Noted! @Elyse — Is the plan to also send the 5/19 email, or just keep next week to sale only content
+- **2025-05-15 12:13** *Elyse*: reviewing that now, maybe scrap
+- **2025-05-15 12:14** *User_2Z9G95*: ok cool, i'm thinking the same - but keep me posted
+- **2025-05-15 12:16** *Elyse*: yeah i think i’ll maybe flesh that out a bit more and use it for blog/social and we scrap that email
+- **2025-05-15 12:16** *Elyse*: looking at the week now, didn’t realize it was back to back. thank you for pointing that out
+- **2025-05-15 12:16** *User_2Z9G95*: for sure!
+- **2025-05-15 12:21** *Elyse*: just updated the week on google doc - let me know if I should add cards to Asana for may/june emails @User_2Z9G95 aiming to finish rework of calendar today/tomorrow\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-15 12:31** *User_2Z9G95*: @Elyse — Preview sent for review! We added in some additional GAW elements to make it stand out a bit more to drive engagement! Excited to see how it performs for you all! Let us know how this looks and we'll get it scheduled for 2p ET today.
+- **2025-05-15 12:33** *Elyse*: @User_2Z9G95 looks perfecto
+- **2025-05-15 12:34** *Elyse*: just want to double check giveaway link
+- **2025-05-15 12:35** *Elyse*: confirming its this link? [https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa)\n\n**giveaways.dojomojo.com**\n🔗 **[Every day is Mother's Day Giveaway](https://www.dojomojo.com/promo-lookup/f39c156a-fa8e-42ae-b41c-1af479a8f0fa)**
+- **2025-05-15 12:35** *Elyse*: thats the dedicated newsletter link
+- **2025-05-15 12:35** *Elyse*: yep looks correct
+- **2025-05-15 12:35** *Elyse*: good to go @User_2Z9G95
+- **2025-05-15 12:36** *User_2Z9G95*: I think so, but I'll swap it for that one you sent just to be extra sure
+- **2025-05-15 12:39** *User_2Z9G95*: Sent one more for good measure!
+- **2025-05-15 12:40** *Elyse*: good to go!
+- **2025-05-15 12:42** *User_2Z9G95*: Excluding the usuals (bounced, spam, apple privacy), and sending to our 90d engaged segment! Scheduled for 2p ET today. Thanks!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-15 13:47** *User_2Z9G95*: Hi @Elyse — [Email copy for tomorrow HERE](https://docs.google.com/document/d/19Fo9c5wZt5t3I-gDa5EaifPBFmJ_0vItpNRwBN9xDbY/edit?tab=t.0)! Let us know your thoughts, regardless, we'll push it through to design and can modify copy in real time. Thanks!\n\n📎 **16: PEMF + Magnesium = Mental Health Dynamic Duo** (gdoc, 96.6KB) - [Download](https://docs.google.com/document/d/19Fo9c5wZt5t3I-gDa5EaifPBFmJ_0vItpNRwBN9xDbY/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-15 13:49** *Elyse*: @User_2Z9G95 can you add comment access pls
+- **2025-05-15 13:52** *User_2Z9G95*: Sent!
+- **2025-05-15 13:56** *Elyse*: added notes
+- **2025-05-15 13:59** *User_2Z9G95*: Love! Will get this updated ASAP
+- **2025-05-16 15:39** *User_2Z9G95*: @Elyse — Email coming in 10, so sorry for the delay.
+- **2025-05-16 15:59** *User_2Z9G95*: @Elyse — Design here! [https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekl[…]igns-%E2%80%93-May-2025?node-id=37254-276&amp;t=TVxa2v8S7LopSmYX-1](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37254-276&amp;t=TVxa2v8S7LopSmYX-1)
+- **2025-05-16 16:00** *User_2Z9G95*: We can certainly do an evening send for 6p tonight or tomorrow morning could also be good since this is the last message before the sale.
+- **2025-05-16 16:12** *Elyse*: Peeping this now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-16 16:21** *Elyse*: @User_2Z9G95 do the reviews move?
+- **2025-05-16 16:21** *Elyse*: is that a gif or static
+- **2025-05-16 16:21** *Elyse*: or do you swipe
+- **2025-05-16 16:21** *User_2Z9G95*: GIF: [https://www.figma.com/proto/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly[…]12&amp;t=ofH4Kijou4bowkjx-1&amp;scaling=min-zoom&amp;content-scaling=fixed](https://www.figma.com/proto/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?page-id=37254%3A276&amp;node-id=37254-277&amp;viewport=-179%2C-205%2C0.12&amp;t=ofH4Kijou4bowkjx-1&amp;scaling=min-zoom&amp;content-scaling=fixed)
+- **2025-05-16 16:21** *Elyse*: im like i sense theres movement here but im not sure how haha\n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-05-16 16:21** *User_2Z9G95*: But I think it moves too fast, so we should just lean into the one that's there!
+- **2025-05-16 16:22** *Elyse*: yeah i dig that
+- **2025-05-16 16:22** *Elyse*: inflammation review
+- **2025-05-16 16:22** *User_2Z9G95*: yes
+- **2025-05-16 16:22** *Elyse*: looks great overall, good by me
+- **2025-05-16 16:23** *🤖 Bot*: let it fly\n\n*Reactions: :joy: User_5S72LT, :heart: User_5S72LT*
+- **2025-05-16 16:23** *User_2Z9G95*: love it! Does a 6p ET send work?
+- **2025-05-16 16:23** *Elyse*: fab
+- **2025-05-16 16:24** *User_2Z9G95*: will send preview shortly, thank YOU!
+- **2025-05-16 16:29** *Elyse*: kk ill keep an eye out!
+- **2025-05-16 16:35** *User_2Z9G95*: @Elyse — Just sent!
+- **2025-05-16 17:13** *User_2Z9G95*: Hi @Elyse — Just wanted to make sure you got the preview! Let me know how it looks!
+- **2025-05-16 17:17** *Elyse*: Good to go
+- **2025-05-16 17:19** *User_2Z9G95*: Scheduled for 6:30p ET to our 90d engaged with normal exclusions! Thank you! Enjoy the weekend!!
+- **2025-05-16 18:15** *Elyse*: @User_2Z9G95 might be too late but did we exclude international on that one?
+- **2025-05-16 18:15** *Elyse*: As mag spray doesn’t ship internationally
+- **2025-05-16 18:15** *Elyse*: Not huge deal for one send but note for future
+- **2025-05-16 18:17** *User_2Z9G95*: oh good shout — we did not, but I definitely will next time. I'll make sure to triple check the list of products you sent through to make sure we exclude/include the correct countries.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-16 20:29** *User_2Z9G95*: [FOR MONDAY] Hi @Elyse!  We have some MDW creative/copy ready for your review! [Please review this document](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958) and the blocks highlighted in red need your review and approval. If you left feedback, please check the box in column L, and if approved, please check the box in column M. Feel free to check both if it's approved with tweaks. Here's what's ready for review. More to come!  
+1. Revised welcome #2 design  
+2. Revised welcome #3 design  
+3. 5/20 Early Access email design   
+4. 5/20 Early Access SMS copy  
+5. 5/21: Best-Sellers + Bundle design  
+6. 5/22: Red Light Hat email copy  
+7. 5/22: PEMF email copy  
+8. 5/22: Red Light SMS copy  
+9. 5/23: Summer Glow Up email copy  
+10. 5/23: Bundle push SMS copy
+- **2025-05-17 07:06** *Elyse*: Perfect will check shortly
+- **2025-05-17 15:23** *Elyse*: @User_2Z9G95 welcome designs are just revised designs right or copy too?
+- **2025-05-17 15:25** *User_2Z9G95*: Mainly designs but added in sales messaging! Any branded messaging was directly copied over 
+- **2025-05-17 15:25** *Elyse*: yes ok fab other than sale copy i meant
+- **2025-05-17 15:25** *Elyse*: ok sweet
+- **2025-05-17 15:26** *Elyse*: on #3 now, just left a typo note on #2\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-17 15:49** *Elyse*: just ran thru em all woooo @User_2Z9G95
+- **2025-05-17 16:07** *User_2Z9G95*: You’re the best! Thank you so much. I’ll do another review of them all, too and will send through more as they are ready. \n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-19 12:40** *Elyse*: @User*2Z9G95 studio shots for body sculptor: [https://drive.google.com/drive/folders/1nEpdVR*qJ1lj9mfDke9dgBIKUgx6KX9r?usp=drive*link](https://drive.google.com/drive/folders/1nEpdVR*qJ1lj9mfDke9dgBIKUgx6KX9r?usp=drive_link)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 12:42** *Elyse*: @User*2Z9G95 body sculptor visuals being updated on this deck as well: [https://docs.google.com/presentation/d/1ctyb**bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true](https://docs.google.com/presentation/d/1ctyb*_bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&amp;ouid=112250301403411587700&amp;rtpof=true&amp;sd=true). some stuff has changed since i last sent\n\n📎 **HD_Body Planer Visuals.pptx** (pptx, 557.1KB) - [Download](https://docs.google.com/presentation/d/1ctyb__bcusuG6PJJEcxNmyEBDbwLXYSn/edit?usp=sharing&ouid=112250301403411587700&rtpof=true&sd=true)
+- **2025-05-19 13:02** *Berkeley Clark*: Hi @Ingrid @Elyse, just wanted to confirm that we are still launching paid on 5/21 as detailed [in our plan doc here](https://docs.google.com/document/d/1HIM62VuEVzgaNKz0FClHa3v0Ckvmcg-4JlDRVh*MX00/edit?tab=t.0)?  
+  
+I think potentially a launch on paid of 5/22 was mentioned, but our formal recco is to move forward with 5/21 as a lot of the market is already on sale and the longer period will benefit the ad learnings! cc @Ari Murray @User*2Z9G95\n\n📎 **HigherDOSE MDW Plan** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1HIM62VuEVzgaNKz0FClHa3v0Ckvmcg-4JlDRVh_MX00/edit?tab=t.0)\n\n*Reactions: :pray: Ari Murray*
+- **2025-05-19 13:03** *Elyse*: I was under the impression email was early access for 5/20 - 5/22 and public access on 5/22, so will let @Ingrid clarify here\n\n*Reactions: :yellow_heart: Berkeley Clark*
+- **2025-05-19 13:04** *Elyse*: I defer to you all on recommendation to start earlier obviously so just lmk so I can update on my end as well
+- **2025-05-19 13:56** *User_2Z9G95*: @Elyse @Ingrid — Customer flow for early access [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37324-177&amp;t=aR9u8IMnrHZwS2Cl-1) in Figma.  
+  
+When we switch to full launch, we'll just swap out the early access messaging in the subject line for email 1 and the early access messaging in the SMS copy.  
+  
+Other than that, this is what our welcome flow will be for the promo! Please add in any comments directly. @Elyse — I left one comment for you about bolding the reviews, let me know your thoughts!
+- **2025-05-19 14:30** *Elyse*: Fab reviewing now thanks @User_2Z9G95 
+- **2025-05-19 15:03** *Ari Murray*: hiii @Elyse @User_2Z9G95 tb'd with ingrid live and confirming paid support of MDW will begin wednesday the 21st - so only 1 day of early access - thank you so much! :heart:\n\n*Reactions: :yellow_heart: Berkeley Clark, :white_check_mark: User_2Z9G95, Elyse*
+- **2025-05-19 15:28** *Elyse*: Ok cool
+- **2025-05-19 16:01** *User_2Z9G95*: Hi @Elyse — ready to send through previews for the welcome flow! Just uploading tomorrow and Wednesday's into Klaviyo and then I can pass those off, too. LMK if I can send through now!
+- **2025-05-19 16:10** *Elyse*: good to send
+- **2025-05-19 16:26** *User_2Z9G95*: @Elyse — Just sent the 3 in the new welcome series!
+- **2025-05-19 16:29** *User_2Z9G95*: Also sent 5/20 and 5/21. Reminder the 5/21 and welcome #3 are the same email — we're going to put a filter on the welcome #3 email so that people who received the campaign will not get that third email in the flow!
+- **2025-05-19 16:34** *Elyse*: ok fab reviewing now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 16:40** *User_2Z9G95*: SMS test was also just sent!
+- **2025-05-19 16:41** *Elyse*: sms good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 16:44** *Elyse*: founder note welcome email good to go
+- **2025-05-19 16:44** *Elyse*: subject: you’ve got early access
+- **2025-05-19 16:45** *Elyse* 💬 1 reply: Meet your higher self - can we blur out her nipples a bit please. otherwise cool
+- **2025-05-19 16:46** *Elyse*: “wonderful healing mat” subject - good to go
+- **2025-05-19 16:56** *Elyse* 💬 1 reply: “you’ve got the in” is good to go - but we should consider changing the endorphin oil to maybe the hydration powder or the sweatband, as the endo oil is included in the SB starter kit
+- **2025-05-19 16:56** *Elyse*: “supercharge your self care with up to 25% off” is the same as “wonderful healing mat” right? or am i buggin?
+- **2025-05-19 16:57** *User_2Z9G95*: They are the same!
+- **2025-05-19 16:57** *User_2Z9G95*: We'll have exclusions in place so people don't get it double!
+- **2025-05-19 16:57** *Elyse*: Haha ok fab it’s good to go
+- **2025-05-19 16:57** *User_2Z9G95*: Reviewing your notes now!
+- **2025-05-19 17:13** *User_2Z9G95*: @Elyse Re-sent with the blur! LMK!
+- **2025-05-19 17:18** *Elyse*: Much better thank you\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-19 17:22** *User_2Z9G95*: I like the sweatband! Updating now.
+- **2025-05-19 17:56** *User_2Z9G95* 💬 1 reply: @Elyse Re-sent the preview!
+- **2025-05-19 18:04** *User_2Z9G95*: @Elyse — Here's our broad segmentation strategy for review! Last year, each email that was sent to the same broad engaged segment reached about 150,000 people, so this year we're broadening it to closer to 290,000. You'll see we have a mix of engaged, unengaged, and lapsed customers:  
+  
+**Engaged:**  
+• 365 days engaged (broadening to people who engaged all year — they're likely waiting for this sale period!)  
+• Purchasers (All Time)  
+• 180 days engaged, never purchased (Targeted + Broad - difference here depends on how many emails they've received from us; targeted means they received more emails, so they're slightly more engaged)  
+• Clicked/opened at least once in the last 365 days, never bought  
+**Unengaged:**  
+• 180 days unengaged (don't want this to be too broad (365), so we can ensure we're reaching people who haven't engaged without sacrificing engagement too much)  
+• Never purchased   
+• Never engaged, subscribed 60+ days ago  
+**Lapsed:**  
+• VIPs - Purchased more than once, but not in the last 60 days  
+• Was engaged 30-60 days ago, but not recently (have purchased at somepoint)  
+• Purchased once at least 60 days ago, but hasn't opened or clicked in the last 90  
+I'll be able to follow up with the re-send segmentation strategy tomorrow once we get some data, but it will likely be those who didn't open and/or didn't click + didn't purchase.  
+  
+We'll monitor performance and if we need to remove some of the broad unengaged segments, we certainly can! Will keep you posted.  
+  
+***Question: Any other exclusions we should be aware of? Is the Red Light Hat available abroad? I looked at the sheet you initially shared, but the row isn't filled out. I think that's the only product that's getting a spotlight.*** \n\n📎 **Screenshot 2025-05-19 at 2.41.40 PM.png** (png, 176.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08T56Q129G/screenshot_2025-05-19_at_2.41.40___pm.png)
+- **2025-05-19 18:10** *User_2Z9G95*: **Plan for tomorrow:**  
+• 10a ET - MDW pop-up goes live (QA + tested)  
+• 10a ET - Lead Generation ads go-live  
+• 12p ET - Early Access email + SMS gets sent  
+• 7p-9p ET - Early Access email gets re-sent  
+Please let us know if you have any questions! @Elyse — Once you confirm the segmentation strategy and the revised early access email I will get those scheduled.
+- **2025-05-19 18:59** *Elyse*: Segmentation good by me\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 18:59** *Elyse*: Hat is available abroad!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-19 19:00** *Elyse*: Should pop up go live earlier? Or think it’s fine as is?
+- **2025-05-19 19:01** *User_2Z9G95*: The ads won't be approved right away, so we should be perfect on time! I'll be online early and can check in and manually turn it on earlier, too, if ready.  
+  
+I'll connect with Cory in the AM!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-19 19:03** *Elyse*: Sounds good let’s do it\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-20 08:13** *User_2Z9G95*: Morning! @Elyse — Can you please confirm the discount code is up and running? I just tried it and it doesn't look like it is!
+- **2025-05-20 08:39** *Elyse*: That’s odd
+- **2025-05-20 08:39** *Elyse*: Lemme check hang on
+- **2025-05-20 08:39** *Elyse*: What did you try to use it on btw
+- **2025-05-20 08:39** *User_2Z9G95*: MDW2025
+- **2025-05-20 08:39** *User_2Z9G95*: oh and the hat!
+- **2025-05-20 08:39** *User_2Z9G95*: and the PEMF mat
+- **2025-05-20 08:40** *Elyse*: Ok cool let me tweak it we prob didn’t update it w the date change
+- **2025-05-20 08:40** *User_2Z9G95*: Ok fab!
+- **2025-05-20 08:41** *Elyse*: Ok try now I fixed
+- **2025-05-20 08:42** *User_2Z9G95*: Lovely, thank you!!
+- **2025-05-20 08:47** *User_2Z9G95*: @Elyse — Just sent you the SMS welcome! Realized I forgot to send it yesterday
+- **2025-05-20 08:47** *Elyse*: Good to go\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-20 09:44** *User_2Z9G95*: Confirming both email and SMS are scheduled for 12p ET today!
+- **2025-05-20 09:46** *🤖 Bot*: woo woo\n\n*Reactions: :partying_face: Berkeley Clark, :yellow_heart: Berkeley Clark*
+- **2025-05-20 09:51** *User_2Z9G95*: @Elyse — [More content for review here](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)! Please review the ones highlighted in red — the SMS will be finalized today and I'll let you know when those are ready for review, too!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-20 09:52** *Elyse*: sweet diving in now
+- **2025-05-20 10:02** *Elyse*: added notes to red light spotlight\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-20 10:11** *Elyse*: requested access on red light hero 5/24 and 5/27
+- **2025-05-20 10:14** *Elyse*: @User_2Z9G95  
+• 5/22 red light - left notes  
+• 5/22 pemf - left notes  
+• 5/24 hat hero - alt 2 for header, otherwise good to go. lmk if you have access to folder w before and afters in it  
+• 5/27 extension - i like subject/previews 2 and 3, good to go otherwise
+- **2025-05-20 10:15** *User_2Z9G95*: Granted access!
+- **2025-05-20 10:16** *Elyse*: \n\n**Sumish Khadka**\n> My wife's hair in 6 months after using the hat 10 mins daily. IT WORKS\n*Slack Conversation | 2025-02-14 11:02*\n\n*Reactions: :fire: User_5S72LT*
+- **2025-05-20 10:16** *Elyse*: 📎 **HAT_B&A_005.png** (png, 1.5MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08DDJTSFTL/hat_b_a_005.png)\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-20 10:16** *Elyse*: also have one in this folder [https://drive.google.com/drive/folders/1orsBe7d-7notsmB9KNlFMxLUGtVFTSGy](https://drive.google.com/drive/folders/1orsBe7d-7notsmB9KNlFMxLUGtVFTSGy)
+- **2025-05-20 13:50** *User_2Z9G95*: Hi @Elyse @Ingrid — thank you so much for the time today!  
+• [Link to agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)  
+• [Link to reporting](https://docs.google.com/spreadsheets/d/1qtJOU2541YSnoXC7ccA-RRUy2E*ctEOXQUXO3AdPWU4/edit?gid=1343857531#gid=1343857531)  
+Immediate next steps:  
+• [Elyse to review SMS here](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958) (highlighted in red)  
+• Hannah to duplicate flows and add banners - will send tests to Elyse by EOD today + get ready to turn on tomorrow.    
+@Elyse – **Can you please confirm what time the site changes will go live tomorrow? We'll need to ensure paid and the pop-up are ready to support accordingly!** We typically send the email at 12p ET, which feels like a great launch time, if we want to keep it at that.\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-20 14:43** *Elyse*: @User_2Z9G95 some video footage from Capetown MBS shoot [https://next.frame.io/project/2bec461a-9b14-4c3c-9247-e4365b115e6a/5a6a2048-24e6-4a3a-827b-608e7f5df263](https://next.frame.io/project/2bec461a-9b14-4c3c-9247-e4365b115e6a/5a6a2048-24e6-4a3a-827b-608e7f5df263)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-20 14:44** *Elyse*: Would love to take some of these and cut them up for gifs
+- **2025-05-20 15:29** *Elyse*: @User_2Z9G95  
+• Web changes being made midnight tonight  
+• SMS Review  
+    ◦ 5/22 RL spotlight sms - alt good to go, left comment on it  
+    ◦ 5/23 bundle push - 2nd alt good to go, left comment on it  
+    ◦ 5/24 rl hat hero - left notes  
+    ◦ 5/25 hat and pemf - good to go, left note for a photo on it  
+    ◦ 5/26 final hours - good to go  
+    ◦ 5/26 last chance - radiant glow instead of makeup free, otherwise good to go
+- **2025-05-20 15:56** *User_2Z9G95*: @Elyse - THANK YOU! Confirming midnight EST correct?
+- **2025-05-20 15:57** *Elyse*: Yep\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-05-20 16:37** *User_2Z9G95*: HI @Elyse! New flows are ready for review! Let me know when I can send through the tests — there's 5 of them!
+- **2025-05-20 16:54** *User_2Z9G95*: Just sent in the following order from first to recent — let me know if you get a chance to review!  
+• Abandoned Cart  
+• Abandoned Checkout 1  
+• Abandoned Checkout 2  
+• Active on Site  
+• Abandoned Browse
+- **2025-05-20 16:55** *Elyse*: Perfect on it rn\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-20 16:58** *User_2Z9G95*: Thank you!!
+- **2025-05-20 16:59** *Elyse*: All great
+- **2025-05-20 17:00** *User_2Z9G95*: Perfect! Thank you! Confirming we'll get these swapped in for the existing ones at midnight ET tonight — along with the new welcome and pop-up.
+- **2025-05-20 17:08** *Elyse*: Thank you!
+- **2025-05-20 18:16** *User_2Z9G95*: Hi @Elyse — Just for visibility, for this re-send we're going to send to the same list and add an additional exclusion for the segment: "People who received the MDW Early Access email **and** opened, **or** clicked". Thanks!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-20 18:39** *User_2Z9G95*: Confirming the re-send is scheduled for 8p ET! CC: @Elyse\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-20 23:17** *User_2Z9G95*: :white*check*mark: Pop-up launched + new welcome flows triggering perfectly  
+:white*check*mark: Evergreen site, cart, checkout, browse flows are paused  
+:white*check*mark: MDW site, cart, checkout, browse flows are launched  
+:white*check*mark: 5/21 email scheduled for 12:30p\n\n*Reactions: :heart: 4, :celebrate: Elyse, Berkeley Clark*
+- **2025-05-21 08:15** *User_2Z9G95*: Morning @Elyse! [More content ready for your review here in RED](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958).  We're still waiting on the below:  
+• 5/22: Revisions  
+• 5/23: Design  
+• 5/26: Design  
+• 5/27: Design \n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-21 09:40** *Elyse*: Sweet, diving in now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-21 10:16** *Elyse*: @User_2Z9G95  
+• 5/24 hat hero - this is a bomb AF email, love it  
+• 5/24 hat sms - new alt is fab, good to go  
+• 5/25 fathers day gifting - love, good to go  
+• 5/27 extension sms - 3rd alt, good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-21 13:04** *User_2Z9G95*: Thank you @Elyse!
+- **2025-05-21 13:07** *User_2Z9G95*: Update for the team: Based on initial insights, we're proposing an SMS send at 3p ET this afternoon. We have an SMS scheduled for everyday except today, so we'll bump up the bundle SMS to today and get another one drafted in its place (see attached).  
+  
+Additionally — the site, browse, and cart abandonment flows we copied each have one campaign, however, to further target these high-intent purchasers, we're recommending adding an additional campaign to be sent 25 hours after the first initial send. We've gone ahead and copied existing flows to create these campaigns and @Elyse — I would love to send those through for review ASAP so we can get them live!  
+  
+Let me know if there's any thoughts/feedback on the above. Thank you all!\n\n📎 **Screenshot 2025-05-21 at 11.05.22 AM.png** (png, 104.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08T6CH1JP5/screenshot_2025-05-21_at_11.05.22___am.png)\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-21 13:15** *Elyse*: aligned! @User_2Z9G95
+- **2025-05-21 13:57** *Elyse* 💬 4 replies: @User*2Z9G95 Separately, here’s a list of emails we collected over the weekend at an event in Miami at Ject.  
+• Can we get them added to our master list, and send them the welcome flow but with a special code in it and some copy around like “great to meet you at the Ject Miami event. Welcome to the higherdose community” etc something along those lines. here’s a code to use for a week   
+• Code will be HDJect30 from lmk when we can get this email out to a week from then  
+[https://docs.google.com/spreadsheets/d/1vHZ*fUbqmAN25zdYRmeYOSiwBo0CeGAdR92c4S6NGCQ/edit?usp=sharing*eil&amp;ts=682c89cf&amp;urp=gmail*link](https://docs.google.com/spreadsheets/d/1vHZ*fUbqmAN25zdYRmeYOSiwBo0CeGAdR92c4S6NGCQ/edit?usp=sharing*eil&amp;ts=682c89cf&amp;urp=gmail_link) - may need to request access to sheet, I just did lmk if it gives you any trouble I can always copy the sheet once I get access
+- **2025-05-21 15:25** *User_2Z9G95*: Hi @Elyse: Previews for those flows coming through! Let me know if you have any thoughts and I can get them switched on!  
+1. SL: Don't miss your moment to feel amazing - Abandoned Cart #2  
+2. SL: You gave it the eyes - Abandoned Browse #2  
+3. SL: Supercharge your routine - Active on Site #2 \n\n*Reactions: :eyes: Elyse*
+- **2025-05-21 15:54** *Elyse*: all flows good to go @User_2Z9G95
+- **2025-05-21 16:05** *User_2Z9G95*: Awesome, thank you!
+- **2025-05-21 16:05** *Elyse*: @User*2Z9G95 PDP preview: [https://8x8oz2uu89zgeehg-22626551.shopifypreview.com/products*preview?preview*key=faf2e87791d6d50ec0e69c6c81a833e5](https://8x8oz2uu89zgeehg-22626551.shopifypreview.com/products*preview?preview_key=faf2e87791d6d50ec0e69c6c81a833e5)\n\n**8x8oz2uu89zgeehg-22626551.shopifypreview.com**\n🔗 **[BODY SCULPTOR RITUAL SET                      – HigherDOSE](https://8x8oz2uu89zgeehg-22626551.shopifypreview.com/products_preview?preview_key=faf2e87791d6d50ec0e69c6c81a833e5)**\n\n*Reactions: :fire: User_2Z9G95*
+- **2025-05-21 16:05** *Elyse*: let us know if you see anything requiring a fix
+- **2025-05-21 16:06** *Elyse*: i started a google doc here with my notes\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-21 16:06** *Elyse*: [https://docs.google.com/document/d/18IpQSaDJC6VKsYVjoD9570PHfd7mgBMnFMKgFNSsfds/edit?usp=sharing](https://docs.google.com/document/d/18IpQSaDJC6VKsYVjoD9570PHfd7mgBMnFMKgFNSsfds/edit?usp=sharing)\n\n📎 **MBS PDP Notes** (gdoc, 0B) - [Download](https://docs.google.com/document/d/18IpQSaDJC6VKsYVjoD9570PHfd7mgBMnFMKgFNSsfds/edit?usp=sharing)
+- **2025-05-21 16:06** *User_2Z9G95*: Ahh exciting!!
+- **2025-05-21 16:06** *🤖 Bot*: its happening
+- **2025-05-21 16:06** *User_2Z9G95*: [Also two more emails ready for review highlighted in RED](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)! One more will be coming through tomorrow.\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-21 16:06** *User_2Z9G95*: Best meme ever
+- **2025-05-21 16:07** *Elyse*: sick will take a break from proofreading pdp and jump into this rn
+- **2025-05-21 16:11** *Elyse*: @User_2Z9G95  
+• 5/23 summer glow up - love, good to go  
+• 5/26 last chance - need to correct end date on promo disclaimer, otherwise good to go
+- **2025-05-21 16:12** *User_2Z9G95*: Great shout! We actually have the footer all templatized in Klaviyo so no issues there, but will double confirm, thank you!!!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-21 16:22** *Elyse*: @User_2Z9G95 I spoke to Katie she’s aligned on sending JECT email post sale :+1: 
+- **2025-05-21 16:23** *User_2Z9G95*: ok fab! We'll get it queued up for right after!
+- **2025-05-21 16:38** *User_2Z9G95*: HI @Elyse — best practice for resends is to modify the subject and preview — here's this evening's below — let us know how it looks! I'll add in all modified SLs and PTs into the sheet for you to review tomorrow, too\n\n📎 **Screenshot 2025-05-21 at 2.37.26 PM.png** (png, 864.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08T7EN4XQB/screenshot_2025-05-21_at_2.37.26___pm.png)\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-21 16:38** *Elyse*: good by me
+- **2025-05-21 16:38** *User_2Z9G95*: 5/22 previews coming to you shortly!
+- **2025-05-21 16:39** *User_2Z9G95*: Planning to build out the rest of the campaigns this evening, so we'll be ahead for the week. Thanks!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-21 16:40** *User_2Z9G95*: Scheduling the resend for 7p ET tonight. Same segment w/ exlcusions, but adding in exclusions for people who opened and clicked yesterday and today's email, plus purchasers.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-21 17:11** *User_2Z9G95*: @Elyse — Previews sent!
+- **2025-05-21 20:11** *Elyse*: PEMF preview good to go @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-21 20:17** *Elyse*: Red light preview good to go too @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-21 20:19** *User_2Z9G95*: Holding on scheduling PEMF since that's our re-send for tomorrow, but scheduling red light for 11a ET\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-22 09:21** *User_2Z9G95*: @Elyse — Just sent SMS preview for today!
+- **2025-05-22 09:56** *Elyse*: good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-22 09:59** *User_2Z9G95*: Scheduled for 11:30a ET today! Thank you!
+- **2025-05-22 11:27** *Elyse*: @User_2Z9G95 lmk what date we want to plug in for the Ject folks, making the code rn
+- **2025-05-22 11:28** *User_2Z9G95*: We can do 5/28 or 5/29!
+- **2025-05-22 11:29** *Elyse*: ok cool
+- **2025-05-22 11:33** *Elyse*: ok i made code 5/28 - 6/4 HDJect30\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-22 11:34** *User_2Z9G95*: Will it be available on the MBS too for when that launches or excluded 
+- **2025-05-22 11:35** *Elyse*: yep sitewide, excluding bundles, subscriptions, and full spec sauna\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-22 11:35** *User_2Z9G95*: Cool! 
+- **2025-05-22 12:17** *Thila* joined the channel
+- **2025-05-22 12:17** *Elyse*: @User_2Z9G95 adding my right hand gal @Thila here, she manages CS team\n\n*Reactions: :raised_hands::skin-tone-3: Thila*
+- **2025-05-22 12:17** *Elyse*: Mentioned an issue with unsubscribe link in recent email
+- **2025-05-22 12:17** *Elyse*: T do you know which email?
+- **2025-05-22 12:20** *Thila*: Yes! So we received this email from this client and they tried unsubscribing through this newsletter but it was not working\n\n📎 **Will B.pdf** (pdf, 312.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08TCQLU4DR/will_b.pdf)\n📎 **Screenshot 2025-05-22 at 1.19.43 PM.png** (png, 651.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08TNN2JF6W/screenshot_2025-05-22_at_1.19.43___pm.png)\n📎 **Screenshot 2025-05-22 at 1.19.53 PM.png** (png, 81.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08T7H137V5/screenshot_2025-05-22_at_1.19.53___pm.png)
+- **2025-05-22 12:21** *User_2Z9G95*: Ah, yes — I see, the hyperlink didn't pull in! Apologies for that. This is a templatized block and it's been fine on the others so not sure what happened here. Please send me their emails and I'll manually unsubscribe them. Sorry about that! Will triple check all the others right now.
+- **2025-05-22 12:23** *Thila*: No worries thank you so much @User_2Z9G95 the clients email is <mailto:waberardino@gmail.com|waberardino@gmail.com>
+- **2025-05-22 12:27** *User_2Z9G95*: They are removed! That was the only one with the missing hyperlink (among flows + campaigns) so we're good to go!\n\n*Reactions: :ty: Thila*
+- **2025-05-22 13:31** *User_2Z9G95*: Hi @Elyse — Three email previews coming your way! Let me know if they're good to schedule.  
+5/23: SL: Your summer glow (on sale)  
+5/24: SL: Supercharge your scalp health  
+5/25: SL: Get dad what he wants for Father’s Day
+- **2025-05-22 13:31** *🤖 Bot*: i'm ready
+- **2025-05-22 13:34** *Elyse*: all three good to go
+- **2025-05-22 13:39** *User_2Z9G95*: Woohoo! And then we have two options for the plain text last chance email on 5/26 — I noticed that in the past HD sends an actual plain-text email, but our team also designed one. Sending through both for you to see which feels better! Alternatively, we can send on in the AM and one in the PM for a last min re-send opportunity.  
+  
+These are templates, not the campaigns so ignore the subject and preview for now.
+- **2025-05-22 13:39** *Elyse*: cool on it
+- **2025-05-22 13:41** *Elyse*: good on both
+- **2025-05-22 13:41** *Elyse*: i
+- **2025-05-22 13:41** *Elyse*: i’m good w sending 1 AM and resend the other PM
+- **2025-05-22 13:42** *User_2Z9G95*: That's what we're thinking, too — perfect! Will keep you posted on a recco for which one first.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-22 15:39** *User_2Z9G95*: Hey @Elyse — we're getting the SMS ready for tomorrow and wanted to confirm we're good to push a PEMF spotlight? We don't mention it apart from being included in bundles, so we think a mini PEMF spotlight would be great to include.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-22 16:57** *User_2Z9G95*: Hi @Elyse — Link to SMS copy for tomorrow [HERE](https://docs.google.com/document/d/1Q7ifA-HFk3rcwP78KTAhDc9etdZa9hCvVD2Iay_WvKY/edit?tab=t.0)! Let me know which you prefer and we'll get it scheduled.\n\n*Reactions: :eyes: Elyse*
+- **2025-05-22 16:58** *Elyse*: fine with all
+- **2025-05-22 16:58** *Elyse*: love the drop into euphoria\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-22 16:58** *Elyse*: very hd coded
+- **2025-05-22 16:58** *User_2Z9G95*: Agree!
+- **2025-05-22 16:58** *Elyse*: maybe first one
+- **2025-05-22 16:58** *User_2Z9G95*: Yes\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-22 17:12** *User_2Z9G95*: @Elyse — SMS preview for tomorrow sent!
+- **2025-05-22 17:20** *User_2Z9G95*: @Elyse — Final email preview coming through!
+- **2025-05-22 18:22** *Elyse*: SMS good to go
+- **2025-05-22 19:23** *Elyse*: Email good to go
+- **2025-05-23 08:32** *User_2Z9G95*: Morning @Elyse — We added in some MMS to diversify the SMS strategy – pulling some creative from the emails! I added in an image to this SMS for today, so I just re-sent it. Let me know your thoughts!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 08:33** *Elyse*: good to go\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-23 08:36** *User_2Z9G95*: Scheduled for 12p ET! Summer glow is also scheduled for 12p ET!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 08:38** *User_2Z9G95*: Ok, all of the SMS are ready to test!  
+  
+Based on our recommendation yesterday, we needed two additional SMS sends — one on the 25th and one on the 27th, so we've added those in and I'll send those through first for your review since you haven't seen them yet! Let me know when you have a sec this AM to review.  
+  
+From there, I'll send through the remaining 5!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 08:38** *Elyse*: lets do ittttt\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-23 08:40** *User_2Z9G95*: Red light is for 5/25 evening and last chance is for 5/27 evening!
+- **2025-05-23 08:40** *Elyse*: red light g2g
+- **2025-05-23 08:40** *Elyse*: last chance g2g
+- **2025-05-23 08:41** *User_2Z9G95*: perfect, other five coming in, in this order:  
+  
+• 5/24: Red Light Hat Hero  
+• 5/25: Father's Day  
+• 5/26: Last Chance  
+• 5/26: Last Chance 2  
+• 5/27: Extended
+- **2025-05-23 08:52** *Elyse*: all g2g
+- **2025-05-23 08:53** *User_2Z9G95*: Amazing, we'll get these scheduled today and get the rest of the emails scheduled. We're making some tweaks to the email segmentation, so I'll keep you posted on that!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 15:10** *User_2Z9G95*: Hi @Elyse! CC: @Ingrid Letting you know everything for this weekend is scheduled and updated [HERE](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958). We made a few tweaks to this weekend's segments. Since these emails are more product-focused and narrative in messaging, we tweaked the segments to be more engaged-driven. We removed any unengaged segments from this (which will ideally help drive click and open rate back up). We also included engaged, product-focused segments, focusing on those with higher-intent — see below:  
+  
+• Red Light Hat Spotlight: Added: Engaged L180, but never purchased Red Light Hat  
+• PEMF Spotlight: Added: Engaged L180, but never purchased anything from the PEMF collection  
+• Father's Day Gifting: Added: Engaged L180, but never purchased anything from the PEMF or Red Light collection  
+I've included the full segment breakdown in the sheet if you want to see the others! Let us know if you have any thoughts, but we think targeting engaged segments for the weekend sends will put us in a great place engagement and conversion wise come Monday and Tuesday, when we're ready to double down on last minute/extended sale messaging to our initial broad audience.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-23 15:12** *Elyse*: @User_2Z9G95 just found a typo in final hours email
+- **2025-05-23 15:13** *Elyse*: hat section [https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekl[…]%E2%80%93-May-2025?node-id=37542-2959&amp;p=f&amp;t=HN6lSOGUIOaoGkRe-0](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37542-2959&amp;p=f&amp;t=HN6lSOGUIOaoGkRe-0) should be thick and **luscious**\n\n**Figma**\n🔗 **[HigherDOSE – Weekly Campaigns – May 2025](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37542-2959&p=f&t=HN6lSOGUIOaoGkRe-0)**\n> Created with Figma\n\n*Reactions: :raised_hands: User_2Z9G95, Ingrid*
+- **2025-05-23 15:13** *Elyse*: otherwise all looks good
+- **2025-05-23 15:14** *User_2Z9G95*: Updating now, thank you!!
+- **2025-05-23 15:23** *User_2Z9G95*: Updated and rescheduled!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :raised_hands: Ingrid*
+- **2025-05-26 14:36** *User_2Z9G95*: Hi @Elyse! I hope you're having a great holiday weekend! Apologies for the weekend ping, but since we've seen such strong performance on SMS, we're recommending a third later evening re-send to capture any last-minute, high-intent shoppers (excluding purchasers, of course). Please see the SMS below and I'm happy to pass along a preview for you to review when you get the chance. If all looks good, we'll schedule for 8p ET. Thank you!\n\n📎 **Screenshot 2025-05-26 at 12.34.46 PM.png** (png, 71.0KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UR5DPCQ0/screenshot_2025-05-26_at_12.34.46___pm.png)
+- **2025-05-26 14:37** *Elyse*: Good by me
+- **2025-05-26 14:37** *Elyse*: I’m ready for test
+- **2025-05-26 14:37** *User_2Z9G95*: Perf, coming shortly!
+- **2025-05-26 14:38** *User_2Z9G95*: Sent!
+- **2025-05-26 14:39** *Elyse*: Good to go
+- **2025-05-26 14:43** *User_2Z9G95*: Scheduled for 8p ET, thank you!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-27 09:46** *User_2Z9G95*: Good morning @Elyse! I hope you had a fantastic holiday weekend. We have the Miami event + launch content copy ready for your review [HERE](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958). Please take a look when you get the chance — we'll get these moving into production today, Thank you!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-05-27 09:46** *Elyse*: sweet, will do!
+- **2025-05-27 09:47** *User_2Z9G95*: Only note is we're waiting on founder context for 6/3.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-05-27 09:57** *Elyse*: @User*2Z9G95 can you update editing access please! can’t leave comments on this doc [https://docs.google.com/document/d/1GsXufRDjYqNRZj5iBMIitpk5MQ-L*OqF1hxUAntarZs/edit?tab=t.0](https://docs.google.com/document/d/1GsXufRDjYqNRZj5iBMIitpk5MQ-L_OqF1hxUAntarZs/edit?tab=t.0)\n\n📎 **28 Email: Three welcome emails for new subscribers (Miami event list)** (gdoc, 92.0KB) - [Download](https://docs.google.com/document/d/1GsXufRDjYqNRZj5iBMIitpk5MQ-L_OqF1hxUAntarZs/edit?tab=t.0)
+- **2025-05-27 09:57** *User_2Z9G95* 💬 7 replies: Ah yes, updating them all now, thank you!
+- **2025-05-27 11:07** *User_2Z9G95* 💬 7 replies: @Elyse — I see you added in 6/2-6/9 for the JECT Miami code. Initially you mentioned 5/28-6/4 — has this changed? If so, we'll want to change the dates we send the emails to correspond with the code activation!
+- **2025-05-27 11:09** *User_2Z9G95* 💬 2 replies: @Elyse — I know the MDW code is live until 5/28 at 6am ET — for the pop-up + welcome flow + abandoned flows, everything needs to be manually updated. Is there a way to extend this until 9am ET or 10a ET tomorrow morning, so that I can manually update everything first thing in the AM? Let me know if this would be possible!
+- **2025-05-27 11:14** *Elyse*: Think we should be fine w that, let me double check internally
+- **2025-05-27 13:32** *Elyse*: @User_2Z9G95 whewww IMC, Jess and I left notes on all launch items thus far. Think we need a redirection overall &gt; want this to feel empowering, bold, inspiring, and thoughtful
+- **2025-05-27 13:43** *User_2Z9G95*: Hi @Elyse — Noted! Thank you (+ Ingrid &amp; Jess) for taking the time to go through each one. We'll review your notes in the docs directly and will work on a redirection today — we'll let you know if we have any additional questions on anything shared!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-27 15:44** *Elyse* 💬 1 reply: @User_2Z9G95 \n\n**Sumish Khadka**\n> We might have some flow through customers. The site will have the messaging removed tomorrow morning by 9 AM EST.\n*Slack Conversation | 2025-05-27 15:43*\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-27 15:49** *User_2Z9G95*: @Elyse — I'll reach out to Cory RE pop-up changes. What are your thoughts on updating the pop-up to be around the new product launch? I can ask Cory if they have any other brands that have seen success with that for inspo, but we'd likely include the evergreen 10% off with the coming soon messaging.
+- **2025-05-27 15:51** *Elyse*: let me check with ingrid on that when shes back in office tomorrow. think we’d be okay with it as we’re starting social teasers earlier than email
+- **2025-05-27 15:52** *User_2Z9G95*: That works! In the interim, we'll have Cory revert to the default and can talk strategy on our call tomorrow, too.
+- **2025-05-27 15:52** *Elyse*: perfect tysm!
+- **2025-05-27 17:22** *User_2Z9G95*: Hi @Elyse — We've made revisions on the following that are ready for your review when you get the chance:  
+• [5/29](https://docs.google.com/document/d/1RDtRaX3m6dOIaHtCvYX2H*RRHEu1GpqyzucBtLvlgUw/edit?tab=t.0) - updated all comments  
+• [5/30](https://docs.google.com/document/d/1d2*-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0) - no feedback here, is this good to go?  
+• [6/2](https://docs.google.com/document/d/1vSZJ*r2NyQWIRbMMiG7rxYzmOn*iCr7eOPX0ERP41rg/edit?tab=t.0) - re-wrote  
+• [6/4](https://docs.google.com/document/d/14WNXke3SMNfXECcQdrjDFHSSI2dzw3Dr1awNSdLgSls/edit?tab=t.0) - re-wrote  
+We're still working on 6/5. Thanks!\n\n📎 **14 Email: Summer Body Starts with Flow (BLOG PUSH)** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1d2_-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0)\n📎 **4 Email: Microcurrent Body Sculptor: Body, Electric ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/14WNXke3SMNfXECcQdrjDFHSSI2dzw3Dr1awNSdLgSls/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-27 17:41** *Elyse*: Ok perfect will review
+- **2025-05-28 08:38** *User_2Z9G95*: FYI — All MDW flows/pop-up are reverted back, QA'd and tested. Thanks!\n\n*Reactions: :celebrate: Elyse, :heart: Ari Murray*
+- **2025-05-28 10:05** *Elyse*: Thank you @User_2Z9G95 ! Appreciate your work there!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-28 14:37** *Elyse*: @User_2Z9G95 @Ingrid and I just went through and gave notes on revisions!
+- **2025-05-28 14:37** *Elyse*: I have a few questions on i think the 6/4 email for Jess so flagged to her to get her answer today
+- **2025-05-28 15:54** *Elyse* 💬 2 replies: 📎 **IMG_1157.jpg** (jpg, 1.7MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V488M2JU/img_1157.jpg)\n\n*Reactions: :jiggly_wow: Thila, User_5S72LT*
+- **2025-05-28 15:54** *Elyse*: Here’s one!!
+- **2025-05-28 15:55** *Elyse*: 📎 **IMG_1158.MOV** (mp4, 4.7MB) - [Download](https://files.slack.com/files-tmb/TA97020CV-F08V48EKVLY-66e0886fe4/img_1158.mp4)\n\n*Reactions: :face_holding_back_tears: Thila, User_5S72LT, User_2Z9G95*
+- **2025-05-28 15:55** *Ari Murray*: OMG - SO LITTLE!!!!!!!!!
+- **2025-05-28 16:03** *Elyse*: National Geographic calling me for my investigative work :rolling*on*the*floor*laughing: \n\n*Reactions: :joy: User_5S72LT*
+- **2025-05-28 17:40** *User_2Z9G95*: Hi team! [Here's the link to the agenda we reviewed today](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0). Thanks!\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)
+- **2025-05-28 18:08** *Elyse*: Thank you @User_2Z9G95 and team!
+- **2025-05-29 09:21** *User_2Z9G95*: Hi @Elyse — [Per Jessica's note in this sheet](https://docs.google.com/document/d/1d2_-ewKmGqrUYvBP-DMiXirv5N5ak-bYHirp4k-OKWo/edit?tab=t.0) about sharing a fascia graphic, i never saw an email come through — did she share one?
+- **2025-05-29 09:22** *User_2Z9G95*: We're finalizing the design for today's teaser email this morning and then the one for tomorrow shortly after, so I'll let you know when they're ready for review.
+- **2025-05-29 09:24** *User_2Z9G95*: Also — Do you have the blog content link for the fascia email tomorrow? Thanks!
+- **2025-05-29 10:24** *User_2Z9G95*: @Elyse — First teaser ready for review [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37650-8613&amp;t=X0QsJ3Et8YLVuv7Z-1). As discussed, there's two versions. each with a GIF. Do you know what time it's launching on Monday? We have a Klaviyo integration that let's us design timers, so we just need to know the time to accurately build this out.  
+  
+Let us know your thoughts!\n\n*Reactions: :eyes: Elyse*
+- **2025-05-29 10:33** *Elyse*: Just got home from doc, diving in!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-29 11:08** *User_2Z9G95*: @Elyse — Second teaser ready for review [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37623-6584&t=Vt0cpJjusV2xNAAi-1). We just need the fascia image from Jessica and the blog link. Thanks!
+- **2025-05-29 11:54** *Elyse*: MBS will be live by 9AM ET or sooner, just confirmed with Sumish\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-29 12:09** *Elyse*: @User*2Z9G95 edited LB photos with MBS [https://drive.google.com/drive/folders/1mzgu4whv8wRMT*5HsIfLhjv5WuOtJecE](https://drive.google.com/drive/folders/1mzgu4whv8wRMT_5HsIfLhjv5WuOtJecE)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-29 12:11** *Elyse*: @User_2Z9G95 edited LB/her husband photos with MBS [https://drive.google.com/drive/folders/1YJoWc1nVQKU7uZvYb6yuYF9wWnn2Dw6D](https://drive.google.com/drive/folders/1YJoWc1nVQKU7uZvYb6yuYF9wWnn2Dw6D)
+- **2025-05-29 12:11** *Elyse*: THere’s also a video on there - don’t think we need to use it for anything, but was interesting to hear jess and lb’s convo about leaving the gel on post session and not washing it off
+- **2025-05-29 12:11** *Elyse*: so itll absorb into your skin throughout the day
+- **2025-05-29 12:11** *Elyse*: good note to keep in mind for email copy
+- **2025-05-29 12:13** *User_2Z9G95*: Oh awesome!
+- **2025-05-29 12:13** *Elyse*: also @User_2Z9G95 i just sent you the blog briefs for Shelly Marshall and Lo Roxburgh
+- **2025-05-29 12:13** *Elyse*: I’m diving into their answers today and getting them up on the blog asap
+- **2025-05-29 12:13** *Elyse*: so will shoot over link once i have it published
+- **2025-05-29 12:13** *User_2Z9G95*: Perfect, thank you!
+- **2025-05-29 12:14** *Elyse*: also will send their answers beforehand so you can at least see the vibe they went with
+- **2025-05-29 12:14** *User_2Z9G95*: yes, that's perfect, thank you!
+- **2025-05-29 12:14** *Elyse*: i’m gonna make a copy of both docs so we can mock that up however we need to and not have the talent see us tearing their work up lol!\n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-05-29 12:14** *User_2Z9G95*: Good call!
+- **2025-05-29 12:53** *Elyse* 💬 1 reply: ok! @User_2Z9G95 just met with Ingrid and Fiona  
+• left a few notes on both teasers  
+• teaser 1: love the ladies hanging out on the rock version, gif is sublime  
+• teaser 2: love the shadow verson, absolutely nails the teaser vibe  
+    ◦ top link we want to direct to a JOIN THE WAITLIST cta - how can we do this on klaviyo? want to be able to tag those customers as having signed up thru this campaign, even though we’re gonna send it wide anyway  
+    ◦ bottom link - we’re gonna make a quick category on the blog home page to have all lymphatic/microcurrent/“flow” related blogs in one place so will link to that landing page there\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-29 12:55** *Elyse* 💬 3 replies: @User_2Z9G95 did we fire off ject email yet? just looked at design and saw a typo
+- **2025-05-29 12:55** *Elyse*: otherwise that one is gorgina too
+- **2025-05-29 12:56** *User_2Z9G95*: Noted on the 9a ET activation, however, we typically recommend email/SMS sends to be slightly later (1) to give us time to full activate/troubleshoot any issues (especially since pre-orders can be finicky) and (2) to not send it too early to allow people time to wake up and shop. Are you open to a 10a ET launch for both email and SMS?\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-29 12:56** *Elyse*: yep fab by me\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-05-29 12:57** *User_2Z9G95*: Reviewing teaser 1 now, then will review teaser 2 shortly!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-29 13:06** *User_2Z9G95*: @Elyse — RE join the waitlist strategy — can I ask the why behind this? Since we already have their emails, what are you looking to do with the information? Segment them and/or send the announcement to them early?  
+  
+I would maybe propose an SMS push, where we can get people to join SMS for early access. We can send the SMS at like 9:45am ET to give them a bit of a head start before email goes out?
+- **2025-05-29 13:06** *Elyse*: @Ingrid ^^ thoughts?
+- **2025-05-29 13:30** *User_2Z9G95* 💬 3 replies: To answer your question about logistics tho, the easiest way is through Attentive, but since that contract is ending soon, we can also do it in Klaviyo!
+- **2025-05-29 13:38** *User_2Z9G95*: Jumping on a call, but will send email + SMS previews for you around 3:30-4p ET. @Elyse\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-29 13:43** *User_2Z9G95*: @Elyse — I just tried testing the code HDJECT30, but it wasn't working. Can you please confirm? Thank you!
+- **2025-05-29 13:43** *Elyse*: checking rn
+- **2025-05-29 13:43** *Elyse*: what product did you try
+- **2025-05-29 13:43** *User_2Z9G95*: red light hat and sauna blanket
+- **2025-05-29 13:44** *Elyse*: it would help if i created the code\n\n*Reactions: :face_holding_back_tears: User_2Z9G95*
+- **2025-05-29 13:44** *Elyse*: :woman-facepalming::skin-tone-2:
+- **2025-05-29 13:44** *Elyse*: on it rn
+- **2025-05-29 13:44** *User_2Z9G95*: Thank you!!
+- **2025-05-29 13:44** *Elyse*: remind me what end date was
+- **2025-05-29 13:44** *Elyse*: 4?
+- **2025-05-29 13:44** *User_2Z9G95*: It was 5/28-6/4, but since we're sending today, do you want to extend to 6/5?
+- **2025-05-29 13:44** *Elyse*: well since we’re going out with it today i can make it 5
+- **2025-05-29 13:44** *Elyse*: yes fa\n\n*Reactions: :handshake: User_2Z9G95*
+- **2025-05-29 13:44** *Elyse*: fab
+- **2025-05-29 13:46** *Elyse*: ah i did create it! on 5/22 whew not going crazy
+- **2025-05-29 13:46** *Elyse*: adjusting dates
+- **2025-05-29 13:46** *User_2Z9G95*: Perfect, thank you!
+- **2025-05-29 13:46** *Elyse*: fixed, try now
+- **2025-05-29 13:55** *User_2Z9G95*: Yesss, thank you!
+- **2025-05-29 15:16** *User_2Z9G95*: @Elyse — Ject Miami Email #1 preview sent!
+- **2025-05-29 15:19** *Elyse*: perfecto @User_2Z9G95 let er rip
+- **2025-05-29 15:19** *User_2Z9G95*: Scheduled for 5p ET!
+- **2025-05-29 15:27** *Elyse*: <!here> just got note from Sumish - the MBS and Sculpting Activator Gel will only be available to the US to start
+- **2025-05-29 16:02** *User_2Z9G95*: Great shout! Will update exclusions.
+- **2025-05-29 16:29** *User_2Z9G95*: Just sent A/B test of the teaser email! @Elyse — let us know how they look!
+- **2025-05-29 16:29** *User_2Z9G95*: Will get these scheduled ASAP. There was an issue with the timer, that took longer than envisioned, but everything is working great now!
+- **2025-05-29 16:39** *User_2Z9G95*: @Elyse 5/30 design is also updated for you [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37623-6584&amp;t=vgME02w3aeSdnGN6-1). Thank you!
+- **2025-05-29 17:37** *Elyse*: Fab! Checking all now\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-29 17:42** *User_2Z9G95*: Also just sent the SMS for review. I think the SMS should go out tomorrow morning vs. this afternoon since we see the most SMS engagement during 9-5 — let me know if you're aligned! If we also want to push for a Fri/Sat send we can definitely do that, too!
+- **2025-05-29 17:48** *Elyse*: I was just thinking this, I sent off to Lauren Katie and Ingrid for final sign off so I agree moving to tomorrow and Saturday seems like the move. Also the SMS looks great. Just check the GIF I think it says tone instead of toned
+- **2025-05-29 17:48** *Elyse*: @User_2Z9G95 I just forwarded you the Father’s Day sale details, hot off the press \n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-29 17:49** *User_2Z9G95*: Great! Aligned there and thank you for that! Will get the GIF updated ASAP.
+- **2025-05-29 17:49** *Elyse*: Gonna look at email calendar in the morning and see what tweaks we have to make to include it
+- **2025-05-29 17:49** *User_2Z9G95*: Just saw! Perfect, will get this briefed out\n\n*Reactions: :thank-you: Elyse*
+- **2025-05-29 17:49** *User_2Z9G95*: Thank you!
+- **2025-05-29 18:03** *User_2Z9G95*: Oh and keep me posted on the lead gen CTA for Saturday's email. I created this landing page in Attentive that will add a tag to everyone who enters. We can ask for email and/or SMS! I would recommend SMS over email, or the both together.\n\n📎 **Screenshot 2025-05-29 at 4.01.33 PM.png** (png, 1.1MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UZ5VGVJ5/screenshot_2025-05-29_at_4.01.33___pm.png)\n📎 **Screenshot 2025-05-29 at 4.01.47 PM.png** (png, 1.1MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UF867E3Y/screenshot_2025-05-29_at_4.01.47___pm.png)\n📎 **Screenshot 2025-05-29 at 4.01.53 PM.png** (png, 1.1MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UE8T1E1H/screenshot_2025-05-29_at_4.01.53___pm.png)
+- **2025-05-29 18:18** *Elyse*: Yeah agreed
+- **2025-05-29 18:18** *Elyse*: I’ll confirm with IMC but agreed on SMS
+- **2025-05-29 18:19** *Elyse*: Also think we could then use that link for social
+- **2025-05-29 18:19** *Elyse*: @María José Castro FYI ^^
+- **2025-05-29 18:19** *María José Castro* joined the channel
+- **2025-05-29 18:19** *User_2Z9G95*: Yes totally!
+- **2025-05-29 18:22** *Elyse*: @Ingrid are you aligned w that? We already have these folks’ emails so would be redundant to collect again, but we can prompt them to sign up for SMS and then push launch SMS a little earlier than the email 
+- **2025-05-29 18:23** *Elyse*: @María José Castro can share this link over social as well to collect numbers. Maybe on stories?
+- **2025-05-29 18:23** *Elyse*: @User_2Z9G95 maybe link @María José Castro uses can collect email and sms 
+- **2025-05-29 18:23** *Elyse*: And link we use for email can just collect sms 
+- **2025-05-29 18:24** *User_2Z9G95* 💬 9 replies: That works!
+- **2025-05-30 09:00** *User_2Z9G95*: Morning @Elyse — RE discount codes, I was connecting with a Klaviyo and Attentive rep to figure out the best way to go about generating the coupon codes for each platform. They both recommended we create a list of unique codes through Shopify and then upload that list to both Klaviyo and Attentive to pull from. We'd need to select "one use per customer” for the code settings to ensure people can only use one code (even if they get sent two (i.e. if they got one code from Attentive and one from Klaviyo)).  
+  
+Thoughts? This is likely the best way to ensure people can only use one code, while still leveraging both platforms.  
+  
+If so, here's what we'd need you to do in Shopify:  
+**Go to:** Shopify Admin → **Discounts**  
+Click **“Create Discount” → “Discount Code”**  
+Choose:  
+• Discount Type: e.g., **15% off**  
+• Applies to: e.g., all products or your launch collection  
+• Limit to one use per customer (highly recommended)  
+Under **"Discount Code"**, choose:  
+• **“Generate a batch of codes”**  
+• Example format: `LAUNCH15-XXXX` (Shopify will auto-randomize)  
+• Generate enough for both platforms (e.g., 10,000 codes)  
+Save and export the codes as a **CSV**.  
+  
+From there, I can upload to both Klaviyo and Attentive and get the campaigns scheduled. Let me know what you think, so we can get this going! Thanks!
+- **2025-05-30 09:01** *Elyse*: Teaser 1 is good to go @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 09:02** *Elyse*: Ok I’ll get started on codes!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-30 09:29** *User_2Z9G95*: Let me know if you have any questions!
+- **2025-05-30 10:09** *User_2Z9G95*: @Elyse — Teaser #1 scheduled for 12p ET with the following segments. Confirming all international segments are excluded!\n\n📎 **Screenshot 2025-05-30 at 8.01.47 AM.png** (png, 120.7KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UJ0F43AP/screenshot_2025-05-30_at_8.01.47___am.png)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-30 10:13** *User_2Z9G95*: @Elyse — One final SMS preview sent for good measure with updated GIF!
+- **2025-05-30 10:14** *Elyse*: just saw - good to go
+- **2025-05-30 10:17** *User_2Z9G95*: Scheduled for today at 12p ET!
+- **2025-05-30 10:21** *Elyse*: Ok codes are underway!
+- **2025-05-30 10:21** *Elyse*: using our bulk discount code generator
+- **2025-05-30 10:21** *Elyse*: its importing!
+- **2025-05-30 10:21** *User_2Z9G95*: fabulous!
+- **2025-05-30 10:24** *User_2Z9G95*: @Elyse — Updated teaser #2 email ready for review [HERE](https://www.figma.com/design/7PFFx2EvniBHSm5pPlNygv/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-May-2025?node-id=37623-6584&amp;t=JF9XtgGasNy1QAnQ-1). What CTA are you using on social for the sign up? Want to keep it consistent: join the waitlist, get early access, etc.?\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 10:29** *Elyse*: @María José Castro can you chime in here please
+- **2025-05-30 10:32** *María José Castro* 💬 5 replies: Hey hey, could you share the link i should use to promote on stories? We’ll use “get early access” as the CTA
+- **2025-05-30 10:32** *Elyse*: @User_2Z9G95 blog link for bottom of teaser 2: [https://higherdose.com/blogs/the-high-life-blog/tagged/flow](https://higherdose.com/blogs/the-high-life-blog/tagged/flow)
+- **2025-05-30 10:33** *Elyse*: New blog category called Flow will house all lymphatic health, fascia, microcurrent, MBS related articles
+- **2025-05-30 11:05** *Elyse*: @User_2Z9G95 codes\n\n📎 **Body Sculptor Launch-export-5-30-2025-12-04-47-PM.csv** (csv, 117.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UBHA2ER5/body_sculptor_launch-export-5-30-2025-12-04-47-pm.csv)
+- **2025-05-30 11:11** *Jessica Alcalde* joined the channel
+- **2025-05-30 11:26** *User_2Z9G95*: @Elyse — Can you confirm codes are live 6/2-6/5 only right?
+- **2025-05-30 11:26** *Elyse*: i started them today so we could test if need be
+- **2025-05-30 11:26** *Elyse*: but yes only til 6/5
+- **2025-05-30 11:26** *User_2Z9G95*: ok great!
+- **2025-05-30 11:27** *User_2Z9G95*: Working with attentive and klaviyo to get them activated, so will ping when we're ready to QA
+- **2025-05-30 11:39** *User_2Z9G95*: @Elyse — The two sign up units are ready for review and QA! If you can go into both and QA them that would be great. If you have any feedback on the messaging, let me know, too!  
+  
+[LINK TO IG SIGN UP](https://higherdose.attn.tv/p/MV1/landing-page)  
+[LINK TO 5/31 EMAIL SIGN UP](https://higherdose.attn.tv/p/lDy/landing-page)
+- **2025-05-30 11:40** *User_2Z9G95*: @Elyse — I also think we should update pop-up to reflect the launch + create a new welcome flow. Are you aligned/can I let Alia know? We can create the email + SMS once the codes are uploaded.
+- **2025-05-30 11:41** *Elyse*: aligned!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-30 12:23** *User_2Z9G95*: Hi @Elyse — Are those sign ups good to go?
+- **2025-05-30 12:23** *Elyse*: checking rn! thank you for ping!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 12:23** *Elyse*: both look good
+- **2025-05-30 12:25** *User_2Z9G95* 💬 1 reply: This is the SMS they'll get upon joining, and the email they get will be the one we sent today with this SL and PT:  
+  
+SL: You've got early access!  
+PT: VIP Pre-Sale dropping June 2nd at 10am EST\n\n📎 **Screenshot 2025-05-30 at 10.24.09 AM.png** (png, 78.2KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08V3NKQS49/screenshot_2025-05-30_at_10.24.09___am.png)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-30 12:25** *User_2Z9G95*: @María José Castro — You're good to share this link in Stories. Thank you!! [https://higherdose.attn.tv/p/MV1/landing-page](https://higherdose.attn.tv/p/MV1/landing-page)
+- **2025-05-30 12:26** *María José Castro*: amazing, thanks!
+- **2025-05-30 12:51** *Elyse*: @User_2Z9G95 any ETA on launch email designs?
+- **2025-05-30 12:51** *User_2Z9G95*: Yes! [6/2 ready for review HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;p=f&amp;t=JTfP9B2oYmmIlMxw-0).
+- **2025-05-30 12:51** *Elyse*: @User_2Z9G95 teaser #2 can we move to preview email so I can send to lb/kk for final eyes?
+- **2025-05-30 12:51** *User_2Z9G95*: Yes, getting this uploaded as we speak!
+- **2025-05-30 12:52** *Elyse*: ok fab, ingrid/jess and i just reviewed, looks good want to send to them for final eyes
+- **2025-05-30 12:52** *User_2Z9G95*: There's 2 versions for 6/2 with the alt header/body messaging!
+- **2025-05-30 12:58** *Elyse*: @User_2Z9G95 Design for 6/2 email is veryyyyy underwhelming. Just reviewed with Ingrid and Jess - we’d love to see stronger images overall, much more exciting. This is the grand reveal, need it to feel exciting and compelling. Needs a rework overall please
+- **2025-05-30 13:02** *User_2Z9G95* 💬 2 replies: Confirming receipt! Updating creative ASAP. Copy is good, tho?
+- **2025-05-30 13:19** *User_2Z9G95*: @Elyse 5/31 email preview sent!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-05-30 13:27** *Elyse*: shared with execs\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-05-30 13:49** *User_2Z9G95*: @Elyse — Can you re-share a Body Sculptor Ritual Set PDP preview link when you get the chance? The previous one expired!
+- **2025-05-30 13:49** *Elyse*: on it
+- **2025-05-30 13:50** *Elyse*: [https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=8f0401eec0b6b5f6ecfaf9bb2f36708b](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=8f0401eec0b6b5f6ecfaf9bb2f36708b)\n\n**g47flg7x4slgxnmv-22626551.shopifypreview.com**\n🔗 **[Body Sculptor Ritual Set                      – HigherDOSE](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products_preview?preview_key=8f0401eec0b6b5f6ecfaf9bb2f36708b)**
+- **2025-05-30 13:50** *Elyse*: [https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=5a24d4595ddc3c8504cd1c50a8b6d41a](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products*preview?preview*key=5a24d4595ddc3c8504cd1c50a8b6d41a)\n\n**g47flg7x4slgxnmv-22626551.shopifypreview.com**\n🔗 **[Transdermal Magnesium Spray | HigherDOSE](https://g47flg7x4slgxnmv-22626551.shopifypreview.com/products_preview?preview_key=5a24d4595ddc3c8504cd1c50a8b6d41a)**
+- **2025-05-30 13:50** *User_2Z9G95*: Thank you!
+- **2025-05-30 13:51** *Elyse*: @Sumish Khadka btw that still says trans mag spray on the activator gel page ^^
+- **2025-05-30 13:51** *Sumish Khadka* joined the channel
+- **2025-05-30 13:51** *Elyse*: oh whole page still has mag spray info on it
+- **2025-05-30 13:52** *Elyse*: disregard that second link for now @User_2Z9G95 for the gel
+- **2025-05-30 13:53** *User_2Z9G95*: Got it!
+- **2025-05-30 13:58** *User_2Z9G95*: @Elyse — [6/4 email HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=fTKN4FdBNuvgBJ50-1). We haven't integrated your previous feedback, so we'll update the images to make them pop, feel sexier, etc., but if there's any additional feedback, let us know!\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 14:31** *Elyse*: @User_2Z9G95 @Ari Murray can we make sure across sms/ads/etc wherever else it may be that we pull anything having to do with text10 code please\n\n**Chris Jacob**\n> <@U01C255NN3F> in all these new setups can we get rid of text 10 ASAP\n*Slack Conversation | 2025-05-30 14:31*
+- **2025-05-30 14:32** *User_2Z9G95*: @Elyse — For just the purpose of this campaign or for everything?
+- **2025-05-30 14:32** *Elyse*: everything
+- **2025-05-30 14:32** *User_2Z9G95*: Perfect, yep!
+- **2025-05-30 14:32** *User_2Z9G95*: Updating right now
+- **2025-05-30 14:32** *Elyse*: code got leaked online, so have seen some abuse\n\n*Reactions: :shark: Ari Murray*
+- **2025-05-30 14:32** *User_2Z9G95*: On it\n\n*Reactions: :pray: Ari Murray*
+- **2025-05-30 14:33** *User_2Z9G95*: Is it already turned off in Shopify?
+- **2025-05-30 14:33** *Elyse*: double checking now
+- **2025-05-30 15:00** *Elyse*: deactivated now @User_2Z9G95
+- **2025-05-30 15:01** *User_2Z9G95*: @Elyse — Revised 6/2 [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;t=iM06sBmYshRwCx7x-1), with the proto [HERE](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;t=iM06sBmYshRwCx7x-1) - to see the GIFs.\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 15:02** *Elyse*: reviewing!
+- **2025-05-30 15:03** *User_2Z9G95*: Revised 6/4 [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=IY1kZp5WY3aRt0aM-1) with the proto [HERE](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=IY1kZp5WY3aRt0aM-1).
+- **2025-05-30 15:07** *User_2Z9G95*: @Elyse UPDATE RE CODES:  
+  
+Attentive initially said that they could integrate them so that the same customer via email and SMS would get the same code (awesome!). Now it's sounding like there's a chance it won't work (we'll know shortly), but if it doesn't their recommendation is that the coupon code can only be provided via email *or* SMS.  
+  
+Since they aren't totally sure, our recommendation is to pivot to a singular Shopify code that doesn't stack with any other discount (i.e. SCULPT20) - that way we're ensuring its a cohesive experience between both CRM channels and SMS isn't left out because of this code consistency issue. Plus, we want this to be a success and it will only be activated for three days and it's product-specific so the risk of a leak is much lower, yet the risk on the customer is much higher if any of the unique ones are broken.  
+  
+Please let us know your thoughts on this ASAP and we'll update accordingly.
+- **2025-05-30 15:10** *Elyse*: ugh lordy
+- **2025-05-30 15:10** *Elyse*: ok sounds like we don’t have a choice
+- **2025-05-30 15:10** *Elyse*: Will see if we already have a sculpt20 activated, if not fine to do\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-05-30 15:14** *User_2Z9G95*: Ok, keep me posted!
+- **2025-05-30 15:38** *User_2Z9G95*: @Elyse — Let me know if 6/2 is good to upload for previews!
+- **2025-05-30 15:39** *Elyse*: 6/2 version 1
+- **2025-05-30 15:39** *Elyse*: is fab
+- **2025-05-30 15:39** *Elyse*: These are significantly better! Thank you all for the rework!!
+- **2025-05-30 15:40** *Elyse*: 6/4 good for preview too
+- **2025-05-30 15:50** *User_2Z9G95*: Perf, working on these now, thank you!
+- **2025-05-30 16:13** *User_2Z9G95*: @Elyse — Do you have the PDP link that you know will be used for me to link in the email?
+- **2025-05-30 16:19** *User_2Z9G95*: @Elyse – Test sent for 6/2! Please note, there's no links as we'll wait for the PDP link.
+- **2025-05-30 16:20** *Elyse*: wait 6/2 i think we have the wrong version on this test
+- **2025-05-30 16:21** *Elyse*: should be blue bikini girl
+- **2025-05-30 16:21** *Elyse*: version
+- **2025-05-30 16:21** *Elyse*: this version\n\n📎 **Screenshot 2025-05-30 at 5.21.38 PM.png** (png, 202.4KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UV06ULP6/screenshot_2025-05-30_at_5.21.38___pm.png)
+- **2025-05-30 16:21** *User_2Z9G95*: Oh, this one??\n\n📎 **Screenshot 2025-05-30 at 2.21.39 PM.png** (png, 274.2KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0902BRR9PA/screenshot_2025-05-30_at_2.21.39___pm.png)\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-05-30 16:22** *User_2Z9G95*: Fab!! Getting this updated rn, sorry about that
+- **2025-05-30 16:22** *Elyse*: also hang on one sec
+- **2025-05-30 16:22** *Elyse*: putting one copy tweak on the promo portion
+- **2025-05-30 16:22** *Elyse*: i put this same note on 6/4 and didnt put it on 6/2
+- **2025-05-30 16:23** *Elyse*: lets copy this text please\n\n📎 **Screenshot 2025-05-30 at 5.23.09 PM.png** (png, 262.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UV0BQUSY/screenshot_2025-05-30_at_5.23.09___pm.png)
+- **2025-05-30 16:23** *Elyse*: just the text
+- **2025-05-30 16:23** *Elyse*: where in 6/2 we have as a dose vip sentence
+- **2025-05-30 16:24** *Elyse*: yep perfecto
+- **2025-05-30 16:24** *Elyse*: what you have there
+- **2025-05-30 16:24** *Elyse*: lemme confirm rn on sculpt 20
+- **2025-05-30 16:25** *User_2Z9G95*: thank you!
+- **2025-05-30 16:28** *Elyse*: ok done its live
+- **2025-05-30 16:28** *Elyse*: should i deactivate the bulk codes from before?
+- **2025-05-30 16:29** *User_2Z9G95*: Yes, good call
+- **2025-05-30 16:29** *Elyse*: and i’ll deactivate the 200k codes from klaviyo?
+- **2025-05-30 16:30** *User_2Z9G95*: yes!
+- **2025-05-30 16:30** *Elyse*: fab both done
+- **2025-05-30 16:30** *User_2Z9G95*: thank you so much!!\n\n*Reactions: :heartpulse: Elyse*
+- **2025-05-30 16:33** *User_2Z9G95*: 6/2 preview sent!
+- **2025-05-30 16:36** *Elyse*: fab sent to lb/kk for final eyes\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 16:42** *User_2Z9G95*: Just sent 2 SMS variations for review! LMK if you prefer one over the other
+- **2025-05-30 16:42** *User_2Z9G95*: Link will be added when ready, too
+- **2025-05-30 16:43** *Elyse*: second one
+- **2025-05-30 16:43** *User_2Z9G95*: sorry which was the second one I sent haha i forgot :sweat_smile:
+- **2025-05-30 16:43** *Elyse*: benefits list
+- **2025-05-30 16:43** *User_2Z9G95*: love!
+- **2025-05-30 16:51** *User_2Z9G95*: Note RE Segments: The strategy with this is to treat it as a mini sale period, so still focusing on our most engaged but opening it up slightly — to those showing the next highest intent. We have great data from MDW, so we're recommending we send to the same list as the engaged MDW segment that drove the strongest performance with some additions (VIPs, MDW purchasers, etc). Confirming all International will be excluded, too.\n\n📎 **Screenshot 2025-05-30 at 2.49.35 PM.png** (png, 245.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08V4V4SJV7/screenshot_2025-05-30_at_2.49.35___pm.png)
+- **2025-05-30 17:02** *Elyse*: Sounds good
+- **2025-05-30 17:02** *Elyse*: @Ingrid good by you? ^^
+- **2025-05-30 17:04** *User_2Z9G95*: Confirming we'll A/B test these headlines for 6/4 email, but just sent through the preview with one for review/to pass along to the team!\n\n📎 **Screenshot 2025-05-30 at 3.03.55 PM.png** (png, 75.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UM0NJ0T0/screenshot_2025-05-30_at_3.03.55___pm.png)\n\n*Reactions: :eyes: Elyse*
+- **2025-05-30 17:05** *Elyse*: looks great, sent to team\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-05-30 17:06** *User_2Z9G95*: We'll hold on scheduling until we have the live links! If it's easier to wait until Monday morning, happy to do that, too.
+- **2025-05-30 17:49** *User_2Z9G95*: @Elyse — FYI: Teaser 2 scheduled for tomorrow at 12p ET!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-01 18:56** *Elyse*: @User_2Z9G95 launch email good to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-01 18:57** *User_2Z9G95*: Added in the links, too, so we're good to go!
+- **2025-06-02 07:23** *User_2Z9G95*: Good Morning, @Elyse! Sharing a list of outstanding items needed for launch this AM:  
+• I just sent you previews of updated email and SMS with the links for today — just to double confirm. If all looks good — let's send the SMS at 9:45a ET and the email at 10 ET.   
+• We need a photo for the pop-up that Corey shared — let me know if you have one in mind!  
+Confirming we've:  
+• Updated the email welcome series to support the pop-up: It will have two emails sent 1 day apart, [our launch email](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39008-1541&amp;t=czCfFCuK9e0cc5Ev-0) and [this one](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=D6SzCbOgdz9DX6XT-0). Happy to send through previews when you're ready to review.   
+• Updated the SMS welcome series to support the pop-up (attached) — Can also send through a preview when you're ready for review. \n\n📎 **Screenshot 2025-06-01 at 3.04.56 PM.png** (png, 123.7KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08USTHRRLK/screenshot_2025-06-01_at_3.04.56___pm.png)
+- **2025-06-02 07:24** *Elyse*: Morning! @User_2Z9G95 ! Text is good to go
+- **2025-06-02 07:25** *Elyse*: Looking at email again now
+- **2025-06-02 07:27** *Elyse*: 📎 **File.jpg** (jpg, 193.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UTSNDY30/file.jpg)
+- **2025-06-02 07:28** *Elyse*: @User_2Z9G95 I don’t remember us having the same summer’s here copy back to back can you check that please
+- **2025-06-02 07:32** *Elyse*: For pop up for now let’s use this image minus all the text please\n\n📎 **File.jpg** (jpg, 139.0KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UTTF46TG/file.jpg)
+- **2025-06-02 07:33** *Elyse* 💬 1 reply: Should be easy to grab within the folder, lmk if you can’t find I’ll dig
+- **2025-06-02 07:34** *User_2Z9G95*: Good shout — it's still in the Figma file, but will update since we don't need it. What about the 650nm portion?\n\n📎 **Slice 17.jpg** (jpg, 662.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UXDKG03X/slice_17.jpg)
+- **2025-06-02 07:35** *Elyse*: Keep that\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-06-02 07:35** *User_2Z9G95*: Perfect
+- **2025-06-02 07:37** *Elyse*: @User_2Z9G95 on my end  
+• updating Lauren’s blog post with photos today, will send thru live link once finished  
+• Adding photos and uploading Shelly Marshall blog today  
+• Adding photos and uploading Lo Rox blog today  
+Will send live links for all once up!   
+  
+Ping me when 6/3 founders note email is ready to review I’ll get quick eyes on it\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:39** *User_2Z9G95*: Re-sent preview!
+- **2025-06-02 07:39** *Elyse*: Yep good to rock
+- **2025-06-02 07:39** *🤖 Bot*: excited\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:41** *User_2Z9G95*: We have the rest of the MBS content ready for review in this sheet [HERE](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958), also outlined below:  
+• [6/3: MBS Founder's Note + 20% off MBS](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-3912)  
+• [6/4: MBS: Body, Electric + 20% off MBS](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&p=f&t=alBHWHH8p3JB34V9-0)  
+• [6/5: New Subscribers: Miami Event #3](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39026-11452)  
+• [6/5: Activator Gel Spotlight + 20% off MBS](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-14419&p=f&t=1EmZigsA7c7eHxx7-0)  
+• [6/5: Last Chance: Microcurrent Body Sculptor Launch + 20% off MBS](https://docs.google.com/document/d/1Sxhco-fwFJisvZCFD7fG1a7kyER2IUmK94jQq_gslIU/edit?tab=t.n6u8vd1ad4ju)
+- **2025-06-02 07:41** *Elyse*: Perfection. I’ll take Quick Look now and then will grab Ingrid/jess/whoever else is available for second set of eyes\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:42** *Elyse*: So Founder’s note we’ll want to link to Lauren’s blog post at the end, I don’t see that cta and we’ll need some kind of greeting/closing. This is just copy/paste the text I sent over
+- **2025-06-02 07:43** *Elyse*: But overall design looks good, think I like the first one better
+- **2025-06-02 07:43** *User_2Z9G95*: Yes I added a comment in there to add that!
+- **2025-06-02 07:44** *Elyse*: Ok fab thank you
+- **2025-06-02 07:44** *User_2Z9G95*: Are you able to re-send the preview link? I can review and try to pull something now
+- **2025-06-02 07:44** *Elyse*: Sorry looking on my phone so not seeing the comments
+- **2025-06-02 07:44** *User_2Z9G95*: No worries!
+- **2025-06-02 07:44** *Elyse*: Yep for sure hang tight
+- **2025-06-02 07:45** *Elyse* 💬 2 replies: [https://goc3qomj9eh9zlxw-22626551.shopifypreview.com/blogs/the-high-life-blog/body-sculptor-new-summer-body](https://goc3qomj9eh9zlxw-22626551.shopifypreview.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:47** *User_2Z9G95*: Just sent a preview for the JECT Launch specific email. All content is the same except for the 20% off is replaced with 30%, the code is updated, and the disclaimer is updated.
+- **2025-06-02 07:47** *Elyse*: Ok cool
+- **2025-06-02 07:49** *Elyse*: Yep good to fly\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 07:49** *User_2Z9G95*: **One other thing we noticed, we wanted to get your thoughts on:**  
+It looks like 29 email subscribers and 11 SMS subscribers already purchased the Ritual Body Sculptor Kit, prior to us officially launching via email and SMS. Since they bought full price without the promotion, I can foresee there being some complaints if they find out they can get it for 20% off (after having purchased it at full price).  
+  
+**Wanted to get your thoughts on two options for how to handle:**  
+1. Exclude them from all MBS emails this week since they already purchased (we're going to exclude purchasers from ongoing emails regardless, but there's still a chance they could find out about the 20% off promotion, so we'd need a customer service plan in place to manage complaints if so)  
+2. Include them in the MBS email messaging and have a customer service plan in place for people who reach out about purchasing the product prior to receiving the discount and wanting to get the 20% off on their purchase.  
+Please let us know how to proceed with the segmenting of these customers!
+- **2025-06-02 07:50** *Elyse*: Wow interesting
+- **2025-06-02 07:50** *Elyse*: I wonder how they got it
+- **2025-06-02 07:51** *Elyse*: Can you spit me out a list of those peeps please
+- **2025-06-02 07:51** *User_2Z9G95*: Yes!\n\n*Reactions: :thank-you: Elyse*
+- **2025-06-02 07:51** *Elyse*: Otherwise I’m good with #2 we can honor it
+- **2025-06-02 07:51** *Elyse*: Since they purchased prior to launch, I’d want them to get the launch emails and see what it’s all about officially
+- **2025-06-02 07:51** *User_2Z9G95*: I agree with that!
+- **2025-06-02 07:54** *User_2Z9G95*: Looks like I have to contact support to download the lists, so working on that now! Please standby.
+- **2025-06-02 07:54** *Elyse*: Ok no problem don’t go nuts
+- **2025-06-02 07:54** *Elyse*: Just curious
+- **2025-06-02 07:54** *User_2Z9G95*: For sure!
+- **2025-06-02 08:05** *User_2Z9G95*: Maybe one of these could work for the pop-up?\n\n📎 **HigherDose_House_01_052.jpg** (jpg, 3.0MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UT5UMW8K/higherdose_house_01_052.jpg)\n📎 **HigherDose_House_03_291.jpg** (jpg, 2.8MB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08VC41V5R7/higherdose_house_03_291.jpg)
+- **2025-06-02 08:05** *Elyse*: Yep let’s try em 
+- **2025-06-02 08:05** *Elyse*: Both look cool/show the tech in use\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 08:23** *User_2Z9G95* 💬 1 reply: @Elyse Confirming:  
+• SMS is scheduled for 9:45a ET - all subscribers  
+• Email is scheduled for 10a ET - segment threaded  
+• JECT Miami email is scheduled for 10a ET - JECT list\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-02 08:24** *User_2Z9G95*: Here's the segment from Attentive. I can't actually download the Klaviyo one because I only have Manager permissions!\n\n📎 **MBS_Launch_Purchasers - 6.2.25 - Attentive.csv** (csv, 423B) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UXLEDMQD/mbs_launch_purchasers_-_6.2.25_-_attentive.csv)
+- **2025-06-02 08:25** *Elyse*: Ok sweet will check it out
+- **2025-06-02 08:37** *User_2Z9G95*: I just snagged a screenshot for the email purchasers for a quick glance!\n\n📎 **Screenshot 2025-06-02 at 6.37.15 AM.png** (png, 208.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0909BZE2KS/screenshot_2025-06-02_at_6.37.15___am.png)
+- **2025-06-02 08:38** *Elyse*: Hm ok no names stand out to me
+- **2025-06-02 08:38** *Elyse*: Was curious if any of them were like press or brand friendlies etc
+- **2025-06-02 08:39** *User_2Z9G95*: Oh yeah good shout
+- **2025-06-02 08:39** *Elyse*: Wiskybj@aol is a funny email \n\n*Reactions: :joy: User_2Z9G95, :skull: User_2Z9G95*
+- **2025-06-02 08:39** *Elyse*: I thought my elysef99@aol was bad
+- **2025-06-02 08:40** *User_2Z9G95*: Hilarious
+- **2025-06-02 08:42** *User_2Z9G95*: Oh shoot — this sent me to a 404!
+- **2025-06-02 08:58** *Ari Murray*: hi @Elyse @Ingrid our main channel seems to have disconnected from slack so sharing here - would it make sense to hide reviews on the body sculptor ritual set for now on your site? it's new so showing 0 - but probably best to show nothing until reviews are collected?\n\n📎 **Screenshot 2025-06-02 at 9.58.49 AM.png** (png, 15.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08VCDBM7DX/screenshot_2025-06-02_at_9.58.49___am.png)
+- **2025-06-02 08:59** *Ari Murray*: and then a "new" badge could be in it's place?
+- **2025-06-02 08:59** *Elyse*: @Sumish Khadka can you check this out please\n\n*Reactions: :heart: Ari Murray*
+- **2025-06-02 09:49** *Ingrid*: Sumish in my email I had asked to switch that to “write a review”
+- **2025-06-02 09:50** *Ingrid*: (I’ll text him now)\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-02 10:28** *Elyse*: @User_2Z9G95 can we double check that @Jessica Alcalde is on the email list please
+- **2025-06-02 10:28** *Elyse*: She said she didn’t get launch email
+- **2025-06-02 10:34** *Elyse* 💬 2 replies: @User*2Z9G95 try this link for blog post [https://r6bipd351ackddn3-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=dcc269dc6573be1298dcab26cb47c0c2](https://r6bipd351ackddn3-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=dcc269dc6573be1298dcab26cb47c0c2)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 10:40** *User_2Z9G95*: It looks like she was unsubscribed April 11th, 2024. I can manually resubscribe her if she would like!\n\n📎 **Screenshot 2025-06-02 at 8.40.01 AM.png** (png, 363.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08UYJV3Q93/screenshot_2025-06-02_at_8.40.01___am.png)
+- **2025-06-02 10:41** *Elyse*: so bizarre!
+- **2025-06-02 10:41** *Elyse* 💬 2 replies: yes please thank you
+- **2025-06-02 11:23** *Elyse*: <!channel> 911 - can anyone else see this? just got a note from a brand friendly that website was down?
+- **2025-06-02 11:24** *Elyse*: @Chris Jacob @Ingrid @Sumish Khadka
+- **2025-06-02 11:24** *Chris Jacob* joined the channel
+- **2025-06-02 11:24** *Ingrid*: I’m on the site now
+- **2025-06-02 11:24** *User_5S72LT*: site is working for me!
+- **2025-06-02 11:24** *Ingrid*: It’s not down 
+- **2025-06-02 11:24** *User_2Z9G95*: Me, too! Not down!
+- **2025-06-02 11:24** *Ingrid*: Video up though! Looking grade 
+- **2025-06-02 11:24** *Elyse*: what daaaaa
+- **2025-06-02 11:24** *Elyse*: i asked her to send screenshot
+- **2025-06-02 11:24** *Elyse*: maybe its just on her end/computer
+- **2025-06-02 11:25** *User_2Z9G95*: Video looks sooooo good!
+- **2025-06-02 11:34** *Elyse*: whew ok sorry for false alarm
+- **2025-06-02 11:34** *Elyse*: thanks all for checking\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-02 11:35** *Elyse*: <!here> our WWD exclusive is live as well! [EXCLUSIVE: Wellness Tech Company HigherDose Launches Three-in-one Sculpting Body Recovery Device](https://wwd.com/beauty-industry-news/wellness/higherdose-body-recovery-device-launch-red-light-lymphatic-1237873623/)\n\n**WWD**\n🔗 **[EXCLUSIVE: Wellness Tech Company HigherDose Launches Three-in-one Sculpting Body Recovery Device](https://wwd.com/beauty-industry-news/wellness/higherdose-body-recovery-device-launch-red-light-lymphatic-1237873623/)**\n> Wellness technology company HigherDose is launching a body recovery device with red light and micro current to address lymphatic, fascia and muscle.\n*2025-06-02 00:00*\n\n*Reactions: :bangbang: User_2Z9G95, Ari Murray, :light-blue-heart: User_PT7LCE, Ari Murray*
+- **2025-06-02 11:35** *Elyse*: full clip\n\n📎 **WWD x HigherDOSE 6.2.25.pdf** (pdf, 2.9MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08UUDP55H9/wwd_x_higherdose_6.2.25.pdf)
+- **2025-06-02 11:47** *Elyse*: Diving into design review rn @User_2Z9G95\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 12:48** *Elyse*: @User_2Z9G95 6/4 email can you send me proto version so we can see the gif in action please
+- **2025-06-02 12:49** *Elyse*: on a screenshare with team as we speak
+- **2025-06-02 12:49** *User_2Z9G95*: Yes!
+- **2025-06-02 12:49** *User_2Z9G95*: @Elyse — [https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly[…]gns-%E2%80%93-June-2025?node-id=39015-551&amp;t=Y262Pn2muJbze4f7-1](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39015-551&amp;t=Y262Pn2muJbze4f7-1)
+- **2025-06-02 13:23** *Elyse*: @User_2Z9G95 dropped in notes  
+• 6/3 I’m gonna edit LB’s text to shorten it a bit, lot of text visually  
+• 6/4 added a note at the bottom  
+• 6/5 miami reviewing now  
+• 6/5 activator gel left some notes there as well  
+• 6/5 text, left notes there\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 13:24** *Elyse* 💬 1 reply: also we LOVED the “little bit of foreplay goes a long way”\n\n*Reactions: :fire: User_2Z9G95, User_5S72LT, User_PT7LCE*
+- **2025-06-02 13:24** *Elyse*: very hd coded\n\n*Reactions: :fire: User_2Z9G95, User_5S72LT, User_PT7LCE*
+- **2025-06-02 13:24** *User_2Z9G95*: All feedback is with design! Thank YOU!
+- **2025-06-02 13:52** *User_2Z9G95*: Hi @Elyse — Do you all have a time for the Father's Day sale launch? 11a-12p ET is a typically good timeframe (not too late, not too early). Let us know!
+- **2025-06-02 13:53** *Elyse*: yeah should be good - I’d imagine we’ll have it live on site for midnight EST so whenever you think is good for email we’re down with\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-06-02 14:01** *User_2Z9G95*: @Elyse – Keep me posted on condensed copy for tomorrow's email, too!
+- **2025-06-02 14:01** *Elyse*: Inhaling some lunch and jumping into it\n\n*Reactions: :green_salad: User_2Z9G95*
+- **2025-06-02 14:01** *Elyse*: Launch day vibes! :rolling*on*the*floor*laughing: :tada: \n\n*Reactions: :sweat_smile: User_2Z9G95*
+- **2025-06-02 14:57** *Elyse*: Launch SMS is crushinggggg\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 14:57** *Elyse* 💬 6 replies: @User_2Z9G95 i just dropped revisions into 6/3 google doc and sent to team for review. lmk any prelim thoughts while we wait for team!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-02 14:58** *User_2Z9G95*: Getting a second SMS queued up for tomorrow!
+- **2025-06-02 14:58** *User_2Z9G95*: Thank you, will take a look!
+- **2025-06-02 14:59** *🤖 Bot*: hell yeah
+- **2025-06-02 14:59** *Elyse*: to sms for tomorrow
+- **2025-06-02 15:02** *Elyse*: on second thought, @Ingrid would like to space it out by another day to avoid fatigue with non purchasers
+- **2025-06-02 15:04** *User_2Z9G95*: That works!
+- **2025-06-02 15:25** *User_2Z9G95*: @Elyse — 6/3 updated design [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-3912&amp;t=q9tswgj64w3QybKx-1). If all looks good, I'll get it uploaded for a preview.
+- **2025-06-02 15:30** *Elyse*: sent to team, but left two notes on it in the meantime\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-06-02 15:33** *User_2Z9G95*: Thank you!!
+- **2025-06-02 15:36** *Elyse*: good to move to preview
+- **2025-06-02 15:36** *Elyse*: once we add little closing sign off from lb/kk
+- **2025-06-02 15:36** *User_2Z9G95*: Perfect!
+- **2025-06-02 15:36** *Elyse*: once in preview i’ll shoot to lb/kk for final eyes and we can schedule
+- **2025-06-02 15:37** *Elyse*: i am waiting for a few photos from our graphic designer but in the meantime gonna publish this article as is so you have live link
+- **2025-06-02 15:38** *Elyse*: [https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)\n\n**higherdose.com**\n🔗 **[Introducing the HIGHERDOSE Body Sculptor                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)**
+- **2025-06-02 15:38** *User_2Z9G95*: Thank you!
+- **2025-06-02 15:48** *User_2Z9G95*: Uploading now!
+- **2025-06-02 16:04** *User_2Z9G95*: Preview sent! We didn't discuss SL and PTs, so happy to modify! Some alts:  
+  
+SL: Thank you for the support!  
+PT: Meet the magic of microcurrent  
+  
+SL: Meet the magic of microcurrent  
+PT: Sculpt. Tone. Release  
+  
+SL: Meet the magic of microcurrent  
+PT: 20% off is ending soon  
+  
+SL: Thank you for the support!  
+PT: Your 20% off is ending soon
+- **2025-06-02 16:32** *Elyse*: 2
+- **2025-06-02 16:32** *Elyse*: actually
+- **2025-06-02 16:32** *Elyse*: can we a/b test 2 and 3
+- **2025-06-02 16:34** *User_2Z9G95*: For sure!
+- **2025-06-02 18:02** *Elyse*: @User_2Z9G95 notes from Fiona on founders note \n\n📎 **IMG_1238.png** (png, 273.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V0SELPPF/img_1238.png)
+- **2025-06-02 18:46** *User_2Z9G95*: Fab! Getting this updated, thank you!
+- **2025-06-03 07:08** *Elyse*: @User_2Z9G95 got word that HdJect30 got leaked online
+- **2025-06-03 07:14** *Elyse*: But not worried, I just checked it’s only been used once
+- **2025-06-03 08:33** *User_2Z9G95*: Thank you for letting me know! Let’s keep monitoring it for sure. 
+- **2025-06-03 08:52** *User_2Z9G95*: @Elyse — Just sent an updated preview with the A/B test for the founders note email for today!
+- **2025-06-03 09:56** *Elyse*: Checking it out
+- **2025-06-03 09:58** *Elyse*: So @User_2Z9G95 we’re missing the closing sign off - like thanks, Lauren, Katie and the HigherDose team
+- **2025-06-03 09:58** *Elyse*: That was my note yesterday about sign off, I meant like an actual closing of the “letter”
+- **2025-06-03 09:59** *User_2Z9G95*: Got it, updating now
+- **2025-06-03 10:00** *User_2Z9G95*: @Elyse — Should it go at the very end after visit our blog here?
+- **2025-06-03 10:00** *Elyse*: What do you think?
+- **2025-06-03 10:01** *Elyse*: Or before the cta button?
+- **2025-06-03 10:01** *Elyse*: I’m neutral
+- **2025-06-03 10:01** *User_2Z9G95*: I'll look at both
+- **2025-06-03 10:13** *User_2Z9G95*: @Elyse – [Updated](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39197-3912&amp;p=f&amp;t=1fpRDC6C0Hpy6sKq-0)! I think the one with it above the CTA looks best.
+- **2025-06-03 10:23** *Elyse*: Agreed above button FTW\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 10:34** *User_2Z9G95*: @Elyse — Updated sent for review!
+- **2025-06-03 10:36** *Elyse*: Fab will look rn\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 11:05** *Elyse*: Looks good, just sent to team for quick review\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 12:23** *User_2Z9G95*: @Elyse — Just passed along the following previews for review!  
+• 6/4 Version A - Body, Electric  
+• 6/4 Version B - Body, Electric  
+• 6/5 Activator Gel Spotlight  
+• 6/5 JECT Miami Last Chance  
+[6/4 MMS copy is ready for your review here, too](https://docs.google.com/document/d/14WNXke3SMNfXECcQdrjDFHSSI2dzw3Dr1awNSdLgSls/edit?tab=t.mbioth74bdcz)! We'll have it paired with a reviews GIF.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-03 12:25** *Elyse*: Diving into this in one sec!
+- **2025-06-03 12:31** *User_2Z9G95*: @Elyse — Also when you get a chance can you confirm if this email is driving to a blog post or if the email itself should be a tad more long-form?\n\n📎 **Screenshot 2025-06-03 at 10.31.12 AM.png** (png, 176.3KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F08V9ECS7C4/screenshot_2025-06-03_at_10.31.12___am.png)
+- **2025-06-03 12:51** *Elyse*: will drive to blog post
+- **2025-06-03 12:52** *Elyse*: but would love to see that info sprinkled in there
+- **2025-06-03 12:53** *User_2Z9G95*: Will it be on of these? Or a separate one?  
+• Shelly Marshall   
+• Lo Rox
+- **2025-06-03 12:53** *Elyse*: separate, dedicated to that topic
+- **2025-06-03 12:54** *Elyse*: will send you the brief hang on
+- **2025-06-03 13:46** *Elyse*: Body Electric’s good to go
+- **2025-06-03 13:49** *Elyse*: @User_2Z9G95 can you resend both 6/5 emails for me please
+- **2025-06-03 13:49** *Elyse*: Can’t seem to find in my inbox
+- **2025-06-03 13:50** *User_2Z9G95*: Confirming today's is scheduled for 3p ET!
+- **2025-06-03 13:50** *User_2Z9G95*: Yes, re-sending now!
+- **2025-06-03 13:55** *Elyse*: [https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body) live with new photos!\n\n**higherdose.com**\n🔗 **[Introducing the HIGHERDOSE Body Sculptor                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/body-sculptor-new-summer-body)**
+- **2025-06-03 13:55** *Elyse*: just in time
+- **2025-06-03 13:58** *Elyse*: @User_2Z9G95 gel activator email needs the L in Gel in bold
+- **2025-06-03 13:58** *Elyse*: 📎 **Screenshot 2025-06-03 at 2.58.21 PM.png** (png, 789.0KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V6A24M2R/screenshot_2025-06-03_at_2.58.21___pm.png)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 13:59** *User_2Z9G95*: Looks so good!
+- **2025-06-03 14:01** *Elyse*: after that format fix, good to go on that one
+- **2025-06-03 14:02** *Elyse*: 6/5 ject gucci to go too
+- **2025-06-03 14:03** *Elyse*: left note on doc for 6/4 sms
+- **2025-06-03 14:03** *User_2Z9G95*: Re-sent 6/5 with Gel bolded to triple confirm
+- **2025-06-03 14:03** *Elyse*: only thing on ject email, needs promo disclaimer at the bottom
+- **2025-06-03 14:05** *Elyse*: perfecto on Gel!
+- **2025-06-03 14:06** *User_2Z9G95*: Re-sent JECT with updated disclaimer!
+- **2025-06-03 14:07** *Elyse*: perfecto, good to go
+- **2025-06-03 14:15** *User_2Z9G95*: Woohoo, thank you! Just sent the preview for tomorrow's SMS, too. Confirming:  
+• 6/4 scheduled for 10a local  
+• Both 6/5 scheduled for 11a local
+- **2025-06-03 14:16** *Elyse*: good to go
+- **2025-06-03 14:36** *User_2Z9G95*: 6/4 SMS is scheduled for tomorrow at 10a local!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-03 15:45** *User_2Z9G95*: @Elyse @Ingrid — I'm so sorry, I misspoke on the attribution window for Attentive. I thought 3 days was the default, but I realized the brand I worked on previously had manually updated that. I just triple checked in our account and the default in Attentive, which is what we have is: 1 day view thru and 30 days click thru. As we onboard to Postscript we can figure out what theirs is and modify if we see fit.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-03 15:47** *Elyse*: @User_2Z9G95 @Ari Murray would also love your thoughts on Alia vs Postscript for popup - if we think Alia’s performance is strong enough to continue beyond free trial or if we think Postscript’s capabilities are just as good and under one roof?  
+cc @Ingrid @Chris Jacob
+- **2025-06-03 15:54** *Ari Murray*: @Elyse our preferred stack is alia popup + postscript backend. we don't use the postscript popup when we have the option for alia as we've historically seen the best results with alia as popup and postscript behind it! cc @User_2Z9G95\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-03 16:18** *Elyse*: @User_2Z9G95 Shelly Marshall blog [https://higherdose.com/blogs/the-high-life-blog/fascia-lymphatic-shelly-marshall-interview](https://higherdose.com/blogs/the-high-life-blog/fascia-lymphatic-shelly-marshall-interview)\n\n**higherdose.com**\n🔗 **[Beauty, Fascia &amp; Lymphatic Healing with Shelly Marshall                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/fascia-lymphatic-shelly-marshall-interview)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 16:22** *User_2Z9G95*: Thank you! Also — when you get the chance do you mind reviewing the following?:  
+• [Father's Day Flash copy is ready for your review](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)  
+• Can you please share the blog for the 6/12 send: Dad's who DOSE  
+• Can you please share the blog/additional context for the 6/15 send: Dad's who DOSE (David)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-03 16:23** *Elyse*: On it!
+- **2025-06-03 16:30** *Elyse*: Content brief for RL therapy blog [https://docs.google.com/document/d/1ArSBGKKfj1FME6gblXXUXEUWsJgN6uyrftl*xhJD2RU/edit?tab=t.0](https://docs.google.com/document/d/1ArSBGKKfj1FME6gblXXUXEUWsJgN6uyrftl*xhJD2RU/edit?tab=t.0)\n\n📎 **HigherDOSE Content Brief** (gdoc, 108.1KB) - [Download](https://docs.google.com/document/d/1ArSBGKKfj1FME6gblXXUXEUWsJgN6uyrftl_xhJD2RU/edit?tab=t.0)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 16:31** *Elyse*: Sitting with talent, content due date of 6/9\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-03 16:37** *Elyse*: @User*2Z9G95 david’s content - I’m gonna edit a little bit but here’s raw cut [https://docs.google.com/document/d/1hwzi4*Hm4MtQzyDt2BXidu1F*oz9-XeywmaqmlfKYaM/edit?tab=t.0](https://docs.google.com/document/d/1hwzi4*Hm4MtQzyDt2BXidu1F_oz9-XeywmaqmlfKYaM/edit?tab=t.0)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 08:18** *Elyse*: Morning all! @User_2Z9G95 something to add to our flow revamp list - the wonderment emails about shipping. I just got an order shipped email and it needs the new footer and the Zoe kravitz pic removed \n\n📎 **IMG_1279.png** (png, 1.0MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08V6DWR79U/img_1279.png)
+- **2025-06-04 09:32** *User_2Z9G95*: @Elyse — Confirming any emails with the outdated footer are good to be updated with the new footer? I'll start compiling a list and can get these swapped out ASAP\n\n*Reactions: :+1::skin-tone-3: Elyse, :+1: Ingrid*
+- **2025-06-04 11:21** *User_2Z9G95* 💬 4 replies: Hi @Elyse — [Father's Day flash content is ready for review (highlighted in green)](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)! Let us know if you have any thoughts/feedback before we pass to design. Thank you!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)
+- **2025-06-04 11:35** *Elyse*: 📎 **Screenshot 2025-06-04 at 12.35.14 PM.png** (png, 124.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F08VC6Z4JPP/screenshot_2025-06-04_at_12.35.14___pm.png)
+- **2025-06-04 11:35** *Elyse*: will dive into father’s day stuff now!
+- **2025-06-04 12:29** *User_2Z9G95*: @Elyse — Granted! Sorry for the hold up.
+- **2025-06-04 12:30** *Elyse*: all good np
+- **2025-06-04 12:30** *Elyse*: leaving comments now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 12:30** *User_2Z9G95*: Nice! based on your screenshot, I noticed some things will need to be updated! So yes please make any copy tweaks and we'll give it another pass through after!
+- **2025-06-04 12:31** *Elyse*: across the board we need to update copy around code usage
+- **2025-06-04 12:31** *Elyse*: its the same as mdw basically, where its no code for the bundles but yes code for the solo tech
+- **2025-06-04 12:31** *User_2Z9G95*: Ok, fab! Yep we will get this updated ASAP
+- **2025-06-04 12:42** *User_2Z9G95*: @Elyse — I think the collections page with homepage CTA is a good idea! Let me know if you end up doing that, we would want to drive all emails to that page.
+- **2025-06-04 12:43** *Elyse*: totally
+- **2025-06-04 12:43** *Elyse*: Sumish is putting it together, will circulate link when its ready!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 12:45** *User_2Z9G95*: Dad's who dose for 6/12 copy is also ready [HERE](https://docs.google.com/document/d/1q8OKM*SGEGIJjPqxtcwbK*l6Q5cxNS2YwFdvk3-frfM/edit?tab=t.0)! Access granted.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :eyes: Elyse*
+- **2025-06-04 12:45** *User_2Z9G95*: Updating Father's Day now
+- **2025-06-04 13:12** *User_2Z9G95*: @Elyse — [Father's Day is updated](https://docs.google.com/document/d/1Lf6zZN9SEpJZCqSYfDVki6EsmMLDVZyOK7sMw8dd-44/edit?tab=t.kny4eaz90qri). Thank you!\n\n*Reactions: :eyes: Elyse*
+- **2025-06-04 13:29** *Elyse*: I think we also have to be careful/mindful of our use of “pain relief” from legal perspective. Using that a lot in the father’s day stuff
+- **2025-06-04 13:32** *User_2Z9G95*: Ok good shout! What has legal said specifically? Should we avoid it altogether? What can we say instead? Eases paid, eases sore muscles, etc.?
+- **2025-06-04 13:32** *Elyse*: Just that its a bold/medical claim
+- **2025-06-04 13:32** *Elyse*: so eases sore muscles, soothes tense muscles etc\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 13:34** *Elyse*: things of that nature
+- **2025-06-04 13:34** *Elyse*: like with MBS, people reported pain relief - we can’t say that, but talent can
+- **2025-06-04 13:35** *Elyse*: so if influencer posts oh relieved pain in my sore xyz thats fine, but we can’t say will relieve xyz pain
+- **2025-06-04 13:35** *Elyse*: so just wanna be mindful of our use there
+- **2025-06-04 13:37** *Elyse*: I’d love if we could take a second spin through Father’s Day doc with that in mind @User_2Z9G95
+- **2025-06-04 13:38** *Elyse*: I left a few notes on the doc, circulating to team now as well
+- **2025-06-04 13:44** *Elyse*: Gave first round notes on 6/12 as well @User_2Z9G95
+- **2025-06-04 14:12** *Elyse*: @User_2Z9G95 can you update access on site abandonment flow as well pls
+- **2025-06-04 14:14** *Elyse*: also @User_2Z9G95 father’s day flash sale should be 48 hours instead of 24
+- **2025-06-04 14:33** *Elyse*: @User_2Z9G95 just went through all the flows except welcome, will dive into that shortly. Left a bunch of notes but also circulated to the team so feel free to not make any adjustments yet til we get some more eyes on these\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-04 14:33** *User_2Z9G95*: Thank you so much!!!!
+- **2025-06-04 16:13** *User_2Z9G95*: @Elyse — [Father's Day emails have been updated](https://docs.google.com/document/d/1Lf6zZN9SEpJZCqSYfDVki6EsmMLDVZyOK7sMw8dd-44/edit?tab=t.0)!
+- **2025-06-05 08:20** *Elyse*: Fab! Will dive in first thing this morning
+- **2025-06-05 09:25** *User_2Z9G95*: Thank you! As a side — I was going through the rest of the existing flows yesterday and wanted to get some clarity on additional ones we can update:  
+1. All of the subscription related ones — how recently were those updated? Are you interested in a full redesign or just updating the footer?  
+2. What is Reclaim? Are those flows still active and being used? They haven't triggered anything this year so I'm assuming not, but want to check! Safe to say we can disregard those?  
+3. Loyalty Lion flows — how recently were those updated? Same note as subscription, we're happy to redesign!
+- **2025-06-05 10:04** *Elyse*: All flows probably last updated within maybe a year or two. Could definitely use a full refresh across the board\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-05 10:04** *Elyse*: I’d love your thoughts on the Loyalty Lion ones, if there’s anything we can be optimizing there
+- **2025-06-05 11:08** *User_2Z9G95*: Perfect! This is super helpful context. We’ll keep prioritizing the pre purchase ones (cart, welcome, etc). and will get optimizations integrated for those, too! 
+- **2025-06-05 11:43** *User_2Z9G95*: @Elyse — Just saw this feedback from a customer via Attentive. Do you know if she already reached out via email?\n\n📎 **Screenshot 2025-06-05 at 9.42.44 AM.png** (png, 95.9KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F090JQ0K8SV/screenshot_2025-06-05_at_9.42.44___am.png)
+- **2025-06-05 11:43** *Elyse*: hm whats phone number/contact info
+- **2025-06-05 11:43** *Elyse*: i’m sure if she got that reply of reach out via email she probably did and we honored
+- **2025-06-05 11:43** *User_2Z9G95*: Ope! Sorry i cropped it out on accident
+- **2025-06-05 11:44** *Elyse*: but would love to check anyway
+- **2025-06-05 11:44** *User_2Z9G95*: Aimee McBain  
+<tel:+19086192624|+1 908-619-2624>
+- **2025-06-05 11:44** *Elyse*: fab just forwarded to cs team\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-05 11:44** *Elyse*: great catch ty!
+- **2025-06-05 11:45** *User_2Z9G95*: Of course!
+- **2025-06-05 11:53** *Elyse*: just finished adding in notes/approvals for Fath’ers Day doc
+- **2025-06-05 11:53** *Elyse*: oh ok thats where i’m punctuating father’s day\n\n*Reactions: :skull: 4*
+- **2025-06-05 11:53** *Elyse*: happy thursday everyone
+- **2025-06-05 11:53** *Elyse*: :melting_face:
+- **2025-06-05 11:54** *User_2Z9G95*: It’s little Friday :hugging_face: 
+- **2025-06-05 11:54** *Elyse*: it really is
+- **2025-06-05 13:01** *User_2Z9G95*: Hi @Elyse — Just sent the SMS preview for this afternoon's SMS for the last chance 20% off. Confirming we're excluding purchasers and non-US subscribers. The 6p and 8p ET send performed well for us for the MDW last chance messaging, so we'll plan to send it at 6p ET today.
+- **2025-06-05 13:01** *Elyse*: good to fly\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-05 13:02** *User_2Z9G95*: Woohoo! Letting Cory know now about the pop-up switch. I think you mentioned the code is live until tomorrow, but let's plan to still revert everything back 11:59p ET tonight?\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-05 14:25** *User_2Z9G95*: Confirming SMS is scheduled for today at 6p ET.\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-06-05 15:40** *User_2Z9G95*: @Elyse — [Added more context into Father's Day sale email #1 for review](https://docs.google.com/document/d/1Lf6zZN9SEpJZCqSYfDVki6EsmMLDVZyOK7sMw8dd-44/edit?tab=t.0)!\n\n*Reactions: :eyes: Elyse*
+- **2025-06-05 15:57** *Elyse* 💬 1 reply: added note\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-05 17:58** *User_2Z9G95*: @Elyse — If you get the chance, two Father's Day emails are ready for review!  
+• 6/8:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=5b7vG2eKvTpPOmrB-1)  
+    ◦ [PROTO](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=HsFCB2NgYxEeQfy9-1)  
+• 6/9 [AM]:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39475-4205&amp;t=5b7vG2eKvTpPOmrB-1)  
+Just waiting on 6/9 PM, which we should have later this evening, so I'll pass it along tomorrow along with the SMS tests. Let me know if you have any questions, thank you and have a great evening!
+- **2025-06-06 07:46** *Elyse* 💬 3 replies: @User_2Z9G95  
+• 6/8:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=5b7vG2eKvTpPOmrB-1) - added a couple notes  
+    ◦ [PROTO](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39454-6289&amp;t=HsFCB2NgYxEeQfy9-1) - gifs look great  
+• 6/9 [AM]:  
+    ◦ [LINK](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39475-4205&amp;t=5b7vG2eKvTpPOmrB-1) - looks good, added on capitalization correction  
+\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-06 08:32** *User_2Z9G95*: FYI pop up and welcome were reverted last night! Thanks! 
+- **2025-06-06 12:50** *User_2Z9G95*: Hi @Elyse! Following up here with our finalized Father's Day Strategy. We recommend holding on the third SMS and segmenting the first one to ensure we're targeting those who are engaged first, and then broadening it (to avoid fatigue and overcommunication). Please let us know if you have any thoughts/questions.  
+  
+• Email 6/8:  
+    ◦ Engaged segments (purchasers + non-purchasers)  
+• MMS 6/8:  
+    ◦ Engaged L365  
+• Email 6/9:  
+    ◦ Engaged segments (purchasers + non-purchasers), but exclude anyone who just purchased during the sale  
+• SMS 6/9:  
+    ◦ All subscribers, exclude purchasers  
+• Email 6/9: [PM] Engaged segments (purchasers + non-purchasers), but exclude anyone who just purchased during the sale  
+With that, these are the two SMS we recommend sending. Please let us know if you're aligned!\n\n📎 **Screenshot 2025-06-06 at 10.40.00 AM.png** (png, 261.4KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F09067TU96J/screenshot_2025-06-06_at_10.40.00___am.png)\n📎 **Screenshot 2025-06-06 at 10.40.11 AM.png** (png, 88.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F090B135085/screenshot_2025-06-06_at_10.40.11___am.png)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-06 12:53** *Elyse*: let’s roll
+- **2025-06-06 13:04** *Sumish Khadka*: @Elyse Here is the link for the collection that will have products with Father's Day Deal
+- **2025-06-06 13:04** *Sumish Khadka*: [https://higherdose.com/collections/fathers-day-deals](https://higherdose.com/collections/fathers-day-deals)\n\n**higherdose.com**\n🔗 **[FATHER'S DAY DEALS                      – HigherDOSE](https://higherdose.com/collections/fathers-day-deals)**
+- **2025-06-06 13:08** *User_2Z9G95*: Was just about to ask!!!! Thank you!!
+- **2025-06-06 13:32** *User_2Z9G95*: Hi @Elyse — Final Father's Day email design ready for review [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39473-282&amp;t=dO0p2PfzDqvIhe14-1). Two versions. I also commented some of my feedback.
+- **2025-06-06 13:32** *Elyse*: @User_2Z9G95 Now live: Fascia &amp; Body Intelligence with Lauren Roxburgh [https://higherdose.com/blogs/the-high-life-blog/fascia-body-intelligence-lauren-roxburgh-interview](https://higherdose.com/blogs/the-high-life-blog/fascia-body-intelligence-lauren-roxburgh-interview)\n\n**higherdose.com**\n🔗 **[Fascia &amp; Body Intelligence with Lo Roxburgh                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/fascia-body-intelligence-lauren-roxburgh-interview)**
+- **2025-06-06 13:35** *Elyse*: lowkey great article, chock full of good info on fascia\n\n*Reactions: :fire: User_2Z9G95*
+- **2025-06-06 13:35** *Elyse*: for anyone looking for a friday afternoon read
+- **2025-06-06 14:14** *User_2Z9G95* 💬 1 reply: @Elyse — Preview for Sunday's email sent!\n\n*Reactions: :eyes: Elyse, :white_check_mark: Elyse*
+- **2025-06-06 14:14** *User_2Z9G95* 💬 3 replies: + Final Father's Day email design ready for review [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39473-282&amp;t=dO0p2PfzDqvIhe14-1). Two versions. I also commented some of my feedback.\n\n*Reactions: :eyes: Elyse*
+- **2025-06-06 14:17** *Elyse*: @Sumish Khadka on that collections page, I would maybe remove the bundles bc then there’s also the bundle &amp; save category below it
+- **2025-06-06 14:17** *Elyse*: so it shows the same bundles twice
+- **2025-06-06 14:18** *Elyse*: because **all** of the bundles are getting 25% off right?
+- **2025-06-06 14:23** *User_2Z9G95* 💬 1 reply: @Elyse — Monday AM email preview just sent!
+- **2025-06-06 14:24** *Sumish Khadka*: @Elyse The link is still under work and I will have it fixed.
+- **2025-06-06 14:24** *Elyse*: ok cool thanks SK!
+- **2025-06-06 14:37** *User_2Z9G95* 💬 10 replies: @Elyse — Just sent the two SMS for review. The MMS is for Sunday and the SMS is for Monday. If you want, we can add in the GIF for the Monday one, too.\n\n📎 **ezgif.com-animated-gif-maker (1).gif** (gif, 492.7KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0906AFRGBV/ezgif.com-animated-gif-maker__1_.gif)
+- **2025-06-06 14:53** *Elyse*: only thing i’d wanna remove is order toda to receive by 6/15
+- **2025-06-06 14:53** *Elyse*: juuuust in case
+- **2025-06-06 14:53** *Elyse*: otherwise both good
+- **2025-06-06 14:55** *User_2Z9G95*: That's fair!
+- **2025-06-06 14:57** *Elyse*: updated preview great\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-06 15:08** *User_2Z9G95*: Hi @Ingrid @Elyse — Happy Friday! Following up with the May CRM deep-dive. [Here's a link to our weekly agenda with May YoY performance and insights at the top](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0), along with our [CRM Reporting Tracker with MoM totals](https://docs.google.com/spreadsheets/d/1qtJOU2541YSnoXC7ccA-RRUy2E*ctEOXQUXO3AdPWU4/edit?gid=1153635090#gid=1153635090).  
+  
+**May YoY Summary:**  
+TLDR; the biggest areas impacting May's performance are a lot of what we've already discussed. We aren't changing much with segmentation apart from broadening where it makes sense and in terms of traffic/recipient's receiving communications, it's all very in-line with last year's metrics. Regardless, here's what heavily impacted that performance:  
+  
+• Not having a new product launch (like last year)  
+• Lower Mother's Day performance (consumers love a gift with purchase)  
+• Flows (mainly abandoned checkout, abandoned browse, welcome flow)  
+• Broadened campaign segmentation strategy impacted click rates, but allowed us to reach more people and drive significant growth for MDW  
+In addition to getting new flow content live ASAP, as an immediate next step, we're going to take a deeper look and how each flow is set up to make sure they're firing correctly. We will keep you posted on findings here!  
+  
+**On the upside, SMS drove a 100% increase YoY**, so we're going to continue to double down on driving growth and engagement through this channel. If we look at this year's total performance, **May was our strongest month (for both email and SMS), with the lowest declines to date (just 10%).**  
+  
+**June MTD Summary:**  
+**From Shopify — I'm also happy to report that we've sold 758 Body Sculptor Ritual Sets so far, generating $249,711.02 in net sales. We've already driven $111,080.83 from Klaviyo and $86,029.15 from Attentive. Together, we're already 65% towards our CRM revenue goal for June — let's keep it up!**  
+  
+I hope this information is helpful — as always, please don't hesitate to reach out with any questions!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-06 18:01** *User_2Z9G95*: Last thing! @Elyse — Do you know when the code is set to go live? I just want to set a reminder to confirm it's working correctly before the first email goes out. Thank you!
+- **2025-06-06 18:03** *Ingrid*: It’s likely live now - Sumish set up it
+- **2025-06-06 18:04** *Ingrid*: Can you test?
+- **2025-06-06 18:04** *User_2Z9G95*: Yes!
+- **2025-06-06 18:05** *User_2Z9G95*: Not working for me — just tried all four inidividual products.
+- **2025-06-06 18:47** *Ingrid*: Please hold 
+- **2025-06-06 18:52** *Ingrid*: Ok text now plz 
+- **2025-06-06 18:52** *Ingrid*: Test 
+- **2025-06-06 18:53** *User_2Z9G95* 💬 2 replies: Yes, it works! Just on those four items, perfect. Thank you!
+- **2025-06-09 07:21** *Elyse*: Morning all! @User_2Z9G95 very random but do you guys know how to change our icon? It’s been the rainbow triangle since we changed it for pride legit years ago\n\n📎 **Image from iOS.jpg** (jpg, 33.5KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091A91NAHW/image_from_ios.jpg)
+- **2025-06-09 09:26** *User_2Z9G95*: Morning @Elyse! Thanks for flagging! I'll look in Klaviyo and see if there's a way to update there, but since the send from email tied to the account is <mailto:hello@higherdose.com|hello@higherdose.com>, you may have to edit through that email's settings!
+- **2025-06-09 10:12** *Elyse*: Ok sounds good will check it out
+- **2025-06-09 11:31** *User_2Z9G95*: Hi @Elyse — Just sent a preview for this afternoon's last chance email. If all looks good, I'll schedule for 6p ET!
+- **2025-06-09 11:34** *Elyse* 💬 1 reply: @User_2Z9G95 only notes are for design  
+• would love to somehow be able to see both the hat and the mask for RL Starter Kit  
+• and then for blanket starter kit it should have the three vials for the cleaner kit, same like the pro mat\n\n📎 **Screenshot 2025-06-09 at 12.33.32 PM.png** (png, 337.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090ETNV7GB/screenshot_2025-06-09_at_12.33.32___pm.png)\n📎 **Screenshot 2025-06-09 at 12.33.52 PM.png** (png, 786.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090ETR0S5R/screenshot_2025-06-09_at_12.33.52___pm.png)
+- **2025-06-09 11:34** *Elyse*: like best seller bundle looks cool w the mask and hat side by side both clearly visible ya know\n\n📎 **Screenshot 2025-06-09 at 12.34.20 PM.png** (png, 395.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090EU2J554/screenshot_2025-06-09_at_12.34.20___pm.png)\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-09 12:27** *User_2Z9G95*: @Elyse — Updated preview sent!
+- **2025-06-09 12:28** *Elyse*: yep looks great
+- **2025-06-09 12:28** *Elyse*: good to fly
+- **2025-06-09 13:59** *User_2Z9G95*: Scheduled for 6p ET. Thank you!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-09 15:40** *Elyse*: @User*2Z9G95 dads who dose: david [https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=318aa5a3ae20c065d0c0bf2db975914c](https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=318aa5a3ae20c065d0c0bf2db975914c) waiting on photos from him/lb
+- **2025-06-09 15:41** *Elyse*: @User*2Z9G95 red light therapy for hair growth preview, text will be finished by EOD - have to figure out images [https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=eb7c122071144aa0084191119e0d8b8e](https://qffj82tivjyvox8o-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=eb7c122071144aa0084191119e0d8b8e)
+- **2025-06-09 15:59** *User_2Z9G95*: Thank you!! On that topic, 6/15 email copy is ready for review [HERE](https://docs.google.com/document/d/1xvBfOFdpNTu6iMVckQLalV-zhpHrDHGEmbwSfO-uUB8/edit?tab=t.0), 6/12 is in design.
+- **2025-06-09 15:59** *User_2Z9G95*: As a side — do you have any additional details on the Montauk/Omayo partnership? We're working on that email now.
+- **2025-06-09 19:07** *Elyse*: I should! Let me get to you in the morning I’ll sync with Fiona tn
+- **2025-06-09 19:07** *Elyse*: What kind of info would be helpful?
+- **2025-06-09 19:07** *Elyse*: I think I have the booking link that has more service offering info on it
+- **2025-06-09 19:08** *User_2Z9G95*: Yes, that would be helpful! Is the CTA "book now" and we can link the booking link? Mainly this section is what we need more info on: *Sign up for wellness programming classes, workshops and events (more info to come).* Thank you!
+- **2025-06-10 09:43** *Chris Jacob* 💬 7 replies: 📎 **image.png** (png, 151.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090UJFL57C/image.png)
+- **2025-06-10 09:48** *User_TS27JN* joined the channel
+- **2025-06-10 11:51** *Ingrid*: here <!channel> can we please get a little CRM comparison between the Red Light Hat and Body Sculptor launch emails/launch week on CRM?\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-10 12:00** *User_2Z9G95*: @Ingrid — Yes!\n\n*Reactions: :heartpulse: Elyse*
+- **2025-06-10 12:09** *Ingrid*: thank you! also, can I please have a summary of our SMS strategy and performance shifts from those shifts?
+- **2025-06-10 12:10** *Ingrid*: trying to educate our exec team/board on the new direction\n\n*Reactions: :heart: Ari Murray*
+- **2025-06-10 12:18** *Elyse*: @User_2Z9G95 separately here is info for the hydration powder mocktail in one of june newsletters [https://www.dropbox.com/scl/fo/k9brwlga6nw63zzsb5uwz/AE5q-iu9QYcn-KxfnYLH0PM?rlkey=jy56iy1udwto42qj0sifdesuj&amp;e=1&amp;dl=0](https://www.dropbox.com/scl/fo/k9brwlga6nw63zzsb5uwz/AE5q-iu9QYcn-KxfnYLH0PM?rlkey=jy56iy1udwto42qj0sifdesuj&amp;e=1&amp;dl=0)\n\n**Dropbox**\n🔗 **[Higher Dose](https://www.dropbox.com/scl/fo/k9brwlga6nw63zzsb5uwz/AE5q-iu9QYcn-KxfnYLH0PM?rlkey=jy56iy1udwto42qj0sifdesuj&e=1&dl=0)**\n> Shared with Dropbox
+- **2025-06-10 12:20** *Elyse*: from creator: Would love a link to my instagram [@katheats](https://www.instagram.com/katheats/) or blog [katheats.com](http://katheats.com) or both.
+- **2025-06-10 12:47** *Elyse*: @User_2Z9G95 just sent you an email with Omayo info on it
+- **2025-06-10 12:50** *User_2Z9G95*: Thank you! So confirming the CTA is reply back to this email?
+- **2025-06-10 12:51** *Elyse*: oh no sorry i should have clarified, that text was prepped for affiliates who can visit/reply to book comp sessions with us
+- **2025-06-10 12:51** *Elyse*: cta there should be a booking link for Omayo in there i believe
+- **2025-06-10 12:51** *User_2Z9G95*: Perfect
+- **2025-06-10 13:06** *User_2Z9G95*: Hi @Ingrid — [Linking this for you here](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0).
+- **2025-06-10 13:24** *User_2Z9G95* 💬 5 replies: @Elyse — 6/15: [Email for review here](https://docs.google.com/document/d/1xvBfOFdpNTu6iMVckQLalV-zhpHrDHGEmbwSfO-uUB8/edit?tab=t.0)!\n\n*Reactions: :eyes: Elyse*
+- **2025-06-10 13:43** *Elyse*: @User_2Z9G95 sending you info on Well &amp; Good pop up shop Abbot Kinney. Fiona wants to know if we can slot in a local LA email/sms emphasizing urgency in opportunity to buy an MBS in person before it begins shipping\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-10 13:43** *Elyse*: for june
+- **2025-06-10 13:43** *Elyse*: lmk when you think that makes sense
+- **2025-06-10 13:43** *User_2Z9G95*: Love that!
+- **2025-06-10 14:01** *Elyse* 💬 2 replies: @User_2Z9G95 @Ari Murray can you help us pull some stats on Instant performance ahead of tomorrow’s call?
+- **2025-06-10 15:28** *Elyse*: @User_2Z9G95 i got great pics for David’s email - incoming\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-10 15:29** *User_2Z9G95*: Yes! And do you mean Thursday's call with Instant.
+- **2025-06-10 15:29** *Elyse*: 📎 **IMG_0253.HEIC** (jpg, 4.6MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090NK3STB5/img_0253.heic)
+- **2025-06-10 15:29** *Elyse*: 📎 **IMG_7696.heic** (jpg, 2.4MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F090WBZ5NSY/img_7696.heic)
+- **2025-06-10 15:29** *Elyse*: 📎 **IMG_7757.heic** (jpg, 1.8MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091JSPGEG0/img_7757.heic)
+- **2025-06-10 15:30** *Elyse*: 📎 **IMG_7796.heic** (jpg, 2.1MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0917TNEZ0R/img_7796.heic)
+- **2025-06-10 15:51** *Elyse*: @User_2Z9G95 published article [https://higherdose.com/blogs/the-high-life-blog/dads-who-dose-david-nicomini](https://higherdose.com/blogs/the-high-life-blog/dads-who-dose-david-nicomini)\n\n**higherdose.com**\n🔗 **[Dads Who DOSE: Meet David Nicomini                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/dads-who-dose-david-nicomini)**
+- **2025-06-10 16:32** *Elyse*: @User_2Z9G95 RL blog for hair growth: [https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth-how-it-works-benefits](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth-how-it-works-benefits)\n\n**higherdose.com**\n🔗 **[Red Light Therapy for Hair Growth: How It Works &amp; Benefits                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth-how-it-works-benefits)**
+- **2025-06-10 16:33** *Elyse*: I’m still in the process of adding some photos to the actual body of the text, but published it so you could use for email
+- **2025-06-10 16:34** *Elyse*: hang on
+- **2025-06-10 16:34** *Elyse*: editing link
+- **2025-06-10 16:38** *Elyse*: NEW LINK: [https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth)\n\n**higherdose.com**\n🔗 **[Red Light Therapy for Hair Growth: How It Works &amp; Benefits                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/red-light-therapy-for-hair-growth)**
+- **2025-06-10 17:31** *User_2Z9G95*: Thank you!!!!
+- **2025-06-11 09:54** *User_2Z9G95*: Hi @Elyse Email updates [ready for your review in the doc](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958), highlighted in red! I also created an LA-based segment for the pop-up and we have just over 9K people, so we're happy to get an email drafted for them! I would say we can slate this in the 17th or the 19th (if we wanted to bump the travel to the 17th). Let me know how that sounds and we'll get it going.\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n\n*Reactions: :eyes: Elyse*
+- **2025-06-11 16:08** *Elyse*: @User_2Z9G95 couple notes post tb with Ingrid  
+• no to promoting nordstrom sale on email  
+• big no to promoting amazon sale on email  
+• would love some stats on Instant before our call with them, and Sharma analysis on whether we should continue post free trial  
+    ◦ same thing with Alia, would love to see stats and Sharma’s analysis on performance thus far
+- **2025-06-11 16:09** *User_2Z9G95*: Thank you! Confirming I will get this to you by EOD PT today. Getting the Dad's who DOSE email for tomorrow ready for a preview right now!
+- **2025-06-11 16:09** *Elyse*: fab!
+- **2025-06-11 16:25** *User_2Z9G95*: @Elyse — Preview sent!
+- **2025-06-11 16:26** *Elyse*: its great, good to schedule
+- **2025-06-11 16:44** *User_2Z9G95*: Perfect! Confirming this has been scheduled to our 90 days engaged segment. Confirming we've also added a send time A/B test. Looking at L365 on Shopify, we see the most orders/sessions come in between 12p-2p ET and 8p-10p ET. So we've added the test for 12p vs. 8p ET to see if there's any statistically significant differences.\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-11 18:48** *User_2Z9G95*: Hi @Elyse — thanks for your patience here. Please see high-level data and reccos below.  
+  
+**Summary:**  
+TLDR; given our growth goals and what we want to achieve this year, we feel that Alia and Instant would be great integrations to help get us there. Together, both of these will help us better understand our customer journey because we'll have the high-converting pop-up (converting even more new users to subscribers) coupled with engaging flows capturing anonymous users. Both will help expand our lists and get new subscribers further down the funnel (with targeted messaging). Plus, they're both month-to-month, so there's no long-term contracts involved, and are reasonably priced within the market. Plus they have great customer support teams we greatly trust!  
+  
+**Instant Audiences:**  
+I don't have access to Instant's full dashboard (I'm sure we'll get some insight tomorrow), but according to Klaviyo (L30 days), these are the Instant Audience Flows that generated the most revenue:  
+• $27,223.08 in additional Klaviyo revenue from their Abandoned Checkout Flow (didn't outperform the regular Abandoned Checkout Flow ($53K), but still contributed incremental revenue)  
+• $20,789.18 in additional Klaviyo revenue from their MDW Sale Abandoned Checkout Flow (didn't outperform the regular MDW Sale Abandoned Checkout Flow ($41K), but still contributed incremental revenue)  
+• $10,901.45 in additional Klaviyo revenue from their MDW Sale Abandoned Cart Flow (outperformed the regular MDW Sale Abandoned Cart Flow ($8K))  
+• $7,729.69 in additional Klaviyo revenue from their Browse Abandonment Flow ((didn't outperform the regular Abandoned Checkout Flow ($30K), but still contributed incremental revenue)  
+We're seeing the greatest success from the checkout and cart abandonment flow (which makes sense as this is the furthest down the funnel), but we're eager to get Instant Audience Flows integrated with our new Abandonment Flows that are being designed.  
+  
+**Alia:**  
+For Alia (L30 days), we're seeing:  
+• 6.36% email sign up rate  
+• 4.62% SMS sign up rate  
+In Klaviyo specifically, we hav:  
+• 2,373 customers tagged with beauty & skincare  
+• 1,961 customers tagged with detox & cleanse  
+• 1,569 customers tagged with recovery & muscle relief  
+• 1,161 customers tagged with relaxation & stress relief  
+• and in total we've captured 10,206 new subscribers from Alia-specific pop-ups  
+In Attentive specifically, we have:  
+• 779 customers tagged with beauty & skincare  
+• 621 customers tagged with detox & cleanse  
+• 472 customers tagged with recovery & muscle relief  
+• 331 customers tagged with relaxation & stress relief  
+• and in total, we've captured 2,757 new subscribers from the Alia-specific pop-ups  
+From our previous evergreen Attentive pop-up, we saw about 3%-4% opt-in for email and a 1%-2% opt-in for SMS, so we're definitely seeing improvements with Alia. If there's a concern around how often it's triggering, let's tell the team we want it to only show to new visitors or exclude those who sign up — we have a lot of control in terms of how we want the pop-ups to look/function and Alia gives us a dedicated contact to work through that with us (which is definitely one of the perks!). Having Alia's strong functionality coupled with our new, more personalized welcome flow will also provide an ever better brand intro and customer journey.
+- **2025-06-11 19:26** *Elyse*: Thank you @User_2Z9G95 !! Will review\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-12 09:49** *User_2Z9G95*: Morning @Elyse! Confirming 6/15 preview was just sent for review. Let me know what you think. We'll get it scheduled for Sunday 11a local to our 90D engaged audience. Please see remaining June campaign updates below ([also in the tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)):  
+• 6/17: Well+Good LA Pop-Up - Copywriting (will be done EOD)  
+• 6/19: Impact of Travel - Copy ready for review (granted access :sweat_smile:)  
+• 6/23: Hi-Dration is key to flow - Copywriting (will be done EOD)  
+• 6/26: Electrify your Summer Detox - Copywriting (should be done EOD)  
+• 6/30: Reignite your Mind-Body Connection - Copywriting (should be done EOD)
+- **2025-06-12 09:52** *Elyse*: 6/15 preview good to go
+- **2025-06-12 10:00** *User_2Z9G95*: @Elyse — [I also started building this doc for July concepts](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB_p2M/edit?tab=t.0). We'd love to have these concepts locked in by tomorrow EOD, so we can start briefing the ideas out. They don't need to be fully fleshed out yet, we just want high-level concept approval! I left a note for you at the top — this was all pulled from the Q3 strategy, so please let me know if there's anything else we need/want to integrate. Left Prime/Nordstrom support out per your note yesterday.\n\n📎 **HigherDOSE <> CRM Calendar Concepts** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB_p2M/edit?tab=t.0)
+- **2025-06-12 10:01** *Elyse*: fab will review rn
+- **2025-06-12 10:01** *Elyse*: leaving notes on 6/19\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-06-12 10:02** *User_2Z9G95*: Thank you!
+- **2025-06-12 10:12** *User_2Z9G95*: Also I'm not sure if I missed it, but if you could send the blog spreadsheet that would be great!
+- **2025-06-12 10:12** *Elyse*: sending you two
+- **2025-06-12 10:12** *Elyse*: [https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing)\n\n📎 **Higher Dose Blog Content Gap Analysis** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK_NDmYpc8aVSCfS-FpGzEP8U/edit?gid=426573794#gid=426573794)
+- **2025-06-12 10:12** *Elyse*: This one is the one we use with the SEO agency
+- **2025-06-12 10:13** *Elyse*: Tab 2 shows whats in the pipeline in terms of monthly deliverables
+- **2025-06-12 10:13** *Elyse*: They’re contracted for 2-3 pieces of work per month - can be 1 new content brief, 1 refresh existing content brief, 2 new etc
+- **2025-06-12 10:14** *Elyse*: So tab 2 shows what I’ve picked for them and topics we’ll take on internally to handle brief creation, etc
+- **2025-06-12 10:14** *Elyse*: Tab 3 HD Work these are all HD talent ones, things we’re working on
+- **2025-06-12 10:20** *Elyse*: so for June SEO blogs we have:  
+• NEW Fascia Stretching: What You Should Know  
+• NEW What’s EMS training?  
+• NEW What is lymphatic drainage? From scientific perspective  
+• REFRESH Infrared Light Therapy for Weight Loss: Does It Work?\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-12 10:25** *Elyse*: June talent blogs  
+• Lauren Roxburgh: Fascia &amp; Body Intelligence with Lauren Roxburgh  
+• David Nicomini: Dads Who DOSE  
+• Patrick Frost: Dads who DOSE: Father’s Guide to Biohacking (brief WIP)  
+July SEO blogs  
+• NEW: What is the Mind-Body Connection?  
+• NEW: What is Body Sculpting?  
+• NEW: When to use Red Light Therapy for the Best Results  
+July talent blogs  
+• Julia McCabe: Strength Within (Importance of Mind-Body Connection and Activating Dormant Muscles  
+• Helen Leland: Mind-Body Connection, Postural Support (What are postural muscles? Her techniques for activation)  
+• Talent TBC: Impact of Travel: Flight to Flow  
+• Talent TBC: Highdration is Key to Flow  
+• HD Talent/Talent TBC: Electrify your Summer Detox  
+August SEO blogs  
+• NEW: The Difference Between Infrared and Red Light Therapy  
+• NEW: How to Create a Morning Routine that Helps You Thrive  
+• REFRESH: Benefits of Using At-Home Red Light Therapy Devices [HERE](https://higherdose.com/blogs/the-high-life-blog/benefits-of-using-at-home-red-light-therapy-device)
+- **2025-06-12 13:09** *User_2Z9G95*: Hi @Elyse — [Well+Good pop-up event is ready for copy review](https://docs.google.com/document/d/1tk7-HoJHBifpkfCxJsynjAe7mKEM43vF0K3yj3psUoc/edit?tab=t.0)! Access granted!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse, :eyes: Elyse*
+- **2025-06-12 13:32** *User_2Z9G95*: @Elyse – Are you on the meeting? I keep getting an error when I try to join!
+- **2025-06-12 13:32** *Ari Murray*: I just made it in!
+- **2025-06-12 13:32** *Ari Murray*: but im alone lol
+- **2025-06-12 13:32** *Elyse*: Running!
+- **2025-06-12 13:32** *User_2Z9G95*: Restarting and retrying\n\n*Reactions: :tulip: Ari Murray*
+- **2025-06-12 13:32** *Ari Murray*: it was being weird for me
+- **2025-06-12 13:33** *Ari Murray*: now it wont work for me lol
+- **2025-06-12 13:33** *User_2Z9G95*: on the zoom!
+- **2025-06-12 13:33** *User_2Z9G95*: she just re-sent an invite
+- **2025-06-12 13:33** *Ari Murray*: oh ily
+- **2025-06-12 13:55** *Elyse* 💬 6 replies: @User_2Z9G95 @Sumish Khadka can you check this out please\n\n**Thilakawathy Subramuniam**\n> <@U01C255NN3F> this customer got this text for the body sculptor, order #287705. Are you able to see on your end if some body sculptor customers got similar text? Looks like it was sent in error\n*Slack Conversation | 2025-06-12 13:17*
+- **2025-06-12 13:56** *Elyse*: these orders 287705 and 287963
+- **2025-06-12 13:56** *Elyse*: 📎 **image.png** (png, 164.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091197730T/image.png)
+- **2025-06-12 13:56** *Elyse*: both orders are for the MBS only, which hasn’t shipped. weird that it would send this msg
+- **2025-06-12 13:57** *User_2Z9G95*: I seeeee, so at first glance, I think it has to do with how the order is updated in Shopify. I can't see order data in Shopify, so if someone could show me what those orders show as the most recent update, that would be helpful
+- **2025-06-12 14:44** *Elyse*: heres another one 287716
+- **2025-06-12 14:44** *Elyse*: 📎 **Screenshot 2025-06-12 at 3.44.07 PM.png** (png, 173.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0916E8NB37/screenshot_2025-06-12_at_3.44.07___pm.png)
+- **2025-06-12 14:44** *Elyse*: status is paid but unfulfilled
+- **2025-06-12 14:44** *Elyse*: 📎 **Screenshot 2025-06-12 at 3.44.28 PM.png** (png, 109.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09193L6H1Q/screenshot_2025-06-12_at_3.44.28___pm.png)
+- **2025-06-12 14:45** *Elyse*: same for 287705 and 287963
+- **2025-06-12 14:45** *Elyse*: no actual update to the order
+- **2025-06-12 14:50** *Elyse*: separately @User_2Z9G95 just got this from fiona for a july giveaway:  
+**Glow &amp; Glam Launching  July 2025**   
+Affluence: High. Gender: Women. Age Range: 35-65. These women lead with intention and live with balance. They embrace a lifestyle where wellness, culture, and sophistication intertwine. Whether she’s curating her home, planning a getaway, or selecting the perfect gift, every decision reflects her refined taste and thoughtful nature.  
+  
+**Confirmed/Interested brands:**  
+    ◦ Tanya Taylor - Confirmed    
+    ◦ Defanage - Confirmed   
+    ◦ Behno - Confirmed   
+    ◦ Vella Box  - Interested    
+    ◦ Caviar Co - Interested  
+
+- **2025-06-12 14:51** *Elyse*: from the team organizing:  
+The launch for Glow &amp; Glam would be a launch period of July 10th-18th. It will be a 6-week campaign, and you will have the first 2 weeks to send 1 dedicated email about the giveaway. We will notify you 5 days ahead of the actual launch date. On our launch day, you will receive the media toolkit with editable assets, templated emails, and trackable links. Your opt-in goal is 1000 opt-ins, by sending 1-4 dedicated emails about the giveaway and (optional) posting on social.
+- **2025-06-12 15:11** *Elyse*: @User_2Z9G95 also fyi - so we don’t necessarily need to slot this in for 7/10\n\n📎 **Screenshot 2025-06-12 at 4.10.58 PM.png** (png, 195.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091LJZ9SFK/screenshot_2025-06-12_at_4.10.58___pm.png)\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-12 15:20** *Elyse*: MBS for LA looks good to me - just sent to Fiona and team to review, will circle back w any notes
+- **2025-06-16 08:07** *Elyse*: @User_2Z9G95 I am working on some slides for our monthly team call this morning and then will jump into the q3 calendar concepts again with fresh eyes\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-16 08:30** *User_2Z9G95*: That’s perfect, thank you so much! 
+- **2025-06-16 10:38** *User_H1H31B* joined the channel
+- **2025-06-16 15:50** *Ingrid*: hey <!channel> do you have the total CRM sales that happened for July 2024 (both Klaviyo/Attentive and Shopify?)
+- **2025-06-16 15:50** *User_2Z9G95*: I can get these for you now!
+- **2025-06-16 15:51** *Ingrid*: thank you!
+- **2025-06-16 15:51** *Ingrid*: both campaigns and flows\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-06-16 16:17** *User_2Z9G95*: Hi @Ingrid! Please see below:  
+  
+**Shopify:**  
+Klaviyo: $90,307.26  
+Attentive: $33,139.30  
+Total: $123,446.56  
+  
+**Klaviyo-Attributed (In-Platform):**  
+Flow: $248,004.32  
+Campaign: $205,908.98  
+Total: $453,913.30  
+  
+**Attentive-Attributed (In-Platform):**  
+Total: $210,848.82  
+  
+**Attentive- + Klaviyo-Attributed (In-Platform)**:  
+Total: $664,762.12
+- **2025-06-16 19:53** *Ingrid*: Thank you!!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-17 14:08** *User_2Z9G95*: @Elyse — Previews for today sent!
+- **2025-06-17 14:15** *Elyse*: SMS looks good\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-17 14:15** *Elyse*: Checking email now
+- **2025-06-17 14:16** *Elyse*: Email good to go
+- **2025-06-17 14:24** *User_2Z9G95*: @Elyse — Perfect, thank you! And I just wanted to confirm that all of the links took you directly to the Instagram post correct? I've seen it get a bit finicky before, but mine worked great, so just wanted to make sure. I'll have 1-2 Sharma members test it out, too, just to double confirm!
+- **2025-06-17 14:33** *Elyse*: Yes same!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-17 14:56** *User_2Z9G95*: Perfect, thank you! Double confirmed with Sharma peeps, and we're all good! Scheduled for 4:15p ET / 1:15p PT to our LA-based segments.
+- **2025-06-17 15:14** *User_2Z9G95* 💬 6 replies: Hi @Elyse — Just got the notification from Attentive that we're out of the GetDosed10 codes — are you able to download more when you get the chance? Not sure if there's a cap you can share, but maybe 10K?
+- **2025-06-17 17:04** *User_2Z9G95* 💬 5 replies: Hi team — sharing a quick status update from our call today. Link to the agenda **[HERE](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)**. High-level summary below:  
+  
+Account Health:  
+The biggest thing I wanted to share with you is that we saw some funky things in the WoW data and after doing a deep dive noticed there was a huge influx in bot clicks this time last year, which is inflating last year's data (making it seem like this year is significantly down when it isn't!). No worries though, nothing is being impacted in our account right now, we just noticed that influx heavily skewed last year's metrics.  
+  
+*There is an action we can take in the account to remove bot clicks from our data — happy to chat through that more to see if we'd want to do that!*  
+  
+Flows:  
+Flows are moving along — we have a handful [ready for review in the tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958).  
+  
+Campaigns:  
+Elyse — if you get a chance to look at [July concepts](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB*p2M/edit?tab=t.0) this week that would be amazing!  
+  
+LMK if you have any questions. Have a great evening!\n\n*Reactions: :heart: User_5S72LT, Elyse*
+    - **2025-06-17 18:34** *User_2Z9G95*: ↳ Hi @Elyse — Following up on this! There's a Post-Purchase Flow live that is triggering that message. The trigger is "made a purchase", so that's why they got it. Does this flow ring a bell to you? If not, I would recommend we turn it off.\n\n📎 **Screenshot 2025-06-17 at 4.34.04 PM.png** (png, 92.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F091R6H0LLW/screenshot_2025-06-17_at_4.34.04___pm.png)
+- **2025-06-17 18:36** *Elyse*: So @User_2Z9G95 am I understanding this correctly - anyone who makes a purchase at all gets this?
+- **2025-06-17 18:39** *User_2Z9G95*: Correct. It's slated to send 10 days after the purchase, so ideally the product has arrived by then, which shouldn't be an issue. But in this case it is. There's a few post-purchase flows live right now. Will take a look at them and see where we need to optimize.
+- **2025-06-17 18:39** *Elyse*: Ahhhh ok got it
+- **2025-06-17 18:40** *Elyse*: I wonder, is there no way on attentive (which note to self let’s check out on post script) to make the trigger more directly connected to a Shopify action (like tracking add/marked as fulfilled) vs just the general timeline of 10 days?
+- **2025-06-17 18:41** *Elyse*: Thinking about orders that arrive sooner but also orders that are on back order or just generally take longer 
+- **2025-06-17 18:42** *Elyse*: I mean there’s probably a very very rare scenario where someone gets an order more than ten days later that isn’t related to a back order or preorder 
+- **2025-06-17 18:43** *Elyse*: But thinking about when people buy saunas too, that’s def a longer turnaround time than ten days
+- **2025-06-17 18:43** *User_2Z9G95*: Yes! There are the same transactional triggers as in Klaviyo (order shipped, order delivered, out for delivery, etc.) — not sure why whoever set this one up did it that way, maybe there was a reason, but we will definitely update when we migrate.\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-18 12:07** *User_2Z9G95*: Hi @Elyse — Let me know when you get a chance to download the codes and I'll upload ASAP!
+- **2025-06-18 12:09** *User_2Z9G95*: Hi @Elyse — Also let us know RE Friday's email when you get the chance! Design [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39669-740&p=f&t=HdcldXowa8GqqSn4-0), Proto [HERE](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39669-741&t=8DULUgRwoukSQUJJ-1).
+- **2025-06-18 12:24** *Elyse*: Diving in now!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-18 12:28** *Elyse*: i love friday’s email!!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-18 12:28** *Elyse*: sending to team for quick review\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-18 12:33** *User_2Z9G95*: Us, too!
+- **2025-06-18 13:39** *Elyse*: @User_2Z9G95 are you guys having any trouble with figma rn?
+- **2025-06-18 13:39** *Elyse*: was just flying thru the replen flows and all of a sudden figma won’t open for me
+- **2025-06-18 13:39** *Elyse*: keeps saying page unresponsive
+- **2025-06-18 13:39** *Elyse*: for oxytocin oil
+- **2025-06-18 13:39** *User_2Z9G95*: Looking!
+- **2025-06-18 13:40** *User_2Z9G95*: It seems to be working ok for me! Maybe it's the link? [https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180&amp;t=nniYowRuXvTUqELu-1](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180&amp;t=nniYowRuXvTUqELu-1)
+- **2025-06-18 13:41** *Elyse*: that worked! tysm!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-06-18 14:22** *User_2Z9G95*: Hi @Elyse — Since the GetDOSED10 code ran out, new customers aren't getting any codes — are you able to update ASAP and I can manually reply with the codes to these customers? Thank you!
+- **2025-06-18 14:24** *Elyse*: Jumping on that now!
+- **2025-06-18 14:25** *Elyse*: Sorry was in the weeds reviewing replenishment flows
+- **2025-06-18 14:25** *User_2Z9G95*: Amazing, thank you! No worries — you're the best
+- **2025-06-18 14:31** *Elyse*: generating 10k as we speak
+- **2025-06-18 14:31** *Elyse*: says two mins
+- **2025-06-18 14:31** *User_2Z9G95*: Thank you!!!
+- **2025-06-18 14:38** *Elyse*: 54% done
+- **2025-06-18 14:40** *User_2Z9G95*: Fab!!
+- **2025-06-18 14:40** *Elyse*: in the meantime, got notes from team on travel email so dropping those in now\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-18 14:50** *Elyse*: figma is doing wacky things for me today so let me know if my comments don’t make sense
+- **2025-06-18 14:51** *Elyse*: i put them in the right spots and then refreshed the page and next thing i know the comment bubbles were all over
+- **2025-06-18 14:52** *Elyse*: fiona sending me pic for omayo swap
+- **2025-06-18 14:52** *Elyse*: export queued on codes
+- **2025-06-18 14:52** *Elyse*: lol at this app saying two mins\n\n*Reactions: :sob: User_2Z9G95*
+- **2025-06-18 14:54** *Elyse* 💬 2 replies: 📎 **GetDosed10-export-6-18-2025-3-54-20-PM.csv** (csv, 236.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F092RKS3R4Y/getdosed10-export-6-18-2025-3-54-20-pm.csv)
+- **2025-06-18 15:09** *Elyse*: 📎 **PNG image.jpeg** (jpg, 381.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F091WRK53J7/png_image.jpeg)
+- **2025-06-18 15:10** *Elyse*: @User_2Z9G95 omayo pic ^
+- **2025-06-18 16:14** *Elyse*: @User_2Z9G95 lauren working on blog post for summer detox tomorrow\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-18 16:29** *User_2Z9G95*: Hi @Elyse — 6/20 email updated! Ready for review [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39669-740&amp;t=gCMKxQg6qtaOSyif-1).\n\n*Reactions: :eyes: Elyse*
+- **2025-06-18 16:58** *Elyse*: Made a quick note
+- **2025-06-18 16:59** *Elyse*: otherwise good to go
+- **2025-06-18 16:59** *Elyse*: i’m aiming to finish up blog tomorrow morning, so we’ll have link to include for travel smarter cta
+- **2025-06-18 17:00** *Elyse*: also gonna do q3 concepts in the morinng
+- **2025-06-18 17:00** *Elyse*: so will have a few things back to you, attempting to use tm morning to catch up!
+- **2025-06-18 17:00** *User_2Z9G95*: That's perfect. Thank you so much!
+- **2025-06-18 17:11** *Elyse* 💬 5 replies: <!channel> yallll :sob: :sob: :sob: :sob:  thank you so so much for these gorgeous flowers!!! They are divine and exactly the sunshine I needed this week. So so so kind of you!! Xoxoxox\n\n*Reactions: :sunflower: 4*
+- **2025-06-20 09:26** *User_2Z9G95*: Good morning @Elyse! Just sent a preview for today's email — just waiting on the blog link! Let me know how it looks.
+- **2025-06-23 12:37** *Elyse*: <!here> hi all! in catch up mode!  
+  
+@User*2Z9G95 let me know if I owe you anything timely, will hop on it.  
+  
+Otherwise here’s some PDP info I just got on the two new bundles:  
+**Bundle 1: Summer Travel Glow Kit**  
+**Summary + How To Use:**  
+Indulge in high-performance wellness—anytime, anywhere. The **Summer Travel Glow Kit** brings together four of our most transformative essentials to help you radiate confidence, restore hydration, and protect your energy while on the move.  
+Curated for jetsetters and glow-getters, this set features our award-winning Red Light Face Mask, the travel-ready Red Light Activated Glow Serum, electrolyte-rich High-dration Powder, and our EMF-Blocking Fanny Pack designed to shield and style. Whether you’re poolside, on a plane, or navigating a new city, this bundle is your passport to feeling and looking your absolute best.  
+**Bullets:**  
+• Red Light Face Mask: Spa-grade skin rejuvenation in 10 minutes—stimulating collagen, smoothing fine lines, and restoring post-travel glow. Charged and ready for use anywhere from the airplane to the chaise lounge in the sand.   
+• Red Light Activated Glow Serum (TSA Friendly!): Peptide-Powered and enhances the effects of red light therapy while hydrating and brightening for dewy, lit-from-within skin.  
+• Hydration Powder: Made with watermelon-derived electrolytes and trace minerals to replenish fluids, support energy, and beat bloat—plus, it tastes *delicious_.  
+• EMF-Blocking Fanny Pack: A sleek, hands-free accessory with EMF-shielding technology to protect your vital energy while keeping essentials within reach.  
+**Bundle 2: (New) Summer Body Recover &amp; Sculpt**  
+Elevate your summer sculpt with this powerhouse trio designed to tone, tighten, and transform—from the inside out. The **(New) Summer Body Sculpt Bundle** pairs our revolutionary Microcurrent Body Sculptor with the signature HigherDOSE Sweatband and our delicious, watermelon-derived Hydration Powder to help you sweat smarter, recover faster, and reveal your most radiant body yet.  
+Whether you’re traveling, training, or lounging in the sun, this bundle supports circulation, lymphatic drainage, and deep cellular hydration—giving your body the boost it craves for definition, detox, and glow.  
+**Bullets:**  
+• Microcurrent Body Sculptor: A first-of-its-kind tool that uses targeted microcurrents to stimulate muscles, support lymphatic flow, and visibly tone and tighten skin.  
+• HigherDOSE Sweatband: Designed to amplify your sweat sessions by increasing core temperature and boosting circulation—perfect for travel, workouts, or recovery days.  
+• Hydration Powder: Made with watermelon-derived electrolytes and trace minerals to replenish, rehydrate, and support glowing, energized skin from the inside out—plus it tastes incredible.  
+\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-23 12:51** *Elyse*: also <!here> is the updated full product collection deck, if helpful!\n\n**María José Castro**\n> <!channel> <https://docs.google.com/presentation/d/1q_B-7oKS5qb8on7itTHkTi1IJXg3ccqKqDphGTLOaNU/mobilepresent?slide=id.g279ceeae50a_0_9|HERE> are the slides with product info and FAQs\n*Slack Conversation | 2025-06-23 12:18*
+- **2025-06-23 15:43** *User_2Z9G95*: Hi @Elyse! Thank you for this! [The tracker has been updated](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958): Items that need attention in red. Here's what's outstanding/in the pipeline for the first half of July:  
+  
+**Campaigns:**  
+• 6/24: Hi-Dration is key to flow (In design)  
+    ◦ Blog needed   
+    ◦ Design approval needed  
+    ◦ SMS approval needed ([HERE](https://docs.google.com/document/d/1cWdY*7uLrlOxBImgWp*4OSzuoxRpTdolskMDu4HfwZ8/edit?tab=t.0))  
+• 6/26: Electrify your Summer Detox (In design)  
+    ◦ Design approval needed  
+• 6/30: What is DOSE? (Copywriting)  
+    ◦ Copy approval needed  
+• 7/2: Reignite your Mind-Body Connection (Copywriting)  
+    ◦ Blog needed  
+7/6: Alchemize Club at Surf Lodge (Copywriting)  
+• Do we want a dedicated email for this? If so, can you please provide more context here.   
+7/8, 7/9, 7/10: Travel Series (Copywriting)  
+• Can you please add some additional insight into the highlighted [travel series concepts for July](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB*p2M/edit?tab=t.0)? If any of these are linking to a blog, please let us know!  
+7/15: Giveaway (Copywriting)  
+• Can you double confirm this date works?  
+7/16, 7/18, 7/21: Glow from Within (Copywriting)  
+• Can you please add some additional insight into the highlighted [glow from within series concepts for July](https://docs.google.com/document/d/1gEGU3563QuaRxhUVGw59ckRrGTtbKs5qHkHXnwB*p2M/edit?tab=t.0)? If any of these are linking to a blog, please let us know!  
+**Flows:**  
+• [Welcome flow](https://docs.google.com/document/d/1hmB6mhjdTjPnPlGgN0TQ2aAlPTnC-IVfBnzlARCFGys/edit?tab=t.0) - Ready for review  
+• [Detox Drops](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180) - Feedback from team?  
+• [Checkout abandonment](https://docs.google.com/document/d/1Rh6WKL3zZmV850dvCHoERoO746l8tt2WLkmwg8e-SLc/edit?tab=t.0) - Feedback from team?  
+• [Cart abandonment](https://docs.google.com/document/d/11vKHPtpHRIVPfyuB6RYHFZVoldI0-zo0iSzKRSvobBU/edit?tab=t.0) - Feedback from team?  
+• [Browse abandonment](https://docs.google.com/document/d/1H8xCmhIWFHeVYqH4kgwNGFWkBTt1LMGRVjJN95jLO5w/edit?tab=t.0) - Feedback from team?  
+Please let me know if you have any questions! Thank you so much.\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n📎 **HIGHERDOSE New Welcome Flow Working Doc** (gdoc, 114.8KB) - [Download](https://docs.google.com/document/d/1hmB6mhjdTjPnPlGgN0TQ2aAlPTnC-IVfBnzlARCFGys/edit?tab=t.0)\n📎 **23: Hi-Dration is key to flow Email + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1cWdY_7uLrlOxBImgWp_4OSzuoxRpTdolskMDu4HfwZ8/edit?tab=t.0)
+- **2025-06-23 16:01** *Elyse*: sweet, will dive into this\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-24 14:56** *User_2Z9G95*: Hi @Elyse — In addition to our campaigns/blog posts, please see additional action items below!  
+• Please review [this SMS copy doc](https://docs.google.com/document/d/1RpTFVyUZJ8mE70BrQ7DnZCcyXoeLRoEkvK5Gob1uoiI/edit?tab=t.0) for the 10% off and let us know when we're good to launch  
+• Please review [this post purchase and order confirmation flow](https://docs.google.com/document/d/1aKiXBnhrTqh-Qsno2fZFtTIWDuF5Gfuw2jUHJ85SsUo/edit?tab=t.w3j05m770vhf) and let us know your thoughts  
+@Ingrid — I confirmed no lead gen ads are live, but we'll discuss internally and share a proposed plan!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-24 14:58** *Elyse* 💬 1 reply: left note on SMS copy, do you need me to create a code quick?
+- **2025-06-24 15:20** *Elyse*: <!here> from Sumish  
+Summer Body recover &amp; Sculpt -[ https://higherdose.com/products/new-summer-body-recover-sculpt](https://higherdose.com/products/new-summer-body-recover-sculpt)  
+Summer Travel Glow Kit - [https://higherdose.com/products/summer-travel-glow-kit](https://higherdose.com/products/summer-travel-glow-kit)\n\n**higherdose.com**\n🔗 **[(New) Summer Body Recover &amp; Sculpt                      – HigherDOSE](https://higherdose.com/products/new-summer-body-recover-sculpt)**\n\n**higherdose.com**\n🔗 **[Summer Travel Glow Kit                      – HigherDOSE](https://higherdose.com/products/summer-travel-glow-kit)**
+- **2025-06-25 09:21** *User_2Z9G95*: Morning @Elyse! Making the last few design tweaks for the email this AM. Do you have an update on the blog? We also updated the email design for Friday [here](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39823-7115&amp;p=f&amp;t=k4I4uBQOeTqO3Ofu-0). Keep us posted on that blog, too!
+- **2025-06-25 10:53** *User_2Z9G95* 💬 1 reply: Hi @Elyse — [today's email ready for review here](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39814-1760&amp;t=qV1BjGtGDGst8OhE-1)! Let us know what you think.\n\n*Reactions: :eyes: Elyse*
+- **2025-06-25 11:31** *User_2Z9G95*: @Elyse — I also sent the test SMS around 1:45p for today — sorry forgot to ping the head's up! Let me know how that looks and we can get it scheduled ASAP!
+- **2025-06-25 11:31** *Elyse*: SMS looks great for code people
+- **2025-06-25 11:31** *Elyse*: diving into email stuff now. finishing up blog and getting it uploaded to shopify as we speak
+- **2025-06-25 11:32** *User_2Z9G95*: Love it! Let me know if I can help at all.
+- **2025-06-25 11:34** *User_2Z9G95*: SMS scheduled for 1p ET today!
+- **2025-06-25 12:09** *Elyse*: @User_2Z9G95 note from Helen Leland’s team: Helen’s new business officially launches the week of July 7th, which feels perfectly aligned with the theme of the interview. Would it be possible for her to answer that final question in the doc about the launch and have the feature go live that same week?
+- **2025-06-25 12:25** *User_2Z9G95*: Hi @Elyse — Aligned! Thinking we can move the Travel Bundle push up to its current place on 7/3 since [the copy is already ready for review](https://docs.google.com/document/d/18r50RevQGaU4vkRZL9mP3d-ozbdI_X2TdCEAbawI9wA/edit?tab=t.0). And we can push hers to the week of 7/7, either on 7/7, 7/9 or 7/11. Let me know how that sounds!
+- **2025-06-25 12:26** *Elyse*: ok fab yep that works
+- **2025-06-25 12:27** *User_2Z9G95*: I got the PDPs, but are they already live on the site? I'm not seeing them under the Bundles or Bundle &amp; Save tabs!
+- **2025-06-25 12:30** *User_2Z9G95*: Email is uploaded to Klaviyo and the preview is ready once we get the blog link! Confirming this will be sen to 90 days engaged and all intl will be excluded as it's high-dration powder. Let me know if there's any other caveats to be aware of! @Elyse
+- **2025-06-25 12:41** *Elyse*: fab fab, nope that covers it\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-27 15:27** *Elyse*: @User_2Z9G95 fyi just read an email thread it should be alchemize house not club, my b
+- **2025-06-27 15:27** *Elyse*: also getting some more partner info from them for that email
+- **2025-06-27 15:27** *Elyse* 💬 2 replies: from their team: We are partnering with Daybreaker and Peloton, there should be a link next week that we’d love for you to push to your community. It will be a beautiful event.
+- **2025-06-27 15:28** *Elyse*: Victoria mentioned they have go mats, not pro mats so we’ll need to tweak that in the copy as well please
+- **2025-06-27 15:41** *User_2Z9G95*: Perfect, we will update this ASAP! Thank you!
+- **2025-06-27 15:42** *User_2Z9G95*: FYI — DOSE copy is updated [HERE](https://docs.google.com/document/d/1lSndlJgFpFuhFmEtE2sDpB7zrq3bjL7nYPk_nvBQ5wg/edit?tab=t.0). We just need one more product recco for Endorphins so that each section has 4!
+- **2025-06-27 15:52** *Elyse*: ok sweet
+- **2025-06-27 15:52** *User_2Z9G95*: Made this initial tweaks [here](https://docs.google.com/document/d/1poZG9RwUZHJ_swcoBm9vcvQZl0HI1DC01xGTX0hW0Ng/edit?tab=t.0). Will standby for more!
+- **2025-06-27 17:21** *User_2Z9G95*: Hi @Elyse — [Here's a link to all of HigherDOSE's Attentive Data](https://drive.google.com/drive/folders/1IR0YQzmq7wKddFgifuDlrIHG1iHUGtYu?usp=drive_link)! There's data organized by year and also all-time depending on how you need to reference it. Let me know if I can provide anything else!
+- **2025-06-30 08:29** *Elyse* 💬 1 reply: Awesome! Thank you @User_2Z9G95 are they gonna send us an updated version today in case there were any changes?
+- **2025-06-30 09:16** *User_2Z9G95*: Hi @Elyse — [The design for our email today is ready for review](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39970-125&amp;t=qUNM4nCFjyxUPibt-0)! Please take a look when you get the chance and let us know if you have any feedback. [Here's the proto](https://www.figma.com/proto/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39970-125&amp;t=2UQpJnFu2jh9Y7q7-1) so you can see the GIF, too.\n\n*Reactions: :eyes: Elyse*
+- **2025-06-30 09:20** *User_2Z9G95* 💬 2 replies: Also @Elyse — I have a conflict with the Klaviyo SMS call this afternoon, but I think we decided to cancel for now, right?
+- **2025-06-30 10:41** *Elyse*: @User_2Z9G95 for today’s email, overall looks great just needs some quick tweaks. left notes on proto. biggest thing is wherever pro mat is titled, go mat is pictured\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-06-30 10:50** *User_2Z9G95*: Ah, good shout — thank you! Getting this updated now.
+- **2025-06-30 12:23** *Elyse*: @User_2Z9G95 just took a look at the proto to see if updated - wanted to note, for oxytocin section we now have go mat as title but pro mat as photo lol
+- **2025-06-30 12:24** *User_2Z9G95*: looking!!
+- **2025-06-30 12:24** *User_2Z9G95*: sorry was back-to-back this AM, getting this finalized rn
+- **2025-06-30 12:24** *Elyse*: all good np at all
+- **2025-06-30 12:24** *Elyse*: so can keep go mat title in oxytocin section, but need to switch pic to go mat
+- **2025-06-30 12:24** *Elyse*: other than that, looks great
+- **2025-06-30 12:26** *User_2Z9G95*: Oh yes, I wasn't sure where the body, not dry comment was referring to — was it for the copper brush?
+- **2025-06-30 12:26** *Elyse*: yes yes
+- **2025-06-30 12:26** *User_2Z9G95*: perf
+- **2025-06-30 12:26** *Elyse*: it said dry brush instead of body brush
+- **2025-06-30 12:26** *Elyse*: so thats corrected, done there
+- **2025-06-30 12:26** *User_2Z9G95*: perfect
+- **2025-06-30 12:29** *User_2Z9G95*: Ok, updated! [HERE](https://www.figma.com/design/xFvCQN2TLPwEraHDkd8Gjf/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-June-2025?node-id=39970-124&amp;p=f&amp;t=FNHePxyblBBDOvKn-0).
+- **2025-06-30 12:30** *Elyse*: yep great good to go
+- **2025-06-30 12:31** *Elyse*: [https://higherdose.com/blogs/the-high-life-blog/what-is-dose-the-four-key-chemicals](https://higherdose.com/blogs/the-high-life-blog/what-is-dose-the-four-key-chemicals)\n\n**higherdose.com**\n🔗 **[DOSE Meaning: Unlocking Happy Brain Chemicals | HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/what-is-dose-the-four-key-chemicals)**
+- **2025-06-30 12:31** *Elyse*: if we want for that top cta
+- **2025-06-30 12:32** *User_2Z9G95*: Perf
+- **2025-06-30 12:52** *User_2Z9G95*: Preview coming shortly
+- **2025-06-30 13:04** *User_2Z9G95*: Preview sent! Thinking we can AB test the two subject lines to see if a question outperforms a statement:  
+  
+**Subject:** Putting the “dose” in HigherDOSE  
+**Preview:** Dopamine, oxytocin, serotonin, endorphins  
+  
+Alt:  
+**Subject:** What does “DOSE” mean?  
+**Preview:** Dopamine, oxytocin, serotonin, endorphins\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-06-30 14:25** *Elyse*: @User_2Z9G95 looks good\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-06-30 14:30** *User_2Z9G95*: Scheduled for 4p ET to our 90 day engaged segment!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-06-30 14:37** *Elyse*: diving into some weekly reporting @User_2Z9G95 but let me know what else I owe you for this week. crm sheet is updated i assume? I’ll peek into that before i log off tonight
+- **2025-06-30 14:37** *Elyse*: alchemize i think is the only thing left for this week right?
+- **2025-06-30 14:37** *User_2Z9G95*: It's like you're actually inside of my mind
+- **2025-06-30 14:37** *User_2Z9G95*: Drafting a slack for you as we speak with updates/needed items!!
+- **2025-06-30 14:38** *🤖 Bot*: in sync
+- **2025-06-30 14:38** *Elyse*: us\n\n*Reactions: :sob: User_2Z9G95, :joy: User_2Z9G95, :man_dancing: User_2Z9G95, :man_dancing::skin-tone-3: Elyse*
+- **2025-06-30 14:51** *User_2Z9G95*: Hi @Elyse — Please see some updates + outstanding items below (also updated in the [tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958)):  
+• 7/2: Alchemize Surf Club — Updated copy ready for review [HERE](https://docs.google.com/document/d/1poZG9RwUZHJ*swcoBm9vcvQZl0HI1DC01xGTX0hW0Ng/edit?tab=t.0). Let us know today if there's any feedback/additional details needed so we can push this through to design.   
+• 7/7: Travel bundles — Updated copy ready for review [HERE](https://docs.google.com/document/d/18r50RevQGaU4vkRZL9mP3d-ozbdI*X2TdCEAbawI9wA/edit?tab=t.0). Let us know today if there's any feedback so we can push this through to design.   
+• 7/9: Travel series — Copy ready for review [HERE](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)  
+• 7/11: WTF is EMF? — Copy ready for review [HERE](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)  
+• 7/14: Giveaway — Have you received any new info?  
+• 7/16: Helen Leland blog — Have you received an updated ETA?   
+Additionally — can you please add <mailto:Jeremyd@sharmabrands.com|Jeremyd@sharmabrands.com> and <mailto:jake@sharmabrands.com|jake@sharmabrands.com> to Klaviyo when you get the chance? They're going to upload customer lists to Meta/TT!  
+  
+Thank you!!!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n📎 **9: Travel Series (Wellness On-the-go) Email + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/19nheMCxQGxTRC_6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)\n📎 **11: WTF is EMF? Fanny Pack Highlight** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL_on2ArFDVfjtovH4w/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse, :raised_hands::skin-tone-3: Elyse*
+- **2025-06-30 14:53** *Elyse* 💬 2 replies: Jake and Jeremy both added\n\n*Reactions: :raised_hands: User_2Z9G95, User_TS27JN*
+- **2025-06-30 14:55** *Elyse*: Helen Leland - got content back on Friday, heres link  
+• brief we sent [https://docs.google.com/document/d/1cC970sZ1EODQOh8qdHDbnjqasZRg6JMrZPq4bPnd504/edit?usp=sharing](https://docs.google.com/document/d/1cC970sZ1EODQOh8qdHDbnjqasZRg6JMrZPq4bPnd504/edit?usp=sharing)  
+• answers she sent [https://docs.google.com/document/d/1ZOwz-AIHdibTrG5briiW-XNETEHEWVkJXmcrYkehsiY/edit?usp=sharing](https://docs.google.com/document/d/1ZOwz-AIHdibTrG5briiW-XNETEHEWVkJXmcrYkehsiY/edit?usp=sharing)
+- **2025-07-01 07:06** *Elyse*: @User_2Z9G95 got this note from Alchemize team:\n\n📎 **Screenshot 2025-07-01 at 8.06.14 AM.png** (png, 65.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F093VCGRMHQ/screenshot_2025-07-01_at_8.06.14___am.png)
+- **2025-07-01 09:19** *User_2Z9G95*: Hi @Elyse — Noted! Looks like we need to move some things around in the cal. We can move the travel bundles email up, I just got the design this AM, or if the other travel email or EMF copy looks good, we can move that to design today to share tomorrow! Let me know — options below:  
+• [Travel Bundles](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847&amp;t=iULy7VSxwRIxSHwU-0), [proto 1](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847&amp;t=iULy7VSxwRIxSHwU-1), [proto 2](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-704&amp;t=iULy7VSxwRIxSHwU-1) (they're the same gif, just a diff image)  
+• [Travel On-the-go](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)  
+• [WTF is EMF](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)?
+- **2025-07-01 09:22** *Elyse*: Sounds good will dive in now!
+- **2025-07-01 09:23** *Elyse* 💬 1 reply: @User_2Z9G95 Luke from attentive said we’d need to remove attentive tag from site. Is that already done? Do we need to do anything for that?
+- **2025-07-01 09:49** *User_2Z9G95*: Yes! So the tag needs to be removed from the theme's code. I don't have access to do that, but is there someone on your team who handles dev? There's a script that looks something like this that needs to be removed. I think searching for attn in the theme.liquid will locate it!  
+`&lt;script src="[https://cdn.attn.tv/EXAMPLE/dtag.js](https://cdn.attn.tv/EXAMPLE/dtag.js)"&gt;&lt;/script&gt;`
+- **2025-07-01 09:54** *Elyse*: Ok cool I have Michael our web guy tackle\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 09:55** *User_2Z9G95*: Thank you!!
+- **2025-07-01 12:10** *Elyse*: ok code is removed\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 12:15** *User_2Z9G95*: Thank you!!
+- **2025-07-01 12:39** *Elyse*: @User_2Z9G95 going to tweak end of July schedule a bit - we want to add in some retention tests identifying people who have purchased tech but not accessories/cpg and send them an offer. will confirm more details and get back to you shortly\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 12:44** *User_2Z9G95*: Sounds great! We can chat live on the call, too!
+- **2025-07-01 12:52** *User_2Z9G95*: @Elyse — Just an FYI, I just noticed this spacing issue on the homepage!:\n\n📎 **Screenshot 2025-07-01 at 10.52.36 AM.png** (png, 939.5KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F093S6D9JDC/screenshot_2025-07-01_at_10.52.36___am.png)
+- **2025-07-01 12:53** *Elyse*: i mentioned that to the team a while back i thought they fixed\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-01 12:53** *Elyse*: thanks for flagging
+- **2025-07-01 13:58** *User_2Z9G95*: Hi @Elyse @Ingrid — Thank you so much for the time today as always! [Here's a link to the agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0) for review. I added in an analysis of the unsubscribe rate. TLDR; The major daily spikes in follower loss fell on our heavy promotional days (MBS launch, Father's Day Flash) — no surprise there!  
+  
+While total unsubscribes increased compared to last year, list growth remains positive (we're bringing in more people than those who are leaving!):  
+• Average daily unsubscribes: 144  
+• Average daily new subscribers: 296  
+    ◦ This shows a strong net growth, with the list expanding at nearly a 2:1 rate.  
+And if we look at a average YoY comparison, it’s actually proportional to increased campaign volume and list size. As reach expands, higher unsubscribe rates are expected.  
+• June 2024: 193 new subscribers per day, 104 unsubscribes per day  
+• June 2025: 296 new subscribers per day, 144 unsubscribes per day  
+In sum, there isn't anything alarming — we'll continue to monitor the declines MoM, but everything we're seeing is just a result of more promotional campaigns + an expanding list (which is good!).\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-01 14:02** *User_2Z9G95*: I can add in new subscribers to the reporting as well, so we can have the bigger picture of overall list growth moving forward!
+- **2025-07-01 15:02** *User_2Z9G95* 💬 11 replies: Hi @Elyse — Keep me posted on the copy for the [Alchemize House](https://docs.google.com/document/d/1poZG9RwUZHJ_swcoBm9vcvQZl0HI1DC01xGTX0hW0Ng/edit?tab=t.0) emails! Chandler is working on the second email copy now. I do want to flag that getting two emails ready may be tight for tomorrow. Pending copy approval, we'll keep you posted, but is there a chance we bump to 7/3? Or we could even get one sent out tomorrow and one on the third — let us know!  
+  
+Plus we still need the booking link from Cole! So keep me posted there, too!\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-07-01 15:04** *Elyse*: @User_2Z9G95 @Ingrid I dug this up from 2023 [https://docs.google.com/spreadsheets/d/1AGhNsjI4P6sd1DRWOKP7t9B3arhQe8-kBEl6Y0qTRAM/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1AGhNsjI4P6sd1DRWOKP7t9B3arhQe8-kBEl6Y0qTRAM/edit?usp=sharing)\n\n📎 **Summer Retention Email Project** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1AGhNsjI4P6sd1DRWOKP7t9B3arhQe8-kBEl6Y0qTRAM/edit?usp=sharing)\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-01 15:07** *Elyse*: let me also text fiona rn re those dates
+- **2025-07-01 15:08** *Elyse*: so we know for copy
+- **2025-07-01 16:33** *Elyse*: @User_2Z9G95 yes to moving to 7/3
+- **2025-07-01 16:33** *Elyse*: fiona catching up from ooo last week, said she’ll prioritize reading this over for us to ensure we’ve got the right info
+- **2025-07-01 16:36** *Elyse*: @User_2Z9G95 the everyone else version is good
+- **2025-07-01 16:36** *Elyse*: to use for wide send\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 16:46** *User_2Z9G95*: Fabulous, thank you!
+- **2025-07-01 16:47** *Elyse*: @User*2Z9G95 preview link on travel blog [https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=ce644793154f9f72fb25a9ac9bf8a62c](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=ce644793154f9f72fb25a9ac9bf8a62c)\n\n**sqkg7apn4g7vv3mu-22626551.shopifypreview.com**\n🔗 **[6 Airplane Travel Tips: In Flight &amp; Recovery | HigherDOSE](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=ce644793154f9f72fb25a9ac9bf8a62c)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-01 16:47** *Elyse*: Selecting photos rn
+- **2025-07-01 17:16** *Elyse*: @User*2Z9G95 [https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=03c60c69a6e81c8d56f539706e7b0c2d](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=03c60c69a6e81c8d56f539706e7b0c2d) what do you think of these photos\n\n**sqkg7apn4g7vv3mu-22626551.shopifypreview.com**\n🔗 **[6 Airplane Travel Tips: In Flight &amp; Recovery | HigherDOSE](https://sqkg7apn4g7vv3mu-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=03c60c69a6e81c8d56f539706e7b0c2d)**
+- **2025-07-01 17:18** *User_2Z9G95*: Looks great!!
+- **2025-07-02 07:59** *Elyse*: @User_2Z9G95 live link for blog post: [https://higherdose.com/blogs/the-high-life-blog/airplane-travel-recovery-tips](https://higherdose.com/blogs/the-high-life-blog/airplane-travel-recovery-tips)\n\n**higherdose.com**\n🔗 **[6 Airplane Travel Tips: In Flight &amp; Recovery | HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/airplane-travel-recovery-tips)**
+- **2025-07-02 07:59** *Elyse*: will review emails on tracker in a sec!
+- **2025-07-02 09:33** *Elyse*: @User_2Z9G95 I’m working on june EOM recap slides - could you help me with YoY subscriber growth for email and sms please?
+- **2025-07-02 10:10** *User_2Z9G95*: Yes, on it!
+- **2025-07-02 10:11** *User_2Z9G95*: Will also add this to our monthly reporting, so it's an easy pull\n\n*Reactions: :gratitude-thank-you: Elyse*
+- **2025-07-02 10:14** *User_2Z9G95*: Email:  
+June 2024:  
+• 5,810 new subscribers  
+• 3,170 removed subscribers  
+• 179,009 total  
+June 2025:  
+• 8881 new subscribers  
+• 4334 removed subscribers  
+• 212,535 total\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-02 10:16** *User_2Z9G95*: SMS:  
+• June 2024:  
+    ◦ 1,480 subscribes  
+    ◦ 532 unsubscribes  
+    ◦ 47,615 total  
+• June 2025:  
+    ◦ 3,558 subscribes  
+    ◦ 1,700 unsubscribes  
+    ◦ 51,930 total\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-02 10:16** *User_2Z9G95*: @Elyse Here you go!!^
+- **2025-07-02 10:27** *User_2Z9G95*: Context for SMS unsubscribes is the same as email! Sending more promo campaigns, bringing more people in, so naturally more people will unsubscribe overall — nothing to be concerned about!\n\n*Reactions: :white_check_mark: Elyse*
+- **2025-07-02 13:17** *Chris Jacob*: Had to hop le me know my logistical to dos
+- **2025-07-02 13:17** *Elyse*: CJ Just adding payment method to account please!
+- **2025-07-02 13:40** *User_2Z9G95*: @Elyse — RE the Klaviyo code exclusion update, it's all dependent on the collection the code is tied to. The collection it's tied to is called "Can be discounted" so I would assume bundles shouldn't be in there. I don't have access, but can you take a look at that collection and see if bundles are in there? It may be best to remove them, or I can select a different collection if there's a better one to use!
+- **2025-07-02 13:50** *Chris Jacob*: not sure if applicable but noting that products have to be proactively added as sales channels for instant or PS\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-02 13:51** *Elyse* 💬 1 reply: yes so bundles aren’t in “can be discounted” @User_2Z9G95
+- **2025-07-02 13:51** *Chris Jacob*: billing added
+- **2025-07-02 13:51** *Chris Jacob*: 📎 **image.png** (png, 51.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0945H6ML20/image.png)
+- **2025-07-02 13:52** *Chris Jacob*: also looking at PS integratoins below things we use if you want me to connect let me know  
+Yotpo  
+Loyalty Lion  
+Klaviyo  
+Wonderment
+- **2025-07-02 13:52** *Chris Jacob*: Kustomer
+- **2025-07-02 13:52** *Elyse*: yes to all please
+- **2025-07-02 13:52** *Chris Jacob*: SLack  
+Northbeam  
+StayAI
+- **2025-07-02 13:52** *Elyse*: Julia was gonna send us a list but if you see those available already that would be super helpful to connect
+- **2025-07-02 13:52** *Chris Jacob*: Elevar  
+Alia
+- **2025-07-02 13:53** *User_2Z9G95*: That would be fantastic! I can handle Alia and Klaviyo!
+- **2025-07-02 13:53** *Chris Jacob*: ok
+- **2025-07-02 13:53** *Elyse*: you da bomb CJ
+- **2025-07-02 13:53** *User_2Z9G95*: Thank you!!
+- **2025-07-02 13:56** *Chris Jacob*: Elevar connected but requires this flow creation in PS when yu're ready
+- **2025-07-02 13:56** *Chris Jacob*: [https://help.postscript.io/hc/en-us/articles/22270156915227-Set-Up-Your-Elevar-Integration#01F9MF5S5W0HJ0QRFK4V3NBPXF](https://help.postscript.io/hc/en-us/articles/22270156915227-Set-Up-Your-Elevar-Integration#01F9MF5S5W0HJ0QRFK4V3NBPXF)
+- **2025-07-02 13:56** *Chris Jacob*: Elyse probably have you do this with CS side [https://help.postscript.io/hc/en-us/articles/1260804682429-Set-Up-Your-Kustomer-Integration#Disable-Message-Threading-in-Kustomer](https://help.postscript.io/hc/en-us/articles/1260804682429-Set-Up-Your-Kustomer-Integration#Disable-Message-Threading-in-Kustomer)
+- **2025-07-02 13:56** *Elyse*: fab will do
+- **2025-07-02 14:02** *Chris Jacob*: Sharma team are you familiar with NB connection this doesn't really say how to do it
+- **2025-07-02 14:02** *Chris Jacob*: [https://help.postscript.io/hc/en-us/articles/14218351707931-Set-Up-Your-Northbeam-Integration](https://help.postscript.io/hc/en-us/articles/14218351707931-Set-Up-Your-Northbeam-Integration)
+- **2025-07-02 14:03** *User_2Z9G95*: Let me look!
+- **2025-07-02 14:05** *User_2Z9G95*: Ah, I see! @Chris Jacob – No action is required. Northbeam will just auto track our default UTM parameters, so we should be good to go there!
+- **2025-07-02 14:06** *Chris Jacob*: I'll leave Wonderment to you all its not clear thats useful\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-07-02 14:10** *Chris Jacob*: The Alia setup requires choosing a keyword [https://help.postscript.io/hc/en-us/articles/27155704671899-Set-Up-Your-Alia-Integration#Create-a-Postscript-Keyword](https://help.postscript.io/hc/en-us/articles/27155704671899-Set-Up-Your-Alia-Integration#Create-a-Postscript-Keyword)
+- **2025-07-02 14:16** *User_2Z9G95*: Yes! Our Alia contact said they will do it for us :pray:
+- **2025-07-02 14:38** *Elyse*: thank you @User_2Z9G95 for those subscriber metrics!
+- **2025-07-02 14:40** *User_2Z9G95*: Back-logged everything [here](https://docs.google.com/spreadsheets/d/1qtJOU2541YSnoXC7ccA-RRUy2E_ctEOXQUXO3AdPWU4/edit?gid=1153635090#gid=1153635090), too!
+- **2025-07-02 14:53** *Elyse*: @User_2Z9G95 for SMS with the attentive data folder, which file do you think I should be using?
+- **2025-07-02 14:54** *Elyse*: i’m looking at campaign performance for YoY comparison. which doc would you use
+- **2025-07-02 14:54** *Elyse*: do you think it matters?
+- **2025-07-02 14:56** *User_2Z9G95*: Like June 2025 campaign performance vs. June 2024 campaign performance? What metrics do you need specifically?
+- **2025-07-02 14:56** *User_2Z9G95*: Engagement is going to be harder to get just because Attentive doesn't pull it in nicely, but conversions, revenue is easier to find!
+- **2025-07-02 14:58** *Elyse*: so for my email slides, i did top 3 campaigns with the creative for june 2025
+- **2025-07-02 14:58** *Elyse*: and then a pivot with all the campaigns
+- **2025-07-02 14:58** *Elyse*: hang on will show you
+- **2025-07-02 14:59** *Elyse*: looking to hopefully replicate for sms
+- **2025-07-02 15:00** *Elyse*: 📎 **Screenshot 2025-07-02 at 3.59.13 PM.png** (png, 713.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0942KZRMK7/screenshot_2025-07-02_at_3.59.13___pm.png)\n📎 **Screenshot 2025-07-02 at 3.59.24 PM.png** (png, 1.3MB) - [Download](https://files.slack.com/files-pri/TA97020CV-F093QMR937H/screenshot_2025-07-02_at_3.59.24___pm.png)
+- **2025-07-02 15:01** *User_2Z9G95*: OH, so do you need June 2024 data?
+- **2025-07-02 15:01** *Elyse*: both for sms
+- **2025-07-02 15:02** *Elyse*: june 2024 and 2025
+- **2025-07-02 15:02** *User_2Z9G95*: perf
+- **2025-07-02 15:02** *User_2Z9G95*: one moment
+- **2025-07-02 15:02** *Elyse*: i was looking at the campaign performance folder and saw there were a bunch of the same file but split by week year day etc
+- **2025-07-02 15:02** *Elyse*: wasnt sure if i should use one file over the other
+- **2025-07-02 15:05** *User_2Z9G95*: 2025 &gt; Campaign Performance &gt; Campaign Performance 2025 (Month) &gt; Make a copy of that file &gt; Title it June &gt; Delete all month's except June (already did this for you [HERE](https://docs.google.com/spreadsheets/d/1CM0GI*ywWN*nds6dOOAlNqqnr40RMIE-4MRY3yNF-Yo/edit?gid=2010495223#gid=2010495223)).  
+  
+2024 &gt; Campaign Performance &gt; Campaign Performance 2024 (Month) &gt; Make a copy of that file &gt; Title it June &gt; Delete all month's except June (already did this for you [HERE](https://docs.google.com/spreadsheets/d/12jQCd-xzLaHExyIUmexzmLHzBXtzM-v5oODKgYB6RZM/edit?gid=1970150482#gid=1970150482)).\n\n📎 **Campaign Performance 2024 (June)** (gsheet, 156.4KB) - [Download](https://docs.google.com/spreadsheets/d/12jQCd-xzLaHExyIUmexzmLHzBXtzM-v5oODKgYB6RZM/edit?gid=1970150482#gid=1970150482)\n📎 **Campaign Performance 2025 (June)** (gsheet, 45.6KB) - [Download](https://docs.google.com/spreadsheets/d/1CM0GI_ywWN_nds6dOOAlNqqnr40RMIE-4MRY3yNF-Yo/edit?gid=2010495223#gid=2010495223)
+- **2025-07-02 15:05** *User_2Z9G95*: The files are just aggregates! So I think the easiest way to group is to make duplicates and then filter by the info needed!
+- **2025-07-02 15:05** *Elyse*: ok perfect
+- **2025-07-02 15:06** *User_2Z9G95*: There was only 1 SMS sent last June, so that's why there's only one SMS, BTW!
+- **2025-07-02 15:06** *Elyse*: yoy comp gonna look ballerrrrr then\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-02 15:06** *Elyse*: love that
+- **2025-07-02 15:16** *Elyse*: @User_2Z9G95 do we have a folder with all the creative in it by chance?
+- **2025-07-02 15:21** *User_2Z9G95*: I don’t… they didn’t include creative reporting with their data downloads, but let me reach out and see what we can do. 
+- **2025-07-02 15:21** *Elyse*: ok cool thank you
+- **2025-07-02 15:21** *Elyse*: that would be super helpful
+- **2025-07-02 15:21** *Elyse*: i’m surprised its not automatically included
+- **2025-07-02 15:21** *Elyse*: i’ll see what i can pull from my weekly reports too
+- **2025-07-02 15:22** *Elyse*: ok so only creative i don’t have for the sake of this report is the father’s day sale sms on 6/8
+- **2025-07-02 15:22** *User_2Z9G95*: The one from last year, right?
+- **2025-07-02 15:22** *Elyse*: from this year!
+- **2025-07-02 15:23** *User_2Z9G95*: oh! I have that in my SMS messages
+- **2025-07-02 15:24** *User_2Z9G95*: Slack is having an issue sending files over, so I just texted it to you!!
+- **2025-07-02 15:24** *Elyse*: ok officially bffs now having your number\n\n*Reactions: :selfie: User_2Z9G95, :blob-hearts: User_2Z9G95*
+- **2025-07-02 15:25** *User_2Z9G95*: Just reached out RE creative and will keep you posted
+- **2025-07-02 15:43** *User_2Z9G95*: @Elyse — [Alchemize House email design ready for review](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42028-299&amp;p=f&amp;t=94SubLn7Vs7WOlnS-0)! I left a few tweaks in there already, but please add in any feedback + we can easily swap out photos if we get more/others.
+- **2025-07-03 09:08** *Elyse*: Jumping on this now @User_2Z9G95 \n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-03 09:23** *Elyse*: @User_2Z9G95 top header “take some for yourself” think that should say take some time for yourself\n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-07-03 09:48** *Elyse*: Email looks good
+- **2025-07-03 09:48** *Elyse*: Gonna find out what the story is with the link
+- **2025-07-03 09:48** *Elyse*: Also where do we have mojito link directing to?
+- **2025-07-03 10:06** *User_2Z9G95*: Ah, thanks for the reminder! Sorry I meant to send a follow up earlier asking if she shared the recipe on socials/her blog? I was just looking and can't seem to find anything live - if not, thinking we can just remove the "get the recipe" CTA and add in a push for high-dration powder - (i.e. Make your own zero-proof mocktail! Our go-to: shake up a stick of High-dration powder with water, pour over ice and top with lime and mint for a refreshing and hydrating drink to sip while you DOSE).
+- **2025-07-03 10:08** *Elyse*: Yeah that works!
+- **2025-07-03 10:09** *User_2Z9G95*: Updating!
+- **2025-07-03 10:09** *Elyse*: What did we put in the hydration email for the recipe
+- **2025-07-03 10:09** *Elyse*: Oh the watermelon is in the hydration powder ok nvm
+- **2025-07-03 10:10** *Elyse*: I was like wait do we need to tell people to add watermelon :woman-facepalming::skin-tone-2: \n\n*Reactions: :joy: User_2Z9G95*
+- **2025-07-03 10:10** *User_2Z9G95*: Yes the flavor!!
+- **2025-07-03 10:11** *User_2Z9G95*: I can put Watermelon High-Dration Powder if that's clearer + sounds better? It's just not merchandised on the site that way, but happy to!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-03 10:14** *User_2Z9G95*: Design is being updated, will ping when it's ready! Keep me posted on the link!
+- **2025-07-03 10:18** *Elyse*: Will do
+- **2025-07-03 10:18** *Elyse*: Emailed the surf lodge team saying like yo gimme a dang link already please or we’re just gonna link to surf lodge website\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-03 10:19** *User_2Z9G95*: perf@!
+- **2025-07-03 10:39** *User_2Z9G95*: @Elyse — [Updated design here](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42028-299&amp;p=f&amp;t=aMS4QP9wKqSLkc8D-0)!
+- **2025-07-03 11:06** *Elyse*: Perfect
+- **2025-07-03 11:19** *User_2Z9G95*: Preview sent with surf lodge email homepage as the stand in link!
+- **2025-07-03 11:37** *Elyse*: Ok cool will check now
+- **2025-07-03 11:39** *Elyse*: Looks good
+- **2025-07-03 11:49** *User_2Z9G95*: Should we schedule or you want to give it a little to see if they respond?
+- **2025-07-03 12:17** *Elyse*: Ugh
+- **2025-07-03 12:17** *Elyse*: What do you think
+- **2025-07-03 12:17** *Elyse*: I’m half of the mind to just fire it off as is
+- **2025-07-03 12:17** *Elyse*: Let me give them til 2
+- **2025-07-03 12:17** *User_2Z9G95*: ALigned!
+- **2025-07-03 12:27** *User_2Z9G95*: @Elyse — [Let me know if there's any feedback on the travel bundle email for Monday](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847)! I see the bundles are live which is perfect.
+- **2025-07-03 12:33** *User_2Z9G95*: Additionally, the other emails for next week's copy are ready for review! We'll want to get them into design ASAP since it's a short week!  
+• [7/9](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)  
+• [7/11](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)
+- **2025-07-03 12:40** *Elyse*: Perfect will hop into these now
+- **2025-07-03 13:19** *User_2Z9G95*: Thank you! Thinking we should probably schedule the email for 3p ET, but let me know if you feel otherwise!
+- **2025-07-03 13:22** *User_2Z9G95*: We usually send to an engaged 90 day list, but for this one, we're recommending a send to a L60 engaged to see if a more targeted engaged list could help increase opens/clicks — plus this is a fun, engaging piece that will likely resonate most with our most engaged subscribers.  
+  
+I've also included a Tri-State area segment and excluded CAN/EU, given the Montauk inclusion, but if you feel like we should include them, let me know!
+- **2025-07-03 13:43** *Elyse*: Yeah let’s do it re 3pm
+- **2025-07-03 13:43** *Elyse*: Done waiting for them lol
+- **2025-07-03 13:43** *Elyse*: Also good on segmenting\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-03 14:36** *Elyse*: @User_2Z9G95 my only note for Monday’s email - 1 maybe we move to Tuesday just bc its long weekend, people may be settling back in/not as in tune w their inbox on monday/in catch up mode\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-03 14:36** *Elyse*: and 2 lets try to differentiate the copy for hydration powder on the second bundle
+- **2025-07-03 14:36** *Elyse*: the beginning and end of the sentence are almost identical to blurb about it in first bundle
+- **2025-07-03 14:37** *Elyse*: also first design - second design features the blanket bag/blanket isn’t included in either bundle
+- **2025-07-03 14:39** *Elyse*: reuqested comment access on 7/9
+- **2025-07-03 14:40** *User_2Z9G95*: Granted!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-03 14:52** *Elyse*: ok i added some notes to emf one
+- **2025-07-03 14:52** *Elyse*: but want to look at it again with fresh eyes
+- **2025-07-03 14:52** *Elyse*: so can tweak based on initial notes
+- **2025-07-03 15:38** *User_2Z9G95*: I will take a look at everything and am aligned on a Tuesday send!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-07 14:07** *User_2Z9G95*: Hi @Elyse — I hope you had a great weekend! Let me know if you had any additional thoughts on the [email for tomorrow](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42009-847&amp;t=djwgsOD94sKWXehh-0). I can get it scheduled ASAP. Thank you!  
+  
+Will send through a status update/what's needed for the week in the next hour!\n\n*Reactions: :eyes: Elyse*
+- **2025-07-07 14:59** *Elyse*: @User_2Z9G95 looks good by me
+- **2025-07-07 14:59** *Elyse*: note that this should stay domestic, as the cpg doesn’t ship internationally
+- **2025-07-07 18:55** *User_2Z9G95* 💬 1 reply: Hi Elyse! I'm so sorry for the delay here. Please see immediate campaign action items for this week below. Everything is updated in the [tracker](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958). I will follow up with flow needs and next steps tomorrow. Enjoy your evening!  
+  
+**Campaigns:**  
+• 7/8: Preview sent — Confirming this will be sent to our 90 days engaged list, with non-US exclusions  
+• 7/9: Pushed to design, let me know ASAP if you have [any copy feedback](https://docs.google.com/document/d/19nheMCxQGxTRC*6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)!  
+• 7/11: Copy feedback sent to Chandler — will edit + push to design. Let us know if you have [any other feedback](https://docs.google.com/document/d/1GFrbj9SWvuZ1ab5wdKEuhuIqpL*on2ArFDVfjtovH4w/edit?tab=t.0)!  
+• 7/14: Giveaway - Do you have any assets or additional details?  
+• 7/16: Mind body connection - [Copy ready here](https://docs.google.com/document/d/1nPaex3squNKgDiXFixreJc2OS7hooZ5X4xjPbShxt3g/edit?tab=t.0)  
+• 7/18: Glow from within - [Copy ready here](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)  
+• 7/21: Microcurrent for Macro results (Julia McCabe blog) - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/23: Permission to Play - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/25: Serotonin Supper - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/28: Permission to Play - [Need more details](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.pgznx7hfmnnk#heading=h.frab4ld2bh1y)  
+• 7/30 - Summer skin - Copywriting  
+• 8/1 - Summer skin - Copywriting  
+• TBD: Red Light Up-Sell; we will get this briefed out tomorrow
+- **2025-07-07 20:21** *Elyse*: Sweet, will jump on it!
+- **2025-07-08 08:30** *User_2Z9G95*: RE Flow updates, the tracker is updated with action items highlighted in red!  
+• Welcome - Copy feedback pending  
+• Replenishment - Copy/design feedback pending  
+• Checkout - Copy feedback pending  
+• Cart - Copy feedback pending  
+• Browse - Copy feedback pending  
+• Loyalty Lion Revamp: Monthly Reward Reminder - Copy feedback pending  
+• Loyalty Lion Revamp: You got a reward - Copy feedback pending  
+• Loyalty Lion Revamp: Welcome - Copy feedback pending  
+• 02 | Wonderment | Shipping | Shipment Picked Up - Copy feedback pending  
+• 04 | Wonderment | Shipping | Delivered - Copy feedback pending  
+• 06 | Wonderment | Attempted Delivery - Copy feedback pending
+- **2025-07-08 09:51** *Elyse*: ok perfecto
+- **2025-07-08 09:51** *Elyse*: I am finishing weekly report and then spending the day on crm!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-08 11:01** *User_2Z9G95*: Hi @Elyse — Just re-sent today's preview! LMK how it looks and will get it scheduled ASAP.
+- **2025-07-08 11:47** *Elyse*: good to go @User_2Z9G95
+- **2025-07-08 11:53** *User_2Z9G95*: Scheduled for 1:30p ET to 90 days engaged (intl exclusions!) — thank you!
+- **2025-07-08 11:53** *Elyse*: perfecto
+- **2025-07-08 12:21** *Elyse*: ok diving in
+- **2025-07-08 12:21** *Elyse*: which do you want me to look at first?
+- **2025-07-08 12:21** *Elyse*: email or PS automations?
+- **2025-07-08 12:22** *User_2Z9G95*: Let's do email! Let's chat through a plan for PS automations on our call to make it easy for us
+- **2025-07-08 12:22** *Elyse*: ok sweet
+- **2025-07-08 12:58** *Elyse*: @User_2Z9G95 would hold on design for 7/9. see my notes on the google doc please!
+- **2025-07-08 14:25** *User_2Z9G95*: Hi @Elyse — Thanks so much for the time today! [Here's a link to the initial postscript automations for review](https://docs.google.com/document/d/19U*x-DHbtn7dNwNq7JL8xHdkMHOMkOAl8kY0G8o2Wjg/edit?tab=t.0). Let me know if you have any questions! @Ingrid — Feel free to review our weekly summary below + [agenda here](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0)!  
+  
+Shopify Summary:  
+• This year MTD: 0.21% to goal with $30K in revenue   
+• Last year MTD: 0.23% to goal with $27K in revenue  
+Key Performance Insights:  
+• Klaviyo-attributed campaign revenue is down 17% mainly because we've only sent two campaigns so far (two additional will be sent to help us round out the week)  
+• Klaviyo-attributed flow revenue is up 53% YoY mainly attributed to our welcome and browse abandonment flows. We saw 150% more recipients receiving these flows which means more people are entering our funnel and are flows are converting them!   
+    ◦ After speaking with the paid team, this increase in flow performance/sessions could be attributed to more customers coming in from the combo of AppLovin' and TikTok — adding more touch points into the customer journey.   
+• We don't have any SMS-attributed revenue because we're still onboarding. We're hoping to be fully live by tomorrow EOD, so we can start generating revenue from our new campaigns and automations.   
+Instant will be joining our next call on Tuesday, so we'll plan to start with an Instant summary at the beginning of that call (5-10 mins) prior to jumping into our weekly.\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n📎 **FOR REVIEW: Postscript Automations** (gdoc, 107.9KB) - [Download](https://docs.google.com/document/d/19U_x-DHbtn7dNwNq7JL8xHdkMHOMkOAl8kY0G8o2Wjg/edit?tab=t.0)
+- **2025-07-08 15:39** *Elyse*: Thank you @User_2Z9G95 !! 
+- **2025-07-08 15:40** *Elyse*: Compiling team travel hacks rn!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-08 17:32** *Elyse*: @User_2Z9G95 just added in team travel hacks to google doc and the last of my notes to travel email now
+- **2025-07-08 17:47** *User_2Z9G95*: Looks great! RE higherdose hacks, I think we can just have one CTA for each: [Shop Katie's Pick's], [Shop Jessica's Picks], [Shop Anastasia's Picks] and have each one link to the collections page. Thoughts?
+- **2025-07-08 17:50** *Elyse*: ok i’m cool w that!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-08 17:53** *User_2Z9G95*: I updated the blurb at the top, too, based on the blog!
+- **2025-07-09 10:07** *Elyse* 💬 1 reply: @User_2Z9G95 i’m doing one piece of admin work and then diving into our list\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 12:57** *Elyse* 💬 1 reply: left notes on postscript list - going to show ingrid in a few mins so may have more notes @User_2Z9G95
+- **2025-07-09 14:56** *Elyse*: @User*2Z9G95 Ingrid and I just went through all the flows. Here are our notes:  
+  
+Big takeaway - the abandon series feels very generic/vague with subject lines and preview text. We’d love to run that whole series, plus welcome emails through the **[new product pillars doc](https://docs.google.com/document/d/1TviOjzGtgGUhRuFDcaCLu3ePCtHVB0RDgFUrFvS1bhE/edit?usp=sharing)**. I just saw this for the first time today and think it’s spot on for language and where we want these flows to be. Here’s also the **[new manifesto doc](https://docs.google.com/document/d/1w*C60nIHyiDn_VoDrXSXTJw46C6MyhGS-yrIZMw5AuI/edit?usp=sharing)** - it’s very much a working doc but is a great reference of the voice we want to be speaking in  
+  
+With replen flow - left notes on figma, but one note for the Shop By Goal design: we’d love to see which version performs better via email campaign. So want to think about where we can put that block into an appropriate email and test whether the lifestyle photo vs product photo does better with engagement and then implement that into the flows  
+  
+I’m setting up a call with Lauren to review design and everything as a whole for Monday/Tuesday so if we can somehow get outstanding copy polished up before then so I can present everything at once would be sick\n\n📎 **HIGHERDOSE PRODUCT PILLARS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1TviOjzGtgGUhRuFDcaCLu3ePCtHVB0RDgFUrFvS1bhE/edit?usp=sharing)\n📎 **HigherDOSE Manifesto_v3** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1w_C60nIHyiDn_VoDrXSXTJw46C6MyhGS-yrIZMw5AuI/edit?usp=sharing)
+- **2025-07-09 15:01** *Elyse*: Replen flows  
+• glow serum email is underwhelming. want to swap out for better photos, and left notes for ingredient highlights  
+• detox drops email looks good, want to swap the bottom shop by goal photos a bit so that its not beige beige beige blue  
+• oxytocin oil email is missing ingredient breakdown and review highlight  
+• highdration powder we loved the ingredient highlight design, and decided for the reviews we’d like to do a single review static image instead of the gif so its not too much to read while in reviews in motion  
+    ◦ any emails that are still in copy, we picked which review we want on the doc
+- **2025-07-09 15:12** *Elyse*: Same thing for Postscript automations copy - would love to toss that to Chandler and rework through new pillars/manifesto language @User_2Z9G95 I put some notes directly on the doc but want to revisit overall now having those two new docs
+- **2025-07-09 15:15** *Elyse*: Diving in to wonderment and loyalty lion emails now
+- **2025-07-09 15:31** *Elyse*: @User_2Z9G95 Loyalty Lion emails - would also love to run through those again with the new lens of the pillars/manifesto docs. They feel very generic loyalty, especially the subject lines. Want them to feel more elevated/high end/luxury brand, more exclusive, and more community nurturing if that makes sense
+- **2025-07-09 15:33** *Elyse*: Subject line of “Score” is wildly off brand for HD, so must must must rework those
+- **2025-07-09 15:42** *Elyse* 💬 1 reply: @User_2Z9G95 could you do me a favor please? Can you send me a test of the order shipped, out for delivery, and delivered emails as they are now please? Want to be able to compare
+- **2025-07-09 15:46** *User_2Z9G95*: Thank you so much for this detailed feedback @Elyse! Will pass the Product Pillars and Manifesto doc around so that everyone has access to it for anything needed RE brand voice. This is super helpful!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-09 15:47** *Elyse*: can share with Maham too\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 15:47** *Elyse*: i thought it was so helpful too\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 15:47** *Elyse*: a good brand voice refresh\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 15:47** *User_2Z9G95*: I see you put "left lots of notes 7/8 <mailto:hannah@sharmabrands.com|hannah@sharmabrands.com>" for the 7/10 email. We implemented all of your feedback yesterday! Is there anything new we should integrate from today or is it good to push to design?
+- **2025-07-09 15:47** *User_2Z9G95*: Sending tests now!
+- **2025-07-09 15:48** *Elyse*: can you look me to that copy pls
+- **2025-07-09 15:48** *Elyse*: i’m blanking on what it is now
+- **2025-07-09 15:48** *User_2Z9G95*: Oh yes, sorry! [This one](https://docs.google.com/document/d/19nheMCxQGxTRC_6E73BRjiDa2ZmdmavG8oHZZaxZp5Y/edit?tab=t.0)!
+- **2025-07-09 15:49** *User_2Z9G95*: I left the comments in there, just so I can double check everything in the designed version, but everything was updated!'
+- **2025-07-09 17:09** *Elyse*: Can you look me lmao just realized what I wrote :woman-facepalming::skin-tone-2: 
+- **2025-07-09 17:09** *Elyse*: Reading thru updates quickly now
+- **2025-07-09 17:11** *Elyse*: @User_2Z9G95 good to move to design
+- **2025-07-09 18:04** *User_2Z9G95*: Thank you!! @Elyse  
+• 7/10 design here: [Proto](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?page-id=42125%3A301&amp;node-id=42125-1176&amp;viewport=-1666%2C-658%2C0.39&amp;t=CJ5X1dBZ8KXSm5iT-1&amp;scaling=min-zoom&amp;content-scaling=fixed), [Figma](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42125-301&amp;p=f&amp;t=17nMvJzVHkNllLcj-0)  
+    ◦ Left some comments for you in there!  
+• 7/11: Design here: [Figma](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?t=KDGCNtmQ1o8p7sT1-0)
+- **2025-07-09 18:28** *Elyse*: Ok fab will be home in a sec and will look
+- **2025-07-09 20:18** *Elyse*: answered questions on 7/10\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-09 20:18** *Elyse*: but otherwise looks great
+- **2025-07-09 20:19** *Elyse*: 7/11 is fire, love it\n\n*Reactions: :heart: Ari Murray, :raised_hands: User_2Z9G95*
+- **2025-07-10 10:39** *User_2Z9G95*: Preview for today's email sent, @Elyse !\n\n*Reactions: :eyes: Elyse*
+- **2025-07-10 10:42** *User_2Z9G95*: Also sent B version for the SL + PT!
+- **2025-07-10 10:42** *Elyse*: peeping both rn
+- **2025-07-10 10:45** *Elyse*: @User_2Z9G95 higherdose hacks has glow serum blurb underneath it!
+- **2025-07-10 10:45** *Elyse*: 📎 **Screenshot 2025-07-10 at 11.45.35 AM.png** (png, 560.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0959NCGC4C/screenshot_2025-07-10_at_11.45.35___am.png)
+- **2025-07-10 10:46** *User_2Z9G95*: Ah updating now\n\n*Reactions: :gratitude-thank-you: Elyse*
+- **2025-07-10 11:16** *User_2Z9G95*: Previews re-sent! @Elyse
+- **2025-07-10 11:23** *Elyse*: great today’s good to go
+- **2025-07-10 11:23** *User_2Z9G95*: Previews for tomorrow also sent!
+- **2025-07-10 11:25** *Elyse*: both good to go
+- **2025-07-10 11:27** *User_2Z9G95*: It looks like the last few emails we sent out between 330-4p ET drove above average opens (over 60%) consistently! We'll plan to do a send-time test after these two subject line ab tests, but I would recommend we send both of these at that time!  
+  
+Confirming we should exclude intl from the EMF one since fanny pack is US only? Should we also exclude from travel since we feature a lot fo US only products?
+- **2025-07-10 11:27** *Elyse*: fanny pack can go wide, thats available internationally
+- **2025-07-10 11:27** *Elyse*: but yes to travel for intl excl
+- **2025-07-10 11:28** *User_2Z9G95*: Oh! The sheet you initially shared said US only, so I'll update it!
+- **2025-07-10 11:39** *Elyse*: oh really
+- **2025-07-10 11:39** *Elyse*: ok hang on
+- **2025-07-10 11:39** *Elyse*: let me triple check\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-10 11:40** *User_2Z9G95*: Ok, LMK!
+- **2025-07-10 11:41** *User_2Z9G95*: [This is what I've been referencing](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?gid=1171637223#gid=1171637223)!
+- **2025-07-10 11:42** *Elyse*: yes fanny international confirmed\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-10 11:43** *Elyse*: oo i have to add the new bundles to that thanks for resurfacing @User_2Z9G95
+- **2025-07-10 11:43** *User_2Z9G95*: oh yes, thank you!
+- **2025-07-10 11:44** *User_2Z9G95*: • 7/10: Scheduled for today, 3p ET, 90D engaged, intl excl  
+• 7/11: Scheduled for tomorrow 3:30p ET, 90D engaged\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-10 12:44** *User_2Z9G95*: Hi @Elyse — A few things for you!  
+• Do you have any additional context in regards to the remaining [July concepts](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?tab=t.pgznx7hfmnnk)? We'd love to get copy finalized this week.   
+• Would you like some support in regards to August concepts? Happy to start putting some ideas in if that would be helpful. We would love to have concepts finalized by early next week (at least the first half), so that we can start briefing those out.   
+• I'll dive into your feedback on all flow-related items this afternoon!  
+• Chandler is working on the Postscript copy today, so I'll let you know when that's ready for review.   
+• 7/15 copy ready for review [here](https://docs.google.com/document/d/1nPaex3squNKgDiXFixreJc2OS7hooZ5X4xjPbShxt3g/edit?tab=t.0)  
+• 7/17 copy ready for review [here](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0) (let us know when these are good to push to design!)\n\n📎 **16: Redefining the Summer Body Email + SMS** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1nPaex3squNKgDiXFixreJc2OS7hooZ5X4xjPbShxt3g/edit?tab=t.0)\n📎 **18: Glow from within: Body Sculpting** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)
+- **2025-07-10 14:16** *Elyse*: @User_2Z9G95 you read my mind! just finished eating some lunch, diving into remainder of July first, will review those two emails, then jumping into uploading helen’s blog to Shopify
+- **2025-07-10 14:16** *Elyse*: aiming to start tackling august tm!
+- **2025-07-10 14:22** *User_2Z9G95*: Love it! Thank you so much!!
+- **2025-07-10 16:43** *User_2Z9G95*: HI @Elyse! Postscript SMS for review [HERE](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0). Suggestions in green!\n\n📎 **NEW EDITS: Postscript Automations** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0)
+- **2025-07-10 16:44** *Elyse*: lets goooooooo
+- **2025-07-10 16:44** *Elyse*: ok will dive in rn\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-10 16:44** *Elyse*: i started reviewing 7/15
+- **2025-07-10 16:44** *Elyse*: also in a moment of diversion, i updated the blog organization sheet [https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK*NDmYpc8aVSCfS-FpGzEP8U/edit?usp=sharing)\n\n📎 **Higher Dose Blog Content Gap Analysis** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1jGrq6g-uGSUrQfnhxRhK_NDmYpc8aVSCfS-FpGzEP8U/edit?gid=426573794#gid=426573794)
+- **2025-07-10 16:45** *Elyse*: **HD Work** tab has new upcoming SEO blogs
+- **2025-07-10 16:45** *Elyse*: so can keep in mind for august CRM inclusion where appropriate
+- **2025-07-10 16:46** *Elyse*: got new brief from SEO team on “when to use red light therapy for best results” (line 18) so will send that off to our writer tomorrow\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-11 09:08** *Elyse*: @User_2Z9G95 morning gal! give me a holler when I should take a peek at tracker for any flow updates please!\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-11 09:32** *Elyse*: @User_2Z9G95 just looked a postscript updated copy - moving in a better direction. so i do love the “lit up, deeply restored, and unapologetically radiant” i just think we shouldn’t say it back to back in like a handful of different texts. like imagine you’re a customer and get it in the welcome flow, then you abandon something you’re seeing that copy again, etc it feels redundant in a spot where we have opportunity to say something different each time  
+@Ingrid do you have any thoughts here? [Here](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0) are the updates\n\n📎 **NEW EDITS: Postscript Automations** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1LV6UztdwwUQGe99PbAWYZ4-NmgOf6Y3WDEyTgPTIKhQ/edit?tab=t.0)
+- **2025-07-11 09:34** *Elyse*: @User_2Z9G95 i’m diving into uploading helen leland’s blog, will circle back with live link shortly!
+- **2025-07-11 12:07** *User_2Z9G95* 💬 3 replies: Hi @Elyse! I just connected with Chandler and she's working through the flows today and early next week. Given that some of the emails need to be completely re-thought and re-done, we won't be able to have everything ready by Monday or Tuesday next week. Here's a summary of what we can do though:  
+• By Monday EOD:  
+    ◦ 7/21 campaign  
+    ◦ 7/25 campaign  
+    ◦ Replenishment flows  
+    ◦ Abandoned Cart  
+    ◦ Abandoned Checkout  
+• By Tuesday EOD:  
+    ◦ Abandoned Browse  
+• By Wednesday EOD:  
+    ◦ Wonderment flows  
+    ◦ Loyalty Lion flows  
+Given that the Welcome needs another re-write with the new TOV doc, we won't be able to have that done for early next week. We're moving to keep pushing these along as quickly as we can and appreciate your patience as we continue to work through these.  
+  
+We also had a few questions on some feedback left:  
+• I saw you left a comment in [this Figma file](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=33332-2180&amp;p=f&amp;t=AyOdrmbkH5d1DFMB-0) about providing copy. Is the plan just to condense that's already in there? Or what exactly needs to be modified? Thank you!  
+• And for [this one](https://www.figma.com/design/tS7RlljzjfnN1HZZYe0l2L/HigherDOSE-%E2%80%93-Flows?node-id=39049-706&amp;t=E9aBNCdqOehg4OEI-0), do you have the one-liner about being fragrance-free/the scent we can add?  
+I just realized I never sent you the tests for order update emails — so sorry! I actually can't send previews of transactional emails that are live, so I'll thread screenshots for you now, so you can review [those](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)! Keep us posted on feedback there.  
+  
+One other outstanding item:  
+1. We're waiting on some more context for the [Permission to Play](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?tab=t.pgznx7hfmnnk) concepts for July.  
+**One note from us:** Chandler will be OOO 7/21-7/25 and we're hoping to have the first week of August content in hand ASAP so she can get copy drafted for them. I see something about the Red Light Wrap Launch — if that's happening we need to have all context by early next week for us to work on the copy (+ we'd need to pause work on flows to accommodate that new product launch). Please let us know ASAP on that!  
+  
+Let me know if you have any questions! Thank you!\n\n📎 **Summer 2025 CRM Calendar Draft** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL_us/edit?tab=t.pgznx7hfmnnk)
+- **2025-07-11 13:04** *Elyse*: Fab thank you @User_2Z9G95 all good on ETA for flows, I’ll move meeting I set up to early week after or late next week. Thank you for that update
+- **2025-07-11 13:08** *Elyse* 💬 4 replies: re Figma file - which one should I be looking at? I think its the “crafted with” section right?
+    - **2025-07-11 13:11** *User_2Z9G95*: ↳ Ah, yes! It looks like Nero updated it from a design perspective based on your caption, but if we still need to shorten/condense, let us know!\n\n📎 **Screenshot 2025-07-11 at 11.10.33 AM.png** (png, 396.6KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0951GCRR47/screenshot_2025-07-11_at_11.10.33___am.png)
+- **2025-07-11 14:18** *Elyse*: @User*2Z9G95 blog preview for helen [https://lc4pxt5qwd9w2yfy-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview*key=e5a470e276da72f33b2e99d821a740ab](https://lc4pxt5qwd9w2yfy-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=e5a470e276da72f33b2e99d821a740ab)\n\n**lc4pxt5qwd9w2yfy-22626551.shopifypreview.com**\n🔗 **[Posture, Flow &amp; Inner Vitality with Helen Leland                      – HigherDOSE](https://lc4pxt5qwd9w2yfy-22626551.shopifypreview.com/blogs/the-high-life-blog/articles?preview_key=e5a470e276da72f33b2e99d821a740ab)**
+- **2025-07-11 14:27** *Elyse* 💬 1 reply: @User_2Z9G95 left notes on 7/15 email doc
+- **2025-07-11 14:39** *Elyse* 💬 2 replies: @User_2Z9G95 confirming you saw Fiona’s response to serotonin supper email?
+- **2025-07-11 14:44** *Elyse* 💬 2 replies: separately, making a mental note for august crm - we’ll want to include katie’s new biohackhers episode on her mold detox
+- **2025-07-11 14:56** *Elyse*: oh Katie also mentioned to me for future - we should use her updated headshots from this folder [https://drive.google.com/drive/u/0/folders/1CcO9P1IGPFfXvE263bP9sA04OPGm49yv](https://drive.google.com/drive/u/0/folders/1CcO9P1IGPFfXvE263bP9sA04OPGm49yv) @User_2Z9G95\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-11 14:57** *Elyse*: @User_2Z9G95 i added a bunch of notes to 7/17 as well
+- **2025-07-11 15:05** *Elyse*: diving in to fleshing out details for remainder of july crm
+- **2025-07-11 15:16** *User_2Z9G95*: Thank you!! Do you have any context/updates RE the Red Light Wrap launch? Are we planning that for July or August? (Q3 strategy says August!)
+- **2025-07-11 15:16** *Elyse*: we’re having an internal marketing kick off meeting on tuesday re that\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-11 15:16** *Elyse*: so will relay any info as soon as i get it!
+- **2025-07-11 15:16** *User_2Z9G95*: Fabbbb
+- **2025-07-11 15:23** *Elyse*: just emailed fiona for some help with 7/23 PTP email lol
+- **2025-07-11 15:24** *Elyse*: and then will get my ask together for the team staff picks on monday, once fiona gives us a little more guidance there
+- **2025-07-11 15:52** *Elyse*: Ok fab she responded\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-11 15:54** *User_2Z9G95*: Love it! Thank you!!
+- **2025-07-14 09:24** *Elyse*: Morning team! @User_2Z9G95 live link for helen [https://higherdose.com/blogs/the-high-life-blog/posture-with-helen-leland](https://higherdose.com/blogs/the-high-life-blog/posture-with-helen-leland)\n\n**higherdose.com**\n🔗 **[Posture, Flow &amp; Inner Vitality with Helen Leland                      – HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/posture-with-helen-leland)**\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-14 09:26** *Elyse*: @User_2Z9G95 this morning I have to do weekly report and then I’m diving into CRM tracker\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-14 09:26** *Elyse*: and august calendar\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-14 09:59** *Elyse*: also got confirmation we should have Julia McCabe’s blog content back by 7/17
+- **2025-07-14 11:47** *User_2Z9G95*: @Elyse — [7/17 edits are in](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)!\n\n📎 **18: Glow from within: Body Sculpting** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1hfNsjIHooC7QU99DSmuRCbQzpm9052JiBd7KG6Gv6nQ/edit?tab=t.0)\n\n*Reactions: :eyes: Elyse*
+- **2025-07-14 14:00** *User_2Z9G95*: Hi @Elyse ! We're working to evolve our internal briefing process and were thinking we could also implement this to help streamline our approval process with you all, too! As you're building out August concepts, would you be able to integrate this framework for them so that we can ensure we're giving the team as much information upfront as possible? I know we don't always have access to the info this far in advance (totally fine), but the more info we can share the better! I'm also happy to support where needed — let me know your thoughts!  
+  
+• Campaign overview:  
+• Goal of the email:  
+• Products to feature:  
+• If this campaign has multiple themes or blocks (i.e. a blog and a product feature), what is the hierarchy of messaging?  
+• If additional research is needed from our team, please link any helpful resources (or let us know where we should be diving deeper):  
+• Do you need to source any additional information internally before we get started?  
+• CTAs:
+- **2025-07-14 14:01** *Elyse*: Absolutely, love this\n\n*Reactions: :raised_hands: User_2Z9G95, :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-14 14:17** *User_2Z9G95*: Fab!!
+- **2025-07-14 14:47** *User_2Z9G95*: Keep me posted on the postscript copy — LMK if there's anything I can do to support there, but we can likely schedule the initial SMS for tomorrow or wednesday!
+- **2025-07-14 14:53** *Elyse*: Will jump into that rn
+- **2025-07-14 16:01** *Elyse*: @User_2Z9G95 left notes on 7/17 email, generally good to go there with a few tweaks\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 09:31** *Elyse*: Morning team! @User_2Z9G95 I’m flying through postscript copy now, leaving notes should be done in next ten mins
+- **2025-07-15 09:38** *Elyse*: done @User_2Z9G95 basically all of them are good to go
+- **2025-07-15 09:41** *User_2Z9G95*: Looking now!!
+- **2025-07-15 09:44** *Elyse*: Sent Maham the doc so she can start uploading
+- **2025-07-15 09:46** *User_2Z9G95*: Looks great, thank you!!
+- **2025-07-15 09:49** *User_2Z9G95*: @Elyse — Email design for today ready for review [here](https://www.figma.com/proto/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?page-id=42205%3A120&amp;node-id=42205-121&amp;viewport=-2%2C-520%2C0.38&amp;t=2YkIcuVGCTtIgIrU-1&amp;scaling=min-zoom&amp;content-scaling=fixed).\n\n*Reactions: :eyes: Elyse*
+- **2025-07-15 09:50** *Elyse*: on it
+- **2025-07-15 09:51** *Elyse*: love it @User_2Z9G95
+- **2025-07-15 09:51** *Elyse*: another banger @Nero!\n\n*Reactions: :bangbang: User_2Z9G95, :star-struck: User_5S72LT, :heart: Ari Murray*
+- **2025-07-15 09:54** *Elyse*: Postscript new number campaign good to go too @User_2Z9G95\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-15 09:57** *User_2Z9G95*: Fab!! 
+- **2025-07-15 09:57** *Elyse*: we’re zip zip zippping today\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-15 09:57** *Elyse* 💬 1 reply: I sent permission to play email copy to fiona for second set of eyes, but reviewing myself now
+- **2025-07-15 09:57** *Elyse*: same re dose dinner
+- **2025-07-15 09:59** *User_2Z9G95*: Perf, on the topic, for the Permission to Play 7/28, supporting your body concept, I tried looking in Klaviyo for the email with some search terms but nothing showed up. Do you recall when it was sent?  
+  
+*Sauna blanket for improved heat tolerance for days spent having fun in the sun (we should have a historical email on hormesis, heat shock proteins - had great info in it*
+- **2025-07-15 09:59** *Elyse*: i’ll dig in!
+- **2025-07-15 10:01** *Elyse* 💬 1 reply: @User*2Z9G95 [https://docs.google.com/document/d/1662CPKmotDWWaDIyfS5-pqyBW6bH4HETjVW*1*Wox-8/edit?usp=sharing](https://docs.google.com/document/d/1662CPKmotDWWaDIyfS5-pqyBW6bH4HETjVW*1_Wox-8/edit?usp=sharing)\n\n📎 **Copy of HD email: Longevity is HOT** (gdoc, 135.5KB) - [Download](https://docs.google.com/document/d/1662CPKmotDWWaDIyfS5-pqyBW6bH4HETjVW_1_Wox-8/edit?usp=sharing)
+- **2025-07-15 10:01** *Elyse*: @User_2Z9G95 zombie cells email [https://docs.google.com/document/d/1fxkn0pbvH9czZkk3S8iJNcr7ZsfqLThr00IKytRps0I/edit?usp=sharing](https://docs.google.com/document/d/1fxkn0pbvH9czZkk3S8iJNcr7ZsfqLThr00IKytRps0I/edit?usp=sharing)\n\n📎 **Copy of HD email: Zombie Cells** (gdoc, 151.0KB) - [Download](https://docs.google.com/document/d/1fxkn0pbvH9czZkk3S8iJNcr7ZsfqLThr00IKytRps0I/edit?usp=sharing)
+- **2025-07-15 10:02** *Elyse*: unrelated but was a fan favorite amongst the hd team, for keeping in back pocket\n\n*Reactions: :zombie: User_2Z9G95*
+- **2025-07-15 10:02** *Elyse*: maybe october/halloween timing\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-15 10:34** *User_2Z9G95*: @Elyse @Ingrid — FYI, just a reminder, we will have Daniella from Instant joining us today on the first 5-10ish minutes on the call today!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-15 11:09** *User_2Z9G95* 💬 1 reply: Thank you for the quick flow updates!! @Elyse Here's what's outstanding:  
+• [Checkout](https://docs.google.com/document/d/1Rh6WKL3zZmV850dvCHoERoO746l8tt2WLkmwg8e-SLc/edit?tab=t.0)  
+• [Cart](https://docs.google.com/document/d/11vKHPtpHRIVPfyuB6RYHFZVoldI0-zo0iSzKRSvobBU/edit?tab=t.0)  
+• [Browse](https://docs.google.com/document/d/1H8xCmhIWFHeVYqH4kgwNGFWkBTt1LMGRVjJN95jLO5w/edit?tab=t.0)  
+• [Loyalty Lion Revamp: Monthly Reward Reminder](https://docs.google.com/document/d/1JNA18XujltkKknSSlxihFUjtiFT_wO4Rs1GBVzXloIc/edit?tab=t.0)  
+• [Loyalty Lion Revamp: You got a reward](https://docs.google.com/document/d/1n7UMSKzFJNbUXHYIDUEVeGkiICmlEmBQrW-N2H4ftBw/edit?tab=t.0)  
+• [Loyalty Lion Revamp: Welcome](https://docs.google.com/document/d/1AHydo8IF-ipfJoUJBoUCSGzzYIO8iKxssTklcqal7XE/edit?tab=t.0)  
+• [02 | Wonderment | Shipping | Shipment Picked Up](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)  
+• [04 | Wonderment | Shipping | Delivered](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)  
+• [06 | Wonderment | Attempted Delivery](https://docs.google.com/document/d/1EkwlQlnlt16vUmyOQIjFMry4VW1bjBkJCvk1yUBuEqo/edit?tab=t.0)  
+RE Welcome Flow, we'll have on revised email ready to chat through live.\n\n📎 **HigherDOSE CRM | Abandon Checkout** (gdoc, 91.6KB) - [Download](https://docs.google.com/document/d/1Rh6WKL3zZmV850dvCHoERoO746l8tt2WLkmwg8e-SLc/edit?tab=t.0)\n📎 **HigherDOSE CRM | Abandon Browse** (gdoc, 107.5KB) - [Download](https://docs.google.com/document/d/1H8xCmhIWFHeVYqH4kgwNGFWkBTt1LMGRVjJN95jLO5w/edit?tab=t.0)\n📎 **HigherDOSE CRM | Flow Revamp: Loyalty Lion Monthly Reward Reminder: REDEEM YOUR POINTS** (gdoc, 103.0KB) - [Download](https://docs.google.com/document/d/1JNA18XujltkKknSSlxihFUjtiFT_wO4Rs1GBVzXloIc/edit?tab=t.0)\n📎 **HigherDOSE CRM | Abandon Cart** (gdoc, 117.5KB) - [Download](https://docs.google.com/document/d/11vKHPtpHRIVPfyuB6RYHFZVoldI0-zo0iSzKRSvobBU/edit?tab=t.0)\n📎 **HigherDOSE CRM | Flow Revamp: Loyalty Lion Reward Available** (gdoc, 90.0KB) - [Download](https://docs.google.com/document/d/1n7UMSKzFJNbUXHYIDUEVeGkiICmlEmBQrW-N2H4ftBw/edit?tab=t.0)
+- **2025-07-15 11:11** *User_2Z9G95*: Re-surfacing existing Wonderment flows so you can compare @Elyse!\n\n**Hannah Winfrey**\n> Order Delivered:\n*Thread in Slack Conversation | 2025-07-11 12:07*
+- **2025-07-15 11:34** *User_2Z9G95*: Today's preview coming shortly @Elyse!
+- **2025-07-15 11:54** *User_2Z9G95*: A/B test previews sent! Is there a data point in particular you're looking for with the A/B test? The "Finally here" one feels pretty promotional and doesn't give much context into what's inside the email (which is a really cool Q&amp;A). I'm wondering if the initial version that calls out Helen Leland is better to lean into here? Or maybe we can modify it slightly to A/B test leaning with the product in the subject versus leading with the narrative in the subject. Curious if calling out Q&amp;A directly drives stronger engagement, too, since we typically see those perform well!  
+  
+**Version A: Original**  
+**Subject:** Finally here: The Microcurrent Body Sculptor  
+**Preview:** Shipping is live — grab yours now  
+  
+**Version A: NEW**  
+**Subject:** Now Shipping: The Microcurrent Body Sculptor  
+**Preview:** + A Q&amp;A with Helen Leland  
+  
+**Version B:**   
+**Subject:** The (new) summer body with Helen Leland  
+**Preview:** Activate your postural muscles with the Microcurrent Body Sculptor  
+  
+This is what we had for the Father's Day Q&amp;A, that drove a really high open rate.  
+Subject: Dads who DOSE: Meet David  
+Preview text: A Father’s Day Q&amp;A  
+  
+LMK your thoughts! Will get it scheduled ASAP.
+- **2025-07-15 11:55** *Elyse*: Yep agreed love the new A and B
+- **2025-07-15 11:55** *User_2Z9G95*: Updating!
+- **2025-07-15 11:55** *Elyse*: Perfect I’m on it!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 11:57** *User_2Z9G95*: Previews re-sent!
+- **2025-07-15 12:11** *User_2Z9G95*: Hi @Elyse — We're still on track to get the Julia McCabe blog on Thursday, right?
+- **2025-07-15 12:12** *Elyse*: I’ll check in but as far as I know yes\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 12:29** *User_2Z9G95*: Hi @Elyse — [Revised welcome email #1 is ready for review](https://docs.google.com/document/d/1yMrxIj5Z9PFMTTJmfKgazWyz9VEMXnIkwHCs2o72CPk/edit?tab=t.0)! Let's plan to discuss it live, so if you have any initial thoughts/feedback, please bring it to the call and we'll chat!
+- **2025-07-15 12:36** *Elyse*: Perfect 
+- **2025-07-15 13:39** *User_2Z9G95*: @Elyse — Is today's email good to schedule? LMK if I need to re-send the previews
+- **2025-07-15 13:39** *Elyse*: peeping previews rn\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-15 14:06** *User_2Z9G95*: Hi @Elyse, @Ingrid — Thanks so much for the time today, as always.  
+  
+[Here's a link to our agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0) — I included a high-level summary of our flows at the top, and a summary below:  
+  
+• Welcome Series: IN COPYWRITING (4 emails to start)  
+    ◦ 1 of 4 READY FOR V4 COPY REVIEW [HERE](https://docs.google.com/document/d/1yMrxIj5Z9PFMTTJmfKgazWyz9VEMXnIkwHCs2o72CPk/edit?tab=t.0)  
+    ◦ *From there, we will build out #1b-#1d this week and next week (will keep you posted on ETA pending feedback). We can get the first emails live ASAP, and then we will build out emails #2-#5._   
+• Replenishment Flow: READY FOR V3 DESIGN REVIEW (7 emails)  
+• Abandonment Flows: READY FOR V2 COPY REVIEW (7 emails)  
+• Loyalty Lion: READY FOR V2 COPY REVIEW (3 emails)  
+• Wonderment: READY FOR V2 COPY REVIEW (3 emails)  
+I will follow up on Friday with a MTD data summary. Thank you!\n\n📎 **HigherDOSE | Welcome Email #1 (July 2025)** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1yMrxIj5Z9PFMTTJmfKgazWyz9VEMXnIkwHCs2o72CPk/edit?tab=t.0)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-15 15:23** *Elyse*: @User_2Z9G95  
+Loyalty Lion  
+• monthly reward reminder: left notes on doc, good to go to design  
+• you got a reward: left notes on doc, good to go to design\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 15:37** *User_2Z9G95*: Hi @Elyse! CC: @Ingrid Just wanted to give you a heads up that I'll be OOO on Friday, so for our Postscript meeting I can send through times on Thursday or Monday/Tuesday next week to chat strategy! Will do that in our thread.  
+  
+I'll of course be available if anything comes up, but we should be in a really good place by Thursday with things approved/scheduled out. Let's stay close! Feel free to tag @User_5S72LT with any edit requests or questions while I'm out/for an extra set of eyes. Thank you, both!! CC: @Ari Murray
+- **2025-07-15 15:41** *Elyse*: fab fab lets do early next week re strat w PS\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-15 15:42** *Elyse*: love a three day weekend for you Hans!\n\n*Reactions: :sparkling_heart: User_2Z9G95, User_5S72LT, User_PT7LCE, :cupid: Ari Murray*
+- **2025-07-15 16:10** *User_2Z9G95*: Hi @Elyse — LMK what you think of this GIF for our welcome flow!\n\n📎 **ezgif.com-animated-gif-maker (15).gif** (gif, 683.4KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F095VM6NU78/ezgif.com-animated-gif-maker__15_.gif)
+- **2025-07-15 16:12** *Elyse* 💬 1 reply: Good by me. @Ingrid any thoughts?
+- **2025-07-15 16:31** *Elyse*: @User_2Z9G95 wonderment series good to move to design\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-15 16:32** *Elyse*: i left a note or two on google doc for quick tweaks\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 11:04** *User_2Z9G95* 💬 2 replies: Hi @Elyse — SMS preview sent! LMK what you think
+- **2025-07-16 11:05** *User_2Z9G95*: I just realized there's no photo on the contact card, let me see the process for getting that
+- **2025-07-16 12:19** *Chris Jacob*: Hi all can you advise on any key outbound email dates planned for the next week? We need to rollover the domain hosting which could cause a hiccup in this regard and we should probably also test a small outbound email once its setup new to make sure there's no issues
+- **2025-07-16 12:23** *Elyse*: Nothing major major happening. Have emails scheduled for 7/18, 21 23 and 25 I believe
+- **2025-07-16 12:23** *Elyse*: But all content/general product pushes no major initiatives
+- **2025-07-16 14:07** *User_2Z9G95* 💬 1 reply: Hi @Chris Jacob — yes, we can definitely do that. Just building off what Elyse said, here's our email/SMS plan. Should we move anything around? Is there a day the rollover is happening? We can plan to not send any emails/SMS then.  
+  
+• 7/17: Email  
+• 7/18: SMS  
+• 7/21: Email + SMS  
+• 7/23: Email + SMS  
+• 7/25: Email
+- **2025-07-16 14:08** *User_2Z9G95* 💬 1 reply: Speaking of @Elyse - Tomorrow's email is ready for review [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42253-112#1341041499).\n\n*Reactions: :eyes: Elyse*
+- **2025-07-16 14:09** *User_2Z9G95* 💬 5 replies: Also question — I think a blog was planning to be built out for our summer skin care series for the end of the month — is that still in the works?
+- **2025-07-16 14:48** *Elyse*: love this, gorginaaaaa!
+- **2025-07-16 14:48** *Elyse*: Nero two back to back bangers\n\n*Reactions: :sparkling_heart: User_2Z9G95, User_PT7LCE*
+- **2025-07-16 14:49** *Elyse*: leaving notes on it now
+- **2025-07-16 15:35** *Elyse*: @User_2Z9G95 good to schedule\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 16:55** *Elyse*: @User_2Z9G95 haaaaaannnaaahhhhhhh
+- **2025-07-16 16:55** *Elyse*: Ingrid and I just went through about 12 emails together lmao
+- **2025-07-16 16:55** *Elyse*: I’m updating the tracker with what’s what
+- **2025-07-16 16:55** *User_2Z9G95*: lay it on me!!!!
+- **2025-07-16 16:55** *Elyse*: Plan for tomorrow is I’m gonna show Lauren the replenishment flows first, because they’re designed and generally ready to go\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 16:57** *Elyse*: Overall copy is way better this round
+- **2025-07-16 16:59** *Elyse*: Left notes/approvals on:  
+• Replen flow glow serum, quick tweak  
+• Abandon checkout emails 1 and 2  
+• Abandon cart emails 1 and 2  
+• Site abandonment design two small tweaks  
+• Browse abandonment emails 1 and 2  
+• Loyalty Lion welcome  
+• Welcome series email 1
+- **2025-07-16 17:02** *User_2Z9G95*: fabulous!! I will take a look this afternoon
+- **2025-07-16 17:02** *User_2Z9G95*: Anything immediate we can assist with / provide?
+- **2025-07-16 17:03** *Elyse*: most of the notes are all approvals on which of the alts we liked better
+- **2025-07-16 17:03** *Elyse*: so should be quick going thru it\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-16 17:05** *Elyse*: absolutely fried, will look at 7/21 julia in a little bit or first thing in the morning
+- **2025-07-16 17:07** *User_2Z9G95*: No worries, this is perfect, thank you so much for the sprint here! I did send tomorrow's test emails for review (AB test SL/PT), but we can also review in the AM — PM sends have been working really well for us (again, will AB test when we have the chance), so it won't go out until a bit later!
+- **2025-07-16 18:09** *Elyse*: @User_2Z9G95 both previews good to go
+- **2025-07-17 13:42** *User_2Z9G95*: Hi @Elyse + @Ingrid — I wanted to share some notes on a discount strategy for our abandoned flows. I've included what is live today and what we'd recommend changing below. Based on your feedback, I think we're all on the same page, but let us know if you have any other thoughts:  
+  
+• WELCOME10:  
+    ◦ 10% off code that is live in Welcome Email #1, Site Abandonment Email #1, #2, and #3  
+        ▪︎ We'd recommend including this in at least one other Welcome Email as well (last chance/driving urgency)  
+        ▪︎ We'd recommend removing this from all Site Abandonment emails (top of funnel is focused on awareness/brand)  
+• HIGHERSELF10:  
+    ◦ 10% off code that is live in Abandoned Checkout Email #1 and Email #2  
+    ◦ We'd recommend removing it from Abandoned Checkout email #1 and leaving it in just email #2.   
+• FLASH10:  
+    ◦ 10% off code that is live in Abandoned Browse Email #2, and Abandoned Cart Email #2  
+    ◦ We'd recommend removing this from all Abandoned Browse emails (top of funnel is focused on awareness/brand)  
+    ◦ We'd recommend leaving it in just Abandoned Cart email #2.   
+I know we mentioned wanting to remove all FLASH messaging as well — if you'd like us to create a new code to put in the abandoned cart emails, let us know!  
+  
+All copy docs have been updated to reflect this strategy, but I just wanted to cover off on the updates we're making from the existing flows. Let us know if you have any questions!
+- **2025-07-17 13:52** *Elyse*: Aligned on all of the above
+- **2025-07-17 13:52** *Elyse*: @Ingrid confirm good by you?
+- **2025-07-17 19:27** *Ingrid*: Yes - let’s also get these codes to Anastasia as she monitors abuse of codes \n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-18 09:19** *Chris Jacob*: **<!channel>** we have begun domain hosting transfer this may cause interruptions in a variety of ways. If you face any tech issues at all please advise me here and if I don't respond to my personal email/phone as higherdose email could be interrupted
+- **2025-07-18 09:19** *Chris Jacob*: <mailto:christophertjacob@gmail.com|christophertjacob@gmail.com> 3163718984\n\n*Reactions: :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-18 09:20** *User_5S72LT*: Thanks @Chris Jacob! We’ll keep an eye out
+- **2025-07-18 14:34** *User_5S72LT*: Happy happy friday @Elyse! The following are ready for review [in the tracker ](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?usp=sharing)(highlighted in red) and linked below:  
+  
+• **[Welcome #1b](https://docs.google.com/document/d/1LfKll5hXnjXsPwv*zm*v6Ju7zR-tbWpvbw2YIwUYV6M/edit?tab=t.0)** – copy ready for review  
+• **[Welcome #1c](https://docs.google.com/document/d/1BWhkF5cMy8QjhJ5KSS*dzvZQFwPkUT93U13oq3XEP*0/edit?tab=t.0)**[ ](https://docs.google.com/document/d/1BWhkF5cMy8QjhJ5KSS*dzvZQFwPkUT93U13oq3XEP*0/edit?tab=t.0)– copy ready for review  
+• **[Welcome #1d](https://docs.google.com/document/d/1bsE1H0r7UBDn3S2JpF-z*JMFUfJ-pqYvDvQXqXkn6AE/edit?tab=t.0)** – copy ready for review  
+• **[7/23 Permission to Play 101](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42341-2249&amp;t=DqDmQSVokuKnIDgi-1)** – design ready for review  
+Let us know if you have any questions &amp; thank you!:sunflower: cc: @User*2Z9G95
+- **2025-07-18 14:34** *Elyse*: woo woo! thank you!
+- **2025-07-18 14:34** *Elyse*: working on august crm calendar as we speak\n\n*Reactions: :cherry_blossom: User_5S72LT*
+- **2025-07-18 14:35** *User_5S72LT*: perfect!!
+- **2025-07-18 15:12** *Elyse*: @User_5S72LT left notes on v2 7/23
+- **2025-07-18 15:12** *Elyse*: will review the welcome copy on monday
+- **2025-07-18 15:12** *Elyse*: can you remind me what chandler’s ooo dates are @User_5S72LT
+- **2025-07-18 15:12** *User_5S72LT*: perfecto!! ty :heart:
+- **2025-07-18 15:12** *Elyse*: trying to finish up august crm in time before she leaves
+- **2025-07-18 15:16** *User_5S72LT*: she's out all of next week but we'll have the greater team to support so we should be all good either way!
+- **2025-07-18 15:16** *Elyse*: ok cool
+- **2025-07-18 15:17** *Elyse*: dang it i missed my self imposed deadline of having this ready for her by mid week\n\n*Reactions: :joy: User_5S72LT*
+- **2025-07-18 15:17** *Elyse*: but we made major progress on the flows this week
+- **2025-07-18 15:17** *Elyse*: so big victory there
+- **2025-07-18 15:17** *User_5S72LT*: hugeeee victory on that!! appreciate the hustle so much
+- **2025-07-18 15:17** *User_5S72LT*: dream team right here
+- **2025-07-18 16:07** *Elyse*: @User_5S72LT for 7/21 - can we shift that to 7/22, 7/23 to 7/24 and try 7/25 on 7/26?\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-18 16:07** *Elyse*: I’m waiting for review on Julia’s blog content
+- **2025-07-18 16:07** *Elyse*: it’s a little all over the place, so punted to SEO team to tell us where we should cut, what we should keep, etc
+- **2025-07-18 16:08** *Elyse*: I’m anticipating they’ll get it back to me monday, and if not i’ll pull whatever i can for the email
+- **2025-07-18 16:08** *User_5S72LT*: yes totally!
+- **2025-07-18 16:09** *User_5S72LT*: will make note of this
+- **2025-07-18 16:12** *Elyse* 💬 1 reply: i also tagged you on the CRM doc @User_2Z9G95 and I use\n\n*Reactions: :raised_hands: User_2Z9G95, :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-18 16:12** *Elyse*: to see adjustments i put on for next week
+- **2025-07-18 16:12** *Elyse*: and first week of august
+- **2025-07-18 16:12** *Elyse*: finishing up second week now\n\n*Reactions: :raised_hands: User_2Z9G95, :raised_hands::skin-tone-4: User_5S72LT*
+- **2025-07-18 17:10** *User_2Z9G95*: Hi @Elyse + @Ingrid! As discussed, I wanted to pass along an update of where we're at MTD. So far, we're up 32% YoY (email + SMS combined). Now that we've launched Postscript, we're pacing closer to our goal. We're 58% through the month and we're 64% to our goal. We have a strong content marketing strategy planned for the rest of the month, so we're confident in maintaining momentum. We'll continue to monitor performance closely and optimize in real time to ensure we finish strong. We've made great progress on the email flows this week and are excited to hear Lauren's thoughts next week. Let us know if you have any questions. Enjoy the weekend!\n\n*Reactions: :raised_hands: Sumish Khadka, :raised_hands::skin-tone-3: Elyse*
+- **2025-07-21 12:43** *User_2Z9G95*: Hi @Elyse! I hope you had a great weekend! Confirming I've updated the campaign schedule for this week based on your request. Do you have an update on the blog content? If we wanted, we could move the Permission to Play email for 7/24 up to tomorrow and push the blog to 7/24 instead.  
+I've updated [the sheet](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=1474997958#gid=1474997958) with everything that is ready for review!
+- **2025-07-21 13:23** *Elyse*: Hey @User_2Z9G95 on with Lauren and Jess right now reviewing the replen flow. Have a ton of notes here, compiling and will circle back\n\n*Reactions: :+1: User_2Z9G95*
+- **2025-07-21 13:31** *Elyse*: @User_2Z9G95 just got off call. I’m gonna put the notes into a Google doc with links to photo options etc. will get that to you this week\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-21 14:53** *User_2Z9G95*: Thank you so much!
+- **2025-07-21 15:01** *Elyse*: @User_2Z9G95 @Thila just flagged an SMS issue we’re getting into CS inbox\n\n*Reactions: :rotating_light: User_2Z9G95*
+- **2025-07-21 15:02** *Elyse*: @Thila can you send screenshot of customer complaint
+- **2025-07-21 15:02** *Elyse*: I think people are not getting the confirm your opt-in text and because of that then not getting discount code 
+- **2025-07-21 15:03** *User_2Z9G95*: I was just gonna say let's reach out to postscript asap, so that's perfect, thank you!!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-21 15:05** *Thila*: Sure! Hi @User_2Z9G95 So we received some of these complaints regarding the mystery discount.  
+  
+One of our agents tested it out earlier but did not receive a text where they can reply “Y” and get the discount code\n\n📎 **Screenshot 2025-07-21 at 4.03.39 PM.png** (png, 9.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096RK2HL4D/screenshot_2025-07-21_at_4.03.39___pm.png)\n📎 **Screenshot 2025-07-21 at 4.03.44 PM.png** (png, 8.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0976Q9123B/screenshot_2025-07-21_at_4.03.44___pm.png)\n📎 **Screenshot 2025-07-21 at 4.03.50 PM.png** (png, 11.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0976Q8PDL1/screenshot_2025-07-21_at_4.03.50___pm.png)\n📎 **image (32).png** (png, 169.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096CPMEL15/image__32_.png)
+- **2025-07-21 15:06** *Elyse*: Just forwarded this to postscript channel\n\n*Reactions: :bangbang: User_2Z9G95, :ty: Thila*
+- **2025-07-21 15:08** *User_2Z9G95*: Thank you!
+- **2025-07-21 15:09** *Thila*: Thanks @Elyse I just tested it out myself and did not receive text to reply “Y”
+- **2025-07-22 11:02** *User_2Z9G95*: Good morning @Elyse! Any updates on the blog? Would love to get this week's content scheduled out! Here's where we're at:  
+• 7/22 email: Need blog info, design ready [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42377-903&amp;t=Fl32FztYIYuOpYrn-0)  
+• 7/22 SMS: Ready [HERE](https://app.postscript.io/campaigns/flows/cb58395f-482e-49c6-8c79-83813d7f8cb2?sourceType=CAMPAIGN_FLOW&amp;flowId=cb58395f-482e-49c6-8c79-83813d7f8cb2)  
+• 7/24 email: Design ready [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42341-2249&amp;p=f&amp;t=Nm4FxR2oMB9grGPF-0)  
+• 7/24 SMS: Ready [HERE](https://app.postscript.io/campaigns/flows/51c8e873-db6d-4afa-aa38-5a5411705f1e)  
+• 7/26: Design [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42323-538&amp;p=f&amp;t=EET8NHigp5l6Rrds-0)
+- **2025-07-22 11:05** *Elyse*: Uploading blog to Shopify as we speak!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-22 11:24** *Elyse*: reviewing remainder rn
+- **2025-07-22 11:25** *Elyse*: 7/22 SMS good to go
+- **2025-07-22 11:26** *User_2Z9G95*: FYI — I noticed 7/22 and 7/24 are both MBS back to back (plus we sent MBS last week, too) — should we try to space it out a bit? Maybe we swap in 7/30 SMS for this week? Or switch the travel SMS to not be just MBS-related?
+- **2025-07-22 11:28** *Elyse*: 7/24 design good to go
+- **2025-07-22 11:33** *Elyse*: just left note on 7/30 copy adjustments
+- **2025-07-22 11:33** *Elyse*: for the email
+- **2025-07-22 11:34** *Elyse*: sms copy good to go, i’m down with swapping that in for this week
+- **2025-07-22 11:36** *Elyse*: 7/26 serotonin supper email design looks good to me. i sent to fiona for quick look yesterday
+- **2025-07-22 12:23** *User_2Z9G95*: @Elyse — All three SMS previews sent for review!  
+• 7/22: Defined Arms  
+• 7/24: Sun-Kissed Skin  
+• 7/30: MBS Travel
+- **2025-07-22 12:24** *Elyse*: All good to go
+- **2025-07-22 12:24** *Elyse*: @User_2Z9G95 I shared the doc for Julia’s blog post
+- **2025-07-22 12:25** *Elyse*: As you can see lol SEO team is slicing and dicing it up
+- **2025-07-22 12:25** *Elyse*: I was initially trying to upload and then make edits as they made them but quickly saw the level of edits meant I should just wait
+- **2025-07-22 12:25** *Elyse*: So jumping back into upload now
+- **2025-07-22 12:26** *Elyse*: Gonna pick the questions now too and highlight those/tag you to get them into the email
+- **2025-07-22 12:26** *User_2Z9G95*: Ok fab!!!
+- **2025-07-22 12:26** *User_2Z9G95*: Thank you!!
+- **2025-07-22 14:42** *User_2Z9G95*: Hi @Elyse — Just confirming we're good to schedule the SMS? If so, I'll get it scheduled for 4p ET today! I don't think we need to wait for the blog to be posted, right?  
+  
+Sending to our engaged L90 customers and prospects (excluding intl since it's MBS)\n\n📎 **Screenshot 2025-07-22 at 12.41.35 PM.png** (png, 578.3KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F09700QASEN/screenshot_2025-07-22_at_12.41.35___pm.png)
+- **2025-07-22 14:42** *Elyse*: Yes good to go
+- **2025-07-22 14:52** *User_2Z9G95*: Scheduled!
+- **2025-07-22 14:53** *User_2Z9G95*: Looking at the email now
+- **2025-07-22 15:12** *Elyse*: Also @User_2Z9G95 idk if we should even include the blog in the email right now
+- **2025-07-22 15:13** *Elyse*: Rereading through it and I feel like there’s some bold claims in it
+- **2025-07-22 15:13** *Elyse*: About microcurrent healing
+- **2025-07-22 15:13** *Elyse*: That we had a two year long study, idk if that’s even true
+- **2025-07-22 15:13** *Elyse*: If we wanna move up 7/24 and 7/26 and leave this for end of the week to give us a little more time to review it
+- **2025-07-22 15:14** *Elyse*: I’m down w that
+- **2025-07-22 15:14** *User_2Z9G95*: Yeah I'm trying to pull some things from it, but it's not great
+- **2025-07-22 15:14** *Elyse*: I wanna have @Chris Jacob review it and I shared with Jessica on products team to verify some of the claims on the study etc
+- **2025-07-22 15:14** *User_2Z9G95*: Totally
+- **2025-07-22 15:14** *Elyse*: Just don’t wanna send it and risk it
+- **2025-07-22 15:14** *User_2Z9G95*: For sure
+- **2025-07-22 15:15** *Elyse*: I was saving it to Shopify and I was like holllld on idk if we can say all of this legally
+- **2025-07-22 15:15** *User_2Z9G95*: Totally
+- **2025-07-22 15:18** *User_2Z9G95*: Ok we can move up 7/24
+- **2025-07-22 15:18** *User_2Z9G95*: getting it uploaded to klaviyo now and will send a test shortly
+- **2025-07-22 15:27** *User_2Z9G95*: @Elyse — What's loudcrowd? I see they built some templates in Klaviyo!
+- **2025-07-22 15:28** *Elyse*: yes ok fab glad you asked
+- **2025-07-22 15:28** *Elyse*: i just got connected w them this morning through Anastasia our affiliates manager
+- **2025-07-22 15:28** *Elyse*: basically its gonna be part of the affiliate program, where creators can sign up to have their own hd storefront
+- **2025-07-22 15:28** *Elyse*: if i understood that correctly
+- **2025-07-22 15:29** *User_2Z9G95*: oh, cool!
+- **2025-07-22 15:29** *Elyse*: and their templates are supposed to be going only to the creators
+- **2025-07-22 15:29** *Elyse*: but i told her load the templates in and ping us when ready
+- **2025-07-22 15:29** *Elyse*: so we can review branding etc make sure we’re good w everything these say
+- **2025-07-22 15:29** *Elyse*: before they go out
+- **2025-07-22 15:30** *User_2Z9G95*: Love it!
+- **2025-07-22 15:45** *User_2Z9G95*: @Elyse — Preview sent!
+- **2025-07-22 15:48** *Elyse*: good to go
+- **2025-07-22 15:55** *User_2Z9G95*: Scheduled for 5:15p ET to 60 day engaged audience!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-22 18:51** *User_2Z9G95*: Hey team! Sorry for the delay — [here's a link to the agenda](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0) we reviewed today and a high-level summary below:  
+  
+We're 70% through the month and 77% to our goal, so we're still pacing above and maintaining good momentum. We've driven $109K so far, so we're looking to drive $33K more. We have 6 more emails going out and 2 more SMS, so we should be in a good place.  
+  
+In regards to the flows, we went through all of the feedback and have put together this go-forward plan:  
+• Hannah to build out templates of all 7 emails based on feedback  
+• Hannah to send templates to Elyse for review/approval  
+• Once approved, Elyse will get approval from Ingrid/Lauren/all stakeholders  
+• Once approved, Hannah/Chandler will update copy over the next week + pass along to Elyse to review/approve with Ingrid/Lauren/all stakeholders  
+• Once approved, Hannah will pass to design  
+I'm hoping to have the templates done tomorrow, so you can have those ready to review and we can keep moving these along.\n\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n\n*Reactions: :1000: Elyse*
+- **2025-07-22 19:42** *Elyse*: Thank you so much @User_2Z9G95 \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-23 16:37** *Elyse*: @User_2Z9G95 LDW Sale  
+20% off sitewide, 25% off bundles  
+VIP Wed 8/27 - early access for CRM subscribers  
+Public Launch 8/28  
+Ends Tuesday 9/2\n\n*Reactions: :white_check_mark: User_5S72LT, :bangbang: User_2Z9G95*
+- **2025-07-23 16:42** *Elyse*: @User_2Z9G95 if you guys could take a look at what we did last year in terms of emails that did well and lmk that would be super helpful! finishing up august calendar tomorrow, made great progress today\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-23 16:50** *User_2Z9G95*: Thank you!!!!
+- **2025-07-23 16:51** *Elyse*: Also have approvals on emails for 7/31-8/15 so can get those in the works
+- **2025-07-23 16:51** *Elyse*: I’m working on red light mat launch week so take a look at those too and let me know if you have any thoughts\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-24 07:39** *Chris Jacob*: <!channel> the domain transfer completed this morning we are updating some records but it is now that you may encounter issues please keep us apprised\n\n*Reactions: :raised_hands::skin-tone-3: Berkeley Clark, :+1::skin-tone-3: Elyse, :white_check_mark: User_2Z9G95*
+- **2025-07-24 08:29** *Chris Jacob* 💬 1 reply: Email did experience downtime I think we need to review klaviyo dns settings. Sharma team I don't know if you have thoughts on best practices for dmarc but I'm not sure one really existed
+- **2025-07-24 08:48** *🤖 Bot*: mercury retrograde
+- **2025-07-24 08:52** *Chris Jacob*: <!channel> please pause any outbound campaign this is still an issue\n\n*Reactions: :white_check_mark: User_5S72LT*
+- **2025-07-24 08:56** *User_5S72LT*: Confirming receipt, we’ll pause ASAP!
+- **2025-07-24 09:10** *User_2Z9G95*: As a side — @Elyse  [Here's a link to the replenishment flow template](https://docs.google.com/document/d/10w9NkuKrw8b0pmPlpR*pAlKKFvP4dzW7BOLP*5_wy8o/edit?tab=t.0). We'd love to have your and all stakeholder approval to move forward with this email structure. Once approved, we'll get copy built out for each one! Feel free to add any additional notes and feedback! Thanks!
+- **2025-07-24 10:25** *Elyse*: Perfect will share thanks @User_2Z9G95 
+- **2025-07-24 10:31** *Chris Jacob* 💬 14 replies: can you send a test campaign to an audience with  
+<mailto:chris@higherdose.com|chris@higherdose.com>  
+<mailto:christophertjacob@gmail.com|christophertjacob@gmail.com>  
+<mailto:chris@jacobliquor.com|chris@jacobliquor.com>  
+<mailto:chris@integritysq.com|chris@integritysq.com>
+- **2025-07-24 10:48** *User_5S72LT*: Hey @Elyse the edits have been made for the Microcurrent email linked [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42377-903&amp;t=B2a5SlnbtyUs4hhR-1) - once the dmarc issues are resolved we can schedule for tomorrow! cc: @User_2Z9G95
+- **2025-07-24 10:48** *Elyse*: fab checking it out rn\n\n*Reactions: :heart: User_5S72LT*
+- **2025-07-24 11:53** *Chris Jacob*: @User_4PNMDE does your team have knowledge of splitting DKIM issue is the gmail admin dkim is 2048 bit so its longer than 255 characters
+- **2025-07-24 14:12** *Elyse*: @User_5S72LT design looks good for micro/macro
+- **2025-07-24 14:15** *User_5S72LT*: woohoo! thanks @Elyse we'll get it built out / test sent asap
+- **2025-07-25 09:45** *Jourdan* joined the channel
+- **2025-07-25 09:46** *Elyse*: @User_2Z9G95 morning! could you tell me how many campaigns we did for July last year?
+- **2025-07-25 09:48** *User_2Z9G95*: Looking!
+- **2025-07-25 09:50** *User_2Z9G95* 💬 15 replies: 13 to a broad audience and 1 to a tri-state only audience (with a visit us in NYC CTA), so 14 in total!
+- **2025-07-25 09:56** *User_2Z9G95*: Hi @Chris Jacob &amp; @User_5S72LT — Thank you for troubleshooting while I was out! Just want to get caught up from yesterday — It looks like we're pretty much good to go, but likely need one more test send to make sure? I can put a list together of our team members and your team members to confirm everything is working correctly?
+- **2025-07-25 09:56** *Chris Jacob*: I think we're good I'd just send as usual and monitor any oddities\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-25 09:57** *User_2Z9G95*: Sounds perfect, thank you so much!
+- **2025-07-25 10:03** *User_2Z9G95*: @Elyse — Confirming Red Light SMS for yesterday is rescheduled for today at 12p ET!
+- **2025-07-25 10:03** *User_2Z9G95*: Working on uploading content + sending previews for today and tomorrow's emails now!
+- **2025-07-25 10:04** *Elyse*: @User_2Z9G95 lets do the test w our team members you mentioned anyway
+- **2025-07-25 10:04** *Elyse*: just to be on safe side
+- **2025-07-25 10:04** *Elyse*: mercury be mercurying
+- **2025-07-25 10:04** *User_2Z9G95*: Aligned! If you could just pass along relevant emails, I'll put a list together
+- **2025-07-25 10:12** *User_2Z9G95*: We don't need any additional SMS tests, right? Just paused it to be on the safe side yesterday, but it's just email that we can re-test?
+- **2025-07-25 10:12** *Elyse*: lets do me  
+<mailto:chris@higherdose.com|chris@higherdose.com>  
+<mailto:christophertjacob@gmail.com|christophertjacob@gmail.com>  
+<mailto:chris@jacobliquor.com|chris@jacobliquor.com>  
+<mailto:chris@integritysq.com|chris@integritysq.com>  
+<mailto:sumish@higherdose.com|sumish@higherdose.com>  
+<mailto:thila@higherdose.com|thila@higherdose.com>
+- **2025-07-25 10:13** *Elyse*: send me sms test just to be on safe side too
+- **2025-07-25 10:13** *User_2Z9G95*: will do rn!
+- **2025-07-25 10:14** *User_2Z9G95*: Instead of a test, I'm going to create a segment with just our two phone numbers to make sure everything is triggering correctly!
+- **2025-07-25 10:14** *Elyse*: ok perfect
+- **2025-07-25 11:16** *User_2Z9G95*: FYI — the postscript segment build is a bit more technical than I thought — working with their support team now to get this setup for us, then I will send the SMS!
+- **2025-07-25 11:29** *User_2Z9G95*: @Elyse — SMS sent! LMK if you got it/how it looks\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-25 11:30** *User_2Z9G95*: Everything looks good on my end!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-25 12:33** *Elyse*: yesssirrr lets firee it off\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-25 12:45** *User_2Z9G95*: Scheduled for 2p ET!
+- **2025-07-25 12:51** *User_2Z9G95*: Email preview sent!
+- **2025-07-25 12:52** *User_2Z9G95*: I had to change the SL + PT since the originals were all for the blog, so if you have any feedback there LMK!
+- **2025-07-25 13:11** *Elyse*: @User_2Z9G95 i didn’t get it uh oh
+- **2025-07-25 13:12** *User_2Z9G95*: Didn't get what
+- **2025-07-25 13:12** *Elyse*: email preview
+- **2025-07-25 13:12** *User_2Z9G95*: ope!
+- **2025-07-25 13:12** *User_2Z9G95*: Let me re-send, sorry!
+- **2025-07-25 13:13** *User_2Z9G95*: Just re-sent!
+- **2025-07-25 13:30** *Elyse*: still nothing!
+- **2025-07-25 13:30** *Elyse*: i checked my spam too
+- **2025-07-25 13:30** *Elyse*: nada
+- **2025-07-25 13:32** *User_2Z9G95*: so weird
+- **2025-07-25 13:33** *User_2Z9G95*: it's <mailto:elyse@higherdose.com|elyse@higherdose.com> right???
+- **2025-07-25 13:33** *Elyse*: yep
+- **2025-07-25 13:33** *User_2Z9G95*: Just re-sent again, but that's so weird not sure what the issue could be
+- **2025-07-25 13:34** *Elyse*: @Chris Jacob fyi ^^
+- **2025-07-25 13:34** *Elyse*: in case this is indicative of anything
+- **2025-07-25 13:34** *User_2Z9G95*: i just sent you an email from my sharma email
+- **2025-07-25 13:34** *User_2Z9G95*: did you get that
+- **2025-07-25 13:34** *Elyse*: yes!
+- **2025-07-25 13:35** *User_5S72LT*: yeah it must have to do with the changes from yesterday hmmm
+- **2025-07-25 13:35** *User_2Z9G95*: ok well that's good at least
+- **2025-07-25 13:35** *User_5S72LT*: @User_2Z9G95 can you send me a test too?
+- **2025-07-25 13:36** *User_2Z9G95*: @Elyse — I'll just launch the test campaign to all of our emails and lmk if you get that one!
+- **2025-07-25 13:39** *User_2Z9G95*: Sent!
+- **2025-07-25 13:39** *User_2Z9G95*: Also @Chris Jacob — Sent to your emails, too, let me know if you got it
+- **2025-07-25 13:41** *Elyse*: separately @User_2Z9G95 first draft of timing is everything SEO blog is up on the doc [https://docs.google.com/document/d/1Xis2plvijfNa2itjZ9FH2KJrxMT3IvCbzma5wrmXcFc/edit?usp=sharing](https://docs.google.com/document/d/1Xis2plvijfNa2itjZ9FH2KJrxMT3IvCbzma5wrmXcFc/edit?usp=sharing) writer just sent to me\n\n📎 **HigherDOSE Content Brief - When To Use Red Light Therapy For The Best Results** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1Xis2plvijfNa2itjZ9FH2KJrxMT3IvCbzma5wrmXcFc/edit?usp=sharing)
+- **2025-07-25 13:43** *User_2Z9G95*: @User_5S72LT — Sent to you, too!
+- **2025-07-25 13:45** *User_5S72LT*: did not receive it ahhh
+- **2025-07-25 13:45** *Elyse*: me neither
+- **2025-07-25 13:45** *User_2Z9G95*: whaaaaa
+- **2025-07-25 13:45** *User_2Z9G95*: did you also check spam?
+- **2025-07-25 13:46** *Elyse*: neither
+- **2025-07-25 13:46** *User_5S72LT*: not in spam either
+- **2025-07-25 13:46** *User_2Z9G95* 💬 1 reply: i put <mailto:swara@higherdose.com|swara@higherdose.com> so that's insane\n\n*Reactions: :rolling_on_the_floor_laughing: User_5S72LT*
+- **2025-07-25 13:47** *User_2Z9G95*: It looks like Chris received! @Elyse — it didn't send to you! I have no idea why!
+- **2025-07-25 13:47** *Elyse*: its chris’ way of telling me i have the afternoon off, he’s got email covered\n\n*Reactions: :skull: User_2Z9G95, User_5S72LT, Ari Murray*
+- **2025-07-25 13:48** *Elyse*: lmao promise im kidding cj
+- **2025-07-25 13:48** *User_2Z9G95*: ahhhh @Elyse you were suppressed :face*holding*back_tears:
+- **2025-07-25 13:49** *Elyse*: big brother klaviyo tryna keep me down\n\n*Reactions: :joy: Ari Murray, User_PT7LCE, User_2Z9G95*
+- **2025-07-25 13:53** *User_2Z9G95*: ok just re-sent the preview, to see if that update (making you subscribed) worked!
+- **2025-07-25 13:53** *User_2Z9G95*: From there, I'll send the live campaign
+- **2025-07-25 13:54** *Elyse*: ayyyyy i got it
+- **2025-07-25 13:54** *User_2Z9G95*: omggggg
+- **2025-07-25 13:54** *User_2Z9G95*: ok crazy
+- **2025-07-25 13:54** *User_2Z9G95*: but phew
+- **2025-07-25 13:54** *Elyse*: whew praise be
+- **2025-07-25 13:54** *User_2Z9G95*: So yes, had to change the SL + PT, so let me know if you have feedback there!
+- **2025-07-25 13:56** *Elyse*: good to go
+- **2025-07-25 13:56** *User_2Z9G95*: Just pushed the test campaign live one more time
+- **2025-07-25 13:56** *User_2Z9G95*: just to double confirm!
+- **2025-07-25 13:56** *Elyse* 💬 1 reply: and note should exclude international too @User_2Z9G95\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-25 13:56** *User_2Z9G95*: so you should have one more coming
+- **2025-07-25 13:57** *User_2Z9G95*: in the next like 2 mins let me know
+- **2025-07-25 13:57** *User_2Z9G95*: you, too @User_5S72LT\n\n*Reactions: :white_check_mark: User_5S72LT*
+- **2025-07-25 13:57** *Elyse*: got it!
+- **2025-07-25 13:57** *🤖 Bot*: got it\n\n*Reactions: :bangbang: User_5S72LT*
+- **2025-07-25 14:11** *User_2Z9G95*: Today's email scheduled for 4p ET!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-25 14:13** *User_2Z9G95*: Uploading tomorrow's and will get the preview sent shortly
+- **2025-07-28 08:00** *Chris Jacob* 💬 2 replies: 📎 **image.png** (png, 98.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09814778GZ/image.png)
+- **2025-07-28 10:07** *Chris Jacob* 💬 3 replies: <!channel> did we notice any oddities with marketing emails over the weekend/
+- **2025-07-28 12:01** *User_2Z9G95*: ~~Morning @Elyse! Do you have the blog ready for the 7/31 Summer Skin Care email? Briefing this out for copy today!~~  Disregard, found it!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-28 14:25** *User_2Z9G95* 💬 3 replies: Hi @Elyse — I have a few outstanding items for when you get the chance!  
+• Sent today's preview for review - let me know if it's good to schedule!  
+• 7/29 SMS preview sent — let me know if it's good to schedule!  
+• 7/30 design will be ready tomorrow  
+• 7/31 copy will be ready tomorrow  
+One additional thing — I just want to make sure we get the most out of our time together on tomorrow's call. Can you confirm Lauren has already seen the welcome emails and will be able to share ***all*** feedback live together? If she hasn't had a chance to review them, we may want to push the call, so we can ensure it's the most impactful. Let me know your thoughts here!
+- **2025-07-28 14:25** *Elyse*: Preview good to go Hans \n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-28 14:26** *Elyse*: SMS preview good too
+- **2025-07-28 14:28** *User_2Z9G95*: Since we aligned on driving to sauna blanket starter kit, we should remove intl correct? That's what [the sheet](https://docs.google.com/spreadsheets/d/1sH8zOQCkuHCMgG7qMLyWYWDFdHiBr4P7QTqajyMPals/edit?gid=1171637223#gid=1171637223) says!\n\n*Reactions: :+1::skin-tone-3: Elyse, :+1: User_2Z9G95*
+- **2025-07-28 14:40** *User_2Z9G95*: Confirming email + SMS are scheduled!
+- **2025-07-28 15:02** *User_2Z9G95*: Also @Elyse — When you get the chance I wanted to follow up on the [template](https://docs.google.com/document/d/10w9NkuKrw8b0pmPlpR*pAlKKFvP4dzW7BOLP*5_wy8o/edit?tab=t.0) for our replenishment flows. Do you/the team have any feedback or questions on this new structure? Let me know so we can start re-building!
+- **2025-07-28 15:37** *Ingrid*: hi! Elyse is out today but I'm good with this template!\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-28 15:37** *Ingrid*: also, please dont remove the discount incentive
+- **2025-07-28 15:37** *User_2Z9G95*: Ah! Thank you for letting me know! All sounds great, thank you!
+- **2025-07-28 17:04** *Elyse*: Thank you IMC @Ingrid \n\n*Reactions: :heart: Ingrid*
+- **2025-07-29 07:27** *Elyse* 💬 3 replies: morning all! i’m catching up this morning - just got word from LB that she won’t be able to make today’s call and but said she’s happy to review and send her thoughts\n\n*Reactions: :light-blue-heart: User_PT7LCE*
+- **2025-07-29 08:28** *Elyse* 💬 1 reply: 📎 **File.jpg** (jpg, 173.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F097W3H79SS/file.jpg)
+- **2025-07-29 10:48** *User_2Z9G95*: Hi @Elyse! For this week we have:  
+• 7/29 SMS: Travel  
+• 7/29 Email: Nothing/TBD  
+• 7/30 Email: Summer Skin Care  
+• 7/31 Email: Summer Skin Care   
+• 7/31 SMS: Summer Skin Care   
+We added that SMS last week per your note, so I think we're good to go for SMS. I was looking at this year's top performing campaigns to date and they are:  
+• Cortisol FAQ  
+• Holiday Hangover (Lauren's Picks) - could repurpose this as a mid-summer slump  
+• HSA/FSA specific  
+The HSA/FSA specific would be a super low lift and that one we could target our normal engaged segment and lean into 40% off messaging or I think the mid-summer slump would work really well for the last day of July. We could bump 7/30 and 7/31 up so we can have this ready for the 31st.  
+  
+Let me know your thoughts on either of those and we'll get them going!
+- **2025-07-29 10:57** *Elyse*: Yep love FSA/HSA can perhaps highlight some bundles?\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-29 10:58** *User_2Z9G95*: That's perfect!
+- **2025-07-29 10:59** *User_2Z9G95*: Will get copy for FSA/HSA going right now and we'll keep you posted on 7/30 design so we can bump that up to today.
+- **2025-07-29 10:59** *Elyse*: ok perfect
+- **2025-07-29 10:59** *Elyse*: i’ll be ready for quick approvals
+- **2025-07-29 10:59** *User_2Z9G95*: Thank you!! Just asked for an ETA on 7/30 design so will keep you posted
+- **2025-07-29 10:59** *Elyse*: fab!
+- **2025-07-29 11:01** *Elyse*: Two things I’m prioritizing today  
+• reviewing those email flows from Anastasia/loud croud  
+• blog for 7/31
+- **2025-07-29 11:03** *User_2Z9G95*: Perfect, thank you! Let me know if you want me to take a look at those emails, too!
+- **2025-07-29 11:03** *Elyse*: yes please would love that
+- **2025-07-29 11:04** *User_2Z9G95*: Perfect, will do!
+- **2025-07-29 11:19** *Elyse*: and @User_2Z9G95 we’re good on august crm right?
+- **2025-07-29 11:20** *Elyse*: In case I didn’t send latest version: [https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.cutoxidefzl1](https://docs.google.com/document/d/1WZsdfIu4Kan39TuUpV45mOOaxyasC-6B45nPEdCL*us/edit?tab=t.cutoxidefzl1)
+- **2025-07-29 11:20** *Elyse*: August 7/18 tab
+- **2025-07-29 11:20** *User_2Z9G95*: Yes, this all looks great! I wanted to take a few mins to discuss it live, too, on the call today, but we'll get this all briefed out this afternoon!
+- **2025-07-29 11:20** *Elyse*: ok perfect
+- **2025-07-29 11:28** *Elyse*: @User_2Z9G95 i’m sending the welcome email copy to lauren now, can you just confirm what the time is for these emails? how long after signing up do you receive 1, then when do you get 1a, b, c, d?
+- **2025-07-29 11:33** *Elyse*: ohhhhhh ok now reviewing this, realizing that 1a is relaxation/stress relief, 1b is detox/cleanse, got it
+- **2025-07-29 11:33** *Elyse*: nvm
+- **2025-07-29 11:34** *User_2Z9G95*: Yes! So it will be immediate — just want to get confirmation on email 1 and then we'll get 2-4 built out once we get the tone/etc aligned!
+- **2025-07-29 11:37** *User_2Z9G95* 💬 7 replies: @Elyse — Do we have any specific bundles we want featured in the HSA email? And just for my knowledge — can you get 40% off the bundles with HSA/FSA, too? Or is it just certain products that are eligible?
+- **2025-07-29 14:00** *Elyse* 💬 2 replies: @User*2Z9G95 @User*PT7LCE updates  
+• current ship date projected for end of August, early September &gt; so for messaging we’ll want to say early September IMO, post holiday weekend  
+• Ingrid confirmed we should mimic MBS launch and do 20% off for email/sms on mat launch\n\n*Reactions: :light-blue-heart: User_PT7LCE, User_2Z9G95*
+- **2025-07-29 14:00** *Elyse*: and lastly, confirmed website redesign is launching just before LDW\n\n*Reactions: :light-blue-heart: User_PT7LCE, User_2Z9G95*
+- **2025-07-29 14:14** *User_2Z9G95*: Thank you!! Will update everything accordingly.
+- **2025-07-29 14:15** *User_2Z9G95*: Today's design [HERE](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42598-230&amp;t=oOFdafVjL4X9ZR7s-0)! @Elyse
+- **2025-07-29 14:20** *User_2Z9G95*: ohhh i forgot we added the FSA/HSA block here — should we remove from this one since we have the email tomorrow focusing on it?
+- **2025-07-29 14:21** *Elyse*: mm yeah makes sense
+- **2025-07-29 14:21** *Elyse*: good catch @User_2Z9G95
+- **2025-07-29 14:32** *User_2Z9G95*: Perf
+- **2025-07-29 14:32** *User_2Z9G95* 💬 1 reply: Copy for tomorrow's email [HERE](https://docs.google.com/document/d/1qyvCRdogcN39KyJD4aXftbKk67DEbkSzRsyLxLT2L8g/edit?tab=t.0).
+- **2025-07-29 14:32** *Elyse*: also booked time on Maham’s calendar for when i’m “back” on the 11th\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-07-29 14:33** *Elyse* 💬 1 reply: added you and @User_5S72LT to that if you’re free
+- **2025-07-29 14:33** *Elyse*: design on today looks good, made one copy note
+- **2025-07-29 14:33** *User_2Z9G95*: Updated! Thank you!
+- **2025-07-29 14:33** *User_2Z9G95*: Getting this uploaded now
+- **2025-07-29 14:35** *User_2Z9G95*: 7/31: Copy doc [HERE](https://docs.google.com/document/d/1hUo-bpFhYWmBN05yA0bSy9sk5gRs2bq4BgroaF-xNeA/edit?tab=t.0).
+- **2025-07-29 14:54** *User_2Z9G95*: Hi @Elyse —  [RE your note in this doc](https://docs.google.com/document/d/1qyvCRdogcN39KyJD4aXftbKk67DEbkSzRsyLxLT2L8g/edit?tab=t.0) about MBS not being FSA eligible, I think it's ok to still include because the structure of this section is like "don't have hsa/fsa, that's ok! you can still save" — so I was thinking it's ok to leave in? Unless we should change the structure altogether! Let me know!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-29 15:02** *User_2Z9G95* 💬 21 replies: Preview for today's email sent! @Elyse
+- **2025-07-29 15:03** *User_2Z9G95*: Is the RL skin start kit avail abroad? Wondering if we should excl. intl or if it's ok to leave?
+- **2025-07-29 15:05** *Sumish Khadka* 💬 1 reply: No it is not as it has CPG products. \n\n*Reactions: :white_check_mark: User_2Z9G95*
+- **2025-07-29 15:47** *User_2Z9G95*: Hi @Elyse — Just bumping this before EOD ET today!\n\n*Reactions: :+1::skin-tone-3: Elyse*
+- **2025-07-29 18:52** *User_2Z9G95*: Hi @Ingrid + @Elyse! [Apologies in advance for the late ping!] I wanted to pass along a summary with action items/next steps. [Here's a link to our agenda we reviewed today](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0). Please see below:  
+  
+**MTD Performance:**  
+• We've officially surpassed our goal ($142K) by 7% ($152K) + are still climbing. We still have two emails and one SMS going out to round out the month, so we should finish in a strong place. We'll review the month-end report next Tuesday.   
+**August:**  
+• @Ingrid — I wanted to double confirm August's CRM goal ($220K) — is this correct? Any context we should have? I'm also curious where/how you're pulling last year's numbers — I see $183K on the sheet [here](https://docs.google.com/spreadsheets/d/1wqbipawHbu4OuHOwKevfCJxn4NPqwPBMX6xkvnzroBI/edit?gid=2039557865#gid=2039557865), but when I pull up Shopify and look at last non-direct click, I see $228K was generated from email and SMS — just want to make sure we understand correctly!   
+• Per your request, I added in topline Labor Day 2024 numbers [here](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP*bDVGL7l80a8V0IybvTg/edit?tab=t.0) (also attached). Let me know if I can share anything else.   
+Campaign Calendar: @Elyse, I updated the calendar [HERE](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&amp;gid=2001056744#gid=2001056744). Will get these briefed out today!  
+• Key Dates:   
+    ◦ 8/8: RL Up-Sell Test (Elyse, I realized we only need one day to run this, since it will be three unique segments, so let me know how that date sounds!)  
+    ◦ 8/15: RL Mat Pre-Launch (Email)  
+    ◦ 8/18: RL Mat Launch (Email + SMS) w/ 20% off code (Elyse, will need your assistance getting this created!)  
+    ◦ 8/27: LDW Sale Launch w/ 20% off sitewide (LDW2025), 25% off bundles (no code)\n\n📎 **Screenshot 2025-07-29 at 4.51.15 PM.png** (png, 25.1KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F0983LJJZ0C/screenshot_2025-07-29_at_4.51.15___pm.png)\n📎 **HigherDOSE <> Sharma Brands CRM Agenda ** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1qW1zFK0lAJNgYV8BTtu4loP_bDVGL7l80a8V0IybvTg/edit?tab=t.0)\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-29 18:58** *Elyse*: Aligned on dates @User_2Z9G95 ! Thank you\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-30 08:27** *Chris Jacob* 💬 10 replies: 📎 **image.png** (png, 96.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F097QF4GY2K/image.png)
+- **2025-07-30 08:51** *User_2Z9G95*: Thank you! @Chris Jacob I notified the wonderment team yesterday and they are looking into this for me. 
+- **2025-07-30 10:25** *Elyse*: @User_2Z9G95 morning! i’m about to dive into some website QA stuff, lmk if there’s anything urgent for email to look at this morning before i do
+- **2025-07-30 10:25** *Elyse*: if not i’ll obv be around
+- **2025-07-30 10:26** *Elyse*: i’m finishing up uploading the blog for tomorrow, today too
+- **2025-07-30 10:30** *Elyse*: just left a few notes on 7/31 email - looks great though
+- **2025-07-30 10:33** *User_2Z9G95*: Looking now!
+- **2025-07-30 10:33** *User_2Z9G95*: Thank you!
+- **2025-07-30 10:41** *Elyse*: also, off the record - i think the new welcome emails look good!\n\n*Reactions: :sparkling_heart: User_2Z9G95, User_5S72LT*
+- **2025-07-30 10:41** *Elyse*: @Ingrid fiona and I left comments on all, and will present to lauren tomorrow
+- **2025-07-30 11:15** *User_2Z9G95*: Hi @Elyse @Chris Jacob — got this note from the wonderment team:  
+  
+*To get things working again, please take a moment to disconnect and reconnect your Klaviyo account here:*  
+  
+*[https://app.wonderment.com/settings/integrations/klaviyo](https://app.wonderment.com/settings/integrations/klaviyo)*  
+  
+I don't have a login, so would one of you be able to try to disconnect and reconnect on your end? We should be good to go after that. Thank you!!
+- **2025-07-30 11:36** *Elyse*: trying now
+- **2025-07-30 11:40** *User_2Z9G95*: LMK!
+- **2025-07-30 11:40** *User_2Z9G95*: Thank you!
+- **2025-07-30 11:42** *Elyse*: ok done!
+- **2025-07-30 11:43** *User_2Z9G95*: ok the error went away, but I'll monitor the metric over the next few days to make sure it triggers correctly again!
+- **2025-07-30 11:43** *User_2Z9G95*: thank you!
+- **2025-07-30 12:40** *User_2Z9G95*: Hi @Elyse! Top performing September campaign ideas below:  
+• 2 x Dry Brushing emails were in the top performing:   
+    ◦ Dry Brushing for keratosis  
+    ◦ Dry Brushing how-to/101  
+• Q&amp;A with Dr. Sharp  
+• RL Therapy 101 (we're kind of leaning heavy into RL in August, so maybe not this one)  
+• The Benefits of Using Infrared Saunas to Treat Lyme Disease\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-30 12:48** *User_2Z9G95*: @Elyse — RE Danielle's note on the pop-up she thinks it could be something native to the site? Could it maybe have to do with the website redesign? It's not from Instant or Postscript or Alia, so I'm not quite sure where it could be coming from.
+- **2025-07-30 12:54** *User_2Z9G95* 💬 3 replies: @Elyse — HSA/FSA email ready for review [here](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42624-2&amp;p=f&amp;t=Ua5KfYAGxSzxKpHM-0)! I left one comment for you, also sharing here: *I found this stat from last year's FSA email. Should we integrate it? "Approximately $3 billion in FSA funds go unused every year, according to industry estimates. Source: WageWorks and FSA Store."*
+- **2025-07-30 12:55** *User_2Z9G95*: Also curious if we should A/B test a learn more vs. save up to 40% CTA?
+- **2025-07-30 13:07** *Elyse*: totally re both\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-30 13:09** *User_2Z9G95*: Love it
+- **2025-07-30 13:11** *Elyse*: looks good to me otherwise\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-30 13:13** *User_2Z9G95*: Will get those updated and a preview sent asap!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-30 14:04** *User_2Z9G95*: Hi @Elyse — previews sent!
+- **2025-07-30 14:42** *Elyse*: Good to go
+- **2025-07-30 14:51** *User_2Z9G95*: Woohoo! Scheduled for 4:30p ET today. Confirming I excluded intl since HSA/FSA is a us only thing (right?) lol\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-30 14:51** *Elyse*: yes please!\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-30 14:53** *User_2Z9G95*: Perfect! Good to go.
+- **2025-07-30 15:54** *User_2Z9G95*: Hi @Elyse — Thank you for you and the team's feedback on the welcome emails so far! Do you want us to make those changes before we meet with Lauren tomorrow? Or as-is for her initial thoughts/feedback?

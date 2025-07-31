@@ -146,3 +146,33 @@ i also think the rebate function comes off as cheap and with our premium stance 
 - **2025-07-18 11:22** *Jourdan*: Also updating packaging to include or update QR codes would  be a big decision\n\n*Reactions: :bangbang: Ari Murray*
 - **2025-07-18 11:22** *Ari Murray*: agree 
 - **2025-07-18 11:22** *Jourdan*: I agree that would need to be positioned differently for it to land well\n\n*Reactions: :pray: Ari Murray*
+- **2025-07-18 11:00** *Ari Murray*: hii @Jourdan what do you think of brij so far?
+- **2025-07-18 11:11** *Jourdan*: I think the tool is valuable but felt like we weren’t strong in the same areas they are like Retail &amp; Amazon.  
+  
+Although seems like there might be opportunities with brij to track retail sales, do list building, and the rebate thing seemed interesting but agreed big business decision.\n\n*Reactions: :bangbang: Ari Murray*
+- **2025-07-18 11:12** *Jourdan*: i don’t know enough about retail, amazon, and the event marketing side of the business to see how it ties in there
+- **2025-07-18 11:15** *Ari Murray*: that’s exactly where we’re at 
+- **2025-07-18 11:16** *Ari Murray*: on our side we dont have eyes into the retail or even amazon businesses so hard to make a recommendation that is pro this tool  
+  
+if we were driving to an owned retail store then i think no brainer  
+  
+i also think the rebate function comes off as cheap and with our premium stance in the market hard to message
+- **2025-07-18 11:21** *Jourdan*: Yeah and with me being new my knowledge was pretty limited on that side. I was able to dig up some details while on the call but not enough to make a judgement call on if they’d be ideal.
+- **2025-07-18 11:22** *Jourdan*: Also updating packaging to include or update QR codes would  be a big decision\n\n*Reactions: :bangbang: Ari Murray*
+- **2025-07-18 11:22** *Ari Murray*: agree 
+- **2025-07-18 11:22** *Jourdan*: I agree that would need to be positioned differently for it to land well\n\n*Reactions: :pray: Ari Murray*
+- **2025-07-18 11:00** *Ari Murray*: hii @Jourdan what do you think of brij so far?
+- **2025-07-18 11:11** *Jourdan*: I think the tool is valuable but felt like we weren’t strong in the same areas they are like Retail &amp; Amazon.  
+  
+Although seems like there might be opportunities with brij to track retail sales, do list building, and the rebate thing seemed interesting but agreed big business decision.\n\n*Reactions: :bangbang: Ari Murray*
+- **2025-07-18 11:12** *Jourdan*: i don’t know enough about retail, amazon, and the event marketing side of the business to see how it ties in there
+- **2025-07-18 11:15** *Ari Murray*: that’s exactly where we’re at 
+- **2025-07-18 11:16** *Ari Murray*: on our side we dont have eyes into the retail or even amazon businesses so hard to make a recommendation that is pro this tool  
+  
+if we were driving to an owned retail store then i think no brainer  
+  
+i also think the rebate function comes off as cheap and with our premium stance in the market hard to message
+- **2025-07-18 11:21** *Jourdan*: Yeah and with me being new my knowledge was pretty limited on that side. I was able to dig up some details while on the call but not enough to make a judgement call on if they’d be ideal.
+- **2025-07-18 11:22** *Jourdan*: Also updating packaging to include or update QR codes would  be a big decision\n\n*Reactions: :bangbang: Ari Murray*
+- **2025-07-18 11:22** *Ari Murray*: agree 
+- **2025-07-18 11:22** *Jourdan*: I agree that would need to be positioned differently for it to land well\n\n*Reactions: :pray: Ari Murray*
