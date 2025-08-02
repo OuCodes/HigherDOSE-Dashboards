@@ -22,6 +22,7 @@
 - [ ] Create README.md for each major directory so agents can use them as a guide
     - [ ] Tell agents not to use the `utils` folder for code
     - [ ] Tell agents specific use cases for the `scripts` folder
+- [ ] Move `generate_report.py` and `report_config.py` and `report_high_automated.py` and `report_mtd_automated.py` into `src/higherdose/analysis` they belong in src not the scripts folder. Scripts is more so for wrappers around core logic.
 
 ## Scripting
 
