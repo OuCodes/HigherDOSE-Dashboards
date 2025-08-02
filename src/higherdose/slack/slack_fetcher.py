@@ -1219,9 +1219,26 @@ class SlackBrowser:
             try:
                 api_msgs = await self.fetch_history_via_api(channel_id, oldest_ts)
                 if api_msgs:
-                    print(f"✅ Retrieved {ansi.green}{len(api_msgs)}{ansi.reset} messages via direct API")
-                    logger.info("Retrieved %d messages via direct API for channel %s", len(api_msgs), channel_id)
-                    return api_msgs
+                    # ------------------------------------------------------------------
+                    # NEW: also fetch thread replies via Web API
+                    # ------------------------------------------------------------------
+                    threaded_msgs: List[Dict[str, Any]] = []
+                    for parent in api_msgs:
+                        if parent.get("reply_count", 0) > 0 and parent.get("ts"):
+                            try:
+                                payload = {"channel": channel_id, "ts": parent["ts"], "limit": 1000}
+                                reply_data = await asyncio.to_thread(self._api_post_sync, "conversations.replies", payload)
+                                if reply_data.get("ok") and isinstance(reply_data.get("messages"), list):
+                                    # Skip the first message (parent) to avoid duplicates
+                                    threaded_msgs.extend(reply_data["messages"][1:])
+                            except Exception as _e:
+                                logger.debug("Failed to fetch thread replies for %s: %s", parent.get("ts"), _e)
+                    combined_msgs = api_msgs + threaded_msgs
+                    # De-duplicate by timestamp
+                    deduped = {m.get("ts"): m for m in combined_msgs if m.get("ts")}
+                    print(f"✅ Retrieved {ansi.green}{len(deduped)}{ansi.reset} messages via direct API")
+                    logger.info("Retrieved %d total messages (with thread replies) via direct API for channel %s", len(deduped), channel_id)
+                    return list(sorted(deduped.values(), key=lambda m: float(m.get('ts', 0))))
                 print("⚠️  API returned no messages - falling back to UI scroll…")
                 logger.info("API returned no messages for channel %s, falling back to UI scroll", channel_id)
             except Exception as e:
@@ -1239,20 +1256,22 @@ class SlackBrowser:
             # Do NOT clear earlier intercepted data – we keep user/channel maps
             _start_intercept_index = len(self.intercepted_data)
 
-            # Navigate to the channel to trigger history loading
-            channel_url = f"{WORKSPACE_URL}/archives/{channel_id}"
+            # Navigate to the channel to trigger history loading –
+            # prefer the universal app.slack.com URL first to avoid desktop-app redirects
+            primary_url = f"https://app.slack.com/client/{TEAM_ID}/{channel_id}"
+            fallback_url = f"{WORKSPACE_URL}/archives/{channel_id}"
 
             try:
-                await self.page.goto(channel_url, timeout=10000)
+                await self.page.goto(primary_url, timeout=10000)
+                print("✅ Navigated via app.slack.com client URL")
             except Exception as e:
-                print(f"⚠️  Failed to navigate to channel: {e}")
-                # Try alternative URL format
+                print(f"⚠️  Failed to load primary URL ({primary_url}): {e}")
+                # Fallback to workspace sub-domain URL
                 try:
-                    alt_url = f"https://app.slack.com/client/{TEAM_ID}/{channel_id}"
-                    await self.page.goto(alt_url, timeout=10000)
-                    print("✅ Successfully navigated using alternative URL")
+                    await self.page.goto(fallback_url, timeout=10000)
+                    print("✅ Successfully navigated using workspace URL fallback")
                 except Exception as e2:
-                    print(f"❌ Failed to navigate with alternative URL: {e2}")
+                    print(f"❌ Failed to navigate with fallback URL ({fallback_url}): {e2}")
                     return []
 
             # Wait for initial messages to load
@@ -1512,9 +1531,9 @@ class SlackBrowser:
 
                 logger.debug("Found %d unique thread buttons", len(unique_buttons))
 
-                for i, button in enumerate(unique_buttons[:5]):  # Limit to first 5 threads
+                for i, button in enumerate(unique_buttons):  # Click every discovered thread
                     try:
-                        logger.debug("Clicking thread %d/%d", i+1, min(len(unique_buttons), 5))
+                        logger.debug("Clicking thread %d/%d", i+1, len(unique_buttons))
 
                         # Try to scroll the button into view first
                         try:
