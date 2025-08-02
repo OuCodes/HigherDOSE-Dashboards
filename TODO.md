@@ -19,6 +19,9 @@
 - [x] Move `reports` into `data/reports`
 - [ ] Move `docs/winning-prompts.txt` into `data/prompts` each should be in its own .txt file
 - [ ] Use TTS model to play jourdan the docs vs debate chat
+- [ ] Create README.md for each major directory so agents can use them as a guide
+    - [ ] Tell agents not to use the `utils` folder for code
+    - [ ] Tell agents specific use cases for the `scripts` folder
 
 ## Scripting
 
@@ -38,6 +41,7 @@
 - [x] Move mail/archive to data/mail/exports
 - [ ] Detail steps necessary to get gmail archive working on window machine
     - [ ] Create a tutorial or README around these steps
+- [ ] Merge `gmail_monitor.py` into `gmail_archive.py`
 
 ## Facebook Comments
 
