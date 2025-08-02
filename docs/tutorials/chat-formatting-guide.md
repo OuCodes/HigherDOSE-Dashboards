@@ -237,6 +237,8 @@ Use a single horizontal rule (`---`) to separate minor conversation turns:
 ### 👤 **User**
 Question...
 
+---
+
 ### 🤖 **Cursor** 
 Answer...
 
@@ -485,6 +487,35 @@ Yes, here is the plan...
 ```
 
 ---
+
+### ❌ Pitfall 7: Hiding Assistant Work
+
+A common mistake is to combine a user's request and the assistant's detailed response into a single section. This makes the chat log less useful because the assistant's significant contributions are not visible in the navigation table.
+
+```markdown
+<!-- LESS USEFUL: Assistant's work is hidden from navigation -->
+## Initial Request and Plan
+### 👤 **User**
+Can you help me with a complex task?
+
+---
+
+### 🤖 **Cursor**
+Yes, here is the detailed multi-step plan...
+(A long, valuable response that is now hard to find)
+
+<!-- BETTER: Each contribution is a navigable section -->
+## Initial Request
+### 👤 **User**
+Can you help me with a complex task?
+
+---
+
+## Implementation Plan
+### 🤖 **Cursor**
+Yes, here is the detailed multi-step plan...
+(This important response now appears in the navigation table)
+```
 
 ## Advanced Tips
 
