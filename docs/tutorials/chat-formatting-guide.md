@@ -72,14 +72,14 @@ _Exported on DATE from Tool (Version)_
 
 | Section | Topic | Participants |
 |---------|-------|-------------|
-| [📝 Section Name](#section-name) | Brief topic description | User |
-| [💡 Another Section](#another-section) | What this section covers | Cursor |
-| [🔍 Investigation](#investigation) | Problem solving steps | User |
+| [📝 User Greeting](#user-greeting) | Brief topic description | User |
+| [💡 Implementation](#implementation) | What this section covers | Cursor |
+| [🔍 Debugging](#debugging) | Problem solving steps | User |
 
 ---
 ---
 
-## Section Name
+## User Greeting
 
 ### 👤 **User**
 
@@ -87,7 +87,7 @@ User's question or request goes here...
 
 ---
 
-## Another Section
+## Implementation
 
 ### 🤖 **Cursor**
 
@@ -98,7 +98,7 @@ Content can be multiple paragraphs, code blocks, etc.
 ---
 ---
 
-## Investigation
+## Debugging
 
 ### 🤖 **User**
 
@@ -221,10 +221,15 @@ Sure! Here's how...
 
 ### Step 4: Add Visual Separators
 
-Place `---` between major conversation sections:
+Use a double horizontal rule (`---`\n`---` on two consecutive lines) to separate major conversation sections:
 - ✅ After each complete topic discussion
-- ✅ Before user asks a new major question
+- ✅ Before user asks a new question or gives a new response
 - ✅ When context switches significantly
+
+Use a single horizontal rule (`---`) to separate minor conversation turns:
+- ✅ Between user and assistant responses
+- ✅ Between user questions and assistant responses
+- ✅ Between assistant responses and user questions
 
 ```markdown
 ## Topic One
@@ -432,12 +437,51 @@ Question...
 Answer...
 
 ---
+---
 
 ## Follow-up Discussion  
 ### 👤 **User**
 Follow-up...
 ### 🤖 **Cursor**
 More answers...
+```
+
+---
+
+### ❌ Pitfall 6: Improper Section Breaks
+
+A new section should only begin after a user's turn. Placing a section header right before an assistant's response breaks the natural conversational flow.
+
+```markdown
+<!-- WRONG - Breaks a single turn into two sections -->
+
+---
+---
+
+## Initial Request
+### 👤 **User**
+Can you help me?
+
+---
+---
+
+## Assistant's Plan
+### 🤖 **Cursor**
+Yes, here is the plan...
+
+<!-- RIGHT - User and Assistant in one logical section -->
+
+---
+---
+
+## Initial Request and Plan
+### 👤 **User**
+Can you help me?
+
+---
+
+### 🤖 **Cursor**
+Yes, here is the plan...
 ```
 
 ---
@@ -540,6 +584,7 @@ _Exported 2025-01-15_
 | [🔧 Debugging](#debugging) | Timeout error investigation | Cursor |
 
 ---
+---
 
 ## Initial Request
 
@@ -555,6 +600,7 @@ I need help connecting to the Facebook API...
 
 Sure! Here's how to set up the connection...
 
+---
 ---
 
 ## Debugging
