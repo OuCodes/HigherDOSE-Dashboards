@@ -771,3 +771,5 @@ I’m in TT so can assign additional permissions
 - **2025-07-24 14:23** *Chris Jacob*: YouTube Shorts “now earn as much revenue per watch-hour as traditional in-stream [ads] on YouTube. And in some countries, it now even exceeds in-stream’s rate”.
 - **2025-07-24 15:21** *Jourdan*: I can believe it! So much easier to consume short form content for hours vs watching multiple long form videos. I catch myself getting stuck in a loop sometimes with shorts and reels
 - **2025-07-25 10:31** *Ingrid*: I’m VERY bullish on YouTube as a whole (shorts, longs, everything). We are going hard into this in August/Sept ahead of holiday 
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

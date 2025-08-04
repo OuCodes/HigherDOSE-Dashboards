@@ -126,3 +126,5 @@
 - **2025-07-22 12:40** *Jourdan*: He’s not 100% on their data and if they’re necessary in the ecosystem
 - **2025-07-22 12:41** *Jourdan*: So not sure if the full team above is needed but we just want to have a short call to understand the needs for each channel to figure out CAC targets
 - **2025-07-22 12:42** *Jake Panzer*: Oh interesting- totally understand. if necessary we can definitely do it by Prescient/Northbeam but that would be a great convo to have
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

@@ -213,3 +213,21 @@ All products performance looks great so that campaign is rebounding compared to 
 - **2025-07-30 12:05** *Jourdan*: when is the call?
 - **2025-07-30 12:06** *Rahul Vithanage*: Ooops just added you Jourdan
 - **2025-07-30 12:06** *Rahul Vithanage*: It's our call with our Google reps
+- **2025-07-31 09:47** *Rahul Vithanage*: Hey Jourdan! I added you to our weekly TBs with the Google reps starting this week, but since Tori owns the calendar invite, it looks like it didn’t go through on your end — which is probably why it didn’t show up on your calendar. I’ve just asked Tori to add you directly so you’re included in all upcoming TBs moving forward!
+- **2025-07-31 09:47** *Rahul Vithanage*: My apologies about the call this week.
+- **2025-07-31 10:30** *Rahul Vithanage*: Just to brief you on **yesterday's call:**  
+• We discussed the need to **consolidate the fragmented search campaigns** (combining all Brand Search into one and combining all Non-Brand Search into one). This way we can consolidate budgets and be able to compete better in the auction house. Also one other benefit is that we can minimize overlap between campaigns potentially driving better efficiency. Lmk if you're aligned here and I can go ahead and make the changes.   
+• Tori followed up on whether we're planning to test out **YouTube.** In our previous conversations with Ingrid, all of us agreed on the importance of running YT to build our funnel and drive new customer acquisition. Given the increased paid search budget for August and current Google pacing, we have the capacity to support YouTube. Currently clarifying next steps with Tori regarding budget and KPIs (you're cc'd on the email thread). Once everything is ironed out, I can launch this campaign.   
+• Tori also wants to **incrementally keep scaling Demand Gen.** I'd like to hear your thoughts on this since the budget for Aug is $15k ($500/day) and we're currently at this budget. 
+- **2025-07-31 14:07** *Jourdan*: Thanks for the update and getting me added!
+- **2025-07-31 14:07** *Jourdan*: Hold off on Demand Gen scale. $15k is about all we have unless we can reallocate spend from Google in a few days if performance doesn’t stick\n\n*Reactions: :white_check_mark: Rahul Vithanage*
+- **2025-07-31 14:07** *Jourdan*: Im aligned with testing YT but we need long form content
+- **2025-07-31 14:08** *Jourdan*: So probably can get going with Shorts in the meantime\n\n*Reactions: :white_check_mark: Rahul Vithanage*
+- **2025-07-31 14:08** *Jourdan* 💬 1 reply: and send through best practice for long form content on the channel so we can get briefs made and content produced
+- **2025-07-31 14:08** *Jourdan*: or maybe we can repurpose organic videos?
+- **2025-07-31 14:08** *Jourdan*: When you consolidate campaigns can you clearly label which products are in the ad groups or ads?
+- **2025-07-31 14:09** *Jourdan* 💬 1 reply: I’ve built a report that tracks spend by product but the all products campaign takes up a large chunk of spend and doesn’t have clear labeling on products so there’s a big chunk of unattributed spend. I’m fine with consolidating but want more clarity on naming conventions if possible
+- **2025-08-01 07:46** *Rahul Vithanage*: Hey @Jourdan, a quick thing on YouTube before we launch. If we allocate **$1000/day for 10 days,** we're **eligible for a brand and search lift study.** If this proves to be successful, we should continue this and convert it to an evergreen campaign. This would mean that the campaign will need **$30k in budget** in a given month. Are you okay if we utilize $30k from the paid search budget for this test in August? (We don't need to continue after 10 days if the test doesn't prove to be successful - if there's no lift). If you're okay, I can ask Tori to allowlist us for the lift test internally and launch the campaign afterwards, once everything is set.
+- **2025-08-01 13:48** *Jourdan*: Ahh im not sure how I feel about spending that much that quickly on YT since it’s not a proven channel.
+- **2025-08-01 13:48** *Jourdan*: I think we bring this to the larger group and ask
+- **2025-08-01 13:49** *Jourdan*: I’m iffy on the value of the brand lift study at this stage with little spend on the channel

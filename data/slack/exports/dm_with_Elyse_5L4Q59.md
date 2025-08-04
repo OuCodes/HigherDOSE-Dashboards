@@ -47,3 +47,5 @@ More phone numbers: [https://tel.meet/phr-hfbk-tha?pin=4864468163132](https://te
 - **2025-07-29 13:04** *Elyse*: oh wait you’re gonna be late for this one right?
 - **2025-07-29 13:04** *Jourdan*: hey! yes but it just wrapped so i can jump on now
 - **2025-07-29 13:04** *Elyse*: ok we’ll kick off with regular maintenance stuff
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

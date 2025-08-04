@@ -5724,3 +5724,50 @@ Address:621 Applecheek Ln, Hyde Park, VT 05655
 - **2025-07-17 11:20** *Elyse*: ok thats cool
 - **2025-07-17 11:20** *Elyse*: can we tweak that though
 - **2025-07-17 11:21** *Elyse*: as i don’t think you can leave a review thru your order confirmation email\n\n*Reactions: :white_check_mark: User_HNEDUL*
+- **2025-07-17 13:31** *Chris Jacob*: fyi if something needs to be done here\n\n📎 **image.png** (png, 129.1KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09699XUHRB/image.png)
+- **2025-07-17 13:38** *Jourdan*: Everything is showing as approved in the dash
+- **2025-07-17 13:38** *Jourdan*: 📎 **Screenshot 2025-07-17 at 13.38.36.png** (png, 115.9KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096803N7N2/screenshot_2025-07-17_at_13.38.36.png)
+- **2025-07-17 13:39** *Chris Jacob*: i think its this step @Jourdan\n\n📎 **image.png** (png, 72.4KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F096BAU4RK4/image.png)
+- **2025-07-17 13:39** *Ingrid*: i did this this morning
+- **2025-07-17 13:40** *Ingrid*: they are forcing a call, which i think is part of the onbaording anyway
+- **2025-07-17 13:40** *Ingrid*: like it wont let me just verify
+- **2025-07-17 13:40** *Ingrid* 💬 1 reply: will it let you, Jourdan?
+- **2025-07-17 13:40** *Ingrid*: i accepted the inputs earlier
+- **2025-07-17 13:40** *Chris Jacob*: i have ability to do so i think?
+- **2025-07-17 13:40** *Chris Jacob*: 📎 **image.png** (png, 141.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F097030DYKS/image.png)
+- **2025-07-17 13:41** *Ingrid*: when you hit submit it will make you schedule a call
+- **2025-07-17 13:41** *Ingrid*: try?
+- **2025-07-17 13:42** *Chris Jacob*: goes to this but then still doesnt unlock that stuff
+- **2025-07-17 13:42** *Chris Jacob*: so probably
+- **2025-07-17 13:42** *Chris Jacob*: 📎 **image.png** (png, 254.4KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0965Q68HB5/image.png)
+- **2025-07-17 13:46** *Chris Jacob*: was referring to mismatch in this time period but its actually northbeam thats lower than prescient, which matches the platform\n\n*Reactions: :white_check_mark: Ingrid*
+- **2025-07-17 13:48** *Jourdan*: Yeah NB would be lower than prescient because NB wasn’t implemented last year\n\n*Reactions: :white_check_mark: Ingrid*
+- **2025-07-18 11:11** *Jourdan*: I think the tool is valuable but felt like we weren’t strong in the same areas they are like Retail &amp; Amazon.  
+  
+Although seems like there might be opportunities with brij to track retail sales, do list building, and the rebate thing seemed interesting but agreed big business decision.\n\n*Reactions: :bangbang: Ari Murray*
+- **2025-07-18 11:22** *Jourdan*: Also updating packaging to include or update QR codes would  be a big decision\n\n*Reactions: :bangbang: Ari Murray*
+- **2025-07-18 11:22** *Jourdan*: I agree that would need to be positioned differently for it to land well\n\n*Reactions: :pray: Ari Murray*
+- **2025-07-22 07:06** *Chris Jacob* 💬 1 reply: I believe it would affect the accrual data too but not sure how often you need to reference historical periods. I'm not fully sure but I think that if you look at X report this week/month as you do, and then access it again in a couple months the nubmers will have changed
+- **2025-07-22 07:06** *Chris Jacob* 💬 5 replies: @Jourdan we need to align on the use of Bark vs something else because I have concerns about their data and noted you mentioned needing to talk to them with Sharma.  I need a fuller understanding of what they are providing that other platforms arent to decide if we're going to keep using them
+    - **2025-07-22 09:26** *Jourdan*: ↳ Yeah there’s an overlap of metrics between all the platforms we use. I think contribution margin by product and profit per view are nice to see with the granularity they provide. The platform does offer a lot of insights but I’m not sure how helpful the data is to everyone else. The intent behind meeting with sharma and bark is to lock in target CAC numbers by product for each channel. Do you want to get added to the call? 
+    - **2025-07-22 10:31** *Chris Jacob*: ↳ @Jourdan we ran out of time on call I think my preference is a short call  with you and whoever at Sharma to understand ideal needs and go from there - I am not comfortable at this moment making any business decisions with what Bark says. But for this specific topic they would also not be the "keeper" of something like the simple margins on a product thats all coming from me for them to just plug in
+    - **2025-07-22 11:44** *Jourdan*: ↳ Yeah those paid media calls are super tight with time. Okay yeah then maybe that conversation is better suited with you overall instead of Bark :eyes:  
+  
+Would you prefer a new slack group or email to schedule out a time to talk? @Chris Jacob
+    - **2025-07-22 12:38** *Chris Jacob*: ↳ My calendar is correct feel free to slot in whenever from tomorrow on
+    - **2025-07-23 13:28** *Jourdan*: ↳ Thanks for that I’ll share that with sharma team. Other than our MTA tools do you know if we’re using anything else that has crossover with bark reporting? @Chris Jacob 
+- **2025-07-24 08:52** *Sumish Khadka*: @User_0Q2KDX our email is down and the team is working to fix it. \n\n*Reactions: :+1: User_0Q2KDX*
+- **2025-07-28 13:43** *Jake Panzer* 💬 1 reply: @Ingrid @Jourdan confirmed with NB team it looks like there was a pixel issue when the site domain changed late last week- they submitted a ticket to their devs so we'll keep you posted! Definitely skewing the data from the weekend\n\n*Reactions: :white_check_mark: Jourdan, Ingrid*
+- **2025-07-28 17:05** *Ingrid* 💬 1 reply: August goals are updated in the doc here\n\n*Reactions: :light-blue-heart: User_PT7LCE, Berkeley Clark, :orange_heart: User_7DB7H9, User_2Z9G95, Berkeley Clark*
+- **2025-07-29 12:54** *Jourdan*: All of our collections
+- **2025-07-29 12:59** *Elyse* 💬 2 replies: @Chris Jacob @Jake Panzer I created our LDW2025 code and just wanted to confirm - should I allow discount to be featured on google/youtube?
+- **2025-07-29 13:03** *Elyse*: hey @Jourdan are you available to join? HigherDOSE x Sharma CRM Weekly  
+Tuesday, July 29 · 2:00 – 2:30pm  
+Time zone: America/New_York  
+Google Meet joining info  
+Video call link: [https://meet.google.com/phr-hfbk-tha](https://meet.google.com/phr-hfbk-tha)  
+Or dial: ‪(US) <tel:+1754-900-8900|+1 754-900-8900>‬ PIN: ‪877 819 618‬#  
+More phone numbers: [https://tel.meet/phr-hfbk-tha?pin=4864468163132](https://tel.meet/phr-hfbk-tha?pin=4864468163132)\n\n**meet.google.com**\n🔗 **[Meet](https://meet.google.com/phr-hfbk-tha)**\n> Real-time meetings by Google. Using your browser, share your video, desktop, and presentations with teammates and customers.\n\n**meet.google.com**\n🔗 **[Meet](https://tel.meet/phr-hfbk-tha?pin=4864468163132)**\n> Real-time meetings by Google. Using your browser, share your video, desktop, and presentations with teammates and customers.
+- **2025-07-30 07:27** *Elyse* 💬 2 replies: @User_TS27JN morning!\n\n📎 **IMG_2489.png** (png, 469.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F098170TNEP/img_2489.png)\n📎 **IMG_2490.png** (png, 312.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0986JFLB6Y/img_2490.png)\n📎 **IMG_2491.png** (png, 321.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0983P8JN4V/img_2491.png)
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

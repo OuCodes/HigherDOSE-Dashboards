@@ -222,3 +222,5 @@ they shared the below.
 - **2025-07-28 16:16** *Anastasia*: <!channel> I know Sharma is still looking for UGC for TvScientific but do we have the other assets so long.  
   
 
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

@@ -351,3 +351,18 @@ Kylie said she hasn’t heard any negative or partnership issues.
 - **2025-07-28 13:34** *Anastasia*: <!channel> From Kylie: TVScientific - very little double attribution from a competitor brand.  
 Kylie said she hasn’t heard any negative or partnership issues.
 - **2025-07-30 11:56** *Chris Jacob*: @Anastasia as it regards the response we just got, if we were to agree to their terms, are you aware if Awin has an ability to modify terms for a single affiliate? That is what would have to happen to pay them on time, somehow ignore returns, etc
+- **2025-07-31 11:57** *Anastasia*: @Chris Jacob  
+   
+The CPA adjustment would be no issue! Since there are no returns, we could go in manually and approve all tvscientific orders on a monthly basis. However, it would still be longer than 30 days until they received payment.   
+  
+If we approved the transactions the last day of every month it would show up on your second invoice (30th or 31st). HD has 30 days to pay that invoice, then once paid it will show up on tvscientific's next payment.   
+   
+Example:   
+-> We approve all July transactions today (7.31)  
+-> HD is invoiced today (7.31)  
+-> HD pays Awin by 8.31: 30 days  
+-> tvscientific recieves payment on their 8.15 invoice Assuming their payment schedule is set to bi-monthly: 15 days   
+   
+I would say 45 days is most realistic for them, and we would just have to manually approve / decline their transactions every month.
+- **2025-08-01 11:29** *Chris Jacob*: we can try whatever if TVs understands we will demand fix/formalization if it starts to go well. I don't understand how they operate in the Awin ecosystem but expect terms no one else gets
+- **2025-08-01 11:29** *Chris Jacob*: In any case whatever they think they want the terms are needs to be in their contract they present to us\n\n*Reactions: :+1: Anastasia*

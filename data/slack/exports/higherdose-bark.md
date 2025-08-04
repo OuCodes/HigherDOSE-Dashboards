@@ -654,3 +654,17 @@ Thanks and have a nice weekend :pray:
 - **2025-07-24 09:07** *User_2Z9G95* joined the channel
 - **2025-07-24 11:50** *Jourdan* joined the channel
 - **2025-07-24 13:06** *Berkeley Clark* joined the channel
+- **2025-07-28 13:43** *Jake Panzer* 💬 1 reply: @Ingrid @Jourdan confirmed with NB team it looks like there was a pixel issue when the site domain changed late last week- they submitted a ticket to their devs so we'll keep you posted! Definitely skewing the data from the weekend\n\n*Reactions: :white_check_mark: Jourdan, Ingrid*
+- **2025-07-28 17:05** *Ingrid* 💬 1 reply: August goals are updated in the doc here\n\n*Reactions: :light-blue-heart: User_PT7LCE, Berkeley Clark, :orange_heart: User_7DB7H9, User_2Z9G95, Berkeley Clark*
+- **2025-07-29 12:54** *Jourdan*: All of our collections
+- **2025-07-29 12:59** *Elyse* 💬 2 replies: @Chris Jacob @Jake Panzer I created our LDW2025 code and just wanted to confirm - should I allow discount to be featured on google/youtube?
+- **2025-07-29 13:03** *Elyse*: hey @Jourdan are you available to join? HigherDOSE x Sharma CRM Weekly  
+Tuesday, July 29 · 2:00 – 2:30pm  
+Time zone: America/New_York  
+Google Meet joining info  
+Video call link: [https://meet.google.com/phr-hfbk-tha](https://meet.google.com/phr-hfbk-tha)  
+Or dial: ‪(US) <tel:+1754-900-8900|+1 754-900-8900>‬ PIN: ‪877 819 618‬#  
+More phone numbers: [https://tel.meet/phr-hfbk-tha?pin=4864468163132](https://tel.meet/phr-hfbk-tha?pin=4864468163132)\n\n**meet.google.com**\n🔗 **[Meet](https://meet.google.com/phr-hfbk-tha)**\n> Real-time meetings by Google. Using your browser, share your video, desktop, and presentations with teammates and customers.\n\n**meet.google.com**\n🔗 **[Meet](https://tel.meet/phr-hfbk-tha?pin=4864468163132)**\n> Real-time meetings by Google. Using your browser, share your video, desktop, and presentations with teammates and customers.
+- **2025-07-30 07:27** *Elyse* 💬 2 replies: @User_TS27JN morning!\n\n📎 **IMG_2489.png** (png, 469.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F098170TNEP/img_2489.png)\n📎 **IMG_2490.png** (png, 312.8KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0986JFLB6Y/img_2490.png)\n📎 **IMG_2491.png** (png, 321.7KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0983P8JN4V/img_2491.png)
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

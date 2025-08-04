@@ -329,3 +329,5 @@ I think this is a good test so im happy your onboard.
 - **2025-07-29 13:07** *Jourdan*: Which tells me they can probably drive a lotttt of rev through this
 - **2025-07-29 13:08** *Anastasia*: yea, I think so to
 - **2025-07-29 13:08** *Anastasia*: now we just need to get TvScietific up and running
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

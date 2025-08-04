@@ -15934,3 +15934,125 @@ I don't have a login, so would one of you be able to try to disconnect and recon
 - **2025-07-30 14:51** *Elyse*: yes please!\n\n*Reactions: :raised_hands: User_2Z9G95*
 - **2025-07-30 14:53** *User_2Z9G95*: Perfect! Good to go.
 - **2025-07-30 15:54** *User_2Z9G95*: Hi @Elyse — Thank you for you and the team's feedback on the welcome emails so far! Do you want us to make those changes before we meet with Lauren tomorrow? Or as-is for her initial thoughts/feedback?
+- **2025-07-30 16:05** *User_2Z9G95*: Hi @Elyse — [7/31 email ready for your review](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42665-1363&amp;t=0qhjcpakmhSkzx5j-0), too!
+- **2025-07-30 16:33** *Elyse*: Looks good - only thing is the before or after skincare part. I made a note to add info about the glow serum being an exception to the rule etc
+- **2025-07-30 16:34** *Elyse*: It looks like there’s a sentence added about ingredients being light activated but doesn’t actually name glow serum or anything
+- **2025-07-30 16:34** *Elyse*: So would wanna redo that part
+- **2025-07-30 16:34** *Elyse*: Let me mock up a quick blurb
+- **2025-07-30 16:35** *User_2Z9G95*: OH, yes! This was added, but maybe we misunderstood the comment: *Even better: Its ingredients are activated by red light therapy (thanks to phosphatidylcholine), enhancing the effects while boosting the performance of any skincare layered with it.*
+- **2025-07-30 16:37** *Elyse*: Yes that part!
+- **2025-07-30 16:39** *Elyse*: Gonna rewrite quick hang on
+- **2025-07-30 16:39** *User_2Z9G95*: ok, fab! thank you so much
+- **2025-07-30 16:54** *Elyse*: Always before, with an exception. Research has shown red light works best on fresh, bare skin. Post-session is typically the perfect time to apply your serums as your skin is primed to absorb all those important active ingredients, ensuring your serums work smarter for maximum skin care benefits.   
+  
+However, if you’re using the HigherDOSE Glow Serum (which you totally should be), that should be applied to clean, dry skin *before* your red light session. Thanks to phosphatidylcholine, this serum is light activated and designed to amplify the already powerful benefits of red light therapy.   
+  
+HD Pro Tip: Keep actives like retinol out of the red light zone, as they are known to increase skin sensitivity to light.
+- **2025-07-30 16:58** *User_2Z9G95*: Amazing, [updated](https://www.figma.com/design/44GusyeEHXg69kIRScbVaz/HigherDOSE-%E2%80%93%C2%A0Weekly-Campaigns-%E2%80%93-July-2025?node-id=42648-310&amp;p=f&amp;t=UwBjXQnjYN9LwQI2-0)!
+- **2025-07-31 09:59** *Elyse*: @User_2Z9G95 design looks great. I’m aiming to get the blog finished by mid day. unfortunately had to make a good amount of edits to the content yesterday once i got into uploading it\n\n*Reactions: :bangbang: User_2Z9G95*
+- **2025-07-31 10:08** *User_2Z9G95*: Thank you! Real quick @Elyse — I was getting the SMS uploaded to Postscript and noticed the original messaging felt very driven towards existing red light purchasers, but I figure this is a good way to educate around red light as a whole (even if they don't own any RL products yet). I figured it might be better to tweak it so it doesn't seem like it's only for people who have purchased RL and I made a few alts in the sheet [here](https://docs.google.com/document/d/1hUo-bpFhYWmBN05yA0bSy9sk5gRs2bq4BgroaF-xNeA/edit?tab=t.0).  
+  
+Feel free to take a look when you get the chance and let me know what you think!\n\n📎 **31: Summer Skin Care - Timing** (gdoc, 0B) - [Download](https://docs.google.com/document/d/1hUo-bpFhYWmBN05yA0bSy9sk5gRs2bq4BgroaF-xNeA/edit?tab=t.0)
+- **2025-07-31 10:10** *Elyse*: yeah totally agree
+- **2025-07-31 10:20** *User_2Z9G95*: Fab! Will get this updated and just keep me posted on the blog!
+- **2025-07-31 12:36** *Elyse*: @User_2Z9G95 got blog uploaded, now adding pics\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-07-31 12:37** *User_2Z9G95*: Woohoo!
+- **2025-07-31 13:52** *User_2Z9G95*: @Elyse — Just sent SMS + email previews for today! Let me know when the blog is live and we'll get those links in!
+- **2025-07-31 13:55** *Elyse*: sms preview good to go
+- **2025-07-31 13:55** *Elyse*: my dinosaur computer struggling to download/upload images to blog
+- **2025-07-31 14:00** *User_2Z9G95*: hahahha no worriessss
+- **2025-07-31 14:02** *Elyse*: [https://higherdose.com/blogs/the-high-life-blog/how-often-should-you-do-red-light-therapy](https://higherdose.com/blogs/the-high-life-blog/how-often-should-you-do-red-light-therapy)\n\n**higherdose.com**\n🔗 **[How Often To Use Red Light Therapy For Glowing Results | HigherDOSE](https://higherdose.com/blogs/the-high-life-blog/how-often-should-you-do-red-light-therapy)**
+- **2025-07-31 14:08** *Elyse*: @User_2Z9G95 im making some tweaks to the sources cited but otherwise this is good to go
+- **2025-07-31 14:39** *User_2Z9G95*: Updating previews now!
+- **2025-07-31 14:40** *Elyse*: @User_2Z9G95 am i bugging? i’m trying to find these loud crowd templates in the flows section. she said she uploaded 3 templates, i only see storefronts onboarding journey
+- **2025-07-31 14:40** *User_2Z9G95*: oh thanks for the reminder!
+- **2025-07-31 14:40** *User_2Z9G95*: let me look
+- **2025-07-31 14:40** *Elyse*: do you think she just means its all one flow but has multiple emails?
+- **2025-07-31 14:40** *Elyse*: cause i do see those
+- **2025-07-31 14:40** *Elyse*: but i was thinking she set up multiple flows
+- **2025-07-31 14:42** *User_2Z9G95*: Oh! I see them! She made templates, so in Klaviyo you have to go to the left side and select Content &gt; Templates &gt; Email: saved and then scroll down a bit and they're here!
+- **2025-07-31 14:42** *User_2Z9G95*: 📎 **Screenshot 2025-07-31 at 12.42.14 PM.png** (png, 552.5KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F098AV7AJQK/screenshot_2025-07-31_at_12.42.14___pm.png)
+- **2025-07-31 14:42** *Elyse*: ahhhhh ok
+- **2025-07-31 14:42** *Elyse*: cause within the flow i see like 7 emails and my god do they need branding help
+- **2025-07-31 14:42** *User_2Z9G95*: ohhh yeah i think that may just be like a default
+- **2025-07-31 14:42** *User_2Z9G95*: and not the real thing? but i'm not totally sure
+- **2025-07-31 14:44** *Elyse*: ok i hope so cause woof
+- **2025-07-31 14:44** *Elyse*: but ok so i’m looking at the templates now
+- **2025-07-31 14:44** *Elyse*: welcome email looks like it needs to have our photos added in place of what they have there
+- **2025-07-31 14:44** *Elyse*: and like a general brand facelift
+- **2025-07-31 14:44** *Elyse*: you made a sale looks generally fine in terms of visuals
+- **2025-07-31 14:45** *Elyse*: tips &amp; tricks looks like it needs updated images too
+- **2025-07-31 14:47** *User_2Z9G95*: Yes, I think if we update photos and fonts that will definitely help!
+- **2025-07-31 14:47** *Elyse*: when do you think we can realistically squeeze that in?
+- **2025-07-31 14:48** *User_2Z9G95*: I'm also thinking we can launch with a modified designed version just to get them live and then we can do an actual re-design once we get these other flows live!
+- **2025-07-31 14:48** *User_2Z9G95*: So just like an interim face lift
+- **2025-07-31 14:48** *Elyse*: i’m responding to their email to basically say hey these need a bit of work before we’re comfortable turning these puppies live
+- **2025-07-31 14:48** *Elyse*: yes ok love that
+- **2025-07-31 14:48** *User_2Z9G95*: Do we know which products are available in the storefront?
+- **2025-07-31 14:48** *User_2Z9G95*: From there I can swap the images out easil
+- **2025-07-31 14:48** *User_2Z9G95*: easily
+- **2025-07-31 14:51** *Elyse*: adding to my email
+- **2025-07-31 14:51** *User_2Z9G95*: ty!
+- **2025-07-31 14:53** *User_2Z9G95*: Previews with updated links sent!
+- **2025-07-31 14:54** *Elyse*: good to fly
+- **2025-07-31 14:54** *Elyse*: exclude int’l pls!
+- **2025-07-31 14:54** *User_2Z9G95*: perf!
+- **2025-07-31 14:56** *User_2Z9G95*: Scheduled for 4:30p ET!\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-07-31 17:52** *User_2Z9G95*: Hi @Elyse! For tomorrow — Just wanted to let you know I made some templates for LoudCrowd emails! You can access them in Klaviyo [here](https://www.klaviyo.com/templates/list). I just repurposed past approved emails and updated the copy — we'll need their team to confirm all dynamic elements, but I think something like this could work. Let me know!\n\n**klaviyo.com**\n🔗 **[Klaviyo](https://www.klaviyo.com/templates/list)**\n> Klaviyo is an email platform powered by data built for commerce and web businesses.
+- **2025-08-01 07:29** *Elyse*: Ok cool thanks @User_2Z9G95 I’ll review first thing this morning
+- **2025-08-01 08:53** *User_2Z9G95*: I kept it to core products/best sellers but since they said it’s all products on website happy to change anything!
+- **2025-08-01 10:02** *User_2Z9G95*: Hi @Elyse! Wanted to send an update of where we're at with flows and campaigns. Everything is updated in the tracker [here](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?pli=1&gid=1474997958#gid=1474997958) (and highlighted in red for review)— please feel free to take a look when you get the chance!  
+  
+Flows:  
+• All replenishment flow copy has been updated per the templates guidelines  
+• All welcome emails have been updated per the initial round of feedback  
+• All abandonment designs have been updated per the initial round of feedback  
+• All loyalty lion designs have been updated per the initial round of feedback  
+• All wonderment designs have been updated per the initial round of feedback  
+Campaigns:  
+• 8/4 copy is ready for review [here](https://docs.google.com/document/d/1GbxQN77JK-cvPk7ezibcV*r4nZGHu5ww18bIg0NI9DI/edit?tab=t.0)  
+• 8/6 copy is ready for review [here](https://docs.google.com/document/d/17hPcTYNJd15qXjIrE*HfhMNbEdkrMQVzOBzd8kUyV0M/edit?tab=t.0)  
+• 8/8 copy is ready for review [here](https://docs.google.com/document/d/1gq3XfOZ5jp8NJyqJ_jP8dxr6GxLFNg8JTC2eoRHzvNQ/edit?tab=t.0)  
+Let us know if you have any questions!\n\n📎 **HigherDose CRM Tracker** (gsheet, 0B) - [Download](https://docs.google.com/spreadsheets/d/1csFoxkpwWmYtRuRfOE1QssDtjqMcmRm3wYaUGhYDnrg/edit?gid=1474997958#gid=1474997958)\n📎 **6: Summer Skin Care let your best skin shine pt. 2** (gdoc, 109.5KB) - [Download](https://docs.google.com/document/d/17hPcTYNJd15qXjIrE_HfhMNbEdkrMQVzOBzd8kUyV0M/edit?tab=t.0)\n📎 **8: New Campaign: Up-Sell (3 emails)** (gdoc, 126.1KB) - [Download](https://docs.google.com/document/d/1gq3XfOZ5jp8NJyqJ_jP8dxr6GxLFNg8JTC2eoRHzvNQ/edit?tab=t.0)\n📎 **4: Summer Skin Care let your best skin shine Email + SMS** (gdoc, 119.0KB) - [Download](https://docs.google.com/document/d/1GbxQN77JK-cvPk7ezibcV_r4nZGHu5ww18bIg0NI9DI/edit?tab=t.0)
+- **2025-08-01 10:32** *User_2Z9G95*: We should also have 8/9 and 8/11 copy ready today. If we can get quick feedback, we can pass these off to design to get started (mainly need the 8/4 since that's Monday).
+- **2025-08-01 10:32** *Elyse*: Fab diving into all of it rn!\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-08-01 10:34** *Elyse*: Hbbj Op uh as v hh b.         N.       B
+- **2025-08-01 10:36** *User_2Z9G95*: ^ is that penny??? bc same girl\n\n*Reactions: :bangbang: User_5S72LT, User_PT7LCE, Elyse*
+- **2025-08-01 10:49** *Elyse*: Lmao yeppp
+- **2025-08-01 10:49** *Elyse*: Was just gonna say penny pickpocketed me and started sending slacks
+- **2025-08-01 10:50** *Elyse*: So 50/50 chance an incoherent message was from me and not the 1.5 year old :rolling*on*the*floor*laughing: \n\n*Reactions: :skull: User_2Z9G95*
+- **2025-08-01 10:54** *Elyse*: Also pause
+- **2025-08-01 10:54** *Elyse*: Did we have a birthday yesterday @User_5S72LT :heartpulse: :heartpulse: :heartpulse: :heartpulse: :heartpulse: :heartpulse: \n\n*Reactions: :face_holding_back_tears: User_5S72LT, :smiling_face_with_3_hearts: User_5S72LT*
+- **2025-08-01 10:56** *User_5S72LT*: You're the best @Elyse :heart: :heart: it was on tuesday!! spent the day eating ~~and drinking~~ my heart out\n\n*Reactions: :dancer: User_2Z9G95, :dancer::skin-tone-3: Elyse*
+- **2025-08-01 10:57** *Elyse*: Lmao love thissss for youuuu
+- **2025-08-01 10:57** *Elyse*: Right on theme with our permission to play narrative :rolling*on*the*floor*laughing: \n\n*Reactions: :bangbang: User_5S72LT*
+- **2025-08-01 10:58** *User_2Z9G95*: Swara read that email and say f yeah, gimme all the drinks &amp; dessert!\n\n*Reactions: :nail_care::skin-tone-4: User_5S72LT*
+- **2025-08-01 10:58** *Elyse*: Ahahah perfection
+- **2025-08-01 10:58** *User_5S72LT*: EXACTLY!!
+- **2025-08-01 11:17** *Elyse*: ohhh @User_2Z9G95 these templates are beyond better
+- **2025-08-01 11:18** *Elyse* 💬 1 reply: for the welcome one - do they let us change these images too?\n\n📎 **Screenshot 2025-08-01 at 12.18.18 PM.png** (png, 227.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F0984RH4F71/screenshot_2025-08-01_at_12.18.18___pm.png)
+- **2025-08-01 11:28** *Elyse*: otherwise all three are perfecto good to go by me
+- **2025-08-01 12:08** *User_2Z9G95*: Oh yes, duh!
+- **2025-08-01 12:08** *User_2Z9G95*: Thank you, will update!!
+- **2025-08-01 12:24** *Elyse*: @User_2Z9G95 i sent welcome flow links to lauren for her review with updates made\n\n*Reactions: :sparkling_heart: User_2Z9G95*
+- **2025-08-01 12:24** *User_2Z9G95*: Fabulous, thank you!
+- **2025-08-01 12:45** *Elyse*: reviewed replen flows, left notes, and shared with Ingrid/Jess for their review
+- **2025-08-01 13:01** *Elyse*: added notes and approvals to wonderment flows
+- **2025-08-01 13:03** *User_2Z9G95*: Woohoo! Will take a look shortly
+- **2025-08-01 13:03** *User_2Z9G95*: Updating the loudcrowd now
+- **2025-08-01 13:18** *Chris Jacob* 💬 3 replies: I don't know if it matters but there are products not enabled on the Postscript channel:\n\n📎 **image.png** (png, 82.6KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F098J2WMPUM/image.png)
+- **2025-08-01 13:20** *Elyse*: @User_2Z9G95 loyalty lion flows &gt; i added notes on 1, otherwise good to get live
+- **2025-08-01 13:21** *Elyse*: diving into campaigns now
+- **2025-08-01 13:28** *Elyse*: @User_2Z9G95 can you update to commenting access please
+- **2025-08-01 13:29** *User_2Z9G95*: ope!
+- **2025-08-01 13:29** *User_2Z9G95*: yes
+- **2025-08-01 13:30** *User_2Z9G95*: updated!
+- **2025-08-01 13:30** *Elyse*: ty ty
+- **2025-08-01 14:09** *User_2Z9G95*: Hi @Chris Jacob — The box should be checked! Do you have an idea of how many were unchecked? Thank you!
+- **2025-08-01 14:23** *User_2Z9G95*: @Chris Jacob — Actually disregard! They just followed up saying it used to serve a purpose, but their integration auto-syncs everything. So we're good to leave!
+- **2025-08-01 14:57** *User_2Z9G95*: Hi @Elyse @Ingrid! Wanted to share July month-end numbers before the weekend! We're happy to report that we surpassed our goal by 12%! :tada: Please see breakdown and YoY chart below:  
+• $115,164.45 (Email)  
+• $51,837.16 (Postscript)  
+• $5,634.00 (Attentive, before we offboarded)  
+We'll dive deeper into insights on Tuesday, but wanted to share this before the weekend!\n\n📎 **Screenshot 2025-08-01 at 12.57.19 PM.png** (png, 20.8KB) - [Download](https://files.slack.com/files-pri/TKAF9UATA-F098N6QUHD2/screenshot_2025-08-01_at_12.57.19___pm.png)\n\n*Reactions: :raised_hands::skin-tone-3: Elyse*
+- **2025-08-01 15:46** *Elyse*: love that, thank you @User_2Z9G95!

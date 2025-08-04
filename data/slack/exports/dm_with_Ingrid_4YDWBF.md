@@ -3723,3 +3723,4 @@ Affiliate	$0.58
 - **2025-07-30 12:30** *Jourdan*: which would make that data a lot cleaner. Right now its relying on NB and those numbers look gross
 - **2025-07-30 12:30** *Jourdan*: and not super accurate so few more teaks there
 - **2025-07-30 13:39** *Ingrid*: def easier on GA4 i think
+- **2025-07-30 20:03** *Jourdan*: good to go [https://docs.google.com/document/d/1Du010WKNur*OFbHPQh*yAr3oRMJnFVCF0tOeb8kIL4c/edit?usp=sharing](https://docs.google.com/document/d/1Du010WKNur*OFbHPQh*yAr3oRMJnFVCF0tOeb8kIL4c/edit?usp=sharing)
