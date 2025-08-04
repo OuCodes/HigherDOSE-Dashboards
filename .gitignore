@@ -217,3 +217,4 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 data/ads/*.crdownload.csv # prevent future adds
+data/ads/ytd-sales_data-higher_dose_llc-2025_07_27_22_44_59_825720-000000000000.csv.crdownload.csv
