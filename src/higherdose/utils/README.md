@@ -1,5 +1,14 @@
 # Python Utils Library
 
+> ⚠️  **Read-Only Notice**
+>
+> This `utils/` package is mirrored from a **separate upstream repo** that
+> follows its own release cycle. **Do not** generate, commit, or edit code here
+> within this project. All modifications must happen in the upstream repository
+> and be pulled in via vendoring.
+
+
+
 A comprehensive collection of Python utilities designed to be cloned into new projects as a foundation for building robust, well-structured Python scripts and applications. This library helps coding assistants generate more pythonic and useful code by providing battle-tested components for common development tasks.
 
 ## 🎯 Purpose
