@@ -1,10 +1,16 @@
-# Custom Files
+# Custom Folders
 /.refs
+
+
+# Custom Files
 .DS_Store
 *.pickle
 client_secret_*.json
 **/mail/exports/
 secrets.json
+
+# Custom Extensions
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
