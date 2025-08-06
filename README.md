@@ -228,6 +228,18 @@ Unattributed rows with spend are automatically exported to
 add new aliases to improve mapping accuracy.
 
 ---
+## 10. Directory Guidelines
+
+Each major folder now ships its own `README.md` explaining purpose, allowed contents, and banned items:
+
+* `scripts/README.md`
+* `src/higherdose/README.md`
+* `config/README.md`
+* `data/README.md`
+
+Make sure to read the relevant file before committing new code or data.
+
+---
 
 ### License
 Internal HigherDOSE project – not for public distribution.
