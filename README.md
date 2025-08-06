@@ -236,6 +236,7 @@ Each major folder now ships its own `README.md` explaining purpose, allowed cont
 * `src/higherdose/README.md`
 * `config/README.md`
 * `data/README.md`
+* `src/higherdose/utils/README.md`  <!-- vendored, read-only -->
 
 Make sure to read the relevant file before committing new code or data.
 

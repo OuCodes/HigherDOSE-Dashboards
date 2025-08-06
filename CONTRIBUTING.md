@@ -61,6 +61,7 @@ git checkout -b feature/amazing-idea
 |--------|-----------|-------------|
 | `scripts/` | Thin CLI wrappers (<30 LOC) | Business logic, secrets |
 | `src/higherdose/` | Pure library code, tests | Data files, env-specific config |
+| `src/higherdose/utils/` | Vendored helper library (read-only) | **Any** modifications in this repo |
 | `config/` | Credential **templates**, small INI/JSON | Hard-coded secrets in git |
 | `data/` | Raw exports, generated reports | Source code, virtualenvs |
 
