@@ -1,6 +1,9 @@
 # Custom Folders
 /.refs
 
+# Custom Extensions
+*.crdownload.csv
+*.log*
 
 # Custom Files
 .DS_Store
@@ -8,9 +11,6 @@
 client_secret_*.json
 **/mail/exports/
 secrets.json
-
-# Custom Extensions
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -222,7 +222,3 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-data/ads/*.crdownload.csv # prevent future adds
-data/ads/ytd-sales_data-higher_dose_llc-2025_07_27_22_44_59_825720-000000000000.csv.crdownload.csv
-# Ignore oversized CSV file that exceeded GitHub size limit
-data/ads/exec-sum/ytd-sales_data-higher_dose_llc-2025_08_04_23_29_33_820441-000000000000.csv
