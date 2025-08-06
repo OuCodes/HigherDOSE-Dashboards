@@ -57,11 +57,12 @@ $ .\venv\Scripts\pip install -e .
 ## 2. Repository Layout
 
 ```
-├── scripts/               # One-line wrappers you can execute directly
-│   ├── report_weekly.py   # → higherdose.analysis.weekly_products.main()
-│   ├── report_h1.py       # → higherdose.analysis.h1.main()
-│   ├── slack_export.py    # → higherdose.slack.slack_fetcher_playwright
-│   └── email_export.py    # → higherdose.mail.gmail_archive.main()
+├── scripts/                # One-line wrappers you can execute directly
+│   ├── report_executive.py # → automated MTD performance summary
+│   ├── report_weekly.py    # → higherdose.analysis.weekly_products.main()
+│   ├── report_h1.py        # → higherdose.analysis.h1.main()
+│   ├── slack_export.py     # → higherdose.slack.slack_fetcher_playwright
+│   └── email_export.py     # → higherdose.mail.gmail_archive.main()
 │
 ├── src/higherdose/        # Installable Python package
 │   ├── analysis/          # Core analytics modules (weekly.py, h1.py, …)
@@ -111,6 +112,7 @@ $ hd-email      # Export Gmail archive
 ### Option B: Using Script Wrappers
 
 ```bash
+$ python scripts/report_executive.py
 $ python scripts/report_weekly.py
 $ python scripts/report_h1.py
 $ python scripts/slack_export.py
@@ -128,7 +130,23 @@ $ python -m higherdose.mail.gmail_archive
 
 ---
 
-## 4. Weekly Growth Report
+## 4. MTD Performance Summary
+
+1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
+2. Run the executive wrapper:
+   ```bash
+   $ python scripts/report_executive.py             # Month-to-date (default)
+   $ python scripts/report_executive.py --month 2025-07   # Full month
+   $ python scripts/report_executive.py --start 2025-07-01 --end 2025-07-28   # Custom range
+   ```
+3. The report is written to:
+   ```
+   data/reports/executive/automated-performance-report-YYYY-MM-DD.md
+   ```
+
+---
+
+## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
 2. Save it in `data/ads/`  → the filename can be anything.
@@ -148,7 +166,7 @@ data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 
 ---
 
-## 5. H1 (Jan → Jun) Growth Report
+## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
 
@@ -171,7 +189,7 @@ Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
 
 ---
 
-## 6. Exporting Slack Conversations
+## 7. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
 
@@ -188,7 +206,7 @@ Refer to `src/higherdose/slack/README.md` for detailed credential setup.
 
 ---
 
-## 7. Exporting Gmail Archive
+## 8. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
 
@@ -202,62 +220,12 @@ $ python scripts/email_export.py    # Script wrapper
 
 ---
 
-## 8. Updating Product-Alias Mappings
+## 9. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
-## 9. Development & Contribution
-
-* **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
-* **Formatting**:  Run `black` and `ruff` before committing.
-* **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
-* **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
-## 10. Troubleshooting: Git Tracking Issues with Mail Exports
-
-Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
-Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack-tutorial.md`, adapted to your path) and the problem will disappear.
-
-1. Verify what’s still tracked  
-   ```bash
-   git ls-files data/mail/exports | head
-   ```
-   • If nothing prints, the directory is already un-tracked and you can skip to step 4.  
-   • If you see file names, continue.
-
-2. Tell Git to stop tracking the directory but keep the files on disk  
-   ```bash
-   git rm -r --cached data/mail/exports
-   ```
-
-3. Make sure the ignore rule exists in `.gitignore` (it’s already there, but double-check):  
-   ```
-   **/mail/exports/
-   ```
-
-4. Commit the changes  
-   ```bash
-   git add .gitignore
-   git commit -m "Remove mail/exports from git tracking"
-   ```
-
-5. Confirm it worked  
-   ```bash
-   # should print nothing
-   git ls-files data/mail/exports
-
-   # should print the path (means Git is ignoring it)
-   git check-ignore data/mail/exports/anyfile.md
-   ```
-
-Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
 
 ---
 

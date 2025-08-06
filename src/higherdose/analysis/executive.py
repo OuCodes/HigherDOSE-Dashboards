@@ -6,8 +6,9 @@ This script automates the creation of Month-to-Date performance summaries
 by prompting for date ranges and data sources, then generating a comprehensive
 markdown report similar to the weekly growth reports.
 
-Usage:
-    python scripts/report_mtd_automated.py
+CLI:
+    python -m higherdose.analysis.mtd --mtd
+    hd-mtd --mtd
 
 Requirements:
     - GA4 export files (session data by source/medium and default channel group)
@@ -23,6 +24,8 @@ from pathlib import Path
 import glob
 import argparse
 from typing import Dict, List, Optional, Tuple, Any
+# Import data-source config patterns from central config file within the package
+from .exec_config import DATA_SOURCE_CONFIG, get_report_template
 
 def get_yoy_change(current: float, previous: float) -> str:
     """Calculate Year-over-Year percentage change and format it as a string."""
@@ -32,6 +35,22 @@ def get_yoy_change(current: float, previous: float) -> str:
     return f"{change:+.1f}%"
 
 class MTDReportGenerator:
+    """
+    Generates a Month-to-Date performance summary report.
+
+    This class handles the entire report generation process, from data loading to
+    report generation and saving. It's designed to be flexible and extensible,
+    allowing for different report templates and data sources.
+
+    Attributes:
+        start_date: Optional explicit start date (YYYY-MM-DD).
+        end_date:   Optional explicit end date   (YYYY-MM-DD).
+        output_dir: Optional output directory (default: "data/reports/weekly").
+        choose_files: Whether to prompt for file selection (default: False).
+        choose_files_current_only: Whether to only prompt for current year files (default: False).
+        interactive: Whether to prompt for file selection interactively (default: False).
+        template_name: The name of the report template to use (default: "mtd_performance").
+    """
     def __init__(
         self,
         start_date: Optional[str] = None,
@@ -40,6 +59,7 @@ class MTDReportGenerator:
         choose_files: bool = False,
         choose_files_current_only: bool = False,
         interactive: bool = False,
+        template_name: str = "mtd_performance",
     ):
         """Initialise the generator.
 
@@ -50,9 +70,9 @@ class MTDReportGenerator:
         self.data_dir = Path("data/ads")
         # Determine report directory
         if output_dir is None:
-            output_dir = "data/reports/weekly"
+            output_dir = "data/reports/executive"
 
-        # Map special keyword 'executive' to predefined path
+        # Allow shorthand values for convenience
         if output_dir.lower() in {"executive", "exec", "exec-sum"}:
             output_dir = "data/reports/executive"
 
@@ -63,6 +83,10 @@ class MTDReportGenerator:
         self.choose_files = choose_files or choose_files_current_only  # master flag
         self.choose_files_current_only = choose_files_current_only
         self.interactive = interactive
+
+        # Store template selection
+        self.template_name = template_name
+        self.data_sources_needed = self._determine_data_sources()
 
         # Store optional overrides
         self._start_override = start_date
@@ -77,7 +101,20 @@ class MTDReportGenerator:
         # Date ranges will be set automatically
         self.mtd_date_range_current: Dict[str, Any] = {}
         self.mtd_date_range_previous: Dict[str, Any] = {}
-        
+
+    def _determine_data_sources(self) -> set[str]:
+        """Return the union of required & optional data-source keys for the chosen template.
+        Falls back to *all* data sources when the template is not found."""
+        tmpl = get_report_template(self.template_name)
+        if tmpl is None:
+            return set(DATA_SOURCE_CONFIG.keys())
+        needed: set[str] = set()
+        for section in tmpl.sections:
+            needed.update(section.required_data)
+            if section.optional_data:
+                needed.update(section.optional_data)
+        return needed
+
     def _set_date_ranges(self):
         """Set reporting date ranges.
 
@@ -132,7 +169,7 @@ class MTDReportGenerator:
             missing_sources.append("Shopify Product Sales (Current Year)")
         if 'channel_group' not in self.ga4_data_current:
             missing_sources.append("GA4 Channel Group (Current Year)")
-        
+
         if missing_sources:
             print("\n⚠️  The following data sources were NOT found. Corresponding sections will be omitted or incomplete:")
             for src in missing_sources:
@@ -142,24 +179,23 @@ class MTDReportGenerator:
 
     def _find_and_select_files(self) -> Dict[str, Dict[str, str]]:
         """Finds data files for current and previous years. If self.choose_files is True, prompt user for which file to use when multiple candidates exist."""
+        # Build file patterns from central DATA_SOURCE_CONFIG
+        # Limit patterns to only the data sources the current template needs
         file_patterns = {
-            'ga4_source_medium': '*source_medium*.csv',
-            'ga4_channel_group': '*default_channel_group*.csv',
-            'shopify_total_sales': '*Total sales over time*.csv',
-            'shopify_new_returning': '*New vs returning*.csv',
-            'shopify_products': '*Total sales by product*.csv',
-            'northbeam_spend': '*sales_data*higher_dose_llc*.csv',
+            key: cfg['pattern']
+            for key, cfg in DATA_SOURCE_CONFIG.items()
+            if key in self.data_sources_needed
         }
-        
+
         selected_files = {'current': {}, 'previous': {}}
         current_year = str(self.mtd_date_range_current['year'])
         previous_year = str(self.mtd_date_range_previous['year'])
 
         print("\n=== SCANNING FOR DATA FILES (CURRENT & PREVIOUS YEAR) ===")
-        
+
         for file_type, pattern in file_patterns.items():
             files = glob.glob(str(self.data_dir / "**" / pattern), recursive=True)
-            
+
             current_year_files = [f for f in files if current_year in f]
             previous_year_files = [f for f in files if previous_year in f]
 
@@ -211,7 +247,7 @@ class MTDReportGenerator:
                 )
             else:
                 print(f"⚠️  {file_type} (Previous Year): No files found for {previous_year}")
-        
+
         return selected_files
 
     def load_data_for_period(self, selected_files: Dict[str, str], date_range: Dict) -> Tuple[Dict, Dict]:
@@ -247,7 +283,7 @@ class MTDReportGenerator:
             ga4_data['source_medium'] = df_filtered
         else:
             print("⚠️  GA4 Source Medium data not found. Skipping GA4 source/medium metrics.")
-        
+
         if 'ga4_channel_group' in selected_files:
             try:
                 df = pd.read_csv(selected_files['ga4_channel_group'], comment='#')
@@ -270,7 +306,7 @@ class MTDReportGenerator:
                 shopify_data['total_sales'] = df
             except Exception:
                 pass
-        
+
         if 'shopify_new_returning' in selected_files:
             try:
                 df = pd.read_csv(selected_files['shopify_new_returning'])
@@ -278,7 +314,7 @@ class MTDReportGenerator:
                 shopify_data['new_returning'] = df
             except Exception:
                 pass
-        
+
         if 'shopify_products' in selected_files:
             try:
                 df = pd.read_csv(selected_files['shopify_products'])
@@ -290,7 +326,7 @@ class MTDReportGenerator:
                     shopify_data['products'] = df
             except Exception:
                 pass
-        
+
         # Load Northbeam spend data (if present)
         if 'northbeam_spend' in selected_files:
             try:
@@ -319,7 +355,7 @@ class MTDReportGenerator:
                 ga4_data['northbeam'] = df_filtered  # store under ga4_data for convenience
             except Exception:
                 pass
-        
+
         return ga4_data, shopify_data
 
     def calculate_ga4_metrics(self, ga4_data: Dict) -> Dict:
@@ -327,7 +363,7 @@ class MTDReportGenerator:
         metrics = {}
         if not ga4_data:
             return metrics
-        
+
         if 'channel_group' in ga4_data:
             df = ga4_data['channel_group']
             if 'Default channel group' in df.columns:
@@ -355,7 +391,7 @@ class MTDReportGenerator:
                     'ga_revenue': total_rev,
                     'paid_revenue': paid_rev,
                 }
- 
+
         # --------------------------------------------------------------
         # Custom channel mapping (Paid Search, Paid Social, etc.)
         # --------------------------------------------------------------
@@ -460,7 +496,7 @@ class MTDReportGenerator:
 
                 month_str = date_range['start_dt'].strftime('%Y-%m')
                 current_data = df[df['_month_norm'] == month_str]
-                
+
                 new_data = current_data[current_data['New or returning customer'] == 'New']
                 returning_data = current_data[current_data['New or returning customer'] == 'Returning']
 
@@ -514,7 +550,7 @@ class MTDReportGenerator:
              metrics['total_revenue'] = metrics['customer_mix']['total_revenue']
              metrics['total_orders'] = metrics['customer_mix']['total_orders']
              metrics['aov'] = metrics['total_revenue'] / metrics['total_orders'] if metrics['total_orders'] > 0 else 0
-        
+
         return metrics
 
     def generate_report(self, metrics_current: Dict, metrics_previous: Dict) -> str:
@@ -942,18 +978,18 @@ class MTDReportGenerator:
     def save_report(self, report_content: str) -> str:
         """Save the report to a file"""
         report_date_str = datetime.now().strftime("%Y-%m-%d")
-        
+
         # Create filename
         filename = f"automated-performance-report-{report_date_str}.md"
         filepath = self.reports_dir / filename
-        
+
         # Save report
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(report_content)
-        
+
         print(f"✅ Report saved to: {filepath}")
         return str(filepath)
-    
+
     def run(self):
         """Main execution flow for automated report generation."""
         print("🚀 HigherDOSE Automated Performance Report Generator")
@@ -961,7 +997,7 @@ class MTDReportGenerator:
 
         # Step 1: Set date ranges automatically
         self._set_date_ranges()
-        
+
         # Step 2: Find files for both years
         selected_files = self._find_and_select_files()
 
@@ -970,10 +1006,10 @@ class MTDReportGenerator:
         self.ga4_data_current, self.shopify_data_current = self.load_data_for_period(selected_files.get('current', {}), self.mtd_date_range_current)
         print("\n=== LOADING PREVIOUS YEAR DATA ===")
         self.ga4_data_previous, self.shopify_data_previous = self.load_data_for_period(selected_files.get('previous', {}), self.mtd_date_range_previous)
-        
+
         # Step 4: Check for missing data
         self._report_missing_data()
-        
+
         # Step 5: Calculate metrics for both periods
         print("\n=== CALCULATING METRICS ===")
         metrics_current = {
@@ -984,14 +1020,14 @@ class MTDReportGenerator:
             'ga4': self.calculate_ga4_metrics(self.ga4_data_previous),
             'shopify': self.calculate_shopify_metrics(self.shopify_data_previous, self.mtd_date_range_previous)
         }
-        
+
         # Step 6: Generate report
         print("\n=== GENERATING REPORT ===")
         report_content = self.generate_report(metrics_current, metrics_previous)
-        
+
         # Step 7: Save report
         filepath = self.save_report(report_content)
-        
+
         print(f"\n🎉 Report generation complete!")
         print(f"📄 Report available at: {filepath}")
 

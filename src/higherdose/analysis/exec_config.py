@@ -23,7 +23,7 @@ class ReportTemplate:
     name: str
     description: str
     sections: List[ReportSection]
-    
+
 # Define available report templates
 REPORT_TEMPLATES = {
     'mtd_performance': ReportTemplate(
@@ -83,7 +83,7 @@ REPORT_TEMPLATES = {
             )
         ]
     ),
-    
+
     'weekly_growth': ReportTemplate(
         name="Weekly Growth Report",
         description="Week-over-week growth analysis with channel performance",
@@ -115,7 +115,7 @@ REPORT_TEMPLATES = {
             )
         ]
     ),
-    
+
     'affiliate_analysis': ReportTemplate(
         name="Affiliate Performance Analysis",
         description="Detailed breakdown of all affiliate sources and performance",
@@ -200,20 +200,20 @@ def get_data_source_config(source_name: str) -> Optional[Dict]:
 def validate_template_data(template: ReportTemplate, available_data: List[str]) -> Dict[str, bool]:
     """Check if required data is available for a template"""
     validation = {}
-    
+
     for section in template.sections:
         section_valid = True
         missing_required = []
-        
+
         for required in section.required_data:
             if required not in available_data:
                 section_valid = False
                 missing_required.append(required)
-        
+
         validation[section.name] = {
             'valid': section_valid,
             'missing_required': missing_required,
             'available_optional': [opt for opt in (section.optional_data or []) if opt in available_data]
         }
-    
+
     return validation 
