@@ -18,7 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 try:
-    from report_high_automated import MTDReportGenerator  # new preferred name
+    from scripts.report_executive import MTDReportGenerator  # new preferred name
 except ImportError:
     from report_mtd_automated import MTDReportGenerator  # fallback for compatibility
 from report_config import list_available_templates, get_report_template

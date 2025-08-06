@@ -2806,3 +2806,4 @@ I can reformat but the data tables were hard to squeeze in on a google doc works
 - **2025-07-25 14:38** *Jourdan*: Yes i can get that done and Meta’s total impact is hard to measure with the conservative views we use but performance is down YoY . All paid social channels look rough compared to Google &amp; Affiliate but I think those channels are influenced by paid social. Hopefully Prescient sheds a lot of light on this in the coming months
 - **2025-07-25 14:39** *Ingrid*: Yea, agree. Also now that you’re here we can right the ship on meta!
 - **2025-07-25 14:42** *Jourdan*: Yes ma’am! We’ll get it going in the right direction. I’ll give it a couple more weeks but I think we narrow it down to 2 products on Meta and test the new products as they come. Sauna Blanket &amp; PEMF are roughhhh now that we’ve broken things out by product
+- **2025-08-01 16:41** *Jourdan*: Hey, what was the name of the tool you mentioned that could be similar to brij?

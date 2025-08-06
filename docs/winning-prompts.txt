@@ -9,3 +9,69 @@ Motion & Creative Reporting Insights = Creative insights and updates mentioned i
 Website & CRO = Genral insights related to the website update or CRO pushed. 
 Notes on Creative Testing Constraints = Any insights on create restraints or creative demand. 
 Next Steps / Action Items = What are the action items for this week and next steps following previous action items. 
+
+
+
+
+# Weekly Growth Report — {{report_end_date_long}}
+---
+
+## 1. Executive Summary
+
+### Week-over-Week Overview  
+• **Spend:** {{cur_spend}} ( {{prev_spend}} | {{spend_pct}} )  
+• **Revenue:** {{cur_rev}} ( {{prev_rev}} | {{rev_pct}} )  
+• **ROAS:** {{cur_roas}} ( {{prev_roas}} | {{roas_pct}} )  
+• **ROAS 1st-Touch:** {{cur_roas1}} ( {{prev_roas1}} | {{roas1_pct}} )  
+• **CAC 1st-Touch:** {{cur_cac1}} ( {{prev_cac1}} | {{cac1_pct}} )  
+• **Transactions:** {{cur_txn}} ( {{prev_txn}} | {{txn_pct}} )
+
+**Overall Performance**: Total DTC spend reached **{{delta_spend}}** across all channels with **{{delta_roas}} ROAS**, generating **{{delta_rev}}** in revenue and blended **CAC of {{delta_cac}}**. Paid Media delivered **{{paid_rev}} revenue at {{paid_roas}} ROAS** with **CAC of {{paid_cac}}**, across **{{paid_txn}} transactions**. The business achieved **{{cur_txn}} total transactions** during this 7-day period.  
+
+**Year-over-Year Highlights**: Google Ads spend {{yoY_g_spend_pct}} vs 2024 with revenue {{yoY_g_rev_pct}}; Meta Ads spend {{yoY_m_spend_pct}} with revenue {{yoY_m_rev_pct}}.
+
+---
+
+## 2. DTC Breakdown (Accrual Performance) – 7 Days (Northbeam)
+
+(Insert full channel table with Prev and Δ% columns)
+
+### 2c. Meta Product Group Performance (Accrual Performance)
+
+(Insert product-group table)
+
+---
+
+## 3. Year-over-Year Growth (Week {{report_start_mmyy}}–{{report_end_mmyy}})
+
+(Render Google Ads table, then Meta Ads table)
+
+---
+
+## 4. Wins & Updates  
+(Bullet list)
+
+## 5. Challenges  
+(Bullet list)
+
+## 6. Opportunities & Solutions  
+(Bullet list)
+
+## 7. Task List & Priorities  
+(Numbered list)
+
+## 8. Notes on Creative Testing Constraints  
+(Markdown table)
+
+## 9. Next Steps / Action Items (Week of {{report_end_date_short}})  
+(Bullet list)
+
+---
+
+*Report compiled: {{report_end_date_long}}*  
+
+REQUIREMENTS
+• All currency values prefixed with “$”, comma-separated, rounded to 0 decimals (2 for CAC/CPA).  
+• Percentage deltas shown with “+” / “–” and no decimals (e.g., +3%).  
+• Use en-dashes for negative signs in deltas (–7 %).  
+• Do **not** omit sections; if a section has no items, print “_None this week_”.

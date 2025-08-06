@@ -146,3 +146,5 @@ i also think the rebate function comes off as cheap and with our premium stance 
 - **2025-07-18 11:22** *Jourdan*: Also updating packaging to include or update QR codes would  be a big decision\n\n*Reactions: :bangbang: Ari Murray*
 - **2025-07-18 11:22** *Ari Murray*: agree 
 - **2025-07-18 11:22** *Jourdan*: I agree that would need to be positioned differently for it to land well\n\n*Reactions: :pray: Ari Murray*
+    - **2025-08-01 07:33** *Rahul Vithanage*: ↳ I was actually referring to consolidating search campaigns Jourdan - one primary campaign for brand and another for non-brand vs. having multiple. This way we can combine budgets which are currently fragmented and enter the auction house more competitively with higher budgets.  
+Regarding product performance, are you referring to a report that you created on Google?

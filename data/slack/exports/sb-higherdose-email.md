@@ -10397,3 +10397,8 @@ Ends Tuesday 9/2\n\n*Reactions: :white_check_mark: User_5S72LT, :bangbang: User_
 - **2025-07-25 14:13** *User_2Z9G95*: Uploading tomorrow's and will get the preview sent shortly
 - **2025-07-28 08:00** *Chris Jacob* 💬 1 reply: 📎 **image.png** (png, 98.2KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F09814778GZ/image.png)
 - **2025-07-28 10:07** *Chris Jacob*: <!channel> did we notice any oddities with marketing emails over the weekend/
+- **2025-08-01 16:32** *Elyse*: @User_2Z9G95 left notes on 8/8 upsell campaigns
+- **2025-08-01 16:33** *Elyse*: and 8/4 and 8/6 campaigns as well
+- **2025-08-01 17:05** *User_2Z9G95*: Thank you!! Looking!
+- **2025-08-04 12:32** *Elyse*: Hey @User_2Z9G95 can you respond to Lauren from loud crowd with our updates on those templates please\n\n*Reactions: :raised_hands: User_2Z9G95*
+- **2025-08-04 12:34** *User_2Z9G95*: On it!!

@@ -5296,3 +5296,23 @@ I’m happy to setup a quick sync and pull any data/insights ahead of time. Let 
 - **2025-07-25 10:30** *Ingrid*: <!channel> nice day yesterday, team. Is this the start to bigger days?! Let’s do it again!\n\n*Reactions: :heart: 5*
 - **2025-07-25 11:30** *Chris Jacob*: i can break all the IT again if that helps\n\n*Reactions: :rolling_on_the_floor_laughing: 4*
 - **2025-07-27 12:48** *Ingrid* 💬 4 replies: Hey <!channel> - the day is off to a much softer start than yesterday, wonder if there are any tweaks we can do today. Knowing weekends are our strongest and this is the last weekend of the month let’s end strong. 
+- **2025-08-04 11:17** *Jourdan* 💬 15 replies: Hey @Rahul Vithanage does this look legit to you?\n\n📎 **5323478562.pdf** (pdf, 77.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F098VFSK9KL/5323478562.pdf)
+    - **2025-08-04 11:17** *Chris Jacob*: ↳ @Rahul Vithanage @Jourdan it is inside of our admin billing portal so would believe it to be legit
+    - **2025-08-04 11:18** *Jourdan*: ↳ Okay good to know. Can you give context on why we would be billed for this ?@Rahul Vithanage  
+  
+We’ve never gotten billed for a youtube affiliate commission.
+    - **2025-08-04 11:20** *Chris Jacob*: ↳ and/or any idea where to see the detail of the transactoin it relates to
+    - **2025-08-04 11:28** *Rahul Vithanage*: ↳ This is very strange! Not sure why were billed for this @Chris Jacob @Jourdan. Let me reach out to our Google reps right away and keep you guys on cc.  
+cc: @Berkeley Clark @User*PT7LCE @User*7DB7H9
+    - **2025-08-04 11:36** *Rahul Vithanage*: ↳ @Chris Jacob @Jourdan Just sent over to them and looped you guys in
+    - **2025-08-04 11:36** *Chris Jacob*: ↳ thank ya\n\n*Reactions: :pray::skin-tone-4: Rahul Vithanage*
+    - **2025-08-04 13:54** *Chris Jacob*: ↳ @Rahul Vithanage @Jourdan reltaed to the reply email are you familiar with the ad account in the invoice being anywhere
+    - **2025-08-04 13:54** *Chris Jacob*: ↳ .............................................3536-7572-3070
+    - **2025-08-04 13:54** *Chris Jacob*: ↳ the help page requires picking an account
+    - **2025-08-04 13:59** *Rahul Vithanage*: ↳ Hey @Chris Jacob the ad account we manage and have access to is <tel:4589649684|458-964-9684>. We don't have access to the account ID you shared (which the invoice is for).  
+cc: @Berkeley Clark @User*PT7LCE @User*7DB7H9 @Jourdan
+    - **2025-08-04 13:59** *Chris Jacob*: ↳ yeah ive never seen it
+    - **2025-08-04 14:00** *Rahul Vithanage*: ↳ That is super strange
+    - **2025-08-04 14:00** *Chris Jacob*: ↳ i guess they have been sneding small invoices i didnt take note of
+    - **2025-08-04 14:00** *Rahul Vithanage*: ↳ Did you receive an email with this invoice @Chris Jacob?
+    - **2025-08-04 14:49** *Chris Jacob*: ↳ yeah came via email i'll have katie check in on her super admin setup

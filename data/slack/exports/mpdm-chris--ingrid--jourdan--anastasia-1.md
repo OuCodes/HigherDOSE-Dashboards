@@ -79,3 +79,8 @@ Example:
 I would say 45 days is most realistic for them, and we would just have to manually approve / decline their transactions every month.
 - **2025-08-01 11:29** *Chris Jacob*: we can try whatever if TVs understands we will demand fix/formalization if it starts to go well. I don't understand how they operate in the Awin ecosystem but expect terms no one else gets
 - **2025-08-01 11:29** *Chris Jacob**: In any case whatever they think they want the terms are needs to be in their contract they present to us\n\n*Reactions: :+1: Anastasia*
+- **2025-08-04 10:51** *Chris Jacob*: <!channel> flagging this because we've never gotten a youtube affiliate commission bill before
+- **2025-08-04 10:51** *Chris Jacob*: 📎 **5323478562.pdf** (pdf, 77.3KB) - [Download](https://files.slack.com/files-pri/TA97020CV-F098SD8QQK0/5323478562.pdf)
+- **2025-08-04 10:54** *Chris Jacob*: not even sure where to see detail of what this was earned on
+- **2025-08-04 11:16** *Jourdan*: Thais is odd, i can send over to @Rahul Vithanage to see if he has any insights. Could be spam
+- **2025-08-04 13:55** *Chris Jacob*: Familiar with this at all saw they just won beautymatter award if helpful to chat with them about what they do [https://www.duel.tech/how-it-works/brand-dashboard](https://www.duel.tech/how-it-works/brand-dashboard)\n\n**duel.tech**\n🔗 **[Duel Brand Dashboard Page | Brand Advocacy Platform for eCommerce](https://www.duel.tech/how-it-works/brand-dashboard)**\n> Track the impact of your Advocacy programs with the Duel Brand Dashboard. Scale your program effortlessly and automate success. Request a demo today.

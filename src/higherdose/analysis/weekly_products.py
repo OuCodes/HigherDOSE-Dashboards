@@ -409,9 +409,20 @@ def main():
             break
 
         if days is not None:
-            # Northbeam presets end on *yesterday*, not today
+            # Determine the natural "end" of the dataset.
+            # If the most-recent date equals *today* (script run-date),
+            # step back one day because Northbeam's presets usually end on
+            # the prior day.  Otherwise treat the max date in the file as
+            # the period end.  This avoids off-by-one errors when the file
+            # already stops at yesterday (the common case for exports).
+
             latest_dt = df_full[date_col].max().date()
-            end_date = latest_dt - timedelta(days=1)
+
+            today = datetime.today().date()
+            if latest_dt == today:
+                end_date = latest_dt - timedelta(days=1)
+            else:
+                end_date = latest_dt
             start_date = end_date - timedelta(days=days - 1)
         else:
             # Custom range prompt
@@ -467,8 +478,11 @@ def main():
 
         if prev_start and prev_end:
             prev_df_subset = df_full[(df_full[date_col].dt.date >= prev_start) & (df_full[date_col].dt.date <= prev_end)].copy()
-            if not prev_df_subset.empty:
-                prev_df = prev_df_subset.fillna(0)
+            if prev_df_subset.empty:
+                print("⚠️  No data found in the selected comparison window – skipping WoW comparisons.")
+                prev_df = None
+            else:
+                prev_df = prev_df_subset
 
         # Announce selection summary
         label_prev = f"{prev_start} → {prev_end}" if prev_start else "NONE"
@@ -813,6 +827,36 @@ def main():
             insert_pos = final_report.find("\n", pos_exec + len(exec_hdr)) + 1
             final_report = final_report[:insert_pos] + "\n".join(wow_lines) + final_report[insert_pos:]
 
+        # --------------------------------------------------
+        # 📝  Replace the single-line Overall Performance
+        #     sentence with a version that includes the
+        #     current + prev values and %Δ for the four
+        #     headline metrics (Spend, Revenue, ROAS, CAC).
+        # --------------------------------------------------
+
+        try:
+            # Build delta-formatted strings
+            spend_fmt   = _fmt_delta(tot_cur["spend"], tot_prev["spend"], prefix="$", digits=0)
+            rev_fmt     = _fmt_delta(tot_cur["rev"],   tot_prev["rev"],   prefix="$", digits=0)
+            roas_fmt    = _fmt_delta(tot_cur["roas"],  tot_prev["roas"],  prefix="",  digits=2)
+
+            # Blended CAC (all transactions)
+            tot_cur["cac_blend"]  = tot_cur["spend"] / tot_cur["txns"] if tot_cur["txns"] else 0
+            tot_prev["cac_blend"] = tot_prev["spend"] / tot_prev["txns"] if tot_prev["txns"] else 0
+            cac_fmt    = _fmt_delta(tot_cur["cac_blend"], tot_prev["cac_blend"], prefix="$", digits=2)
+
+            overall_line_new = (
+                f"**Overall Performance**: Total DTC spend reached **{spend_fmt}** across all channels with **{roas_fmt} ROAS**, "
+                f"generating **{rev_fmt}** in revenue and blended **CAC of {cac_fmt}**."
+            )
+
+            import re
+            # Replace entire Overall Performance paragraph (until double newline)
+            final_report = re.sub(r"\*\*Overall Performance\*\*[\s\S]*?\n\n", overall_line_new + "\n\n", final_report, count=1)
+        except Exception as _e:
+            # If anything goes wrong, keep the original sentence.
+            pass
+
     # -------------------------------------------------------------
     # 📊  Year-over-Year Growth Comparison (Google & Meta Ads)
     # -------------------------------------------------------------
@@ -978,6 +1022,42 @@ def main():
             yoy_section_md = "\n".join(yoy_lines) + "\n"
 
             final_report += yoy_section_md
+
+            # --------------------------------------------------
+            # ✍️  Inject brief YoY summary sentences into the
+            #     Executive Summary so that the markdown has a
+            #     narrative statement, not just tables.
+            # --------------------------------------------------
+
+            try:
+                def _pct(cur, prev):
+                    if prev == 0:
+                        return "0%"
+                    d = (cur - prev) / prev * 100
+                    return f"{d:+.0f}%".replace("+","+ ").replace("-","– ")
+
+                g_spd = _pct(google_yoy["spend_cur"], google_yoy["spend_prev"])
+                g_rev = _pct(google_yoy["rev_cur"],  google_yoy["rev_prev"])
+                m_spd = _pct(meta_yoy["spend_cur"],   meta_yoy["spend_prev"])
+                m_rev = _pct(meta_yoy["rev_cur"],     meta_yoy["rev_prev"])
+
+                yoy_summary = (
+                    f"**Year-over-Year Highlights**: Google Ads spend {g_spd} vs 2024 with revenue {g_rev}; "
+                    f"Meta Ads spend {m_spd} with revenue {m_rev}."
+                )
+
+                # Inject after Overall Performance paragraph (two consecutive newlines)
+                exec_hdr = "## 1. Executive Summary"
+                pos_exec = final_report.find(exec_hdr)
+                if pos_exec != -1:
+                    para_end = final_report.find("\n\n", pos_exec)
+                    if para_end != -1:
+                        insert_pos = para_end + 2
+                        if yoy_summary not in final_report:
+                            final_report = final_report[:insert_pos] + yoy_summary + "\n\n" + final_report[insert_pos:]
+            except Exception:
+                pass
+         
     except Exception as e:
         print(f"⚠️  YoY section failed: {e}")
 

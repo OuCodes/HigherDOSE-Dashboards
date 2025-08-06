@@ -82,3 +82,4 @@ All products performance looks great so that campaign is rebounding compared to 
 - **2025-08-01 13:48** *Jourdan*: Ahh im not sure how I feel about spending that much that quickly on YT since it’s not a proven channel.
 - **2025-08-01 13:48** *Jourdan*: I think we bring this to the larger group and ask
 - **2025-08-01 13:49** *Jourdan*: I’m iffy on the value of the brand lift study at this stage with little spend on the channel
+- **2025-08-04 06:54** *Rahul Vithanage*: Totally understand Jourdan! We've seen YT have a good incremental impact with tools like Haus and Prescient for other clients but totally get not wanting to go too hard, too fast. Let's talk about it this on tomorrow's call with the broader group!
