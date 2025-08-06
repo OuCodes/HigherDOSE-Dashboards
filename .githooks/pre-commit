@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# File size limit in bytes (10MB = 10485760 bytes)
+SIZE_LIMIT=10485760
+
+# Check for large CSV files being added/modified
+large_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.csv$' | while read file; do
+    if [ -f "$file" ]; then
+        size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
+        if [ "$size" -gt $SIZE_LIMIT ]; then
+            echo "$file ($(numfmt --to=iec --suffix=B $size))"
+        fi
+    fi
+done)
+
+if [ -n "$large_files" ]; then
+    echo "ERROR: Large CSV files detected (>10MB):"
+    echo "$large_files"
+    echo ""
+    echo "These files are too large for git. Consider:"
+    echo "1. Using git LFS: git lfs track '*.csv' && git add .gitattributes"
+    echo "2. Moving to a data storage location"
+    echo "3. Compressing the files"
+    echo ""
+    echo "To override this check, use: git commit --no-verify"
+    exit 1
+fi
