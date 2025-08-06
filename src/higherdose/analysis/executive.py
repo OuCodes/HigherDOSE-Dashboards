@@ -16,16 +16,37 @@ Requirements:
     - Northbeam spend data (if available)
 """
 
+import argparse
+import glob
 import os
 import sys
-import pandas as pd
 from datetime import datetime, timedelta
 from pathlib import Path
-import glob
-import argparse
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Tuple, Any, Iterable, Callable
+
+import pandas as pd
 # Import data-source config patterns from central config file within the package
 from .exec_config import DATA_SOURCE_CONFIG, get_report_template
+
+# ------------------------------------------------------------------
+# Helper utilities
+# ------------------------------------------------------------------
+
+def assert_columns(df: pd.DataFrame, required: Iterable[str], file_path: str) -> None:
+    """Validate *df* has *required* columns; raise ValueError if any are missing."""
+    missing = [c for c in required if c not in df.columns]
+    if missing:
+        raise ValueError(
+            f"{file_path} is missing required column(s): {', '.join(missing)}"
+        )
+
+# Date-range presets used by the interactive menu (key → label + generator)
+PRESET_RANGES: dict[str, tuple[str, Callable[[datetime.date], tuple[datetime.date, datetime.date]]]] = {
+    "1": ("Month-to-Date", lambda today: (today.replace(day=1), today - timedelta(days=1))),
+    "2": ("Year-to-Date",  lambda today: (today.replace(month=1, day=1), today - timedelta(days=1))),
+    "3": ("Last 7 Days",   lambda today: (today - timedelta(days=7),  today - timedelta(days=1))),
+    "4": ("Last 30 Days",  lambda today: (today - timedelta(days=30), today - timedelta(days=1))),
+}
 
 def get_yoy_change(current: float, previous: float) -> str:
     """Calculate Year-over-Year percentage change and format it as a string."""
@@ -140,7 +161,8 @@ class MTDReportGenerator:
             'end_dt': datetime.combine(end_current, datetime.min.time()),
             'year': start_current.year
         }
-        print(f"✅ Current period set: {self.mtd_date_range_current['start']} → {self.mtd_date_range_current['end']}")
+        print(f"✅ Current period set: {self.mtd_date_range_current['start']} → "
+              f"{self.mtd_date_range_current['end']}")
 
         # ================================================================
         # PREVIOUS-YEAR COMPARISON PERIOD (same range in prior year)
@@ -156,7 +178,8 @@ class MTDReportGenerator:
             'end_dt': datetime.combine(end_prev, datetime.min.time()),
             'year': previous_year
         }
-        print(f"✅ Previous-year period set: {self.mtd_date_range_previous['start']} → {self.mtd_date_range_previous['end']}")
+        print(f"✅ Previous-year period set: {self.mtd_date_range_previous['start']} → "
+              f"{self.mtd_date_range_previous['end']}")
 
 
     def _report_missing_data(self) -> None:
@@ -171,14 +194,16 @@ class MTDReportGenerator:
             missing_sources.append("GA4 Channel Group (Current Year)")
 
         if missing_sources:
-            print("\n⚠️  The following data sources were NOT found. Corresponding sections will be omitted or incomplete:")
+            print("\n⚠️  The following data sources were NOT found. "
+                  "Corresponding sections will be omitted or incomplete:")
             for src in missing_sources:
                 print(f"   • {src}")
         else:
             print("\n✅ All key data sources are available for this report.")
 
     def _find_and_select_files(self) -> Dict[str, Dict[str, str]]:
-        """Finds data files for current and previous years. If self.choose_files is True, prompt user for which file to use when multiple candidates exist."""
+        """Finds data files for current and previous years. If self.choose_files is True,
+        prompt user for which file to use when multiple candidates exist."""
         # Build file patterns from central DATA_SOURCE_CONFIG
         # Limit patterns to only the data sources the current template needs
         file_patterns = {
@@ -206,7 +231,8 @@ class MTDReportGenerator:
                     raise ValueError("file_list cannot be empty")
                 daily = [f for f in file_list if 'daily-' in os.path.basename(f).lower()]
                 target_pool = daily if daily else file_list
-                return max(target_pool, key=os.path.getmtime)
+                return max(target_pool,
+                          key=os.path.getmtime)
 
             # Helper for interactive selection
             def _prompt_choice(file_list):
@@ -224,20 +250,27 @@ class MTDReportGenerator:
             if current_year_files:
                 if self.choose_files:  # always prompt for current when enabled
                     # Present DAILY files first in the selection list for clarity
-                    display_list = sorted(current_year_files, key=os.path.getmtime, reverse=True)
-                    display_list = sorted(display_list, key=lambda p: 'daily-' not in os.path.basename(p).lower())
+                    display_list = sorted(current_year_files, key=os.path.getmtime,
+                                        reverse=True)
+                    display_list = sorted(display_list,
+                                        key=lambda p: 'daily-' not in
+                                        os.path.basename(p).lower())
                     latest_current = _prompt_choice(display_list)
                 else:
                     latest_current = _select_latest(current_year_files)
                 selected_files['current'][file_type] = latest_current
-                print(f"✅ {file_type} (Current Year): Selected '{os.path.basename(latest_current)}'")
+                print(f"✅ {file_type} (Current Year): "
+                      f"Selected '{os.path.basename(latest_current)}'")
             else:
                 print(f"⚠️  {file_type} (Current Year): No files found for {current_year}")
 
             if previous_year_files:
                 if self.choose_files and not self.choose_files_current_only:
-                    display_list = sorted(previous_year_files, key=os.path.getmtime, reverse=True)
-                    display_list = sorted(display_list, key=lambda p: 'daily-' not in os.path.basename(p).lower())
+                    display_list = sorted(previous_year_files, key=os.path.getmtime,
+                                        reverse=True)
+                    display_list = sorted(display_list,
+                                        key=lambda p: 'daily-' not in
+                                        os.path.basename(p).lower())
                     latest_previous = _prompt_choice(display_list)
                 else:
                     latest_previous = _select_latest(previous_year_files)
@@ -250,7 +283,8 @@ class MTDReportGenerator:
 
         return selected_files
 
-    def load_data_for_period(self, selected_files: Dict[str, str], date_range: Dict) -> Tuple[Dict, Dict]:
+    def load_data_for_period(self, selected_files: Dict[str, str],
+                            date_range: Dict) -> Tuple[Dict, Dict]:
         """Loads and processes data for a given period (current or previous)."""
         ga4_data, shopify_data = {}, {}
         start_date = date_range['start_dt']
@@ -277,9 +311,12 @@ class MTDReportGenerator:
                 df = pd.read_csv(selected_files['ga4_source_medium'], comment='#')
             except Exception:
                 df = pd.read_csv(selected_files['ga4_source_medium'], skiprows=9, engine='python')
+            assert_columns(df, DATA_SOURCE_CONFIG['ga4_source_medium']['required_columns'], selected_files['ga4_source_medium'])
             df = _standardise_ga4_dates(df)
-            df_filtered = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
-            df_filtered['Total revenue'] = pd.to_numeric(df_filtered['Total revenue'], errors='coerce').fillna(0)
+            df_filtered = df[(df['Date'] >= start_date) &
+                            (df['Date'] <= end_date)]
+            df_filtered['Total revenue'] = pd.to_numeric(
+                df_filtered['Total revenue'], errors='coerce').fillna(0)
             ga4_data['source_medium'] = df_filtered
         else:
             print("⚠️  GA4 Source Medium data not found. Skipping GA4 source/medium metrics.")
@@ -289,9 +326,12 @@ class MTDReportGenerator:
                 df = pd.read_csv(selected_files['ga4_channel_group'], comment='#')
             except Exception:
                 df = pd.read_csv(selected_files['ga4_channel_group'], skiprows=9, engine='python')
+            assert_columns(df, DATA_SOURCE_CONFIG['ga4_channel_group']['required_columns'], selected_files['ga4_channel_group'])
             df = _standardise_ga4_dates(df)
-            df_filtered = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
-            df_filtered['Total revenue'] = pd.to_numeric(df_filtered['Total revenue'], errors='coerce').fillna(0)
+            df_filtered = df[(df['Date'] >= start_date) &
+                            (df['Date'] <= end_date)]
+            df_filtered['Total revenue'] = pd.to_numeric(
+                df_filtered['Total revenue'], errors='coerce').fillna(0)
             ga4_data['channel_group'] = df_filtered
             # Store the unfiltered dataframe for broader quarter/year calculations
             ga4_data['channel_group_full'] = df.copy()
@@ -302,6 +342,7 @@ class MTDReportGenerator:
         if 'shopify_total_sales' in selected_files:
             try:
                 df = pd.read_csv(selected_files['shopify_total_sales'])
+                assert_columns(df, DATA_SOURCE_CONFIG['shopify_total_sales']['required_columns'], selected_files['shopify_total_sales'])
                 # This file is often not filtered by date on load, but used for monthly trends
                 shopify_data['total_sales'] = df
             except Exception:
@@ -310,6 +351,7 @@ class MTDReportGenerator:
         if 'shopify_new_returning' in selected_files:
             try:
                 df = pd.read_csv(selected_files['shopify_new_returning'])
+                assert_columns(df, DATA_SOURCE_CONFIG['shopify_new_returning']['required_columns'], selected_files['shopify_new_returning'])
                 # Assuming this file contains monthly data, it's handled in metric calculation
                 shopify_data['new_returning'] = df
             except Exception:
@@ -318,6 +360,7 @@ class MTDReportGenerator:
         if 'shopify_products' in selected_files:
             try:
                 df = pd.read_csv(selected_files['shopify_products'])
+                assert_columns(df, DATA_SOURCE_CONFIG['shopify_products']['required_columns'], selected_files['shopify_products'])
                 if 'Day' in df.columns:
                     df['Day'] = pd.to_datetime(df['Day'])
                     df_filtered = df[(df['Day'] >= start_date) & (df['Day'] <= end_date)]
@@ -332,7 +375,8 @@ class MTDReportGenerator:
             try:
                 df = pd.read_csv(selected_files['northbeam_spend'], thousands=',')
                 df['date'] = pd.to_datetime(df['date'], errors='coerce')
-                df_filtered = df[(df['date'] <= end_date)].copy()  # allow full YTD up to current end
+                # allow full YTD up to current end
+                df_filtered = df[(df['date'] <= end_date)].copy()
 
                 # Normalize expected columns with case-insensitive lookup
                 col_map = {}
@@ -384,7 +428,8 @@ class MTDReportGenerator:
                     'Bing Ads', 'Pinterest Ads', 'TikTok Ads'
                 }
 
-                paid_rev = df[df['Default channel group'].isin(paid_channels)]['Total revenue'].sum()
+                paid_rev = df[df['Default channel group'].isin(paid_channels)][
+                    'Total revenue'].sum()
 
                 metrics['totals'] = {
                     'sessions': total_sessions,
@@ -456,10 +501,14 @@ class MTDReportGenerator:
                     }
 
                     spend_df['__custom_channel__'] = spend_df.index.map(lambda x: platform_map.get(x, None))
-                    spend_df = spend_df.dropna(subset=['__custom_channel__']).groupby('__custom_channel__').sum()
+                    spend_df = (spend_df.dropna(subset=['__custom_channel__'])
+                               .groupby('__custom_channel__').sum())
 
-                    merged = revenue_df.join(spend_df[['spend']], how='left').fillna(0)
-                    merged['ROAS'] = merged.apply(lambda r: r['Total revenue'] / r['spend'] if r['spend'] else 0, axis=1)
+                    merged = (revenue_df.join(spend_df[['spend']], how='left')
+                             .fillna(0))
+                    merged['ROAS'] = merged.apply(
+                        lambda r: r['Total revenue'] / r['spend'] if r['spend'] else 0,
+                        axis=1)
                     metrics['custom_channel_performance'] = merged
                 else:
                     metrics['custom_channel_performance'] = revenue_df
@@ -486,7 +535,8 @@ class MTDReportGenerator:
         if 'new_returning' in shopify_data:
             df = shopify_data['new_returning']
             if 'Month' in df.columns:
-                # Normalise month values – they might be in YYYY-MM or YYYY-MM-DD form.
+                # Normalise month values – they might be in YYYY-MM or
+                # YYYY-MM-DD form.
                 # Convert to pandas Period('M') for reliable comparisons.
                 df['_month_norm'] = (
                     pd.to_datetime(df['Month'], errors='coerce')
@@ -497,8 +547,10 @@ class MTDReportGenerator:
                 month_str = date_range['start_dt'].strftime('%Y-%m')
                 current_data = df[df['_month_norm'] == month_str]
 
-                new_data = current_data[current_data['New or returning customer'] == 'New']
-                returning_data = current_data[current_data['New or returning customer'] == 'Returning']
+                new_data = current_data[
+                    current_data['New or returning customer'] == 'New']
+                returning_data = current_data[
+                    current_data['New or returning customer'] == 'Returning']
 
                 if not new_data.empty and not returning_data.empty:
                     new_rev = new_data['Total sales'].iloc[0]
@@ -547,9 +599,10 @@ class MTDReportGenerator:
 
         # Overall totals
         if 'customer_mix' in metrics:
-             metrics['total_revenue'] = metrics['customer_mix']['total_revenue']
-             metrics['total_orders'] = metrics['customer_mix']['total_orders']
-             metrics['aov'] = metrics['total_revenue'] / metrics['total_orders'] if metrics['total_orders'] > 0 else 0
+            metrics['total_revenue'] = metrics['customer_mix']['total_revenue']
+            metrics['total_orders'] = metrics['customer_mix']['total_orders']
+            metrics['aov'] = (metrics['total_revenue'] / metrics['total_orders']
+                             if metrics['total_orders'] > 0 else 0)
 
         return metrics
 
@@ -565,7 +618,8 @@ class MTDReportGenerator:
         if start_dt.month == end_dt.month:
             period_str = f"{start_dt.strftime('%B')} {start_dt.day} - {end_dt.day}"
         else:
-            period_str = f"{start_dt.strftime('%B')} {start_dt.day} - {end_dt.strftime('%B')} {end_dt.day}"
+            period_str = (f"{start_dt.strftime('%B')} {start_dt.day} - "
+                         f"{end_dt.strftime('%B')} {end_dt.day}")
 
         report_date = datetime.now().strftime("%B %d, %Y")
 
@@ -609,7 +663,8 @@ class MTDReportGenerator:
         # ----------------------------------------------------------------
         # (OPTIONAL) CHANNEL PERFORMANCE
         # ----------------------------------------------------------------
-        report += self._generate_channel_performance_table(metrics_current.get('ga4', {}), metrics_previous.get('ga4', {}))
+        report += self._generate_channel_performance_table(
+            metrics_current.get('ga4', {}), metrics_previous.get('ga4', {}))
 
         report += f"\n*Report generated on {report_date}*\n"
         return report
@@ -644,8 +699,10 @@ class MTDReportGenerator:
         section += "**Summary Insight:**  \n> _Insight generation not yet automated._\n\n---\n\n"
         return section
 
-    def _generate_yoy_impact_table(self, shopify_curr: Dict, shopify_prev: Dict, ga4_curr: Dict, ga4_prev: Dict) -> str:
-        """Compare Q2 totals (Apr–Jun) YoY when Shopify total-sales is available; fallback to MTD mix."""
+    def _generate_yoy_impact_table(self, shopify_curr: Dict, shopify_prev: Dict,
+                                  ga4_curr: Dict, ga4_prev: Dict) -> str:
+        """Compare Q2 totals (Apr–Jun) YoY when Shopify total-sales is available;
+        fallback to MTD mix."""
 
         table = "## Year-over-Year Business Impact\n"
         table += "| Metric | This Year | Last Year | YoY Change |\n"
@@ -661,12 +718,14 @@ class MTDReportGenerator:
                 df = df.dropna(subset=['Day'])
                 q2 = df[(df['Day'].dt.month.isin([4,5,6]))]
                 rev = pd.to_numeric(q2['Total sales'], errors='coerce').sum()
-                ords = pd.to_numeric(q2['Orders'], errors='coerce').sum() if 'Orders' in q2.columns else 0
+                ords = (pd.to_numeric(q2['Orders'], errors='coerce').sum()
+                       if 'Orders' in q2.columns else 0)
             elif 'Month' in df.columns:
                 df['_m'] = pd.to_datetime(df['Month'], errors='coerce')
                 q2 = df[df['_m'].dt.month.isin([4,5,6])]
                 rev = pd.to_numeric(q2['Total sales'], errors='coerce').sum()
-                ords = pd.to_numeric(q2['Orders'], errors='coerce').sum() if 'Orders' in q2.columns else 0
+                ords = (pd.to_numeric(q2['Orders'], errors='coerce').sum()
+                       if 'Orders' in q2.columns else 0)
             else:
                 return None
             aov = rev / ords if ords else 0
@@ -687,9 +746,12 @@ class MTDReportGenerator:
             curr_aov = shopify_curr.get('aov', 0)
             prev_aov = shopify_prev.get('aov', 0)
 
-        table += f"| Total Revenue | ${curr_rev:,.0f} | ${prev_rev:,.0f} | {get_yoy_change(curr_rev, prev_rev)} |\n"
-        table += f"| Total Orders | {curr_ord:,} | {prev_ord:,} | {get_yoy_change(curr_ord, prev_ord)} |\n"
-        table += f"| Average Order Value | ${curr_aov:,.2f} | ${prev_aov:,.2f} | {get_yoy_change(curr_aov, prev_aov)} |\n"
+        table += (f"| Total Revenue | ${curr_rev:,.0f} | ${prev_rev:,.0f} | "
+                  f"{get_yoy_change(curr_rev, prev_rev)} |\n")
+        table += (f"| Total Orders | {curr_ord:,} | {prev_ord:,} | "
+                  f"{get_yoy_change(curr_ord, prev_ord)} |\n")
+        table += (f"| Average Order Value | ${curr_aov:,.2f} | ${prev_aov:,.2f} | "
+                  f"{get_yoy_change(curr_aov, prev_aov)} |\n")
 
         # Conversion Rate & Traffic
         # -----------------------------------------------------
@@ -721,7 +783,6 @@ class MTDReportGenerator:
                     break
 
             sessions_total = sub['Sessions'].sum() if 'Sessions' in sub.columns else 0
-            total_rev = sub['Total revenue'].sum() if 'Total revenue' in sub.columns else 0
 
             if channel_col:
                 paid_channels = {
@@ -746,9 +807,14 @@ class MTDReportGenerator:
         curr_paid_pct = curr_paid_rev / curr_rev * 100 if curr_rev else 0
         prev_paid_pct = prev_paid_rev / prev_rev * 100 if prev_rev else 0
 
-        table += f"| Conversion Rate | {curr_cvr:.2f}% | {prev_cvr:.2f}% | {get_yoy_change(curr_cvr, prev_cvr)} |\n"
-        table += f"| Paid Revenue % of Total | {curr_paid_pct:.0f}% | {prev_paid_pct:.0f}% | {get_yoy_change(curr_paid_pct, prev_paid_pct)} |\n"
-        table += f"| Website Traffic (All) | {curr_sessions:,} | {prev_sessions:,} | {get_yoy_change(curr_sessions, prev_sessions)} |\n"
+        table += (f"| Conversion Rate | {curr_cvr:.2f}% | {prev_cvr:.2f}% | "
+                  f"{get_yoy_change(curr_cvr, prev_cvr)} |\n")
+        table += (f"| Paid Revenue % of Total | {curr_paid_pct:.0f}% | "
+                  f"{prev_paid_pct:.0f}% | "
+                  f"{get_yoy_change(curr_paid_pct, prev_paid_pct)} |\n")
+        table += (f"| Website Traffic (All) | {curr_sessions:,} | "
+                  f"{prev_sessions:,} | "
+                  f"{get_yoy_change(curr_sessions, prev_sessions)} |\n")
         return table + "---\n"
 
     def _generate_monthly_trends_table(self) -> str:
@@ -764,13 +830,16 @@ class MTDReportGenerator:
             return table + "⚠️ Northbeam data missing 'date' column.\n---\n"
 
         # Normalize numeric fields
-        for col in ['spend', 'attributed_rev', 'transactions', 'attributed_rev_1st_time']:
+        for col in ['spend', 'attributed_rev', 'transactions',
+                    'attributed_rev_1st_time']:
             if col in nb.columns:
                 nb[col] = pd.to_numeric(nb[col], errors='coerce').fillna(0)
 
-        # Use only accrual-performance rows to avoid duplicate zero-value cash snapshots
+        # Use only accrual-performance rows to avoid duplicate zero-value
+        # cash snapshots
         if 'accounting_mode' in nb.columns:
-            nb = nb[nb['accounting_mode'].str.contains('Accrual', case=False, na=False)]
+            nb = nb[nb['accounting_mode'].str.contains('Accrual', case=False,
+                                                      na=False)]
 
         # Keep rows with a positive spend value
         nb = nb[nb['spend'] > 0]
@@ -804,18 +873,25 @@ class MTDReportGenerator:
                 rev_month_df = ts.groupby('Month').agg({'Total sales': 'sum'}).reset_index()
             elif 'Month' in ts.columns:
                 ts['_m'] = pd.to_datetime(ts['Month'], errors='coerce')
-                rev_month_df = ts.groupby('_m').agg({'Total sales': 'sum'}).reset_index().rename(columns={'_m':'Month'})
+                rev_month_df = (ts.groupby('_m').agg({'Total sales': 'sum'})
+                               .reset_index().rename(columns={'_m': 'Month'}))
 
         # Merge spend with revenue
-        agg = spend_df.merge(rev_month_df, on='Month', how='left') if rev_month_df is not None else spend_df
+        agg = (spend_df.merge(rev_month_df, on='Month', how='left')
+               if rev_month_df is not None else spend_df)
 
         # Fill NaNs
         agg['Total sales'] = agg['Total sales'].fillna(0)
 
         # Derived metrics
-        agg['new_customer_percentage'] = agg.apply(lambda r: r['attributed_rev_1st_time'] / r['attributed_rev'] * 100 if r['attributed_rev'] else 0, axis=1)
-        agg['ROAS'] = agg.apply(lambda r: r['Total sales'] / r['spend'] if r['spend'] else 0, axis=1)
-        agg['CAC'] = agg.apply(lambda r: r['spend'] / r['transactions'] if r['transactions'] else 0, axis=1)
+        agg['new_customer_percentage'] = agg.apply(
+            lambda r: (r['attributed_rev_1st_time'] / r['attributed_rev'] * 100
+                      if r['attributed_rev'] else 0), axis=1)
+        agg['ROAS'] = agg.apply(
+            lambda r: r['Total sales'] / r['spend'] if r['spend'] else 0, axis=1)
+        agg['CAC'] = agg.apply(
+            lambda r: r['spend'] / r['transactions'] if r['transactions'] else 0,
+            axis=1)
         # Rename for clarity
         agg.rename(columns={'Total sales': 'revenue'}, inplace=True)
 
@@ -836,7 +912,9 @@ class MTDReportGenerator:
         tot_txn = agg['transactions'].sum()
         tot_roas = tot_rev / tot_spend if tot_spend else 0
         tot_cac = tot_spend / tot_txn if tot_txn else 0
-        tot_new_pct = (agg['attributed_rev_1st_time'].sum() / agg['attributed_rev'].sum() * 100) if agg['attributed_rev'].sum() else 0
+        tot_new_pct = ((agg['attributed_rev_1st_time'].sum() /
+                       agg['attributed_rev'].sum() * 100)
+                      if agg['attributed_rev'].sum() else 0)
 
         table += (
             f"| **Q2 Total** | **${tot_spend:,.0f}** | **{tot_roas:.2f}** | **${tot_cac:,.0f}** "
@@ -867,9 +945,12 @@ class MTDReportGenerator:
 
         table += "| Segment | Revenue | Orders | AOV | % of Total Revenue |\n"
         table += "|-----------------------|---------|--------|-----|-------------------|\n"
-        table += f"| New-to-Brand Users | ${new_rev:,.0f} | {new_ord:,} | ${new_aov:,.0f} | {new_pct:.1f}% |\n"
-        table += f"| Returning Customers | ${ret_rev:,.0f} | {ret_ord:,} | ${ret_aov:,.0f} | {ret_pct:.1f}% |\n"
-        table += f"| **Total** | ${total_rev:,.0f} | {total_ord:,} | ${total_aov:,.0f} | **100%** |\n\n"
+        table += (f"| New-to-Brand Users | ${new_rev:,.0f} | {new_ord:,} | "
+                  f"${new_aov:,.0f} | {new_pct:.1f}% |\n")
+        table += (f"| Returning Customers | ${ret_rev:,.0f} | {ret_ord:,} | "
+                  f"${ret_aov:,.0f} | {ret_pct:.1f}% |\n")
+        table += (f"| **Total** | ${total_rev:,.0f} | {total_ord:,} | "
+                  f"${total_aov:,.0f} | **100%** |\n\n")
 
         insight = (
             f"**Insight:**  \n> New customers generated {new_pct:.0f}% of revenue with an AOV"
@@ -1028,7 +1109,7 @@ class MTDReportGenerator:
         # Step 7: Save report
         filepath = self.save_report(report_content)
 
-        print(f"\n🎉 Report generation complete!")
+        print("\n🎉 Report generation complete!")
         print(f"📄 Report available at: {filepath}")
 
         # Ask if user wants to open the report, but only in interactive mode
@@ -1052,8 +1133,12 @@ def main():
     # --end is only valid if --start is provided
     parser.add_argument("--end", help="End date (YYYY-MM-DD) (use with --start)")
     parser.add_argument("--output-dir", "-o", help="Directory to save the report (e.g., executive)")
-    parser.add_argument("--choose-files", action="store_true", help="Interactively choose each data file instead of auto-selecting latest")
-    parser.add_argument("--interactive", "-i", action="store_true", help="Force interactive prompts even in non-TTY environments")
+    parser.add_argument("--choose-files", action="store_true",
+                        help="Interactively choose each data file instead of "
+                             "auto-selecting latest")
+    parser.add_argument("--interactive", "-i", action="store_true",
+                        help="Force interactive prompts even in non-TTY "
+                             "environments")
 
     args = parser.parse_args()
 
@@ -1067,16 +1152,32 @@ def main():
 
     if not (args.mtd or args.month or args.start):
         print("\nChoose reporting period:")
-        print("1) Month-to-Date (MTD)")
-        print("2) Custom date range")
-        choice = input("Select option [1/2] (default 1): ").strip() or "1"
+        options = PRESET_RANGES.copy()
+        options["5"] = ("Custom Range", None)
 
-        if choice == "2":
-            # Gather custom dates
+
+        print("Choose reporting period:")
+        for key, (label, _) in options.items():
+            print(f"{key}) {label}")
+
+        choice = input("Select option [1-5] (default 1): ").strip() or "1"
+        if choice not in options:
+            choice = "1"
+
+        if choice == "5":
+            # Custom
             start = input("Start date (YYYY-MM-DD): ").strip()
-            end = input("End date   (YYYY-MM-DD): ").strip()
+            end   = input("End date   (YYYY-MM-DD): ").strip()
+            args.start = start
+            args.end = end
         else:
-            args.mtd = True  # treat as MTD
+            today = datetime.today().date()
+            start_dt, end_dt = options[choice][1](today)
+            start = start_dt.strftime("%Y-%m-%d")
+            end   = end_dt.strftime("%Y-%m-%d")
+            # Pretend user provided explicit dates so later validation passes
+            args.start = start
+            args.end = end
 
     # ------------------------------------------------------------------
     # Non-interactive resolution of other flags
@@ -1099,7 +1200,10 @@ def main():
         parser.error("Provide either --mtd, --month YYYY-MM, or --start YYYY-MM-DD [--end YYYY-MM-DD]")
 
     try:
-        generator = MTDReportGenerator(start_date=start, end_date=end, output_dir=args.output_dir, choose_files=args.choose_files, interactive=args.interactive)
+        generator = MTDReportGenerator(start_date=start, end_date=end,
+                                  output_dir=args.output_dir,
+                                  choose_files=args.choose_files,
+                                  interactive=args.interactive)
         generator.run()
     except KeyboardInterrupt:
         print("\n\n👋 Report generation cancelled by user.")
@@ -1109,4 +1213,4 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    main() 
+    main()

@@ -15,7 +15,8 @@ dependencies = [
     "playwright==1.54.0",
     "requests==2.32.4",
     "python-dateutil==2.9.0.post0",
-    "pylint==3.3.7"
+    "pylint==3.3.7",
+    "pytest==8.4.1"
 ]
 
 # CLI entry points - these will be available as commands after installation
