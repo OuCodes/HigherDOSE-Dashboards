@@ -1,13 +1,62 @@
 # Understanding report generation scripts
 _Exported on 8/6/2025 at 08:11:16 CDT from Cursor (1.3.9)_
 
+## 📋 Navigation
+
+| Section | Topic | Participants |
+|---------|-------|--------------|
+| [Turn 1: User](#turn-1-user) | **User** | User |
+| [Turn 2: Cursor](#turn-2-cursor) | **Cursor** | Cursor |
+| [Turn 3: User](#turn-3-user) | **User** | User |
+| [Turn 4: Cursor](#turn-4-cursor) | **Cursor** | Cursor |
+| [Turn 5: User](#turn-5-user) | **User** | User |
+| [Turn 6: Cursor](#turn-6-cursor) | **Cursor** | Cursor |
+| [Turn 7: User](#turn-7-user) | **User** | User |
+| [Turn 8: Cursor](#turn-8-cursor) | **Cursor** | Cursor |
+| [Turn 9: User](#turn-9-user) | **User** | User |
+| [Turn 10: Cursor](#turn-10-cursor) | **Cursor** | Cursor |
+| [Turn 11: User](#turn-11-user) | **User** | User |
+| [Turn 12: Cursor](#turn-12-cursor) | **Cursor** | Cursor |
+| [Turn 13: User](#turn-13-user) | **User** | User |
+| [Turn 14: Cursor](#turn-14-cursor) | **Cursor** | Cursor |
+| [Turn 15: User](#turn-15-user) | **User** | User |
+| [Turn 16: Cursor](#turn-16-cursor) | **Cursor** | Cursor |
+| [Turn 17: User](#turn-17-user) | **User** | User |
+| [Turn 18: Cursor](#turn-18-cursor) | **Cursor** | Cursor |
+| [Turn 19: User](#turn-19-user) | **User** | User |
+| [Turn 20: Cursor](#turn-20-cursor) | **Cursor** | Cursor |
+| [Turn 21: User](#turn-21-user) | **User** | User |
+| [Turn 22: Cursor](#turn-22-cursor) | **Cursor** | Cursor |
+| [Turn 23: User](#turn-23-user) | **User** | User |
+| [Turn 24: Cursor](#turn-24-cursor) | **Cursor** | Cursor |
+| [Turn 25: User](#turn-25-user) | **User** | User |
+| [Turn 26: Cursor](#turn-26-cursor) | **Cursor** | Cursor |
+| [Turn 27: User](#turn-27-user) | **User** | User |
+| [Turn 28: Cursor](#turn-28-cursor) | **Cursor** | Cursor |
+| [Turn 29: User](#turn-29-user) | **User** | User |
+| [Turn 30: Cursor](#turn-30-cursor) | **Cursor** | Cursor |
+| [Turn 31: User](#turn-31-user) | **User** | User |
+| [Turn 32: Cursor](#turn-32-cursor) | **Cursor** | Cursor |
+| [Turn 33: User](#turn-33-user) | **User** | User |
+| [Turn 34: Cursor](#turn-34-cursor) | **Cursor** | Cursor |
+
 ---
+---
+
+## Turn 1: User
+
+### 👤 **User**
 
 **User**
 
 @generate_report.py @report_config.py @report_executive.py @report_mtd_automated.py help me understand how these scripts work together
 
 ---
+---
+
+## Turn 2: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -106,12 +155,22 @@ It appears this script was written for an *older version* of the report generato
 To fix this, you would need to refactor `generate_report.py` to follow the pattern used in `report_executive.py` (initialize the generator, then call `.run()`) and likely generalize the `MTDReportGenerator` to be less hardcoded to a single report type.
 
 ---
+---
+
+## Turn 3: User
+
+### 👤 **User**
 
 **User**
 
 How can we fix this? I am wanting to get rid of generate_report, make sure mtd_automated is using report_config instead of hard coded defaults and simplifying report_exec to something much more simple.
 
 ---
+---
+
+## Turn 4: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -145,12 +204,22 @@ BENEFITS
 I’ve captured these tasks in the project TODO list so we can tackle them methodically. Let me know if you want to prioritise any of the steps or jump straight into refactoring code.
 
 ---
+---
+
+## Turn 5: User
+
+### 👤 **User**
 
 **User**
 
 lets jump into refactoring
 
 ---
+---
+
+## Turn 6: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -4627,12 +4696,22 @@ python scripts/report_executive.py --choose-files
 ```
 
 ---
+---
+
+## Turn 7: User
+
+### 👤 **User**
 
 **User**
 
 lets do template filtering then tests and docs
 
 ---
+---
+
+## Turn 8: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -9009,12 +9088,22 @@ Next steps on the roadmap
 Let me know which of those you’d like to tackle first, or if you want to do a quick smoke test on real data before moving on.
 
 ---
+---
+
+## Turn 9: User
+
+### 👤 **User**
 
 **User**
 
-lets update docs and then smoke test 
+lets update docs and then smoke test
 
 ---
+---
+
+## Turn 10: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -9024,9 +9113,6 @@ lets update docs and then smoke test
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -9072,9 +9158,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -9114,9 +9197,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -9147,9 +9227,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -9167,9 +9244,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 5. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -9190,9 +9264,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 6. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -9207,9 +9278,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 7. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -9221,27 +9289,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 8. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 9. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -9280,9 +9339,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -9294,9 +9350,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -9342,9 +9395,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -9384,9 +9434,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -9418,9 +9465,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -9438,9 +9482,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 5. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -9461,9 +9502,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 6. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -9478,9 +9516,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 7. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -9492,27 +9527,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 8. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 9. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -9551,9 +9577,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -9565,9 +9588,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -9613,9 +9633,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -9655,9 +9672,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -9689,9 +9703,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. MTD Performance Summary
 
 1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
@@ -9705,9 +9716,6 @@ $ python -m higherdose.mail.gmail_archive
    ```
    data/reports/executive/automated-performance-report-YYYY-MM-DD.md
    ```
-
----
-
 ## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -9725,9 +9733,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 5. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -9748,9 +9753,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 6. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -9765,9 +9767,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 7. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -9779,27 +9778,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 8. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 9. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -9838,9 +9828,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -9852,9 +9839,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -9900,9 +9884,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -9942,9 +9923,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -9976,9 +9954,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. MTD Performance Summary
 
 1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
@@ -9992,9 +9967,6 @@ $ python -m higherdose.mail.gmail_archive
    ```
    data/reports/executive/automated-performance-report-YYYY-MM-DD.md
    ```
-
----
-
 ## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -10012,9 +9984,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -10035,9 +10004,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 6. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -10052,9 +10018,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 7. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -10066,27 +10029,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 8. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 9. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -10125,9 +10079,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -10139,9 +10090,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -10187,9 +10135,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -10229,9 +10174,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -10263,9 +10205,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. MTD Performance Summary
 
 1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
@@ -10279,9 +10218,6 @@ $ python -m higherdose.mail.gmail_archive
    ```
    data/reports/executive/automated-performance-report-YYYY-MM-DD.md
    ```
-
----
-
 ## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -10299,9 +10235,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -10322,9 +10255,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 7. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -10339,9 +10269,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 7. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -10353,27 +10280,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 8. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 9. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -10412,9 +10330,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -10426,9 +10341,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -10474,9 +10386,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -10516,9 +10425,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -10550,9 +10456,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. MTD Performance Summary
 
 1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
@@ -10566,9 +10469,6 @@ $ python -m higherdose.mail.gmail_archive
    ```
    data/reports/executive/automated-performance-report-YYYY-MM-DD.md
    ```
-
----
-
 ## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -10586,9 +10486,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -10609,9 +10506,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 7. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -10626,9 +10520,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 8. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -10640,27 +10531,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 8. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 9. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -10699,9 +10581,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -10713,9 +10592,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -10761,9 +10637,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -10803,9 +10676,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -10837,9 +10707,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. MTD Performance Summary
 
 1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
@@ -10853,9 +10720,6 @@ $ python -m higherdose.mail.gmail_archive
    ```
    data/reports/executive/automated-performance-report-YYYY-MM-DD.md
    ```
-
----
-
 ## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -10873,9 +10737,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -10896,9 +10757,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 7. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -10913,9 +10771,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 8. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -10927,27 +10782,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 9. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 9. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -10986,9 +10832,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -11000,9 +10843,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -11048,9 +10888,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -11090,9 +10927,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -11124,9 +10958,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. MTD Performance Summary
 
 1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
@@ -11140,9 +10971,6 @@ $ python -m higherdose.mail.gmail_archive
    ```
    data/reports/executive/automated-performance-report-YYYY-MM-DD.md
    ```
-
----
-
 ## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -11160,9 +10988,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -11183,9 +11008,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 7. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -11200,9 +11022,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 8. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -11214,27 +11033,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 9. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 10. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 10. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -11273,9 +11083,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -11287,9 +11094,6 @@ Internal HigherDOSE project – not for public distribution.
 A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
 
 — Built with Python 3.10+ & pandas.
-
----
-
 ## 1. Quick Start
 
 - Clone the repo & enter it:
@@ -11335,9 +11139,6 @@ $ .\venv\Scripts\pip install -e .
 ```
 
 > ⚠️ The repo **does not** ship any proprietary data.  You will need to copy the appropriate CSV exports into `data/ads` before running the scripts.
-
----
-
 ## 2. Repository Layout
 
 ```
@@ -11377,9 +11178,6 @@ $ .\venv\Scripts\pip install -e .
 ├── pyproject.toml         # Project configuration and dependencies
 └── README.md              # (this file)
 ```
-
----
-
 ## 3. Running Reports
 
 ### Option A: Using CLI Commands (After Installation)
@@ -11411,9 +11209,6 @@ $ python -m higherdose.analysis.h1
 $ python -m higherdose.slack.slack_fetcher_playwright
 $ python -m higherdose.mail.gmail_archive
 ```
-
----
-
 ## 4. MTD Performance Summary
 
 1. Place the relevant GA4, Shopify, and Northbeam CSV exports in `data/ads/` (the script will auto-detect files based on template needs).
@@ -11427,9 +11222,6 @@ $ python -m higherdose.mail.gmail_archive
    ```
    data/reports/executive/automated-performance-report-YYYY-MM-DD.md
    ```
-
----
-
 ## 5. Weekly Growth Report
 
 1. Download the **7-day** Northbeam "ad + platform – date breakdown" export (CSV).
@@ -11447,9 +11239,6 @@ The script will prompt for the CSV if multiple files are present, analyse the da
 ```
 data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 ```
-
----
-
 ## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):
@@ -11470,9 +11259,6 @@ $ python scripts/report_h1.py     # Script wrapper
 ```
 
 Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
-
----
-
 ## 7. Exporting Slack Conversations
 
 The Slack extractor uses **Playwright** and manages credentials automatically.
@@ -11487,9 +11273,6 @@ $ python scripts/slack_export.py    # Script wrapper
 * Markdown files are written to `data/slack/exports/`.
 
 Refer to `src/higherdose/slack/README.md` for detailed credential setup.
-
----
-
 ## 8. Exporting Gmail Archive
 
 Export Gmail messages for analysis and record-keeping.
@@ -11501,27 +11284,18 @@ $ python scripts/email_export.py    # Script wrapper
 
 * Exports are written to `data/mail/exports/`.
 * Requires Gmail API credentials setup.
-
----
-
 ## 9. Updating Product-Alias Mappings
 
 Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
-
----
-
 ## 10. Development & Contribution
 
 * **Dependencies**: Managed via `pyproject.toml` - use `pip install -e .` for development.
 * **Formatting**:  Run `black` and `ruff` before committing.
 * **Testing**:    Reports are idempotent; simply rerun the scripts & compare output.
 * **Commits**:    Follow Conventional Commits (feat|fix|chore|refactor).
-
----
-
 ## 11. Troubleshooting: Git Tracking Issues with Mail Exports
 
 Git is still watching the contents of `data/mail/exports/`, so every time you clear the folder and try to download fresh messages it thinks the files were “deleted” and blocks you.  
@@ -11560,9 +11334,6 @@ Follow the exact sequence below (taken verbatim from `docs/tutorials/git-untrack
    ```
 
 Once the directory shows up in `git check-ignore` and NOT in `git ls-files`, Git will leave it alone. You can now wipe and re-download your email exports as often as you like without Git complaining.
-
----
-
 ### License
 Internal HigherDOSE project – not for public distribution.
 
@@ -11598,6 +11369,11 @@ python scripts/report_executive.py   # defaults to MTD
 ```
 
 ---
+---
+
+## Turn 11: User
+
+### 👤 **User**
 
 **User**
 
@@ -11606,6 +11382,11 @@ lets run a smoke test with real data
 use the venv to run that. "./venv/bin/pip install -e ."
 
 ---
+---
+
+## Turn 12: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -11626,12 +11407,22 @@ If you’d like to hand-pick which CSV is used for each data source, add `--choo
 ```
 
 ---
+---
+
+## Turn 13: User
+
+### 👤 **User**
 
 **User**
 
 @automated-performance-report-2025-08-06.md ok it works!
 
 ---
+---
+
+## Turn 14: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -11651,6 +11442,11 @@ Open todos:
 Let me know if you’d like to proceed with test updates or have anything else in mind.
 
 ---
+---
+
+## Turn 15: User
+
+### 👤 **User**
 
 **User**
 
@@ -11661,6 +11457,11 @@ which also means moving the core logic into the main src.higherdose.analysis dir
 help me brainstorm the best way to go about this
 
 ---
+---
+
+## Turn 16: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -11727,14 +11528,24 @@ hd-mtd = "higherdose.analysis.mtd:main"
 ```
 
 ---
+---
+
+## Turn 17: User
+
+### 👤 **User**
 
 **User**
 
 YES! Lets do all that but forget the legacy shim, no need to worry about backwards compat in this case we can update any references if needed.
 
-I went ahead and moved @mtd.py and @mtd_config.py 
+I went ahead and moved @mtd.py and @mtd_config.py
 
 ---
+---
+
+## Turn 18: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -12886,6 +12697,11 @@ if __name__ == "__main__":
 ```
 
 ---
+---
+
+## Turn 19: User
+
+### 👤 **User**
 
 **User**
 
@@ -12895,6 +12711,11 @@ What else do we need to do to finsih this item on the list? Did we update all ol
 Does this command actually work because there's no longer an argparse there?
 
 ---
+---
+
+## Turn 20: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -12948,12 +12769,22 @@ If we do #3 and #4 the item is fully finished; everything that used to live in `
 ```
 
 ---
+---
+
+## Turn 21: User
+
+### 👤 **User**
 
 **User**
 
 Lets do 3 4 and 5
 
 ---
+---
+
+## Turn 22: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -14168,12 +13999,22 @@ hd-mtd --mtd                           # or: python -m higherdose.analysis.mtd -
 ```
 
 ---
+---
+
+## Turn 23: User
+
+### 👤 **User**
 
 **User**
 
-Awesome, i Changed a few things around for better naming. the script is capable of so much more than mtd. can we make sure it outputs to the executive folder instead of the weekly data reports folder?@report_executive.py @exec_config.py @executive.py @pyproject.toml 
+Awesome, i Changed a few things around for better naming. the script is capable of so much more than mtd. can we make sure it outputs to the executive folder instead of the weekly data reports folder?@report_executive.py @exec_config.py @executive.py @pyproject.toml
 
 ---
+---
+
+## Turn 24: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -15316,6 +15157,11 @@ python scripts/report_executive.py --month 2025-07
 ```
 
 ---
+---
+
+## Turn 25: User
+
+### 👤 **User**
 
 **User**
 
@@ -15331,6 +15177,11 @@ is that possible?
 if it is pleae dont do a bunch of if else's i feel we can organize it a lil beter than that if its possible
 
 ---
+---
+
+## Turn 26: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -16502,12 +16353,22 @@ hd-executive --mtd           # skip menu
 ```
 
 ---
+---
+
+## Turn 27: User
+
+### 👤 **User**
 
 **User**
 
 given all this information what should i do to improve the script?
 
 ---
+---
+
+## Turn 28: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -16597,6 +16458,11 @@ hd-executive --template weekly_growth --mtd
 ```
 
 ---
+---
+
+## Turn 29: User
+
+### 👤 **User**
 
 **User**
 
@@ -16607,6 +16473,11 @@ also i would love if you can implement 2 things from Test and CI - Unit test the
 you can use ./venv/bin/pip if you need to install anything
 
 ---
+---
+
+## Turn 30: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -27687,12 +27558,22 @@ The script now validates input files early and has its first automated tests in 
 ```
 
 ---
+---
+
+## Turn 31: User
+
+### 👤 **User**
 
 **User**
 
 the way the asserts were entered here seems off, i think it threw off the try except or the indent is off i believe. there's also an error for options where "type anno not supported" and "unexpected indent" - i have pylint installed if you need to see errors like that
 
 ---
+---
+
+## Turn 32: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
@@ -27800,12 +27681,22 @@ except pd.errors.ParserError as err:
 ```
 
 ---
+---
+
+## Turn 33: User
+
+### 👤 **User**
 
 **User**
 
 yes please apply the patch
 
 ---
+---
+
+## Turn 34: Cursor
+
+### 🤖 **Cursor**
 
 **Cursor**
 
