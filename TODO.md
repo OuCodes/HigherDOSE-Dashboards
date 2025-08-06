@@ -19,10 +19,10 @@
 - [x] Move `reports` into `data/reports`
 - [ ] Move `docs/winning-prompts.txt` into `data/prompts` each should be in its own .txt file
 - [ ] Use TTS model to play jourdan the docs vs debate chat
-- [ ] Create README.md for each major directory so agents can use them as a guide
+- [x] Create README.md for each major directory so agents can use them as a guide
     - [ ] Tell agents not to use the `utils` folder for code
-    - [ ] Tell agents specific use cases for the `scripts` folder
-- [ ] Move `generate_report.py` and `report_config.py` and `report_high_automated.py` and `report_mtd_automated.py` into `src/higherdose/analysis` they belong in src not the scripts folder. Scripts is more so for wrappers around core logic.
+    - [x] Tell agents specific use cases for the `scripts` folder
+- [x] Move `generate_report.py` and `report_config.py` and `report_high_automated.py` and `report_mtd_automated.py` into `src/higherdose/analysis` they belong in src not the scripts folder. Scripts is more so for wrappers around core logic.
 
 ## Scripting
 
@@ -40,7 +40,7 @@
 
 - [ ] Fix the trailing and leading whitespaces around links in certain emails.
 - [x] Move mail/archive to data/mail/exports
-- [ ] Detail steps necessary to get gmail archive working on window machine
+- [ ] Detail steps necessary to get gmail archive working on windows machine
     - [ ] Create a tutorial or README around these steps
 - [ ] Merge `gmail_monitor.py` into `gmail_archive.py`
 
