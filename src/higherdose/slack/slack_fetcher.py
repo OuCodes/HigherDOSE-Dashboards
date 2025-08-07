@@ -1495,176 +1495,111 @@ class SlackBrowser:
 
             # Try to click on threads to load replies
             try:
-                print("🔄 Loading thread replies...")
-                logger.info("Starting thread reply extraction for channel %s", channel_id)
+                # First check if we have any messages that might have threads from API data
+                has_potential_threads = False
+                for data in self.intercepted_data:
+                    if "conversations.history" in data["url"]:
+                        response = data.get("response", {})
+                        if response.get("ok"):
+                            messages = response.get("messages", [])
+                            for msg in messages:
+                                if msg.get("reply_count", 0) > 0 or msg.get("thread_ts"):
+                                    has_potential_threads = True
+                                    break
+                            if has_potential_threads:
+                                break
+                
+                if not has_potential_threads:
+                    print("📭 No threaded messages detected in API data - skipping thread extraction")
+                    logger.info("No threaded messages found in API data for channel %s - skipping thread clicks", channel_id)
+                else:
+                    print("🔄 Loading thread replies...")
+                    logger.info("Starting thread reply extraction for channel %s", channel_id)
 
-                # First, let's inspect the page to find thread elements
-                try:
-                    # Try to get all elements that might be thread indicators
-                    all_thread_elements = await self.page.query_selector_all('*[data-qa*="thread"]')
-                    logger.debug("Found %d elements with 'thread' in data-qa", len(all_thread_elements))
+                    # Use prioritized selectors - most common first
+                    prioritized_selectors = [
+                        'button:has-text("replies")',  # Most common
+                        'a:has-text("replies")',
+                        '[data-qa="thread_reply_bar"]',
+                        '.c-message__thread_reply_count',
+                        '[aria-label*="replies"]',
+                    ]
 
-                    # Try to find elements with reply text
-                    reply_elements = await self.page.query_selector_all('*:has-text("replies")')
-                    logger.debug("Found %d elements containing 'replies'", len(reply_elements))
-
-                    # Try to find elements with reply count
-                    reply_count_elements = await self.page.query_selector_all('*:has-text("reply")')
-                    logger.debug("Found %d elements containing 'reply'", len(reply_count_elements))
-
-                except (TimeoutError, Error) as e:
-                    logger.debug("Error inspecting page for threads: %s", e)
-
-                # Try multiple selectors for thread buttons
-                selectors_to_try = [
-                    '[data-qa="thread_reply_bar"]',
-                    '[data-qa="thread-reply-bar"]',
-                    '[data-qa="message-thread-reply-count"]',
-                    '.c-message__thread_reply_indicator',
-                    '.c-message__thread_reply_indicator_text',
-                    '.c-message__thread_reply_bar',
-                    '.c-message__thread_reply_count',
-                    '.c-message__thread_reply_link',
-                    '.c-message_kit__thread_reply_indicator',
-                    '.c-message_kit__thread_reply_bar',
-                    '.c-button--thread-reply',
-                    '[aria-label*="replies"]',
-                    '[aria-label*="reply"]',
-                    'button:has-text("replies")',
-                    'button:has-text("reply")',
-                    'a:has-text("replies")',
-                    'a:has-text("reply")',
-                    '.c-message__thread_reply_count:has-text("replies")',
-                    '.c-message__thread_reply_count:has-text("reply")',
-                    '[data-qa*="reply"]',
-                    '[data-qa*="thread"]',
-                    '.c-message__thread_reply',
-                    '.c-message_kit__thread_reply',
-                    '.c-message__reply_count',
-                    '.c-message_kit__reply_count',
-                    '.c-message__link--thread',
-                    '.c-message_kit__link--thread',
-                    '.c-message__thread_actions',
-                    '.c-message_kit__thread_actions'
-                ]
-
-                thread_buttons = []
-                for selector in selectors_to_try:
-                    try:
-                        elements = await self.page.query_selector_all(selector)
-                        if elements:
-                            logger.debug("Found %d thread elements with selector: %s", len(elements), selector)
-                            thread_buttons.extend(elements)
-                    except (TimeoutError, Error):
-                        # Some selectors might not work, that's okay
-                        continue
-
-                # Remove duplicates
-                unique_buttons = []
-                for button in thread_buttons:
-                    if button not in unique_buttons:
-                        unique_buttons.append(button)
-
-                logger.debug("Found %d unique thread buttons", len(unique_buttons))
-
-                for i, button in enumerate(unique_buttons):  # Click every discovered thread
-                    try:
-                        logger.debug("Clicking thread %d/%d", i+1, len(unique_buttons))
-
-                        # Try to scroll the button into view first
+                    visible_thread_buttons = []
+                    
+                    for selector in prioritized_selectors:
                         try:
-                            await button.scroll_into_view_if_needed()
-                            await self.page.wait_for_timeout(500)
+                            elements = await self.page.query_selector_all(selector)
+                            for element in elements:
+                                # Pre-filter: only include visible elements
+                                try:
+                                    if await element.is_visible():
+                                        visible_thread_buttons.append(element)
+                                        logger.debug("Found visible thread element with selector: %s", selector)
+                                except (TimeoutError, Error):
+                                    continue
+                                    
+                            # Stop if we found some good candidates
+                            if len(visible_thread_buttons) >= 5:  # Reasonable limit
+                                break
+                                
                         except (TimeoutError, Error):
-                            pass
+                            continue
 
-                        # Check if button is visible and clickable
-                        is_visible = await button.is_visible()
-                        logger.debug("Thread button %d visible: %s", i+1, is_visible)
+                    # Remove duplicates more efficiently using set of element handles
+                    seen_elements = set()
+                    unique_buttons = []
+                    for button in visible_thread_buttons:
+                        if button not in seen_elements:
+                            seen_elements.add(button)
+                            unique_buttons.append(button)
 
-                        if is_visible:
-                            await button.click()
-                            await self.page.wait_for_timeout(2000)  # Wait for replies to load
+                    logger.debug("Found %d visible, unique thread buttons", len(unique_buttons))
 
-                            # Wait for the thread panel to load
-                            await self.page.wait_for_timeout(1000)
+                    for i, button in enumerate(unique_buttons):  # Click every discovered thread
+                        try:
+                            logger.debug("Clicking thread %d/%d", i+1, len(unique_buttons))
 
-                            # Scroll within the thread to load more replies
+                            # Since we pre-filtered for visible elements, skip visibility check
+                            # Just scroll into view and click
                             try:
-                                # Try multiple selectors for thread panels
-                                thread_panel_selectors = [
-                                    '[data-qa="thread-messages-scroller"]',
-                                    '.c-message_list__thread_messages',
-                                    '.c-message_list__thread_view',
-                                    '.c-flexpane__content_container',
-                                    '.c-flexpane__content',
-                                    '.c-message_list__scrollbar',
-                                    '.c-message_list__scrollbar_hider'
-                                ]
+                                await button.scroll_into_view_if_needed()
+                                await self.page.wait_for_timeout(200)  # Reduced from 500ms
+                            except (TimeoutError, Error):
+                                pass
 
-                                thread_scroll_area = None
-                                for selector in thread_panel_selectors:
-                                    try:
-                                        thread_scroll_area = await self.page.query_selector(selector)
-                                        if thread_scroll_area:
-                                            logger.debug("Found thread scroll area with: %s", selector)
-                                            break
-                                    except (TimeoutError, Error):
-                                        continue
+                            await button.click()
+                            
+                            # Wait for thread panel to appear instead of fixed timeout
+                            try:
+                                await self.page.wait_for_selector('[data-qa="thread-messages-scroller"], .c-flexpane__content', timeout=3000)
+                                await self.page.wait_for_timeout(500)  # Brief pause for content to load
+                            except (TimeoutError, Error):
+                                # Fallback to shorter fixed wait if selector doesn't work
+                                await self.page.wait_for_timeout(1500)  # Reduced from 2000+1000
 
-                                if thread_scroll_area:
-                                    for scroll_attempt in range(3):
-                                        await thread_scroll_area.scroll_into_view_if_needed()
-                                        await self.page.keyboard.press("PageDown")
-                                        await self.page.wait_for_timeout(1000)
-                                        logger.debug("Thread scroll attempt %d", scroll_attempt + 1)
-                                else:
-                                    logger.debug("Could not find thread scroll area")
-
+                            # Quick scroll within thread - most replies load immediately
+                            try:
+                                # Simple Page Down a couple times should be sufficient
+                                await self.page.keyboard.press("PageDown")
+                                await self.page.wait_for_timeout(300)  # Reduced from 1000ms
+                                await self.page.keyboard.press("PageDown") 
+                                await self.page.wait_for_timeout(300)  # Total: 600ms vs 3000ms
+                                logger.debug("Thread scroll completed")
                             except (TimeoutError, Error) as e:
                                 logger.debug("Error scrolling thread: %s", e)
 
-                            # Close the thread panel
+                            # Quick close - just use Escape key (fastest method)
                             try:
-                                close_selectors = [
-                                    '[data-qa="thread-close-button"]',
-                                    '.c-button--thread-close',
-                                    '.c-flexpane__close_button',
-                                    '.c-flexpane__close',
-                                    '.c-icon--times',
-                                    '.c-icon--close'
-                                ]
-
-                                close_button = None
-                                for selector in close_selectors:
-                                    try:
-                                        close_button = await self.page.query_selector(selector)
-                                        if close_button:
-                                            logger.debug("Found close button with: %s", selector)
-                                            break
-                                    except (TimeoutError, Error):
-                                        continue
-
-                                if close_button:
-                                    await close_button.click()
-                                    await self.page.wait_for_timeout(500)
-                                else:
-                                    # Try pressing escape to close
-                                    logger.debug("Trying Escape key to close thread")
-                                    await self.page.keyboard.press("Escape")
-                                    await self.page.wait_for_timeout(500)
-
+                                await self.page.keyboard.press("Escape")
+                                await self.page.wait_for_timeout(200)  # Reduced from 500ms
+                                logger.debug("Thread closed with Escape")
                             except (TimeoutError, Error) as e:
                                 logger.debug("Error closing thread: %s", e)
-                                # Try pressing escape as backup
-                                await self.page.keyboard.press("Escape")
-                                await self.page.wait_for_timeout(500)
-                        else:
-                            logger.debug("Thread button %d not visible, skipping", i+1)
 
-                    except (TimeoutError, Error) as e:
-                        logger.debug("Error clicking thread %d: %s", i+1, e)
-                        continue
+                        except (TimeoutError, Error) as e:
+                            logger.debug("Error clicking thread %d: %s", i+1, e)
+                            continue
 
             except (TimeoutError, Error) as e:
                 logger.debug("Error loading threads: %s", e)
