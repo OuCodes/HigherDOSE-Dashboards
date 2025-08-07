@@ -300,23 +300,60 @@ def fetch_all_message_ids(gmail):
     return [msg['id'] for msg in messages]
 
 def main():
-    """Runs the full Gmail archiving script."""
-    logger.info("Starting full Gmail archive script.")
-    print("Starting full Gmail archive script...")
+    """Synchronises Gmail messages to local markdown exports.
+
+    Behaviour:
+        1. If a cursor file exists, fetch only messages that arrived after the
+           stored history ID (incremental sync).
+        2. If no cursor file exists (first run) or the stored history ID is no
+           longer valid, perform a *full* archive and then write a fresh cursor
+           so subsequent runs are incremental.
+    """
+
+    logger.info("Starting Gmail sync script.")
+    print("Starting Gmail sync script...")
 
     gmail = build("gmail", "v1", credentials=get_creds(), cache_discovery=False)
     logger.info("Gmail service client created successfully.")
     print(f"Gmail service client {ansi.green}created successfully{ansi.reset}.")
 
-    message_ids = fetch_all_message_ids(gmail)
+    # Determine whether to run incremental or full sync
+    perform_full_archive = False
+    message_ids = []
+    new_cursor = None
+
+    if CURSOR.exists():
+        cursor = CURSOR.read_text(encoding="utf-8").strip()
+        logger.info("Using existing cursor: %s", cursor)
+        print(f"Using existing cursor: {ansi.cyan}{cursor}{ansi.reset}")
+
+        try:
+            message_ids, new_cursor = fetch_deltas(gmail, cursor)
+        except HttpError as e:
+            # 404 indicates the history ID is too old – fall back to full archive
+            if getattr(e.resp, "status", None) == 404:
+                logger.warning("History ID too old; falling back to full archive.")
+                print(f"{ansi.yellow}History ID too old{ansi.reset}; falling back to full archive.")
+                perform_full_archive = True
+            else:
+                raise
+    else:
+        logger.warning("Cursor file not found. Performing full archive.")
+        print(f"{ansi.yellow}Cursor file not found{ansi.reset}. Performing full archive.")
+        perform_full_archive = True
+
+    if perform_full_archive:
+        # Fetch everything and then set the cursor to the latest history ID
+        message_ids = fetch_all_message_ids(gmail)
+        new_cursor = latest_history_id(gmail)
 
     if message_ids:
         total = len(message_ids)
-        logger.info("Found %d total messages to archive.", total)
-        print(f"Found {ansi.green}{total}{ansi.reset} total messages to archive.")
+        logger.info("Found %d message(s) to archive.", total)
+        print(f"Found {ansi.green}{total}{ansi.reset} message(s) to archive.")
 
         for i, mid in enumerate(message_ids):
-            print(f"  {ansi.magenta}Processing {i+1}{ansi.reset}/"
+            print(f"  {ansi.magenta}Processing {i + 1}{ansi.reset}/"
                   f"{ansi.green}{total}{ansi.reset}: {mid}")
             try:
                 save_msg(gmail, mid)
@@ -326,11 +363,17 @@ def main():
             # Be a good API citizen; avoid hitting rate limits.
             time.sleep(0.05)
     else:
-        logger.info("No messages found to archive.")
-        print("No messages found.")
+        logger.info("No new messages found.")
+        print("No new messages found.")
 
-    logger.info("Full archive complete.")
-    print(f"\n{ansi.green}Full archive complete.{ansi.reset}")
+    if new_cursor:
+        CURSOR.write_text(str(new_cursor), encoding="utf-8")
+        logger.info("Cursor updated to %s", new_cursor)
+        print(f"Cursor updated to {ansi.green}{new_cursor}{ansi.reset}")
+
+    logger.info("Gmail sync complete.")
+    print(f"\n{ansi.green}Gmail sync complete.{ansi.reset}")
+
 
 if __name__ == "__main__":
     main()
