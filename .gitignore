@@ -1,9 +1,9 @@
 # Custom Folders
-**/products/unattributed/
-**/slack/exports/
-**/mail/exports/
-config/facebook/
-config/slack/
+**/products/unattributed/**
+**/slack/exports/**
+**/mail/exports/**
+config/facebook/**
+config/slack/**
 /.refs
 
 # Custom Extensions
@@ -20,6 +20,7 @@ secrets.json
 .DS_Store
 *.pickle
 
+!**/*.example
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
