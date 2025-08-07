@@ -15,7 +15,7 @@ from pathlib import Path
 from datetime import datetime, UTC
 from typing import Dict, List, Any, Optional
 
-from playwright.async_api import async_playwright, Page, Request, Route
+from playwright.async_api import async_playwright, Page, Request, Route, Error, TimeoutError
 import requests
 
 from higherdose.utils.style import ansi
@@ -146,7 +146,7 @@ class SlackCredentials:
                 creds.user_id = data.get("user_id", "")
                 creds.team_id = data.get("team_id", "")
                 creds.last_updated = data.get("last_updated", 0)
-            except Exception as e:
+            except (json.JSONDecodeError, IOError) as e:
                 print(f"⚠️  Error loading credentials: {e}")
         return creds
 
@@ -210,6 +210,8 @@ class SlackBrowser:
         self.browser = None
         self.credentials = SlackCredentials.load()
         self.intercepted_data: List[Dict[str, Any]] = []
+        self.user_mappings: Dict[str, str] = {}
+        self.channel_mappings: Dict[str, str] = {}
 
     async def start(self, headless: bool = False, use_existing_profile: bool = True):
         """Start browser and setup interception."""
@@ -310,13 +312,13 @@ class SlackBrowser:
                     # Update credentials from response if it contains user/team info
                     self.credentials.update_from_request(request, response_data)
 
-                except Exception as e:
+                except json.JSONDecodeError as e:
                     print(f"⚠️  Error parsing API response: {e}")
 
             # Continue with the response
             await route.fulfill(response=response)
 
-        except Exception as e:
+        except (TimeoutError, Error) as e:
             print(f"⚠️  Error intercepting request: {e}")
             await route.continue_()
 
@@ -340,7 +342,7 @@ class SlackBrowser:
             print("⏳ Waiting for workspace to load (networkidle)…")
             try:
                 await self.page.wait_for_load_state("networkidle", timeout=6000)
-            except Exception:
+            except (TimeoutError, Error):
                 # Network might stay busy; continue anyway
                 pass
             sw.lap("networkidle")
@@ -389,7 +391,7 @@ class SlackBrowser:
                     if element:
                         print(f"✅ Login confirmed via DOM element: {selector}")
                         return True
-                except Exception:  # Playwright timeout or other selector errors
+                except (TimeoutError, Error):  # Playwright timeout or other selector errors
                     continue
 
             # If we got here but have API data, we're probably logged in
@@ -412,7 +414,7 @@ class SlackBrowser:
             print("❌ Unable to verify login status")
             return False
 
-        except Exception as e:
+        except (TimeoutError, Error) as e:
             print(f"❌ Error checking login status: {e}")
             return False
 
@@ -569,7 +571,7 @@ class SlackBrowser:
             for cid, cname in self._load_channel_map().items():
                 if cid and cname:
                     channels[cid] = f"#{cname.lstrip('#')}"
-        except Exception as exc:
+        except (IOError, json.JSONDecodeError) as exc:
             logger.debug("Failed to load persistent channel map: %s", exc)
 
         try:
@@ -622,7 +624,7 @@ class SlackBrowser:
                         if not cursor:
                             break
                     logger.debug("Loaded %d channels via conversations.list fast path", len(channels))
-                except Exception as exc:
+                except requests.exceptions.RequestException as exc:
                     logger.debug("conversations.list fast path failed: %s", exc)
 
             # Extract channels from API data - enhanced extraction
@@ -801,13 +803,13 @@ class SlackBrowser:
                             channels[cid] = f"#{real_name}"
                             logger.debug("Resolved placeholder channel name: %s -> #%s", cid, real_name)
 
-        except Exception as e:
+        except (IOError, OSError) as e:
             print(f"❌ Error loading channels: {e}")
 
         # Persist any resolved channel names to the channel map
         try:
             self._save_channel_map(channels)
-        except Exception as exc:
+        except (IOError, json.JSONDecodeError) as exc:
             logger.debug("Failed to save channel map: %s", exc)
 
         return channels
@@ -840,7 +842,7 @@ class SlackBrowser:
             channels = await self.get_channel_list()
             self.channel_mappings = channels
 
-        except Exception as e:
+        except (TimeoutError, Error) as e:
             print(f"⚠️  Error navigating to channels page: {e}")
 
         conversations = {}
@@ -1073,7 +1075,7 @@ class SlackBrowser:
 
             logger.debug("DOM extraction found %d channels", len(channels))
 
-        except Exception as e:
+        except (TimeoutError, Error, AttributeError) as e:
             print(f"⚠️  Error extracting channels from DOM: {e}")
 
         return channels
@@ -1132,7 +1134,7 @@ class SlackBrowser:
                             await element.click()
                             await self.page.wait_for_timeout(500)
                             return True  # Found and closed a modal
-                except Exception as _e:
+                except (TimeoutError, Error):
                     # Some selectors might not work, that's okay
                     continue
 
@@ -1140,7 +1142,7 @@ class SlackBrowser:
             await self.page.keyboard.press("Escape")
             await self.page.wait_for_timeout(300)
 
-        except Exception as e:
+        except (TimeoutError, Error) as e:
             print(f"⚠️  Error dismissing modals: {e}")
 
         return False
@@ -1241,7 +1243,7 @@ class SlackBrowser:
                     return list(sorted(deduped.values(), key=lambda m: float(m.get('ts', 0))))
                 print("⚠️  API returned no messages - falling back to UI scroll…")
                 logger.info("API returned no messages for channel %s, falling back to UI scroll", channel_id)
-            except Exception as e:
+            except (requests.exceptions.RequestException, KeyError, ValueError) as e:
                 print(f"⚠️  API pagination failed ({e}) - falling back to UI scroll…")
                 logger.warning("API pagination failed for channel %s: %s - falling back to UI scroll", channel_id, e)
 
@@ -1264,13 +1266,13 @@ class SlackBrowser:
             try:
                 await self.page.goto(primary_url, timeout=10000)
                 print("✅ Navigated via app.slack.com client URL")
-            except Exception as e:
+            except (TimeoutError, Error) as e:
                 print(f"⚠️  Failed to load primary URL ({primary_url}): {e}")
                 # Fallback to workspace sub-domain URL
                 try:
                     await self.page.goto(fallback_url, timeout=10000)
                     print("✅ Successfully navigated using workspace URL fallback")
-                except Exception as e2:
+                except (TimeoutError, Error) as e2:
                     print(f"❌ Failed to navigate with fallback URL ({fallback_url}): {e2}")
                     return []
 
@@ -1353,14 +1355,14 @@ class SlackBrowser:
                             try:
                                 await self.page.click('[data-qa="message_pane"]', position={'x': 100, 'y': 10})
                                 await self.page.wait_for_timeout(500)
-                            except Exception:
+                            except (TimeoutError, Error):
                                 pass
 
                             # Try clicking on the channel name to refresh
                             try:
                                 await self.page.click('[data-qa="channel_name"]')
                                 await self.page.wait_for_timeout(1000)
-                            except Exception:
+                            except (TimeoutError, Error):
                                 pass
                     else:
                         no_new_messages_count = 0
@@ -1388,7 +1390,7 @@ class SlackBrowser:
                     try:
                         await scroll_methods[method_index]()
                         await self.page.wait_for_timeout(800)  # Increased wait time
-                    except Exception as e:
+                    except (TimeoutError, Error) as e:
                         logger.debug("Scrolling method %d failed: %s", method_index, e)
                         # Fallback to basic PageUp
                         await self.page.keyboard.press("PageUp")
@@ -1422,7 +1424,7 @@ class SlackBrowser:
                                     if oldest_message_found:
                                         break
                         if oldest_message_found:
-                            print(f"✅ Reached oldest timestamp target")
+                            print("✅ Reached oldest timestamp target")
                             logger.info("Reached oldest timestamp target (%s)", oldest_ts)
                             break
 
@@ -1442,7 +1444,7 @@ class SlackBrowser:
                                 logger.info("Stopping scroll after reaching very old messages (%.1f days)", message_age_days)
                                 break
 
-                except Exception as e:
+                except (TimeoutError, Error) as e:
                     print(f"⚠️  Error during scroll attempt {attempt + 1}: {e}")
                     # Try to dismiss modals in case of error
                     await self._dismiss_modals()
@@ -1476,7 +1478,7 @@ class SlackBrowser:
                     reply_count_elements = await self.page.query_selector_all('*:has-text("reply")')
                     logger.debug("Found %d elements containing 'reply'", len(reply_count_elements))
 
-                except Exception as e:
+                except (TimeoutError, Error) as e:
                     logger.debug("Error inspecting page for threads: %s", e)
 
                 # Try multiple selectors for thread buttons
@@ -1519,7 +1521,7 @@ class SlackBrowser:
                         if elements:
                             logger.debug("Found %d thread elements with selector: %s", len(elements), selector)
                             thread_buttons.extend(elements)
-                    except Exception as _e:
+                    except (TimeoutError, Error):
                         # Some selectors might not work, that's okay
                         continue
 
@@ -1539,7 +1541,7 @@ class SlackBrowser:
                         try:
                             await button.scroll_into_view_if_needed()
                             await self.page.wait_for_timeout(500)
-                        except Exception:
+                        except (TimeoutError, Error):
                             pass
 
                         # Check if button is visible and clickable
@@ -1573,7 +1575,7 @@ class SlackBrowser:
                                         if thread_scroll_area:
                                             logger.debug("Found thread scroll area with: %s", selector)
                                             break
-                                    except Exception:
+                                    except (TimeoutError, Error):
                                         continue
 
                                 if thread_scroll_area:
@@ -1585,7 +1587,7 @@ class SlackBrowser:
                                 else:
                                     logger.debug("Could not find thread scroll area")
 
-                            except Exception as e:
+                            except (TimeoutError, Error) as e:
                                 logger.debug("Error scrolling thread: %s", e)
 
                             # Close the thread panel
@@ -1606,7 +1608,7 @@ class SlackBrowser:
                                         if close_button:
                                             logger.debug("Found close button with: %s", selector)
                                             break
-                                    except Exception:
+                                    except (TimeoutError, Error):
                                         continue
 
                                 if close_button:
@@ -1618,7 +1620,7 @@ class SlackBrowser:
                                     await self.page.keyboard.press("Escape")
                                     await self.page.wait_for_timeout(500)
 
-                            except Exception as e:
+                            except (TimeoutError, Error) as e:
                                 logger.debug("Error closing thread: %s", e)
                                 # Try pressing escape as backup
                                 await self.page.keyboard.press("Escape")
@@ -1626,11 +1628,11 @@ class SlackBrowser:
                         else:
                             logger.debug("Thread button %d not visible, skipping", i+1)
 
-                    except Exception as e:
+                    except (TimeoutError, Error) as e:
                         logger.debug("Error clicking thread %d: %s", i+1, e)
                         continue
 
-            except Exception as e:
+            except (TimeoutError, Error) as e:
                 logger.debug("Error loading threads: %s", e)
 
             # Wait a bit more for thread API calls
@@ -1678,7 +1680,7 @@ class SlackBrowser:
                                 if float(msg.get("ts", "0")) > oldest_ts:
                                     all_messages.append(msg)
 
-                except Exception as e:
+                except (KeyError, TypeError, ValueError) as e:
                     print(f"⚠️  Error processing intercepted data: {e}")
                     # Continue with next data item
                     continue
@@ -1692,7 +1694,7 @@ class SlackBrowser:
                     if ts and ts not in seen_ts:
                         seen_ts.add(ts)
                         unique_messages.append(msg)
-                except Exception as e:
+                except (KeyError, TypeError) as e:
                     print(f"⚠️  Error processing message: {e}")
                     continue
 
@@ -1712,7 +1714,7 @@ class SlackBrowser:
 
             return unique_messages
 
-        except Exception as e:
+        except (TimeoutError, Error) as e:
             print(f"❌ Error fetching conversation history: {e}")
             traceback.print_exc()
             return []
@@ -1781,7 +1783,7 @@ class SlackBrowser:
         # Persist any newly discovered users to rolodex for future runs
         try:
             self._save_rolodex(users)
-        except Exception as e:
+        except (IOError, json.JSONDecodeError) as e:
             logger.warning("Failed to save rolodex: %s", e)
         return users
 
@@ -1861,7 +1863,7 @@ class SlackBrowser:
                         print("✅ Dismissed app launcher/popup")
                         await self.page.wait_for_timeout(500)
                         return True
-                except Exception:
+                except (TimeoutError, Error):
                     # Some selectors can raise due to syntax or detached nodes
                     continue
 
@@ -1877,12 +1879,12 @@ class SlackBrowser:
             try:
                 await self.page.keyboard.press("Escape")
                 await self.page.wait_for_timeout(500)
-            except Exception:  # Keyboard action might fail
+            except (TimeoutError, Error):  # Keyboard action might fail
                 pass
 
             return False
 
-        except Exception as e:
+        except (TimeoutError, Error) as e:
             print(f"⚠️ Error handling app launcher: {e}")
             return False
 
@@ -1908,7 +1910,7 @@ class SlackBrowser:
                 return user_mapping
             logger.debug("No rolodex file found (searched 'rolodex.json' and 'data/rolodex.json'), using basic user mapping")
             return {}
-        except Exception as e:
+        except (IOError, json.JSONDecodeError) as e:
             logger.warning("Error loading rolodex: %s", e)
             return {}
 
@@ -1936,7 +1938,7 @@ class SlackBrowser:
                 rolodex_path.parent.mkdir(parents=True, exist_ok=True)
                 rolodex_path.write_text(json.dumps(rolodex_data, indent=2), encoding="utf-8")
                 logger.debug("Saved %d new user mappings to rolodex", new_entries)
-        except Exception as exc:
+        except (IOError, json.JSONDecodeError) as exc:
             logger.warning("Error saving rolodex: %s", exc)
 
     # ------------------------------------------------------------------ #
@@ -1948,7 +1950,7 @@ class SlackBrowser:
             if CHANNEL_MAP_FILE.exists():
                 data = json.loads(CHANNEL_MAP_FILE.read_text(encoding="utf-8"))
                 return {cid: name for cid, name in data.items() if not cid.startswith("_")}
-        except Exception as exc:
+        except (IOError, json.JSONDecodeError) as exc:
             logger.debug("Error loading channel map: %s", exc)
         return {}
 
@@ -1976,7 +1978,7 @@ class SlackBrowser:
                 CHANNEL_MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
                 CHANNEL_MAP_FILE.write_text(json.dumps(existing, indent=2), encoding="utf-8")
                 logger.debug("Channel map updated with %d entries (total %d)", len(channel_dict), len(existing) - 1)
-        except Exception as exc:
+        except (IOError, json.JSONDecodeError) as exc:
             logger.warning("Error saving channel map: %s", exc)
 
     #  Helper: lightweight Web-API POST using captured creds              #
@@ -2004,7 +2006,7 @@ class SlackBrowser:
             r = requests.post(url, headers=headers, data=payload, timeout=30)
             r.raise_for_status()
             return r.json()
-        except Exception as exc:
+        except requests.exceptions.RequestException as exc:
             logger.error("API call %s failed: %s", endpoint, exc)
             return {}
 
@@ -2349,6 +2351,8 @@ async def _export_single_channel(
         Mapping of user IDs → human names for nicer formatting.
     conversations_cache : Optional mapping that speeds up name→id resolution.
     """
+    sw = Stopwatch(f"export_channel:{channel_input_raw}")
+    print()
 
     channel_input = channel_input_raw.strip().lstrip("#@")
 
@@ -2384,6 +2388,7 @@ async def _export_single_channel(
         print(f"⚠️  Skipping '{channel_input_raw}': unable to resolve channel.")
         logger.warning("Skipping channel '%s': unable to resolve channel ID", channel_input_raw)
         return
+    sw.lap("resolve_channel")
 
     print(f"\n📥 Fetching messages for {ansi.cyan}{channel_name or channel_id}{ansi.reset}")
     logger.info("Fetching messages for channel: %s (ID: %s)", channel_name or channel_id, channel_id)
@@ -2408,7 +2413,8 @@ async def _export_single_channel(
     # ------------------------------------------------------------------
     try:
         raw_messages = await browser.fetch_conversation_history(channel_id, oldest_ts=last_ts)
-    except Exception as exc:
+        sw.lap("fetch_history")
+    except (TimeoutError, Error) as exc:
         print(f"⚠️  Failed to fetch history for {channel_input_raw}: {exc}")
         logger.error("Failed to fetch history for channel '%s': %s", channel_input_raw, exc)
         return
@@ -2463,12 +2469,14 @@ async def _export_single_channel(
 
     print(f"✅ Exported {ansi.green}{len(messages)}{ansi.reset} messages → {ansi.cyan}{md_path.name}{ansi.reset}")
     logger.info("Exported %d messages to %s for channel %s", len(messages), md_path, channel_name or channel_id)
+    sw.lap("write_and_update_tracker")
 
 
 # -------------- Main Script -------------------------------------------------
 
 async def main():
     """Main async function."""
+    sw = Stopwatch("main")
     log_file = Path("src/higherdose/logs/slack_fetcher.log")
     print(f"🚀 {ansi.cyan}Playwright-based Slack Fetcher{ansi.reset}")
     print(f"📍 Workspace: {ansi.yellow}{WORKSPACE_URL}{ansi.reset}")
@@ -2482,16 +2490,19 @@ async def main():
     try:
         # Start browser (headless=False to allow manual login if needed)
         await browser.start(headless=False)
+        sw.lap("browser_start")
 
         # Ensure we're logged in
         if not await browser.ensure_logged_in():
             print("❌ Failed to log in. Exiting.")
             logger.error("Failed to log in to Slack workspace")
             return
+        sw.lap("login")
 
         # Load and display available channels
         print(f"\n🔍 {ansi.cyan}Discovering available channels...{ansi.reset}")
         conversations = await browser.get_conversations()
+        sw.lap("conversation_discovery")
 
         # Separate and sort different conversation types
         channels = []
@@ -2538,6 +2549,7 @@ async def main():
         # ------------------------------------------------------------------
         # Normalise to a list (filtering out accidental double-commas / whitespace)
         channel_inputs = [s.strip() for s in user_input.split(',') if s.strip()]
+        sw.lap("user_input")
 
         # If more than one entry, switch to batch processing and exit early
         if len(channel_inputs) > 1:
@@ -2548,6 +2560,7 @@ async def main():
             for target in channel_inputs:
                 await _export_single_channel(browser, target, users, conversations)
             logger.info("Completed batch processing for %d channels", len(channel_inputs))
+            sw.lap("batch_export")
             return
 
         if not channel_inputs:
@@ -2677,7 +2690,7 @@ async def main():
                         if channel_found:
                             break
 
-                    except Exception as e:
+                    except (TimeoutError, Error) as e:
                         print(f"⚠️  Failed to load {url}: {e}")
                         logger.debug("Failed to load URL %s: %s", url, e)
                         continue
@@ -2696,7 +2709,7 @@ async def main():
                 # Now fetch with the proper ID
                 messages = await browser.fetch_conversation_history(channel_id, oldest_ts=0)
 
-            except Exception as e:
+            except (TimeoutError, Error) as e:
                 print(f"❌ Error finding channel: {e}")
                 logger.error("Error finding channel: %s", e)
                 return
@@ -2726,7 +2739,7 @@ async def main():
                     old_path.rename(md_path)
                     print(f"🔄 Renamed {ansi.yellow}{old_path.name}{ansi.reset} -> {ansi.cyan}{md_path.name}{ansi.reset}")
                     logger.info("Renamed old file %s to %s", old_path.name, md_path.name)
-                except Exception as e:
+                except OSError as e:
                     print(f"⚠️  Could not rename old file: {e}")
                     logger.warning("Could not rename old file: %s", e)
 
@@ -2756,6 +2769,7 @@ async def main():
         print(f"✅ Exported {ansi.green}{len(messages)}{ansi.reset} messages to {ansi.cyan}{md_path.name}{ansi.reset}")
         print(f"📁 File saved: {ansi.grey}{md_path.absolute()}{ansi.reset}")
         logger.info("Export completed successfully: %d messages to %s", len(messages), md_path.absolute())
+        sw.lap("single_export")
 
     except KeyboardInterrupt:
         print("\n⚠️  Interrupted by user")
@@ -2767,6 +2781,7 @@ async def main():
     finally:
         await browser.close()
         logger.info("Slack fetcher session ended")
+        sw.lap("shutdown")
 
 
 def run_main():
