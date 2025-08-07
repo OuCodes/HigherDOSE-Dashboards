@@ -23,6 +23,7 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any, Iterable, Callable
+import re
 
 import pandas as pd
 # Import data-source config patterns from central config file within the package
@@ -39,6 +40,71 @@ def assert_columns(df: pd.DataFrame, required: Iterable[str], file_path: str) ->
         raise ValueError(
             f"{file_path} is missing required column(s): {', '.join(missing)}"
         )
+
+def _extract_date_from_filename(filename: str) -> Optional[datetime]:
+    """
+    Extract the most recent date from various filename patterns.
+    
+    Args:
+        filename: The filename to parse
+        
+    Returns:
+        datetime object of the most recent date found, or None if no date found
+        
+    Examples:
+        "Total sales over time - 2025-01-01 - 2025-08-04.csv" -> 2025-08-04
+        "ytd-sales_data-higher_dose_llc-2025_08_04_23_29_33_820441.csv" -> 2025-08-04
+        "daily-traffic-2025-07-01-2025-08-03-2025.csv" -> 2025-08-03
+    """
+    basename = os.path.basename(filename)
+    
+    # Pattern 1: Date ranges with hyphens (YYYY-MM-DD - YYYY-MM-DD)
+    date_range_pattern = r'(\d{4}-\d{2}-\d{2})\s*-\s*(\d{4}-\d{2}-\d{2})'
+    date_ranges = re.findall(date_range_pattern, basename)
+    if date_ranges:
+        # Return the latest end date from all ranges found
+        latest_date = None
+        for start_date, end_date in date_ranges:
+            try:
+                end_dt = datetime.strptime(end_date, '%Y-%m-%d')
+                if latest_date is None or end_dt > latest_date:
+                    latest_date = end_dt
+            except ValueError:
+                continue
+        if latest_date:
+            return latest_date
+    
+    # Pattern 2: Underscored dates (YYYY_MM_DD) - common in timestamped exports
+    underscore_pattern = r'(\d{4}_\d{2}_\d{2})'
+    underscore_dates = re.findall(underscore_pattern, basename)
+    if underscore_dates:
+        latest_date = None
+        for date_str in underscore_dates:
+            try:
+                dt = datetime.strptime(date_str, '%Y_%m_%d')
+                if latest_date is None or dt > latest_date:
+                    latest_date = dt
+            except ValueError:
+                continue
+        if latest_date:
+            return latest_date
+    
+    # Pattern 3: Single dates with hyphens (YYYY-MM-DD)
+    single_date_pattern = r'(\d{4}-\d{2}-\d{2})'
+    single_dates = re.findall(single_date_pattern, basename)
+    if single_dates:
+        latest_date = None
+        for date_str in single_dates:
+            try:
+                dt = datetime.strptime(date_str, '%Y-%m-%d')
+                if latest_date is None or dt > latest_date:
+                    latest_date = dt
+            except ValueError:
+                continue
+        if latest_date:
+            return latest_date
+    
+    return None
 
 # Date-range presets used by the interactive menu (key → label + generator)
 PRESET_RANGES: dict[str, tuple[str, Callable[[datetime.date], tuple[datetime.date, datetime.date]]]] = {
@@ -226,20 +292,36 @@ class MTDReportGenerator:
 
             # Prioritise DAILY exports (they include a Date column) over aggregated totals
             def _select_latest(file_list: list[str]) -> str:
-                """Return the most recently modified *daily-* file, falling back to overall latest."""
+                """Return the file with the most recent date in filename, prioritizing daily files."""
                 if not file_list:
                     raise ValueError("file_list cannot be empty")
+                
                 daily = [f for f in file_list if 'daily-' in os.path.basename(f).lower()]
                 target_pool = daily if daily else file_list
-                return max(target_pool,
-                          key=os.path.getmtime)
+                
+                def _file_sort_key(filepath: str) -> tuple:
+                    """Sort key: (extracted_date, modification_time). If no date found, use epoch."""
+                    extracted_date = _extract_date_from_filename(filepath)
+                    if extracted_date:
+                        return (extracted_date, os.path.getmtime(filepath))
+                    else:
+                        # Fallback to modification time only, but with minimum date to sort last
+                        return (datetime(1970, 1, 1), os.path.getmtime(filepath))
+                
+                return max(target_pool, key=_file_sort_key)
 
             # Helper for interactive selection
             def _prompt_choice(file_list):
-                print("   Choose a file (most-recent first):")
+                print("   Choose a file (most-recent by filename date first):")
                 for idx, f in enumerate(file_list, start=1):
-                    mtime = datetime.fromtimestamp(os.path.getmtime(f)).strftime('%Y-%m-%d %H:%M')
-                    print(f"     {idx}) {os.path.basename(f)}  [modified {mtime}]")
+                    basename = os.path.basename(f)
+                    extracted_date = _extract_date_from_filename(f)
+                    if extracted_date:
+                        date_info = f"data: {extracted_date.strftime('%Y-%m-%d')}"
+                    else:
+                        mtime = datetime.fromtimestamp(os.path.getmtime(f)).strftime('%Y-%m-%d %H:%M')
+                        date_info = f"modified: {mtime}"
+                    print(f"     {idx}) {basename}  [{date_info}]")
                 choice = input("   Enter number (default 1): ").strip() or "1"
                 try:
                     return file_list[int(choice) - 1]
@@ -250,11 +332,19 @@ class MTDReportGenerator:
             if current_year_files:
                 if self.choose_files:  # always prompt for current when enabled
                     # Present DAILY files first in the selection list for clarity
-                    display_list = sorted(current_year_files, key=os.path.getmtime,
-                                        reverse=True)
-                    display_list = sorted(display_list,
-                                        key=lambda p: 'daily-' not in
-                                        os.path.basename(p).lower())
+                    def _display_sort_key(filepath: str) -> tuple:
+                        """Sort key for display: (is_not_daily, -extracted_date, -modification_time)"""
+                        is_daily = 'daily-' in os.path.basename(filepath).lower()
+                        extracted_date = _extract_date_from_filename(filepath)
+                        if extracted_date:
+                            # Convert to negative timestamp for reverse chronological order
+                            date_score = -extracted_date.timestamp()
+                        else:
+                            # Use modification time as fallback, also negative for reverse order
+                            date_score = -os.path.getmtime(filepath)
+                        return (not is_daily, date_score)
+                    
+                    display_list = sorted(current_year_files, key=_display_sort_key)
                     latest_current = _prompt_choice(display_list)
                 else:
                     latest_current = _select_latest(current_year_files)
@@ -266,11 +356,7 @@ class MTDReportGenerator:
 
             if previous_year_files:
                 if self.choose_files and not self.choose_files_current_only:
-                    display_list = sorted(previous_year_files, key=os.path.getmtime,
-                                        reverse=True)
-                    display_list = sorted(display_list,
-                                        key=lambda p: 'daily-' not in
-                                        os.path.basename(p).lower())
+                    display_list = sorted(previous_year_files, key=_display_sort_key)
                     latest_previous = _prompt_choice(display_list)
                 else:
                     latest_previous = _select_latest(previous_year_files)

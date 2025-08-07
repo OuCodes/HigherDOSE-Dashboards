@@ -7,12 +7,80 @@ Interactive file selection from specified directories
 import os
 import sys
 import glob
+import re
+from datetime import datetime
+from typing import Optional
 
 # Add parent directory to path for utils imports
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from higherdose.utils.style import ansi
 
+
+def _extract_date_from_filename(filename: str) -> Optional[datetime]:
+    """
+    Extract the most recent date from various filename patterns.
+    
+    Args:
+        filename: The filename to parse
+        
+    Returns:
+        datetime object of the most recent date found, or None if no date found
+        
+    Examples:
+        "Total sales over time - 2025-01-01 - 2025-08-04.csv" -> 2025-08-04
+        "ytd-sales_data-higher_dose_llc-2025_08_04_23_29_33_820441.csv" -> 2025-08-04
+        "daily-traffic-2025-07-01-2025-08-03-2025.csv" -> 2025-08-03
+    """
+    basename = os.path.basename(filename)
+    
+    # Pattern 1: Date ranges with hyphens (YYYY-MM-DD - YYYY-MM-DD)
+    date_range_pattern = r'(\d{4}-\d{2}-\d{2})\s*-\s*(\d{4}-\d{2}-\d{2})'
+    date_ranges = re.findall(date_range_pattern, basename)
+    if date_ranges:
+        # Return the latest end date from all ranges found
+        latest_date = None
+        for start_date, end_date in date_ranges:
+            try:
+                end_dt = datetime.strptime(end_date, '%Y-%m-%d')
+                if latest_date is None or end_dt > latest_date:
+                    latest_date = end_dt
+            except ValueError:
+                continue
+        if latest_date:
+            return latest_date
+    
+    # Pattern 2: Underscored dates (YYYY_MM_DD) - common in timestamped exports
+    underscore_pattern = r'(\d{4}_\d{2}_\d{2})'
+    underscore_dates = re.findall(underscore_pattern, basename)
+    if underscore_dates:
+        latest_date = None
+        for date_str in underscore_dates:
+            try:
+                dt = datetime.strptime(date_str, '%Y_%m_%d')
+                if latest_date is None or dt > latest_date:
+                    latest_date = dt
+            except ValueError:
+                continue
+        if latest_date:
+            return latest_date
+    
+    # Pattern 3: Single dates with hyphens (YYYY-MM-DD)
+    single_date_pattern = r'(\d{4}-\d{2}-\d{2})'
+    single_dates = re.findall(single_date_pattern, basename)
+    if single_dates:
+        latest_date = None
+        for date_str in single_dates:
+            try:
+                dt = datetime.strptime(date_str, '%Y-%m-%d')
+                if latest_date is None or dt > latest_date:
+                    latest_date = dt
+            except ValueError:
+                continue
+        if latest_date:
+            return latest_date
+    
+    return None
 
 
 def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=None, max_items: int | None = None):
@@ -40,8 +108,21 @@ def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=N
         print(f"{ansi.yellow}No files found{ansi.reset} matching pattern '{file_pattern}' in '{directory}'")
         return None
     
-    # Sort files by modification time (newest first)
-    files.sort(key=os.path.getmtime, reverse=True)
+    # Sort files by filename date first, then by modification time (newest first)
+    def _file_sort_key(filepath: str) -> tuple:
+        """Sort key: (-extracted_date_timestamp, -modification_time)"""
+        extracted_date = _extract_date_from_filename(filepath)
+        if extracted_date:
+            # Use negative timestamp for reverse chronological order
+            date_score = -extracted_date.timestamp()
+        else:
+            # Use minimum date score to sort files without dates last
+            date_score = -datetime(1970, 1, 1).timestamp()
+        
+        mod_time_score = -os.path.getmtime(filepath)
+        return (date_score, mod_time_score)
+    
+    files.sort(key=_file_sort_key)
 
     # Limit to most recent N files if requested
     if max_items is not None:
@@ -56,13 +137,17 @@ def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=N
         file_size = os.path.getsize(file_path)
         size_mb = file_size / (1024 * 1024)
         
-        # Get basic file info
-        mtime = os.path.getmtime(file_path)
-        from datetime import datetime
-        mod_date = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M')
+        # Get date info - prefer extracted date over modification time
+        extracted_date = _extract_date_from_filename(file_path)
+        if extracted_date:
+            date_info = f"Data: {extracted_date.strftime('%Y-%m-%d')}"
+        else:
+            mtime = os.path.getmtime(file_path)
+            mod_date = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M')
+            date_info = f"Modified: {mod_date}"
         
         print(f"{ansi.green}{i:2}.{ansi.reset} {filename}")
-        print(f"     {ansi.grey}Size: {size_mb:.1f} MB | Modified: {mod_date}{ansi.reset}")
+        print(f"     {ansi.grey}Size: {size_mb:.1f} MB | {date_info}{ansi.reset}")
     
     # Get user selection
     if prompt_message:
