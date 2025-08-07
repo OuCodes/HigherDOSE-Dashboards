@@ -5,14 +5,10 @@ Interactive file selection from specified directories
 """
 
 import os
-import sys
 import glob
 import re
 from datetime import datetime
 from typing import Optional
-
-# Add parent directory to path for utils imports
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from higherdose.utils.style import ansi
 
@@ -20,20 +16,20 @@ from higherdose.utils.style import ansi
 def _extract_date_from_filename(filename: str) -> Optional[datetime]:
     """
     Extract the most recent date from various filename patterns.
-    
+
     Args:
         filename: The filename to parse
-        
+
     Returns:
         datetime object of the most recent date found, or None if no date found
-        
+
     Examples:
         "Total sales over time - 2025-01-01 - 2025-08-04.csv" -> 2025-08-04
         "ytd-sales_data-higher_dose_llc-2025_08_04_23_29_33_820441.csv" -> 2025-08-04
         "daily-traffic-2025-07-01-2025-08-03-2025.csv" -> 2025-08-03
     """
     basename = os.path.basename(filename)
-    
+
     # Pattern 1: Date ranges with hyphens (YYYY-MM-DD - YYYY-MM-DD)
     date_range_pattern = r'(\d{4}-\d{2}-\d{2})\s*-\s*(\d{4}-\d{2}-\d{2})'
     date_ranges = re.findall(date_range_pattern, basename)
@@ -49,7 +45,7 @@ def _extract_date_from_filename(filename: str) -> Optional[datetime]:
                 continue
         if latest_date:
             return latest_date
-    
+
     # Pattern 2: Underscored dates (YYYY_MM_DD) - common in timestamped exports
     underscore_pattern = r'(\d{4}_\d{2}_\d{2})'
     underscore_dates = re.findall(underscore_pattern, basename)
@@ -64,7 +60,7 @@ def _extract_date_from_filename(filename: str) -> Optional[datetime]:
                 continue
         if latest_date:
             return latest_date
-    
+
     # Pattern 3: Single dates with hyphens (YYYY-MM-DD)
     single_date_pattern = r'(\d{4}-\d{2}-\d{2})'
     single_dates = re.findall(single_date_pattern, basename)
@@ -79,19 +75,24 @@ def _extract_date_from_filename(filename: str) -> Optional[datetime]:
                 continue
         if latest_date:
             return latest_date
-    
+
     return None
 
 
-def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=None, max_items: int | None = None):
+def select_csv_file(
+    directory="data/ads",
+    file_pattern="*.csv",
+    prompt_message=None,
+    max_items: int | None = None
+):
     """
     Interactive CSV file selection from a directory.
-    
+
     Args:
         directory: Directory to search for files (default: "stats")
         file_pattern: Glob pattern for file matching (default: "*.csv")
         prompt_message: Custom prompt message (optional)
-    
+
     Returns:
         str: Selected file path, or None if no selection made
     """
@@ -99,15 +100,15 @@ def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=N
     if not os.path.exists(directory):
         print(f"{ansi.red}Error:{ansi.reset} Directory '{directory}' does not exist")
         return None
-    
+
     # Find all matching files
     search_pattern = os.path.join(directory, file_pattern)
     files = glob.glob(search_pattern)
-    
+
     if not files:
         print(f"{ansi.yellow}No files found{ansi.reset} matching pattern '{file_pattern}' in '{directory}'")
         return None
-    
+
     # Sort files by filename date first, then by modification time (newest first)
     def _file_sort_key(filepath: str) -> tuple:
         """Sort key: (-extracted_date_timestamp, -modification_time)"""
@@ -118,25 +119,25 @@ def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=N
         else:
             # Use minimum date score to sort files without dates last
             date_score = -datetime(1970, 1, 1).timestamp()
-        
+
         mod_time_score = -os.path.getmtime(filepath)
         return (date_score, mod_time_score)
-    
+
     files.sort(key=_file_sort_key)
 
     # Limit to most recent N files if requested
     if max_items is not None:
         files = files[:max_items]
-    
+
     # Display options
     print(f"\n{ansi.cyan}Available files in {directory}:{ansi.reset}")
     print("-" * 50)
-    
+
     for i, file_path in enumerate(files, 1):
         filename = os.path.basename(file_path)
         file_size = os.path.getsize(file_path)
         size_mb = file_size / (1024 * 1024)
-        
+
         # Get date info - prefer extracted date over modification time
         extracted_date = _extract_date_from_filename(file_path)
         if extracted_date:
@@ -145,26 +146,26 @@ def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=N
             mtime = os.path.getmtime(file_path)
             mod_date = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M')
             date_info = f"Modified: {mod_date}"
-        
+
         print(f"{ansi.green}{i:2}.{ansi.reset} {filename}")
         print(f"     {ansi.grey}Size: {size_mb:.1f} MB | {date_info}{ansi.reset}")
-    
+
     # Get user selection
     if prompt_message:
         prompt = prompt_message
     else:
         prompt = f"\n{ansi.yellow}Select a file{ansi.reset} (1-{len(files)}, or 'q' to quit): "
-    
+
     while True:
         try:
             choice = input(prompt).strip().lower()
-            
+
             if choice == 'q' or choice == 'quit':
                 print(f"{ansi.yellow}Selection cancelled{ansi.reset}")
                 return None
-            
+
             file_index = int(choice) - 1
-            
+
             if 0 <= file_index < len(files):
                 selected_file = files[file_index]
                 filename = os.path.basename(selected_file)
@@ -172,7 +173,7 @@ def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=N
                 return selected_file
             else:
                 print(f"{ansi.red}Invalid selection.{ansi.reset} Please choose 1-{len(files)} or 'q' to quit.")
-                
+
         except ValueError:
             print(f"{ansi.red}Invalid input.{ansi.reset} Please enter a number 1-{len(files)} or 'q' to quit.")
         except KeyboardInterrupt:
@@ -183,10 +184,10 @@ def select_csv_file(directory="data/ads", file_pattern="*.csv", prompt_message=N
 def select_data_file_for_report(report_type="weekly"):
     """
     Specialized function for selecting data files for reports.
-    
+
     Args:
         report_type: "weekly" or "monthly" to filter appropriate files
-    
+
     Returns:
         str: Selected file path, or None if no selection made
     """
@@ -199,7 +200,7 @@ def select_data_file_for_report(report_type="weekly"):
     else:
         pattern = "*sales_data*.csv"
         message = f"\n{ansi.cyan}Select sales data file for {report_type} report:{ansi.reset} "
-    
+
     return select_csv_file(
         directory="data/ads",
         file_pattern=pattern,
