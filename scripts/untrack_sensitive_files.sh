@@ -30,6 +30,7 @@ paths=(
   "data/ads"
   "data/products/unattributed"
   "data/slack"
+  "data/facebook"
 
   # (optional) add more paths – e.g. data/facebook, data/transcripts, etc.
 )
