@@ -1254,7 +1254,7 @@ class SlackBrowser:
                     else:
                         print("⚠️  Could not verify channel accessibility - proceeding with UI scroll as fallback")
                         logger.warning("Could not verify channel %s accessibility - proceeding with UI scroll", channel_id)
-                
+
                 print("⚠️  API returned no messages - falling back to UI scroll…")
                 logger.info("API returned no messages for channel %s, falling back to UI scroll", channel_id)
             except (requests.exceptions.RequestException, KeyError, ValueError) as e:
@@ -1304,7 +1304,7 @@ class SlackBrowser:
             previous_message_count = 0
             max_scroll_attempts = 50  # Increased from 10 to 50
             no_new_messages_count = 0
-            
+
             # Check if we already have any messages from initial load
             initial_message_count = 0
             for data in self.intercepted_data:
@@ -1312,7 +1312,7 @@ class SlackBrowser:
                     response = data.get("response", {})
                     if response.get("ok"):
                         initial_message_count += len(response.get("messages", []))
-            
+
             # If no messages found initially, use reduced attempts for faster termination
             if initial_message_count == 0:
                 max_scroll_attempts = 10  # Much faster for empty channels
@@ -1508,7 +1508,7 @@ class SlackBrowser:
                                     break
                             if has_potential_threads:
                                 break
-                
+
                 if not has_potential_threads:
                     print("📭 No threaded messages detected in API data - skipping thread extraction")
                     logger.info("No threaded messages found in API data for channel %s - skipping thread clicks", channel_id)
@@ -1527,19 +1527,19 @@ class SlackBrowser:
 
                     visible_thread_buttons = []
                     selector_stats = {}  # Track which selectors actually work
-                    
+
                     for selector in prioritized_selectors:
                         try:
                             elements = await self.page.query_selector_all(selector)
                             visible_count = 0
-                            
+
                             for element in elements:
                                 # Pre-filter: only include visible elements
                                 try:
                                     if await element.is_visible():
                                         visible_thread_buttons.append(element)
                                         visible_count += 1
-                                        
+
                                         # Capture DOM attributes for analysis
                                         try:
                                             tag_name = await element.evaluate("el => el.tagName")
@@ -1547,14 +1547,14 @@ class SlackBrowser:
                                             data_qa = await element.evaluate("el => el.getAttribute('data-qa')")
                                             aria_label = await element.evaluate("el => el.getAttribute('aria-label')")
                                             text_content = await element.evaluate("el => el.textContent")
-                                            
+
                                             logger.info("Thread element found with selector '%s': tag=%s, class='%s', data-qa='%s', aria-label='%s', text='%s'", 
                                                       selector, tag_name, class_name, data_qa, aria_label, (text_content or "")[:50])
                                         except (TimeoutError, Error):
                                             logger.debug("Could not capture DOM attributes for thread element")
                                 except (TimeoutError, Error):
                                     continue
-                            
+
                             # Track selector effectiveness
                             if len(elements) > 0 or visible_count > 0:
                                 selector_stats[selector] = {
@@ -1562,16 +1562,16 @@ class SlackBrowser:
                                     'visible_count': visible_count
                                 }
                                 logger.info("Selector '%s': found %d elements, %d visible", selector, len(elements), visible_count)
-                                
+
                             # Stop if we found some good candidates
                             if len(visible_thread_buttons) >= 5:  # Reasonable limit
                                 logger.info("Reached thread limit (5), stopping selector search")
                                 break
-                                
+
                         except (TimeoutError, Error) as e:
                             logger.debug("Selector '%s' failed: %s", selector, e)
                             continue
-                    
+
                     # Log summary of selector effectiveness
                     if selector_stats:
                         logger.info("Thread selector effectiveness summary:")
@@ -1592,7 +1592,7 @@ class SlackBrowser:
 
                     successful_clicks = 0
                     thread_api_calls_before = len([d for d in self.intercepted_data if "conversations.replies" in d.get("url", "")])
-                    
+
                     for i, button in enumerate(unique_buttons):  # Click every discovered thread
                         try:
                             logger.info("Attempting to click thread %d/%d", i+1, len(unique_buttons))
@@ -1606,7 +1606,7 @@ class SlackBrowser:
                                 pass
 
                             await button.click()
-                            
+
                             # Wait for thread panel to appear instead of fixed timeout
                             thread_panel_appeared = False
                             try:
@@ -1643,11 +1643,11 @@ class SlackBrowser:
                         except (TimeoutError, Error) as e:
                             logger.warning("Error clicking thread %d: %s", i+1, e)
                             continue
-                    
+
                     # Check how many thread API calls were generated
                     thread_api_calls_after = len([d for d in self.intercepted_data if "conversations.replies" in d.get("url", "")])
                     new_thread_calls = thread_api_calls_after - thread_api_calls_before
-                    
+
                     logger.info("Thread extraction summary: %d buttons clicked successfully, %d new API calls generated", 
                               successful_clicks, new_thread_calls)
 
@@ -1832,14 +1832,14 @@ class SlackBrowser:
                 # Use workspace URL instead of APP_CLIENT_URL to avoid redirects
                 await self.page.goto(WORKSPACE_URL)
                 await self.page.wait_for_timeout(1000)  # Give it time to load
-                
+
                 # Double-check we didn't get redirected again
                 new_url = self.page.url
                 if any(term in new_url for term in download_indicators):
                     print("🔍 Still on download page, trying direct app client URL…")
                     await self.page.goto(APP_CLIENT_URL)
                     await self.page.wait_for_timeout(1000)
-                
+
                 return True
 
             # 1. Scan for dismiss / continue buttons
@@ -1903,14 +1903,14 @@ class SlackBrowser:
                 print("🔍 Detected app download page, navigating to workspace...")
                 await self.page.goto(WORKSPACE_URL)
                 await self.page.wait_for_timeout(1000)  # Reduced wait time
-                
+
                 # Verify we're not still on a download page
                 final_url = self.page.url
                 if any(term in final_url for term in download_indicators):
                     print("🔍 Still redirecting to download, forcing client URL...")
                     await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}")
                     await self.page.wait_for_timeout(1000)
-                
+
                 return True
 
             # Try pressing Escape to dismiss any overlays
