@@ -8,7 +8,8 @@ from datetime import datetime
 
 import pandas as pd
 import numpy as np
-from higherdose.utils.io.file_selector import select_csv_file
+
+from higherdose.analysis.file_selector import select_csv_file
 
 def load_and_clean_data():
     """Load and clean the 7-day sales data"""

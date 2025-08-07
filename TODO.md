@@ -29,7 +29,7 @@
 - [ ] Add logging to all the src logic
 - [ ] Format `email/tutorial.md` correctly. The headers for prompt and response are not formatted correctly.
 - [ ] Rewrite the monthly report, very out of date at this point.
-- [ ] Move io.file_selector.py logic into analysis script.
+- [x] Move io.file_selector.py logic into analysis script.
 
 ## Product Data
 

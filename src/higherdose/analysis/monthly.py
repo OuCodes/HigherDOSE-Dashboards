@@ -4,10 +4,12 @@ HigherDOSE Q3 Performance Analysis
 Comprehensive analysis of 30-day sales data organized by metric tiers
 """
 
+from datetime import datetime
+
 import pandas as pd
 import numpy as np
-from datetime import datetime
-from higherdose.utils.io.file_selector import select_data_file_for_report
+
+from higherdose.analysis.file_selector import select_data_file_for_report
 
 def load_and_clean_data():
     """Load and clean the 30-day sales data"""

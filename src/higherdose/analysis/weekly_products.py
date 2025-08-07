@@ -13,14 +13,15 @@ The original channel-level analytics remain intact via re-use of
 import re
 from datetime import datetime, timedelta
 
-from . import weekly as base
 import glob, os
 import argparse
 from pathlib import Path
-from higherdose.utils.io.file_selector import select_csv_file
 
 import numpy as np
 import pandas as pd
+
+from higherdose.analysis.file_selector import select_csv_file
+from . import weekly as base
 
 
 # -------------------------------------------------------------
