@@ -136,8 +136,11 @@ def get_creds():
             except RefreshError as e:
                 # The stored token is no longer valid (e.g., revoked). Remove it and
                 # fall back to a full OAuth flow to obtain a new one.
-                logger.warning("Token refresh failed (%s). Removing stale token and starting OAuth flow...", e)
-                print(f"  {ansi.red}Token refresh failed{ansi.reset}: {e}. Removing stale token and starting OAuth flow...")
+                logger.warning(
+                    "Token refresh failed (%s). Removing stale token and starting OAuth flow...", e
+                )
+                print(f"  {ansi.red}Token refresh failed{ansi.reset}: {e}. "
+                      f"Removing stale token and starting OAuth flow...")
                 try:
                     TOKEN.unlink(missing_ok=True)
                 except Exception as unlink_err:
@@ -178,7 +181,8 @@ def latest_history_id(gmail):
 def fetch_deltas(gmail, start):
     """Fetches new messages since a given history ID."""
     logger.info("Fetching message deltas since history ID: %s", start)
-    print(f"{ansi.magenta}Fetching{ansi.reset} message deltas since history ID: {ansi.cyan}{start}{ansi.reset}")
+    print(f"{ansi.magenta}Fetching{ansi.reset} message deltas since history ID: "
+          f"{ansi.cyan}{start}{ansi.reset}")
     page = gmail.users().history().list(
         userId="me", startHistoryId=start, historyTypes=["messageAdded"]
     ).execute()
@@ -188,7 +192,8 @@ def fetch_deltas(gmail, start):
 
     new_history_id = page.get("historyId")
     logger.info("Found %d new messages. New history ID: %s", len(messages), new_history_id)
-    print(f"  Found {ansi.green}{len(messages)}{ansi.reset} new messages. New history ID: {ansi.cyan}{new_history_id or 'N/A'}{ansi.reset}")
+    print(f"  Found {ansi.green}{len(messages)}{ansi.reset} new messages. "
+          f"New history ID: {ansi.cyan}{new_history_id or 'N/A'}{ansi.reset}")
     return messages, page.get("historyId")
 
 def save_msg(gmail, mid):
@@ -278,7 +283,9 @@ def fetch_all_message_ids(gmail):
             message_batch = response.get('messages', [])
             if message_batch:
                 messages.extend(message_batch)
-                print(f"  Page {ansi.cyan}{page_num}{ansi.reset}: Found {ansi.green}{len(message_batch)}{ansi.reset} messages. Total: {ansi.green}{len(messages)}{ansi.reset}")
+                print(f"  Page {ansi.cyan}{page_num}{ansi.reset}: Found "
+                      f"{ansi.green}{len(message_batch)}{ansi.reset} messages. "
+                      f"Total: {ansi.green}{len(messages)}{ansi.reset}")
 
             page_token = response.get('nextPageToken')
             if not page_token:
@@ -309,7 +316,8 @@ def main():
         print(f"Found {ansi.green}{total}{ansi.reset} total messages to archive.")
 
         for i, mid in enumerate(message_ids):
-            print(f"  {ansi.magenta}Processing {i+1}{ansi.reset}/{ansi.green}{total}{ansi.reset}: {mid}")
+            print(f"  {ansi.magenta}Processing {i+1}{ansi.reset}/"
+                  f"{ansi.green}{total}{ansi.reset}: {mid}")
             try:
                 save_msg(gmail, mid)
             except HttpError as e:
