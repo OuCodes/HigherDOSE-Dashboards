@@ -1,7 +1,7 @@
 """Extract comments from Facebook ads.
 
 Workflow:
-1. Read Ad IDs (either from a file like data/facebook/ad-ids.txt or via the --ids CLI argument).
+1. Read Ad IDs (either from a file like config/facebook/ad-ids.txt or via the --ids CLI argument).
 2. Use Marketing API to resolve each Ad's creative → effective_object_story_id → Post ID.
 3. For each Post ID, fetch all comments (with pagination).
 4. Persist everything to data/facebook/comments-YYYYMMDD-HHMMSS.json.
@@ -17,7 +17,7 @@ Requirements
 Example
 -------
 $ python -m higherdose.facebook.comment \
-    --ids-file data/facebook/ad-ids.txt \
+    --ids-file config/facebook/ad-ids.txt \
     --output data/facebook
 """
 
@@ -41,7 +41,7 @@ logger = report.settings(__file__)
 CONFIG = Path("config", "facebook")
 TOKENS_DIR = Path(CONFIG, "tokens")
 DATA_FACEBOOK = Path("data", "facebook")
-DEFAULT_IDS_FILE = Path(DATA_FACEBOOK, "ad-ids.txt")
+DEFAULT_IDS_FILE = Path(CONFIG, "ad-ids.txt")  # moved to config
 GRAPH_VERSION = "v23.0"
 BASE_URL = f"https://graph.facebook.com/{GRAPH_VERSION}"
 CHUNK_SIZE = 50  # Graph API lets you batch ~50 IDs per request

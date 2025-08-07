@@ -46,7 +46,7 @@
 
 ## Facebook Comments
 
-- [ ] Maybe `data/facebook/ad-account-id.json` and `data/facebook/ad-ids.txt` should be in `config/facebook` instead of `data/facebook`
+- [x] Maybe `data/facebook/ad-account-id.json` and `data/facebook/ad-ids.txt` should be in `config/facebook` instead of `data/facebook`
 
 ## Slack
 
