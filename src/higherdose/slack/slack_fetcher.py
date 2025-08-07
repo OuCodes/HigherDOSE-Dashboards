@@ -2389,7 +2389,7 @@ async def _export_single_channel(
         Mapping of user IDs → human names for nicer formatting.
     conversations_cache : Optional mapping that speeds up name→id resolution.
     """
-    sw = Stopwatch(f"export_channel:{channel_input_raw}")
+    sw = Stopwatch(f"export_channel:{channel_input_raw} ")
     print()
 
     channel_input = channel_input_raw.strip().lstrip("#@")
@@ -2515,7 +2515,7 @@ async def _export_single_channel(
 
 async def main():
     """Main async function."""
-    sw = Stopwatch("main")
+    sw = Stopwatch("main ")
     log_file = Path("src/higherdose/logs/slack_fetcher.log")
     print(f"🚀 {ansi.cyan}Playwright-based Slack Fetcher{ansi.reset}")
     print(f"📍 Workspace: {ansi.yellow}{WORKSPACE_URL}{ansi.reset}")
