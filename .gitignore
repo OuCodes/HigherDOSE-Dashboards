@@ -1,4 +1,9 @@
 # Custom Folders
+**/products/unattributed/
+**/slack/exports/
+**/mail/exports/
+config/facebook/
+config/slack/
 /.refs
 
 # Custom Extensions
@@ -6,11 +11,15 @@
 *.log*
 
 # Custom Files
+**/slack/channel_map.json
+**/mail/cursor.txt
+**/ads/**/*.csv
+
+client_secret_*.json
+secrets.json
 .DS_Store
 *.pickle
-client_secret_*.json
-**/mail/exports/
-secrets.json
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
