@@ -1526,25 +1526,59 @@ class SlackBrowser:
                     ]
 
                     visible_thread_buttons = []
+                    selector_stats = {}  # Track which selectors actually work
                     
                     for selector in prioritized_selectors:
                         try:
                             elements = await self.page.query_selector_all(selector)
+                            visible_count = 0
+                            
                             for element in elements:
                                 # Pre-filter: only include visible elements
                                 try:
                                     if await element.is_visible():
                                         visible_thread_buttons.append(element)
-                                        logger.debug("Found visible thread element with selector: %s", selector)
+                                        visible_count += 1
+                                        
+                                        # Capture DOM attributes for analysis
+                                        try:
+                                            tag_name = await element.evaluate("el => el.tagName")
+                                            class_name = await element.evaluate("el => el.className")
+                                            data_qa = await element.evaluate("el => el.getAttribute('data-qa')")
+                                            aria_label = await element.evaluate("el => el.getAttribute('aria-label')")
+                                            text_content = await element.evaluate("el => el.textContent")
+                                            
+                                            logger.info("Thread element found with selector '%s': tag=%s, class='%s', data-qa='%s', aria-label='%s', text='%s'", 
+                                                      selector, tag_name, class_name, data_qa, aria_label, (text_content or "")[:50])
+                                        except (TimeoutError, Error):
+                                            logger.debug("Could not capture DOM attributes for thread element")
                                 except (TimeoutError, Error):
                                     continue
-                                    
+                            
+                            # Track selector effectiveness
+                            if len(elements) > 0 or visible_count > 0:
+                                selector_stats[selector] = {
+                                    'total_found': len(elements),
+                                    'visible_count': visible_count
+                                }
+                                logger.info("Selector '%s': found %d elements, %d visible", selector, len(elements), visible_count)
+                                
                             # Stop if we found some good candidates
                             if len(visible_thread_buttons) >= 5:  # Reasonable limit
+                                logger.info("Reached thread limit (5), stopping selector search")
                                 break
                                 
-                        except (TimeoutError, Error):
+                        except (TimeoutError, Error) as e:
+                            logger.debug("Selector '%s' failed: %s", selector, e)
                             continue
+                    
+                    # Log summary of selector effectiveness
+                    if selector_stats:
+                        logger.info("Thread selector effectiveness summary:")
+                        for sel, stats in selector_stats.items():
+                            logger.info("  '%s': %d total, %d visible", sel, stats['total_found'], stats['visible_count'])
+                    else:
+                        logger.info("No thread selectors found any elements")
 
                     # Remove duplicates more efficiently using set of element handles
                     seen_elements = set()
@@ -1556,9 +1590,12 @@ class SlackBrowser:
 
                     logger.debug("Found %d visible, unique thread buttons", len(unique_buttons))
 
+                    successful_clicks = 0
+                    thread_api_calls_before = len([d for d in self.intercepted_data if "conversations.replies" in d.get("url", "")])
+                    
                     for i, button in enumerate(unique_buttons):  # Click every discovered thread
                         try:
-                            logger.debug("Clicking thread %d/%d", i+1, len(unique_buttons))
+                            logger.info("Attempting to click thread %d/%d", i+1, len(unique_buttons))
 
                             # Since we pre-filtered for visible elements, skip visibility check
                             # Just scroll into view and click
@@ -1571,12 +1608,16 @@ class SlackBrowser:
                             await button.click()
                             
                             # Wait for thread panel to appear instead of fixed timeout
+                            thread_panel_appeared = False
                             try:
                                 await self.page.wait_for_selector('[data-qa="thread-messages-scroller"], .c-flexpane__content', timeout=3000)
                                 await self.page.wait_for_timeout(500)  # Brief pause for content to load
+                                thread_panel_appeared = True
+                                logger.info("Thread %d/%d: panel appeared successfully", i+1, len(unique_buttons))
                             except (TimeoutError, Error):
                                 # Fallback to shorter fixed wait if selector doesn't work
                                 await self.page.wait_for_timeout(1500)  # Reduced from 2000+1000
+                                logger.debug("Thread %d/%d: panel selector failed, used fallback wait", i+1, len(unique_buttons))
 
                             # Quick scroll within thread - most replies load immediately
                             try:
@@ -1594,12 +1635,21 @@ class SlackBrowser:
                                 await self.page.keyboard.press("Escape")
                                 await self.page.wait_for_timeout(200)  # Reduced from 500ms
                                 logger.debug("Thread closed with Escape")
+                                successful_clicks += 1
+                                logger.info("Thread %d/%d: completed successfully", i+1, len(unique_buttons))
                             except (TimeoutError, Error) as e:
                                 logger.debug("Error closing thread: %s", e)
 
                         except (TimeoutError, Error) as e:
-                            logger.debug("Error clicking thread %d: %s", i+1, e)
+                            logger.warning("Error clicking thread %d: %s", i+1, e)
                             continue
+                    
+                    # Check how many thread API calls were generated
+                    thread_api_calls_after = len([d for d in self.intercepted_data if "conversations.replies" in d.get("url", "")])
+                    new_thread_calls = thread_api_calls_after - thread_api_calls_before
+                    
+                    logger.info("Thread extraction summary: %d buttons clicked successfully, %d new API calls generated", 
+                              successful_clicks, new_thread_calls)
 
             except (TimeoutError, Error) as e:
                 logger.debug("Error loading threads: %s", e)
