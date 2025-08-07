@@ -102,7 +102,7 @@ class Stopwatch:
         """Log the elapsed time since the stopwatch was created."""
         elapsed = time.perf_counter() - self.t0
         logger.debug("%s%s: %.2fs", self.prefix, label, elapsed)
-        print(f"⏱️  {self.prefix}{label}: {ansi.yellow}{elapsed:.2f}s{ansi.reset}")
+        print(f"⏱️  {self.prefix}{label}: {ansi.yellow}{elapsed:.2f}s{ansi.reset}", flush=True)
         return elapsed
 
 # -------------- Credential Management ----------------------------------------
@@ -1238,7 +1238,7 @@ class SlackBrowser:
                     combined_msgs = api_msgs + threaded_msgs
                     # De-duplicate by timestamp
                     deduped = {m.get("ts"): m for m in combined_msgs if m.get("ts")}
-                    print(f"✅ Retrieved {ansi.green}{len(deduped)}{ansi.reset} messages via direct API")
+                    print(f"✅ Retrieved {ansi.green}{len(deduped)}{ansi.reset} messages via direct API", flush=True)
                     logger.info("Retrieved %d total messages (with thread replies) via direct API for channel %s", len(deduped), channel_id)
                     return list(sorted(deduped.values(), key=lambda m: float(m.get('ts', 0))))
                 # Early exit for empty channels - but only if we can verify the channel exists and is accessible
@@ -1248,7 +1248,7 @@ class SlackBrowser:
                     if info_check.get("ok") and info_check.get("channel"):
                         channel_info = info_check["channel"]
                         # If channel exists and is accessible but has no messages, likely empty/retention
-                        print(f"📭 Channel '{channel_info.get('name', channel_id)}' has no messages - likely empty or beyond retention limit")
+                        print(f"📭 Channel '{channel_info.get('name', channel_id)}' has no messages - likely empty or beyond retention limit", flush=True)
                         logger.info("Channel %s exists but has no messages (confirmed via conversations.info) - skipping UI scroll", channel_id)
                         return []
                     else:
@@ -2428,7 +2428,7 @@ async def _export_single_channel(
         return
     sw.lap("resolve_channel")
 
-    print(f"\n📥 Fetching messages for {ansi.cyan}{channel_name or channel_id}{ansi.reset}")
+    print(f"\n📥 Fetching messages for {ansi.cyan}{channel_name or channel_id}{ansi.reset}", flush=True)
     logger.info("Fetching messages for channel: %s (ID: %s)", channel_name or channel_id, channel_id)
 
     # ------------------------------------------------------------------
@@ -2439,11 +2439,12 @@ async def _export_single_channel(
     if last_ts:
         print(
             f"🔄 Incremental mode: fetching messages newer than "
-            f"{datetime.fromtimestamp(last_ts).strftime('%Y-%m-%d %H:%M:%S')}"
+            f"{datetime.fromtimestamp(last_ts).strftime('%Y-%m-%d %H:%M:%S')}", 
+            flush=True
         )
         logger.info("Incremental fetch – oldest ts for channel %s is %s", channel_id, last_ts)
     else:
-        print("�� First-time export: fetching full history")
+        print("🆕 First-time export: fetching full history", flush=True)
         logger.info("First-time export – no existing tracker ts for channel %s", channel_id)
 
     # ------------------------------------------------------------------
@@ -2753,7 +2754,7 @@ async def main():
                 return
 
         if not messages:
-            print("📭 No messages found. The channel might be empty or inaccessible.")
+            print("📭 No messages found. The channel might be empty or inaccessible.", flush=True)
             logger.info("No messages found for channel %s (ID: %s)", channel_name or channel_input, channel_id)
             return
 
