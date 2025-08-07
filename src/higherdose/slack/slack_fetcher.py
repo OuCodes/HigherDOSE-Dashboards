@@ -1241,11 +1241,19 @@ class SlackBrowser:
                     print(f"✅ Retrieved {ansi.green}{len(deduped)}{ansi.reset} messages via direct API")
                     logger.info("Retrieved %d total messages (with thread replies) via direct API for channel %s", len(deduped), channel_id)
                     return list(sorted(deduped.values(), key=lambda m: float(m.get('ts', 0))))
-                # Early exit for empty channels - likely due to retention limits
+                # Early exit for empty channels - but only if we can verify the channel exists and is accessible
                 if oldest_ts == 0:  # Full history request
-                    print("📭 API returned no messages for full history - channel likely empty or beyond retention limit")
-                    logger.info("API returned no messages for full history on channel %s - skipping UI scroll", channel_id)
-                    return []
+                    # Double-check by trying conversations.info to confirm channel is accessible
+                    info_check = self._api_post_sync("conversations.info", {"channel": channel_id})
+                    if info_check.get("ok") and info_check.get("channel"):
+                        channel_info = info_check["channel"]
+                        # If channel exists and is accessible but has no messages, likely empty/retention
+                        print(f"📭 Channel '{channel_info.get('name', channel_id)}' has no messages - likely empty or beyond retention limit")
+                        logger.info("Channel %s exists but has no messages (confirmed via conversations.info) - skipping UI scroll", channel_id)
+                        return []
+                    else:
+                        print("⚠️  Could not verify channel accessibility - proceeding with UI scroll as fallback")
+                        logger.warning("Could not verify channel %s accessibility - proceeding with UI scroll", channel_id)
                 
                 print("⚠️  API returned no messages - falling back to UI scroll…")
                 logger.info("API returned no messages for channel %s, falling back to UI scroll", channel_id)
