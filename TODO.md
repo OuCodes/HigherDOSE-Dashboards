@@ -42,7 +42,7 @@
 - [x] Move mail/archive to data/mail/exports
 - [ ] Detail steps necessary to get gmail archive working on windows machine
     - [ ] Create a tutorial or README around these steps
-- [ ] Merge `gmail_monitor.py` into `gmail_archive.py`
+- [x] Merge `gmail_monitor.py` into `gmail_archive.py`
 
 ## Facebook Comments
 
