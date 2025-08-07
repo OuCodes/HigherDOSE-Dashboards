@@ -1241,6 +1241,12 @@ class SlackBrowser:
                     print(f"✅ Retrieved {ansi.green}{len(deduped)}{ansi.reset} messages via direct API")
                     logger.info("Retrieved %d total messages (with thread replies) via direct API for channel %s", len(deduped), channel_id)
                     return list(sorted(deduped.values(), key=lambda m: float(m.get('ts', 0))))
+                # Early exit for empty channels - likely due to retention limits
+                if oldest_ts == 0:  # Full history request
+                    print("📭 API returned no messages for full history - channel likely empty or beyond retention limit")
+                    logger.info("API returned no messages for full history on channel %s - skipping UI scroll", channel_id)
+                    return []
+                
                 print("⚠️  API returned no messages - falling back to UI scroll…")
                 logger.info("API returned no messages for channel %s, falling back to UI scroll", channel_id)
             except (requests.exceptions.RequestException, KeyError, ValueError) as e:
@@ -1290,9 +1296,23 @@ class SlackBrowser:
             previous_message_count = 0
             max_scroll_attempts = 50  # Increased from 10 to 50
             no_new_messages_count = 0
-
-            print(f"🔄 Starting message history scroll (up to {max_scroll_attempts} attempts)")
-            logger.info("Starting aggressive scrolling for channel %s (up to %d attempts)", channel_id, max_scroll_attempts)
+            
+            # Check if we already have any messages from initial load
+            initial_message_count = 0
+            for data in self.intercepted_data:
+                if "conversations.history" in data["url"]:
+                    response = data.get("response", {})
+                    if response.get("ok"):
+                        initial_message_count += len(response.get("messages", []))
+            
+            # If no messages found initially, use reduced attempts for faster termination
+            if initial_message_count == 0:
+                max_scroll_attempts = 10  # Much faster for empty channels
+                print(f"🔄 No initial messages found - using reduced scroll attempts ({max_scroll_attempts})")
+                logger.info("No initial messages for channel %s - using reduced scroll attempts (%d)", channel_id, max_scroll_attempts)
+            else:
+                print(f"🔄 Starting message history scroll (up to {max_scroll_attempts} attempts)")
+                logger.info("Starting aggressive scrolling for channel %s (up to %d attempts)", channel_id, max_scroll_attempts)
 
             for attempt in range(max_scroll_attempts):
                 try:
@@ -1323,14 +1343,20 @@ class SlackBrowser:
                         no_new_messages_count += 1
                         logger.debug("No new messages loaded in attempt %d (count: %d)", attempt + 1, no_new_messages_count)
 
-                        # Only stop if we've had no new messages for 8 attempts (increased from 3)
-                        if no_new_messages_count >= 8:
-                            print("✅ Reached the beginning of channel history")
-                            logger.info("Reached beginning of channel history after %d attempts", attempt + 1)
+                        # Adjust termination threshold based on initial message count
+                        termination_threshold = 3 if initial_message_count == 0 else 8
+                        if no_new_messages_count >= termination_threshold:
+                            if initial_message_count == 0:
+                                print("✅ No messages found - channel appears empty")
+                                logger.info("No messages found for channel %s after %d attempts - appears empty", channel_id, attempt + 1)
+                            else:
+                                print("✅ Reached the beginning of channel history")
+                                logger.info("Reached beginning of channel history after %d attempts", attempt + 1)
                             break
 
                         # Try more aggressive scrolling methods when no new messages
-                        if attempt > 5:
+                        # Skip aggressive methods for empty channels to speed up termination
+                        if attempt > 5 and initial_message_count > 0:
                             # First dismiss any modals that might be blocking
                             await self._dismiss_modals()
 
@@ -1807,10 +1833,20 @@ class SlackBrowser:
         try:
             # 0. Quick check – if we already got shunted to Slack's download / getting-started page
             current_url = self.page.url
-            if any(term in current_url for term in ["/getting-started", "/download", "/app"]):
+            download_indicators = ["/getting-started", "/download", "/app", "/desktop", "/install"]
+            if any(term in current_url for term in download_indicators):
                 print("🔍 Detected app download page, navigating back to web client…")
-                await self.page.goto(APP_CLIENT_URL)
-                await self.page.wait_for_timeout(500)
+                # Use workspace URL instead of APP_CLIENT_URL to avoid redirects
+                await self.page.goto(WORKSPACE_URL)
+                await self.page.wait_for_timeout(1000)  # Give it time to load
+                
+                # Double-check we didn't get redirected again
+                new_url = self.page.url
+                if any(term in new_url for term in download_indicators):
+                    print("🔍 Still on download page, trying direct app client URL…")
+                    await self.page.goto(APP_CLIENT_URL)
+                    await self.page.wait_for_timeout(1000)
+                
                 return True
 
             # 1. Scan for dismiss / continue buttons
@@ -1869,10 +1905,19 @@ class SlackBrowser:
 
             # Check for app download banner in URL and dismiss
             current_url = self.page.url
-            if any(term in current_url for term in ["/getting-started", "/download", "/app"]):
+            download_indicators = ["/getting-started", "/download", "/app", "/desktop", "/install"]
+            if any(term in current_url for term in download_indicators):
                 print("🔍 Detected app download page, navigating to workspace...")
                 await self.page.goto(WORKSPACE_URL)
-                await self.page.wait_for_timeout(2000)
+                await self.page.wait_for_timeout(1000)  # Reduced wait time
+                
+                # Verify we're not still on a download page
+                final_url = self.page.url
+                if any(term in final_url for term in download_indicators):
+                    print("🔍 Still redirecting to download, forcing client URL...")
+                    await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}")
+                    await self.page.wait_for_timeout(1000)
+                
                 return True
 
             # Try pressing Escape to dismiss any overlays
