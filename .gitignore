@@ -233,3 +233,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Large CSV files - YTD sales data exports (typically >100MB)
+**/ytd-sales_data-higher_dose_llc-*.csv
+**/ytd-light-sales_data-higher_dose_llc-*.csv
