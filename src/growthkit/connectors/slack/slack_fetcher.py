@@ -8,12 +8,14 @@ import re
 import time
 import json
 import asyncio
+import argparse
 import traceback
 import urllib.parse
 from enum import Enum
 from pathlib import Path
 from datetime import datetime, UTC
 from typing import Dict, List, Any, Optional
+from http.cookies import SimpleCookie
 
 from playwright.async_api import async_playwright, Page, Request, Route, Error, TimeoutError
 import requests
@@ -35,11 +37,9 @@ EXPORT_DIR = Path("data/slack/exports")
 ROLODEX_FILE = Path("data/rolodex.json")
 TRACK_FILE = Path("config/slack/conversion_tracker.json")
 CREDENTIALS_FILE = Path("config/slack/playwright_creds.json")
+STORAGE_STATE_FILE = Path("config/slack/storage_state.json")
 CHANNEL_MAP_FILE = Path("data/slack/channel_map.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
-
-# Validate configuration values
-CONFIG_VALIDATED = validate_workspace()
 
 # Workspace configuration
 WORKSPACE_URL = CONFIG.url
@@ -212,66 +212,98 @@ class SlackBrowser:
         self.intercepted_data: List[Dict[str, Any]] = []
         self.user_mappings: Dict[str, str] = {}
         self.channel_mappings: Dict[str, str] = {}
+        self.use_storage_state: bool = True
+        self._dialog_dismiss_enabled: bool = True
 
-    async def start(self, headless: bool = False, use_existing_profile: bool = True):
-        """Start browser and setup interception."""
+    async def start(
+        self,
+        headless: bool = False,
+        use_storage_state: bool = True,
+        fresh: bool = False,
+    ):
+        """Start browser and setup interception.
+
+        Always uses an isolated Playwright context. Optionally restores session from
+        a saved storage state file and/or injects cookies as a fallback.
+        """
+        self.use_storage_state = use_storage_state
         playwright = await async_playwright().start()
 
-        if use_existing_profile:
-            # Use your existing Chrome profile where you're already logged into Slack
-            chrome_profile_path = os.path.expanduser("~/Library/Application Support/Google/Chrome/Default")
+        # Always start a fresh, non-persistent browser
+        self.browser = await playwright.chromium.launch(headless=headless)
+        user_agent = (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/137.0.0.0 Safari/537.36"
+        )
 
-            # Check if Chrome profile exists
-            if os.path.exists(chrome_profile_path):
-                print(f"🔗 Using existing Chrome profile: {chrome_profile_path}")
-                user_agent = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                             "AppleWebKit/537.36 (KHTML, like Gecko) "
-                             "Chrome/137.0.0.0 Safari/537.36")
-                self.context = await playwright.chromium.launch_persistent_context(
-                    user_data_dir=chrome_profile_path,
-                    headless=headless,
-                    user_agent=user_agent
-                )
-                self.browser = self.context.browser
-            else:
-                print("⚠️  Chrome profile not found, falling back to new browser")
-                use_existing_profile = False
-
-        if not use_existing_profile:
-            # Fallback to new browser instance
-            self.browser = await playwright.chromium.launch(headless=headless)
-            user_agent = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                         "AppleWebKit/537.36 (KHTML, like Gecko) "
-                         "Chrome/137.0.0.0 Safari/537.36")
+        # Prefer storage_state if enabled and available (and not fresh)
+        if use_storage_state and not fresh and STORAGE_STATE_FILE.exists():
             self.context = await self.browser.new_context(
-                user_agent=user_agent
+                user_agent=user_agent,
+                storage_state=str(STORAGE_STATE_FILE),
             )
-
-        # Get or create page
-        if use_existing_profile and hasattr(self.context, 'pages') and self.context.pages:
-            # Use existing page from persistent context
-            self.page = self.context.pages[0]
-            print("📄 Using existing browser page")
+            print(f"🔐 Loaded storage state from {STORAGE_STATE_FILE}")
         else:
-            # Create new page
-            self.page = await self.context.new_page()
-            print("📄 Created new browser page")
+            # Create an empty context
+            self.context = await self.browser.new_context(user_agent=user_agent)
 
-            # Restore cookies if we have them (only for new contexts)
-            if self.credentials.cookies:
+            # Inject cookies as a best-effort fallback, unless fresh
+            if not fresh and self.credentials.cookies:
                 cookies = []
                 for name, value in self.credentials.cookies.items():
                     cookies.append({
                         "name": name,
                         "value": value,
                         "domain": ".slack.com",
-                        "path": "/"
+                        "path": "/",
+                    })
+                    cookies.append({
+                        "name": name,
+                        "value": value,
+                        "domain": "app.slack.com",
+                        "path": "/",
                     })
                 await self.context.add_cookies(cookies)
+                print("🍪 Injected cookies into fresh context")
+
+        # Always create a new page in this isolated context
+        self.page = await self.context.new_page()
+        print("📄 Created new browser page")
 
         # Setup request/response interception
         await self.page.route("**/api/**", self._intercept_api_call)
         print("🔍 Set up API interception for **/api/**")
+
+        # Enable verbose network logging by default for debugging
+        # Request handler is sync; response uses async task to avoid blocking
+        self.page.on("request", self._on_request_event)
+        self.page.on("response", lambda r: asyncio.create_task(self._on_response_event(r)))
+
+        # Auto-dismiss native app-open dialogs if they appear
+        async def _on_dialog(dialog):
+            try:
+                logger.info("DIALOG %s: %s", dialog.type, dialog.message)
+                if self._dialog_dismiss_enabled:
+                    await dialog.dismiss()
+                    logger.info("Dialog dismissed")
+                else:
+                    await dialog.accept()
+            except (Error, TimeoutError):
+                pass
+
+        self.page.on("dialog", lambda d: asyncio.create_task(_on_dialog(d)))
+
+    async def _save_storage_state_if_enabled(self) -> None:
+        """Persist current storage state if enabled."""
+        try:
+            if self.use_storage_state and self.context is not None:
+                STORAGE_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+                await self.context.storage_state(path=str(STORAGE_STATE_FILE))
+                logger.debug("Saved storage state to %s", STORAGE_STATE_FILE)
+                print(f"💾 Saved storage state → {STORAGE_STATE_FILE}")
+        except (Error, TimeoutError, OSError, ValueError) as e:
+            logger.warning("Failed to save storage state: %s", e)
 
     async def _intercept_api_call(self, route: Route, request: Request):
         """Intercept Slack API calls to extract credentials and data."""
@@ -286,6 +318,30 @@ class SlackBrowser:
             if "/api/" in request.url:
                 logger.debug("Intercepted API call: %s", request.url)
 
+            # Capture Set-Cookie from response headers to improve credential capture
+            try:
+                headers = response.headers
+                set_cookie = headers.get("set-cookie") if isinstance(headers, dict) else None
+                if set_cookie:
+                    sc = SimpleCookie()
+                    sc.load(set_cookie)
+                    for morsel in sc.values():
+                        name = morsel.key
+                        value = morsel.value
+                        if name and value:
+                            self.credentials.cookies[name] = value
+                            # Token occasionally rides in 'd' cookie or similar
+                            if name == "d" and value and not self.credentials.token:
+                                try:
+                                    decoded = urllib.parse.unquote(value)
+                                    if decoded.startswith(('xox',)):
+                                        self.credentials.token = decoded
+                                except (ValueError, TypeError):
+                                    pass
+                    self.credentials.last_updated = time.time()
+            except Exception:
+                pass
+
             # If this is an API call we're interested in, store the response
             if any(endpoint in request.url for endpoint in [
                 "conversations.history", "conversations.list", "users.list",
@@ -293,7 +349,9 @@ class SlackBrowser:
                 "conversations.browse", "conversations.search", "channels.list",
                 "channels.info", "channels.browse", "channels.search",
                 "client.boot", "client.counts", "rtm.start", "rtm.connect",
-                "team.info", "workspace.info", "api"  # Include any API call
+                "team.info", "workspace.info", "api",  # Include any API call
+                # Sign-in/magic code endpoints that indicate auth state
+                "signin.", "signup.", "auth.captcha", "auth.verify", "auth.magic"
             ]):
                 try:
                     response_text = await response.text()
@@ -321,6 +379,180 @@ class SlackBrowser:
         except (TimeoutError, Error) as e:
             print(f"⚠️  Error intercepting request: {e}")
             await route.continue_()
+
+    # -------------- Network logging helpers ----------------------------------
+    def _classify_slack_url(self, url: str) -> str:
+        """Return a small tag describing the kind of Slack URL for log context."""
+        try:
+            if not url:
+                return "other"
+            if "/api/" in url and ".slack.com" in url:
+                return "api"
+            if "account.slack.com" in url:
+                return "account"
+            if "app.slack.com" in url:
+                return "app"
+            if ".slack.com" in url and ("challenge" in url or "captcha" in url):
+                return "challenge"
+            if ".slack.com" in url and ("signin" in url or "login" in url or "verify" in url):
+                return "signin"
+            if ".slack.com" in url:
+                return "workspace"
+            return "other"
+        except (AttributeError, ValueError, TypeError):
+            return "other"
+
+    def _on_request_event(self, request: Request) -> None:
+        """Lightweight request logger – avoids awaiting to keep perf overhead low."""
+        try:
+            url = request.url
+            method = request.method
+            rtype = request.resource_type
+            tag = self._classify_slack_url(url)
+            logger.info("HTTP REQ %s %s [%s] type=%s", method, url, tag, rtype)
+        except (Error, TimeoutError, AttributeError):
+            pass
+
+    async def _on_response_event(self, response) -> None:
+        """Response logger – captures status and content-type for debugging."""
+        try:
+            url = response.url
+            status = response.status
+            headers = response.headers or {}
+            content_type = headers.get("content-type")
+            tag = self._classify_slack_url(url)
+            logger.info("HTTP RES %s %s [%s] ct=%s", status, url, tag, content_type)
+        except (Error, TimeoutError, AttributeError):
+            pass
+
+    async def _is_login_or_captcha_visible(self) -> bool:
+        """Best-effort detection of Slack login/magic-code/captcha screens.
+
+        Never navigates; only inspects the current page URL and DOM.
+        """
+        if not self.page:
+            return False
+
+        try:
+            url = self.page.url
+        except (Error, AttributeError):
+            url = ""
+
+        # URL heuristics
+        url_indicators = [
+            "signin", "login", "account.slack.com", "verify", "challenge", "captcha",
+        ]
+        if any(ind in url for ind in url_indicators):
+            return True
+
+        # DOM heuristics: common login/magic-code/captcha elements
+        selectors = [
+            'input[type="email"]',
+            'input[name="email"]',
+            'input[type="password"]',
+            '[data-qa="signin_form"]',
+            '[data-qa="signin_button"]',
+            # Magic code / OTP inputs
+            'input[name="pin"]',
+            '[data-qa="magic_code_input"]',
+            'input[autocomplete="one-time-code"]',
+            # Captcha iframes
+            'iframe[src*="hcaptcha"]',
+            'iframe[src*="recaptcha"]',
+            # Generic textual hints
+            ':text-is("Enter your code")',
+            ':text-is("We sent you a code")',
+            ':text-is("Verify your identity")',
+            ':text-is("Just a moment")',
+        ]
+        try:
+            for sel in selectors:
+                el = await self.page.query_selector(sel)
+                if el:
+                    return True
+        except (TimeoutError, Error):
+            # Non-fatal – if selectors fail, we simply don't detect
+            pass
+        return False
+
+    async def _is_authenticated(self) -> bool:
+        """Confirm authenticated session via DOM or definitive API payloads.
+
+        - Prefer DOM workspace selectors
+        - Otherwise, look for specific API responses that only occur post-login
+        """
+        if not self.page:
+            return False
+
+        # DOM indicators of a loaded workspace
+        dom_selectors = [
+            '[data-qa="workspace_name"]', '[data-qa="team_name"]', '.p-ia__sidebar',
+            '.p-channel_sidebar', '.p-workspace__sidebar', '.c-team_sidebar',
+            '.c-workspace_sidebar', '[data-qa="sidebar"]', '.c-message_input',
+            '.p-message_input', '[data-qa="message_input"]',
+        ]
+        for sel in dom_selectors:
+            try:
+                el = await self.page.query_selector(sel)
+                if el:
+                    return True
+            except (TimeoutError, Error):
+                continue
+
+        # API indicators: look for specific endpoints in intercepted data
+        definitive_apis = ["client.userBoot", "client.counts", "team.info", "users.prefs"]
+        for data in self.intercepted_data:
+            url = data.get("url", "")
+            resp = data.get("response", {})
+            if any(api in url for api in definitive_apis) and isinstance(resp, dict) and resp.get("ok"):
+                # Ensure the response contains expected structures
+                keys = set(resp.keys())
+                if ("users" in keys) or ("team" in keys) or ("channels" in keys):
+                    return True
+
+        return False
+
+    def _on_app_client(self) -> bool:
+        """Return True if the current page is already the app client for this TEAM_ID."""
+        try:
+            if not self.page:
+                return False
+            url = self.page.url
+            return ("app.slack.com/client/" in url) and (TEAM_ID in url)
+        except (Error, AttributeError):
+            return False
+
+    async def _wait_for_manual_login(self, timeout_seconds: int = 300) -> bool:
+        """Allow the user to complete interactive login without navigating away.
+
+        Periodically checks for authenticated state and returns when detected or timeout.
+        """
+        if not self.page:
+            return False
+
+        print("🔐 Login UI detected. Waiting for you to complete sign-in…")
+        print(f"   We'll monitor for up to {timeout_seconds//60} minutes and continue automatically once you're in.")
+
+        start = time.time()
+        while (time.time() - start) < timeout_seconds:
+            try:
+                # Give the page a moment for any transitions
+                await self.page.wait_for_timeout(1000)
+            except (TimeoutError, Error):
+                pass
+
+            # If authenticated, persist state and continue
+            if await self._is_authenticated():
+                await self._save_storage_state_if_enabled()
+                await self.save_credentials()
+                return True
+
+            # If still on login/captcha, keep waiting; don't navigate
+            # Small extra sleep to avoid busy loop
+            await asyncio.sleep(0.5)
+
+        print("⏳ Login wait timed out. Still not authenticated.")
+        return False
 
     async def ensure_logged_in(self) -> bool:
         """Ensure we're logged in to Slack workspace."""
@@ -351,21 +583,28 @@ class SlackBrowser:
             await self.page.wait_for_timeout(500)  # brief pause to let API calls begin
             sw.lap("post-check 0.5s")
 
-            # If we're intercepting API calls, we're likely logged in
-            if len(self.intercepted_data) > 0:
-                print("✅ Login detected via API interception!")
+            # If we're already on the app client, we're done
+            if self._on_app_client():
+                await self._save_storage_state_if_enabled()
+                await self.save_credentials()
+                return True
 
-                # Look for specific API calls that indicate successful login
-                logged_in_apis = [
-                    "client.userBoot", "client.counts", "team.info",
-                    "users.prefs", "conversations", "search.modules"
-                ]
-
-                for data in self.intercepted_data:
-                    url = data.get("url", "")
-                    if any(api in url for api in logged_in_apis):
-                        print(f"✅ Confirmed login with API call: {url}")
+            # If login or captcha UI is visible, wait for user to complete, then prefer app client
+            if await self._is_login_or_captcha_visible():
+                success = await self._wait_for_manual_login(timeout_seconds=600)
+                if success:
+                    # If authenticated and not already on app client, open app client
+                    if not self._on_app_client():
+                        try:
+                            await self.page.goto(APP_CLIENT_URL, timeout=15000)
+                            await self.page.wait_for_timeout(1500)
+                        except (TimeoutError, Error):
+                            pass
+                    if self._on_app_client() or await self._is_authenticated():
+                        await self._save_storage_state_if_enabled()
+                        await self.save_credentials()
                         return True
+                # If we timed out, continue with additional checks below
 
             # Fallback: Try to find elements that indicate we're logged in
             await self.page.wait_for_timeout(3000)
@@ -394,10 +633,31 @@ class SlackBrowser:
                 except (TimeoutError, Error):  # Playwright timeout or other selector errors
                     continue
 
-            # If we got here but have API data, we're probably logged in
-            if len(self.intercepted_data) > 0:
-                print("✅ Assuming login success based on API activity")
-                return True
+            # As a last check, only treat API activity as authenticated if we saw
+            # definitive post-login endpoints with ok:true OR signin success
+            definitive_apis = ["client.userBoot", "client.counts", "team.info", "users.prefs"]
+            for data in self.intercepted_data:
+                url = data.get("url", "")
+                resp = data.get("response", {})
+                if any(api in url for api in definitive_apis) and isinstance(resp, dict) and resp.get("ok"):
+                    print(f"✅ Confirmed login via API: {url}")
+                    await self._save_storage_state_if_enabled()
+                    await self.save_credentials()
+                    return True
+                # Sign-in success on workspace domain (pre-app) – treat as authenticated
+                if ("signin." in url or "signup." in url or "auth.magic" in url or "auth.verify" in url) and isinstance(resp, dict) and resp.get("ok"):
+                    print(f"✅ Sign-in completed on workspace domain: {url}")
+                    # Open app client only if not already there
+                    if not self._on_app_client():
+                        try:
+                            await self.page.goto(APP_CLIENT_URL, timeout=15000)
+                            await self.page.wait_for_timeout(1500)
+                        except (TimeoutError, Error):
+                            pass
+                    if await self._is_authenticated():
+                        await self._save_storage_state_if_enabled()
+                        await self.save_credentials()
+                        return True
 
             # Check current URL for login indicators
             current_url = self.page.url
@@ -409,6 +669,8 @@ class SlackBrowser:
             # If we can navigate and have some API activity, consider it logged in
             if "slack.com" in current_url and len(self.intercepted_data) > 0:
                 print("✅ Login assumed successful (on Slack domain with API activity)")
+                await self._save_storage_state_if_enabled()
+                await self.save_credentials()
                 return True
 
             print("❌ Unable to verify login status")
@@ -531,35 +793,7 @@ class SlackBrowser:
             members=members
         )
 
-    def _print_conversation_summary(self, conversations: Dict[str, ConversationInfo]):
-        """Print a summary of conversations by type."""
-        type_counts = {
-            ConversationType.CHANNEL: 0,
-            ConversationType.DM: 0,
-            ConversationType.MULTI_PERSON_DM: 0,
-            ConversationType.UNKNOWN: 0
-        }
 
-        for conv_info in conversations.values():
-            type_counts[conv_info.conversation_type] += 1
-
-        print("\n📊 Conversation Summary:")
-        print(f"  📁 Channels: {type_counts[ConversationType.CHANNEL]}")
-        print(f"  💬 DMs: {type_counts[ConversationType.DM]}")
-        print(f"  👥 Multi-person DMs: {type_counts[ConversationType.MULTI_PERSON_DM]}")
-        print(f"  ❓ Unknown: {type_counts[ConversationType.UNKNOWN]}")
-        print(f"  🔢 Total: {sum(type_counts.values())}")
-
-        # Show examples of each type
-        examples = {conv_type: [] for conv_type in ConversationType}
-        for conv_info in conversations.values():
-            if len(examples[conv_info.conversation_type]) < 3:
-                examples[conv_info.conversation_type].append(str(conv_info))
-
-        for conv_type, example_list in examples.items():
-            if example_list:
-                print(f"  Examples of {conv_type.value}: {', '.join(example_list)}")
-        print()
 
     async def get_channel_list(self) -> Dict[str, str]:
         """Get channel list from processed files and API data."""
@@ -955,130 +1189,7 @@ class SlackBrowser:
         print(f"✅ Found {len(conversations)} conversations")
         return conversations
 
-    async def extract_channels_from_dom(self) -> Dict[str, str]:
-        """Extract channels directly from the DOM elements."""
-        channels = {}
 
-        try:
-            # Try multiple selectors that might contain channel information
-            channel_selectors = [
-                # Channel browser specific selectors (try these first)
-                'div[data-qa="channel_browser"] a',
-                'div[data-qa="channel_browser"] [role="listitem"]',
-                'div[data-qa="browse_channels"] a',
-                'div[data-qa="browse_channels"] [role="listitem"]',
-                '[data-qa="channel_browser"] a[href*="/archives/C"]',
-                '[data-qa="browse_channels"] a[href*="/archives/C"]',
-                # Channel list items in browser
-                'ul[role="list"] li a',
-                'div[role="list"] div a',
-                'section[aria-label*="channel"] a',
-                # Channel sidebar - more specific selectors
-                '.p-channel_sidebar [data-qa="virtual_list_item"] a',
-                '.p-channel_sidebar [role="listitem"] a',
-                '.p-channel_sidebar [data-qa="sidebar_item"]',
-                '.p-channel_sidebar [data-qa="sidebar_item_channel"]',
-                # Channel links with specific patterns
-                'a[href*="/archives/C"]',  # Channel IDs start with C
-                'a[href*="/channels/C"]',
-                'a[data-qa="channel_name"]',
-                # Navigation sidebar
-                '[data-qa="sidebar"] [data-qa="virtual_list_item"]',
-                '[data-qa="sidebar"] [role="listitem"]',
-                # Generic navigation elements
-                'nav [role="listitem"]',
-                'nav a[href*="/archives/"]',
-                # Button elements that might be channels
-                'button[data-qa*="channel"]',
-                'button[aria-label*="channel"]',
-                # Less specific fallbacks
-                '[data-qa*="channel"]',
-                '[aria-label*="channel"]',
-                '[aria-label*="Channel"]'
-            ]
-
-            for selector in channel_selectors:
-                try:
-                    elements = await self.page.query_selector_all(selector)
-                    logger.debug("Found %d elements with selector: %s", len(elements), selector)
-
-                    for element in elements:
-                        # Try to get channel name and ID from various attributes
-                        name = ""
-                        channel_id = ""
-
-                        # Try to get from href attribute
-                        href = await element.get_attribute('href')
-                        if href:
-                            if '/archives/' in href:
-                                parts = href.split('/archives/')[-1].split('?')[0].split('/')
-                                channel_id = parts[0]
-                            elif '/channels/' in href:
-                                parts = href.split('/channels/')[-1].split('?')[0].split('/')
-                                channel_id = parts[0]
-
-                        # Try to get from data attributes
-                        if not channel_id:
-                            for attr in ['data-qa-channel-id', 'data-channel-id', 'data-qa']:
-                                attr_value = await element.get_attribute(attr)
-                                if attr_value and attr_value.startswith('C'):
-                                    channel_id = attr_value
-                                    break
-
-                        # Try to get channel name from text content
-                        text = await element.text_content()
-                        if text:
-                            text = text.strip()
-                            # Look for actual channel names (short, simple text)
-                            if text.startswith('#'):
-                                potential_name = text[1:]  # Remove #
-                                # Only accept if it looks like a channel name (no spaces, reasonable length)
-                                conditions = (len(potential_name) > 0 and
-                                            len(potential_name) < 50 and
-                                            ' ' not in potential_name)
-                                if conditions:
-                                    name = potential_name
-                            elif (text and len(text) < 50 and
-                                  not text.startswith('+') and
-                                  not text.startswith('@')):
-                                # Simple text that might be a channel name
-                                # Avoid message content (which tends to be longer)
-                                avoid_words = ['am', 'pm', 'yesterday', 'ago', 'reply', 'thread', 'edited']
-                                if not any(word in text.lower() for word in avoid_words):
-                                    name = text
-
-                        # Try to get name from aria-label
-                        if not name:
-                            aria_label = await element.get_attribute('aria-label')
-                            if aria_label:
-                                if 'channel' in aria_label.lower():
-                                    # Extract channel name from aria-label like "general channel"
-                                    name = aria_label.lower().replace('channel', '').strip()
-                                elif aria_label.startswith('#'):
-                                    name = aria_label[1:]
-
-                        # If we found both name and ID, or at least a name, add it
-                        if name and channel_id:
-                            channels[name] = channel_id
-                            logger.debug("Found channel via DOM: #%s (%s)", name, channel_id)
-                        elif name and len(name) > 0 and not name.isspace():
-                            # Use a placeholder ID if we can't find the real one
-                            channels[name] = f"C_PLACEHOLDER_{name}"
-                            logger.debug("Found channel via DOM: #%s (placeholder ID)", name)
-
-                    if elements:
-                        break  # If we found elements with this selector, don't try others
-
-                except Exception as e:
-                    logger.debug("Error with DOM selector %s: %s", selector, e)
-                    continue
-
-            logger.debug("DOM extraction found %d channels", len(channels))
-
-        except (TimeoutError, Error, AttributeError) as e:
-            print(f"⚠️  Error extracting channels from DOM: {e}")
-
-        return channels
 
     async def _dismiss_modals(self):
         """Dismiss any modal dialogs that might interfere with scrolling."""
@@ -1814,6 +1925,7 @@ class SlackBrowser:
 
     async def close(self):
         """Close browser and save credentials."""
+        await self._save_storage_state_if_enabled()
         await self.save_credentials()
         if self.browser:
             await self.browser.close()
@@ -1842,58 +1954,72 @@ class SlackBrowser:
 
                 return True
 
-            # 1. Scan for dismiss / continue buttons
-            launch_screen_selectors = [
-                # "Continue in browser" button
-                'button:has-text("Continue in browser")',
-                'a:has-text("Continue in browser")',
-                '[data-qa="continue_in_browser"]',
-
-                # "Use Slack in your browser" button
+            # 1. Prefer explicit "Open in browser" actions
+            open_in_browser_selectors = [
+                # Exact official link variants
+                'a[href*="/ssb/redirect"]',
+                'a:has-text("use Slack in your browser.")',
+                'a:has-text("use Slack in your browser")',
+                # Other common variants
+                'button:has-text("Open Slack in your browser")',
+                'a:has-text("Open Slack in your browser")',
                 'button:has-text("Use Slack in your browser")',
                 'a:has-text("Use Slack in your browser")',
-
-                # "Open in browser" button
+                'button:has-text("Continue in browser")',
+                'a:has-text("Continue in browser")',
                 'button:has-text("Open in browser")',
                 'a:has-text("Open in browser")',
+                '[data-qa="continue_in_browser"]',
+            ]
 
-                # Skip app download
-                'button:has-text("Skip")',
-                'a:has-text("Skip")',
-
-                # Generic "browser" link
-                'a:has-text("browser")',
-
-                # App download dismissal
-                '.p-download_page__cta--skip',
-                '.p-download_page__skip',
-
-                # App prompt dismissal
+            cancel_selectors = [
+                'button:has-text("Cancel")',
                 'button:has-text("Not now")',
                 'button:has-text("Maybe later")',
                 'button:has-text("No thanks")',
-
-                # Close buttons on app prompts
                 '[data-qa="app-download-banner-close"]',
                 '[data-qa="download-banner-close"]',
-
-                # Generic close on overlays
+                '.p-download_page__cta--skip',
+                '.p-download_page__skip',
                 '.c-banner__close',
                 '.c-alert__close',
             ]
 
-            for selector in launch_screen_selectors:
+            # Try direct open-in-browser first
+            for selector in open_in_browser_selectors:
                 try:
-                    # Non-blocking lookup – returns immediately if element not present
-                    element = await self.page.query_selector(selector)
-                    if element:
-                        print(f"🔍 Found app launcher element: {selector}")
-                        await element.click()
-                        print("✅ Dismissed app launcher/popup")
-                        await self.page.wait_for_timeout(500)
+                    el = await self.page.query_selector(selector)
+                    if el:
+                        print(f"🔍 Found 'Open in browser' element: {selector}")
+                        await el.click()
+                        print("✅ Opening Slack in browser")
+                        await self.page.wait_for_timeout(700)
                         return True
                 except (TimeoutError, Error):
-                    # Some selectors can raise due to syntax or detached nodes
+                    continue
+
+            # Otherwise, click cancel/close then try open-in-browser once more
+            for selector in cancel_selectors:
+                try:
+                    el = await self.page.query_selector(selector)
+                    if el:
+                        print(f"🔍 Found app prompt dismiss element: {selector}")
+                        await el.click()
+                        await self.page.wait_for_timeout(400)
+                        # Second pass for open-in-browser after dismiss
+                        for ob_sel in open_in_browser_selectors:
+                            try:
+                                ob_el = await self.page.query_selector(ob_sel)
+                                if ob_el:
+                                    print(f"🔍 Found 'Open in browser' element after dismiss: {ob_sel}")
+                                    await ob_el.click()
+                                    print("✅ Opening Slack in browser")
+                                    await self.page.wait_for_timeout(700)
+                                    return True
+                            except (TimeoutError, Error):
+                                continue
+                        return True
+                except (TimeoutError, Error):
                     continue
 
             # Check for app download banner in URL and dismiss
@@ -2524,11 +2650,27 @@ async def main():
 
     logger.info("Slack fetcher started for workspace: %s", WORKSPACE_URL)
 
+    # CLI flags
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument("--headless", action="store_true", help="Run browser headless")
+    parser.add_argument("--no-storage-state", action="store_true", help="Disable loading/saving storage_state")
+    parser.add_argument("--fresh", action="store_true", help="Ignore any saved state and start clean")
+    parser.add_argument("--headful-login", action="store_true", help="Force an interactive headful login and refresh storage state")
+    # Accept unknown so we don't break existing invocation styles
+    args, _unknown = parser.parse_known_args()
+
+    headless = args.headless and not args.headful_login
+    use_storage_state = not args.no_storage_state
+    fresh = bool(args.fresh)
+    if args.headful_login:
+        headless = False
+        fresh = True
+
     browser = SlackBrowser()
 
     try:
-        # Start browser (headless=False to allow manual login if needed)
-        await browser.start(headless=False)
+        # Start browser with requested options
+        await browser.start(headless=headless, use_storage_state=use_storage_state, fresh=fresh)
         sw.lap("browser_start")
 
         # Ensure we're logged in
@@ -2825,6 +2967,8 @@ async def main():
 
 def run_main():
     """Run the async main function."""
+    # Validate configuration at runtime to avoid import-time failures
+    validate_workspace()
     ensure_chromium_installed()
     asyncio.run(main())
 
