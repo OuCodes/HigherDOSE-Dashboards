@@ -23,7 +23,7 @@ This directory provides everything needed to **export Gmail messages to local Ma
 source venv/bin/activate
 
 # run directly
-python src/higherdose/mail/gmail_sync.py
+python -m growthkit.connectors.mail.gmail_sync
 
 # …or via the convenience wrapper
 python scripts/email_export.py

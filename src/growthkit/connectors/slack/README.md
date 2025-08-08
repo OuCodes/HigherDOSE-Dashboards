@@ -1,6 +1,6 @@
-# Slack Fetcher for HigherDOSE
+# Slack Fetcher
 
-Automated Playwright-powered exporter that turns any Slack conversation (channels, direct messages, multi-person DMs) from the HigherDOSE workspace into neatly formatted Markdown archives.
+Automated Playwright-powered exporter that turns any Slack conversation (channels, direct messages, multi-person DMs) into neatly formatted Markdown archives.
 
 ---
 
@@ -23,15 +23,15 @@ This script lets **any logged-in user** grab conversations they have access to �
 pip install -e .
 
 # 2. Run the exporter via the convenience wrapper
-hd-slack
+gk-slack
 # - or - 
 
-python -m higherdose.slack.slack_fetcher
+python -m growthkit.connectors.slack.slack_fetcher
 ```
 
 Interaction steps:
 1. A Chromium window launches (non-headless by default).  
-2. If your default Chrome profile is already logged into `https://higherdosemanagement.slack.com`, no action needed; otherwise sign in once.  
+2. If your default Chrome profile is already logged into your workspace, no action needed; otherwise sign in once.  
 3. In the terminal, type the channel(s) you want to export, e.g. `#general` **or** `marketing, dm_with_jake` **or** `C0123ABCD`.  
 4. Markdown files appear in `data/slack/exports/`.
 
@@ -43,8 +43,8 @@ Interaction steps:
 
 | Path | Purpose |
 |------|---------|
-| `src/higherdose/slack/slack_fetcher.py` | Main script – Playwright wrapper + export logic |
-| `config/slack/workspace_id.json` | Hard-coded workspace URL & team ID |
+| `src/growthkit/connectors/slack/slack_fetcher.py` | Main script – Playwright wrapper + export logic |
+| `config/slack/workspace.py` | Workspace URL & team ID |
 | `config/slack/playwright_creds.json` | **Sensitive!** Auto-saved cookies & `xoxc-` / `xoxd-` tokens (refreshed hourly) |
 | `config/slack/conversion_tracker.json` | Keeps the latest exported timestamp per channel so subsequent runs are incremental |
 | `data/slack/exports/` | Destination folder for `*.md` conversation archives |
@@ -122,7 +122,7 @@ Features:
 ## Security & Privacy
 
 * `config/slack/playwright_creds.json` grants full API access – **do not commit** it.  It’s in `.gitignore` by default.
-* Exports may contain PII and should be handled according to HigherDOSE’s data-handling policy.
+* Exports may contain PII and should be handled according to your organization's data-handling policy.
 * Respect Slack’s and your company’s terms of service when distributing archives.
 
 ---

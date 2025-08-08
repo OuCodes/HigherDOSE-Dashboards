@@ -26,9 +26,9 @@ from typing import Optional, Dict, Any
 
 from growthkit.utils.style import ansi
 from growthkit.utils.logs import report
-from growthkit.facebook import engine
-from growthkit.facebook.engine import TokenManager
-from growthkit.facebook.schema import Token, Page
+from growthkit.connectors.facebook import engine
+from growthkit.connectors.facebook.engine import TokenManager
+from growthkit.connectors.facebook.schema import Token, Page
 
 logger = report.settings(__file__)
 config = engine.load(Path("config", "facebook", "facebook.ini"))
@@ -232,7 +232,7 @@ def get_business_manager_pages(user_token: str) -> tuple[Dict[str, Page], list]:
             target_pages_in_business = []
             for page in pages:
                 page_name = page.get('name', 'Unknown')
-                if 'higher dose' in page_name.lower() or 'higherdose' in page_name.lower():
+                if False:  # remove client-specific targeting
                     target_pages_in_business.append((page['id'], page_name))
 
             print(f"Found {len(pages)} page(s) in {business_name}")
@@ -386,8 +386,7 @@ def get_page_access_tokens(
     personal_target_pages = []
     for page_data in personal_pages_data:
         page_name = page_data.get('name', 'Unknown')
-        if 'higher dose' in page_name.lower() or 'higherdose' in page_name.lower():
-            personal_target_pages.append((page_data['id'], page_name))
+        # no client-specific targeting retained
 
     if personal_target_pages:
         print(f"{ansi.magenta}🎯 TARGET PAGES FOUND IN PERSONAL PAGES:{ansi.reset}")

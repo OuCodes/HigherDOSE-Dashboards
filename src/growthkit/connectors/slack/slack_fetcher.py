@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Slack conversation extractor using Playwright for HigherDOSE workspace.
+Slack conversation extractor using Playwright.
 """
 
 import os
@@ -20,7 +20,7 @@ import requests
 
 from growthkit.utils.style import ansi
 from growthkit.utils.logs import report
-from growthkit.slack._playwright_setup import ensure_chromium_installed
+from growthkit.connectors.slack._playwright_setup import ensure_chromium_installed
 
 from config.slack.workspace import validate_workspace
 from config.slack.workspace import CONFIG
@@ -2516,7 +2516,7 @@ async def _export_single_channel(
 async def main():
     """Main async function."""
     sw = Stopwatch("main ")
-    log_file = Path("src/higherdose/logs/slack_fetcher.log")
+    log_file = Path("src/growthkit/utils/logs/slack_fetcher.log")
     print(f"🚀 {ansi.cyan}Playwright-based Slack Fetcher{ansi.reset}")
     print(f"📍 Workspace: {ansi.yellow}{WORKSPACE_URL}{ansi.reset}")
     print(f"📝 Detailed logs: {ansi.grey}{log_file.absolute()}{ansi.reset}")

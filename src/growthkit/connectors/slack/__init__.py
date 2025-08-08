@@ -1,6 +1,6 @@
 """
 Helper block to ensure the locally-generated `config/` package is importable
-when this module is invoked via the `hd-slack` console entry-point.
+when this module is invoked via the `gk-slack` console entry-point.
 
 When the package is installed, the entry-point lives inside the virtualenv's
 `bin/` directory, meaning Python's default import search path does **not**
