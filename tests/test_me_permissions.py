@@ -18,9 +18,9 @@ import urllib.parse
 import urllib.request
 from typing import Dict, Any, Optional
 
-from higherdose.utils.style import ansi
-from higherdose.utils.logs import report
-from higherdose.facebook.engine import TokenManager
+from growthkit.utils.style import ansi
+from growthkit.utils.logs import report
+from growthkit.facebook.engine import TokenManager
 
 logger = report.settings(__file__)
 

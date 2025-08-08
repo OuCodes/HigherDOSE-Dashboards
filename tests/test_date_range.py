@@ -1,5 +1,5 @@
 from datetime import date, timedelta
-from higherdose.reports.executive import PRESET_RANGES
+from growthkit.reports.executive import PRESET_RANGES
 
 
 def test_preset_ranges():

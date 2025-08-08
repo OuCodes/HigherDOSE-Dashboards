@@ -30,8 +30,8 @@ from playwright.async_api import async_playwright
 from playwright.async_api import Error as PlaywrightError
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 
-from higherdose.utils.style import ansi
-from higherdose.utils.logs import report
+from growthkit.utils.style import ansi
+from growthkit.utils.logs import report
 
 logger = report.settings(__file__)
 
