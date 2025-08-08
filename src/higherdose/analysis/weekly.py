@@ -21,6 +21,7 @@ import numpy as np
 import pandas as pd
 
 from higherdose.analysis.file_selector import select_csv_file
+from higherdose.analysis import product_data
 
 # -------------------------------------------------------------
 # Channel-level functions
@@ -590,7 +591,6 @@ def _fmt_delta(cur: float, prev: float, prefix: str = "$", digits: int = 0) -> s
 
 def load_product_mappings():
     """Load product mappings from the canonical product_data module."""
-    from . import product_data
     
     # Use the canonical data directly
     product_to_category = product_data.PRODUCT_TO_CATEGORY.copy()
