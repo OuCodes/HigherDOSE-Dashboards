@@ -5,7 +5,7 @@ Delegates everything to ``higherdose.analysis.mtd`` so that
 all real code lives in the installable package.
 """
 
-from higherdose.analysis import executive
+from higherdose.reports import executive
 
 if __name__ == "__main__":
     executive.main()
