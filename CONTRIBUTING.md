@@ -1,12 +1,12 @@
-# Contributing to the HigherDOSE Growth-Report Toolkit
+# Contributing to GrowthKit
 
 First off, thank you for taking the time to contribute!  The goal of this
 document is to make the process **easy, predictable, and safe** for everyone
 involved—humans, CI, and AI assistants alike.
 
 > **Golden Rule:**
-> Business logic lives in `src/higherdose/`.  Wrapper scripts go in `scripts/`.
-> Secrets stay in `config/`.  Data goes in `data/`.
+> Business logic lives in `src/growthkit/`. Wrapper scripts go in `scripts/`.
+> Secrets stay in `config/`. Data goes in `data/`.
 
 ---
 
@@ -14,8 +14,8 @@ involved—humans, CI, and AI assistants alike.
 
 1. **Fork & Clone**
    ```bash
-   git clone git@github.com:<your-fork>/HigherDOSE.git
-   cd HigherDOSE
+   git clone git@github.com:<your-fork>/GrowthKit.git
+   cd GrowthKit
    ```
 2. **Install Dev Dependencies**
    ```bash
@@ -60,8 +60,8 @@ git checkout -b feature/amazing-idea
 | Folder | ✅ Allowed | ❌ Forbidden |
 |--------|-----------|-------------|
 | `scripts/` | Thin CLI wrappers (<30 LOC) | Business logic, secrets |
-| `src/higherdose/` | Pure library code, tests | Data files, env-specific config |
-| `src/higherdose/utils/` | Vendored helper library (read-only) | **Any** modifications in this repo |
+| `src/growthkit/` | Pure library code, tests | Data files, env-specific config |
+| `src/growthkit/utils/` | Vendored helper library (read-only) | **Any** modifications in this repo |
 | `config/` | Credential **templates**, small INI/JSON | Hard-coded secrets in git |
 | `data/` | Raw exports, generated reports | Source code, virtualenvs |
 
@@ -135,4 +135,4 @@ CI will fail if the directory lacks a README.
 
 ## 11. Need Help?
 
-Open an issue or ping us in **#higherdose-dev** on Slack.  Happy coding!
+Open an issue or ping in your team Slack. Happy coding!

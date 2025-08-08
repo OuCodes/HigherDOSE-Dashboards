@@ -1,8 +1,8 @@
 [project]
-name = "higherdose"
+name = "growthkit"
 version = "0.0.1"
-description = "Growth report analysis toolkit for HigherDOSE"
-authors = [{name = "HigherDOSE"}]
+description = "GrowthKit – report generation toolkit for growth teams"
+authors = [{name = "GrowthKit"}]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -21,11 +21,11 @@ dependencies = [
 
 # CLI entry points - these will be available as commands after installation
 [project.scripts]
-hd-weekly = "higherdose.analysis.weekly:main"
-hd-executive = "higherdose.analysis.executive:main"
-hd-h1 = "higherdose.analysis.h1:main"
-hd-slack = "higherdose.slack.slack_fetcher:run_main"
-hd-email = "higherdose.mail.gmail_archive:main"
+gk-weekly = "growthkit.reports.weekly:main"
+gk-exec = "growthkit.reports.executive:main"
+gk-h1 = "growthkit.reports.h1:main"
+gk-slack = "growthkit.connectors.slack.slack_fetcher:run_main"
+gk-email = "growthkit.connectors.mail.gmail_sync:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]

@@ -1,4 +1,4 @@
-# HigherDOSE — CLI Entry-Points Tutorial
+# GrowthKit — CLI Entry-Points Tutorial
 
 > Last updated: 2025-07-26
 
@@ -12,9 +12,9 @@ A *console-script entry point* is a small, automatically-generated wrapper that 
 
 ```toml
 [project.scripts]
-hd-weekly = "higherdose.analysis.weekly_products:main"
+gk-weekly = "growthkit.reports.weekly:main"
 ```
-creates an executable called `hd-weekly` that imports `higherdose.analysis.weekly_products` and calls its `main()` function.
+creates an executable called `gk-weekly` that imports `growthkit.reports.weekly` and calls its `main()` function.
 
 ---
 
@@ -31,17 +31,16 @@ creates an executable called `hd-weekly` that imports `higherdose.analysis.weekl
 
 ```toml
 [project.scripts]
-hd-weekly = "higherdose.analysis.weekly_products:main"
-hd-h1     = "higherdose.analysis.h1:main"
+gk-weekly = "growthkit.reports.weekly:main"
+gk-h1     = "growthkit.reports.h1:main"
 # Async functions → wrap in a sync helper
-hd-slack  = "higherdose.slack.slack_fetcher_playwright:run_main"
-hd-email  = "higherdose.mail.gmail_archive:main"
+gk-slack  = "growthkit.connectors.slack.slack_fetcher:run_main"
+gk-email  = "growthkit.connectors.mail.gmail_sync:main"
 ```
 
 **Naming convention**
 
-* Use the short `hd-*` prefix for user-facing commands.
-* Keep the long `higherdose-*` aliases **commented out** (uncomment only if you really need verbose names).
+* Use the short `gk-*` prefix for user-facing commands.
 
 ---
 
@@ -69,8 +68,8 @@ Why *editable*? Because it symlinks your source tree into the venv, so changes a
 With the venv active:
 
 ```bash
-(venv) $ which hd-weekly   # should print path inside ./venv/bin/
-(venv) $ hd-weekly --help   # or run the command
+(venv) $ which gk-weekly   # should print path inside ./venv/bin/
+(venv) $ gk-weekly --help   # or run the command
 ```
 
 For async modules (`hd-slack`) we expose a synchronous wrapper function like `run_main()` that simply does `asyncio.run(main())`.  Make sure the entry-point targets **that** wrapper, not the raw `async def main()`.

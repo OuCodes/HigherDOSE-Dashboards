@@ -24,7 +24,7 @@ paths=(
   # 👉  Credentials & private configs
   "config/facebook"                # app_secret + tokens
   "config/slack"                   # cookies, workspace config
-  "src/higherdose/mail/cursor.txt" # runtime artefact
+  "src/growthkit/connectors/mail/cursor.txt" # runtime artefact
 
   # 👉  Generated data exports
   "data/ads"

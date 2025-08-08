@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HigherDOSE H1 Growth Report (Jan–Jun)
+H1 Growth Report (Jan–Jun)
 
 This script generates a half-year (H1) performance report that mirrors the weekly
 report layout but aggregates metrics for the first six months of the current

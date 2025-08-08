@@ -6,7 +6,7 @@ By Al Sweigart al@inventwithpython.com
 BSD License
 
 Usage:
-  from higherdose.utils.clip import board
+  from growthkit.utils.clip import board
   board.copy('The text to be copied to the clipboard.')
   spam = board.paste()
 

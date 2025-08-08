@@ -1,6 +1,6 @@
 # Performance Report Data Collection Guide
 
-**For Weekly/Monthly HigherDOSE Performance Reports**
+**For Weekly/Monthly GrowthKit Performance Reports**
 
 ---
 
@@ -144,7 +144,7 @@ data/
 ```
 
 ### **Step 2: Copy Template and Update Dates**
-1. Copy `HigherDOSE_MTD_Performance_Summary (1).md`
+1. Copy your MTD summary template
 2. Update **Time Period** line (e.g., "August 5-11" or "August 1-31")
 3. Update **Date** line to current date
 

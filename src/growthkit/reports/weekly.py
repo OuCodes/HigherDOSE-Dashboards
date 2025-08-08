@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HigherDOSE Weekly Product & Category Growth Report
+Weekly Product & Category Growth Report
 
 This script extends the channel-level weekly report by mapping each campaign/ad
 row to a specific product (and its category) based on the naming found in the
@@ -53,7 +53,7 @@ def project_root(markers: Sequence[str] | None = None) -> Path:
     for parent in [cur] + list(cur.parents):
         if _looks_like_repo_root(parent, markers):
             return parent
-    # Fallback: assume utils/paths.py is at ``src/higherdose/utils/`` so two
+    # Fallback: assume utils/paths.py is at ``src/growthkit/utils/`` so two
     # parents up should be the project root.
     return cur.parents[2]
 

@@ -5,7 +5,7 @@ Run directly:
     python tests/test_me_permissions.py --token EAA...  # explicit token
 
 If --token is omitted, the script will try to load the newest token file
-created by `higherdose.facebook.tokens` and use the long-lived **user** token
+created by `growthkit.connectors.facebook.tokens` and use the long-lived **user** token
 found there.
 """
 
@@ -20,7 +20,7 @@ from typing import Dict, Any, Optional
 
 from growthkit.utils.style import ansi
 from growthkit.utils.logs import report
-from growthkit.facebook.engine import TokenManager
+from growthkit.connectors.facebook.engine import TokenManager
 
 logger = report.settings(__file__)
 
@@ -61,7 +61,7 @@ def main(argv: Optional[list[str]] = None):
     token = args.token or load_latest_user_token()
     if not token:
         print(f"{ansi.red}No token supplied and no token file found.{ansi.reset}")
-        print("Run higherdose.facebook.tokens first or pass --token.")
+        print("Run growthkit.connectors.facebook.tokens first or pass --token.")
         sys.exit(1)
 
     print(f"🔍 Inspecting permissions for token: {ansi.yellow}{token[:20]}...{ansi.reset}\n")

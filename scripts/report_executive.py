@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Thin wrapper for Month-to-Date executive report.
 
-Delegates everything to ``higherdose.analysis.mtd`` so that
+Delegates everything to ``growthkit.reports.executive`` so that
 all real code lives in the installable package.
 """
 

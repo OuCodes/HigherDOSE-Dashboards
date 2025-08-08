@@ -2,7 +2,7 @@
 
 * **Status:** Accepted  
 * **Date:** 2025-08-06  
-* **Deciders:** HigherDOSE Data Team  
+* **Deciders:** GrowthKit  
 * **Tech Story:** We need a clear convention so humans **and** AI assistants know where code, data, and secrets belong.
 
 ---
@@ -31,9 +31,9 @@ We formalise the following top-level folder rules:
 
 | Folder | Purpose | Key Rules |
 |--------|---------|-----------|
-| `scripts/` | Thin CLI wrappers (<30 LOC) | Import implementation from `higherdose.*`; **no** business logic. |
-| `src/higherdose/` | Installable Python package | Pure, import-safe code; **no** data or env-specific config. |
-| `src/higherdose/utils/` | Vendored helper library | **Read-only** in this repo; edits must occur upstream. |
+| `scripts/` | Thin CLI wrappers (<30 LOC) | Import implementation from `growthkit.*`; **no** business logic. |
+| `src/growthkit/` | Installable Python package | Pure, import-safe code; **no** data or env-specific config. |
+| `src/growthkit/utils/` | Vendored helper library | **Read-only** in this repo; edits must occur upstream. |
 | `data/` | Raw inputs & generated outputs | Only datasets (<50 MB) and reports; **no** Python code. |
 | `config/` | Credential & runtime templates | Templates / sample files only; real secrets stay untracked. |
 | `docs/` | Documentation, tutorials, ADRs | No source code beyond illustrative snippets. |
@@ -75,7 +75,7 @@ Enforcement mechanisms:
 
 * `README.md` – Section “10. Directory Guidelines”
 * `CONTRIBUTING.md` – Folder rules table & checklist
-* Folder README files under `scripts/`, `src/higherdose/`, `config/`, `data/`, `src/higherdose/utils/`
+* Folder README files under `scripts/`, `src/growthkit/`, `config/`, `data/`, `src/growthkit/utils/`
 
 ---
 

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-HigherDOSE Automated MTD Performance Report Generator
+Automated MTD Performance Report Generator
 
 This script automates the creation of Month-to-Date performance summaries
 by prompting for date ranges and data sources, then generating a comprehensive
 markdown report similar to the weekly growth reports.
 
 CLI:
-    python -m higherdose.analysis.mtd --mtd
-    hd-mtd --mtd
+    python -m growthkit.reports.executive --mtd
+    gk-exec --mtd
 
 Requirements:
     - GA4 export files (session data by source/medium and default channel group)

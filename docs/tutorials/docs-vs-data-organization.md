@@ -1,6 +1,6 @@
 # Directory Organization: `/docs` vs `/data`
 
-This tutorial explains the organizational structure and purpose of the `/docs` and `/data` directories in the HigherDOSE project.
+This tutorial explains the organizational structure and purpose of the `/docs` and `/data` directories in this project.
 
 ## Overview
 

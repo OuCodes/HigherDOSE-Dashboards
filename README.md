@@ -1,6 +1,6 @@
-# HigherDOSE Growth-Report Toolkit
+# GrowthKit – Report Toolkit
 
-A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Google-Analytics exports into polished **Markdown** growth-reports for the HigherDOSE team.
+A Python toolkit that turns Northbeam, Google Ads, Meta Ads, and Google Analytics exports into polished **Markdown** growth reports.
 
 — Built with Python 3.10+ & pandas.
 
@@ -11,15 +11,15 @@ A data-analysis toolkit that transforms Northbeam, Google Ads, Meta Ads, and Goo
 - Clone the repo & enter it:
 
 ```bash
-$ git clone git@chrischcodes.github.com:chrischcodes/HigherDOSE.git
-$ cd HigherDOSE
+$ git clone <your repo>
+$ cd <repo>
 ```
 
 ### Mac/Linux
 
 ```bash
 # 2)  Create a virtual environment
-$ python3.10 -m venv --prompt hdose venv
+$ python3.10 -m venv --prompt gk venv
 
 # 3)  Upgrade pip, wheel, and setuptools (recommended)
 # macOS/Linux:
@@ -59,16 +59,17 @@ $ .\venv\Scripts\pip install -e .
 ```
 ├── scripts/                # One-line wrappers you can execute directly
 │   ├── report_executive.py # → automated MTD performance summary
-│   ├── report_weekly.py    # → higherdose.analysis.weekly_products.main()
-│   ├── report_h1.py        # → higherdose.analysis.h1.main()
-│   ├── slack_export.py     # → higherdose.slack.slack_fetcher_playwright
-│   └── email_export.py     # → higherdose.mail.gmail_archive.main()
+│   ├── report_weekly.py    # → growthkit.reports.weekly.main()
+│   ├── report_h1.py        # → growthkit.reports.h1.main()
+│   ├── slack_export.py     # → growthkit.connectors.slack.slack_fetcher
+│   └── email_export.py     # → growthkit.connectors.mail.gmail_sync
 │
-├── src/higherdose/        # Installable Python package
-│   ├── analysis/          # Core analytics modules (weekly.py, h1.py, …)
-│   ├── slack/             # Playwright-based Slack fetcher & helpers
-│   ├── mail/              # Gmail export functionality
-│   ├── facebook/          # Facebook API integrations
+├── src/growthkit/         # Installable Python package
+│   ├── reports/           # Report generation (executive.py, weekly.py, h1.py, …)
+│   ├── connectors/
+│   │   ├── slack/         # Playwright-based Slack fetcher & helpers
+│   │   ├── mail/          # Gmail export functionality
+│   │   └── facebook/      # Facebook (Meta) API integrations
 │   └── utils/             # Shared utilities and helpers
 │
 ├── data/
@@ -100,13 +101,13 @@ $ .\venv\Scripts\pip install -e .
 
 ### Option A: Using CLI Commands (After Installation)
 
-After running `pip install -e .`, you can use these convenient commands:
+After running `pip install -e .`, use these commands:
 
 ```bash
-$ hd-weekly     # Generate weekly growth report
-$ hd-h1         # Generate H1 growth report  
-$ hd-slack      # Export Slack conversations
-$ hd-email      # Export Gmail archive
+$ gk-weekly     # Generate weekly growth report
+$ gk-h1         # Generate H1 growth report  
+$ gk-slack      # Export Slack conversations
+$ gk-email      # Export Gmail archive
 ```
 
 ### Option B: Using Script Wrappers
@@ -122,10 +123,10 @@ $ python scripts/email_export.py
 ### Option C: Direct Module Execution
 
 ```bash
-$ python -m higherdose.analysis.weekly_products
-$ python -m higherdose.analysis.h1
-$ python -m higherdose.slack.slack_fetcher_playwright
-$ python -m higherdose.mail.gmail_archive
+$ python -m growthkit.reports.weekly
+$ python -m growthkit.reports.h1
+$ python -m growthkit.connectors.slack.slack_fetcher
+$ python -m growthkit.connectors.mail.gmail_sync
 ```
 
 ---
@@ -153,7 +154,7 @@ $ python -m higherdose.mail.gmail_archive
 3. Execute any of the following:
 
 ```bash
-$ hd-weekly                          # CLI command (recommended)
+$ gk-weekly                          # CLI command (recommended)
 $ python scripts/report_weekly.py    # Script wrapper
 $ python -m higherdose.analysis.weekly_products --help  # Direct module
 ```
@@ -181,7 +182,7 @@ Required files (place in `data/ads/h1-report/` or pass `--*` flags):
 Then run:
 
 ```bash
-$ hd-h1                           # CLI command (recommended)
+$ gk-h1                           # CLI command (recommended)
 $ python scripts/report_h1.py     # Script wrapper  
 ```
 
@@ -194,7 +195,7 @@ Output → `data/reports/h1/h1-growth-report-with-products-2025.md`
 The Slack extractor uses **Playwright** and manages credentials automatically.
 
 ```bash
-$ hd-slack                           # CLI command (recommended)
+$ gk-slack                           # CLI command (recommended)
 $ python scripts/slack_export.py    # Script wrapper
 ```
 
@@ -202,7 +203,7 @@ $ python scripts/slack_export.py    # Script wrapper
 * Manages credentials automatically in `config/slack/`.
 * Markdown files are written to `data/slack/exports/`.
 
-Refer to `src/higherdose/slack/README.md` for detailed credential setup.
+Refer to `src/growthkit/connectors/slack/README.md` for detailed credential setup.
 
 ---
 
@@ -211,7 +212,7 @@ Refer to `src/higherdose/slack/README.md` for detailed credential setup.
 Export Gmail messages for analysis and record-keeping.
 
 ```bash
-$ hd-email                           # CLI command (recommended)
+$ gk-email                           # CLI command (recommended)
 $ python scripts/email_export.py    # Script wrapper
 ```
 
@@ -222,7 +223,7 @@ $ python scripts/email_export.py    # Script wrapper
 
 ## 9. Updating Product-Alias Mappings
 
-Product & category tables rely on the alias dictionaries in `src/higherdose/product_data.py`.
+Product & category tables rely on the alias dictionaries in `src/growthkit/reports/product_data.py`.
 Unattributed rows with spend are automatically exported to
 `data/products/unattributed/`—review these files periodically and
 add new aliases to improve mapping accuracy.
@@ -233,14 +234,14 @@ add new aliases to improve mapping accuracy.
 Each major folder now ships its own `README.md` explaining purpose, allowed contents, and banned items:
 
 * `scripts/README.md`
-* `src/higherdose/README.md`
+* `src/growthkit/README.md`
 * `config/README.md`
 * `data/README.md`
-* `src/higherdose/utils/README.md`  <!-- vendored, read-only -->
+* `src/growthkit/utils/README.md`  <!-- vendored, read-only -->
 
 Make sure to read the relevant file before committing new code or data.
 
 ---
 
 ### License
-Internal HigherDOSE project – not for public distribution.
+Private project – not for public distribution.

@@ -1,11 +1,11 @@
-# `higherdose/` — Core Python Package
+# `growthkit/` — Core Python Package
 
-This folder is the **installable source distribution** for the HigherDOSE
-analysis toolkit.  Anything placed here is shipped to PyPI (or whichever package
+This folder is the **installable source distribution** for the GrowthKit
+report toolkit. Anything placed here is shipped to PyPI (or whichever package
 index you upload to) and can be imported via:
 
 ```python
-import higherdose
+import growthkit
 ```
 
 Therefore, keep the code here **clean, generic, and side-effect free on
@@ -17,12 +17,12 @@ import**.
 
 | Sub-package | Responsibility |
 |-------------|---------------|
-| `analysis/` | Report generation logic (executive, weekly, H1, etc.). Pure functions that read CSVs & return Markdown or DataFrames. |
-| `facebook/` | Lightweight FB Marketing API models & helpers (e.g. `Comment`, `engine.py`, `schema.py`). |
-| `mail/` | Gmail archive extraction logic. |
-| `slack/` | Playwright-based Slack export tooling plus config scaffolding. |
+| `reports/` | Report generation logic (executive, weekly, H1, etc.). Pure functions that read CSVs & return Markdown or DataFrames. |
+| `connectors/facebook/` | Lightweight FB (Meta) Marketing API models & helpers (e.g. `Comment`, `engine.py`, `schema.py`). |
+| `connectors/mail/` | Gmail archive extraction logic. |
+| `connectors/slack/` | Playwright-based Slack export tooling plus config scaffolding. |
 | `utils/` | Re-usable helpers (ANSI colours, CLI shell, file I/O abstractions, logging). |
-| `product_data.py` | Canonical list of products / categories used by analysis modules. _Data-only_ — no heavy imports. |
+| `reports/product_data.py` | Canonical list of products / categories used by report modules. _Data-only_ — no heavy imports. |
 
 ---
 
@@ -63,7 +63,7 @@ Before adding a new module, run through this list:
 
 ## Adding a New Report Type (Example)
 
-1. Create a new module inside `analysis/` – e.g. `analysis/monthly_customer_mix.py`.
+1. Create a new module inside `reports/` – e.g. `reports/monthly_customer_mix.py`.
 2. Implement a public `main()` that handles CLI arg parsing.
 3. Export helper functions/classes at module-level for reuse in notebooks.
 4. Add a new thin wrapper in `scripts/` (`report_monthly_mix.py`) _or_

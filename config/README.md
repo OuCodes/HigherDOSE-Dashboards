@@ -1,7 +1,7 @@
 # `config/` — Environment-Specific Configuration Files
 
-This directory stores **non-code artefacts** that adjust how the HigherDOSE
-analysis toolkit connects to external services.  Unlike the Python package in
+This directory stores **non-code artefacts** that adjust how the GrowthKit
+tooling connects to external services. Unlike the Python package in
 `src/`, everything here is **deployment-specific** and _may_ contain secrets.
 
 > ⚠️ **Never commit production credentials**.  Keep API keys, OAuth tokens, and
@@ -30,7 +30,7 @@ Each subfolder is a **namespace** for one integration.  Feel free to add more
 |----|-----------|
 | **Credential templates** (`*.template`, `*_example.json`) | Allow others to copy & fill in without exposing secrets. |
 | **Small, human-editable config files** (`.ini`, `.yaml`, `.json`) | Runtime settings that change across environments. |
-| **Helper scripts** that _generate_ default configs (e.g. `higherdose.slack._init_config.ensure_workspace_config()`). |
+| **Helper scripts** that _generate_ default configs (e.g. `growthkit.connectors.slack._init_config.ensure_workspace_config()`). |
 | **`.gitignore` rules** that exclude the real secrets while keeping templates. |
 
 ---
@@ -41,7 +41,7 @@ Each subfolder is a **namespace** for one integration.  Feel free to add more
 |----|----|
 | Hard-coded API keys, refresh tokens, cookies | Security risk; use environment variables or untracked files. |
 | Large binary blobs (>1-2 MB) | Bloats the repo; store externally or compress if truly needed. |
-| Business logic or Python modules | Put code in `src/higherdose/` or utility packages. |
+| Business logic or Python modules | Put code in `src/growthkit/` or utility packages. |
 
 ---
 

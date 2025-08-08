@@ -1,8 +1,8 @@
-"""Canonical product and alias metadata for HigherDOSE analysis modules.
+"""Canonical product and alias metadata for GrowthKit report modules.
 
 This file is GENERATED once from docs/product-list.md then maintained manually.
 It must contain *data only* (no heavy imports or runtime code) so that any
-other module can safely `import higherdose.product_data` without side-effects.
+other module can safely `import growthkit.reports.product_data` without side-effects.
 """
 
 from __future__ import annotations

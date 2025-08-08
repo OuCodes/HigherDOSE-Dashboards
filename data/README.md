@@ -1,8 +1,8 @@
 # `data/` — Input & Output Datasets
 
 The `data/` hierarchy is the **scratch-space** for all CSV exports, generated
-Markdown reports, and other artefacts produced or consumed by the HigherDOSE
-analytics scripts.  Nothing here is imported as code.
+Markdown reports, and other artefacts produced or consumed by the GrowthKit
+scripts. Nothing here is imported as code.
 
 Because some files can be large or sensitive, the folder is split into
 well-defined sub-directories and protected by granular `.gitignore` rules.

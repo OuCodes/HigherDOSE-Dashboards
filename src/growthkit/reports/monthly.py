@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HigherDOSE Q3 Performance Analysis
+Q3 Performance Analysis
 Comprehensive analysis of 30-day sales data organized by metric tiers
 """
 

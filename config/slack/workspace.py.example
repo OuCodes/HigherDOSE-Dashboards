@@ -1,5 +1,5 @@
 """
-Slack workspace configuration for HigherDOSE utilities.
+Slack workspace configuration for GrowthKit Slack utilities.
 Replace the placeholder values with your actual Slack workspace URL and team ID.
 Strong typing is provided via a frozen dataclass for IDE support.
 """
