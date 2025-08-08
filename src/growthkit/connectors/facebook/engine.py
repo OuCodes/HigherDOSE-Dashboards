@@ -14,7 +14,7 @@ from dataclasses import asdict
 from configparser import ConfigParser
 from datetime import datetime, timezone
 
-from growthkit.facebook.schema import Config, Token, User, Page
+from growthkit.connectors.facebook.schema import Config, Token, User, Page
 from growthkit.utils.style import ansi
 from growthkit.utils.logs import report
 
