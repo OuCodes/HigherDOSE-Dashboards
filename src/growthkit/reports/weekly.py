@@ -21,8 +21,8 @@ from datetime import datetime, timedelta, date
 import numpy as np
 import pandas as pd
 
-from higherdose.reports import product_data
-from higherdose.reports.file_selector import select_csv_file
+from growthkit.reports import product_data
+from growthkit.reports.file_selector import select_csv_file
 
 # ---------------------------------------------------------------------------
 # 🔍  Repository-aware path helpers

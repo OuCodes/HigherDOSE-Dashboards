@@ -18,9 +18,9 @@ from typing import Dict, List, Any, Optional
 from playwright.async_api import async_playwright, Page, Request, Route, Error, TimeoutError
 import requests
 
-from higherdose.utils.style import ansi
-from higherdose.utils.logs import report
-from higherdose.slack._playwright_setup import ensure_chromium_installed
+from growthkit.utils.style import ansi
+from growthkit.utils.logs import report
+from growthkit.slack._playwright_setup import ensure_chromium_installed
 
 from config.slack.workspace import validate_workspace
 from config.slack.workspace import CONFIG

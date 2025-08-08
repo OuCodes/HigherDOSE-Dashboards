@@ -14,9 +14,9 @@ from dataclasses import asdict
 from configparser import ConfigParser
 from datetime import datetime, timezone
 
-from higherdose.facebook.schema import Config, Token, User, Page
-from higherdose.utils.style import ansi
-from higherdose.utils.logs import report
+from growthkit.facebook.schema import Config, Token, User, Page
+from growthkit.utils.style import ansi
+from growthkit.utils.logs import report
 
 # Initialize logger
 logger = report.settings(__file__)

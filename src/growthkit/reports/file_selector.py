@@ -10,7 +10,7 @@ import re
 from datetime import datetime
 from typing import Optional
 
-from higherdose.utils.style import ansi
+from growthkit.utils.style import ansi
 
 
 def _extract_date_from_filename(filename: str) -> Optional[datetime]:

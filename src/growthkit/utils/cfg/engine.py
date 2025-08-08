@@ -9,7 +9,7 @@ from typing import Optional
 from dataclasses import asdict
 from configparser import ConfigParser
 
-from higherdose.utils.cfg.schema import Config
+from growthkit.utils.cfg.schema import Config
 
 
 # Paths

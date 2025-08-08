@@ -20,9 +20,9 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from markitdown import MarkItDown
 
-from higherdose.utils.logs import report
-from higherdose.utils.style import clean
-from higherdose.utils.style import ansi
+from growthkit.utils.logs import report
+from growthkit.utils.style import clean
+from growthkit.utils.style import ansi
 
 logger = report.settings(__file__)
 

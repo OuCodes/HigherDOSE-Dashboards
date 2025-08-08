@@ -1,8 +1,8 @@
 """Provides functions for executing shell commands with different output handling."""
 import inspect
 import subprocess
-from higherdose.utils.style import ansi
-from higherdose.utils.logs import report
+from growthkit.utils.style import ansi
+from growthkit.utils.logs import report
 
 def execute(command):
     """

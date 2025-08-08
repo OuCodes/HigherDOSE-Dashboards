@@ -31,9 +31,9 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, List, Tuple, Optional
 
-from higherdose.utils.style import ansi
-from higherdose.utils.logs import report
-from higherdose.facebook.engine import TokenManager
+from growthkit.utils.style import ansi
+from growthkit.utils.logs import report
+from growthkit.facebook.engine import TokenManager
 
 logger = report.settings(__file__)
 
