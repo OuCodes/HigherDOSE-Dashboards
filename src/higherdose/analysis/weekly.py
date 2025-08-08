@@ -293,7 +293,7 @@ def generate_executive_summary(channel_summary):
     print(f"👥 Total Visits: {int(total_visits)}")
 
     top_3_channels = channel_summary.head(3)
-    print(f"\n🏆 TOP 3 CHANNELS BY SPEND:")
+    print("\n🏆 TOP 3 CHANNELS BY SPEND:")
     for i, (platform, row) in enumerate(top_3_channels.iterrows(), 1):
         if row['spend'] > 0:
             print(f"   {i}. {platform}: ${row['spend']:,.2f} (ROAS: {row['roas']:.2f})")
@@ -376,11 +376,13 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
     lines = []
     report_date = datetime.now().strftime('%Y-%m-%d')
     lines.append("---")
-    lines.append(f"title: \"Weekly Growth Report\"")
-    lines.append(f"description: \"Weekly Growth Report for HigherDOSE covering 7-day performance period ending {report_date}\"")
+    lines.append("title: \"Weekly Growth Report\"")
+    lines.append(
+        f"description: \"Weekly Growth Report for HigherDOSE covering 7-day performance period ending {report_date}\""
+    )
     lines.append("recipient: \"Ingrid\"")
     lines.append("report_type: \"Weekly Growth Report\"")
-    lines.append(f"date: \"{report_date}\"")
+    lines.append(f"date: {report_date!r}")
     lines.append("period: \"7-Day Review\"")
     lines.append("---\n")
     lines.append(f"# Weekly Growth Report — {report_date}\n\n---\n")
@@ -420,7 +422,13 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
         if channel_summary['transactions_1st_time'].sum() > 0 else 0
     )
     lines.append(
-        f"| **All DTC** | **${total_spend:,.0f}** | **100%** | **${overall_cac:,.2f}** | **${overall_cac_1st:.2f}** | **{overall_roas:.2f}** | **{executive_metrics['overall_roas_1st_time']:.2f}** | **${executive_metrics['overall_aov']:.0f}** | **{int(total_transactions)}** | **${total_revenue:,.0f}** |")
+        (
+            f"| **All DTC** | **${total_spend:,.0f}** | **100%** | "
+            f"**${overall_cac:,.2f}** | **${overall_cac_1st:.2f}** | "
+            f"**{overall_roas:.2f}** | **{executive_metrics['overall_roas_1st_time']:.2f}** | "
+            f"**${executive_metrics['overall_aov']:.0f}** | **{int(total_transactions)}** | "
+            f"**${total_revenue:,.0f}** |"
+        ))
     paid_df = channel_summary[channel_summary['spend'] > 0]
     if not paid_df.empty:
         paid_spend = paid_df['spend'].sum()
@@ -470,23 +478,55 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             tot_aov = tot_rev / tot_txn if tot_txn else 0
             tot_aov1 = tot_rev1 / tot_txn1 if tot_txn1 else 0
             lines.append(
-                f"| **Totals** | — | **{tot_roas:.2f}** | {tot_roas1:.2f} | ${tot_cac:.2f} | ${tot_cac1:.2f} | ${tot_aov:.2f} | ${tot_aov1:.2f} | ${tot_spend:,.0f} | ${tot_rev:,.0f} |")
+                (
+                    f"| **Totals** | — | **{tot_roas:.2f}** | {tot_roas1:.2f} | "
+                    f"${tot_cac:.2f} | ${tot_cac1:.2f} | ${tot_aov:.2f} | "
+                    f"${tot_aov1:.2f} | ${tot_spend:,.0f} | ${tot_rev:,.0f} |"
+                ))
         for _, row in top_roas.iterrows():
             platform = row['breakdown_platform_northbeam']
             campaign = row['campaign_name'][:50].replace('|', '\\|')
             lines.append(
-                f"| {platform} | **{campaign}** | **{row['roas']:.2f}** | {row.get('roas_1st_time', 0):.2f} | ${row.get('cac', 0):.2f} | ${row.get('cac_1st_time', 0):.2f} | ${row.get('aov', 0):.2f} | ${row.get('aov_1st_time', 0):.2f} | ${row['spend']:,.0f} | ${row['attributed_rev']:,.0f} |")
+                (
+                f"| {platform} | **{campaign}** | **{row['roas']:.2f}** | "
+                f"{row.get('roas_1st_time', 0):.2f} | ${row.get('cac', 0):.2f} | "
+                f"${row.get('cac_1st_time', 0):.2f} | ${row.get('aov', 0):.2f} | "
+                f"${row.get('aov_1st_time', 0):.2f} | ${row['spend']:,.0f} | "
+                f"${row['attributed_rev']:,.0f} |"
+            ))
         agg_cols_sum = ['spend','attributed_rev','attributed_rev_1st_time','transactions','transactions_1st_time']
         for col in agg_cols_sum:
             if col not in campaign_analysis.columns:
                 campaign_analysis[col] = 0
-        aggregated = campaign_analysis.groupby(['breakdown_platform_northbeam', 'campaign_name'], as_index=False)[agg_cols_sum].sum()
-        aggregated['roas'] = aggregated['attributed_rev'] / aggregated['spend'].replace({0: np.nan})
-        aggregated['roas_1st_time'] = aggregated['attributed_rev_1st_time'] / aggregated['spend'].replace({0: np.nan})
-        aggregated['cac'] = aggregated['spend'] / aggregated['transactions'].replace({0: np.nan})
-        aggregated['cac_1st_time'] = aggregated['spend'] / aggregated['transactions_1st_time'].replace({0: np.nan})
-        aggregated['aov'] = aggregated['attributed_rev'] / aggregated['transactions'].replace({0: np.nan})
-        aggregated['aov_1st_time'] = aggregated['attributed_rev_1st_time'] / aggregated['transactions_1st_time'].replace({0: np.nan})
+        aggregated = (
+            campaign_analysis
+            .groupby(['breakdown_platform_northbeam', 'campaign_name'], as_index=False)[agg_cols_sum]
+            .sum()
+        )
+        aggregated['roas'] = (
+            aggregated['attributed_rev'] /
+            aggregated['spend'].replace({0: np.nan})
+        )
+        aggregated['roas_1st_time'] = (
+            aggregated['attributed_rev_1st_time'] /
+            aggregated['spend'].replace({0: np.nan})
+        )
+        aggregated['cac'] = (
+            aggregated['spend'] /
+            aggregated['transactions'].replace({0: np.nan})
+        )
+        aggregated['cac_1st_time'] = (
+            aggregated['spend'] /
+            aggregated['transactions_1st_time'].replace({0: np.nan})
+        )
+        aggregated['aov'] = (
+            aggregated['attributed_rev'] /
+            aggregated['transactions'].replace({0: np.nan})
+        )
+        aggregated['aov_1st_time'] = (
+            aggregated['attributed_rev_1st_time'] /
+            aggregated['transactions_1st_time'].replace({0: np.nan})
+        )
         top_spend = aggregated.sort_values('spend', ascending=False).head(5)
         lines.append("\n### 💰 Highest Spend Campaigns\n")
         headers3 = [
@@ -706,11 +746,11 @@ def assign_products(df: pd.DataFrame, alias_sorted, norm_fn):
 
 def build_summary(df: pd.DataFrame, group_col: str):
     """Build a summary DataFrame with key metrics grouped by the specified column.
-    
+
     Args:
         df: DataFrame containing ad data
         group_col: Column name to group by (e.g. 'product' or 'category')
-        
+
     Returns:
         DataFrame with aggregated metrics and calculated ratios (ROAS, CAC, etc.)
     """
