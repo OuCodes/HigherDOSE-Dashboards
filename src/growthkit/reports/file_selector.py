@@ -79,6 +79,62 @@ def _extract_date_from_filename(filename: str) -> Optional[datetime]:
     return None
 
 
+def find_latest_by_year(
+    base_dir: str,
+    recursive_pattern: str,
+    year: int | str,
+    prefer_daily: bool = True,
+) -> str | None:
+    """Return the most-recent file matching pattern within ``base_dir`` for a given year.
+
+    Selection rules mirror the executive report's behaviour:
+    - Search is recursive using the provided glob ``recursive_pattern`` (e.g., "google-*-daily*.csv").
+    - Filter paths that include the given ``year`` string anywhere in the path.
+    - Prefer files whose basename contains "daily-" when ``prefer_daily`` is True.
+    - Break ties using the most recent parsable date in the filename; fallback to mtime.
+
+    Parameters
+    ----------
+    base_dir : str
+        Root directory to search under (e.g., "data/ads").
+    recursive_pattern : str
+        Glob pattern (can include "**/") for recursive search.
+    year : int | str
+        Year to filter for (e.g., 2024).
+    prefer_daily : bool, default True
+        If True, consider only files whose basename includes "daily-" first.
+
+    Returns
+    -------
+    str | None
+        Path to the selected file or ``None`` when no candidates exist.
+    """
+    year_str = str(year)
+    search_pattern = os.path.join(base_dir, "**", recursive_pattern)
+    candidates = [p for p in glob.glob(search_pattern, recursive=True) if year_str in p]
+
+    if not candidates:
+        return None
+
+    if prefer_daily:
+        daily = [p for p in candidates if "daily-" in os.path.basename(p).lower()]
+        pool = daily if daily else candidates
+    else:
+        pool = candidates
+
+    def _file_sort_key(filepath: str) -> tuple:
+        # Primary: most recent date found in filename; Secondary: mtime
+        dt = _extract_date_from_filename(filepath)
+        if dt is None:
+            return (datetime(1970, 1, 1), os.path.getmtime(filepath))
+        return (dt, os.path.getmtime(filepath))
+
+    try:
+        return max(pool, key=_file_sort_key)
+    except ValueError:
+        return None
+
+
 def select_csv_file(
     directory="data/ads",
     file_pattern="*.csv",
