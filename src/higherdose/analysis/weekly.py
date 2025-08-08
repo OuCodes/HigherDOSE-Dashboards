@@ -15,13 +15,16 @@ import os
 import glob
 import argparse
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date  # add to imports at top earlier but ensure already imported datetime
 
 import numpy as np
 import pandas as pd
 
 from higherdose.analysis.file_selector import select_csv_file
 from higherdose.analysis import product_data
+
+# Dynamic file location helper (searches entire repo)
+from higherdose.utils.paths import find_latest_in_repo
 
 # -------------------------------------------------------------
 # Channel-level functions
@@ -371,21 +374,47 @@ def identify_opportunities(channel_summary):
     if not challenges:
         print("  ✅ No major performance issues identified")
 
-def export_markdown_report(executive_metrics, channel_summary, campaign_analysis, revenue_only_df, first_time_metrics):
-    """Generate a markdown report string from the computed metrics (migrated)."""
-    lines = []
-    report_date = datetime.now().strftime('%Y-%m-%d')
+def export_markdown_report(
+    executive_metrics,
+    channel_summary,
+    campaign_analysis,
+    revenue_only_df,
+    first_time_metrics,
+    start_date: date | None = None,
+    end_date: date | None = None,
+):
+    """Generate the markdown report string.
+
+    When *start_date* and *end_date* are provided, the headline and metadata
+    reflect that explicit range instead of the script run-date.  This gives
+    readers clarity about the actual data window when the most recent days
+    are missing from the CSV export.
+    """
+
+    lines: list[str] = []
+
+    if start_date and end_date:
+        period_str = f"{start_date:%Y-%m-%d}–{end_date:%Y-%m-%d}"
+        report_title_date = period_str
+        desc_period = f"{start_date:%Y-%m-%d} to {end_date:%Y-%m-%d}"
+        report_date_meta = end_date.strftime("%Y-%m-%d")
+    else:
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        report_title_date = today_str
+        desc_period = f"7-day performance period ending {today_str}"
+        report_date_meta = today_str
+
     lines.append("---")
     lines.append("title: \"Weekly Growth Report\"")
     lines.append(
-        f"description: \"Weekly Growth Report for HigherDOSE covering 7-day performance period ending {report_date}\""
+        f"description: \"Weekly Growth Report for HigherDOSE covering {desc_period}\""
     )
     lines.append("recipient: \"Ingrid\"")
     lines.append("report_type: \"Weekly Growth Report\"")
-    lines.append(f"date: {report_date!r}")
+    lines.append(f"date: {report_date_meta!r}")
     lines.append("period: \"7-Day Review\"")
     lines.append("---\n")
-    lines.append(f"# Weekly Growth Report — {report_date}\n\n---\n")
+    lines.append(f"# Weekly Growth Report — {report_title_date}\n\n---\n")
     lines.append("## 1. Executive Summary\n")
     total_spend = executive_metrics['total_spend']
     total_revenue = executive_metrics['total_revenue']
@@ -594,7 +623,7 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
             lines.append(
                 f"| {platform} | ${spend:,.0f} | ${row['attributed_rev']:,.0f} | ${row['cac']:.2f} | {row['roas']:.2f} | ${row['aov']:.2f} | {txns_display} |")
     lines.append("\n---\n")
-    lines.append(f"**Report Compiled**: {report_date}\n")
+    lines.append(f"**Report Compiled**: {report_date_meta}\n")
     return "\n".join(lines)
 
 # -------------------------------------------------------------
@@ -603,7 +632,7 @@ def export_markdown_report(executive_metrics, channel_summary, campaign_analysis
 
 # Helper to pick newest file matching a pattern (used as fallback)
 def _latest(pattern: str) -> str | None:
-    matches = glob.glob(pattern)
+    matches = glob.glob(pattern, recursive=True)
     return max(matches, key=os.path.getmtime) if matches else None
 
 
@@ -966,7 +995,7 @@ def main():
     # 7-day period) and automatically derive the *previous* period
     # for WoW comparisons from the *same* file.  If no usable date
     # column is found we fall back to the older behaviour that looks
-    # for a separate “prev-” CSV on disk.
+    # for a separate "prev-" CSV on disk.
     # -------------------------------------------------------------
 
     # Identify potential date column(s) – case-insensitive match
@@ -1189,6 +1218,8 @@ def main():
         campaign_analysis,
         revenue_only_df,
         first_time_metrics,
+        start_date=start_date if 'start_date' in locals() else None,
+        end_date=end_date if 'end_date' in locals() else None,
     )
 
     # Prepare product summary with Category column for display
@@ -1230,7 +1261,7 @@ def main():
     meta_accrual = meta_base[~(meta_base["_is_summary"] & has_meta_detail)].copy()
 
     if not meta_accrual.empty:
-        # Use campaign-name keywords for grouping to align with user’s totals
+        # Use campaign-name keywords for grouping to align with user's totals
         def _keyword_group(row):
             text = str(row.get("campaign_name", "")).lower()
             # Explicit keywords checked in priority order to avoid mis-classification
@@ -1458,14 +1489,24 @@ def main():
                 # If string formatting fails, keep the original sentence
                 pass
 
-            # Previous-year daily exports (static for now)
-            # Location of 2024 daily exports has moved to data/ads/
-            google_prev_path = os.path.join("data", "ads", "google-2024-account-level-daily report.csv")
-            meta_prev_path   = os.path.join("data", "ads", "meta-daily-export-jan-1-2024-to-dec-31-2024.csv")
+            # Previous-year daily exports – locate dynamically **within
+            # data/ads/** (recursive) so we match the executive report's
+            # behaviour and avoid hard-coded paths.
+
+            ads_root = os.path.join("data", "ads")  # base directory for ad exports
+            google_prev_path = _latest(os.path.join(ads_root, "**", "google-2024*-daily*.csv"))
+            if not google_prev_path:
+                # Fallback: any Google 2024 daily export CSV
+                google_prev_path = _latest(os.path.join(ads_root, "**", "google-*2024*.csv"))
+
+            meta_prev_path   = _latest(os.path.join(ads_root, "**", "meta-*2024*export*.csv"))
+            if not meta_prev_path:
+                # Fallback: any Meta 2024 daily export CSV
+                meta_prev_path = _latest(os.path.join(ads_root, "**", "meta-*2024*.csv"))
 
             def _summarize_google(cur_path: str | None, prev_path: str):
                 """Return dict with spend, revenue, conversions, roas for current & previous year MTD."""
-                if not cur_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
+                if not cur_path or not prev_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
                     return None
 
                 cur_df = pd.read_csv(cur_path, skiprows=2, thousands=",")
@@ -1522,7 +1563,7 @@ def main():
 
             def _summarize_meta(cur_path: str | None, prev_path: str):
                 """Return dict with spend, revenue, conversions, roas for current & previous year MTD."""
-                if not cur_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
+                if not cur_path or not prev_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
                     return None
 
                 cur_df = pd.read_csv(cur_path, thousands=",")
@@ -1614,8 +1655,10 @@ def main():
                         f"| {title} | {_fmt(cur_val, prefix, digits)} | {_fmt(prev_val, prefix, digits)} | {delta_fmt} |")
                 return "\n".join(rows)
 
-            yoy_lines.append(_yoy_rows("Google Ads", google_yoy))
-            yoy_lines.append(_yoy_rows("Meta Ads", meta_yoy))
+            if google_yoy:
+                yoy_lines.append(_yoy_rows("Google Ads", google_yoy))
+            if meta_yoy:
+                yoy_lines.append(_yoy_rows("Meta Ads", meta_yoy))
 
             yoy_section_md = "\n".join(yoy_lines) + "\n"
 
@@ -1634,25 +1677,28 @@ def main():
                     d = (cur - prev) / prev * 100
                     return f"{d:+.0f}%".replace("+","+ ").replace("-","– ")
 
-                g_spd = _pct(google_yoy["spend_cur"], google_yoy["spend_prev"])
-                g_rev = _pct(google_yoy["rev_cur"],  google_yoy["rev_prev"])
-                m_spd = _pct(meta_yoy["spend_cur"],   meta_yoy["spend_prev"])
-                m_rev = _pct(meta_yoy["rev_cur"],     meta_yoy["rev_prev"])
+                if google_yoy and meta_yoy:
+                    g_spd = _pct(google_yoy["spend_cur"], google_yoy["spend_prev"])
+                    g_rev = _pct(google_yoy["rev_cur"],  google_yoy["rev_prev"])
+                    m_spd = _pct(meta_yoy["spend_cur"],   meta_yoy["spend_prev"])
+                    m_rev = _pct(meta_yoy["rev_cur"],     meta_yoy["rev_prev"])
 
-                yoy_summary = (
-                    f"**Year-over-Year Highlights**: Google Ads spend {g_spd} vs 2024 with revenue {g_rev}; "
-                    f"Meta Ads spend {m_spd} with revenue {m_rev}."
-                )
+                    yoy_summary = (
+                        f"**Year-over-Year Highlights**: Google Ads spend {g_spd} vs 2024 with revenue {g_rev}; "
+                        f"Meta Ads spend {m_spd} with revenue {m_rev}."
+                    )
 
-                # Inject after Overall Performance paragraph (two consecutive newlines)
-                exec_hdr = "## 1. Executive Summary"
-                pos_exec = final_report.find(exec_hdr)
-                if pos_exec != -1:
-                    para_end = final_report.find("\n\n", pos_exec)
-                    if para_end != -1:
-                        insert_pos = para_end + 2
-                        if yoy_summary not in final_report:
-                            final_report = final_report[:insert_pos] + yoy_summary + "\n\n" + final_report[insert_pos:]
+                    # Inject after Overall Performance paragraph (two consecutive newlines)
+                    exec_hdr = "## 1. Executive Summary"
+                    pos_exec = final_report.find(exec_hdr)
+                    if pos_exec != -1:
+                        para_end = final_report.find("\n\n", pos_exec)
+                        if para_end != -1:
+                            insert_pos = para_end + 2
+                            if yoy_summary not in final_report:
+                                final_report = final_report[:insert_pos] + yoy_summary + "\n\n" + final_report[insert_pos:]
+                    
+                    # (No further action required – YoY summary injected)
             except Exception:
                 pass
         except (FileNotFoundError, pd.errors.EmptyDataError) as e:
