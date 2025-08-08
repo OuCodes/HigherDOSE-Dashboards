@@ -19,7 +19,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import weekly as base  # Re-use helper functions from the same package
+from . import weekly_products as base  # Re-use helpers now centralized here
 from .weekly_products import (
     load_product_mappings,
     assign_products,

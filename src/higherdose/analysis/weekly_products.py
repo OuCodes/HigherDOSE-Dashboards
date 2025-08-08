@@ -21,8 +21,493 @@ import numpy as np
 import pandas as pd
 
 from higherdose.analysis.file_selector import select_csv_file
-from . import weekly as base
 
+
+
+
+# -------------------------------------------------------------
+# Migrated channel-level functions from weekly.py
+# -------------------------------------------------------------
+
+def load_and_clean_data():
+    """Load and clean the 7-day sales data"""
+    csv_file = select_csv_file(
+        directory="data/ads",
+        file_pattern="*sales_data-higher_dose*csv",
+        prompt_message="\nSelect Northbeam sales CSV (or 'q' to quit): ",
+        max_items=10,
+    )
+    if not csv_file:
+        print("No file selected. Exiting.")
+        return None
+
+    try:
+        df = pd.read_csv(csv_file)
+        print(f"✅ Successfully loaded data with {len(df)} rows")
+
+        numeric_cols = [
+            'spend', 'cac', 'cac_1st_time', 'roas', 'roas_1st_time',
+            'aov', 'aov_1st_time', 'ecr', 'ecr_1st_time', 'ecpnv',
+            'platformreported_cac', 'platformreported_roas',
+            'new_customer_percentage', 'attributed_rev', 'attributed_rev_1st_time',
+            'transactions', 'transactions_1st_time', 'visits',
+            'web_revenue', 'web_transactions',
+            'meta_shops_revenue', 'meta_shops_transactions',
+            'tiktok_shops_revenue', 'tiktok_shops_transactions',
+            'rev'
+        ]
+        for col in numeric_cols:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors='coerce')
+
+        df = df.fillna(0)
+
+        def promote(src_rev, src_txn, label):
+            mask = (df['attributed_rev'] == 0) & (df[src_rev] > 0)
+            if mask.any():
+                df.loc[mask, 'attributed_rev'] = df.loc[mask, src_rev]
+                if 'attributed_rev_1st_time' in df.columns:
+                    df.loc[mask, 'attributed_rev_1st_time'] = df.loc[mask, src_rev]
+                if 'transactions' in df.columns and src_txn in df.columns:
+                    df.loc[mask, 'transactions'] = df.loc[mask, src_txn]
+                if 'transactions_1st_time' in df.columns and src_txn in df.columns:
+                    df.loc[mask, 'transactions_1st_time'] = df.loc[mask, src_txn]
+                df.loc[mask, f'used_{label}_metrics'] = True
+                print(f"ℹ️  Applied {label} fallback for {mask.sum()} rows")
+
+        if {'web_revenue', 'web_transactions'}.issubset(df.columns):
+            promote('web_revenue', 'web_transactions', 'web')
+        if {'meta_shops_revenue', 'meta_shops_transactions'}.issubset(df.columns):
+            promote('meta_shops_revenue', 'meta_shops_transactions', 'meta_shops')
+        if {'tiktok_shops_revenue', 'tiktok_shops_transactions'}.issubset(df.columns):
+            promote('tiktok_shops_revenue', 'tiktok_shops_transactions', 'tiktok_shops')
+
+        if 'rev' in df.columns:
+            mask_rev = (df['attributed_rev'] == 0) & (df['rev'] > 0)
+            if mask_rev.any():
+                df.loc[mask_rev, 'attributed_rev'] = df.loc[mask_rev, 'rev']
+                df.loc[mask_rev, 'used_rev_metrics'] = True
+                print(f"ℹ️  Promoted 'rev' cash snapshot for {mask_rev.sum()} rows")
+
+        REQUIRED_PLATFORM_COL = 'breakdown_platform_northbeam'
+        if REQUIRED_PLATFORM_COL not in df.columns:
+            alternative_cols = ['platform', 'channel', 'breakdown_platform']
+            found = False
+            for alt in alternative_cols:
+                if alt in df.columns:
+                    df[REQUIRED_PLATFORM_COL] = df[alt]
+                    print(f"ℹ️  Mapped column '{alt}' -> '{REQUIRED_PLATFORM_COL}' for compatibility")
+                    found = True
+                    break
+            if not found:
+                print("⚠️  No platform column found. Inserting placeholder 'Unknown'.")
+                df[REQUIRED_PLATFORM_COL] = 'Unknown'
+
+        return df
+    except Exception as e:
+        print(f"❌ Error loading data: {e}")
+        return None
+
+
+def analyze_channel_performance(df):
+    """Analyze performance by marketing channel"""
+    print("\n" + "="*60)
+    print("📊 CHANNEL PERFORMANCE ANALYSIS")
+    print("="*60)
+    accrual_df = df[df['accounting_mode'] == 'Accrual performance'].copy()
+    if len(accrual_df) == 0:
+        print("⚠️ No Accrual Performance data found")
+        return {}
+    channel_summary = accrual_df.groupby('breakdown_platform_northbeam').agg({
+        'spend': 'sum',
+        'attributed_rev': 'sum',
+        'attributed_rev_1st_time': 'sum',
+        'transactions': 'sum',
+        'transactions_1st_time': 'sum',
+        'visits': 'sum',
+        'new_visits': 'sum'
+    }).round(2)
+    channel_summary['roas'] = (channel_summary['attributed_rev'] / channel_summary['spend']).replace([np.inf], 0).round(2)
+    channel_summary['roas_1st_time'] = (channel_summary['attributed_rev_1st_time'] / channel_summary['spend']).replace([np.inf], 0).round(2)
+    channel_summary['cac'] = (channel_summary['spend'] / channel_summary['transactions']).replace([np.inf], 0).round(2)
+    channel_summary['cac_1st_time'] = (channel_summary['spend'] / channel_summary['transactions_1st_time']).replace([np.inf], 0).round(2)
+    channel_summary['aov'] = (channel_summary['attributed_rev'] / channel_summary['transactions']).replace([np.inf], 0).round(2)
+    channel_summary['ecr'] = (channel_summary['transactions'] / channel_summary['visits']).replace([np.inf], 0).round(4)
+    channel_summary['percent_new_visits'] = (channel_summary['new_visits'] / channel_summary['visits'] * 100).replace([np.inf], 0).round(1)
+    channel_summary = channel_summary.sort_values('spend', ascending=False)
+    print("\nTOP PERFORMING CHANNELS BY SPEND:")
+    print("-" * 60)
+    for platform, row in channel_summary.head(10).iterrows():
+        if row['spend'] > 0:
+            print(f"{platform:<20} | Spend: ${row['spend']:>10,.2f} | ROAS: {row['roas']:>5.2f} | CAC: ${row['cac']:>7.2f} | AOV: ${row['aov']:>6.2f}")
+    return channel_summary
+
+def analyze_campaign_performance(df):
+    """Analyze individual campaign performance (migrated)."""
+    print("\n" + "="*60)
+    print("🚀 TOP CAMPAIGN PERFORMANCE")
+    print("="*60)
+
+    accrual_df = df[df['accounting_mode'] == 'Accrual performance'].copy()
+    significant_campaigns = accrual_df[accrual_df['spend'] > 100].copy()
+    revenue_only = accrual_df[(accrual_df['spend'] == 0) & (accrual_df['attributed_rev'] > 0)].copy()
+
+    if not revenue_only.empty:
+        revenue_only['aov'] = revenue_only.apply(
+            lambda r: (r['attributed_rev'] / r['transactions']) if r['transactions'] else 0, axis=1
+        )
+
+    if len(significant_campaigns) == 0:
+        print("⚠️ No campaigns with significant spend found")
+        return {}
+
+    significant_campaigns['roas'] = (significant_campaigns['attributed_rev'] / significant_campaigns['spend']).replace([np.inf], 0)
+    significant_campaigns['cac'] = (significant_campaigns['spend'] / significant_campaigns['transactions']).replace([np.inf], 0)
+    if 'transactions_1st_time' in significant_campaigns.columns:
+        significant_campaigns['cac_1st_time'] = (
+            significant_campaigns['spend'] / significant_campaigns['transactions_1st_time']
+        ).replace([np.inf], 0)
+    else:
+        significant_campaigns['cac_1st_time'] = 0
+    significant_campaigns['aov'] = (significant_campaigns['attributed_rev'] / significant_campaigns['transactions']).replace([np.inf], 0)
+    if 'attributed_rev_1st_time' in significant_campaigns.columns and 'transactions_1st_time' in significant_campaigns.columns:
+        significant_campaigns['aov_1st_time'] = (
+            significant_campaigns['attributed_rev_1st_time'] / significant_campaigns['transactions_1st_time']
+        ).replace([np.inf], 0)
+    else:
+        significant_campaigns['aov_1st_time'] = 0
+    if 'attributed_rev_1st_time' in significant_campaigns.columns:
+        significant_campaigns['roas_1st_time'] = (
+            significant_campaigns['attributed_rev_1st_time'] / significant_campaigns['spend']
+        ).replace([np.inf], 0)
+    else:
+        significant_campaigns['roas_1st_time'] = 0
+
+    print("\nTOP 10 CAMPAIGNS BY ROAS:")
+    print("-" * 100)
+    for _, row in significant_campaigns.nlargest(10, 'roas').iterrows():
+        if row['roas'] > 0:
+            print(f"{row['breakdown_platform_northbeam']:<12} | {row['campaign_name'][:40]:<40} | ROAS: {row['roas']:>5.2f} | Spend: ${row['spend']:>8,.2f}")
+
+    print("\nTOP 10 CAMPAIGNS BY SPEND:")
+    print("-" * 100)
+    for _, row in significant_campaigns.nlargest(10, 'spend').iterrows():
+        print(f"{row['breakdown_platform_northbeam']:<12} | {row['campaign_name'][:40]:<40} | Spend: ${row['spend']:>8,.2f} | ROAS: {row['roas']:>5.2f}")
+
+    return significant_campaigns, revenue_only
+
+def analyze_first_time_metrics(df):
+    """Analyze first-time customer metrics by channel (Accrual only)."""
+    print("\n" + "=" * 60)
+    print("👥 FIRST-TIME CUSTOMER METRICS BY CHANNEL")
+    print("=" * 60)
+
+    accrual_df = df[df['accounting_mode'] == 'Accrual performance'].copy()
+    if len(accrual_df) == 0:
+        print("⚠️ No Accrual Performance data found")
+        return {}
+
+    grouped = accrual_df.groupby('breakdown_platform_northbeam').agg({
+        'spend': 'sum',
+        'attributed_rev_1st_time': 'sum',
+        'transactions_1st_time': 'sum'
+    })
+
+    grouped['cac_1st_time'] = (grouped['spend'] / grouped['transactions_1st_time']).replace([np.inf], 0)
+    grouped['roas_1st_time'] = (grouped['attributed_rev_1st_time'] / grouped['spend']).replace([np.inf], 0)
+    grouped['aov_1st_time'] = (grouped['attributed_rev_1st_time'] / grouped['transactions_1st_time']).replace([np.inf], 0)
+
+    first_time_metrics = grouped.round(2).sort_values('spend', ascending=False)
+
+    print("\nTOP CHANNELS ‑ FIRST-TIME CUSTOMER METRICS:")
+    print("-" * 100)
+    for platform, row in first_time_metrics.head(10).iterrows():
+        if row['spend'] > 100:
+            print(
+                f"{platform:<15} | CAC 1st: ${row['cac_1st_time']:>7.2f} | "
+                f"ROAS 1st: {row['roas_1st_time']:>5.2f} | "
+                f"AOV 1st: ${row['aov_1st_time']:>7.2f} | "
+                f"Spend: ${row['spend']:>8.2f}"
+            )
+
+    return first_time_metrics
+
+def generate_executive_summary(channel_summary):
+    """Generate executive summary metrics (migrated)."""
+    print("\n" + "="*60)
+    print("📈 EXECUTIVE SUMMARY METRICS")
+    print("="*60)
+
+    total_spend = channel_summary['spend'].sum()
+    total_revenue = channel_summary['attributed_rev'].sum()
+    total_revenue_1st_time = channel_summary['attributed_rev_1st_time'].sum()
+    total_transactions = channel_summary['transactions'].sum()
+    total_visits = channel_summary['visits'].sum()
+
+    overall_roas = total_revenue / total_spend if total_spend > 0 else 0
+    overall_roas_1st_time = total_revenue_1st_time / total_spend if total_spend > 0 else 0
+    overall_cac = total_spend / total_transactions if total_transactions > 0 else 0
+    overall_aov = total_revenue / total_transactions if total_transactions > 0 else 0
+    overall_ecr = total_transactions / total_visits if total_visits > 0 else 0
+
+    print(f"💰 Total Spend: ${total_spend:,.2f}")
+    print(f"💵 Total Revenue: ${total_revenue:,.2f}")
+    print(f"🎯 Overall ROAS: {overall_roas:.2f} (First-Time: {overall_roas_1st_time:.2f})")
+    print(f"💸 Overall CAC: ${overall_cac:.2f}")
+    print(f"🛒 Overall AOV: ${overall_aov:.2f}")
+    print(f"📊 Overall ECR: {overall_ecr:.4f} ({overall_ecr*100:.2f}%)")
+    print(f"🔄 Total Transactions: {int(total_transactions)}")
+    print(f"👥 Total Visits: {int(total_visits)}")
+
+    top_3_channels = channel_summary.head(3)
+    print(f"\n🏆 TOP 3 CHANNELS BY SPEND:")
+    for i, (platform, row) in enumerate(top_3_channels.iterrows(), 1):
+        if row['spend'] > 0:
+            print(f"   {i}. {platform}: ${row['spend']:,.2f} (ROAS: {row['roas']:.2f})")
+
+    return {
+        'total_spend': total_spend,
+        'total_revenue': total_revenue,
+        'overall_roas': overall_roas,
+        'overall_cac': overall_cac,
+        'overall_aov': overall_aov,
+        'overall_roas_1st_time': overall_roas_1st_time,
+        'overall_ecr': overall_ecr,
+        'total_transactions': total_transactions,
+        'total_visits': total_visits
+    }
+
+def analyze_attribution_modes(df):
+    """Compare Cash vs Accrual accounting modes (migrated)."""
+    print("\n" + "="*60)
+    print("🔍 ATTRIBUTION MODE COMPARISON")
+    print("="*60)
+
+    mode_summary = df.groupby('accounting_mode').agg({
+        'spend': 'sum',
+        'attributed_rev': 'sum',
+        'rev': 'sum',
+        'transactions': 'sum',
+        'visits': 'sum'
+    }).round(2)
+
+    for mode, row in mode_summary.iterrows():
+        print(f"\n{mode.upper()}:")
+        print(f"  Spend: ${row['spend']:,.2f}")
+        if mode == 'Accrual performance':
+            revenue = row['attributed_rev']
+            print(f"  Attributed Revenue: ${revenue:,.2f}")
+        else:
+            revenue = row['rev']
+            print(f"  Cash Revenue: ${revenue:,.2f}")
+        roas = revenue / row['spend'] if row['spend'] > 0 else 0
+        print(f"  ROAS: {roas:.2f}")
+        print(f"  Transactions: {int(row['transactions'])}")
+        print(f"  Visits: {int(row['visits'])}")
+
+def identify_opportunities(channel_summary):
+    """Identify growth opportunities and challenges (migrated)."""
+    print("\n" + "="*60)
+    print("🎯 OPPORTUNITIES & INSIGHTS")
+    print("="*60)
+    opportunities = []
+    challenges = []
+    for platform, row in channel_summary.iterrows():
+        if row['spend'] == 0:
+            continue
+        roas = row['roas']
+        cac = row['cac_1st_time'] if row['cac_1st_time'] > 0 else row['cac']
+        spend = row['spend']
+        if roas > 2.5 and spend > 1000:
+            opportunities.append(f"🚀 SCALE UP: {platform} - Strong ROAS ({roas:.2f}) with significant spend (${spend:,.2f})")
+        elif roas > 3.0 and spend < 1000:
+            opportunities.append(f"💰 POTENTIAL: {platform} - Excellent ROAS ({roas:.2f}) but low spend (${spend:,.2f}) - consider increasing budget")
+        if roas < 1.0 and spend > 500:
+            challenges.append(f"⚠️ UNDERPERFORMING: {platform} - Poor ROAS ({roas:.2f}) with ${spend:,.2f} spend - needs optimization or pause")
+        elif cac > 500 and roas > 0:
+            challenges.append(f"💸 HIGH CAC: {platform} - CAC of ${cac:.2f} may be unsustainable")
+
+    print("\n🌟 OPPORTUNITIES:")
+    for opp in opportunities[:5]:
+        print(f"  {opp}")
+    print("\n⚠️ CHALLENGES:")
+    for challenge in challenges[:5]:
+        print(f"  {challenge}")
+    if not opportunities:
+        print("  📊 Consider testing new channels or optimizing existing campaigns")
+    if not challenges:
+        print("  ✅ No major performance issues identified")
+
+def export_markdown_report(executive_metrics, channel_summary, campaign_analysis, revenue_only_df, first_time_metrics):
+    """Generate a markdown report string from the computed metrics (migrated)."""
+    lines = []
+    report_date = datetime.now().strftime('%Y-%m-%d')
+    lines.append("---")
+    lines.append(f"title: \"Weekly Growth Report\"")
+    lines.append(f"description: \"Weekly Growth Report for HigherDOSE covering 7-day performance period ending {report_date}\"")
+    lines.append("recipient: \"Ingrid\"")
+    lines.append("report_type: \"Weekly Growth Report\"")
+    lines.append(f"date: \"{report_date}\"")
+    lines.append("period: \"7-Day Review\"")
+    lines.append("---\n")
+    lines.append(f"# Weekly Growth Report — {report_date}\n\n---\n")
+    lines.append("## 1. Executive Summary\n")
+    total_spend = executive_metrics['total_spend']
+    total_revenue = executive_metrics['total_revenue']
+    overall_roas = executive_metrics['overall_roas']
+    overall_cac = executive_metrics['overall_cac']
+    paid_df_exec = channel_summary[channel_summary['spend'] > 0]
+    paid_spend_exec = paid_df_exec['spend'].sum()
+    paid_revenue_exec = paid_df_exec['attributed_rev'].sum()
+    paid_transactions_exec = paid_df_exec['transactions'].sum()
+    paid_roas_exec = paid_revenue_exec / paid_spend_exec if paid_spend_exec else 0
+    paid_cac_exec = paid_spend_exec / paid_transactions_exec if paid_transactions_exec else 0
+    lines.append(
+        f"**Overall Performance**: Total DTC spend reached **${total_spend:,.0f}** across all channels with **{overall_roas:.2f} ROAS**, "
+        f"generating **${total_revenue:,.0f}** in revenue and blended **CAC of ${overall_cac:,.2f}**. "
+        f"Paid Media delivered **${paid_revenue_exec:,.0f}** revenue at **{paid_roas_exec:.2f} ROAS** with **CAC of ${paid_cac_exec:.2f}**, across **{int(paid_transactions_exec)} transactions**. "
+        f"The business achieved **{int(executive_metrics['total_transactions'])} total transactions** during this 7-day period.\n\n"
+    )
+    lines.append("## 2. DTC Performance — 7-Day Snapshot (Northbeam)\n")
+    headers = ["Channel","Period Spend","% of Total","CAC","CAC 1st","ROAS","ROAS 1st","AOV","Transactions","Revenue"]
+    lines.append("| " + " | ".join(headers) + " |")
+    lines.append("|" + "|".join(["-" * len(h) for h in headers]) + "|")
+    total_transactions = executive_metrics['total_transactions']
+    overall_cac_1st = (
+        total_spend / channel_summary['transactions_1st_time'].sum()
+        if channel_summary['transactions_1st_time'].sum() > 0 else 0
+    )
+    lines.append(
+        f"| **All DTC** | **${total_spend:,.0f}** | **100%** | **${overall_cac:,.2f}** | **${overall_cac_1st:.2f}** | **{overall_roas:.2f}** | **{executive_metrics['overall_roas_1st_time']:.2f}** | **${executive_metrics['overall_aov']:.0f}** | **{int(total_transactions)}** | **${total_revenue:,.0f}** |")
+    paid_df = channel_summary[channel_summary['spend'] > 0]
+    if not paid_df.empty:
+        paid_spend = paid_df['spend'].sum()
+        paid_revenue = paid_df['attributed_rev'].sum()
+        paid_revenue_1st = paid_df['attributed_rev_1st_time'].sum()
+        paid_transactions = paid_df['transactions'].sum()
+        paid_transactions_1st = paid_df['transactions_1st_time'].sum()
+        paid_roas = paid_revenue / paid_spend if paid_spend else 0
+        paid_roas_1st = paid_revenue_1st / paid_spend if paid_spend else 0
+        paid_cac = paid_spend / paid_transactions if paid_transactions else 0
+        paid_cac_1st = paid_spend / paid_transactions_1st if paid_transactions_1st else 0
+        paid_aov = paid_revenue / paid_transactions if paid_transactions else 0
+        percent_total_paid = paid_spend / total_spend * 100 if total_spend > 0 else 0
+        lines.append(
+            f"| **Paid Media** | ${paid_spend:,.0f} | {percent_total_paid:.1f}% | ${paid_cac:.2f} | ${paid_cac_1st:.2f} | {paid_roas:.2f} | {paid_roas_1st:.2f} | ${paid_aov:,.0f} | {int(paid_transactions)} | ${paid_revenue:,.0f} |")
+    total_spend_safe = total_spend if total_spend != 0 else 1
+    for platform, row in channel_summary.iterrows():
+        spend = row['spend']
+        if spend <= 0:
+            continue
+        percent_total = spend / total_spend_safe * 100
+        lines.append(
+            f"| {platform} | ${spend:,.0f} | {percent_total:.1f}% | ${row['cac']:.2f} | ${row['cac_1st_time']:.2f} | {row['roas']:.2f} | {row['roas_1st_time']:.2f} | ${row['aov']:,.0f} | {int(row['transactions'])} | ${row['attributed_rev']:,.0f} |")
+    lines.append("\n---\n")
+    if not campaign_analysis.empty:
+        lines.append("## 3. Top Campaign Performance Analysis\n")
+        subset_roas = campaign_analysis[campaign_analysis['roas'] > 0]
+        idx = subset_roas.groupby('breakdown_platform_northbeam')['roas'].idxmax()
+        top_roas = subset_roas.loc[idx].sort_values('roas', ascending=False)
+        lines.append("### 🏆 Best Performing Campaigns by ROAS\n")
+        headers2 = ["Platform", "Campaign Name", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "AOV", "AOV 1st", "Spend", "Revenue"]
+        lines.append("| " + " | ".join(headers2) + " |")
+        lines.append("|" + "|".join(["-" * len(h) for h in headers2]) + "|")
+        if not top_roas.empty:
+            tot_spend = top_roas['spend'].sum()
+            tot_rev = top_roas['attributed_rev'].sum()
+            tot_rev1 = top_roas.get('attributed_rev_1st_time', pd.Series(dtype=float)).sum()
+            tot_txn = top_roas['transactions'].sum() if 'transactions' in top_roas.columns else 0
+            tot_txn1 = top_roas.get('transactions_1st_time', pd.Series(dtype=float)).sum()
+            tot_roas = tot_rev / tot_spend if tot_spend else 0
+            tot_roas1 = tot_rev1 / tot_spend if tot_spend else 0
+            tot_cac = tot_spend / tot_txn if tot_txn else 0
+            tot_cac1 = tot_spend / tot_txn1 if tot_txn1 else 0
+            tot_aov = tot_rev / tot_txn if tot_txn else 0
+            tot_aov1 = tot_rev1 / tot_txn1 if tot_txn1 else 0
+            lines.append(
+                f"| **Totals** | — | **{tot_roas:.2f}** | {tot_roas1:.2f} | ${tot_cac:.2f} | ${tot_cac1:.2f} | ${tot_aov:.2f} | ${tot_aov1:.2f} | ${tot_spend:,.0f} | ${tot_rev:,.0f} |")
+        for _, row in top_roas.iterrows():
+            platform = row['breakdown_platform_northbeam']
+            campaign = row['campaign_name'][:50].replace('|', '\\|')
+            lines.append(
+                f"| {platform} | **{campaign}** | **{row['roas']:.2f}** | {row.get('roas_1st_time', 0):.2f} | ${row.get('cac', 0):.2f} | ${row.get('cac_1st_time', 0):.2f} | ${row.get('aov', 0):.2f} | ${row.get('aov_1st_time', 0):.2f} | ${row['spend']:,.0f} | ${row['attributed_rev']:,.0f} |")
+        agg_cols_sum = ['spend','attributed_rev','attributed_rev_1st_time','transactions','transactions_1st_time']
+        for col in agg_cols_sum:
+            if col not in campaign_analysis.columns:
+                campaign_analysis[col] = 0
+        aggregated = campaign_analysis.groupby(['breakdown_platform_northbeam', 'campaign_name'], as_index=False)[agg_cols_sum].sum()
+        aggregated['roas'] = aggregated['attributed_rev'] / aggregated['spend'].replace({0: np.nan})
+        aggregated['roas_1st_time'] = aggregated['attributed_rev_1st_time'] / aggregated['spend'].replace({0: np.nan})
+        aggregated['cac'] = aggregated['spend'] / aggregated['transactions'].replace({0: np.nan})
+        aggregated['cac_1st_time'] = aggregated['spend'] / aggregated['transactions_1st_time'].replace({0: np.nan})
+        aggregated['aov'] = aggregated['attributed_rev'] / aggregated['transactions'].replace({0: np.nan})
+        aggregated['aov_1st_time'] = aggregated['attributed_rev_1st_time'] / aggregated['transactions_1st_time'].replace({0: np.nan})
+        top_spend = aggregated.sort_values('spend', ascending=False).head(5)
+        lines.append("\n### 💰 Highest Spend Campaigns\n")
+        headers3 = ["Platform", "Campaign Name", "Spend", "ROAS", "ROAS 1st", "CAC", "CAC 1st", "AOV", "AOV 1st", "Revenue"]
+        lines.append("| " + " | ".join(headers3) + " |")
+        lines.append("|" + "|".join(["-" * len(h) for h in headers3]) + "|")
+        if not top_spend.empty:
+            tot_spend2 = top_spend['spend'].sum()
+            tot_rev2 = top_spend['attributed_rev'].sum()
+            tot_rev1_2 = top_spend['attributed_rev_1st_time'].sum()
+            tot_txn2 = top_spend['transactions'].sum()
+            tot_txn1_2 = top_spend['transactions_1st_time'].sum()
+            tot_roas2 = tot_rev2 / tot_spend2 if tot_spend2 else 0
+            tot_roas1_2 = tot_rev1_2 / tot_spend2 if tot_spend2 else 0
+            tot_cac2 = tot_spend2 / tot_txn2 if tot_txn2 else 0
+            tot_cac1_2 = tot_spend2 / tot_txn1_2 if tot_txn1_2 else 0
+            tot_aov2 = tot_rev2 / tot_txn2 if tot_txn2 else 0
+            tot_aov1_2 = tot_rev1_2 / tot_txn1_2 if tot_txn1_2 else 0
+            lines.append(
+                f"| **Totals** | — | ${tot_spend2:,.0f} | {tot_roas2:.2f} | {tot_roas1_2:.2f} | ${tot_cac2:.2f} | ${tot_cac1_2:.2f} | ${tot_aov2:.2f} | ${tot_aov1_2:.2f} | ${tot_rev2:,.0f} |")
+        for _, row in top_spend.iterrows():
+            platform = row['breakdown_platform_northbeam']
+            campaign = row['campaign_name'][:50].replace('|', '\\|')
+            lines.append(
+                f"| {platform} | **{campaign}** | ${row['spend']:,.0f} | {row['roas']:.2f} | {row.get('roas_1st_time', 0):.2f} | ${row.get('cac', 0):.2f} | ${row.get('cac_1st_time', 0):.2f} | ${row.get('aov', 0):.2f} | ${row.get('aov_1st_time', 0):.2f} | ${row['attributed_rev']:,.0f} |")
+        exclude_platforms = {"Untattributed", "Excluded", "(not set)"}
+        rev_filtered = revenue_only_df[~revenue_only_df['breakdown_platform_northbeam'].isin(exclude_platforms)]
+        if not rev_filtered.empty:
+            idx_rev = rev_filtered.groupby('breakdown_platform_northbeam')['attributed_rev'].idxmax()
+            top_rev = rev_filtered.loc[idx_rev].sort_values('attributed_rev', ascending=False).head(10)
+            lines.append("\n### 📧 Revenue-Only Campaigns ($0 Spend)\n")
+            headers0 = ["Platform", "Campaign Name", "Revenue", "Transactions", "AOV"]
+            lines.append("| " + " | ".join(headers0) + " |")
+            lines.append("|" + "|".join(["-" * len(h) for h in headers0]) + "|")
+            for _, row in top_rev.iterrows():
+                platform = row['breakdown_platform_northbeam']
+                campaign = row['campaign_name'][:50].replace('|','\\|')
+                lines.append(f"| {platform} | **{campaign}** | ${row['attributed_rev']:,.0f} | {row['transactions']:.2f} | ${row.get('aov', 0):.2f} |")
+            rev_tot = top_rev['attributed_rev'].sum()
+            rev_txn_tot = top_rev['transactions'].sum()
+            rev_aov_tot = rev_tot / rev_txn_tot if rev_txn_tot else 0
+            lines.append(f"| **Totals** | — | ${rev_tot:,.0f} | {rev_txn_tot:.2f} | ${rev_aov_tot:.2f} |")
+    if isinstance(channel_summary, pd.DataFrame) and not channel_summary.empty:
+        lines.append("\n## 4. Channel Performance Metrics\n")
+        headers_g = ["Channel", "Spend", "Revenue", "CAC", "ROAS", "AOV", "Transactions"]
+        lines.append("| " + " | ".join(headers_g) + " |")
+        lines.append("|" + "|".join(["-" * len(h) for h in headers_g]) + "|")
+        high_spend = channel_summary[channel_summary['spend'] > 0].copy().sort_values('spend', ascending=False)
+        rev_only = channel_summary[channel_summary['spend'] == 0].copy().sort_values('attributed_rev', ascending=False)
+        combined = pd.concat([high_spend, rev_only])
+        grand_spend = combined['spend'].sum()
+        grand_rev = combined['attributed_rev'].sum()
+        grand_txn = combined['transactions'].sum()
+        grand_cac = grand_spend / grand_txn if grand_txn else 0
+        grand_roas = grand_rev / grand_spend if grand_spend else 0
+        grand_aov = grand_rev / grand_txn if grand_txn else 0
+        lines.append(
+            f"| **All Channels** | ${grand_spend:,.0f} | ${grand_rev:,.0f} | ${grand_cac:.2f} | {grand_roas:.2f} | ${grand_aov:.2f} | {int(grand_txn)} |")
+        for platform, row in combined.iterrows():
+            spend = row['spend']
+            txns_raw = row['transactions']
+            txns_display = f"{txns_raw:.2f}" if spend == 0 else f"{int(txns_raw)}"
+            lines.append(
+                f"| {platform} | ${spend:,.0f} | ${row['attributed_rev']:,.0f} | ${row['cac']:.2f} | {row['roas']:.2f} | ${row['aov']:.2f} | {txns_display} |")
+    lines.append("\n---\n")
+    lines.append(f"**Report Compiled**: {report_date}\n")
+    return "\n".join(lines)
 
 # -------------------------------------------------------------
 # 📅  Previous Week Utilities
@@ -351,7 +836,7 @@ def main():
     meta_cur_path   = _prompt_mtd("meta",   args.meta_csv)
 
     # 1. Load channel-level cleaned data from the base module
-    df = base.load_and_clean_data()
+    df = load_and_clean_data()
     if df is None:
         return
 
@@ -572,19 +1057,19 @@ def main():
         print(f"📤 Exported {len(unattributed_export)} unattributed rows to {export_name}")
 
     # 4. Run existing channel-level analyses (for executive summary etc.)
-    channel_summary = base.analyze_channel_performance(df)
+    channel_summary = analyze_channel_performance(df)
     if channel_summary.empty:
         print("No channel data – exiting")
         return
 
-    executive_metrics = base.generate_executive_summary(channel_summary)
-    campaign_analysis, revenue_only_df = base.analyze_campaign_performance(df)
-    first_time_metrics = base.analyze_first_time_metrics(df)
-    base.analyze_attribution_modes(df)
-    base.identify_opportunities(channel_summary)
+    executive_metrics = generate_executive_summary(channel_summary)
+    campaign_analysis, revenue_only_df = analyze_campaign_performance(df)
+    first_time_metrics = analyze_first_time_metrics(df)
+    analyze_attribution_modes(df)
+    identify_opportunities(channel_summary)
 
     # 5. Assemble markdown report
-    base_report = base.export_markdown_report(
+    base_report = export_markdown_report(
         executive_metrics,
         channel_summary,
         campaign_analysis,
@@ -720,7 +1205,7 @@ def main():
 
     prev_channel_summary = None
     if prev_df is not None:
-        prev_channel_summary_full = base.analyze_channel_performance(prev_df)
+        prev_channel_summary_full = analyze_channel_performance(prev_df)
         if isinstance(prev_channel_summary_full, pd.DataFrame) and not prev_channel_summary_full.empty:
             prev_channel_summary_full["transactions_display"] = prev_channel_summary_full["transactions"].round()
             prev_tot = channel_totals_df(prev_channel_summary_full)
