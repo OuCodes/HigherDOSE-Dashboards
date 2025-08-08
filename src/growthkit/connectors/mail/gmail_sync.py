@@ -3,6 +3,7 @@ This script is used to archive all messages from a Gmail account.
 """
 
 import re
+import sys
 import time
 import email
 import pickle
@@ -157,6 +158,20 @@ def get_creds():
     logger.warning("No token file found, starting OAuth flow...")
     print(f"  {ansi.yellow}No token file found{ansi.reset}, starting OAuth flow...")
     secret_files = list(Path("config/mail").glob("client_secret_*.json"))
+    if not secret_files:
+        msg = (
+            f"{ansi.red}No OAuth client secret JSON found{ansi.reset}.\n"
+            f"  Place your Google OAuth Desktop client JSON at "
+            f"{ansi.cyan}config/mail/client_secret_<id>.json{ansi.reset}\n"
+            f"Quick start:\n"
+            f"  1) In Google Cloud Console → APIs & Services → Credentials\n"
+            f"  2) Create OAuth client ID (Application type: Desktop app)\n"
+            f"  3) Download and save as {ansi.cyan}config/mail/client_secret_<id>.json{ansi.reset}"
+        )
+        logger.error("%s", msg.replace(ansi.red, '').replace(ansi.reset, '')
+                            .replace(ansi.cyan, ''))
+        print(msg)
+        sys.exit(2)
 
     client_secrets_file = str(secret_files[0])
     logger.info("Using client secrets file: %s", client_secrets_file)
