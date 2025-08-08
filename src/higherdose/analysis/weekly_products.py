@@ -11,22 +11,19 @@ The original channel-level analytics remain intact via re-use of
 `report_analysis_weekly` helper functions.
 """
 import re
-from datetime import datetime, timedelta
-
-import glob, os
+import os
+import glob
 import argparse
 from pathlib import Path
+from datetime import datetime, timedelta
 
 import numpy as np
 import pandas as pd
 
 from higherdose.analysis.file_selector import select_csv_file
 
-
-
-
 # -------------------------------------------------------------
-# Migrated channel-level functions from weekly.py
+# Channel-level functions
 # -------------------------------------------------------------
 
 def load_and_clean_data():
