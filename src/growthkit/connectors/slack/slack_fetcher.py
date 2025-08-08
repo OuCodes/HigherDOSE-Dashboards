@@ -13,9 +13,10 @@ import traceback
 import urllib.parse
 from enum import Enum
 from pathlib import Path
+from dataclasses import dataclass
 from datetime import datetime, UTC
-from typing import Dict, List, Any, Optional
 from http.cookies import SimpleCookie
+from typing import Dict, List, Any, Optional
 
 from playwright.async_api import async_playwright, Page, Request, Route, Error, TimeoutError
 import requests
@@ -23,9 +24,6 @@ import requests
 from growthkit.utils.style import ansi
 from growthkit.utils.logs import report
 from growthkit.connectors.slack._playwright_setup import ensure_chromium_installed
-
-from config.slack.workspace import validate_workspace
-from config.slack.workspace import CONFIG
 
 # Initialize logging
 logger = report.settings(__file__)
@@ -41,10 +39,38 @@ STORAGE_STATE_FILE = Path("config/slack/storage_state.json")
 CHANNEL_MAP_FILE = Path("data/slack/channel_map.json")
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Workspace configuration
-WORKSPACE_URL = CONFIG.url
-TEAM_ID = CONFIG.team_id
-APP_CLIENT_URL = f"https://app.slack.com/client/{TEAM_ID}"
+@dataclass(frozen=True)
+class WorkspaceSettings:
+    """Workspace settings for Slack fetcher"""
+    url: str
+    team_id: str
+
+    @property
+    def app_client_url(self) -> str:
+        """URL for the Slack app client"""
+        return f"https://app.slack.com/client/{self.team_id}"
+
+
+def load_workspace_settings() -> WorkspaceSettings:
+    """Create/validate workspace config and return settings object.
+
+    This mirrors the safety in `scripts/slack_export.py` by generating a
+    default `config/slack/workspace.py` if missing, then importing and
+    validating it before use.
+    """
+    from growthkit.connectors.slack._init_config import ensure_workspace_config
+
+    # Create default config file if missing
+    ensure_workspace_config()
+
+    # Import after ensuring the file exists
+    from config.slack.workspace import validate_workspace, CONFIG
+
+    # Validate values are not placeholders
+    validate_workspace()
+
+    # Return an immutable settings object used throughout this module
+    return WorkspaceSettings(url=CONFIG.url, team_id=CONFIG.team_id)
 
 # -------------- Conversation Type Enum ---------------------------------------
 
@@ -204,7 +230,7 @@ class SlackCredentials:
 
 class SlackBrowser:
     """Manages a Playwright browser instance for automated Slack data extraction."""
-    def __init__(self):
+    def __init__(self, settings: WorkspaceSettings):
         self.page: Optional[Page] = None
         self.context = None
         self.browser = None
@@ -212,6 +238,7 @@ class SlackBrowser:
         self.intercepted_data: List[Dict[str, Any]] = []
         self.user_mappings: Dict[str, str] = {}
         self.channel_mappings: Dict[str, str] = {}
+        self.settings = settings
         self.use_storage_state: bool = True
         self._dialog_dismiss_enabled: bool = True
 
@@ -518,7 +545,7 @@ class SlackBrowser:
             if not self.page:
                 return False
             url = self.page.url
-            return ("app.slack.com/client/" in url) and (TEAM_ID in url)
+            return ("app.slack.com/client/" in url) and (self.settings.team_id in url)
         except (Error, AttributeError):
             return False
 
@@ -561,9 +588,9 @@ class SlackBrowser:
 
         try:
             # Navigate to the workspace
-            print(f"🌐 Navigating to {WORKSPACE_URL}")
+            print(f"🌐 Navigating to {self.settings.url}")
             sw = Stopwatch("login ")
-            await self.page.goto(WORKSPACE_URL)
+            await self.page.goto(self.settings.url)
             sw.lap("page.goto")
 
             # First, try to bypass any launch screen that tries to open the desktop app
@@ -596,7 +623,7 @@ class SlackBrowser:
                     # If authenticated and not already on app client, open app client
                     if not self._on_app_client():
                         try:
-                            await self.page.goto(APP_CLIENT_URL, timeout=15000)
+                            await self.page.goto(self.settings.app_client_url, timeout=15000)
                             await self.page.wait_for_timeout(1500)
                         except (TimeoutError, Error):
                             pass
@@ -650,7 +677,7 @@ class SlackBrowser:
                     # Open app client only if not already there
                     if not self._on_app_client():
                         try:
-                            await self.page.goto(APP_CLIENT_URL, timeout=15000)
+                            await self.page.goto(self.settings.app_client_url, timeout=15000)
                             await self.page.wait_for_timeout(1500)
                         except (TimeoutError, Error):
                             pass
@@ -1063,12 +1090,12 @@ class SlackBrowser:
         # Navigate to channels page to trigger channel list API calls
         try:
             print("🔍 Navigating to channels page to get channel data...")
-            url = f"https://app.slack.com/client/{TEAM_ID}/browse-channels"
+            url = f"https://app.slack.com/client/{self.settings.team_id}/browse-channels"
             await self.page.goto(url, timeout=10000)
             await self.page.wait_for_timeout(3000)
 
             # Also try the main channels view
-            await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}/channels", timeout=10000)
+            await self.page.goto(f"https://app.slack.com/client/{self.settings.team_id}/channels", timeout=10000)
             await self.page.wait_for_timeout(3000)
 
             # Refresh channel mappings after navigation
@@ -1290,7 +1317,7 @@ class SlackBrowser:
             parts.append(f"--{boundary}--")
             return "\r\n".join(parts)
 
-        domain = WORKSPACE_URL.split("//")[-1]
+        domain = self.settings.url.split("//")[-1]
         url = f"https://{domain}/api/conversations.history"
 
         messages: List[Dict[str, Any]] = []
@@ -1385,8 +1412,8 @@ class SlackBrowser:
 
             # Navigate to the channel to trigger history loading –
             # prefer the universal app.slack.com URL first to avoid desktop-app redirects
-            primary_url = f"https://app.slack.com/client/{TEAM_ID}/{channel_id}"
-            fallback_url = f"{WORKSPACE_URL}/archives/{channel_id}"
+            primary_url = f"https://app.slack.com/client/{self.settings.team_id}/{channel_id}"
+            fallback_url = f"{self.settings.url}/archives/{channel_id}"
 
             try:
                 await self.page.goto(primary_url, timeout=10000)
@@ -1942,14 +1969,14 @@ class SlackBrowser:
             if any(term in current_url for term in download_indicators):
                 print("🔍 Detected app download page, navigating back to web client…")
                 # Use workspace URL instead of APP_CLIENT_URL to avoid redirects
-                await self.page.goto(WORKSPACE_URL)
+                await self.page.goto(self.settings.url)
                 await self.page.wait_for_timeout(1000)  # Give it time to load
 
                 # Double-check we didn't get redirected again
                 new_url = self.page.url
                 if any(term in new_url for term in download_indicators):
                     print("🔍 Still on download page, trying direct app client URL…")
-                    await self.page.goto(APP_CLIENT_URL)
+                    await self.page.goto(self.settings.app_client_url)
                     await self.page.wait_for_timeout(1000)
 
                 return True
@@ -2027,14 +2054,14 @@ class SlackBrowser:
             download_indicators = ["/getting-started", "/download", "/app", "/desktop", "/install"]
             if any(term in current_url for term in download_indicators):
                 print("🔍 Detected app download page, navigating to workspace...")
-                await self.page.goto(WORKSPACE_URL)
+                await self.page.goto(self.settings.url)
                 await self.page.wait_for_timeout(1000)  # Reduced wait time
 
                 # Verify we're not still on a download page
                 final_url = self.page.url
                 if any(term in final_url for term in download_indicators):
                     print("🔍 Still redirecting to download, forcing client URL...")
-                    await self.page.goto(f"https://app.slack.com/client/{TEAM_ID}")
+                    await self.page.goto(self.settings.app_client_url)
                     await self.page.wait_for_timeout(1000)
 
                 return True
@@ -2153,7 +2180,7 @@ class SlackBrowser:
         if not (self.credentials.token and self.credentials.cookies):
             return {}
 
-        domain = WORKSPACE_URL.split("//")[-1]
+        domain = self.settings.url.split("//")[-1]
         url = f"https://{domain}/api/{endpoint}"
 
         payload = {**payload, "token": self.credentials.token}
@@ -2644,11 +2671,13 @@ async def main():
     sw = Stopwatch("main ")
     log_file = Path("src/growthkit/utils/logs/slack_fetcher.log")
     print(f"🚀 {ansi.cyan}Playwright-based Slack Fetcher{ansi.reset}")
-    print(f"📍 Workspace: {ansi.yellow}{WORKSPACE_URL}{ansi.reset}")
+    # Load settings here and pass down to browser
+    settings = load_workspace_settings()
+    print(f"📍 Workspace: {ansi.yellow}{settings.url}{ansi.reset}")
     print(f"📝 Detailed logs: {ansi.grey}{log_file.absolute()}{ansi.reset}")
     print()
 
-    logger.info("Slack fetcher started for workspace: %s", WORKSPACE_URL)
+    logger.info("Slack fetcher started for workspace: %s", settings.url)
 
     # CLI flags
     parser = argparse.ArgumentParser(add_help=False)
@@ -2666,7 +2695,7 @@ async def main():
         headless = False
         fresh = True
 
-    browser = SlackBrowser()
+    browser = SlackBrowser(settings=settings)
 
     try:
         # Start browser with requested options
@@ -2841,9 +2870,9 @@ async def main():
             try:
                 # Navigate to safer URLs that are more likely to work
                 safe_urls = [
-                    f"https://app.slack.com/client/{TEAM_ID}",  # Main workspace
-                    f"https://app.slack.com/client/{TEAM_ID}/browse-channels",  # Browse channels
-                    WORKSPACE_URL  # Fallback to main URL
+                    f"https://app.slack.com/client/{browser.settings.team_id}",  # Main workspace
+                    f"https://app.slack.com/client/{browser.settings.team_id}/browse-channels",  # Browse channels
+                    browser.settings.url  # Fallback to main URL
                 ]
 
                 channel_found = False
@@ -2967,8 +2996,15 @@ async def main():
 
 def run_main():
     """Run the async main function."""
-    # Validate configuration at runtime to avoid import-time failures
-    validate_workspace()
+    # Ensure workspace config exists and populate runtime settings
+    try:
+        load_workspace_settings()
+    except RuntimeError as exc:
+        # Graceful, user-friendly guidance if placeholders still exist
+        print("❌ Workspace is not configured.")
+        print("   Edit `config/slack/workspace.py` with your real Slack URL and team ID.")
+        print(f"   Details: {exc}")
+        return
     ensure_chromium_installed()
     asyncio.run(main())
 
