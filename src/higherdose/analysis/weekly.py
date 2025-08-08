@@ -590,7 +590,7 @@ def _fmt_delta(cur: float, prev: float, prefix: str = "$", digits: int = 0) -> s
 
 def load_product_mappings():
     """Load product mappings from the canonical product_data module."""
-    from .. import product_data
+    from . import product_data
     
     # Use the canonical data directly
     product_to_category = product_data.PRODUCT_TO_CATEGORY.copy()
