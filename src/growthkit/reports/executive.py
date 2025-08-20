@@ -285,7 +285,13 @@ class MTDReportGenerator:
         print("\n=== SCANNING FOR DATA FILES (CURRENT & PREVIOUS YEAR) ===")
 
         for file_type, pattern in file_patterns.items():
-            files = glob.glob(str(self.data_dir / "**" / pattern), recursive=True)
+            # Support single pattern string or list of patterns
+            files: list[str] = []
+            if isinstance(pattern, (list, tuple)):
+                for patt in pattern:
+                    files.extend(glob.glob(str(self.data_dir / "**" / patt), recursive=True))
+            else:
+                files = glob.glob(str(self.data_dir / "**" / pattern), recursive=True)
 
             current_year_files = [f for f in files if current_year in f]
             previous_year_files = [f for f in files if previous_year in f]
@@ -300,13 +306,23 @@ class MTDReportGenerator:
                 target_pool = daily if daily else file_list
                 
                 def _file_sort_key(filepath: str) -> tuple:
-                    """Sort key: (extracted_date, modification_time). If no date found, use epoch."""
-                    extracted_date = _extract_date_from_filename(filepath)
-                    if extracted_date:
-                        return (extracted_date, os.path.getmtime(filepath))
-                    else:
-                        # Fallback to modification time only, but with minimum date to sort last
-                        return (datetime(1970, 1, 1), os.path.getmtime(filepath))
+                    """Sort key: (end_date, start_date_for_tiebreak, modification_time).
+                    Prefer latest end date; when equal, prefer the file whose start date is later (shorter span).
+                    """
+                    basename = os.path.basename(filepath)
+                    # Extract potential start/end from 'YYYY-MM-DD - YYYY-MM-DD'
+                    rng = re.findall(r'(\d{4}-\d{2}-\d{2})\s*-\s*(\d{4}-\d{2}-\d{2})', basename)
+                    end_dt = _extract_date_from_filename(filepath) or datetime(1970, 1, 1)
+                    start_dt = datetime(1970, 1, 1)
+                    if rng:
+                        try:
+                            # Use the latest pair by end date
+                            pairs = [(datetime.strptime(a, '%Y-%m-%d'), datetime.strptime(b, '%Y-%m-%d')) for a,b in rng]
+                            pairs.sort(key=lambda x: x[1])
+                            start_dt, end_dt = pairs[-1]
+                        except Exception:
+                            pass
+                    return (end_dt, start_dt, os.path.getmtime(filepath))
                 
                 return max(target_pool, key=_file_sort_key)
 
@@ -388,7 +404,17 @@ class MTDReportGenerator:
                 if not candidate:
                     raise ValueError("No date column found in GA4 file; columns = " + ", ".join(df.columns))
                 df.rename(columns={candidate: 'Date'}, inplace=True)
-            df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+            # Robustly parse YYYYMMDD formats that often come in as ints
+            date_series = df['Date']
+            try:
+                # Detect 8-digit numeric-like values
+                as_str = date_series.astype(str).str.strip()
+                if as_str.str.match(r'^\d{8}$').all():
+                    df['Date'] = pd.to_datetime(as_str, format='%Y%m%d', errors='coerce')
+                else:
+                    df['Date'] = pd.to_datetime(date_series, errors='coerce')
+            except Exception:
+                df['Date'] = pd.to_datetime(date_series, errors='coerce')
             return df
 
         # Load GA4 data
@@ -412,6 +438,12 @@ class MTDReportGenerator:
                 df = pd.read_csv(selected_files['ga4_channel_group'], comment='#')
             except Exception:
                 df = pd.read_csv(selected_files['ga4_channel_group'], skiprows=9, engine='python')
+            # Normalize possible GA4 header variants to a single expected name
+            for candidate in ['Default channel group', 'Session default channel group']:
+                if candidate in df.columns:
+                    if candidate != 'Default channel group':
+                        df = df.rename(columns={candidate: 'Default channel group'})
+                    break
             assert_columns(df, DATA_SOURCE_CONFIG['ga4_channel_group']['required_columns'], selected_files['ga4_channel_group'])
             df = _standardise_ga4_dates(df)
             df_filtered = df[(df['Date'] >= start_date) &
@@ -460,7 +492,14 @@ class MTDReportGenerator:
         if 'northbeam_spend' in selected_files:
             try:
                 df = pd.read_csv(selected_files['northbeam_spend'], thousands=',')
-                df['date'] = pd.to_datetime(df['date'], errors='coerce')
+                # Normalize date column to 'date'
+                for candidate in ['date', 'Date', 'day', 'Day']:
+                    if candidate in df.columns:
+                        if candidate != 'date':
+                            df = df.rename(columns={candidate: 'date'})
+                        break
+                if 'date' in df.columns:
+                    df['date'] = pd.to_datetime(df['date'], errors='coerce')
                 # allow full YTD up to current end
                 df_filtered = df[(df['date'] <= end_date)].copy()
 
@@ -478,6 +517,10 @@ class MTDReportGenerator:
                         col_map[col] = 'new_customer_percentage'
 
                 df_filtered = df_filtered.rename(columns=col_map)
+
+                # Ensure platform breakdown column exists
+                if 'breakdown_platform_northbeam' not in df_filtered.columns:
+                    df_filtered['breakdown_platform_northbeam'] = df_filtered.get('platform', 'Unknown')
 
                 # Remove duplicate column names that can break downstream numeric casting
                 df_filtered = df_filtered.loc[:, ~df_filtered.columns.duplicated()]
@@ -545,13 +588,13 @@ class MTDReportGenerator:
                         return 'ShopMyShelf (Influencer)'
                     if 'applovin' in val:
                         return 'AppLovin'
-                    if 'bing / cpc' in val or 'bing ads' in val:
+                    if 'bing / cpc' in val or 'bing ads' in val or 'microsoft' in val:
                         return 'Bing Ads'
                     if 'pinterest' in val:
                         return 'Pinterest Ads'
                     if 'tiktok' in val:
                         return 'TikTok Ads'
-                    if 'google / cpc' in val:
+                    if 'google / cpc' in val or 'google ads' in val:
                         return 'Paid Search'
                     if 'facebook' in val or 'instagram' in val or 'meta' in val:
                         return 'Paid Social'
@@ -569,26 +612,41 @@ class MTDReportGenerator:
                 # -----------------------------
                 if 'northbeam' in ga4_data:
                     nb = ga4_data['northbeam']
-                    spend_df = (
-                        nb.groupby('breakdown_platform_northbeam')
-                        .agg({'spend': 'sum', 'attributed_rev': 'sum'})
+                    # Choose platform column
+                    platform_col = 'breakdown_platform_northbeam' if 'breakdown_platform_northbeam' in nb.columns else (
+                        'platform' if 'platform' in nb.columns else None
                     )
+                    if platform_col is not None:
+                        # Robust mapping from platform names to custom channels
+                        def _platform_to_channel(name: Any) -> Optional[str]:
+                            val = str(name).lower()
+                            if 'google' in val:
+                                return 'Paid Search'
+                            if 'bing' in val or 'microsoft' in val:
+                                return 'Bing Ads'
+                            if 'meta' in val or 'facebook' in val or 'instagram' in val:
+                                return 'Paid Social'
+                            if 'tiktok' in val:
+                                return 'TikTok Ads'
+                            if 'pinterest' in val:
+                                return 'Pinterest Ads'
+                            if 'applovin' in val:
+                                return 'AppLovin'
+                            if 'awin' in val:
+                                return 'Awin (Paid Affiliate)'
+                            if 'shopmy' in val:
+                                return 'ShopMyShelf (Influencer)'
+                            return None
 
-                    # Map Northbeam platform names to our custom channels
-                    platform_map = {
-                        'Google Ads': 'Paid Search',
-                        'Bing Ads': 'Bing Ads',
-                        'Meta Ads': 'Paid Social',
-                        'TikTok Ads': 'TikTok Ads',
-                        'Pinterest Ads': 'Pinterest Ads',
-                        'AppLovin': 'AppLovin',
-                        'Awin': 'Awin (Paid Affiliate)',
-                        'ShopMyShelf': 'ShopMyShelf (Influencer)',
-                    }
-
-                    spend_df['__custom_channel__'] = spend_df.index.map(lambda x: platform_map.get(x, None))
-                    spend_df = (spend_df.dropna(subset=['__custom_channel__'])
-                               .groupby('__custom_channel__').sum())
+                        nb = nb.copy()
+                        nb['__custom_channel__'] = nb[platform_col].apply(_platform_to_channel)
+                        spend_df = (
+                            nb.dropna(subset=['__custom_channel__'])
+                              .groupby('__custom_channel__')
+                              .agg({'spend': 'sum', 'attributed_rev': 'sum'})
+                        )
+                    else:
+                        spend_df = pd.DataFrame(columns=['spend', 'attributed_rev'])
 
                     merged = (revenue_df.join(spend_df[['spend']], how='left')
                              .fillna(0))
@@ -629,20 +687,25 @@ class MTDReportGenerator:
                     .dt.to_period('M')
                     .astype(str)
                 )
-
+ 
                 month_str = date_range['start_dt'].strftime('%Y-%m')
-                current_data = df[df['_month_norm'] == month_str]
+                current_data = df[df['_month_norm'] == month_str].copy()
+                # Restrict to exact MTD window when Day column exists
+                if 'Day' in current_data.columns:
+                    current_data['Day'] = pd.to_datetime(current_data['Day'], errors='coerce')
+                    current_data = current_data[(current_data['Day'] >= date_range['start_dt']) & (current_data['Day'] <= date_range['end_dt'])]
+ 
+                if not current_data.empty:
+                    # Sum across all days within the month by New/Returning
+                    def _sum_for(label: str) -> tuple[float, int]:
+                        sub = current_data[current_data['New or returning customer'] == label]
+                        rev = pd.to_numeric(sub['Total sales'], errors='coerce').fillna(0).sum()
+                        ords = pd.to_numeric(sub['Orders'], errors='coerce').fillna(0).sum()
+                        return rev, int(ords)
 
-                new_data = current_data[
-                    current_data['New or returning customer'] == 'New']
-                returning_data = current_data[
-                    current_data['New or returning customer'] == 'Returning']
+                    new_rev, new_ord = _sum_for('New')
+                    ret_rev, ret_ord = _sum_for('Returning')
 
-                if not new_data.empty and not returning_data.empty:
-                    new_rev = new_data['Total sales'].iloc[0]
-                    new_ord = new_data['Orders'].iloc[0]
-                    ret_rev = returning_data['Total sales'].iloc[0]
-                    ret_ord = returning_data['Orders'].iloc[0]
                     metrics['customer_mix'] = {
                         'new_revenue': new_rev, 'new_orders': new_ord,
                         'returning_revenue': ret_rev, 'returning_orders': ret_ord,
@@ -719,7 +782,11 @@ class MTDReportGenerator:
         # ----------------------------------------------------------------
         # EXECUTIVE SUMMARY
         # ----------------------------------------------------------------
-        report += self._generate_executive_summary(metrics_current.get('shopify', {}))
+        report += self._generate_executive_summary(
+            shopify_curr=metrics_current.get('shopify', {}),
+            ga4_curr=metrics_current.get('ga4', {}),
+            shopify_prev=metrics_previous.get('shopify', {})
+        )
 
         # ----------------------------------------------------------------
         # CUSTOMER MIX
@@ -734,11 +801,11 @@ class MTDReportGenerator:
         # ----------------------------------------------------------------
         # YoY BUSINESS IMPACT
         # ----------------------------------------------------------------
-        report += self._generate_yoy_impact_table(
-            metrics_current.get('shopify', {}),
-            metrics_previous.get('shopify', {}),
-            metrics_current.get('ga4', {}),
-            metrics_previous.get('ga4', {}),
+        report += self._generate_yoy_impact_table_mtd(
+            shopify_curr=metrics_current.get('shopify', {}),
+            shopify_prev=metrics_previous.get('shopify', {}),
+            ga4_curr=metrics_current.get('ga4', {}),
+            ga4_prev=metrics_previous.get('ga4', {}),
         )
 
         # ----------------------------------------------------------------
@@ -755,34 +822,143 @@ class MTDReportGenerator:
         report += f"\n*Report generated on {report_date}*\n"
         return report
 
-    def _generate_executive_summary(self, shopify_curr: Dict) -> str:
-        """Create the EXECUTIVE SUMMARY section similar to the manual report."""
+    def _generate_executive_summary(self, shopify_curr: Dict, ga4_curr: Dict, shopify_prev: Dict) -> str:
+        """Create the EXECUTIVE SUMMARY section with complete MTD metrics."""
         section = "## EXECUTIVE SUMMARY\n\n"
-
+ 
         bullets: List[str] = []
-
-        total_rev = shopify_curr.get('total_revenue')
-        if total_rev is not None:
+ 
+        total_rev = shopify_curr.get('total_revenue', 0)
+        total_orders = shopify_curr.get('total_orders', 0)
+        aov = shopify_curr.get('aov', 0)
+ 
+        if total_rev:
             bullets.append(f"- **Total Revenue:** ${total_rev:,.0f}")
-
+        if total_orders:
+            bullets.append(f"- **Total Orders:** {total_orders:,}")
+        if aov:
+            bullets.append(f"- **Average Order Value (AOV):** ${aov:,.0f}")
+ 
         cm = shopify_curr.get('customer_mix')
+        new_pct = None
+        new_aov_val = None
+        ret_aov_val = None
         if cm:
             new_pct = (cm['new_revenue'] / cm['total_revenue']) * 100 if cm['total_revenue'] else 0
             ret_pct = 100 - new_pct
             bullets.append(f"- **New to Brand Contribution:** {new_pct:.0f}%  ")
             bullets.append(f"- **Returning Customer Contribution:** {ret_pct:.0f}%  ")
-
-        # Place-holders for metrics not yet automated
+            # AOVs by cohort
+            new_aov_val = (cm['new_revenue'] / cm['new_orders']) if cm.get('new_orders', 0) else 0
+            ret_aov_val = (cm['returning_revenue'] / cm['returning_orders']) if cm.get('returning_orders', 0) else 0
+ 
+        # Paid-media contribution and blended ROAS/CAC from Northbeam + GA4
+        paid_rev = 0
+        total_sessions = 0
+        if 'totals' in ga4_curr:
+            paid_rev = ga4_curr['totals'].get('paid_revenue', 0)
+            total_sessions = ga4_curr['totals'].get('sessions', 0)
+ 
+        # Compute MTD spend and transactions from Northbeam
+        mtd_spend = 0
+        mtd_transactions = 0
+        if 'northbeam' in self.ga4_data_current:
+            nb = self.ga4_data_current['northbeam']
+            start_dt = self.mtd_date_range_current['start_dt']
+            end_dt = self.mtd_date_range_current['end_dt']
+            if 'date' in nb.columns:
+                m = (nb['date'] >= start_dt) & (nb['date'] <= end_dt)
+                nb_mtd = nb[m].copy()
+            else:
+                nb_mtd = nb.copy()
+            # Use Accrual performance rows only and positive spend
+            if 'accounting_mode' in nb_mtd.columns:
+                nb_mtd = nb_mtd[nb_mtd['accounting_mode'].str.contains('Accrual', case=False, na=False)]
+            if 'spend' in nb_mtd.columns:
+                nb_mtd['spend'] = pd.to_numeric(nb_mtd['spend'], errors='coerce').fillna(0)
+                nb_mtd = nb_mtd[nb_mtd['spend'] > 0]
+            if 'spend' in nb_mtd.columns:
+                mtd_spend = pd.to_numeric(nb_mtd['spend'], errors='coerce').fillna(0).sum()
+            if 'transactions' in nb_mtd.columns:
+                mtd_transactions = pd.to_numeric(nb_mtd['transactions'], errors='coerce').fillna(0).sum()
+ 
+        blended_roas = (total_rev / mtd_spend) if mtd_spend else 0
+        # CAC per order over entire customers (total orders)
+        cac = (mtd_spend / total_orders) if total_orders else 0
+        paid_contrib_pct = (paid_rev / total_rev * 100) if total_rev else 0
+ 
+        # Revenue YoY (MTD) – prefer Day-sliced Shopify
+        def _mtd_rev(shopify_dict: Dict, start_dt: pd.Timestamp, end_dt: pd.Timestamp) -> Optional[float]:
+            # Try total-sales daily
+            ts = shopify_dict.get('total_sales')
+            if isinstance(ts, pd.DataFrame) and 'Day' in ts.columns and 'Total sales' in ts.columns:
+                df = ts.copy()
+                df['Day'] = pd.to_datetime(df['Day'], errors='coerce')
+                sub = df[(df['Day'] >= start_dt) & (df['Day'] <= end_dt)]
+                if not sub.empty:
+                    return pd.to_numeric(sub['Total sales'], errors='coerce').fillna(0).sum()
+            # Try new/returning daily (sum both cohorts)
+            nr = shopify_dict.get('new_returning')
+            if isinstance(nr, pd.DataFrame) and 'Day' in nr.columns and 'Total sales' in nr.columns:
+                df = nr.copy()
+                df['Day'] = pd.to_datetime(df['Day'], errors='coerce')
+                sub = df[(df['Day'] >= start_dt) & (df['Day'] <= end_dt)]
+                if not sub.empty:
+                    return pd.to_numeric(sub['Total sales'], errors='coerce').fillna(0).sum()
+            return None
+ 
+        cur_start = self.mtd_date_range_current['start_dt']
+        cur_end = self.mtd_date_range_current['end_dt']
+        prev_start = self.mtd_date_range_previous['start_dt']
+        prev_end = self.mtd_date_range_previous['end_dt']
+ 
+        cur_rev_for_yoy = _mtd_rev(self.shopify_data_current, cur_start, cur_end) or total_rev
+        prev_rev_for_yoy = _mtd_rev(self.shopify_data_previous, prev_start, prev_end) or shopify_prev.get('total_revenue', 0)
+        yoy_rev = get_yoy_change(cur_rev_for_yoy, prev_rev_for_yoy) if prev_rev_for_yoy else "N/A"
+ 
+        # Rev-to-Net from Shopify total sales over time (if available)
+        rev_to_net = "N/A"
+        if 'total_sales' in self.shopify_data_current:
+            ts = self.shopify_data_current['total_sales'].copy()
+            if 'Day' in ts.columns and 'Total sales' in ts.columns and 'Net sales' in ts.columns:
+                ts['Day'] = pd.to_datetime(ts['Day'], errors='coerce')
+                m = (ts['Day'] >= self.mtd_date_range_current['start_dt']) & (ts['Day'] <= self.mtd_date_range_current['end_dt'])
+                sub = ts[m]
+                gross = pd.to_numeric(sub['Total sales'], errors='coerce').fillna(0).sum()
+                net = pd.to_numeric(sub['Net sales'], errors='coerce').fillna(0).sum()
+                if gross:
+                    rev_to_net = f"{(net / gross * 100):.0f}%"
+ 
+        # Insert Total Spend bullet when available
+        if mtd_spend:
+            bullets.append(f"- **Total Spend:** ${mtd_spend:,.0f}")
+ 
         bullets.extend([
-            "- **Rev-to-Net:** N/A  ",
-            "- **Blended ROAS:** N/A  ",
-            "- **Customer Acquisition Cost (CAC):** N/A  ",
-            "- **Paid Media Contribution to Total Business Revenue:** N/A  ",
-            "- **Total Business Revenue YoY:** N/A  "
+            f"- **Rev-to-Net:** {rev_to_net}  ",
+            f"- **Blended ROAS:** {blended_roas:.2f}  ",
+            f"- **Customer Acquisition Cost (CAC):** ${cac:,.0f}  ",
+            f"- **Paid Media Contribution to Total Business Revenue:** {paid_contrib_pct:.0f}%  ",
+            f"- **Total Business Revenue YoY:** {yoy_rev}  ",
         ])
-
+ 
         section += "\n".join(bullets) + "\n\n"
-        section += "**Summary Insight:**  \n> _Insight generation not yet automated._\n\n---\n\n"
+ 
+        # Build a concise, data-driven insight line
+        parts: list[str] = []
+        if total_rev and mtd_spend:
+            parts.append(f"Revenue ${total_rev:,.0f} on ${mtd_spend:,.0f} spend (ROAS {blended_roas:.2f})")
+        elif total_rev:
+            parts.append(f"Revenue ${total_rev:,.0f}")
+        if new_pct is not None and new_aov_val is not None and ret_aov_val is not None:
+            parts.append(f"NTB {new_pct:.0f}% (AOV ${new_aov_val:,.0f} vs ${ret_aov_val:,.0f} returning)")
+        if total_orders and cac:
+            parts.append(f"CAC ${cac:,.0f} across {total_orders:,} orders")
+        if paid_contrib_pct:
+            parts.append(f"paid media drove {paid_contrib_pct:.0f}% of revenue")
+        if yoy_rev and yoy_rev != "N/A":
+            parts.append(f"YoY {yoy_rev}")
+        insight_text = "; ".join(parts) if parts else "Performance stable; metrics pending."
+        section += f"**Summary Insight:**  \n> {insight_text}\n\n---\n\n"
         return section
 
     def _generate_yoy_impact_table(self, shopify_curr: Dict, shopify_prev: Dict,
@@ -850,26 +1026,30 @@ class MTDReportGenerator:
             df = df_dict.get('channel_group_full') or df_dict.get('channel_group')
             if df is None:
                 return 0, 0
-
-            start_q2 = f"{yr}-04-01"
-            end_q2 = f"{yr}-06-30"
+ 
+            start_q2 = pd.Timestamp(year=yr, month=4, day=1)
+            end_q2 = pd.Timestamp(year=yr, month=6, day=30)
+            # Ensure Date is datetime
+            if not pd.api.types.is_datetime64_any_dtype(df['Date']):
+                df = df.copy()
+                df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
             mask = (df['Date'] >= start_q2) & (df['Date'] <= end_q2)
             sub = df[mask].copy()
-
+ 
             # Normalise numeric columns that we need
             for col in ['Sessions', 'Total revenue']:
                 if col in sub.columns:
                     sub[col] = pd.to_numeric(sub[col], errors='coerce').fillna(0)
-
+ 
             # Detect correct channel-group column name
             channel_col = None
             for candidate in ['Default channel group', 'Session default channel group']:
                 if candidate in sub.columns:
                     channel_col = candidate
                     break
-
+ 
             sessions_total = sub['Sessions'].sum() if 'Sessions' in sub.columns else 0
-
+ 
             if channel_col:
                 paid_channels = {
                     'Paid Search', 'Paid Social', 'Affiliate', 'Cross-network',
@@ -903,10 +1083,98 @@ class MTDReportGenerator:
                   f"{get_yoy_change(curr_sessions, prev_sessions)} |\n")
         return table + "---\n"
 
-    def _generate_monthly_trends_table(self) -> str:
-        """Return Q2 (Apr–Jun) paid-media trends with Spend/ROAS/CAC/New-User%/Revenue."""
+    def _generate_yoy_impact_table_mtd(self, shopify_curr: Dict, shopify_prev: Dict, ga4_curr: Dict, ga4_prev: Dict) -> str:
+        """MTD YoY comparisons for revenue, orders, AOV, CVR, paid revenue share, and sessions."""
+        table = "## Year-over-Year Business Impact\n"
+        table += "| Metric | This Year | Last Year | YoY Change |\n"
+        table += "|---|---|---|---|\n"
+ 
+        # Prefer exact MTD filter from Shopify total-sales (Day) for both years
+        def _mtd_from_total_sales(shopify_dict: Dict, start_dt: pd.Timestamp, end_dt: pd.Timestamp):
+            if 'total_sales' not in shopify_dict:
+                return None
+            df = shopify_dict['total_sales']
+            if 'Day' not in df.columns:
+                return None
+            ts = df.copy()
+            ts['Day'] = pd.to_datetime(ts['Day'], errors='coerce')
+            mask = (ts['Day'] >= start_dt) & (ts['Day'] <= end_dt)
+            sub = ts[mask]
+            if sub.empty:
+                return None
+            rev = pd.to_numeric(sub['Total sales'], errors='coerce').fillna(0).sum()
+            ords = pd.to_numeric(sub['Orders'], errors='coerce').fillna(0).sum() if 'Orders' in sub.columns else 0
+            aov = (rev / ords) if ords else 0
+            return rev, int(ords), aov
 
-        table = "## Monthly Trends (Q2)\n"
+        # Alternate: derive from daily New vs Returning (sum both cohorts)
+        def _mtd_from_new_returning(shopify_dict: Dict, start_dt: pd.Timestamp, end_dt: pd.Timestamp):
+            if 'new_returning' not in shopify_dict:
+                return None
+            df = shopify_dict['new_returning']
+            if 'Day' not in df.columns:
+                return None
+            nr = df.copy()
+            nr['Day'] = pd.to_datetime(nr['Day'], errors='coerce')
+            mask = (nr['Day'] >= start_dt) & (nr['Day'] <= end_dt)
+            sub = nr[mask]
+            if sub.empty:
+                return None
+            rev = pd.to_numeric(sub['Total sales'], errors='coerce').fillna(0).sum()
+            ords = pd.to_numeric(sub['Orders'], errors='coerce').fillna(0).sum()
+            aov = (rev / ords) if ords else 0
+            return rev, int(ords), aov
+ 
+        cur_start = self.mtd_date_range_current['start_dt']
+        cur_end = self.mtd_date_range_current['end_dt']
+        prev_start = self.mtd_date_range_previous['start_dt']
+        prev_end = self.mtd_date_range_previous['end_dt']
+ 
+        cur_mtd = (_mtd_from_new_returning(shopify_curr, cur_start, cur_end) or
+                   _mtd_from_total_sales(shopify_curr, cur_start, cur_end))
+        prev_mtd = (_mtd_from_new_returning(shopify_prev, prev_start, prev_end) or
+                    _mtd_from_total_sales(shopify_prev, prev_start, prev_end))
+ 
+        if cur_mtd and prev_mtd:
+            curr_rev, curr_ord, curr_aov = cur_mtd
+            prev_rev, prev_ord, prev_aov = prev_mtd
+        else:
+            # Fallback to customer-mix totals
+            curr_rev = shopify_curr.get('total_revenue', 0)
+            prev_rev = shopify_prev.get('total_revenue', 0)
+            curr_ord = shopify_curr.get('total_orders', 0)
+            prev_ord = shopify_prev.get('total_orders', 0)
+            curr_aov = shopify_curr.get('aov', 0)
+            prev_aov = shopify_prev.get('aov', 0)
+ 
+        table += (f"| Total Revenue | ${curr_rev:,.0f} | ${prev_rev:,.0f} | {get_yoy_change(curr_rev, prev_rev)} |\n")
+        table += (f"| Total Orders | {curr_ord:,} | {prev_ord:,} | {get_yoy_change(curr_ord, prev_ord)} |\n")
+        table += (f"| Average Order Value | ${curr_aov:,.2f} | ${prev_aov:,.2f} | {get_yoy_change(curr_aov, prev_aov)} |\n")
+ 
+        # Sessions and paid revenue share (MTD) from precomputed totals if available
+        def _totals_from_metrics(metrics: Dict) -> tuple[int, float]:
+            t = metrics.get('totals', {}) if isinstance(metrics, dict) else {}
+            sessions = t.get('sessions', 0)
+            paid_rev = t.get('paid_revenue', 0)
+            return sessions, paid_rev
+ 
+        curr_sessions, curr_paid_rev = _totals_from_metrics(ga4_curr)
+        prev_sessions, prev_paid_rev = _totals_from_metrics(ga4_prev)
+ 
+        curr_cvr = (curr_ord / curr_sessions * 100) if curr_sessions else 0
+        prev_cvr = (prev_ord / prev_sessions * 100) if prev_sessions else 0
+        curr_paid_pct = (curr_paid_rev / curr_rev * 100) if curr_rev else 0
+        prev_paid_pct = (prev_paid_rev / prev_rev * 100) if prev_rev else 0
+ 
+        table += (f"| Conversion Rate | {curr_cvr:.2f}% | {prev_cvr:.2f}% | {get_yoy_change(curr_cvr, prev_cvr)} |\n")
+        table += (f"| Paid Revenue % of Total | {curr_paid_pct:.0f}% | {prev_paid_pct:.0f}% | {get_yoy_change(curr_paid_pct, prev_paid_pct)} |\n")
+        table += (f"| Website Traffic (All) | {curr_sessions:,} | {prev_sessions:,} | {get_yoy_change(curr_sessions, prev_sessions)} |\n")
+        return table + "---\n"
+
+    def _generate_monthly_trends_table(self) -> str:
+        """Return Apr–Jul paid-media trends with Spend/ROAS/CAC/New-User%/Revenue."""
+
+        table = "## Monthly Trends (Apr–Jul)\n"
 
         if 'northbeam' not in self.ga4_data_current:
             return table + "⚠️ Northbeam spend data not available.\n---\n"
@@ -933,13 +1201,13 @@ class MTDReportGenerator:
         nb['Month'] = nb['date'].dt.to_period('M')
 
         year = self.mtd_date_range_current['year']
-        q2_months = [f"{year}-04", f"{year}-05", f"{year}-06"]
+        target_months = [f"{year}-04", f"{year}-05", f"{year}-06", f"{year}-07"]
 
-        q2_df = nb[nb['Month'].astype(str).isin(q2_months)]
-        if q2_df.empty:
-            return table + "⚠️ No Q2 rows found in Northbeam dataset.\n---\n"
+        sub_df = nb[nb['Month'].astype(str).isin(target_months)]
+        if sub_df.empty:
+            return table + "⚠️ No Apr–Jul rows found in Northbeam dataset.\n---\n"
 
-        spend_df = q2_df.groupby('Month').agg({
+        spend_df = sub_df.groupby('Month').agg({
             'spend': 'sum',
             'attributed_rev_1st_time': 'sum',
             'transactions': 'sum',
@@ -966,6 +1234,10 @@ class MTDReportGenerator:
         agg = (spend_df.merge(rev_month_df, on='Month', how='left')
                if rev_month_df is not None else spend_df)
 
+        # Ensure revenue column exists even if Shopify total-sales wasn't loaded
+        if 'Total sales' not in agg.columns:
+            agg['Total sales'] = 0
+
         # Fill NaNs
         agg['Total sales'] = agg['Total sales'].fillna(0)
 
@@ -982,6 +1254,11 @@ class MTDReportGenerator:
         agg.rename(columns={'Total sales': 'revenue'}, inplace=True)
 
         # Build markdown table
+        # Ensure we include all target months even if no spend rows exist
+        month_index = pd.period_range(start=f"{year}-04", end=f"{year}-07", freq='M')
+        scaffold = pd.DataFrame({'Month': month_index})
+        agg = scaffold.merge(agg, on='Month', how='left').fillna(0)
+
         table += "| Month | Spend | ROAS | CAC | New User % | Revenue |\n"
         table += "|-------|-------|------|-----|------------|---------|\n"
 
@@ -992,7 +1269,7 @@ class MTDReportGenerator:
                 f"| {row['new_customer_percentage']:.0f}% | ${row['revenue']:,.0f} |\n"
             )
 
-        # Q2 total row
+        # Apr–Jul total row
         tot_spend = agg['spend'].sum()
         tot_rev = agg['revenue'].sum()
         tot_txn = agg['transactions'].sum()
@@ -1003,7 +1280,7 @@ class MTDReportGenerator:
                       if agg['attributed_rev'].sum() else 0)
 
         table += (
-            f"| **Q2 Total** | **${tot_spend:,.0f}** | **{tot_roas:.2f}** | **${tot_cac:,.0f}** "
+            f"| **Apr–Jul Total** | **${tot_spend:,.0f}** | **{tot_roas:.2f}** | **${tot_cac:,.0f}** "
             f"| **{tot_new_pct:.0f}%** | **${tot_rev:,.0f}** |\n"
         )
         return table + "---\n"
@@ -1047,7 +1324,7 @@ class MTDReportGenerator:
 
     def _generate_channel_performance_table(self, ga4_curr: Dict, ga4_prev: Dict) -> str:
         table = "## Channel Performance (GA4)\n"
-
+ 
         # Predefined list/order
         desired_channels = [
             "Paid Search",
@@ -1059,50 +1336,112 @@ class MTDReportGenerator:
             "Awin (Paid Affiliate)",
             "ShopMyShelf (Influencer)",
         ]
-
-        # Prefer custom-channel performance if available
-        if 'custom_channel_performance' in ga4_curr:
-            df_curr = ga4_curr['custom_channel_performance']
-            df_prev = ga4_prev.get('custom_channel_performance', pd.DataFrame())
-
-            table += "| Channel | Spend | GA Revenue | ROAS |\n"
-            table += "|---|---|---|---|\n"
-
-            for ch in desired_channels:
-                rev_curr = df_curr.loc[ch, 'Total revenue'] if ch in df_curr.index else 0
-                spend_curr = df_curr.loc[ch, 'spend'] if 'spend' in df_curr.columns and ch in df_curr.index else 0
-                roas_curr = df_curr.loc[ch, 'ROAS'] if 'ROAS' in df_curr.columns and ch in df_curr.index else 0
-                table += (
-                    f"| {ch} | ${spend_curr:,.0f} | ${rev_curr:,.0f} | {roas_curr:.2f} |\n"
-                )
-            return table + "---\n"
-
-        # Fallback to default channel-group table if custom not available
-        if 'channel_group_performance' not in ga4_curr:
-            return table + "⚠️ GA4 channel data not available for current year.\n---\n"
-
-        df_curr = ga4_curr['channel_group_performance']
-        df_prev = ga4_prev.get('channel_group_performance', pd.DataFrame())
-
-        df_merged = (
-            df_curr.merge(
-                df_prev,
-                left_index=True,
-                right_index=True,
-                how="left",
-                suffixes=("_curr", "_prev"),
+ 
+        def _compute_custom_from_raw(raw_ga4: Dict) -> Optional[pd.DataFrame]:
+            src_df = raw_ga4.get('source_medium')
+            if src_df is None or src_df.empty:
+                return None
+            # Detect source column
+            src_col = None
+            for col in src_df.columns:
+                if str(col).lower().startswith('session source'):
+                    src_col = col
+                    break
+            if src_col is None or 'Total revenue' not in src_df.columns:
+                return None
+            def _map_src(val: Any) -> Optional[str]:
+                s = str(val).lower()
+                if 'awin' in s:
+                    return 'Awin (Paid Affiliate)'
+                if 'shopmy' in s:
+                    return 'ShopMyShelf (Influencer)'
+                if 'applovin' in s:
+                    return 'AppLovin'
+                if 'bing / cpc' in s or 'bing ads' in s or 'microsoft' in s:
+                    return 'Bing Ads'
+                if 'pinterest' in s:
+                    return 'Pinterest Ads'
+                if 'tiktok' in s:
+                    return 'TikTok Ads'
+                if 'google / cpc' in s or 'google ads' in s:
+                    return 'Paid Search'
+                if 'facebook' in s or 'instagram' in s or 'meta' in s:
+                    return 'Paid Social'
+                return None
+            df = src_df.copy()
+            df['__custom_channel__'] = df[src_col].apply(_map_src)
+            revenue_df = (
+                df.dropna(subset=['__custom_channel__'])
+                  .groupby('__custom_channel__')
+                  .agg({'Total revenue': 'sum'})
             )
-            .fillna(0)
-        )
-
+            # Attach spend if Northbeam available
+            spend_df = None
+            nb = raw_ga4.get('northbeam')
+            if nb is not None and not nb.empty:
+                platform_col = 'breakdown_platform_northbeam' if 'breakdown_platform_northbeam' in nb.columns else (
+                    'platform' if 'platform' in nb.columns else None
+                )
+                if platform_col is not None:
+                    def _plat_map(val: Any) -> Optional[str]:
+                        s = str(val).lower()
+                        if 'google' in s:
+                            return 'Paid Search'
+                        if 'bing' in s or 'microsoft' in s:
+                            return 'Bing Ads'
+                        if 'meta' in s or 'facebook' in s or 'instagram' in s:
+                            return 'Paid Social'
+                        if 'tiktok' in s:
+                            return 'TikTok Ads'
+                        if 'pinterest' in s:
+                            return 'Pinterest Ads'
+                        if 'applovin' in s:
+                            return 'AppLovin'
+                        if 'awin' in s:
+                            return 'Awin (Paid Affiliate)'
+                        if 'shopmy' in s:
+                            return 'ShopMyShelf (Influencer)'
+                        return None
+                    nb2 = nb.copy()
+                    # Restrict to MTD
+                    if 'date' in nb2.columns:
+                        m = (nb2['date'] >= self.mtd_date_range_current['start_dt']) & (nb2['date'] <= self.mtd_date_range_current['end_dt'])
+                        nb2 = nb2[m]
+                    # Filter to Accrual and positive spend
+                    if 'accounting_mode' in nb2.columns:
+                        nb2 = nb2[nb2['accounting_mode'].str.contains('Accrual', case=False, na=False)]
+                    if 'spend' in nb2.columns:
+                        nb2['spend'] = pd.to_numeric(nb2['spend'], errors='coerce').fillna(0)
+                        nb2 = nb2[nb2['spend'] > 0]
+                    nb2['__custom_channel__'] = nb2[platform_col].apply(_plat_map)
+                    spend_df = (
+                        nb2.dropna(subset=['__custom_channel__'])
+                           .groupby('__custom_channel__')
+                           .agg({'spend': 'sum'})
+                    )
+            merged = revenue_df.join(spend_df, how='left') if spend_df is not None else revenue_df
+            merged = merged.fillna(0)
+            merged['ROAS'] = merged.apply(lambda r: r['Total revenue'] / r['spend'] if r.get('spend', 0) else 0, axis=1)
+            return merged
+ 
+        # Always compute the custom-channel table
+        df_curr = _compute_custom_from_raw(self.ga4_data_current)
+        # Build an empty frame if needed so we still render the structure
+        if df_curr is None:
+            df_curr = pd.DataFrame(index=desired_channels, data={
+                'Total revenue': [0]*len(desired_channels),
+                'spend': [0]*len(desired_channels),
+                'ROAS': [0]*len(desired_channels),
+            })
         table += "| Channel | Spend | GA Revenue | ROAS |\n"
         table += "|---|---|---|---|\n"
-
-        for channel, row in df_merged.head(10).iterrows():
-            rev_curr = row.get("Total revenue_curr", row.get("Total revenue", 0))
-            spend_curr = 0  # Fallback path has no spend info
-            roas_val = 0
-            table += f"| {channel} | ${spend_curr:,.0f} | ${rev_curr:,.0f} | {roas_val:.2f} |\n"
+        for ch in desired_channels:
+            rev_curr = df_curr.loc[ch, 'Total revenue'] if ch in df_curr.index else 0
+            spend_curr = df_curr.loc[ch, 'spend'] if 'spend' in df_curr.columns and ch in df_curr.index else 0
+            roas_curr = df_curr.loc[ch, 'ROAS'] if 'ROAS' in df_curr.columns and ch in df_curr.index else (rev_curr / spend_curr if spend_curr else 0)
+            table += (
+                f"| {ch} | ${spend_curr:,.0f} | ${rev_curr:,.0f} | {roas_curr:.2f} |\n"
+            )
         return table + "---\n"
 
     def _generate_product_performance_table(self, shopify_curr: Dict) -> str:

@@ -116,6 +116,36 @@ def load_and_clean_data():
         df = pd.read_csv(csv_file)
         print(f"✅ Successfully loaded data with {len(df)} rows")
 
+        # Normalize key metric column names from common synonyms
+        col_map = {}
+        for col in df.columns:
+            low = str(col).strip().lower()
+            if low in {"spend", "cost"}:
+                col_map[col] = "spend"
+            elif low in {"attributed_rev", "attributed_revenue", "revenue", "total_revenue"}:
+                col_map[col] = "attributed_rev"
+            elif low in {"transactions", "orders", "purchases"}:
+                col_map[col] = "transactions"
+            elif low in {"transactions_1st_time", "orders_1st_time", "first_time_transactions"}:
+                col_map[col] = "transactions_1st_time"
+            elif low in {"attributed_rev_1st_time", "attributed_revenue_1st_time", "revenue_1st_time"}:
+                col_map[col] = "attributed_rev_1st_time"
+        if col_map:
+            df = df.rename(columns=col_map)
+
+        # Remove duplicate column names that can cause df[col] to return a DataFrame
+        # and break numeric casting/operations
+        df = df.loc[:, ~df.columns.duplicated()]
+
+        # Ensure required numeric columns exist to avoid KeyErrors downstream
+        for required_col in [
+            "spend",
+            "attributed_rev",
+            "transactions",
+        ]:
+            if required_col not in df.columns:
+                df[required_col] = 0
+
         numeric_cols = [
             'spend', 'cac', 'cac_1st_time', 'roas', 'roas_1st_time',
             'aov', 'aov_1st_time', 'ecr', 'ecr_1st_time', 'ecpnv',
@@ -764,7 +794,12 @@ def _fmt_delta(cur: float, prev: float, prefix: str = "$", digits: int = 0) -> s
     """Return a formatted cell showing cur, prev and %Δ."""
     pct = _pct_delta(cur, prev)
     sign = "+" if pct > 0 else ("-" if pct < 0 else "")
-    pct_str = f"{sign}{abs(pct):.0f}%"
+    # Show one decimal place for small percentage changes (<1% in magnitude)
+    abs_pct = abs(pct)
+    if 0 < abs_pct < 1:
+        pct_str = f"{sign}{abs_pct:.1f}%"
+    else:
+        pct_str = f"{sign}{abs_pct:.0f}%"
     if prefix:
         cur_str = f"{prefix}{cur:,.{digits}f}"
         prev_str = f"{prefix}{prev:,.{digits}f}"

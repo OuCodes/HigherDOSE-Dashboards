@@ -1,13 +1,13 @@
 ---
 title: "Weekly Growth Report"
-description: "Weekly Growth Report for HigherDOSE covering 7-day performance period ending 2025-08-08"
+description: "Weekly Growth Report for HigherDOSE covering 2025-07-28 to 2025-08-03"
 recipient: "Ingrid"
 report_type: "Weekly Growth Report"
-date: '2025-08-08'
+date: '2025-08-03'
 period: "7-Day Review"
 ---
 
-# Weekly Growth Report — 2025-08-08
+# Weekly Growth Report — 2025-07-28–2025-08-03
 
 ---
 
@@ -171,7 +171,7 @@ period: "7-Day Review"
 
 ---
 
-**Report Compiled**: 2025-08-08
+**Report Compiled**: 2025-08-03
 
 ## 5. Year-over-Year Growth (Week July 29–August 04)
 

@@ -64,6 +64,7 @@ REPORT_TEMPLATES = {
             ReportSection(
                 name="Channel Performance",
                 required_data=['ga4_channel_group'],
+                optional_data=['ga4_source_medium', 'northbeam_spend', 'shopify_total_sales'],
                 template="""## Channel Performance (GA4)
 
 | Channel | Sessions | Revenue | Revenue per Session |
@@ -178,7 +179,7 @@ DATA_SOURCE_CONFIG = {
         'required_columns': ['Product title', 'Total sales', 'Net items sold']
     },
     'northbeam_spend': {
-        'pattern': '*northbeam*.csv',
+        'pattern': ['*northbeam*.csv', '*ytd-sales_data-higher_dose_llc*.csv'],
         'description': 'Northbeam spend and attribution data',
         'date_column': 'Date',
         'required_columns': ['Spend', 'Revenue']
