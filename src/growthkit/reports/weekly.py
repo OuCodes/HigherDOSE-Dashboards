@@ -1604,7 +1604,17 @@ def main():
                 # Fallback: any Google 2024 daily export CSV
                 google_prev_path = _latest(os.path.join(ads_root, "**", "google-*2024*.csv"))
 
-            meta_prev_path   = _latest(os.path.join(ads_root, "**", "meta-*2024*export*.csv"))
+            # Prefer a canonical 2024 weekly-report directory if present
+            weekly_2024_dir = os.path.join(ads_root, "weekly-report-2024-ads")
+            meta_prev_path = None
+            if os.path.isdir(weekly_2024_dir):
+                meta_prev_path = _latest(os.path.join(weekly_2024_dir, "meta-*2024*export*.csv"))
+                if not meta_prev_path:
+                    meta_prev_path = _latest(os.path.join(weekly_2024_dir, "meta-*2024*.csv"))
+
+            # Fallback: search the broader ads_root recursively
+            if not meta_prev_path:
+                meta_prev_path   = _latest(os.path.join(ads_root, "**", "meta-*2024*export*.csv"))
             if not meta_prev_path:
                 # Fallback: any Meta 2024 daily export CSV
                 meta_prev_path = _latest(os.path.join(ads_root, "**", "meta-*2024*.csv"))
@@ -1623,10 +1633,24 @@ def main():
                 if cur_df["Day"].isna().all() or prev_df["Day"].isna().all():
                     return None
 
-                end_cur = cur_df["Day"].max()
-                start_cur = end_cur - timedelta(days=6)  # Last 7 days inclusive
+                # Prefer the report's selected range if available; otherwise use last 7 days from CSV
+                try:
+                    anchor_start = pd.to_datetime(start_date)
+                    anchor_end = pd.to_datetime(end_date)
+                    if pd.notna(anchor_start) and pd.notna(anchor_end):
+                        start_cur = anchor_start
+                        end_cur = anchor_end
+                    else:
+                        end_cur = cur_df["Day"].max()
+                        start_cur = end_cur - timedelta(days=6)  # Last 7 days inclusive
+                except NameError:
+                    end_cur = cur_df["Day"].max()
+                    start_cur = end_cur - timedelta(days=6)  # Last 7 days inclusive
+
+                # Build previous-year window matching the same length as current
+                period_days = (end_cur - start_cur).days
                 end_prev = datetime(end_cur.year - 1, end_cur.month, end_cur.day)
-                start_prev = end_prev - timedelta(days=6)
+                start_prev = end_prev - timedelta(days=period_days)
 
                 cur_mtd = cur_df[(cur_df["Day"] >= start_cur) & (cur_df["Day"] <= end_cur)].copy()
                 prev_mtd = prev_df[(prev_df["Day"] >= start_prev) & (prev_df["Day"] <= end_prev)].copy()
@@ -1671,8 +1695,14 @@ def main():
                 if not cur_path or not prev_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
                     return None
 
-                cur_df = pd.read_csv(cur_path, thousands=",")
-                prev_df = pd.read_csv(prev_path, thousands=",")
+                cur_df = pd.read_csv(cur_path)
+                prev_df = pd.read_csv(prev_path)
+
+                # Standardize date column name
+                if "Day" not in cur_df.columns and "Date" in cur_df.columns:
+                    cur_df.rename(columns={"Date": "Day"}, inplace=True)
+                if "Day" not in prev_df.columns and "Date" in prev_df.columns:
+                    prev_df.rename(columns={"Date": "Day"}, inplace=True)
 
                 cur_df["Day"] = pd.to_datetime(cur_df["Day"], errors="coerce")
                 prev_df["Day"] = pd.to_datetime(prev_df["Day"], errors="coerce")
@@ -1680,27 +1710,76 @@ def main():
                 if cur_df["Day"].isna().all() or prev_df["Day"].isna().all():
                     return None
 
-                end_cur = cur_df["Day"].max()
-                start_cur = end_cur - timedelta(days=6)
+                # Prefer the report's selected range if available; otherwise use last 7 days from CSV
+                try:
+                    anchor_start = pd.to_datetime(start_date)
+                    anchor_end = pd.to_datetime(end_date)
+                    if pd.notna(anchor_start) and pd.notna(anchor_end):
+                        start_cur = anchor_start
+                        end_cur = anchor_end
+                    else:
+                        end_cur = cur_df["Day"].max()
+                        start_cur = end_cur - timedelta(days=6)
+                except NameError:
+                    end_cur = cur_df["Day"].max()
+                    start_cur = end_cur - timedelta(days=6)
+
+                # Build previous-year window matching the same length as current
+                period_days = (end_cur - start_cur).days
                 end_prev = datetime(end_cur.year - 1, end_cur.month, end_cur.day)
-                start_prev = end_prev - timedelta(days=6)
+                start_prev = end_prev - timedelta(days=period_days)
 
                 cur_mtd = cur_df[(cur_df["Day"] >= start_cur) & (cur_df["Day"] <= end_cur)].copy()
                 prev_mtd = prev_df[(prev_df["Day"] >= start_prev) & (prev_df["Day"] <= end_prev)].copy()
 
-                for col in ["Amount spent (USD)", "Purchases conversion value", "Purchases"]:
-                    cur_mtd[col] = pd.to_numeric(cur_mtd[col], errors="coerce")
-                    prev_mtd[col] = pd.to_numeric(prev_mtd[col], errors="coerce")
+                # Allow alternate column names and strip currency/commas before numeric cast
+                spend_cols = [
+                    "Amount spent (USD)", "Amount Spent (USD)", "Amount Spent", "Total Spent", "Spend"
+                ]
+                rev_cols = [
+                    "Purchases conversion value", "Purchase conversion value",
+                    "Website purchases conversion value", "Website Purchase Conversion Value"
+                ]
+                conv_cols = [
+                    "Purchases", "Website purchases", "Website Purchases", "Results"
+                ]
 
-                def _tot(df):
+                def _pick(col_list, df):
+                    for c in col_list:
+                        if c in df.columns:
+                            return c
+                    return None
+
+                cur_spend_col = _pick(spend_cols, cur_mtd)
+                cur_rev_col   = _pick(rev_cols, cur_mtd)
+                cur_conv_col  = _pick(conv_cols, cur_mtd)
+                prev_spend_col = _pick(spend_cols, prev_mtd)
+                prev_rev_col   = _pick(rev_cols, prev_mtd)
+                prev_conv_col  = _pick(conv_cols, prev_mtd)
+
+                required = [cur_spend_col, cur_rev_col, cur_conv_col, prev_spend_col, prev_rev_col, prev_conv_col]
+                if any(c is None for c in required):
+                    return None
+
+                def _clean_numeric(series: pd.Series) -> pd.Series:
+                    return pd.to_numeric(series.astype(str).str.replace(r"[^0-9.\-]", "", regex=True), errors="coerce")
+
+                cur_mtd[cur_spend_col] = _clean_numeric(cur_mtd[cur_spend_col])
+                cur_mtd[cur_rev_col]   = _clean_numeric(cur_mtd[cur_rev_col])
+                cur_mtd[cur_conv_col]  = _clean_numeric(cur_mtd[cur_conv_col])
+                prev_mtd[prev_spend_col] = _clean_numeric(prev_mtd[prev_spend_col])
+                prev_mtd[prev_rev_col]   = _clean_numeric(prev_mtd[prev_rev_col])
+                prev_mtd[prev_conv_col]  = _clean_numeric(prev_mtd[prev_conv_col])
+
+                def _tot(df, s_col, r_col, c_col):
                     return (
-                        df["Amount spent (USD)"].sum(),
-                        df["Purchases conversion value"].sum(),
-                        df["Purchases"].sum(),
+                        df[s_col].sum(skipna=True),
+                        df[r_col].sum(skipna=True),
+                        df[c_col].sum(skipna=True),
                     )
 
-                spend_cur, rev_cur, conv_cur = _tot(cur_mtd)
-                spend_prev, rev_prev, conv_prev = _tot(prev_mtd)
+                spend_cur, rev_cur, conv_cur = _tot(cur_mtd, cur_spend_col, cur_rev_col, cur_conv_col)
+                spend_prev, rev_prev, conv_prev = _tot(prev_mtd, prev_spend_col, prev_rev_col, prev_conv_col)
 
                 roas_cur = rev_cur / spend_cur if spend_cur else 0
                 roas_prev = rev_prev / spend_prev if spend_prev else 0

@@ -73,7 +73,11 @@ def load_shopify_product_sales(year: int) -> Optional[pd.DataFrame]:
     cols = {c.lower().strip(): c for c in df.columns}
     day_col = next((cols[k] for k in cols if k in {"day", "date"}), None)
     title_col = next((cols[k] for k in cols if k in {"product title", "title", "product"}), None)
-    sales_col = next((cols[k] for k in cols if k in {"total sales", "net sales", "gross sales"}), None)
+    sales_col = None
+    for key in ["total sales", "net sales", "gross sales"]:
+        if key in cols:
+            sales_col = cols[key]
+            break
     units_col = next((cols[k] for k in cols if k in {"net items sold", "units", "quantity"}), None)
     new_c_col = next((cols[k] for k in cols if k in {"new customers", "new", "new revenue"}), None)
     ret_c_col = next((cols[k] for k in cols if k in {"returning customers", "returning", "returning revenue"}), None)
@@ -126,7 +130,11 @@ def load_shopify_totals(year: int) -> Optional[pd.DataFrame]:
         return None
     cols = {c.lower().strip(): c for c in df.columns}
     day_col = next((cols[k] for k in cols if k in {"day", "date"}), None)
-    sales_col = next((cols[k] for k in cols if k in {"total sales", "net sales", "gross sales"}), None)
+    sales_col = None
+    for key in ["total sales", "net sales", "gross sales"]:
+        if key in cols:
+            sales_col = cols[key]
+            break
     orders_col = next((cols[k] for k in cols if k in {"orders", "total orders"}), None)
     if sales_col is None:
         return None
@@ -288,6 +296,12 @@ def monthly_channel_summary(year: int) -> pd.DataFrame:
         if df is not None:
             frames.append(df)
 
+    # Fallback: for 2024, supplement with historical spend CSV to include channels not in exports
+    if year == 2024:
+        hist = load_2024_historical_spend_q4()
+        if hist is not None and not hist.empty:
+            frames.append(hist)
+
     if not frames:
         return pd.DataFrame(columns=["month", "channel", "spend", "revenue", "roas"])
 
@@ -301,6 +315,22 @@ def monthly_channel_summary(year: int) -> pd.DataFrame:
     )
     agg["roas"] = agg.apply(lambda r: (r["revenue"] / r["spend"]) if r["spend"] else 0.0, axis=1)
     agg = agg[agg["month"].isin([f"{year}-10", f"{year}-11", f"{year}-12"])]
+
+    # If 2024, enforce provided Q4 totals for Google and Facebook while preserving monthly split
+    if year == 2024 and not agg.empty:
+        q4 = agg.groupby("channel")["spend"].sum().to_dict()
+        targets = {
+            "Google Ads": 958_222.0,
+            "Facebook Ads": 2_948_812.0,
+            "Affiliate": 559_532.0,
+        }
+        for chan, target in targets.items():
+            cur = float(q4.get(chan, 0.0))
+            if cur > 0 and target >= 0:
+                scale = target / cur
+                idx = agg["channel"] == chan
+                agg.loc[idx, "spend"] = agg.loc[idx, "spend"] * scale
+
     return agg
 
 
@@ -376,7 +406,7 @@ def apply_25pct_target_product(baseline_2024: pd.DataFrame) -> pd.DataFrame:
     work["units_2025_target"] = work.apply(
         lambda r: (r["revenue_2025_target"] / r["aov_2024"]) if r["aov_2024"] else (r["share"] * r["units_2024"] * 1.25),
         axis=1,
-    )
+    ).round().astype(int)
     cols = [
         "month",
         "product",
@@ -463,6 +493,13 @@ def overlay_new_product_ramp(product_df: pd.DataFrame, analog_weekly: Optional[p
 # Northbeam loaders for channel shares
 # -------------------------------
 
+def _latest_in(patterns: list[tuple[Path, str]]) -> Optional[Path]:
+    candidates: list[Path] = []
+    for base, pat in patterns:
+        if base.exists():
+            candidates.extend(sorted(base.glob(pat), key=lambda p: p.stat().st_mtime, reverse=True))
+    return candidates[0] if candidates else None
+
 def _find_first_csv(path: Path) -> Optional[Path]:
     if not path.exists():
         return None
@@ -472,8 +509,12 @@ def _find_first_csv(path: Path) -> Optional[Path]:
 
 
 def load_northbeam_ytd_2025() -> Optional[pd.DataFrame]:
-    nb_dir = PLANNING_DIR / "northbeam"
-    nb_file = _find_first_csv(nb_dir)
+    # Prefer ytd exports under data/ads, then planning folder
+    ads_dir = ROOT / "data" / "ads"
+    nb_file = _latest_in([
+        (ads_dir, "ytd-sales_data-*.csv*"),
+        (PLANNING_DIR / "northbeam", "*.csv"),
+    ])
     if not nb_file:
         return None
     try:
@@ -494,7 +535,7 @@ def load_northbeam_ytd_2025() -> Optional[pd.DataFrame]:
             break
     spend_col = None
     for k, v in cols.items():
-        if k == "spend" or k.startswith("spend (") or "amount spent" in k or k == "cost":
+        if k == "spend" or k.startswith("spend ("):
             spend_col = v
             break
     if not chan_col or not spend_col:
@@ -534,8 +575,12 @@ def load_northbeam_ytd_2025() -> Optional[pd.DataFrame]:
 
 
 def load_northbeam_last_30_shares() -> Optional[pd.DataFrame]:
-    nb_dir = PLANNING_DIR / "northbeam"
-    nb_file = _find_first_csv(nb_dir)
+    # Prefer l30d exports under data/ads, then planning folder
+    ads_dir = ROOT / "data" / "ads"
+    nb_file = _latest_in([
+        (ads_dir, "l30d-sales_data-*.csv*"),
+        (PLANNING_DIR / "northbeam", "*.csv"),
+    ])
     if not nb_file:
         return None
     try:
@@ -555,7 +600,7 @@ def load_northbeam_last_30_shares() -> Optional[pd.DataFrame]:
             break
     spend_col = None
     for k, v in cols.items():
-        if k == "spend" or k.startswith("spend (") or "amount spent" in k or k == "cost":
+        if k == "spend" or k.startswith("spend ("):
             spend_col = v
             break
     if not chan_col or not spend_col:
@@ -600,15 +645,117 @@ def load_northbeam_last_30_shares() -> Optional[pd.DataFrame]:
 
 
 # -------------------------------
+# Historical 2024 spend (fallback for missing channels)
+# -------------------------------
+
+def load_2024_historical_spend_q4() -> Optional[pd.DataFrame]:
+    """Parse 'Historical Spend - Historical Spend.csv' to extract 2024 Q4 per-channel spend.
+    Returns a dataframe with columns: month (YYYY-MM), channel, spend, revenue, roas.
+    Revenue/ROAS are set to 0 in this fallback as the CSV does not provide per-channel revenue.
+    """
+    try:
+        csv_path = PLANNING_DIR / "Historical Spend - Historical Spend.csv"
+        if not csv_path.exists():
+            # Try data/ads root as well
+            alt = ROOT / "data" / "ads" / "q4-planning-2025" / "Historical Spend - Historical Spend.csv"
+            csv_path = alt if alt.exists() else csv_path
+        if not csv_path.exists():
+            return None
+        raw = pd.read_csv(csv_path)
+    except Exception:
+        return None
+
+    # Normalize headers (lowercase, strip spaces)
+    col_map = {c: c.lower().strip() for c in raw.columns}
+
+    def find_cols(*needles: str) -> list[str]:
+        out = []
+        for orig, low in col_map.items():
+            if all(n in low for n in needles):
+                out.append(orig)
+        return out
+
+    # Month parsing: expect values like 'Oct-24', 'Nov-24', 'Dec-24'
+    if "Month" in raw.columns:
+        mcol = "Month"
+    else:
+        # best-effort find
+        mcol = next((c for c in raw.columns if col_map[c].startswith("month")), None)
+    if not mcol:
+        return None
+
+    work = raw.copy()
+    # Create a normalized YYYY-MM month
+    def to_month(val: str) -> Optional[str]:
+        try:
+            dt = pd.to_datetime(str(val), format="%b-%y", errors="coerce")
+            if pd.isna(dt):
+                dt = pd.to_datetime(str(val), errors="coerce")
+            if pd.isna(dt):
+                return None
+            return f"{dt.year}-{dt.month:02d}"
+        except Exception:
+            return None
+
+    work["month"] = work[mcol].apply(to_month)
+    work = work[work["month"].isin(["2024-10", "2024-11", "2024-12"])].copy()
+    if work.empty:
+        return None
+
+    # Helper to coerce currency-like strings to float
+    def num(series: pd.Series) -> pd.Series:
+        return pd.to_numeric(series.astype(str).str.replace(r"[^0-9\.-]", "", regex=True), errors="coerce").fillna(0.0)
+
+    # Build spend columns per channel
+    chan_to_cols: dict[str, list[str]] = {
+        "Facebook Ads": find_cols("facebook", "spend"),
+        "Google Ads": find_cols("google", "spend"),
+        "TikTok Ads": find_cols("tiktok", "spend"),
+        "Twitter Ads": find_cols("twitter", "spend"),
+        "Pinterest Ads": find_cols("pinterest", "spend"),
+        "Microsoft Ads": [*find_cols("bing"), *find_cols("microsoft", "spend")],
+        "AppLovin": find_cols("applovin"),
+        # Affiliate sum of multiple columns
+        "Affiliate": [
+            *find_cols("share-a-sale", "spend"),
+            *find_cols("aw in".replace(" ", ""), "spend"),  # robust spacing
+            *find_cols("awin", "spend"),
+            *find_cols("shopmy", "spend"),
+        ],
+    }
+
+    rows: list[dict] = []
+    for _, r in work.iterrows():
+        mon = str(r["month"]) if pd.notna(r.get("month")) else None
+        if not mon:
+            continue
+        for channel, cols in chan_to_cols.items():
+            if not cols:
+                continue
+            amt = 0.0
+            for c in cols:
+                if c in work.columns:
+                    amt += float(num(pd.Series([r[c]])).iloc[0])
+            if amt > 0:
+                rows.append({"month": mon, "channel": channel, "spend": amt, "revenue": 0.0, "roas": 0.0})
+
+    if not rows:
+        return None
+
+    df = pd.DataFrame(rows)
+    return df
+
+
+# -------------------------------
 # Markdown output
 # -------------------------------
 
 def to_markdown(product_df: pd.DataFrame, channel_df: pd.DataFrame) -> str:
     def _fmt_currency(x: float) -> str:
         try:
-            return f"${float(x):,.0f}"
+            return f"${float(x):,.2f}"
         except Exception:
-            return "$0"
+            return "$0.00"
 
     def _fmt_num(x: float) -> str:
         try:
@@ -659,12 +806,12 @@ def to_markdown(product_df: pd.DataFrame, channel_df: pd.DataFrame) -> str:
         prod["revenue_2023"] = 0.0
         prod["units_2023"] = 0.0
 
-    # Sort by month then 2025 revenue desc
-    prod = prod.sort_values(["month", "revenue_2025_target"], ascending=[True, False])
+    # Sort by month then 2024 revenue desc (highest-selling products based on latest actuals)
+    prod = prod.sort_values(["month", "revenue_2024"], ascending=[True, False])
 
     # Build product markdown rows
     prod_md = [
-        "| Month | Product | 2023 Rev | 2024 Rev | Rev Δ% (24 vs 23) | 2025 Target Rev | Rev Δ% (25 vs 24) | 2023 Units | 2024 Units | Units Δ% (24 vs 23) | 2025 Target Units | Units Δ% (25 vs 24) |",
+        "| Month | Product | 2023 Total Sales | 2024 Total Sales | Sales Δ% (24 vs 23) | 2025 Target Total Sales | Sales Δ% (25 vs 24) | 2023 Units | 2024 Units | Units Δ% (24 vs 23) | 2025 Target Units | Units Δ% (25 vs 24) |",
         "| - | - | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: |",
     ]
     if prod.empty:
@@ -711,9 +858,9 @@ def to_markdown(product_df: pd.DataFrame, channel_df: pd.DataFrame) -> str:
         rev_delta_25_vs_24_tot = ((tot_row['revenue_2025_target'] - tot_row['revenue_2024']) / tot_row['revenue_2024'] * 100.0) if tot_row['revenue_2024'] else 0.0
         units_delta_24_vs_23_tot = ((tot_row['units_2024'] - tot_row['units_2023']) / tot_row['units_2023'] * 100.0) if tot_row['units_2023'] else 0.0
         units_delta_25_vs_24_tot = ((tot_row['units_2025_target'] - tot_row['units_2024']) / tot_row['units_2024'] * 100.0) if tot_row['units_2024'] else 0.0
-        prod_md.append(
-            f"| **All Products (Q4)** | — | {_fmt_currency(tot_row['revenue_2023'])} | {_fmt_currency(tot_row['revenue_2024'])} | {rev_delta_24_vs_23_tot:+.0f}% | {_fmt_currency(tot_row['revenue_2025_target'])} | {rev_delta_25_vs_24_tot:+.0f}% | {_fmt_num(tot_row['units_2023'])} | {_fmt_num(tot_row['units_2024'])} | {units_delta_24_vs_23_tot:+.0f}% | {_fmt_num(tot_row['units_2025_target'])} | {units_delta_25_vs_24_tot:+.0f}% |"
-        )
+        total_line = f"| **All Products (Q4)** | — | {_fmt_currency(tot_row['revenue_2023'])} | {_fmt_currency(tot_row['revenue_2024'])} | {rev_delta_24_vs_23_tot:+.0f}% | {_fmt_currency(tot_row['revenue_2025_target'])} | {rev_delta_25_vs_24_tot:+.0f}% | {_fmt_num(tot_row['units_2023'])} | {_fmt_num(tot_row['units_2024'])} | {units_delta_24_vs_23_tot:+.0f}% | {_fmt_num(tot_row['units_2025_target'])} | {units_delta_25_vs_24_tot:+.0f}% |"
+        # Insert totals line right after header (index 2)
+        prod_md.insert(2, total_line)
 
     # Channels: ensure required columns and compute targets if missing
     for col in [
@@ -768,11 +915,25 @@ def to_markdown(product_df: pd.DataFrame, channel_df: pd.DataFrame) -> str:
     ch_merge = pd.merge(ch23.rename(columns={"spend": "spend23", "revenue": "rev23"}),
                         ch24.rename(columns={"spend": "spend24", "revenue": "rev24"}),
                         on="channel", how="outer")
-    ch_merge = pd.merge(ch_merge, ch25.rename(columns={"spend_2025_target": "spend25", "revenue_2025_target": "rev25"}), on="channel", how="outer")
+    ch_merge = pd.merge(ch_merge, ch25.rename(columns={"spend25": "spend25", "rev25": "rev25"}), on="channel", how="outer")
     for c in ["spend23", "rev23", "spend24", "rev24", "spend25", "rev25"]:
         if c not in ch_merge.columns:
             ch_merge[c] = 0.0
     ch_merge = ch_merge.fillna(0.0)
+
+    # Ensure Demand Gen, CTV, and AppLovin appear even if zero spend so they show in tables
+    required_extra = ["Demand Gen", "CTV", "AppLovin"]
+    missing = [c for c in required_extra if c not in ch_merge["channel"].astype(str).tolist()]
+    if missing:
+        extra_rows = []
+        for c in missing:
+            extra_rows.append({
+                "channel": c,
+                "spend23": 0.0, "rev23": 0.0,
+                "spend24": 0.0, "rev24": 0.0,
+                "spend25": 0.0, "rev25": 0.0,
+            })
+        ch_merge = pd.concat([ch_merge, pd.DataFrame(extra_rows)], ignore_index=True)
 
     # Precompute 2024 monthly spend weights per channel for month-splitting
     # weights[(channel, '2024-10')] = fraction of that channel's Q4 2024 spend in October
@@ -830,6 +991,71 @@ def to_markdown(product_df: pd.DataFrame, channel_df: pd.DataFrame) -> str:
                 ch_merge.loc[ch_merge["channel"].str.lower()=="facebook ads", "spend25"] = m_sp - move
                 ch_merge.loc[ch_merge["channel"].str.lower()=="google ads", "spend25"] = g_sp + move
 
+        # --------------------------------------------
+        # Final channel overrides per user instructions
+        # --------------------------------------------
+        # Ensure rows exist for required channels
+        def _ensure_channel_row(chan_name: str):
+            nonlocal ch_merge
+            if chan_name not in ch_merge["channel"].astype(str).tolist():
+                from pandas import DataFrame
+                ch_merge_rows = DataFrame({
+                    "channel": [chan_name],
+                    "spend23": [0.0], "rev23": [0.0],
+                    "spend24": [0.0], "rev24": [0.0],
+                    "spend25": [0.0], "rev25": [0.0],
+                })
+                import pandas as _pd
+                ch_merge = _pd.concat([ch_merge, ch_merge_rows], ignore_index=True)
+
+        for _c in ["Demand Gen", "CTV", "Pinterest Ads", "AppLovin"]:
+            _ensure_channel_row(_c)
+
+        # 1) Demand Gen: spend $45k, ROAS 1 => revenue = $45k
+        desired_dg = 120_000.0
+        current_dg = float(ch_merge.loc[ch_merge["channel"] == "Demand Gen", "spend25"].sum())
+        delta_dg = desired_dg - current_dg
+        ch_merge.loc[ch_merge["channel"] == "Demand Gen", "spend25"] = desired_dg
+        ch_merge.loc[ch_merge["channel"] == "Demand Gen", "rev25"] = desired_dg  # ROAS 1
+
+        # Immediately deduct delta from Facebook before further processing
+        if delta_dg != 0:
+            fb_mask_initial = ch_merge["channel"] == "Facebook Ads"
+            if fb_mask_initial.any():
+                ch_merge.loc[fb_mask_initial, "spend25"] = ch_merge.loc[fb_mask_initial, "spend25"] - delta_dg
+                # Ensure not negative
+                ch_merge.loc[fb_mask_initial, "spend25"] = ch_merge.loc[fb_mask_initial, "spend25"].clip(lower=0.0)
+
+        # 2) CTV: spend $45k (unchanged), revenue = $0
+        ch_merge.loc[ch_merge["channel"] == "CTV", "spend25"] = 45_000.0
+        ch_merge.loc[ch_merge["channel"] == "CTV", "rev25"] = 0.0
+
+        # 3) Reduce Facebook by 30% and reallocate to specified channels
+        fb_mask = ch_merge["channel"] == "Facebook Ads"
+        if fb_mask.any():
+            fb_spend = float(ch_merge.loc[fb_mask, "spend25"].sum())
+            reduction = fb_spend * 0.30
+            ch_merge.loc[fb_mask, "spend25"] = fb_spend - reduction
+
+            # Reallocate to: Affiliate, Google Ads, AppLovin, Pinterest Ads, Demand Gen
+            realloc_chans = ["Affiliate", "Google Ads", "AppLovin", "Pinterest Ads", "Demand Gen"]
+            for rc in realloc_chans:
+                _ensure_channel_row(rc)
+
+            import pandas as _pd
+            current = ch_merge[ch_merge["channel"].isin(realloc_chans)].copy()
+            cur_total = float(current["spend25"].sum())
+            if cur_total <= 0:
+                # even allocation
+                even = reduction / len(realloc_chans)
+                for rc in realloc_chans:
+                    ch_merge.loc[ch_merge["channel"] == rc, "spend25"] += even
+            else:
+                for rc in realloc_chans:
+                    rc_sp = float(ch_merge.loc[ch_merge["channel"] == rc, "spend25"].sum())
+                    share = rc_sp / cur_total if cur_total else 0.0
+                    ch_merge.loc[ch_merge["channel"] == rc, "spend25"] += reduction * share
+
     chan_md = [
         "| Channel | 2023 Q4 Spend | 2023 Q4 Revenue | 2024 Q4 Spend | 2024 Q4 Revenue | 2025 Target Spend | 2025 Target Revenue | Spend Δ% | Rev Δ% |",
         "| - | -: | -: | -: | -: | -: | -: | -: | -: |",
@@ -847,6 +1073,18 @@ def to_markdown(product_df: pd.DataFrame, channel_df: pd.DataFrame) -> str:
             chan_md.append(
                 f"| {r['channel']} | {_fmt_currency(r['spend23'])} | {_fmt_currency(r['rev23'])} | {_fmt_currency(s24)} | {_fmt_currency(v24)} | {_fmt_currency(s25)} | {_fmt_currency(v25)} | {sdelta:+.0f}% | {vdelta:+.0f}% |"
             )
+
+    # Append total row
+    tot = ch_merge.copy()
+    t_sp23 = float(tot['spend23'].sum())
+    t_rev23 = float(tot['rev23'].sum())
+    t_sp24 = float(tot['spend24'].sum())
+    t_rev24 = float(tot['rev24'].sum())
+    t_sp25 = float(tot['spend25'].sum())
+    t_rev25 = float(tot['rev25'].sum())
+    sdelta_tot = ((t_sp25 - t_sp24) / t_sp24 * 100.0) if t_sp24 else 0.0
+    vdelta_tot = ((t_rev25 - t_rev24) / t_rev24 * 100.0) if t_rev24 else 0.0
+    chan_md.append(f"| **Total** | {_fmt_currency(t_sp23)} | {_fmt_currency(t_rev23)} | {_fmt_currency(t_sp24)} | {_fmt_currency(t_rev24)} | {_fmt_currency(t_sp25)} | {_fmt_currency(t_rev25)} | {sdelta_tot:+.0f}% | {vdelta_tot:+.0f}% |")
 
     # Build markdown doc
     md = []
@@ -871,7 +1109,7 @@ def write_markdown(product_df: pd.DataFrame, channel_df: pd.DataFrame, out_dir: 
     return md_path
 
 
-def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, reports_dir: Optional[Path] = None, consolidate: str = "threshold", threshold_usd: float = 100_000.0) -> Path:
+def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, out_dir: Optional[Path] = None) -> Path:
     from datetime import datetime
 
     def _to_2025(val: str) -> str:
@@ -880,8 +1118,23 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
             return f"2025-{s[5:7]}"
         return s
 
+    # Local helpers
+    def _fmt_currency(val: float) -> str:
+        try:
+            v = float(val)
+        except Exception:
+            v = 0.0
+        return f"${v:,.2f}"
+
+    def _fmt_num(val: float) -> str:
+        try:
+            v = int(round(float(val)))
+        except Exception:
+            v = 0
+        return f"{v:,}"
+
     # Write combined report into the planning folder by default
-    reports_dir = reports_dir or PLANNING_DIR
+    reports_dir = out_dir or PLANNING_DIR
     reports_dir.mkdir(parents=True, exist_ok=True)
 
     today = datetime.now().strftime("%Y-%m-%d")
@@ -891,6 +1144,27 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
     # Totals and highlights
     prod = product_df.copy()
     chan = channel_df.copy()
+
+    # Normalize months to 2025 labels for alignment
+    if "month" in prod.columns:
+        prod["month"] = prod["month"].apply(_to_2025)
+
+    # Merge 2023 baseline revenue/units into prod for combined report
+    try:
+        prod_2023 = build_2023_product_baseline()
+    except Exception:
+        prod_2023 = pd.DataFrame()
+    if prod_2023 is not None and not prod_2023.empty:
+        prod_2023 = prod_2023.copy()
+        prod_2023["month"] = prod_2023["month"].apply(_to_2025)
+        keep_cols = [c for c in ["month","product","revenue_2023","units_2023"] if c in prod_2023.columns]
+        prod = prod.merge(prod_2023[keep_cols], on=["month","product"], how="left")
+    if "revenue_2023" not in prod.columns:
+        prod["revenue_2023"] = 0.0
+    if "units_2023" not in prod.columns:
+        prod["units_2023"] = 0.0
+    prod["revenue_2023"] = pd.to_numeric(prod["revenue_2023"], errors="coerce").fillna(0.0)
+    prod["units_2023"] = pd.to_numeric(prod["units_2023"], errors="coerce").fillna(0.0)
 
     def _sum(df: pd.DataFrame, col: str) -> float:
         return float(pd.to_numeric(df.get(col, 0), errors="coerce").fillna(0).sum())
@@ -904,6 +1178,47 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
             units25=("units_2025_target", "sum"),
         ).reset_index()
     )
+
+    # Build product-by-month mappings for Section 4
+    for col in [
+        "revenue_2023","revenue_2024","revenue_2025_target",
+        "units_2023","units_2024","units_2025_target",
+    ]:
+        if col not in prod.columns:
+            prod[col] = 0
+    if "group" not in prod.columns:
+        prod["group"] = "All Products"
+
+    # Use 2025 month keys for display (map 2024-10/11/12 to 2025-10/11/12)
+    prod["_m25"] = prod["month"].astype(str).apply(_to_2025)
+
+    # Per-product per-month
+    prod_all = (
+        prod.groupby(["_m25","product"]).agg(
+            revenue_2023=("revenue_2023","sum"),
+            revenue_2024=("revenue_2024","sum"),
+            revenue_2025_target=("revenue_2025_target","sum"),
+            units_2023=("units_2023","sum"),
+            units_2024=("units_2024","sum"),
+            units_2025_target=("units_2025_target","sum"),
+        ).reset_index()
+    )
+    prod_all_by_month = { m: df.drop(columns=["_m25"]).reset_index(drop=True)
+                          for m, df in prod_all.groupby("_m25") }
+
+    # Legacy grouped by product group (kept if needed later)
+    prod_by = (
+        prod.groupby(["_m25","group"]).agg(
+            revenue_2023=("revenue_2023","sum"),
+            revenue_2024=("revenue_2024","sum"),
+            revenue_2025_target=("revenue_2025_target","sum"),
+            units_2023=("units_2023","sum"),
+            units_2024=("units_2024","sum"),
+            units_2025_target=("units_2025_target","sum"),
+        ).reset_index()
+    )
+    prod_by_month = { m: df.drop(columns=["_m25"]).reset_index(drop=True)
+                      for m, df in prod_by.groupby("_m25") }
 
     # Q4 totals
     q4_rev24 = _sum(prod_tot_month, "rev24")
@@ -962,6 +1277,20 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
             ch_merge[c] = 0.0
     ch_merge = ch_merge.fillna(0.0)
 
+    # Ensure Demand Gen, CTV, and AppLovin appear even if zero spend so they show in tables
+    required_extra = ["Demand Gen", "CTV", "AppLovin"]
+    missing = [c for c in required_extra if c not in ch_merge["channel"].astype(str).tolist()]
+    if missing:
+        extra_rows = []
+        for c in missing:
+            extra_rows.append({
+                "channel": c,
+                "spend23": 0.0, "rev23": 0.0,
+                "spend24": 0.0, "rev24": 0.0,
+                "spend25": 0.0, "rev25": 0.0,
+            })
+        ch_merge = pd.concat([ch_merge, pd.DataFrame(extra_rows)], ignore_index=True)
+
     # Precompute 2024 monthly spend weights per channel for month-splitting
     # weights[(channel, '2024-10')] = fraction of that channel's Q4 2024 spend in October
     weights: dict[tuple[str, str], float] = {}
@@ -1018,6 +1347,71 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
                 ch_merge.loc[ch_merge["channel"].str.lower()=="facebook ads", "spend25"] = m_sp - move
                 ch_merge.loc[ch_merge["channel"].str.lower()=="google ads", "spend25"] = g_sp + move
 
+        # --------------------------------------------
+        # Final channel overrides per user instructions
+        # --------------------------------------------
+        # Ensure rows exist for required channels
+        def _ensure_channel_row(chan_name: str):
+            nonlocal ch_merge
+            if chan_name not in ch_merge["channel"].astype(str).tolist():
+                from pandas import DataFrame
+                ch_merge_rows = DataFrame({
+                    "channel": [chan_name],
+                    "spend23": [0.0], "rev23": [0.0],
+                    "spend24": [0.0], "rev24": [0.0],
+                    "spend25": [0.0], "rev25": [0.0],
+                })
+                import pandas as _pd
+                ch_merge = _pd.concat([ch_merge, ch_merge_rows], ignore_index=True)
+
+        for _c in ["Demand Gen", "CTV", "Pinterest Ads", "AppLovin"]:
+            _ensure_channel_row(_c)
+
+        # 1) Demand Gen: spend $45k, ROAS 1 => revenue = $45k
+        desired_dg = 120_000.0
+        current_dg = float(ch_merge.loc[ch_merge["channel"] == "Demand Gen", "spend25"].sum())
+        delta_dg = desired_dg - current_dg
+        ch_merge.loc[ch_merge["channel"] == "Demand Gen", "spend25"] = desired_dg
+        ch_merge.loc[ch_merge["channel"] == "Demand Gen", "rev25"] = desired_dg  # ROAS 1
+
+        # Immediately deduct delta from Facebook before further processing
+        if delta_dg != 0:
+            fb_mask_initial = ch_merge["channel"] == "Facebook Ads"
+            if fb_mask_initial.any():
+                ch_merge.loc[fb_mask_initial, "spend25"] = ch_merge.loc[fb_mask_initial, "spend25"] - delta_dg
+                # Ensure not negative
+                ch_merge.loc[fb_mask_initial, "spend25"] = ch_merge.loc[fb_mask_initial, "spend25"].clip(lower=0.0)
+
+        # 2) CTV: spend $45k (unchanged), revenue = $0
+        ch_merge.loc[ch_merge["channel"] == "CTV", "spend25"] = 45_000.0
+        ch_merge.loc[ch_merge["channel"] == "CTV", "rev25"] = 0.0
+
+        # 3) Reduce Facebook by 30% and reallocate to specified channels
+        fb_mask = ch_merge["channel"] == "Facebook Ads"
+        if fb_mask.any():
+            fb_spend = float(ch_merge.loc[fb_mask, "spend25"].sum())
+            reduction = fb_spend * 0.30
+            ch_merge.loc[fb_mask, "spend25"] = fb_spend - reduction
+
+            # Reallocate to: Affiliate, Google Ads, AppLovin, Pinterest Ads, Demand Gen
+            realloc_chans = ["Affiliate", "Google Ads", "AppLovin", "Pinterest Ads", "Demand Gen"]
+            for rc in realloc_chans:
+                _ensure_channel_row(rc)
+
+            import pandas as _pd
+            current = ch_merge[ch_merge["channel"].isin(realloc_chans)].copy()
+            cur_total = float(current["spend25"].sum())
+            if cur_total <= 0:
+                # even allocation
+                even = reduction / len(realloc_chans)
+                for rc in realloc_chans:
+                    ch_merge.loc[ch_merge["channel"] == rc, "spend25"] += even
+            else:
+                for rc in realloc_chans:
+                    rc_sp = float(ch_merge.loc[ch_merge["channel"] == rc, "spend25"].sum())
+                    share = rc_sp / cur_total if cur_total else 0.0
+                    ch_merge.loc[ch_merge["channel"] == rc, "spend25"] += reduction * share
+
     chan_md = [
         "| Channel | 2023 Q4 Spend | 2023 Q4 Revenue | 2024 Q4 Spend | 2024 Q4 Revenue | 2025 Target Spend | 2025 Target Revenue | Spend Δ% | Rev Δ% |",
         "| - | -: | -: | -: | -: | -: | -: | -: | -: |",
@@ -1035,6 +1429,18 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
             chan_md.append(
                 f"| {r['channel']} | {_fmt_currency(r['spend23'])} | {_fmt_currency(r['rev23'])} | {_fmt_currency(s24)} | {_fmt_currency(v24)} | {_fmt_currency(s25)} | {_fmt_currency(v25)} | {sdelta:+.0f}% | {vdelta:+.0f}% |"
             )
+
+    # Append total row
+    tot = ch_merge.copy()
+    t_sp23 = float(tot['spend23'].sum())
+    t_rev23 = float(tot['rev23'].sum())
+    t_sp24 = float(tot['spend24'].sum())
+    t_rev24 = float(tot['rev24'].sum())
+    t_sp25 = float(tot['spend25'].sum())
+    t_rev25 = float(tot['rev25'].sum())
+    sdelta_tot = ((t_sp25 - t_sp24) / t_sp24 * 100.0) if t_sp24 else 0.0
+    vdelta_tot = ((t_rev25 - t_rev24) / t_rev24 * 100.0) if t_rev24 else 0.0
+    chan_md.append(f"| **Total** | {_fmt_currency(t_sp23)} | {_fmt_currency(t_rev23)} | {_fmt_currency(t_sp24)} | {_fmt_currency(t_rev24)} | {_fmt_currency(t_sp25)} | {_fmt_currency(t_rev25)} | {sdelta_tot:+.0f}% | {vdelta_tot:+.0f}% |")
 
     # Build markdown doc
     lines: list[str] = []
@@ -1089,35 +1495,50 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
         "",
         "## 3. Channel Spend Plan by Month",
         "",
-        "### October 2025",
-        *_chan_month_table("2025-10"),
-        "",
-        "### November 2025",
-        *_chan_month_table("2025-11"),
-        "",
-        "### December 2025",
-        *_chan_month_table("2025-12"),
     ]
+    for mon, title in [("2025-10", "October 2025"), ("2025-11", "November 2025"), ("2025-12", "December 2025")]:
+        lines.append(f"### {title}")
+        lines.append("| Channel | 2024 Spend | 2025 Target Spend | Δ% |")
+        lines.append("| - | -: | -: | -: |")
+        mon24 = mon.replace("2025", "2024")
+        if ch_merge.empty:
+            lines.append("| — | $0 | $0 | 0% |")
+        else:
+            rows = []
+            for _, r in ch_merge.iterrows():
+                chan_name = str(r["channel"])
+                w = weights.get((chan_name, mon24), 1.0 / 3.0)
+                spend25_mon = float(r.get("spend25", 0.0)) * w
+                spend24_mon = 0.0
+                if chan24 is not None and not chan24.empty:
+                    row = chan24[(chan24["channel"] == chan_name) & (chan24["month"] == mon24)]
+                    if not row.empty:
+                        spend24_mon = float(row["spend"].sum())
+                delta_pct = ((spend25_mon - spend24_mon) / spend24_mon * 100.0) if spend24_mon else 0.0
+                rows.append((spend25_mon, f"| {chan_name} | {_fmt_currency(spend24_mon)} | {_fmt_currency(spend25_mon)} | {delta_pct:+.0f}% |"))
+            for _, line in sorted(rows, key=lambda x: x[0], reverse=True):
+                lines.append(line)
+        lines.append("")
 
-    # Consolidated product tables by month
+    # Product tables by month (all products)
     def _prod_month_table(mon: str) -> list[str]:
-        df = prod_by_month.get(mon, pd.DataFrame())
+        df = prod_all_by_month.get(mon, pd.DataFrame())
         tbl = [
-            "| Product Group | 2023 Rev | 2024 Rev | Rev Δ% (24 vs 23) | 2025 Target Rev | Rev Δ% (25 vs 24) | 2023 Units | 2024 Units | Units Δ% (24 vs 23) | 2025 Target Units | Units Δ% (25 vs 24) |",
+            "| Product | 2023 Rev | 2024 Rev | Rev Δ% (24 vs 23) | 2025 Target Rev | Rev Δ% (25 vs 24) | 2023 Units | 2024 Units | Units Δ% (24 vs 23) | 2025 Target Units | Units Δ% (25 vs 24) |",
             "| - | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: |",
         ]
         if df is None or df.empty:
             tbl.append("| — | $0 | $0 | 0% | $0 | 0% | 0 | 0 | 0% | 0 | 0% |")
             return tbl
         # Totals at top
-        tot = {
-            "revenue_2023": pd.to_numeric(df.get("revenue_2023", 0), errors="coerce").fillna(0).sum(),
-            "revenue_2024": pd.to_numeric(df.get("revenue_2024", 0), errors="coerce").fillna(0).sum(),
-            "revenue_2025_target": pd.to_numeric(df.get("revenue_2025_target", 0), errors="coerce").fillna(0).sum(),
-            "units_2023": pd.to_numeric(df.get("units_2023", 0), errors="coerce").fillna(0).sum(),
-            "units_2024": pd.to_numeric(df.get("units_2024", 0), errors="coerce").fillna(0).sum(),
-            "units_2025_target": pd.to_numeric(df.get("units_2025_target", 0), errors="coerce").fillna(0).sum(),
-        }
+        tot = df.agg({
+            "revenue_2023": "sum",
+            "revenue_2024": "sum",
+            "revenue_2025_target": "sum",
+            "units_2023": "sum",
+            "units_2024": "sum",
+            "units_2025_target": "sum",
+        }).to_dict()
         sdelta_24_vs_23 = ((tot['revenue_2024'] - tot['revenue_2023']) / tot['revenue_2023'] * 100.0) if tot['revenue_2023'] else 0.0
         sdelta_25_vs_24 = ((tot['revenue_2025_target'] - tot['revenue_2024']) / tot['revenue_2024'] * 100.0) if tot['revenue_2024'] else 0.0
         udelta_24_vs_23 = ((tot['units_2024'] - tot['units_2023']) / tot['units_2023'] * 100.0) if tot['units_2023'] else 0.0
@@ -1125,9 +1546,10 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
         tbl.append(
             f"| **All Products** | {_fmt_currency(tot['revenue_2023'])} | {_fmt_currency(tot['revenue_2024'])} | {sdelta_24_vs_23:+.0f}% | {_fmt_currency(tot['revenue_2025_target'])} | {sdelta_25_vs_24:+.0f}% | {_fmt_num(tot['units_2023'])} | {_fmt_num(tot['units_2024'])} | {udelta_24_vs_23:+.0f}% | {_fmt_num(tot['units_2025_target'])} | {udelta_25_vs_24:+.0f}% |"
         )
-        # Rows
+        # Rows per product sorted by 2025 target revenue
+        rows = []
         for _, r in df.iterrows():
-            grp = r.get("group", "Other")
+            name = r.get("product", "Unknown")
             rev23 = float(r.get('revenue_2023', 0) or 0.0)
             rev24 = float(r.get('revenue_2024', 0) or 0.0)
             rev25 = float(r.get('revenue_2025_target', 0) or 0.0)
@@ -1138,27 +1560,73 @@ def write_combined_report(product_df: pd.DataFrame, channel_df: pd.DataFrame, re
             sdelta_25_vs_24 = ((rev25 - rev24) / rev24 * 100.0) if rev24 else 0.0
             udelta_24_vs_23 = ((u24 - u23) / u23 * 100.0) if u23 else 0.0
             udelta_25_vs_24 = ((u25 - u24) / u24 * 100.0) if u24 else 0.0
-            tbl.append(
-                f"| {grp} | {_fmt_currency(rev23)} | {_fmt_currency(rev24)} | {sdelta_24_vs_23:+.0f}% | {_fmt_currency(rev25)} | {sdelta_25_vs_24:+.0f}% | {_fmt_num(u23)} | {_fmt_num(u24)} | {udelta_24_vs_23:+.0f}% | {_fmt_num(u25)} | {udelta_25_vs_24:+.0f}% |"
-            )
+            line = f"| {name} | {_fmt_currency(rev23)} | {_fmt_currency(rev24)} | {sdelta_24_vs_23:+.0f}% | {_fmt_currency(rev25)} | {sdelta_25_vs_24:+.0f}% | {_fmt_num(u23)} | {_fmt_num(u24)} | {udelta_24_vs_23:+.0f}% | {_fmt_num(u25)} | {udelta_25_vs_24:+.0f}% |"
+            rows.append((rev25, line))
+        for _, line in sorted(rows, key=lambda x: x[0], reverse=True):
+            tbl.append(line)
         return tbl
 
     lines += [
         "",
         "---",
         "",
-        "## 4. Product Forecast by Month (Consolidated)",
-        f"Consolidation mode: {consolidate}; Threshold: ${threshold_usd:,.0f}",
+        "## 4. Product Forecast by Month (All Products)",
+        "Consolidation mode: threshold; Threshold: $100,000",
         "",
-        "### October 2025",
-        *_prod_month_table("2025-10"),
-        "",
-        "### November 2025",
-        *_prod_month_table("2025-11"),
-        "",
-        "### December 2025",
-        *_prod_month_table("2025-12"),
     ]
+    # Monthly product tables
+    for mon, title in [("2025-10","October 2025"),("2025-11","November 2025"),("2025-12","December 2025")]:
+        lines.append(f"### {title}")
+        for row in _prod_month_table(mon):
+            lines.append(row)
+        lines.append("")
+
+    # Q4 total product table (sum of months)
+    q4_df = pd.concat([prod_all_by_month.get(m, pd.DataFrame()) for m in ["2025-10","2025-11","2025-12"]], ignore_index=True)
+    if q4_df is None or q4_df.empty:
+        lines.append("### Q4 2025 (Total)")
+        lines.append("| Product Group | 2023 Rev | 2024 Rev | Rev Δ% (24 vs 23) | 2025 Target Rev | Rev Δ% (25 vs 24) | 2023 Units | 2024 Units | Units Δ% (24 vs 23) | 2025 Target Units | Units Δ% (25 vs 24) |")
+        lines.append("| - | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: |")
+        lines.append("| — | $0 | $0 | 0% | $0 | 0% | 0 | 0 | 0% | 0 | 0% |")
+    else:
+        q4_agg = (q4_df.groupby("product").agg(
+            revenue_2023=("revenue_2023","sum"),
+            revenue_2024=("revenue_2024","sum"),
+            revenue_2025_target=("revenue_2025_target","sum"),
+            units_2023=("units_2023","sum"),
+            units_2024=("units_2024","sum"),
+            units_2025_target=("units_2025_target","sum"),
+        ).reset_index().sort_values("revenue_2025_target", ascending=False))
+        tot = {
+            "revenue_2023": float(q4_agg["revenue_2023"].sum()),
+            "revenue_2024": float(q4_agg["revenue_2024"].sum()),
+            "revenue_2025_target": float(q4_agg["revenue_2025_target"].sum()),
+            "units_2023": float(q4_agg["units_2023"].sum()),
+            "units_2024": float(q4_agg["units_2024"].sum()),
+            "units_2025_target": float(q4_agg["units_2025_target"].sum()),
+        }
+        sdelta_24_vs_23 = ((tot['revenue_2024'] - tot['revenue_2023']) / tot['revenue_2023'] * 100.0) if tot['revenue_2023'] else 0.0
+        sdelta_25_vs_24 = ((tot['revenue_2025_target'] - tot['revenue_2024']) / tot['revenue_2024'] * 100.0) if tot['revenue_2024'] else 0.0
+        udelta_24_vs_23 = ((tot['units_2024'] - tot['units_2023']) / tot['units_2023'] * 100.0) if tot['units_2023'] else 0.0
+        udelta_25_vs_24 = ((tot['units_2025_target'] - tot['units_2024']) / tot['units_2024'] * 100.0) if tot['units_2024'] else 0.0
+        lines.append("### Q4 2025 (Total)")
+        lines.append("| Product Group | 2023 Rev | 2024 Rev | Rev Δ% (24 vs 23) | 2025 Target Rev | Rev Δ% (25 vs 24) | 2023 Units | 2024 Units | Units Δ% (24 vs 23) | 2025 Target Units | Units Δ% (25 vs 24) |")
+        lines.append("| - | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: |")
+        lines.append(f"| **All Products** | {_fmt_currency(tot['revenue_2023'])} | {_fmt_currency(tot['revenue_2024'])} | {sdelta_24_vs_23:+.0f}% | {_fmt_currency(tot['revenue_2025_target'])} | {sdelta_25_vs_24:+.0f}% | {_fmt_num(tot['units_2023'])} | {_fmt_num(tot['units_2024'])} | {udelta_24_vs_23:+.0f}% | {_fmt_num(tot['units_2025_target'])} | {udelta_25_vs_24:+.0f}% |")
+        for _, r in q4_agg.iterrows():
+            s24 = float(r.get('revenue_2024', 0) or 0.0)
+            s23 = float(r.get('revenue_2023', 0) or 0.0)
+            s25 = float(r.get('revenue_2025_target', 0) or 0.0)
+            u24 = float(r.get('units_2024', 0) or 0.0)
+            u23 = float(r.get('units_2023', 0) or 0.0)
+            u25 = float(r.get('units_2025_target', 0) or 0.0)
+            sdelta_24_vs_23 = ((s24 - s23) / s23 * 100.0) if s23 else 0.0
+            sdelta_25_vs_24 = ((s25 - s24) / s24 * 100.0) if s24 else 0.0
+            udelta_24_vs_23 = ((u24 - u23) / u23 * 100.0) if u23 else 0.0
+            udelta_25_vs_24 = ((u25 - u24) / u24 * 100.0) if u24 else 0.0
+            lines.append(
+                f"| {r['product']} | {_fmt_currency(s23)} | {_fmt_currency(s24)} | {sdelta_24_vs_23:+.0f}% | {_fmt_currency(s25)} | {sdelta_25_vs_24:+.0f}% | {_fmt_num(u23)} | {_fmt_num(u24)} | {udelta_24_vs_23:+.0f}% | {_fmt_num(u25)} | {udelta_25_vs_24:+.0f}% |"
+            )
 
     # Assumptions & Next steps
     lines += [
@@ -1189,8 +1657,10 @@ def write_outputs(product_df: pd.DataFrame, channel_df: pd.DataFrame, out_dir: O
     product_df.to_csv(prod_path, index=False)
     channel_df.to_csv(chan_path, index=False)
     # Also write markdowns
-    write_markdown(product_df, channel_df, out_dir=out_dir)
-    write_combined_report(product_df, channel_df, reports_dir=out_dir, consolidate="threshold", threshold_usd=100_000.0)
+    md_path = write_markdown(product_df, channel_df, out_dir=out_dir)
+    combined_path = write_combined_report(product_df, channel_df, out_dir=out_dir)
+    # Overwrite the primary md with the combined report for convenience
+    (out_dir / "q4-2025-planning.md").write_text(combined_path.read_text(encoding="utf-8"), encoding="utf-8")
     return prod_path, chan_path
 
 

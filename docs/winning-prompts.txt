@@ -1,4 +1,4 @@
-Can you review @/exports and @/mail in the exports folder and categorize the markdown files into the following categories from the last 7 days starting yesterday and use this naming structure for the file "weekly-growth-report-highlights-" with todays date at the end. 
+Can you review @/exports and @/mail in the exports folder and categorize the markdown files into the following categories from the last 7 days starting yesterday and use this naming structure for the file "weekly-growth-report-highlights-" with todays date at the end. Also cite all resources used to find this information so its easier for the model to find context when I need to get more details about these highlights. 
 
 
 Wins & Updates = General insights across the brand
@@ -8,7 +8,7 @@ Daily Task List & Priorities = Specifically for Jourdan
 Affiliate Insights = Affiliate partnerships, programs, updates
 Motion & Creative Reporting Insights = Creative insights and updates mentioned in slack or found in reporting. 
 Website & CRO = Genral insights related to the website update or CRO pushed. 
-Notes on Creative Testing Constraints = Any insights on create restraints or creative demand. 
+Notes on Creative Testing Constraints = Any insights on create restraints or creative demand. Please follow any conversations with Laura in the sb-higherdose-creative slack channel to provide detailed insights here.  
 Next Steps / Action Items = What are the action items for this week and next steps following previous action items. 
 
 

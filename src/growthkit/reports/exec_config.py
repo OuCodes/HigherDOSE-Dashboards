@@ -179,7 +179,7 @@ DATA_SOURCE_CONFIG = {
         'required_columns': ['Product title', 'Total sales', 'Net items sold']
     },
     'northbeam_spend': {
-        'pattern': ['*northbeam*.csv', '*ytd-sales_data-higher_dose_llc*.csv'],
+        'pattern': ['*northbeam*.csv', '*ytd-sales_data-higher_dose_llc*.csv', '*sales_data-higher_dose_llc*.csv', '*best_sales*.csv', '*best-sales*.csv', '*ytd-best_sales*.csv', '*ytd-best-sales*.csv', '*new_ytd_sales*.csv', '*new-ytd-sales*.csv'],
         'description': 'Northbeam spend and attribution data',
         'date_column': 'Date',
         'required_columns': ['Spend', 'Revenue']
