@@ -2,8 +2,9 @@
 import sys
 import csv
 from pathlib import Path
-from datetime import date, timedelta
-from typing import List
+from datetime import date, timedelta, datetime
+from typing import List, Optional
+import argparse
 import yaml
 from google.ads.googleads.client import GoogleAdsClient
 
@@ -50,23 +51,53 @@ def build_filename(start: date, end: date) -> Path:
 	return OUT_DIR / name
 
 
+def parse_args() -> argparse.Namespace:
+	parser = argparse.ArgumentParser(description="Export Google Ads account-level daily report")
+	parser.add_argument("--start", type=str, help="Start date YYYY-MM-DD")
+	parser.add_argument("--end", type=str, help="End date YYYY-MM-DD (inclusive)")
+	parser.add_argument("--customer-id", type=str, help="Customer ID to query (###-###-#### or digits)")
+	parser.add_argument("--login-customer-id", type=str, help="Login customer ID (MCC) (###-###-#### or digits)")
+	return parser.parse_args()
+
+
+def resolve_dates(args: argparse.Namespace) -> tuple[date, date, str]:
+	if args.start and args.end:
+		start = datetime.strptime(args.start, "%Y-%m-%d").date()
+		end = datetime.strptime(args.end, "%Y-%m-%d").date()
+	else:
+		end = date.today()
+		start = end - timedelta(days=29)
+	period_str = f"{start.strftime('%B %d, %Y')} - {end.strftime('%B %d, %Y')}"
+	return start, end, period_str
+
+
+def normalize_cid(cid: Optional[str]) -> str:
+	return (cid or "").replace('-', '').strip()
+
+
 def main() -> None:
 	OUT_DIR.mkdir(parents=True, exist_ok=True)
 	cfg = yaml.safe_load(CONFIG.read_text())
 	client = GoogleAdsClient.load_from_dict(cfg)
-	# Ensure login-customer-id header is set (required when accessing a client under an MCC)
-	login_cid = (cfg.get('login_customer_id') or cfg.get('login-customer-id') or '').replace('-', '')
+
+	args = parse_args()
+	# Determine target and login customer IDs from args or config
+	linked_cid = normalize_cid(args.customer_id or cfg.get('linked_customer_id') or cfg.get('customer_id'))
+	login_cid = normalize_cid(args.login_customer_id or cfg.get('login_customer_id') or cfg.get('login-customer-id'))
+	if not login_cid and linked_cid:
+		# Default login header to same customer if MCC not provided
+		login_cid = linked_cid
 	if login_cid:
 		client.login_customer_id = login_cid
 
-	end = date.today()
-	start = end - timedelta(days=29)
-	period_str = f"{start.strftime('%B %d, %Y')} - {end.strftime('%B %d, %Y')}"
+	start, end, period_str = resolve_dates(args)
 	outfile = build_filename(start, end)
 
 	gaql = GAQL % (f"'{start}'", f"'{end}'")
 	service = client.get_service("GoogleAdsService")
-	linked_cid = (cfg.get('linked_customer_id') or cfg.get('customer_id') or '').replace('-', '')
+	if not linked_cid:
+		print("Missing customer ID. Provide --customer-id or set customer_id in config/google_ads/google-ads.yaml", file=sys.stderr)
+		sys.exit(2)
 	stream = service.search_stream(customer_id=linked_cid, query=gaql)
 
 	with outfile.open('w', newline='', encoding='utf-8') as f:
