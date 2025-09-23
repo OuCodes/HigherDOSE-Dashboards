@@ -29,6 +29,10 @@ gk-slack = "growthkit.connectors.slack.slack_fetcher:run_main"
 gk-email = "growthkit.connectors.mail.gmail_sync:main"
 gk-budget = "growthkit.reports.budget_tracker:main"
 gk-ldw = "growthkit.reports.ldw:main"
+gk-nb-products = "growthkit.reports.northbeam_spend_by_product:main"
+gk-nb-export = "growthkit.connectors.northbeam.cli:export_main"
+gk-nb-export-all = "growthkit.connectors.northbeam.cli:export_all_metrics_main"
+gk-nb-sync = "growthkit.connectors.northbeam.cli:sync_ytd_main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
