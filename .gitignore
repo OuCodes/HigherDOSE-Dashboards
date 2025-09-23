@@ -237,3 +237,9 @@ __marimo__/
 # Large CSV files - YTD sales data exports (typically >100MB)
 **/ytd-sales_data-higher_dose_llc-*.csv
 **/ytd-light-sales_data-higher_dose_llc-*.csv
+src/growthkit/utils/logs/*.log*
+
+# GA4 credentials (do not track)
+config/ga4/
+# Optional: ignore any service account JSON keys at root or scripts
+*.json

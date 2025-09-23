@@ -167,6 +167,23 @@ data/reports/weekly/weekly-growth-report-with-products-YYYY-MM-DD.md
 
 ---
 
+## 7. Daily Budget Tracker (Plan vs Actuals)
+
+Generate a daily budget tracker CSV for a given month. Provide the monthly revenue target, spend budget, and channel mix. The tool uses Shopify daily data for historical day-of-month shares (fallback to equal shares) and Northbeam exports for actual daily spend/revenue if available.
+
+1. Ensure you have at least one Shopify daily CSV (e.g., `data/ads/q4-planning-2025/shopify/Total sales over time - 01-01-2024-12-31-2024.csv`) and a Northbeam daily/YTD CSV in `data/ads/`.
+2. Run:
+   ```bash
+   $ gk-budget --month 2025-11 \
+       --rev-target 3000000 \
+       --spend-budget 1200000 \
+       --mix "Meta=0.45,Google=0.40,Affiliates=0.05,Amazon=0.10"
+   ```
+3. Output:
+   - `data/reports/weekly/budget-tracker-YYYY-MM.csv`
+
+Columns include per-day planned revenue/spend/MER, actuals (if present), variances, cumulative pacing, and channel-level daily budgets derived from the mix.
+
 ## 6. H1 (Jan → Jun) Growth Report
 
 Required files (place in `data/ads/h1-report/` or pass `--*` flags):

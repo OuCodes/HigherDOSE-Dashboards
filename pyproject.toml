@@ -16,7 +16,8 @@ dependencies = [
     "requests==2.32.4",
     "python-dateutil==2.9.0.post0",
     "pylint==3.3.7",
-    "pytest==8.4.1"
+    "pytest==8.4.1",
+    "google-analytics-data==0.18.14"
 ]
 
 # CLI entry points - these will be available as commands after installation
@@ -26,6 +27,8 @@ gk-exec = "growthkit.reports.executive:main"
 gk-h1 = "growthkit.reports.h1:main"
 gk-slack = "growthkit.connectors.slack.slack_fetcher:run_main"
 gk-email = "growthkit.connectors.mail.gmail_sync:main"
+gk-budget = "growthkit.reports.budget_tracker:main"
+gk-ldw = "growthkit.reports.ldw:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
