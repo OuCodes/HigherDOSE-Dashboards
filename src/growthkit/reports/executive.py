@@ -1393,10 +1393,16 @@ class MTDReportGenerator:
             if 'Day' in ts.columns:
                 ts['Day'] = pd.to_datetime(ts['Day'], errors='coerce')
                 ts = ts.dropna(subset=['Day'])
+                # Clip to report end date so current month reflects MTD
+                end_dt = self.mtd_date_range_current['end_dt']
+                ts = ts[ts['Day'] <= end_dt]
                 ts['Month'] = ts['Day'].dt.to_period('M')
                 rev_month_df = ts.groupby('Month').agg({'Total sales': 'sum'}).reset_index()
             elif 'Month' in ts.columns:
-                ts['_m'] = pd.to_datetime(ts['Month'], errors='coerce')
+                # Normalize to month Periods and drop months after report end month
+                ts['_m'] = pd.to_datetime(ts['Month'], errors='coerce').dt.to_period('M')
+                end_month = pd.Timestamp(self.mtd_date_range_current['end_dt']).to_period('M')
+                ts = ts[ts['_m'] <= end_month]
                 rev_month_df = (ts.groupby('_m').agg({'Total sales': 'sum'})
                                .reset_index().rename(columns={'_m': 'Month'}))
 
