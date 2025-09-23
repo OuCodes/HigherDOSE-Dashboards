@@ -290,3 +290,21 @@ If data doesn't match or calculations seem off:
 4. **Document discrepancies** - note any attribution differences in report
 
 **Remember:** Perfect attribution is impossible. Consistency and clear notes about methodology are more important than perfect precision. 
+
+## Northbeam accounting modes (do not combine)
+
+Northbeam exports often include two accounting modes for the same rows:
+
+- Accrual performance: recognizes spend and revenue when attributed (model-based)
+- Cash snapshot: recognizes spend and revenue when cash hits (cash-based)
+
+These are different views and must not be summed together. Pick one:
+
+- Default in this repo: Cash snapshot
+- Override by setting an env var before running reports:
+
+```bash
+export NORTHBEAM_ACCOUNTING_MODE="Accrual performance"  # or "Cash snapshot"
+```
+
+The loaders filter the Northbeam CSV to a single `accounting_mode` so totals aren't double-counted. 
