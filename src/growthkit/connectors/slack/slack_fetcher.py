@@ -2747,28 +2747,34 @@ async def main():
 
         # Ask user what they want to extract
         print(f"\n{ansi.cyan}What would you like to extract?{ansi.reset}")
-        print("  • Enter a channel name (e.g., 'general' or '#general')")
+        print("  • Enter a channel or DM name (e.g., 'general' or '@alice')")
         print("  • Enter a channel ID (e.g., 'C1234567890')")
-        print("  • Enter multiple channels separated by commas")
-        print("  • Enter '*' or 'all' to export every public channel listed above")
+        print("  • Enter multiple targets separated by commas")
+        print("  • Enter '*' or 'all' to export every conversation you can access (channels, DMs, groups)")
 
         user_input = input("\nTarget channel(s): ").strip()
 
         # ------------------------------------------------------------------
-        # Special-case: '*' or 'all' → process *all* public channels found.
+        # Special-case: '*' or 'all' → process all conversations user can access
+        # (public channels, private channels you are in, DMs, and group DMs).
         # ------------------------------------------------------------------
         if user_input in {"*", "all", "ALL", "All"}:
-            channel_inputs = channels.copy()  # list of names (# removed already)
-            print(f"�� Exporting all {len(channel_inputs)} public channels…")
-            logger.info("User selected ALL channels (%d)", len(channel_inputs))
+            # Build a unified list of human-friendly names without prefixes (#/@)
+            all_targets = []
+            all_targets.extend(channels)
+            all_targets.extend(dms)
+            all_targets.extend(groups)
+
+            print(f"🔄 Exporting all {len(all_targets)} conversations you can access…")
+            logger.info("User selected ALL conversations (%d)", len(all_targets))
 
             # Ensure we have conversations + users caches ready once
             users = await browser.get_user_list()
             conversations = await browser.get_conversations()
 
-            for target in channel_inputs:
+            for target in all_targets:
                 await _export_single_channel(browser, target, users, conversations)
-            sw.lap("export_all_channels")
+            sw.lap("export_all_conversations")
             return
 
         # ------------------------------------------------------------------
