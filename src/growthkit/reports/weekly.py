@@ -15,6 +15,7 @@ import os
 import glob
 import argparse
 from pathlib import Path
+import sys
 from typing import Iterable, Sequence
 from datetime import datetime, timedelta, date
 
@@ -22,7 +23,7 @@ import numpy as np
 import pandas as pd
 
 from growthkit.reports import product_data
-from growthkit.reports.file_selector import select_csv_file
+from growthkit.reports.file_selector import select_csv_file, find_latest_by_year
 
 # ---------------------------------------------------------------------------
 # 🔍  Repository-aware path helpers
@@ -95,6 +96,291 @@ __all__ = [
     "find_latest_in_repo",
 ]
 
+
+# -------------------------------------------------------------
+# 📊  YoY helper functions (Google & Meta exports)
+# -------------------------------------------------------------
+
+def _summarize_google(cur_path: str | None, prev_path: str, start_date=None, end_date=None):
+    """Return dict with spend, revenue, conversions, roas for current & previous year window."""
+    if not cur_path or not prev_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
+        return None
+
+    cur_df = pd.read_csv(cur_path, skiprows=2, thousands=",")
+    prev_df = pd.read_csv(prev_path, skiprows=2, thousands=",")
+
+    cur_df["Day"] = pd.to_datetime(cur_df["Day"], errors="coerce")
+    prev_df["Day"] = pd.to_datetime(prev_df["Day"], errors="coerce")
+
+    if cur_df["Day"].isna().all() or prev_df["Day"].isna().all():
+        return None
+
+    # Prefer the report's selected range if available; otherwise use last 7 days from CSV
+    if start_date is not None and end_date is not None:
+        start_cur = pd.to_datetime(start_date)
+        end_cur = pd.to_datetime(end_date)
+    else:
+        end_cur = cur_df["Day"].max()
+        start_cur = end_cur - timedelta(days=6)
+
+    period_days = (end_cur - start_cur).days
+    end_prev = datetime(end_cur.year - 1, end_cur.month, end_cur.day)
+    start_prev = end_prev - timedelta(days=period_days)
+
+    cur_mtd = cur_df[(cur_df["Day"] >= start_cur) & (cur_df["Day"] <= end_cur)].copy()
+    prev_mtd = prev_df[(prev_df["Day"] >= start_prev) & (prev_df["Day"] <= end_prev)].copy()
+
+    for col in ["Cost", "Conv. value", "Conversions"]:
+        cur_mtd[col] = pd.to_numeric(cur_mtd[col], errors="coerce")
+        prev_mtd[col] = pd.to_numeric(prev_mtd[col], errors="coerce")
+
+    def _tot(df):
+        return (
+            df["Cost"].sum(),
+            df["Conv. value"].sum(),
+            df["Conversions"].sum(),
+        )
+
+    spend_cur, rev_cur, conv_cur = _tot(cur_mtd)
+    spend_prev, rev_prev, conv_prev = _tot(prev_mtd)
+
+    roas_cur = rev_cur / spend_cur if spend_cur else 0
+    roas_prev = rev_prev / spend_prev if spend_prev else 0
+
+    cpa_cur = spend_cur / conv_cur if conv_cur else 0
+    cpa_prev = spend_prev / conv_prev if conv_prev else 0
+
+    return {
+        "spend_cur": spend_cur,
+        "spend_prev": spend_prev,
+        "rev_cur": rev_cur,
+        "rev_prev": rev_prev,
+        "conv_cur": conv_cur,
+        "conv_prev": conv_prev,
+        "roas_cur": roas_cur,
+        "roas_prev": roas_prev,
+        "cpa_cur": cpa_cur,
+        "cpa_prev": cpa_prev,
+        "start_date": start_cur.strftime("%B %d"),
+        "end_date": end_cur.strftime("%B %d"),
+        # ISO dates for downstream Shopify alignment
+        "start_dt": start_cur.strftime("%Y-%m-%d"),
+        "end_dt": end_cur.strftime("%Y-%m-%d"),
+        "start_prev_dt": start_prev.strftime("%Y-%m-%d"),
+        "end_prev_dt": end_prev.strftime("%Y-%m-%d"),
+    }
+
+
+def _summarize_meta(cur_path: str | None, prev_path: str, start_date=None, end_date=None):
+    """Return dict with spend, revenue, conversions, roas for current & previous year window."""
+    if not cur_path or not prev_path or not os.path.exists(cur_path) or not os.path.exists(prev_path):
+        return None
+
+    cur_df = pd.read_csv(cur_path)
+    prev_df = pd.read_csv(prev_path)
+
+    # Standardize date column name
+    if "Day" not in cur_df.columns and "Date" in cur_df.columns:
+        cur_df.rename(columns={"Date": "Day"}, inplace=True)
+    if "Day" not in prev_df.columns and "Date" in prev_df.columns:
+        prev_df.rename(columns={"Date": "Day"}, inplace=True)
+
+    cur_df["Day"] = pd.to_datetime(cur_df["Day"], errors="coerce")
+    prev_df["Day"] = pd.to_datetime(prev_df["Day"], errors="coerce")
+
+    if cur_df["Day"].isna().all() or prev_df["Day"].isna().all():
+        return None
+
+    if start_date is not None and end_date is not None:
+        start_cur = pd.to_datetime(start_date)
+        end_cur = pd.to_datetime(end_date)
+    else:
+        end_cur = cur_df["Day"].max()
+        start_cur = end_cur - timedelta(days=6)
+
+    period_days = (end_cur - start_cur).days
+    end_prev = datetime(end_cur.year - 1, end_cur.month, end_cur.day)
+    start_prev = end_prev - timedelta(days=period_days)
+
+    cur_mtd = cur_df[(cur_df["Day"] >= start_cur) & (cur_df["Day"] <= end_cur)].copy()
+    prev_mtd = prev_df[(prev_df["Day"] >= start_prev) & (prev_df["Day"] <= end_prev)].copy()
+
+    spend_cols = [
+        "Amount spent (USD)", "Amount Spent (USD)", "Amount Spent", "Total Spent", "Spend"
+    ]
+    rev_cols = [
+        "Purchases conversion value", "Purchase conversion value",
+        "Website purchases conversion value", "Website Purchase Conversion Value"
+    ]
+    conv_cols = [
+        "Purchases", "Website purchases", "Website Purchases", "Results"
+    ]
+
+    def _pick(col_list, df):
+        for c in col_list:
+            if c in df.columns:
+                return c
+        return None
+
+    cur_spend_col = _pick(spend_cols, cur_mtd)
+    cur_rev_col   = _pick(rev_cols, cur_mtd)
+    cur_conv_col  = _pick(conv_cols, cur_mtd)
+    prev_spend_col = _pick(spend_cols, prev_mtd)
+    prev_rev_col   = _pick(rev_cols, prev_mtd)
+    prev_conv_col  = _pick(conv_cols, prev_mtd)
+
+    required = [cur_spend_col, cur_rev_col, cur_conv_col, prev_spend_col, prev_rev_col, prev_conv_col]
+    if any(c is None for c in required):
+        return None
+
+    def _clean_numeric(series: pd.Series) -> pd.Series:
+        return pd.to_numeric(series.astype(str).str.replace(r"[^0-9.\-]", "", regex=True), errors="coerce")
+
+    cur_mtd[cur_spend_col] = _clean_numeric(cur_mtd[cur_spend_col])
+    cur_mtd[cur_rev_col]   = _clean_numeric(cur_mtd[cur_rev_col])
+    cur_mtd[cur_conv_col]  = _clean_numeric(cur_mtd[cur_conv_col])
+    prev_mtd[prev_spend_col] = _clean_numeric(prev_mtd[prev_spend_col])
+    prev_mtd[prev_rev_col]   = _clean_numeric(prev_mtd[prev_rev_col])
+    prev_mtd[prev_conv_col]  = _clean_numeric(prev_mtd[prev_conv_col])
+
+    def _tot(df, s_col, r_col, c_col):
+        return (
+            df[s_col].sum(skipna=True),
+            df[r_col].sum(skipna=True),
+            df[c_col].sum(skipna=True),
+        )
+
+    spend_cur, rev_cur, conv_cur = _tot(cur_mtd, cur_spend_col, cur_rev_col, cur_conv_col)
+    spend_prev, rev_prev, conv_prev = _tot(prev_mtd, prev_spend_col, prev_rev_col, prev_conv_col)
+
+    roas_cur = rev_cur / spend_cur if spend_cur else 0
+    roas_prev = rev_prev / spend_prev if spend_prev else 0
+
+    cpa_cur = spend_cur / conv_cur if conv_cur else 0
+    cpa_prev = spend_prev / conv_prev if conv_prev else 0
+
+    return {
+        "spend_cur": spend_cur,
+        "spend_prev": spend_prev,
+        "rev_cur": rev_cur,
+        "rev_prev": rev_prev,
+        "conv_cur": conv_cur,
+        "conv_prev": conv_prev,
+        "roas_cur": roas_cur,
+        "roas_prev": roas_prev,
+        "cpa_cur": cpa_cur,
+        "cpa_prev": cpa_prev,
+        "start_date": start_cur.strftime("%B %d"),
+        "end_date": end_cur.strftime("%B %d"),
+        # ISO dates for downstream Shopify alignment
+        "start_dt": start_cur.strftime("%Y-%m-%d"),
+        "end_dt": end_cur.strftime("%Y-%m-%d"),
+        "start_prev_dt": start_prev.strftime("%Y-%m-%d"),
+        "end_prev_dt": end_prev.strftime("%Y-%m-%d"),
+    }
+
+# -------------------------------------------------------------
+# 🛍️  Shopify New vs Returning helpers for YoY counts
+# -------------------------------------------------------------
+
+def _latest_shopify_new_returning_for_year(year: int) -> str | None:
+    """Find the latest Shopify 'New vs returning' CSV for the specified year under data/ads.
+    Returns absolute path or None.
+    """
+    ads_root = project_root()
+    candidates: list[str] = []
+    try:
+        # Prefer files that contain the year in the filename
+        pattern_year = os.path.join(ads_root, "data", "ads", "**", f"*{year}*New vs returning*.csv")
+        pattern_any = os.path.join(ads_root, "data", "ads", "**", "*New vs returning*.csv")
+        for patt in [pattern_year, pattern_any]:
+            matches = []
+            for p in glob.glob(patt, recursive=True):
+                try:
+                    if os.path.isfile(p):
+                        matches.append(p)
+                except Exception:
+                    continue
+            if matches:
+                # Sort by mtime desc
+                matches.sort(key=lambda p: os.path.getmtime(p), reverse=True)
+                return matches[0]
+    except Exception:
+        return None
+    return None
+
+def _shopify_new_returning_counts(csv_path: str, start_dt: str, end_dt: str, use_prev_cols: bool = False) -> tuple[int, int, int]:
+    """Return (new_orders, returning_orders, total_orders) within [start_dt, end_dt] inclusive.
+    Attempts to use a 'Day' column when available; falls back to matching exact Month when range is within a month.
+    """
+    if not csv_path or not os.path.exists(csv_path):
+        return (0, 0, 0)
+    try:
+        df = pd.read_csv(csv_path)
+    except Exception:
+        return (0, 0, 0)
+
+    # Normalize cohort column
+    cohort_col = None
+    for c in df.columns:
+        if str(c).strip().lower().startswith("new or returning customer"):
+            cohort_col = c
+            break
+    if cohort_col is None:
+        return (0, 0, 0)
+
+    # Choose orders/day columns
+    orders_col = None
+    day_col = None
+    # Prefer previous-year columns when requested and available
+    if use_prev_cols:
+        orders_col = next((c for c in df.columns if str(c).strip().lower() == "orders (previous_year)"), None)
+        day_col = next((c for c in df.columns if str(c).strip().lower() in {"day (previous_year)", "date (previous_year)"}), None)
+    # Fallback to current-year columns
+    if orders_col is None:
+        orders_col = next((c for c in df.columns if str(c).strip().lower() == "orders"), None)
+    if day_col is None:
+        day_col = next((c for c in df.columns if str(c).strip().lower() in {"day", "date"}), None)
+    if orders_col is None:
+        return (0, 0, 0)
+
+    work = df.copy()
+
+    # Prefer day-level filtering
+    if day_col is not None:
+        work[day_col] = pd.to_datetime(work[day_col], errors="coerce")
+        s = pd.to_datetime(start_dt)
+        e = pd.to_datetime(end_dt)
+        work = work[(work[day_col] >= s) & (work[day_col] <= e)]
+    else:
+        # Fallback: approximate by month when range is within a single month
+        month_label = "month (previous_year)" if use_prev_cols else "month"
+        month_col = next((c for c in work.columns if str(c).strip().lower() == month_label), None)
+        if month_col is None:
+            return (0, 0, 0)
+        work["__month_norm"] = pd.to_datetime(work[month_col], errors="coerce").dt.to_period("M").astype(str)
+        s = pd.to_datetime(start_dt)
+        e = pd.to_datetime(end_dt)
+        if s.strftime("%Y-%m") != e.strftime("%Y-%m"):
+            return (0, 0, 0)
+        target_month = s.strftime("%Y-%m")
+        work = work[work["__month_norm"] == target_month]
+
+    if work.empty:
+        return (0, 0, 0)
+
+    # Ensure numeric orders
+    work[orders_col] = pd.to_numeric(work[orders_col], errors="coerce").fillna(0)
+    work[cohort_col] = work[cohort_col].astype(str)
+
+    def _sum_for(label: str) -> int:
+        sub = work[work[cohort_col].str.contains(label, case=False, na=False)]
+        return int(sub[orders_col].sum()) if not sub.empty else 0
+
+    new_orders = _sum_for("New")
+    returning_orders = _sum_for("Returning")
+    total_orders = int(work[orders_col].sum())
+    return (new_orders, returning_orders, total_orders)
 
 # -------------------------------------------------------------
 # Channel-level functions
@@ -1067,16 +1353,29 @@ def main():
     args, _unknown = parser.parse_known_args()
 
     # Determine current-year MTD files (CLI arg if supplied, otherwise prompt)
+    is_interactive = sys.stdin.isatty()
+
     def _prompt_mtd(platform: str, cli_value: str | None):
         if cli_value:
             return cli_value
         pattern = f"*{platform.lower()}*mtd*csv"
-        return select_csv_file(
-            directory="data/ads",
-            file_pattern=pattern,
-            prompt_message=f"Select {platform} MTD CSV (or q to skip): ",
-            max_items=10,
+        # Interactive selection when available
+        if is_interactive:
+            return select_csv_file(
+                directory="data/ads",
+                file_pattern=pattern,
+                prompt_message=f"Select {platform} MTD CSV (or q to skip): ",
+                max_items=10,
+            )
+        # Non-interactive fallback: auto-detect latest MTD for current year
+        current_year = datetime.now().year
+        autodetected = find_latest_by_year(
+            base_dir="data/ads",
+            recursive_pattern=f"{platform.lower()}-*mtd*.csv",
+            year=current_year,
+            prefer_daily=False,
         )
+        return autodetected
 
     google_cur_path = _prompt_mtd("google", args.google_csv)
     meta_cur_path   = _prompt_mtd("meta",   args.meta_csv)
@@ -1118,28 +1417,32 @@ def main():
         # --------------------------------------------------
         # ①  Select CURRENT period
         # --------------------------------------------------
-        period_menu = (
-            "Choose reporting period (Northbeam alignment):\n"
-            "  1) Last 7 days\n"
-            "  2) Last 14 days\n"
-            "  3) Last 30 days\n"
-            "  4) Custom range\n"
-        )
-        while True:
-            choice = input(period_menu + "Selection: ").strip()
-            if choice in {"1", "7", "last 7", "l7"}:
-                days = 7
-                break
-            if choice in {"2", "14", "last 14", "l14"}:
-                days = 14
-                break
-            if choice in {"3", "30", "last 30", "l30"}:
-                days = 30
-                break
-            if choice in {"4", "custom", "c"}:
-                days = None  # handled below
-                break
-            print("❌ Invalid option – try again.\n")
+        if is_interactive:
+            period_menu = (
+                "Choose reporting period (Northbeam alignment):\n"
+                "  1) Last 7 days\n"
+                "  2) Last 14 days\n"
+                "  3) Last 30 days\n"
+                "  4) Custom range\n"
+            )
+            while True:
+                choice = input(period_menu + "Selection: ").strip()
+                if choice in {"1", "7", "last 7", "l7"}:
+                    days = 7
+                    break
+                if choice in {"2", "14", "last 14", "l14"}:
+                    days = 14
+                    break
+                if choice in {"3", "30", "last 30", "l30"}:
+                    days = 30
+                    break
+                if choice in {"4", "custom", "c"}:
+                    days = None  # handled below
+                    break
+                print("❌ Invalid option – try again.\n")
+        else:
+            # Non-interactive default: last 7 days
+            days = 7
 
         if days is not None:
             # Determine the natural "end" of the dataset.
@@ -1159,18 +1462,25 @@ def main():
             start_date = end_date - timedelta(days=days - 1)
         else:
             # Custom range prompt
-            while True:
-                try:
-                    start_input = input("Enter report START date  (YYYY-MM-DD): ").strip()
-                    end_input   = input("Enter report END date    (YYYY-MM-DD): ").strip()
-                    start_date = pd.to_datetime(start_input).date()
-                    end_date   = pd.to_datetime(end_input).date()
-                    if end_date < start_date:
-                        print("❌ End date must not be before start date. Try again.\n")
-                        continue
-                    break
-                except ValueError:
-                    print("❌ Invalid date format – please use YYYY-MM-DD.\n")
+            if is_interactive:
+                while True:
+                    try:
+                        start_input = input("Enter report START date  (YYYY-MM-DD): ").strip()
+                        end_input   = input("Enter report END date    (YYYY-MM-DD): ").strip()
+                        start_date = pd.to_datetime(start_input).date()
+                        end_date   = pd.to_datetime(end_input).date()
+                        if end_date < start_date:
+                            print("❌ End date must not be before start date. Try again.\n")
+                            continue
+                        break
+                    except ValueError:
+                        print("❌ Invalid date format – please use YYYY-MM-DD.\n")
+            else:
+                # Fallback to last 7 days if custom requested but non-interactive
+                latest_dt = df_full[date_col].max().date()
+                today = datetime.today().date()
+                end_date = (latest_dt - timedelta(days=1)) if latest_dt == today else latest_dt
+                start_date = end_date - timedelta(days=6)
 
         # Slice current period
         df = df[(df[date_col].dt.date >= start_date) & (df[date_col].dt.date <= end_date)].copy()
@@ -1182,32 +1492,42 @@ def main():
         # --------------------------------------------------
         # ②  Select COMPARISON window
         # --------------------------------------------------
-        compare_menu = (
-            "Compare against:\n"
-            "  1) Previous period (same length)\n"
-            "  2) Previous month\n"
-            "  3) Previous year\n"
-            "  4) None\n"
-        )
-        while True:
-            comp_choice = input(compare_menu + "Selection: ").strip()
-            if comp_choice == "1":
-                prev_start = start_date - timedelta(days=(end_date - start_date).days + 1)
-                prev_end   = start_date - timedelta(days=1)
-                break
-            elif comp_choice == "2":
-                prev_start = (start_date - pd.DateOffset(months=1)).date()
-                prev_end   = (end_date   - pd.DateOffset(months=1)).date()
-                break
-            elif comp_choice == "3":
-                prev_start = (start_date - pd.DateOffset(years=1)).date()
-                prev_end   = (end_date   - pd.DateOffset(years=1)).date()
-                break
-            elif comp_choice == "4":
-                prev_start = prev_end = None
-                break
-            else:
-                print("❌ Invalid option – try again.\n")
+        if is_interactive:
+            compare_menu = (
+                "Compare against:\n"
+                "  1) Previous period (same length)\n"
+                "  2) Previous month\n"
+                "  3) Previous year\n"
+                "  4) None\n"
+            )
+            comparison_kind = None  # 'prev_period' | 'prev_month' | 'prev_year' | None
+            while True:
+                comp_choice = input(compare_menu + "Selection: ").strip()
+                if comp_choice == "1":
+                    prev_start = start_date - timedelta(days=(end_date - start_date).days + 1)
+                    prev_end   = start_date - timedelta(days=1)
+                    comparison_kind = "prev_period"
+                    break
+                elif comp_choice == "2":
+                    prev_start = (start_date - pd.DateOffset(months=1)).date()
+                    prev_end   = (end_date   - pd.DateOffset(months=1)).date()
+                    comparison_kind = "prev_month"
+                    break
+                elif comp_choice == "3":
+                    prev_start = (start_date - pd.DateOffset(years=1)).date()
+                    prev_end   = (end_date   - pd.DateOffset(years=1)).date()
+                    comparison_kind = "prev_year"
+                    break
+                elif comp_choice == "4":
+                    prev_start = prev_end = None
+                    break
+                else:
+                    print("❌ Invalid option – try again.\n")
+        else:
+            # Non-interactive default: compare to previous year
+            prev_start = (start_date - pd.DateOffset(years=1)).date()
+            prev_end   = (end_date   - pd.DateOffset(years=1)).date()
+            comparison_kind = "prev_year"
 
         if prev_start and prev_end:
             prev_df_subset = df_full[(df_full[date_col].dt.date >= prev_start) & (df_full[date_col].dt.date <= prev_end)].copy()
@@ -1811,11 +2131,18 @@ def main():
                 return f"{val:,.{digits}f}"
 
             yoy_lines: list[str] = []
-            if google_yoy and meta_yoy:
-                end_label = google_yoy["end_date"]
-                yoy_lines = [
-                    f"\n## 5. Year-over-Year Growth (Week {google_yoy['start_date']}–{end_label})\n",
-                ]
+            # Always start the YoY section, even if only one platform is available
+            start_label = end_label = None
+            if google_yoy:
+                start_label = google_yoy.get("start_date", start_label)
+                end_label = google_yoy.get("end_date", end_label)
+            if meta_yoy and not end_label:
+                start_label = meta_yoy.get("start_date", start_label)
+                end_label = meta_yoy.get("end_date", end_label)
+            if start_label and end_label:
+                yoy_lines.append(f"\n## 5. Year-over-Year Growth (Week {start_label}–{end_label})\n")
+            else:
+                yoy_lines.append("\n## 5. Year-over-Year Growth\n")
 
             def _yoy_rows(platform: str, data: dict[str, float]):
                 rows: list[str] = []
@@ -1843,6 +2170,101 @@ def main():
                 yoy_lines.append(_yoy_rows("Google Ads", google_yoy))
             if meta_yoy:
                 yoy_lines.append(_yoy_rows("Meta Ads", meta_yoy))
+
+            # Blended CAC (Google + Meta) — Use Northbeam Accrual spend and Shopify order counts
+            try:
+                s_dt = pd.to_datetime(start_date)
+                e_dt = pd.to_datetime(end_date)
+                s_prev_dt = s_dt.replace(year=s_dt.year - 1)
+                e_prev_dt = e_dt.replace(year=e_dt.year - 1)
+                s_cur = s_dt.strftime("%Y-%m-%d"); e_cur = e_dt.strftime("%Y-%m-%d")
+                s_prev = s_prev_dt.strftime("%Y-%m-%d"); e_prev = e_prev_dt.strftime("%Y-%m-%d")
+
+                nb = df.copy()
+                if 'date' in nb.columns:
+                    nb['date'] = pd.to_datetime(nb['date'], errors='coerce')
+                if 'accounting_mode' in nb.columns:
+                    nb = nb[nb['accounting_mode'].astype(str).str.contains('Accrual', case=False, na=False)]
+                if 'spend' in nb.columns:
+                    nb['spend'] = pd.to_numeric(nb['spend'], errors='coerce').fillna(0)
+                plat_col = 'breakdown_platform_northbeam' if 'breakdown_platform_northbeam' in nb.columns else ('platform' if 'platform' in nb.columns else None)
+                if plat_col is None:
+                    raise ValueError('Northbeam platform column not found')
+                nb['_plat'] = nb[plat_col].astype(str).str.lower()
+                def _is_gm(x: str) -> bool:
+                    x = str(x)
+                    return ('google' in x) or ('meta' in x) or ('facebook' in x) or ('instagram' in x)
+                gm = nb[nb['_plat'].apply(_is_gm)]
+                cur_mask = (gm['date'] >= s_dt) & (gm['date'] <= e_dt) if 'date' in gm.columns else pd.Series([True]*len(gm))
+                prev_mask = (gm['date'] >= s_prev_dt) & (gm['date'] <= e_prev_dt) if 'date' in gm.columns else pd.Series([True]*len(gm))
+                spend_cur = float(gm.loc[cur_mask, 'spend'].sum()) if 'spend' in gm.columns else 0.0
+                spend_prev = float(gm.loc[prev_mask, 'spend'].sum()) if 'spend' in gm.columns else 0.0
+
+                shop_cur = _latest_shopify_new_returning_for_year(s_dt.year)
+                shop_prev = _latest_shopify_new_returning_for_year(s_prev_dt.year)
+                new_cur = ret_cur = new_prev = ret_prev = 0
+                if shop_cur:
+                    new_cur, ret_cur, _ = _shopify_new_returning_counts(shop_cur, s_cur, e_cur)
+                if shop_prev:
+                    new_prev, ret_prev, _ = _shopify_new_returning_counts(shop_prev, s_prev, e_prev, use_prev_cols=True)
+
+                def _pct_delta_local(a: float, b: float) -> float:
+                    if not b:
+                        return 0.0
+                    return (a - b) / b * 100.0
+
+                tot_cur = new_cur + ret_cur
+                tot_prev = new_prev + ret_prev
+                cac_cur = (spend_cur / tot_cur) if tot_cur else 0
+                cac_prev = (spend_prev / tot_prev) if tot_prev else 0
+                delta = _pct_delta_local(cac_cur, cac_prev)
+                sign = "+" if delta > 0 else ("-" if delta < 0 else "")
+
+                yoy_lines.append("\n### YoY CAC (Google + Meta)\n")
+                yoy_lines.append("| Metric | 2025 | 2024 | YoY Δ% |")
+                yoy_lines.append("|-|-|-|-|")
+                yoy_lines.append(f"| Blended CAC | {_fmt(cac_cur, '$', 2)} | {_fmt(cac_prev, '$', 2)} | {sign}{abs(delta):.0f}% |")
+
+                ncc_cur = (spend_cur / new_cur) if new_cur else 0
+                ncc_prev = (spend_prev / new_prev) if new_prev else 0
+                ncc_delta = _pct_delta_local(ncc_cur, ncc_prev)
+                ncc_sign = "+" if ncc_delta > 0 else ("-" if ncc_delta < 0 else "")
+                yoy_lines.append(f"| New Customer CAC | {_fmt(ncc_cur, '$', 2)} | {_fmt(ncc_prev, '$', 2)} | {ncc_sign}{abs(ncc_delta):.0f}% |")
+
+                new_delta = _pct_delta_local(new_cur, new_prev)
+                new_sign = "+" if new_delta > 0 else ("-" if new_delta < 0 else "")
+                yoy_lines.append(f"| New Orders | {int(new_cur)} | {int(new_prev)} | {new_sign}{abs(new_delta):.0f}% |")
+                ret_delta = _pct_delta_local(ret_cur, ret_prev)
+                ret_sign = "+" if ret_delta > 0 else ("-" if ret_delta < 0 else "")
+                yoy_lines.append(f"| Existing Orders | {int(ret_cur)} | {int(ret_prev)} | {ret_sign}{abs(ret_delta):.0f}% |")
+            except Exception:
+                pass
+
+            # All Paid CAC (YoY) using selected current vs previous YEAR from the loaded dataset
+            try:
+                if 'comparison_kind' in locals() and comparison_kind == 'prev_year' and prev_df is not None:
+                    cur_paid = df[(df["accounting_mode"] == "Accrual performance") & (df["spend"] > 0)].copy()
+                    prev_paid = prev_df[(prev_df["accounting_mode"] == "Accrual performance") & (prev_df["spend"] > 0)].copy()
+
+                    spend_paid_cur = pd.to_numeric(cur_paid["spend"], errors="coerce").sum()
+                    txns_paid_cur = pd.to_numeric(cur_paid["transactions"], errors="coerce").sum()
+                    spend_paid_prev = pd.to_numeric(prev_paid["spend"], errors="coerce").sum()
+                    txns_paid_prev = pd.to_numeric(prev_paid["transactions"], errors="coerce").sum()
+
+                    cac_paid_cur = (spend_paid_cur / txns_paid_cur) if txns_paid_cur else 0
+                    cac_paid_prev = (spend_paid_prev / txns_paid_prev) if txns_paid_prev else 0
+                    delta_paid = _pct_delta(cac_paid_cur, cac_paid_prev)
+                    sign_paid = "+" if delta_paid > 0 else ("-" if delta_paid < 0 else "")
+
+                    yoy_lines.append("\n### YoY CAC (All Paid)\n")
+                    yoy_lines.append("| Metric | 2025 | 2024 | YoY Δ% |")
+                    yoy_lines.append("|-|-|-|-|")
+                    yoy_lines.append(
+                        f"| Blended CAC | {_fmt(cac_paid_cur, '$', 2)} | {_fmt(cac_paid_prev, '$', 2)} | {sign_paid}{abs(delta_paid):.0f}% |"
+                    )
+            except Exception:
+                # Best-effort; skip if data not available
+                pass
 
             yoy_section_md = "\n".join(yoy_lines) + "\n"
 
@@ -1889,6 +2311,142 @@ def main():
             print(f"⚠️  YoY section failed - data loading error: {e}")
         except (KeyError, ValueError, AttributeError) as e:
             print(f"⚠️  YoY section failed - data processing error: {e}")
+
+    # -------------------------------------------------------------
+    # 🔁  YoY Fallback when prev_df is unavailable
+    #      If the previous-year slice is missing, still append the
+    #      Google + Meta YoY section using platform exports.
+    # -------------------------------------------------------------
+    if prev_df is None:
+        try:
+            ads_root = os.path.join("data", "ads")
+            google_prev_path = _latest(os.path.join(ads_root, "**", "google-2024*-daily*.csv"))
+            if not google_prev_path:
+                google_prev_path = _latest(os.path.join(ads_root, "**", "google-*2024*.csv"))
+
+            weekly_2024_dir = os.path.join(ads_root, "weekly-report-2024-ads")
+            meta_prev_path = None
+            if os.path.isdir(weekly_2024_dir):
+                meta_prev_path = _latest(os.path.join(weekly_2024_dir, "meta-*2024*export*.csv"))
+                if not meta_prev_path:
+                    meta_prev_path = _latest(os.path.join(weekly_2024_dir, "meta-*2024*.csv"))
+            if not meta_prev_path:
+                meta_prev_path = _latest(os.path.join(ads_root, "**", "meta-*2024*export*.csv"))
+            if not meta_prev_path:
+                meta_prev_path = _latest(os.path.join(ads_root, "**", "meta-*2024*.csv"))
+
+            google_yoy = _summarize_google(google_cur_path, google_prev_path)
+            meta_yoy = _summarize_meta(meta_cur_path, meta_prev_path)
+
+            def _fmt_local(val: float, prefix: str = "$", digits: int = 0):
+                if prefix:
+                    return f"{prefix}{val:,.{digits}f}"
+                return f"{val:,.{digits}f}"
+
+            yoy_lines: list[str] = []
+            if google_yoy and meta_yoy:
+                end_label = google_yoy["end_date"]
+                yoy_lines = [f"\n## 5. Year-over-Year Growth (Week {google_yoy['start_date']}–{end_label})\n"]
+
+                def _yoy_rows_local(platform: str, data: dict[str, float]):
+                    rows: list[str] = []
+                    metrics = [
+                        ("spend", "$", 0, "Spend"),
+                        ("rev", "$", 0, "Revenue"),
+                        ("conv", "", 0, "Conversions"),
+                        ("roas", "", 2, "ROAS"),
+                        ("cpa", "$", 2, "CPA"),
+                    ]
+                    rows.append(f"\n### {platform}\n")
+                    rows.append("| Metric | 2025 | 2024 | YoY Δ% |")
+                    rows.append("|-|-|-|-|")
+                    for key, prefix, digits, title in metrics:
+                        cur_val = data[f"{key}_cur"]
+                        prev_val = data[f"{key}_prev"]
+                        pct = _pct_delta(cur_val, prev_val)
+                        sign = "+" if pct > 0 else ("-" if pct < 0 else "")
+                        rows.append(f"| {title} | {_fmt_local(cur_val, prefix, digits)} | {_fmt_local(prev_val, prefix, digits)} | {sign}{abs(pct):.0f}% |")
+                    return "\n".join(rows)
+
+                yoy_lines.append(_yoy_rows_local("Google Ads", google_yoy))
+                yoy_lines.append(_yoy_rows_local("Meta Ads", meta_yoy))
+
+                # Blended CAC (Google + Meta)
+                spend_cur = google_yoy["spend_cur"] + meta_yoy["spend_cur"]
+                conv_cur = google_yoy["conv_cur"] + meta_yoy["conv_cur"]
+                spend_prev = google_yoy["spend_prev"] + meta_yoy["spend_prev"]
+                conv_prev = google_yoy["conv_prev"] + meta_yoy["conv_prev"]
+                cac_cur = (spend_cur / conv_cur) if conv_cur else 0
+                cac_prev = (spend_prev / conv_prev) if conv_prev else 0
+                delta = _pct_delta(cac_cur, cac_prev)
+                sign = "+" if delta > 0 else ("-" if delta < 0 else "")
+                yoy_lines.append("\n### YoY CAC (Google + Meta)\n")
+                yoy_lines.append("| Metric | 2025 | 2024 | YoY Δ% |")
+                yoy_lines.append("|-|-|-|-|")
+                yoy_lines.append(f"| Blended CAC | {_fmt_local(cac_cur, '$', 2)} | {_fmt_local(cac_prev, '$', 2)} | {sign}{abs(delta):.0f}% |")
+                yoy_lines.append("\n_Note: In 2024, only Google/Meta/Twitter were active. Weekly Twitter conversions unavailable; All Paid (YoY) equals Google+Meta._\n")
+
+                # ---- Monthly proxy for All Paid CAC (YoY) using Historical Spend CSV ----
+                try:
+                    hist_path = os.path.join(ads_root, "q4-planning-2025", "Historical Spend - Historical Spend.csv")
+                    if os.path.exists(hist_path):
+                        hist_df = pd.read_csv(hist_path, engine="python")
+                        # Normalize columns: collapse newlines and strip spaces
+                        hist_df.columns = [str(c).replace("\n", " ").strip() for c in hist_df.columns]
+                        # Identify key columns heuristically
+                        month_col = next((c for c in hist_df.columns if c.lower().startswith("month")), None)
+                        # Prefer an aggregate paid column if present
+                        paid_total_col = next((c for c in hist_df.columns if "paid" in c.lower() and "channel" in c.lower()), None)
+                        # Fallback: sum known platform spend columns
+                        platform_cols = [
+                            c for c in hist_df.columns
+                            if any(k in c.lower() for k in ["facebook spend", "tiktok spend", "google spend", "twitter spend", "pinterest spend", "bing", "applovin", "share-a-sale spend", "shopmy spend", "awin spend", "affiliate commissions"]) 
+                        ]
+                        total_orders_col = next((c for c in hist_df.columns if "total" in c.lower() and "order" in c.lower()), None)
+
+                        def _clean_num(series: pd.Series) -> pd.Series:
+                            return pd.to_numeric(series.astype(str).str.replace(r"[^0-9.\-]", "", regex=True), errors="coerce")
+
+                        if month_col and total_orders_col and (paid_total_col or platform_cols):
+                            # Determine month keys for current and prior year (e.g., "Sep-25" and "Sep-24")
+                            cur_key = f"{end_date:%b-%y}"  # e.g., Sep-25
+                            prev_key = f"{end_date.replace(year=end_date.year-1):%b-%y}"
+
+                            def _row_for(key: str):
+                                return hist_df[hist_df[month_col].astype(str).str.strip().str.lower() == key.lower()].head(1)
+
+                            r_cur = _row_for(cur_key)
+                            r_prev = _row_for(prev_key)
+
+                            if not r_cur.empty and not r_prev.empty:
+                                if paid_total_col:
+                                    spend_cur_paid = _clean_num(r_cur[paid_total_col]).iloc[0]
+                                    spend_prev_paid = _clean_num(r_prev[paid_total_col]).iloc[0]
+                                else:
+                                    spend_cur_paid = sum((_clean_num(r_cur[c]).iloc[0] for c in platform_cols if c in r_cur), 0)
+                                    spend_prev_paid = sum((_clean_num(r_prev[c]).iloc[0] for c in platform_cols if c in r_prev), 0)
+
+                                orders_cur = _clean_num(r_cur[total_orders_col]).iloc[0]
+                                orders_prev = _clean_num(r_prev[total_orders_col]).iloc[0]
+
+                                cac_paid_cur_m = (spend_cur_paid / orders_cur) if orders_cur else 0
+                                cac_paid_prev_m = (spend_prev_paid / orders_prev) if orders_prev else 0
+                                delta_paid_m = _pct_delta(cac_paid_cur_m, cac_paid_prev_m)
+                                sign_paid_m = "+" if delta_paid_m > 0 else ("-" if delta_paid_m < 0 else "")
+
+                                yoy_lines.append("\n### YoY CAC (All Paid) — Monthly Proxy\n")
+                                yoy_lines.append("| Metric | 2025 (month) | 2024 (month) | YoY Δ% |")
+                                yoy_lines.append("|-|-|-|-|")
+                                yoy_lines.append(
+                                    f"| Blended CAC | {_fmt_local(cac_paid_cur_m, '$', 2)} | {_fmt_local(cac_paid_prev_m, '$', 2)} | {sign_paid_m}{abs(delta_paid_m):.0f}% |"
+                                )
+                except Exception:
+                    pass
+
+                final_report += "\n".join(yoy_lines) + "\n"
+        except Exception:
+            # Silent fallback if YOY source files are missing
+            pass
 
     # -------------------------------------------------------------
     # 📝  Initialize the working markdown document
