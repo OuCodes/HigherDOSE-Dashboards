@@ -109,7 +109,8 @@ def _latest_northbeam_csv_path() -> Optional[Path]:
 	candidates: List[str] = []
 	candidates.extend(glob.glob(str(PLANNING_DIR / "northbeam" / "**" / "*.csv"), recursive=True))
 	candidates.extend(glob.glob(str(ROOT / "data" / "ads" / "**" / "northbeam" / "*.csv"), recursive=True))
-	# Also include top-level YTD exports under data/ads (new_ytd_* or *sales_data*)
+	# Also include top-level YTD exports under data/ads: prefer canonical ytd naming, then legacy new_ytd_*
+	candidates.extend(glob.glob(str(ROOT / "data" / "ads" / "ytd_sales_data-higher_dose_llc-*.csv")))
 	candidates.extend(glob.glob(str(ROOT / "data" / "ads" / "new_ytd_*sales_data*.csv")))
 	candidates.extend(glob.glob(str(ROOT / "data" / "ads" / "*sales_data*.csv")))
 	if not candidates:

@@ -42,10 +42,11 @@ def _find_latest_l30_file() -> str | None:
     # Broaden match: include l30d, ytd, new_ytd; search recursively
     cands: list[str] = []
     for patt in [
-        "data/ads/**/*sales_data-higher_dose_llc-*.csv",
+        "data/ads/**/ytd_sales_data-higher_dose_llc-*.csv",  # prefer canonical YTD
+        "data/ads/**/new_ytd_sales_data-higher_dose_llc-*.csv",  # legacy
+        "data/ads/**/ytd-sales_data-higher_dose_llc-*.csv",  # alternate hyphenation
         "data/ads/**/l30d-sales_data-higher_dose_llc-*.csv",
-        "data/ads/**/ytd-sales_data-higher_dose_llc-*.csv",
-        "data/ads/**/new_ytd_sales_data-higher_dose_llc-*.csv",
+        "data/ads/**/*sales_data-higher_dose_llc-*.csv",
     ]:
         cands.extend(glob.glob(patt, recursive=True))
     if not cands:

@@ -90,8 +90,10 @@ def read_shopify_daily_default() -> Optional[pd.DataFrame]:
 
 
 def read_northbeam_daily_default() -> Optional[pd.DataFrame]:
-    # Prefer YTD export with a date column (scripts/northbeam_sync_ytd.py --daily)
-    cands = sorted(ADS_DIR.glob("new_ytd_sales_data-higher_dose_llc-*.csv"), key=lambda p: p.stat().st_mtime, reverse=True)
+    # Prefer new canonical YTD naming; fall back to legacy 'new_ytd_*' and other variants
+    cands = sorted(ADS_DIR.glob("ytd_sales_data-higher_dose_llc-*.csv"), key=lambda p: p.stat().st_mtime, reverse=True)
+    if not cands:
+        cands = sorted(ADS_DIR.glob("new_ytd_sales_data-higher_dose_llc-*.csv"), key=lambda p: p.stat().st_mtime, reverse=True)
     if not cands:
         cands = sorted(ADS_DIR.glob("*ytd*sales_data*.csv"), key=lambda p: p.stat().st_mtime, reverse=True)
     if not cands:

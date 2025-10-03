@@ -449,18 +449,39 @@ def load_and_clean_data():
 
         df = df.fillna(0)
 
+        # Guard against corrupted outliers (e.g., 1e+300) that can appear in some exports
+        # Apply conservative caps to prevent single bad rows from exploding aggregates
+        def _cap(series, max_abs: float) -> None:
+            try:
+                over = series.abs() > max_abs
+                if over.any():
+                    series.loc[over] = 0
+            except Exception:
+                pass
+
+        # Cap revenue-like columns at a very large but sane upper bound
+        for col in [
+            'attributed_rev', 'attributed_rev_1st_time', 'rev',
+            'web_revenue', 'meta_shops_revenue', 'tiktok_shops_revenue'
+        ]:
+            if col in df.columns:
+                _cap(df[col], 1e9)
+
         def promote(src_rev, src_txn, label):
+            """Promote alternative revenue/transaction metrics into TOTALS only.
+
+            Note: We DO NOT populate first-time fields from these fallbacks because
+            the alternatives (web/meta/tiktok 'rev' and 'transactions') are totals,
+            not first-time-only metrics. Leaving first-time fields unchanged avoids
+            inflating ROAS 1st and AOV 1st.
+            """
             mask = (df['attributed_rev'] == 0) & (df[src_rev] > 0)
             if mask.any():
                 df.loc[mask, 'attributed_rev'] = df.loc[mask, src_rev]
-                if 'attributed_rev_1st_time' in df.columns:
-                    df.loc[mask, 'attributed_rev_1st_time'] = df.loc[mask, src_rev]
                 if 'transactions' in df.columns and src_txn in df.columns:
                     df.loc[mask, 'transactions'] = df.loc[mask, src_txn]
-                if 'transactions_1st_time' in df.columns and src_txn in df.columns:
-                    df.loc[mask, 'transactions_1st_time'] = df.loc[mask, src_txn]
                 df.loc[mask, f'used_{label}_metrics'] = True
-                print(f"ℹ️  Applied {label} fallback for {mask.sum()} rows")
+                print(f"ℹ️  Applied {label} fallback for {mask.sum()} rows (totals only)")
 
         if {'web_revenue', 'web_transactions'}.issubset(df.columns):
             promote('web_revenue', 'web_transactions', 'web')
@@ -474,7 +495,7 @@ def load_and_clean_data():
             if mask_rev.any():
                 df.loc[mask_rev, 'attributed_rev'] = df.loc[mask_rev, 'rev']
                 df.loc[mask_rev, 'used_rev_metrics'] = True
-                print(f"ℹ️  Promoted 'rev' cash snapshot for {mask_rev.sum()} rows")
+                print(f"ℹ️  Promoted 'rev' cash snapshot for {mask_rev.sum()} rows (totals only)")
 
         required_platform_col = 'breakdown_platform_northbeam'
         if required_platform_col not in df.columns:
@@ -2124,6 +2145,7 @@ def main():
 
             google_yoy = _summarize_google(google_cur_path, google_prev_path)
             meta_yoy = _summarize_meta(meta_cur_path, meta_prev_path)
+            cac_yoy = None  # Will be populated if CAC calculation succeeds
 
             def _fmt(val: float, prefix: str = "$", digits: int = 0):
                 if prefix:
@@ -2171,7 +2193,7 @@ def main():
             if meta_yoy:
                 yoy_lines.append(_yoy_rows("Meta Ads", meta_yoy))
 
-            # Blended CAC (Google + Meta) — Use Northbeam Accrual spend and Shopify order counts
+            # Blended CAC (Google + Meta) — Use Google/Meta export spend and Shopify order counts
             try:
                 s_dt = pd.to_datetime(start_date)
                 e_dt = pd.to_datetime(end_date)
@@ -2180,25 +2202,18 @@ def main():
                 s_cur = s_dt.strftime("%Y-%m-%d"); e_cur = e_dt.strftime("%Y-%m-%d")
                 s_prev = s_prev_dt.strftime("%Y-%m-%d"); e_prev = e_prev_dt.strftime("%Y-%m-%d")
 
-                nb = df.copy()
-                if 'date' in nb.columns:
-                    nb['date'] = pd.to_datetime(nb['date'], errors='coerce')
-                if 'accounting_mode' in nb.columns:
-                    nb = nb[nb['accounting_mode'].astype(str).str.contains('Accrual', case=False, na=False)]
-                if 'spend' in nb.columns:
-                    nb['spend'] = pd.to_numeric(nb['spend'], errors='coerce').fillna(0)
-                plat_col = 'breakdown_platform_northbeam' if 'breakdown_platform_northbeam' in nb.columns else ('platform' if 'platform' in nb.columns else None)
-                if plat_col is None:
-                    raise ValueError('Northbeam platform column not found')
-                nb['_plat'] = nb[plat_col].astype(str).str.lower()
-                def _is_gm(x: str) -> bool:
-                    x = str(x)
-                    return ('google' in x) or ('meta' in x) or ('facebook' in x) or ('instagram' in x)
-                gm = nb[nb['_plat'].apply(_is_gm)]
-                cur_mask = (gm['date'] >= s_dt) & (gm['date'] <= e_dt) if 'date' in gm.columns else pd.Series([True]*len(gm))
-                prev_mask = (gm['date'] >= s_prev_dt) & (gm['date'] <= e_prev_dt) if 'date' in gm.columns else pd.Series([True]*len(gm))
-                spend_cur = float(gm.loc[cur_mask, 'spend'].sum()) if 'spend' in gm.columns else 0.0
-                spend_prev = float(gm.loc[prev_mask, 'spend'].sum()) if 'spend' in gm.columns else 0.0
+                # Use spend from Google/Meta YoY summaries (already calculated from export files)
+                # This ensures we use the same data source as the platform-specific YoY sections
+                spend_cur = 0.0
+                spend_prev = 0.0
+                
+                if google_yoy:
+                    spend_cur += google_yoy.get('spend_cur', 0.0)
+                    spend_prev += google_yoy.get('spend_prev', 0.0)
+                
+                if meta_yoy:
+                    spend_cur += meta_yoy.get('spend_cur', 0.0)
+                    spend_prev += meta_yoy.get('spend_prev', 0.0)
 
                 shop_cur = _latest_shopify_new_returning_for_year(s_dt.year)
                 shop_prev = _latest_shopify_new_returning_for_year(s_prev_dt.year)
@@ -2230,6 +2245,16 @@ def main():
                 ncc_delta = _pct_delta_local(ncc_cur, ncc_prev)
                 ncc_sign = "+" if ncc_delta > 0 else ("-" if ncc_delta < 0 else "")
                 yoy_lines.append(f"| New Customer CAC | {_fmt(ncc_cur, '$', 2)} | {_fmt(ncc_prev, '$', 2)} | {ncc_sign}{abs(ncc_delta):.0f}% |")
+                
+                # Store CAC values for executive summary injection
+                cac_yoy = {
+                    "blended_cac_cur": cac_cur,
+                    "blended_cac_prev": cac_prev,
+                    "blended_cac_delta": delta,
+                    "new_cac_cur": ncc_cur,
+                    "new_cac_prev": ncc_prev,
+                    "new_cac_delta": ncc_delta,
+                }
 
                 new_delta = _pct_delta_local(new_cur, new_prev)
                 new_sign = "+" if new_delta > 0 else ("-" if new_delta < 0 else "")
@@ -2289,10 +2314,24 @@ def main():
                     m_spd = _pct(meta_yoy["spend_cur"],   meta_yoy["spend_prev"])
                     m_rev = _pct(meta_yoy["rev_cur"],     meta_yoy["rev_prev"])
 
+                    # Build base YoY summary
                     yoy_summary = (
                         f"**Year-over-Year Highlights**: Google Ads spend {g_spd} vs 2024 with revenue {g_rev}; "
-                        f"Meta Ads spend {m_spd} with revenue {m_rev}."
+                        f"Meta Ads spend {m_spd} with revenue {m_rev}"
                     )
+                    
+                    # Add CAC insights if available
+                    if cac_yoy:
+                        blended_delta = _pct(cac_yoy["blended_cac_cur"], cac_yoy["blended_cac_prev"])
+                        new_cac_delta = _pct(cac_yoy["new_cac_cur"], cac_yoy["new_cac_prev"])
+                        yoy_summary += (
+                            f"; Combined Blended CAC {blended_delta} "
+                            f"({_fmt(cac_yoy['blended_cac_cur'], '$', 2)} vs {_fmt(cac_yoy['blended_cac_prev'], '$', 2)}); "
+                            f"New Customer CAC {new_cac_delta} "
+                            f"({_fmt(cac_yoy['new_cac_cur'], '$', 2)} vs {_fmt(cac_yoy['new_cac_prev'], '$', 2)})"
+                        )
+                    
+                    yoy_summary += "."
 
                     # Inject after Overall Performance paragraph (two consecutive newlines)
                     exec_hdr = "## 1. Executive Summary"

@@ -31,6 +31,42 @@ def _require_creds() -> None:
         raise SystemExit("; ".join(errs) + " (set in config/northbeam/.env or environment)")
 
 
+def _sort_csv_by_date_inplace(csv_path: Path) -> None:
+    """Best-effort in-place sort by date-like column (oldest first).
+
+    Detects a date column by common names: 'date', 'day', 'report_date'.
+    Falls back to the first column. Uses csv module to preserve quoting.
+    """
+    try:
+        with csv_path.open("r", encoding="utf-8", newline="") as f:
+            reader = csv.reader(f)
+            try:
+                header = next(reader)
+            except StopIteration:
+                return
+            rows = list(reader)
+        # Choose date column index
+        date_idx = 0
+        for i, name in enumerate(header):
+            if name and name.strip().lower() in {"date", "day", "report_date"}:
+                date_idx = i
+                break
+        def key_fn(row: list[str]) -> str:
+            try:
+                v = row[date_idx] if date_idx < len(row) else ""
+                return (v or "").strip().strip('"').strip("'")
+            except Exception:
+                return ""
+        rows.sort(key=key_fn)
+        with csv_path.open("w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(header)
+            writer.writerows(rows)
+    except Exception:
+        # Best-effort only; do not fail the sync on sort issues
+        pass
+
+
 def export_main() -> None:
     """Create a Northbeam export and download CSV to the specified path."""
     p = argparse.ArgumentParser(description="Northbeam export CLI")
@@ -155,6 +191,14 @@ def sync_ytd_main() -> None:
     p.add_argument("--model", default="northbeam_custom", help="Attribution model id (e.g., northbeam_custom)")
     p.add_argument("--window", default="1", help="Attribution window (e.g., 1, 3, 7, 30)")
     p.add_argument("--full", action="store_true", help="Export the entire period in a single CSV (disables daily/resume mode)")
+    p.add_argument(
+        "--api-date",
+        action="store_true",
+        help=(
+            "Use a single range export with DAILY granularity and API-provided date column. "
+            "Skips per-day stitching and avoids inserting a leading 'date' column."
+        ),
+    )
     p.add_argument("--new", action="store_true", help="Start fresh – ignore/resume no previous CSV and create a new file")
     p.add_argument("--start", help="Start date (YYYY-MM-DD); default is Jan 1 current year")
     p.add_argument("--end", help="End date (YYYY-MM-DD); default is yesterday (UTC)")
@@ -182,7 +226,8 @@ def sync_ytd_main() -> None:
     start = str(start_day)
     end = str(end_day)
     timestamp = now.strftime("%Y_%m_%d_%H_%M_%S")
-    pattern = ads_dir.glob("new_ytd_sales_data-higher_dose_llc-*.csv")
+    # Look for any existing YTD file regardless of a 'new_' prefix
+    pattern = ads_dir.glob("*ytd_sales_data-higher_dose_llc-*.csv")
     latest_files = sorted(pattern, key=lambda p: p.stat().st_mtime, reverse=True)
 
     resume_mode = False
@@ -190,7 +235,8 @@ def sync_ytd_main() -> None:
         target_file = latest_files[0]
         resume_mode = True
     else:
-        target_file = ads_dir / f"new_ytd_sales_data-higher_dose_llc-{timestamp}.csv"
+        # Create without the 'new_' prefix
+        target_file = ads_dir / f"ytd_sales_data-higher_dose_llc-{timestamp}.csv"
 
     client = NorthbeamClient()
     metrics_meta = client.list_metrics()
@@ -198,19 +244,24 @@ def sync_ytd_main() -> None:
     if not all_metrics:
         raise SystemExit("No metrics returned by API")
 
-    if not args.full:
-        print(
-            f"Exporting DAILY metrics with date column: {start} → {end} | mode={args.mode} model={args.model} window={args.window} metrics={len(all_metrics)} ids"
-        )
-        # Determine Platform breakdown values
-        platform_values: list[str] = []
+    # Helper: fetch Platform (Northbeam) breakdown values once for consistent schema
+    def _platform_breakdown_values() -> list[str]:
+        vals: list[str] = []
         try:
             for bd in client.list_breakdowns():
                 if bd.get("key") == "Platform (Northbeam)":
-                    platform_values = [v for v in bd.get("values", []) if v]
+                    vals = [v for v in bd.get("values", []) if v]
                     break
         except Exception:
-            platform_values = []
+            vals = []
+        return vals
+
+    if not args.full and not args.api_date:
+        print(
+            f"Exporting DAILY metrics with date column: {start} → {end} | mode={args.mode} model={args.model} window={args.window} metrics={len(all_metrics)} ids"
+        )
+        # Platform breakdown needs explicit values; fetch once and pass through
+        platform_values: list[str] = _platform_breakdown_values()
         breakdowns = (
             [{"key": "Platform (Northbeam)", "values": platform_values}] if platform_values else None
         )
@@ -218,6 +269,7 @@ def sync_ytd_main() -> None:
         # Stitch per-day exports into a single CSV and insert leading 'date' column
         existing_dates: set[str] = set()
         file_has_header = False
+        base_header: list[str] | None = None  # header from the first written chunk (without leading 'date')
         if target_file.exists():
             try:
                 with target_file.open("r", encoding="utf-8") as f:
@@ -231,6 +283,11 @@ def sync_ytd_main() -> None:
                                 break
                     if head and head and head[0].strip().lower() == "date" and platform_col_present:
                         file_has_header = True
+                        # Persist the base header from existing file (exclude leading 'date')
+                        try:
+                            base_header = head[1:]
+                        except Exception:
+                            base_header = None
                         for row in reader:
                             if row and row[0]:
                                 existing_dates.add(row[0])
@@ -282,32 +339,54 @@ def sync_ytd_main() -> None:
                             if head is None:
                                 cur += timedelta(days=1)
                                 continue
+                            # Initialize base_header on first write if not already set (append mode may have set it)
+                            if base_header is None:
+                                try:
+                                    base_header = list(head)
+                                except Exception:
+                                    base_header = list(head) if head is not None else []
                             if first_chunk and write_mode == "w":
                                 out_f.seek(0)
                                 out_f.truncate(0)
-                                writer.writerow(["date"] + head)
+                                # Use base_header as the canonical schema for the stitched file
+                                writer.writerow(["date"] + (base_header or []))
                                 first_chunk = False
+                            # Align each row to the canonical base_header by column name to ensure consistent schema
+                            # If the chunk schema differs (extra/missing columns), truncate or pad by name
+                            # Build a fast index for the current chunk header once
+                            name_to_index = {name: idx for idx, name in enumerate(head or [])}
                             for row in reader:
-                                writer.writerow([start_str] + row)
+                                if base_header is None or not base_header:
+                                    # Fallback: write as-is if we somehow lack a base header
+                                    writer.writerow([start_str] + row)
+                                    continue
+                                # Gather values in base_header order, defaulting to empty string when absent
+                                aligned = []
+                                for col in base_header:
+                                    idx = name_to_index.get(col)
+                                    aligned.append(row[idx] if idx is not None and idx < len(row) else "")
+                                writer.writerow([start_str] + aligned)
                     existing_dates.add(start_str)
                 except Exception as e:  # pragma: no cover - best-effort loop
                     print(f"⚠️  Failed {start_str}: {e}")
                 finally:
                     cur += timedelta(days=1)
-        if resume_mode:
-            new_target = ads_dir / f"new_ytd_sales_data-higher_dose_llc-{timestamp}.csv"
-            if target_file != new_target:
-                try:
-                    target_file.rename(new_target)
-                    target_file = new_target
-                except Exception:
-                    pass
+        # Final tidy: sort by date ascending so oldest at top (best-effort)
+        _sort_csv_by_date_inplace(target_file)
         print("Saved:", target_file)
         return
 
+    # Single-range export modes (API-provided date column via DAILY time granularity)
+    # Either explicitly requested via --api-date or legacy --full for backwards compatibility
+    mode_label = "API-DAILY" if args.api_date else "YTD FULL"
     print(
-        f"Exporting YTD FULL metrics: {start} → {end} | mode={args.mode} model={args.model} window={args.window} metrics={len(all_metrics)} ids"
+        f"Exporting {mode_label} metrics: {start} → {end} | mode={args.mode} model={args.model} window={args.window} metrics={len(all_metrics)} ids"
     )
+    breakdowns_arg = None
+    if args.api_date:
+        # Preserve platform in output to match downstream expectations
+        pv = _platform_breakdown_values()
+        breakdowns_arg = ([{"key": "Platform (Northbeam)", "values": pv}] if pv else None)
     export_id = client.create_export(
         start_date=start,
         end_date=end,
@@ -315,6 +394,16 @@ def sync_ytd_main() -> None:
         attribution_model=args.model,
         attribution_window=str(args.window),
         metrics=all_metrics,
+        breakdowns=breakdowns_arg,
+        # Per docs https://docs.northbeam.io/reference/post_data-export
+        # to include date dimension in the CSV, set export_aggregation to "DATE"
+        options={
+            "export_aggregation": "DATE",
+            "aggregate_data": False,
+            "remove_zero_spend": False,
+            "include_ids": False,
+            "include_kind_and_platform": False,
+        } if args.api_date else None,
     )
     print("Export ID:", export_id)
     res = client.wait_for_export(export_id, interval=1.0, timeout=600.0)
@@ -322,6 +411,8 @@ def sync_ytd_main() -> None:
     if not res.location:
         raise SystemExit("No export location returned")
     urllib.request.urlretrieve(res.location, target_file)
+    # Final tidy for range export as well (best-effort)
+    _sort_csv_by_date_inplace(target_file)
     print("Saved:", target_file)
 
 

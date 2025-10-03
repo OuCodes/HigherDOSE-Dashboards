@@ -64,7 +64,8 @@ class NorthbeamClient:
 					  attribution_window: Optional[str] = None, metrics: Optional[List[str]] = None,
 					  breakdowns: Optional[List[Union[str, Dict[str, Any]]]] = None, level: str = "ad",
 					  time_granularity: str = "DAILY",
-					  period_type: Optional[str] = None) -> str:
+					  period_type: Optional[str] = None,
+					  options: Optional[Dict[str, Any]] = None) -> str:
 		"""Create an export per docs.
 		If period_type not provided, use CUSTOM with start/end at top level.
 		Breakdowns may be list of keys or full dicts with key and values.
@@ -92,6 +93,8 @@ class NorthbeamClient:
 			"metrics": metrics_objs,
 			"attribution_options": attr_opts,
 		}
+		if options:
+			payload["options"] = options
 		if period_type:
 			payload["period_type"] = period_type
 		elif start_date and end_date:

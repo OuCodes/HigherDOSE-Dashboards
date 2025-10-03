@@ -8,6 +8,7 @@ import urllib.request
 from pathlib import Path
 from datetime import datetime, date, timedelta
 from typing import Any, Dict, List, Optional, Tuple
+from calendar import monthrange
 
 CONFIG_DIR = Path("config", "facebook")
 TOKENS_DIR = CONFIG_DIR / "tokens"
@@ -171,12 +172,114 @@ def _compute_last_30() -> Tuple[str, str, date, date]:
     return start.isoformat(), end.isoformat(), start, end
 
 
-def _default_output_path(output_dir: Path, start_dt: date, end_dt: date) -> Path:
+def _compute_last_7() -> Tuple[str, str, date, date]:
+    end = date.today()
+    start = end - timedelta(days=6)
+    return start.isoformat(), end.isoformat(), start, end
+
+
+def _compute_last_14() -> Tuple[str, str, date, date]:
+    end = date.today()
+    start = end - timedelta(days=13)
+    return start.isoformat(), end.isoformat(), start, end
+
+
+def _compute_month_to_date() -> Tuple[str, str, date, date]:
+    today = date.today()
+    start = date(today.year, today.month, 1)
+    end = today
+    return start.isoformat(), end.isoformat(), start, end
+
+
+def _compute_year_to_date() -> Tuple[str, str, date, date]:
+    today = date.today()
+    start = date(today.year, 1, 1)
+    end = today
+    return start.isoformat(), end.isoformat(), start, end
+
+
+def _default_output_path(output_dir: Path, start_dt: date, end_dt: date, range_type: str = "custom") -> Path:
+    # Use "meta-mtd-export-[start]-to-[end].auto.csv" pattern for all files
+    # This ensures scripts can find and process the files while showing actual date ranges
+    
     name = (
         f"meta-mtd-export-{_format_month(start_dt)}-{start_dt.strftime('%d')}-{start_dt.strftime('%Y')}"
         f"-to-{_format_month(end_dt)}-{end_dt.strftime('%d')}-{end_dt.strftime('%Y')}.auto.csv"
     )
+    
     return output_dir / name
+
+
+def _prompt_date_range() -> Tuple[str, str, date, date, str]:
+    """
+    Interactive prompt for date range selection.
+    Returns: (start_str, end_str, start_dt, end_dt, range_type)
+    """
+    print("\n📊 Facebook Ads Insights Export")
+    print("=" * 40)
+    print("Select date range:")
+    print("1. Last 7 days")
+    print("2. Last 14 days") 
+    print("3. Last 30 days (default)")
+    print("4. Month to Date")
+    print("5. Year to Date")
+    print("6. Custom range")
+    print()
+    
+    choice = input("Enter choice (1-6) or press Enter for default [3]: ").strip()
+    
+    # Default to Last 30 days if empty or invalid input
+    if not choice or choice not in ['1', '2', '3', '4', '5', '6']:
+        choice = '3'
+    
+    if choice == '1':
+        start_str, end_str, start_dt, end_dt = _compute_last_7()
+        range_type = "last_7"
+        print(f"📅 Selected: Last 7 days ({start_dt} to {end_dt})")
+    elif choice == '2':
+        start_str, end_str, start_dt, end_dt = _compute_last_14()
+        range_type = "last_14"
+        print(f"📅 Selected: Last 14 days ({start_dt} to {end_dt})")
+    elif choice == '3':
+        start_str, end_str, start_dt, end_dt = _compute_last_30()
+        range_type = "last_30"
+        print(f"📅 Selected: Last 30 days ({start_dt} to {end_dt})")
+    elif choice == '4':
+        start_str, end_str, start_dt, end_dt = _compute_month_to_date()
+        range_type = "mtd"
+        print(f"📅 Selected: Month to Date ({start_dt} to {end_dt})")
+    elif choice == '5':
+        start_str, end_str, start_dt, end_dt = _compute_year_to_date()
+        range_type = "ytd"
+        print(f"📅 Selected: Year to Date ({start_dt} to {end_dt})")
+    elif choice == '6':
+        print("\nEnter custom date range:")
+        while True:
+            try:
+                start_input = input("Start date (YYYY-MM-DD): ").strip()
+                start_dt = datetime.strptime(start_input, "%Y-%m-%d").date()
+                start_str = start_dt.isoformat()
+                break
+            except ValueError:
+                print("❌ Invalid date format. Please use YYYY-MM-DD")
+        
+        while True:
+            try:
+                end_input = input("End date (YYYY-MM-DD): ").strip()
+                end_dt = datetime.strptime(end_input, "%Y-%m-%d").date()
+                end_str = end_dt.isoformat()
+                if end_dt < start_dt:
+                    print("❌ End date must be after start date")
+                    continue
+                break
+            except ValueError:
+                print("❌ Invalid date format. Please use YYYY-MM-DD")
+        
+        range_type = "custom"
+        print(f"📅 Selected: Custom range ({start_dt} to {end_dt})")
+    
+    print()
+    return start_str, end_str, start_dt, end_dt, range_type
 
 
 def build_row(ins: Dict[str, Any]) -> List[Any]:
@@ -302,26 +405,44 @@ def build_row(ins: Dict[str, Any]) -> List[Any]:
 
 def main():
     parser = argparse.ArgumentParser(description="Export Facebook Ads Insights CSV matching sample columns")
-    parser.add_argument("--start", help="Start date YYYY-MM-DD")
-    parser.add_argument("--end", help="End date YYYY-MM-DD")
+    parser.add_argument("--start", help="Start date YYYY-MM-DD (overrides interactive prompt)")
+    parser.add_argument("--end", help="End date YYYY-MM-DD (overrides interactive prompt)")
     parser.add_argument("--output", help="Output CSV path")
     parser.add_argument("--output-dir", default=str(Path("data", "ads")), help="Directory to write CSV when auto-naming")
-    parser.add_argument("--auto-last-30", action="store_true", help="Compute last 30 days and auto-name the file")
+    parser.add_argument("--auto-last-30", action="store_true", help="Compute last 30 days and auto-name the file (legacy)")
+    parser.add_argument("--non-interactive", action="store_true", help="Skip prompts and use command line args only")
     args = parser.parse_args()
 
+    # Handle legacy --auto-last-30 flag
     if args.auto_last_30:
         start_str, end_str, start_dt, end_dt = _compute_last_30()
-        args.start = start_str
-        args.end = end_str
+        range_type = "last_30"
         if not args.output:
-            args.output = str(_default_output_path(Path(args.output_dir), start_dt, end_dt))
+            args.output = str(_default_output_path(Path(args.output_dir), start_dt, end_dt, range_type))
+    # Use command line args if provided and non-interactive mode
+    elif args.non_interactive and args.start and args.end:
+        start_str, end_str = args.start, args.end
+        start_dt = datetime.strptime(start_str, "%Y-%m-%d").date()
+        end_dt = datetime.strptime(end_str, "%Y-%m-%d").date()
+        range_type = "custom"
+        if not args.output:
+            print("Error: --output is required in non-interactive mode", file=sys.stderr)
+            sys.exit(1)
+    # Use interactive prompts (default behavior)
+    elif not (args.start and args.end):
+        start_str, end_str, start_dt, end_dt, range_type = _prompt_date_range()
+        if not args.output:
+            output_path = _default_output_path(Path(args.output_dir), start_dt, end_dt, range_type)
+            print(f"📁 Output file: {output_path}")
+            args.output = str(output_path)
+    # Command line args provided without non-interactive flag
     else:
-        if not (args.start and args.end):
-            print("Error: Provide --start and --end or use --auto-last-30", file=sys.stderr)
-            sys.exit(1)
+        start_str, end_str = args.start, args.end
+        start_dt = datetime.strptime(start_str, "%Y-%m-%d").date()
+        end_dt = datetime.strptime(end_str, "%Y-%m-%d").date()
+        range_type = "custom"
         if not args.output:
-            print("Error: --output is required when not using --auto-last-30", file=sys.stderr)
-            sys.exit(1)
+            args.output = str(_default_output_path(Path(args.output_dir), start_dt, end_dt, range_type))
 
     token = _read_latest_token() or _read_config_token()
     if not token:
@@ -344,7 +465,7 @@ def main():
 
     params = {
         "level": "account",
-        "time_range": json.dumps({"since": args.start, "until": args.end}),
+        "time_range": json.dumps({"since": start_str, "until": end_str}),
         "time_increment": 1,
         "fields": fields_param,
         "access_token": token,
