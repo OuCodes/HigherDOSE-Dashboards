@@ -14,65 +14,39 @@ Next Steps / Action Items = What are the action items for this week and next ste
 
 
 
-# Weekly Growth Report — {{report_end_date_long}}
----
+You are an expert marketing analytics editor. Combine the latest “highlights” and “with-products” performance exports into a single Weekly Growth Report, using the most recent previously combined report solely as a style/structure reference.
 
-## 1. Executive Summary
+Inputs:
+- Highlights (latest):
+  @/Users/jourdansmith/code/research/HigherDOSE/data/reports/weekly/weekly-growth-report-highlights-2025-09-22.md
+- Performance (latest):
+  @/Users/jourdansmith/code/research/HigherDOSE/data/reports/weekly/weekly-growth-report-with-products-2025-09-23.md
+- Style/structure reference (last combined):
+  @/Users/jourdansmith/code/research/HigherDOSE/data/reports/weekly/weekly-growth-report-2025-09-15-combined.md
 
-### Week-over-Week Overview  
-• **Spend:** {{cur_spend}} ( {{prev_spend}} | {{spend_pct}} )  
-• **Revenue:** {{cur_rev}} ( {{prev_rev}} | {{rev_pct}} )  
-• **ROAS:** {{cur_roas}} ( {{prev_roas}} | {{roas_pct}} )  
-• **ROAS 1st-Touch:** {{cur_roas1}} ( {{prev_roas1}} | {{roas1_pct}} )  
-• **CAC 1st-Touch:** {{cur_cac1}} ( {{prev_cac1}} | {{cac1_pct}} )  
-• **Transactions:** {{cur_txn}} ( {{prev_txn}} | {{txn_pct}} )
+Goal:
+Produce a new combined report for the 7-day period covered by the latest performance export (2025-09-16–2025-09-22), following the section order, tone, and formatting of the last combined file while updating all content with the latest data and highlights.
 
-**Overall Performance**: Total DTC spend reached **{{delta_spend}}** across all channels with **{{delta_roas}} ROAS**, generating **{{delta_rev}}** in revenue and blended **CAC of {{delta_cac}}**. Paid Media delivered **{{paid_rev}} revenue at {{paid_roas}} ROAS** with **CAC of {{paid_cac}}**, across **{{paid_txn}} transactions**. The business achieved **{{cur_txn}} total transactions** during this 7-day period.  
+Strict requirements:
+- Use the performance export as the single source of truth for all metrics, tables, and values. Do not invent or recalc numbers.
+- Preserve all tables (channel breakdowns, product/category performance, top campaigns, channel metrics, YoY tables, and the “Top Unattributed Spend” appendix) exactly as in the performance export, adjusting only any headings to match the style reference.
+- Integrate the highlights content into sections like “Wins & Updates,” “Challenges,” “Opportunities & Solutions,” “Daily Task List & Priorities,” “Motion & Creative Reporting Insights,” and “Website & CRO,” mirroring the style reference’s headings and tone.
+- For the Executive Summary:
+  - Include concise YoY and WoW callouts using the values from the performance export.
+  - Keep the narrative style consistent with the style reference.
+- Frontmatter:
+  - Follow the style reference’s frontmatter keys and order.
+  - Update dates/period to match the latest week (2025-09-16–2025-09-22).
+  - Keep `recipient: "Ingrid"` and appropriate `report_type` as per the reference.
+- Sources:
+  - Update the “Sources” section to reference the two latest input files (highlights and performance).
+  - If inline citations are present in highlights, retain them and ensure paths remain absolute.
+- Language and formatting:
+  - Match the tone, headings, and section ordering of the last combined report.
+  - Keep bullet/numbered list formatting and bold emphasis conventions consistent with the style reference.
+  - Do not include any editorial notes, TODOs, or meta commentary in the output.
 
-**Year-over-Year Highlights**: Google Ads spend {{yoY_g_spend_pct}} vs 2024 with revenue {{yoY_g_rev_pct}}; Meta Ads spend {{yoY_m_spend_pct}} with revenue {{yoY_m_rev_pct}}.
-
----
-
-## 2. DTC Breakdown (Accrual Performance) – 7 Days (Northbeam)
-
-(Insert full channel table with Prev and Δ% columns)
-
-### 2c. Meta Product Group Performance (Accrual Performance)
-
-(Insert product-group table)
-
----
-
-## 3. Year-over-Year Growth (Week {{report_start_mmyy}}–{{report_end_mmyy}})
-
-(Render Google Ads table, then Meta Ads table)
-
----
-
-## 4. Wins & Updates  
-(Bullet list)
-
-## 5. Challenges  
-(Bullet list)
-
-## 6. Opportunities & Solutions  
-(Bullet list)
-
-## 7. Task List & Priorities  
-(Numbered list)
-
-## 8. Notes on Creative Testing Constraints  
-(Markdown table)
-
-## 9. Next Steps / Action Items (Week of {{report_end_date_short}})  
-(Bullet list)
-
----
-
-*Report compiled: {{report_end_date_long}}*  
-
-REQUIREMENTS
-• All currency values prefixed with “$”, comma-separated, rounded to 0 decimals (2 for CAC/CPA).  
-• Percentage deltas shown with “+” / “–” and no decimals (e.g., +3%).  
-• Use en-dashes for negative signs in deltas (–7 %).  
-• Do **not** omit sections; if a section has no items, print “_None this week_”.
+Output:
+- Return the complete, ready-to-save Markdown for the new combined report.
+- Use a filename slug consistent with prior naming, e.g. “weekly-growth-report-2025-09-22-combined.md”.
+- Ensure all dates, period ranges, and figures reflect the latest performance export.
