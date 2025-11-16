@@ -16,6 +16,12 @@ config/slack/**
 **/mail/cursor.txt
 **/ads/**/*.csv
 
+# But allow specific files needed for Streamlit dashboard
+!data/ads/exec-sum/Total*.csv
+!data/ads/weekly-report-2024-ads/*.csv
+!data/ads/northbeam-2025-november.csv
+!data/mail/klaviyo_campaigns_bfcm_*.csv
+
 client_secret_*.json
 secrets.json
 .DS_Store

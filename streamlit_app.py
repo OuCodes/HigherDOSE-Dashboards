@@ -64,8 +64,8 @@ def load_all_data():
         lambda row: row['Total sales'] / row['total_spend'] if row['total_spend'] > 0 else 0, axis=1
     )
     
-    # 2025 Northbeam Spend
-    northbeam_file = DATA_DIR / "ytd_sales_data-higher_dose_llc-2025_10_07_22_43_36.csv"
+    # 2025 Northbeam Spend (November only to keep file size small)
+    northbeam_file = DATA_DIR / "northbeam-2025-november.csv"
     nb_2025 = pd.read_csv(northbeam_file)
     nb_2025 = nb_2025[nb_2025['accounting_mode'] == 'Cash snapshot'].copy()
     nb_2025['date'] = pd.to_datetime(nb_2025['date'])
