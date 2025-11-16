@@ -66,11 +66,16 @@ def load_all_data():
     
     # 2025 Northbeam Spend (November only to keep file size small)
     northbeam_file = DATA_DIR / "northbeam-2025-november.csv"
-    nb_2025 = pd.read_csv(northbeam_file)
-    nb_2025 = nb_2025[nb_2025['accounting_mode'] == 'Cash snapshot'].copy()
-    nb_2025['date'] = pd.to_datetime(nb_2025['date'])
-    nb_spend = nb_2025.groupby('date')['ad_spend'].sum().reset_index()
-    nb_spend.columns = ['Day', 'total_spend']
+    try:
+        # Read with error handling for large multi-column CSVs
+        nb_2025 = pd.read_csv(northbeam_file, on_bad_lines='skip', engine='python')
+        nb_2025 = nb_2025[nb_2025['accounting_mode'] == 'Cash snapshot'].copy()
+        nb_2025['date'] = pd.to_datetime(nb_2025['date'])
+        nb_spend = nb_2025.groupby('date')['spend'].sum().reset_index()  # Column is 'spend', not 'ad_spend'
+        nb_spend.columns = ['Day', 'total_spend']
+    except Exception as e:
+        st.warning(f"Could not load Northbeam data: {e}. Using zero spend for 2025.")
+        nb_spend = pd.DataFrame({'Day': pd.date_range('2025-11-01', '2025-11-16'), 'total_spend': 0.0})
     
     sales_2025_full = sales_2025_full.merge(nb_spend, on='Day', how='left', suffixes=('', '_nb'))
     sales_2025_full['total_spend'] = sales_2025_full['total_spend_nb'].fillna(sales_2025_full['total_spend'])
@@ -83,8 +88,15 @@ def load_all_data():
     emails_2024_file = MAIL_DIR / "klaviyo_campaigns_bfcm_2024.csv"
     emails_2025_file = MAIL_DIR / "klaviyo_campaigns_bfcm_2025_planned.csv"
     
-    emails_2024 = pd.read_csv(emails_2024_file)
-    emails_2025 = pd.read_csv(emails_2025_file)
+    try:
+        emails_2024 = pd.read_csv(emails_2024_file, on_bad_lines='skip')
+    except:
+        emails_2024 = pd.DataFrame()  # Empty fallback
+    
+    try:
+        emails_2025 = pd.read_csv(emails_2025_file, on_bad_lines='skip')
+    except:
+        emails_2025 = pd.DataFrame()  # Empty fallback
     
     return sales_2024_full, sales_2025_full, emails_2024, emails_2025
 
