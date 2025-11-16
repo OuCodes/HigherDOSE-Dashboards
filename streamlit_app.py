@@ -406,7 +406,7 @@ with col1:
         if 'campaign_name' in emails_2024_display.columns:
             display_cols.append('campaign_name')
         if 'send_datetime' in emails_2024_display.columns:
-            emails_2024_display['Date'] = pd.to_datetime(emails_2024_display['send_datetime']).dt.strftime('%b %d, %Y %I:%M %p')
+            emails_2024_display['Date'] = pd.to_datetime(emails_2024_display['send_datetime']).dt.strftime('%b %d, %Y')
             display_cols.append('Date')
         if 'status' in emails_2024_display.columns:
             display_cols.append('status')
@@ -435,7 +435,7 @@ with col2:
         if 'campaign_name' in emails_2025_display.columns:
             display_cols.append('campaign_name')
         if 'send_datetime' in emails_2025_display.columns:
-            emails_2025_display['Date'] = pd.to_datetime(emails_2025_display['send_datetime']).dt.strftime('%b %d, %Y %I:%M %p')
+            emails_2025_display['Date'] = pd.to_datetime(emails_2025_display['send_datetime']).dt.strftime('%b %d, %Y')
             display_cols.append('Date')
         if 'status' in emails_2025_display.columns:
             # Add status emoji
