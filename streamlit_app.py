@@ -252,45 +252,111 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
 
 st.markdown("---")
 
-# MER Trend Overview
-st.subheader("💰 MER Trend Overview (Nov 1 - Dec 2)")
+# MER Trend Overview - Side by Side
+st.subheader("💰 MER Trend Comparison")
 
-fig_mer = go.Figure()
+col1, col2 = st.columns(2)
 
-fig_mer.add_trace(
-    go.Scatter(
-        x=bfcm_period_2024['Day'],
-        y=bfcm_period_2024['MER'],
-        name='2024 MER',
-        mode='lines+markers',
-        line=dict(color='#7C3AED', width=4),
-        marker=dict(size=8)
-    )
-)
-
-if len(bfcm_period_2025) > 0 and bfcm_period_2025['MER'].sum() > 0:
-    fig_mer.add_trace(
+# 2024 MER Chart
+with col1:
+    st.markdown("**📈 2024 MER Trend**")
+    st.caption("Nov 1 - Dec 2, 2024 (32 days)")
+    
+    fig_2024_mer = go.Figure()
+    
+    fig_2024_mer.add_trace(
         go.Scatter(
-            x=bfcm_period_2025['Day'],
-            y=bfcm_period_2025['MER'],
-            name='2025 MER',
+            x=bfcm_period_2024['Day'],
+            y=bfcm_period_2024['MER'],
             mode='lines+markers',
-            line=dict(color='#F59E0B', width=4),
-            marker=dict(size=8)
+            line=dict(color='#7C3AED', width=4),
+            marker=dict(size=10, color='#7C3AED'),
+            fill='tozeroy',
+            fillcolor='rgba(124, 58, 237, 0.1)',
+            showlegend=False,
+            hovertemplate='<b>%{x|%b %d}</b><br>MER: %{y:.2f}x<extra></extra>'
         )
     )
+    
+    fig_2024_mer.add_hline(y=3.0, line_dash="dash", line_color="#EF4444", 
+                           annotation_text="Target: 3.0x", annotation_position="top right")
+    
+    # Add stats annotation
+    avg_mer_2024_full = bfcm_period_2024['MER'].mean()
+    max_mer_2024 = bfcm_period_2024['MER'].max()
+    min_mer_2024 = bfcm_period_2024['MER'].min()
+    
+    fig_2024_mer.add_annotation(
+        text=f"Avg: {avg_mer_2024_full:.2f}x | High: {max_mer_2024:.2f}x | Low: {min_mer_2024:.2f}x",
+        xref="paper", yref="paper",
+        x=0.5, y=1.15,
+        showarrow=False,
+        font=dict(size=12, color="#7C3AED"),
+        bgcolor="rgba(124, 58, 237, 0.1)",
+        borderpad=8
+    )
+    
+    fig_2024_mer.update_layout(
+        height=350,
+        xaxis_title="",
+        yaxis_title="MER (x)",
+        showlegend=False,
+        margin=dict(t=60, b=40, l=40, r=40)
+    )
+    
+    st.plotly_chart(fig_2024_mer, use_container_width=True)
 
-fig_mer.add_hline(y=3.0, line_dash="dash", line_color="#EF4444", 
-                  annotation_text="Target: 3.0x")
-
-fig_mer.update_layout(
-    height=400,
-    xaxis_title="Date",
-    yaxis_title="MER (x)",
-    showlegend=True
-)
-
-st.plotly_chart(fig_mer, use_container_width=True)
+# 2025 MER Chart
+with col2:
+    st.markdown("**📈 2025 MER Trend**")
+    st.caption("Nov 1 - Nov 16, 2025 (16 days)")
+    
+    if len(bfcm_period_2025) > 0 and bfcm_period_2025['MER'].sum() > 0:
+        fig_2025_mer = go.Figure()
+        
+        fig_2025_mer.add_trace(
+            go.Scatter(
+                x=bfcm_period_2025['Day'],
+                y=bfcm_period_2025['MER'],
+                mode='lines+markers',
+                line=dict(color='#F59E0B', width=4),
+                marker=dict(size=10, color='#F59E0B'),
+                fill='tozeroy',
+                fillcolor='rgba(245, 158, 11, 0.1)',
+                showlegend=False,
+                hovertemplate='<b>%{x|%b %d}</b><br>MER: %{y:.2f}x<extra></extra>'
+            )
+        )
+        
+        fig_2025_mer.add_hline(y=3.0, line_dash="dash", line_color="#EF4444", 
+                               annotation_text="Target: 3.0x", annotation_position="top right")
+        
+        # Add stats annotation
+        avg_mer_2025_full = bfcm_period_2025['MER'].mean()
+        max_mer_2025 = bfcm_period_2025['MER'].max()
+        min_mer_2025 = bfcm_period_2025['MER'].min()
+        
+        fig_2025_mer.add_annotation(
+            text=f"Avg: {avg_mer_2025_full:.2f}x | High: {max_mer_2025:.2f}x | Low: {min_mer_2025:.2f}x",
+            xref="paper", yref="paper",
+            x=0.5, y=1.15,
+            showarrow=False,
+            font=dict(size=12, color="#F59E0B"),
+            bgcolor="rgba(245, 158, 11, 0.1)",
+            borderpad=8
+        )
+        
+        fig_2025_mer.update_layout(
+            height=350,
+            xaxis_title="",
+            yaxis_title="MER (x)",
+            showlegend=False,
+            margin=dict(t=60, b=40, l=40, r=40)
+        )
+        
+        st.plotly_chart(fig_2025_mer, use_container_width=True)
+    else:
+        st.info("📊 2025 MER data will appear as spend data is tracked")
 
 st.markdown("---")
 
