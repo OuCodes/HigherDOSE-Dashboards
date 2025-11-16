@@ -49,7 +49,8 @@ def load_all_data():
     meta_2024 = meta_2024[['Day', 'Amount spent (USD)']]
     meta_2024.columns = ['Day', 'meta_spend']
     
-    google_2024 = pd.read_csv(google_file)
+    # Google CSV has 2 header rows before data - skip them
+    google_2024 = pd.read_csv(google_file, skiprows=2)
     google_2024['Day'] = pd.to_datetime(google_2024['Day'])
     google_2024 = google_2024[['Day', 'Cost']]
     google_2024.columns = ['Day', 'google_spend']
