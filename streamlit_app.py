@@ -22,6 +22,10 @@ st.set_page_config(
 DATA_DIR = Path(__file__).parent / "data" / "ads"
 MAIL_DIR = Path(__file__).parent / "data" / "mail"
 
+# BFCM Sale Start Dates
+SALE_START_2024 = pd.Timestamp('2024-11-15')  # Sale started Nov 15, 2024
+SALE_START_2025 = pd.Timestamp('2025-11-21')  # Sale started Nov 21, 2025 (later start)
+
 @st.cache_data(ttl=3600*6)  # Cache for 6 hours
 def load_all_data():
     """Load all data sources with caching"""
@@ -113,6 +117,14 @@ except Exception as e:
 # Header
 st.title("📊 HigherDOSE BFCM Dashboard")
 st.markdown(f"**Last Updated:** {last_updated if data_loaded else 'N/A'}")
+
+# Sale Start Date Callout
+col1, col2 = st.columns(2)
+with col1:
+    st.info("🔥 **2024 Sale Start:** November 15, 2024")
+with col2:
+    st.success("🔥 **2025 Sale Start:** November 21, 2025 (6 days later)")
+
 st.markdown("---")
 
 if not data_loaded:
@@ -247,6 +259,27 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
     fig.update_yaxes(title_text="Revenue", secondary_y=False)
     fig.update_yaxes(title_text="MER", secondary_y=True)
     
+    # Add sale start markers if they fall in this week's range
+    if start_2024 <= SALE_START_2024.strftime('%Y-%m-%d') <= end_2024:
+        fig.add_vline(
+            x=SALE_START_2024.strftime('%b %d'),
+            line_dash="dash",
+            line_color="#DC2626",
+            line_width=2,
+            annotation_text="🔥 Sale Start",
+            annotation_position="top"
+        )
+    
+    if len(week_data_2025) > 0 and start_2025 <= SALE_START_2025.strftime('%Y-%m-%d') <= end_2025:
+        fig.add_vline(
+            x=SALE_START_2025.strftime('%b %d'),
+            line_dash="dash",
+            line_color="#10B981",
+            line_width=2,
+            annotation_text="🔥 Sale Start",
+            annotation_position="bottom"
+        )
+    
     with all_cols[idx]:
         st.plotly_chart(fig, use_container_width=True)
 
@@ -280,6 +313,17 @@ with col1:
     
     fig_2024_mer.add_hline(y=3.0, line_dash="dash", line_color="#EF4444", 
                            annotation_text="Target: 3.0x", annotation_position="top right")
+    
+    # Add sale start marker
+    fig_2024_mer.add_vline(
+        x=SALE_START_2024,
+        line_dash="dash",
+        line_color="#DC2626",
+        line_width=3,
+        annotation_text="🔥 Sale Start (Nov 15)",
+        annotation_position="top right",
+        annotation_font=dict(size=11, color="#DC2626")
+    )
     
     # Add stats annotation
     avg_mer_2024_full = bfcm_period_2024['MER'].mean()
@@ -331,6 +375,18 @@ with col2:
         fig_2025_mer.add_hline(y=3.0, line_dash="dash", line_color="#EF4444", 
                                annotation_text="Target: 3.0x", annotation_position="top right")
         
+        # Add sale start marker (if in date range)
+        if SALE_START_2025 in bfcm_period_2025['Day'].values:
+            fig_2025_mer.add_vline(
+                x=SALE_START_2025,
+                line_dash="dash",
+                line_color="#10B981",
+                line_width=3,
+                annotation_text="🔥 Sale Start (Nov 21)",
+                annotation_position="top right",
+                annotation_font=dict(size=11, color="#10B981")
+            )
+        
         # Add stats annotation
         avg_mer_2025_full = bfcm_period_2025['MER'].mean()
         max_mer_2025 = bfcm_period_2025['MER'].max()
@@ -372,8 +428,14 @@ with col1:
     # Format for display
     sales_2024_display = sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
     sales_2024_display['Date'] = sales_2024_display['Day'].dt.strftime('%b %d, %Y')
+    
+    # Add sale marker
+    sales_2024_display[''] = sales_2024_display['Day'].apply(
+        lambda x: '🔥 SALE START' if x == SALE_START_2024 else ''
+    )
+    
     sales_2024_display = sales_2024_display.drop(columns=['Day'])
-    sales_2024_display = sales_2024_display[['Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
+    sales_2024_display = sales_2024_display[['', 'Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
     
     st.dataframe(
         sales_2024_display.sort_values('Date', ascending=False),
@@ -389,8 +451,14 @@ with col2:
     # Format for display
     sales_2025_display = sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
     sales_2025_display['Date'] = sales_2025_display['Day'].dt.strftime('%b %d, %Y')
+    
+    # Add sale marker
+    sales_2025_display[''] = sales_2025_display['Day'].apply(
+        lambda x: '🔥 SALE START' if x == SALE_START_2025 else ''
+    )
+    
     sales_2025_display = sales_2025_display.drop(columns=['Day'])
-    sales_2025_display = sales_2025_display[['Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
+    sales_2025_display = sales_2025_display[['', 'Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
     
     st.dataframe(
         sales_2025_display.sort_values('Date', ascending=False),
