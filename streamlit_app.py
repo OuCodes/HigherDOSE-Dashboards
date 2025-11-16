@@ -360,32 +360,103 @@ with col2:
 
 st.markdown("---")
 
-# Tables Section
-st.subheader("📋 Detailed Performance Tables")
+# Daily Performance Tables
+st.subheader("📋 Daily Performance Comparison")
 
-tab1, tab2, tab3, tab4 = st.tabs(["2024 Daily", "2025 Daily", "Email Campaigns 2024", "Email Campaigns 2025"])
+col1, col2 = st.columns(2)
 
-with tab1:
+with col1:
+    st.markdown("**📊 2024 Daily Performance**")
+    st.caption(f"{len(sales_2024_full)} days | Nov 1 - Dec 2")
     st.dataframe(
         sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].sort_values('Day', ascending=False),
         use_container_width=True,
-        hide_index=True
+        hide_index=True,
+        height=400
     )
 
-with tab2:
+with col2:
+    st.markdown("**📊 2025 Daily Performance**")
+    st.caption(f"{len(sales_2025_full)} days | Nov 1 - Nov 16")
     st.dataframe(
         sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].sort_values('Day', ascending=False),
         use_container_width=True,
-        hide_index=True
+        hide_index=True,
+        height=400
     )
 
-with tab3:
-    emails_2024_display = emails_2024[emails_2024.get('status', 'Sent') == 'Sent'].copy() if 'status' in emails_2024.columns else emails_2024.copy()
-    st.dataframe(emails_2024_display.head(30), use_container_width=True, hide_index=True)
+st.markdown("---")
 
-with tab4:
-    emails_2025_display = emails_2025[emails_2025.get('status', '') != 'Cancelled'].copy() if 'status' in emails_2025.columns else emails_2025.copy()
-    st.dataframe(emails_2025_display.head(30), use_container_width=True, hide_index=True)
+# Email Campaign Tables
+st.subheader("📧 Email Campaign Comparison")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("**📧 2024 Email Campaigns**")
+    if len(emails_2024) > 0:
+        emails_2024_display = emails_2024[emails_2024.get('status', 'Sent') == 'Sent'].copy() if 'status' in emails_2024.columns else emails_2024.copy()
+        
+        # Format year as string to prevent comma formatting
+        if 'year' in emails_2024_display.columns:
+            emails_2024_display['year'] = emails_2024_display['year'].astype(str)
+        
+        # Select and rename columns for cleaner display
+        display_cols = []
+        if 'campaign_name' in emails_2024_display.columns:
+            display_cols.append('campaign_name')
+        if 'send_datetime' in emails_2024_display.columns:
+            emails_2024_display['Date'] = pd.to_datetime(emails_2024_display['send_datetime']).dt.strftime('%b %d, %Y %I:%M %p')
+            display_cols.append('Date')
+        if 'status' in emails_2024_display.columns:
+            display_cols.append('status')
+        
+        st.caption(f"{len(emails_2024_display)} sent campaigns")
+        st.dataframe(
+            emails_2024_display[display_cols].head(50) if display_cols else emails_2024_display.head(50),
+            use_container_width=True,
+            hide_index=True,
+            height=500
+        )
+    else:
+        st.info("No 2024 email campaigns found")
+
+with col2:
+    st.markdown("**📧 2025 Email Campaigns**")
+    if len(emails_2025) > 0:
+        emails_2025_display = emails_2025[emails_2025.get('status', '') != 'Cancelled'].copy() if 'status' in emails_2025.columns else emails_2025.copy()
+        
+        # Format year as string to prevent comma formatting
+        if 'year' in emails_2025_display.columns:
+            emails_2025_display['year'] = emails_2025_display['year'].astype(str)
+        
+        # Select and rename columns for cleaner display
+        display_cols = []
+        if 'campaign_name' in emails_2025_display.columns:
+            display_cols.append('campaign_name')
+        if 'send_datetime' in emails_2025_display.columns:
+            emails_2025_display['Date'] = pd.to_datetime(emails_2025_display['send_datetime']).dt.strftime('%b %d, %Y %I:%M %p')
+            display_cols.append('Date')
+        if 'status' in emails_2025_display.columns:
+            # Add status emoji
+            status_map = {
+                'Sent': '✅ Sent',
+                'Scheduled': '📅 Scheduled',
+                'Draft': '📝 Draft',
+                'Adding Recipients': '⏳ Adding Recipients'
+            }
+            emails_2025_display['Status'] = emails_2025_display['status'].map(status_map).fillna(emails_2025_display['status'])
+            display_cols.append('Status')
+        
+        st.caption(f"{len(emails_2025_display)} campaigns (sent + scheduled)")
+        st.dataframe(
+            emails_2025_display[display_cols].head(50) if display_cols else emails_2025_display.head(50),
+            use_container_width=True,
+            hide_index=True,
+            height=500
+        )
+    else:
+        st.info("No 2025 email campaigns found")
 
 # Footer
 st.markdown("---")
