@@ -243,3 +243,9 @@ src/growthkit/utils/logs/*.log*
 config/ga4/
 # Optional: ignore any service account JSON keys at root or scripts
 *.json
+
+# Prescient spend data (sensitive business data)
+config/prescient/.env
+config/prescient/spend.csv
+config/klaviyo/.env
+.streamlit/
