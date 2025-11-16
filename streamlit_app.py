@@ -368,8 +368,15 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("**📊 2024 Daily Performance**")
     st.caption(f"{len(sales_2024_full)} days | Nov 1 - Dec 2")
+    
+    # Format for display
+    sales_2024_display = sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
+    sales_2024_display['Date'] = sales_2024_display['Day'].dt.strftime('%b %d, %Y')
+    sales_2024_display = sales_2024_display.drop(columns=['Day'])
+    sales_2024_display = sales_2024_display[['Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
+    
     st.dataframe(
-        sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].sort_values('Day', ascending=False),
+        sales_2024_display.sort_values('Date', ascending=False),
         use_container_width=True,
         hide_index=True,
         height=400
@@ -378,8 +385,15 @@ with col1:
 with col2:
     st.markdown("**📊 2025 Daily Performance**")
     st.caption(f"{len(sales_2025_full)} days | Nov 1 - Nov 16")
+    
+    # Format for display
+    sales_2025_display = sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
+    sales_2025_display['Date'] = sales_2025_display['Day'].dt.strftime('%b %d, %Y')
+    sales_2025_display = sales_2025_display.drop(columns=['Day'])
+    sales_2025_display = sales_2025_display[['Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
+    
     st.dataframe(
-        sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].sort_values('Day', ascending=False),
+        sales_2025_display.sort_values('Date', ascending=False),
         use_container_width=True,
         hide_index=True,
         height=400
@@ -402,18 +416,24 @@ with col1:
             emails_2024_display['year'] = emails_2024_display['year'].astype(str)
         
         # Select and rename columns for cleaner display
-        display_cols = []
+        display_cols = {}
         if 'campaign_name' in emails_2024_display.columns:
-            display_cols.append('campaign_name')
+            display_cols['campaign_name'] = 'Campaign Name'
         if 'send_datetime' in emails_2024_display.columns:
             emails_2024_display['Date'] = pd.to_datetime(emails_2024_display['send_datetime']).dt.strftime('%b %d, %Y')
-            display_cols.append('Date')
+            display_cols['Date'] = 'Date'
         if 'status' in emails_2024_display.columns:
-            display_cols.append('status')
+            display_cols['status'] = 'Status'
+        
+        # Rename columns
+        emails_2024_display = emails_2024_display.rename(columns=display_cols)
+        
+        # Select only the renamed columns
+        final_cols = list(display_cols.values())
         
         st.caption(f"{len(emails_2024_display)} sent campaigns")
         st.dataframe(
-            emails_2024_display[display_cols].head(50) if display_cols else emails_2024_display.head(50),
+            emails_2024_display[final_cols].head(50) if final_cols else emails_2024_display.head(50),
             use_container_width=True,
             hide_index=True,
             height=500
@@ -431,12 +451,12 @@ with col2:
             emails_2025_display['year'] = emails_2025_display['year'].astype(str)
         
         # Select and rename columns for cleaner display
-        display_cols = []
+        display_cols = {}
         if 'campaign_name' in emails_2025_display.columns:
-            display_cols.append('campaign_name')
+            display_cols['campaign_name'] = 'Campaign Name'
         if 'send_datetime' in emails_2025_display.columns:
             emails_2025_display['Date'] = pd.to_datetime(emails_2025_display['send_datetime']).dt.strftime('%b %d, %Y')
-            display_cols.append('Date')
+            display_cols['Date'] = 'Date'
         if 'status' in emails_2025_display.columns:
             # Add status emoji
             status_map = {
@@ -446,11 +466,17 @@ with col2:
                 'Adding Recipients': '⏳ Adding Recipients'
             }
             emails_2025_display['Status'] = emails_2025_display['status'].map(status_map).fillna(emails_2025_display['status'])
-            display_cols.append('Status')
+            display_cols['Status'] = 'Status'
+        
+        # Rename columns
+        emails_2025_display = emails_2025_display.rename(columns=display_cols)
+        
+        # Select only the renamed columns
+        final_cols = list(display_cols.values())
         
         st.caption(f"{len(emails_2025_display)} campaigns (sent + scheduled)")
         st.dataframe(
-            emails_2025_display[display_cols].head(50) if display_cols else emails_2025_display.head(50),
+            emails_2025_display[final_cols].head(50) if final_cols else emails_2025_display.head(50),
             use_container_width=True,
             hide_index=True,
             height=500
