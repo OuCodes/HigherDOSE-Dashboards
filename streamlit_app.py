@@ -544,6 +544,11 @@ with col1:
     
     # Format for display
     sales_2024_display = sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
+    
+    # Sort by Day (datetime) first, descending (most recent first)
+    sales_2024_display = sales_2024_display.sort_values('Day', ascending=False)
+    
+    # Then format Date as string
     sales_2024_display['Date'] = sales_2024_display['Day'].dt.strftime('%b %d, %Y')
     
     # Format MER to 2 decimal places
@@ -558,7 +563,7 @@ with col1:
     sales_2024_display = sales_2024_display[['', 'Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
     
     st.dataframe(
-        sales_2024_display.sort_values('Date', ascending=False),
+        sales_2024_display,
         use_container_width=True,
         hide_index=True,
         height=400
@@ -572,6 +577,11 @@ with col2:
     
     # Format for display
     sales_2025_display = sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
+    
+    # Sort by Day (datetime) first, descending (most recent first)
+    sales_2025_display = sales_2025_display.sort_values('Day', ascending=False)
+    
+    # Then format Date as string
     sales_2025_display['Date'] = sales_2025_display['Day'].dt.strftime('%b %d, %Y')
     
     # Format MER to 2 decimal places
@@ -586,7 +596,7 @@ with col2:
     sales_2025_display = sales_2025_display[['', 'Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
     
     st.dataframe(
-        sales_2025_display.sort_values('Date', ascending=False),
+        sales_2025_display,
         use_container_width=True,
         hide_index=True,
         height=400
