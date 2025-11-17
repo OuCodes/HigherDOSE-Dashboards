@@ -23,8 +23,8 @@ DATA_DIR = Path(__file__).parent / "data" / "ads"
 MAIL_DIR = Path(__file__).parent / "data" / "mail"
 
 # BFCM Sale Start Dates
-SALE_START_2024 = pd.Timestamp('2024-11-07')  # Sale started Nov 7, 2024
-SALE_START_2025 = pd.Timestamp('2025-11-14')  # Sale started Nov 14, 2025 (7 days later)
+SALE_START_2024 = pd.Timestamp('2024-11-08')  # Sale started Nov 8, 2024
+SALE_START_2025 = pd.Timestamp('2025-11-14')  # Sale started Nov 14, 2025 (6 days later)
 
 @st.cache_data(ttl=3600*6)  # Cache for 6 hours
 def load_all_data():
@@ -127,11 +127,11 @@ st.markdown(f"**Last Updated:** {last_updated if data_loaded else 'N/A'}")
 # Sale Start Date Callout
 col1, col2 = st.columns(2)
 with col1:
-    st.info("🔥 **2024 Sale Start:** November 7, 2024")
+    st.info("🔥 **2024 Sale Start:** November 8, 2024")
 with col2:
     # Show last complete day for 2025
     yesterday = pd.Timestamp.now().normalize() - pd.Timedelta(days=1)
-    st.success(f"🔥 **2025 Sale Start:** November 14, 2025 (7 days later) | Data through {yesterday.strftime('%b %d')}")
+    st.success(f"🔥 **2025 Sale Start:** November 14, 2025 (6 days later) | Data through {yesterday.strftime('%b %d')}")
 
 st.markdown("---")
 
@@ -415,7 +415,7 @@ with col1:
         x=SALE_START_2024,
         y=0.95,
         yref="paper",
-        text="🔥 Sale Start (Nov 7)",
+        text="🔥 Sale Start (Nov 8)",
         showarrow=False,
         font=dict(size=11, color="#DC2626"),
         bgcolor="rgba(220, 38, 38, 0.1)",
@@ -450,15 +450,22 @@ with col1:
 # 2025 MER Chart
 with col2:
     st.markdown("**📈 2025 MER Trend**")
-    st.caption("Nov 1 - Nov 16, 2025 (16 days)")
     
-    if len(bfcm_period_2025) > 0 and bfcm_period_2025['MER'].sum() > 0:
+    # Filter out any days with 0 MER (incomplete/partial data)
+    bfcm_2025_with_mer = bfcm_period_2025[bfcm_period_2025['MER'] > 0].copy()
+    
+    # Update caption with actual days shown
+    days_shown = len(bfcm_2025_with_mer)
+    last_day_shown = bfcm_2025_with_mer['Day'].max().strftime('%b %d') if len(bfcm_2025_with_mer) > 0 else 'N/A'
+    st.caption(f"Nov 1 - {last_day_shown}, 2025 ({days_shown} days with complete data)")
+    
+    if len(bfcm_2025_with_mer) > 0:
         fig_2025_mer = go.Figure()
         
         fig_2025_mer.add_trace(
             go.Scatter(
-                x=bfcm_period_2025['Day'],
-                y=bfcm_period_2025['MER'],
+                x=bfcm_2025_with_mer['Day'],
+                y=bfcm_2025_with_mer['MER'],
                 mode='lines+markers',
                 line=dict(color='#F59E0B', width=4),
                 marker=dict(size=10, color='#F59E0B'),
@@ -471,7 +478,7 @@ with col2:
                                annotation_text="Target: 3.0x", annotation_position="top right")
         
         # Add sale start marker (if in date range)
-        if SALE_START_2025 in bfcm_period_2025['Day'].values:
+        if SALE_START_2025 in bfcm_2025_with_mer['Day'].values:
             fig_2025_mer.add_shape(
                 type="line",
                 x0=SALE_START_2025,
@@ -492,9 +499,9 @@ with col2:
             )
         
         # Add stats annotation
-        avg_mer_2025_full = bfcm_period_2025['MER'].mean()
-        max_mer_2025 = bfcm_period_2025['MER'].max()
-        min_mer_2025 = bfcm_period_2025['MER'].min()
+        avg_mer_2025_full = bfcm_2025_with_mer['MER'].mean()
+        max_mer_2025 = bfcm_2025_with_mer['MER'].max()
+        min_mer_2025 = bfcm_2025_with_mer['MER'].min()
         
         fig_2025_mer.add_annotation(
             text=f"Avg: {avg_mer_2025_full:.2f}x | High: {max_mer_2025:.2f}x | Low: {min_mer_2025:.2f}x",
@@ -507,8 +514,8 @@ with col2:
         )
         
         # Set y-axis range dynamically based on actual MER values (not starting at 0)
-        min_mer = bfcm_period_2025['MER'].min()
-        max_mer = bfcm_period_2025['MER'].max()
+        min_mer = bfcm_2025_with_mer['MER'].min()
+        max_mer = bfcm_2025_with_mer['MER'].max()
         y_padding = (max_mer - min_mer) * 0.2  # Add 20% padding
         
         fig_2025_mer.update_layout(
