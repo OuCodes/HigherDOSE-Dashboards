@@ -208,9 +208,10 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
         go.Bar(
             x=week_data_2024['Day'].dt.strftime('%b %d'),
             y=week_data_2024['Total sales'],
-            name='2024',
+            name='2024 Revenue',
             marker=dict(color='#2563EB'),
-            showlegend=False,
+            showlegend=(idx == 0),  # Show legend only on first chart
+            legendgroup='2024_rev',
             hovertemplate='<b>2024 %{x}</b><br>Revenue: $%{y:,.2f} USD<extra></extra>'
         ),
         secondary_y=False
@@ -222,9 +223,10 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
             go.Bar(
                 x=week_data_2025['Day'].dt.strftime('%b %d'),
                 y=week_data_2025['Total sales'],
-                name='2025',
+                name='2025 Revenue',
                 marker=dict(color='#10B981'),
-                showlegend=False,
+                showlegend=(idx == 0),  # Show legend only on first chart
+                legendgroup='2025_rev',
                 hovertemplate='<b>2025 %{x}</b><br>Revenue: $%{y:,.2f} USD<extra></extra>'
             ),
             secondary_y=False
@@ -238,7 +240,8 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
             name='2024 MER',
             mode='lines+markers',
             line=dict(color='#7C3AED', width=3),
-            showlegend=False,
+            showlegend=(idx == 0),  # Show legend only on first chart
+            legendgroup='2024_mer',
             hovertemplate='<b>2024 %{x}</b><br>MER: %{y:.2f}x<extra></extra>'
         ),
         secondary_y=True
@@ -253,7 +256,8 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
                 name='2025 MER',
                 mode='lines+markers',
                 line=dict(color='#F59E0B', width=3),
-                showlegend=False,
+                showlegend=(idx == 0),  # Show legend only on first chart
+                legendgroup='2025_mer',
                 hovertemplate='<b>2025 %{x}</b><br>MER: %{y:.2f}x<extra></extra>'
             ),
             secondary_y=True
@@ -304,6 +308,59 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
     
     with all_cols[idx]:
         st.plotly_chart(fig, use_container_width=True)
+
+# Weekly Summary Table
+st.markdown("---")
+st.subheader("📊 Weekly Totals Summary")
+
+# Calculate weekly totals
+weekly_summary_data = []
+for start_2024, end_2024, start_2025, end_2025, label in weeks:
+    # 2024 data
+    week_2024 = bfcm_period_2024[(bfcm_period_2024['Day'] >= start_2024) & 
+                                  (bfcm_period_2024['Day'] <= end_2024)]
+    # 2025 data
+    week_2025 = bfcm_period_2025[(bfcm_period_2025['Day'] >= start_2025) & 
+                                  (bfcm_period_2025['Day'] <= end_2025)]
+    
+    # 2024 totals
+    weekly_summary_data.append({
+        'Week': label,
+        'Year': '2024',
+        'Sales': f"${week_2024['Total sales'].sum():,.2f}",
+        'Orders': f"{int(week_2024['Orders'].sum()):,}",
+        'Spend': f"${week_2024['total_spend'].sum():,.2f}",
+        'Avg MER': f"{week_2024['MER'].mean():.2f}x"
+    })
+    
+    # 2025 totals (if data exists)
+    if len(week_2025) > 0:
+        weekly_summary_data.append({
+            'Week': label,
+            'Year': '2025',
+            'Sales': f"${week_2025['Total sales'].sum():,.2f}",
+            'Orders': f"{int(week_2025['Orders'].sum()):,}",
+            'Spend': f"${week_2025['total_spend'].sum():,.2f}" if week_2025['total_spend'].sum() > 0 else "TBD",
+            'Avg MER': f"{week_2025['MER'].mean():.2f}x" if week_2025['MER'].sum() > 0 else "TBD"
+        })
+
+weekly_summary_df = pd.DataFrame(weekly_summary_data)
+
+# Display in two columns
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("**📊 2024 Weekly Totals**")
+    df_2024 = weekly_summary_df[weekly_summary_df['Year'] == '2024'][['Week', 'Sales', 'Orders', 'Spend', 'Avg MER']]
+    st.dataframe(df_2024, use_container_width=True, hide_index=True)
+
+with col2:
+    st.markdown("**📊 2025 Weekly Totals**")
+    df_2025 = weekly_summary_df[weekly_summary_df['Year'] == '2025'][['Week', 'Sales', 'Orders', 'Spend', 'Avg MER']]
+    if len(df_2025) > 0:
+        st.dataframe(df_2025, use_container_width=True, hide_index=True)
+    else:
+        st.info("2025 data not yet available for these weeks")
 
 st.markdown("---")
 
