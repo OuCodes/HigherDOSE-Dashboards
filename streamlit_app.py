@@ -96,7 +96,7 @@ def load_all_data():
     )
     
     # Email campaigns
-    emails_2024_file = MAIL_DIR / "klaviyo_campaigns_bfcm_2024.csv"
+    emails_2024_file = MAIL_DIR / "klaviyo_campaigns_november_2024.csv"
     emails_2025_file = MAIL_DIR / "klaviyo_campaigns_bfcm_2025_planned.csv"
     
     try:
