@@ -551,6 +551,10 @@ with col1:
     # Then format Date as string
     sales_2024_display['Date'] = sales_2024_display['Day'].dt.strftime('%b %d, %Y')
     
+    # Format currency columns as USD
+    sales_2024_display['Sales (USD)'] = sales_2024_display['Total sales'].apply(lambda x: f"${x:,.2f}")
+    sales_2024_display['Spend (USD)'] = sales_2024_display['total_spend'].apply(lambda x: f"${x:,.2f}")
+    
     # Format MER to 2 decimal places
     sales_2024_display['MER'] = sales_2024_display['MER'].apply(lambda x: f"{x:.2f}x")
     
@@ -559,8 +563,8 @@ with col1:
         lambda x: '🔥 SALE START' if x == SALE_START_2024 else ''
     )
     
-    sales_2024_display = sales_2024_display.drop(columns=['Day'])
-    sales_2024_display = sales_2024_display[['', 'Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
+    sales_2024_display = sales_2024_display.drop(columns=['Day', 'Total sales', 'total_spend'])
+    sales_2024_display = sales_2024_display[['', 'Date', 'Sales (USD)', 'Orders', 'Spend (USD)', 'MER']]
     
     st.dataframe(
         sales_2024_display,
@@ -584,6 +588,10 @@ with col2:
     # Then format Date as string
     sales_2025_display['Date'] = sales_2025_display['Day'].dt.strftime('%b %d, %Y')
     
+    # Format currency columns as USD
+    sales_2025_display['Sales (USD)'] = sales_2025_display['Total sales'].apply(lambda x: f"${x:,.2f}")
+    sales_2025_display['Spend (USD)'] = sales_2025_display['total_spend'].apply(lambda x: f"${x:,.2f}" if x > 0 else "TBD")
+    
     # Format MER to 2 decimal places
     sales_2025_display['MER'] = sales_2025_display['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "TBD")
     
@@ -592,8 +600,8 @@ with col2:
         lambda x: '🔥 SALE START' if x == SALE_START_2025 else ''
     )
     
-    sales_2025_display = sales_2025_display.drop(columns=['Day'])
-    sales_2025_display = sales_2025_display[['', 'Date', 'Total sales', 'Orders', 'total_spend', 'MER']]
+    sales_2025_display = sales_2025_display.drop(columns=['Day', 'Total sales', 'total_spend'])
+    sales_2025_display = sales_2025_display[['', 'Date', 'Sales (USD)', 'Orders', 'Spend (USD)', 'MER']]
     
     st.dataframe(
         sales_2025_display,
