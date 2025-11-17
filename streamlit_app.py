@@ -260,24 +260,42 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
     fig.update_yaxes(title_text="MER", secondary_y=True)
     
     # Add sale start markers if they fall in this week's range
-    if start_2024 <= SALE_START_2024.strftime('%Y-%m-%d') <= end_2024:
-        fig.add_vline(
+    # Check if 2024 sale start is in this week
+    if SALE_START_2024 in week_data_2024['Day'].values:
+        fig.add_shape(
+            type="line",
+            x0=SALE_START_2024.strftime('%b %d'),
+            x1=SALE_START_2024.strftime('%b %d'),
+            y0=0, y1=1,
+            yref="paper",
+            line=dict(color="#DC2626", width=2, dash="dash")
+        )
+        fig.add_annotation(
             x=SALE_START_2024.strftime('%b %d'),
-            line_dash="dash",
-            line_color="#DC2626",
-            line_width=2,
-            annotation_text="🔥 Sale Start",
-            annotation_position="top"
+            y=1.02,
+            yref="paper",
+            text="🔥 2024 Sale",
+            showarrow=False,
+            font=dict(size=10, color="#DC2626")
         )
     
-    if len(week_data_2025) > 0 and start_2025 <= SALE_START_2025.strftime('%Y-%m-%d') <= end_2025:
-        fig.add_vline(
+    # Check if 2025 sale start is in this week
+    if len(week_data_2025) > 0 and SALE_START_2025 in week_data_2025['Day'].values:
+        fig.add_shape(
+            type="line",
+            x0=SALE_START_2025.strftime('%b %d'),
+            x1=SALE_START_2025.strftime('%b %d'),
+            y0=0, y1=1,
+            yref="paper",
+            line=dict(color="#10B981", width=2, dash="dash")
+        )
+        fig.add_annotation(
             x=SALE_START_2025.strftime('%b %d'),
-            line_dash="dash",
-            line_color="#10B981",
-            line_width=2,
-            annotation_text="🔥 Sale Start",
-            annotation_position="bottom"
+            y=0.98,
+            yref="paper",
+            text="🔥 2025 Sale",
+            showarrow=False,
+            font=dict(size=10, color="#10B981")
         )
     
     with all_cols[idx]:
@@ -315,14 +333,23 @@ with col1:
                            annotation_text="Target: 3.0x", annotation_position="top right")
     
     # Add sale start marker
-    fig_2024_mer.add_vline(
+    fig_2024_mer.add_shape(
+        type="line",
+        x0=SALE_START_2024,
+        x1=SALE_START_2024,
+        y0=0, y1=1,
+        yref="paper",
+        line=dict(color="#DC2626", width=3, dash="dash")
+    )
+    fig_2024_mer.add_annotation(
         x=SALE_START_2024,
-        line_dash="dash",
-        line_color="#DC2626",
-        line_width=3,
-        annotation_text="🔥 Sale Start (Nov 15)",
-        annotation_position="top right",
-        annotation_font=dict(size=11, color="#DC2626")
+        y=0.95,
+        yref="paper",
+        text="🔥 Sale Start (Nov 15)",
+        showarrow=False,
+        font=dict(size=11, color="#DC2626"),
+        bgcolor="rgba(220, 38, 38, 0.1)",
+        borderpad=4
     )
     
     # Add stats annotation
@@ -377,14 +404,23 @@ with col2:
         
         # Add sale start marker (if in date range)
         if SALE_START_2025 in bfcm_period_2025['Day'].values:
-            fig_2025_mer.add_vline(
+            fig_2025_mer.add_shape(
+                type="line",
+                x0=SALE_START_2025,
+                x1=SALE_START_2025,
+                y0=0, y1=1,
+                yref="paper",
+                line=dict(color="#10B981", width=3, dash="dash")
+            )
+            fig_2025_mer.add_annotation(
                 x=SALE_START_2025,
-                line_dash="dash",
-                line_color="#10B981",
-                line_width=3,
-                annotation_text="🔥 Sale Start (Nov 21)",
-                annotation_position="top right",
-                annotation_font=dict(size=11, color="#10B981")
+                y=0.95,
+                yref="paper",
+                text="🔥 Sale Start (Nov 21)",
+                showarrow=False,
+                font=dict(size=11, color="#10B981"),
+                bgcolor="rgba(16, 185, 129, 0.1)",
+                borderpad=4
             )
         
         # Add stats annotation
