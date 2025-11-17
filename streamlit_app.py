@@ -36,11 +36,17 @@ def load_all_data():
     sales_2024['Day'] = pd.to_datetime(sales_2024['Day'])
     sales_2024_full = sales_2024[(sales_2024['Day'] >= '2024-11-01') & (sales_2024['Day'] <= '2024-12-02')].copy()
     
-    # 2025 Sales
+    # 2025 Sales - exclude today's partial data
     file_2025 = DATA_DIR / "exec-sum" / "Total sales over time - OU - 2025-01-01 - 2025-11-16.csv"
     sales_2025 = pd.read_csv(file_2025)
     sales_2025['Day'] = pd.to_datetime(sales_2025['Day'])
-    sales_2025_full = sales_2025[sales_2025['Day'] >= '2025-11-01'].copy()
+    
+    # Get yesterday's date (last fully completed day)
+    yesterday = pd.Timestamp.now().normalize() - pd.Timedelta(days=1)
+    
+    # Filter to Nov 1 onwards, but exclude today's partial data
+    sales_2025_full = sales_2025[(sales_2025['Day'] >= '2025-11-01') & 
+                                  (sales_2025['Day'] <= yesterday)].copy()
     sales_2025_full['total_spend'] = 0.0
     sales_2025_full['MER'] = 0.0
     
@@ -123,7 +129,9 @@ col1, col2 = st.columns(2)
 with col1:
     st.info("🔥 **2024 Sale Start:** November 7, 2024")
 with col2:
-    st.success("🔥 **2025 Sale Start:** November 14, 2025 (7 days later)")
+    # Show last complete day for 2025
+    yesterday = pd.Timestamp.now().normalize() - pd.Timedelta(days=1)
+    st.success(f"🔥 **2025 Sale Start:** November 14, 2025 (7 days later) | Data through {yesterday.strftime('%b %d')}")
 
 st.markdown("---")
 
@@ -143,7 +151,8 @@ with col2:
 
 with col3:
     total_rev_2025 = sales_2025_full['Total sales'].sum()
-    st.metric("2025 Revenue (Nov 1 - 16)", f"${total_rev_2025:,.0f}")
+    last_day = sales_2025_full['Day'].max().strftime('%b %d') if len(sales_2025_full) > 0 else 'N/A'
+    st.metric(f"2025 Revenue (through {last_day})", f"${total_rev_2025:,.0f}")
 
 with col4:
     avg_mer_2025 = sales_2025_full['MER'].mean() if sales_2025_full['MER'].sum() > 0 else 0
@@ -161,9 +170,9 @@ pacing_pct = (revenue_2025 / revenue_2024_comparable * 100) if revenue_2024_comp
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.metric("2024 First 16 Days", f"${revenue_2024_comparable:,.0f}")
+    st.metric(f"2024 First {days_2025} Days", f"${revenue_2024_comparable:,.0f}")
 with col2:
-    st.metric("2025 First 16 Days", f"${revenue_2025:,.0f}")
+    st.metric(f"2025 First {days_2025} Days", f"${revenue_2025:,.0f}")
 with col3:
     pacing_delta = revenue_2025 - revenue_2024_comparable
     st.metric("Pacing", f"{pacing_pct:.1f}%", f"${pacing_delta:,.0f}", delta_color="normal" if pacing_pct >= 100 else "inverse")
@@ -543,7 +552,9 @@ with col1:
 
 with col2:
     st.markdown("**📊 2025 Daily Performance**")
-    st.caption(f"{len(sales_2025_full)} days | Nov 1 - Nov 16")
+    # Show actual last day with data
+    last_day_2025 = sales_2025_full['Day'].max() if len(sales_2025_full) > 0 else pd.Timestamp.now()
+    st.caption(f"{len(sales_2025_full)} days | Nov 1 - {last_day_2025.strftime('%b %d')} (complete days only)")
     
     # Format for display
     sales_2025_display = sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
