@@ -23,8 +23,8 @@ DATA_DIR = Path(__file__).parent / "data" / "ads"
 MAIL_DIR = Path(__file__).parent / "data" / "mail"
 
 # BFCM Sale Start Dates
-SALE_START_2024 = pd.Timestamp('2024-11-15')  # Sale started Nov 15, 2024
-SALE_START_2025 = pd.Timestamp('2025-11-21')  # Sale started Nov 21, 2025 (later start)
+SALE_START_2024 = pd.Timestamp('2024-11-07')  # Sale started Nov 7, 2024
+SALE_START_2025 = pd.Timestamp('2025-11-14')  # Sale started Nov 14, 2025 (7 days later)
 
 @st.cache_data(ttl=3600*6)  # Cache for 6 hours
 def load_all_data():
@@ -121,9 +121,9 @@ st.markdown(f"**Last Updated:** {last_updated if data_loaded else 'N/A'}")
 # Sale Start Date Callout
 col1, col2 = st.columns(2)
 with col1:
-    st.info("🔥 **2024 Sale Start:** November 15, 2024")
+    st.info("🔥 **2024 Sale Start:** November 7, 2024")
 with col2:
-    st.success("🔥 **2025 Sale Start:** November 21, 2025 (6 days later)")
+    st.success("🔥 **2025 Sale Start:** November 14, 2025 (7 days later)")
 
 st.markdown("---")
 
@@ -345,7 +345,7 @@ with col1:
         x=SALE_START_2024,
         y=0.95,
         yref="paper",
-        text="🔥 Sale Start (Nov 15)",
+        text="🔥 Sale Start (Nov 7)",
         showarrow=False,
         font=dict(size=11, color="#DC2626"),
         bgcolor="rgba(220, 38, 38, 0.1)",
@@ -416,7 +416,7 @@ with col2:
                 x=SALE_START_2025,
                 y=0.95,
                 yref="paper",
-                text="🔥 Sale Start (Nov 21)",
+                text="🔥 Sale Start (Nov 14)",
                 showarrow=False,
                 font=dict(size=11, color="#10B981"),
                 bgcolor="rgba(16, 185, 129, 0.1)",
