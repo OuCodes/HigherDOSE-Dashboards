@@ -622,6 +622,9 @@ with col1:
                 (emails_2024_display['send_dt'] >= '2024-11-01') & 
                 (emails_2024_display['send_dt'] < '2024-12-01')
             ].copy()
+            
+            # Sort by date descending (most recent first)
+            emails_2024_display = emails_2024_display.sort_values('send_dt', ascending=False)
         
         # Format year as string to prevent comma formatting
         if 'year' in emails_2024_display.columns:
@@ -645,7 +648,7 @@ with col1:
         
         st.caption(f"{len(emails_2024_display)} campaigns in November 2024")
         st.dataframe(
-            emails_2024_display[final_cols].head(100) if final_cols else emails_2024_display.head(100),
+            emails_2024_display[final_cols] if final_cols else emails_2024_display,
             use_container_width=True,
             hide_index=True,
             height=500
@@ -666,6 +669,9 @@ with col2:
                 (emails_2025_display['send_dt'] >= '2025-11-01') & 
                 (emails_2025_display['send_dt'] < '2025-12-01')
             ].copy()
+            
+            # Sort by date descending (most recent first)
+            emails_2025_display = emails_2025_display.sort_values('send_dt', ascending=False)
         
         # Format year as string to prevent comma formatting
         if 'year' in emails_2025_display.columns:
@@ -697,7 +703,7 @@ with col2:
         
         st.caption(f"{len(emails_2025_display)} campaigns in November 2025 (sent + scheduled)")
         st.dataframe(
-            emails_2025_display[final_cols].head(100) if final_cols else emails_2025_display.head(100),
+            emails_2025_display[final_cols] if final_cols else emails_2025_display,
             use_container_width=True,
             hide_index=True,
             height=500
