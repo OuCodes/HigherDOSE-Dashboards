@@ -210,7 +210,8 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
             y=week_data_2024['Total sales'],
             name='2024',
             marker=dict(color='#2563EB'),
-            showlegend=False
+            showlegend=False,
+            hovertemplate='<b>2024 %{x}</b><br>Revenue: $%{y:,.2f} USD<extra></extra>'
         ),
         secondary_y=False
     )
@@ -223,7 +224,8 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
                 y=week_data_2025['Total sales'],
                 name='2025',
                 marker=dict(color='#10B981'),
-                showlegend=False
+                showlegend=False,
+                hovertemplate='<b>2025 %{x}</b><br>Revenue: $%{y:,.2f} USD<extra></extra>'
             ),
             secondary_y=False
         )
@@ -236,7 +238,8 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
             name='2024 MER',
             mode='lines+markers',
             line=dict(color='#7C3AED', width=3),
-            showlegend=False
+            showlegend=False,
+            hovertemplate='<b>2024 %{x}</b><br>MER: %{y:.2f}x<extra></extra>'
         ),
         secondary_y=True
     )
@@ -250,14 +253,23 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
                 name='2025 MER',
                 mode='lines+markers',
                 line=dict(color='#F59E0B', width=3),
-                showlegend=False
+                showlegend=False,
+                hovertemplate='<b>2025 %{x}</b><br>MER: %{y:.2f}x<extra></extra>'
             ),
             secondary_y=True
         )
     
     fig.update_layout(title=label, height=300)
-    fig.update_yaxes(title_text="Revenue", secondary_y=False)
-    fig.update_yaxes(title_text="MER", secondary_y=True)
+    fig.update_yaxes(
+        title_text="Revenue (USD)", 
+        secondary_y=False,
+        tickformat="$,.2f"
+    )
+    fig.update_yaxes(
+        title_text="MER", 
+        secondary_y=True,
+        tickformat=".2f"
+    )
     
     # Add sale start markers if they fall in this week's range
     # Check if 2024 sale start is in this week
