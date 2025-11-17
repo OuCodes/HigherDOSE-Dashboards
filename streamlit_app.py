@@ -36,15 +36,18 @@ def load_all_data():
     sales_2024['Day'] = pd.to_datetime(sales_2024['Day'])
     sales_2024_full = sales_2024[(sales_2024['Day'] >= '2024-11-01') & (sales_2024['Day'] <= '2024-12-02')].copy()
     
-    # 2025 Sales - exclude today's partial data
-    file_2025 = DATA_DIR / "exec-sum" / "Total sales over time - OU - 2025-01-01 - 2025-11-17.csv"
+    # 2025 Sales - automatically find the most recent file and use latest date
+    exec_sum_dir = DATA_DIR / "exec-sum"
+    files_2025 = sorted(exec_sum_dir.glob("Total sales over time - OU - 2025-*.csv"))
+    file_2025 = files_2025[-1] if files_2025 else exec_sum_dir / "Total sales over time - OU - 2025-01-01 - 2025-11-17.csv"
+    
     sales_2025 = pd.read_csv(file_2025)
     sales_2025['Day'] = pd.to_datetime(sales_2025['Day'])
     
-    # Set the last complete day explicitly (Nov 16, 2025)
-    last_complete_day = pd.Timestamp('2025-11-16')
+    # Automatically detect the last complete day from the data (max date in file)
+    last_complete_day = sales_2025['Day'].max()
     
-    # Filter to Nov 1 onwards, but exclude today's partial data
+    # Filter to Nov 1 onwards through the last complete day in the data
     sales_2025_full = sales_2025[(sales_2025['Day'] >= '2025-11-01') & 
                                   (sales_2025['Day'] <= last_complete_day)].copy()
     sales_2025_full['total_spend'] = 0.0
@@ -86,7 +89,8 @@ def load_all_data():
         nb_spend.columns = ['Day', 'total_spend']
     except Exception as e:
         st.warning(f"Could not load Northbeam data: {e}. Using zero spend for 2025.")
-        nb_spend = pd.DataFrame({'Day': pd.date_range('2025-11-01', '2025-11-17'), 'total_spend': 0.0})
+        # Use the same date range as sales data for consistency
+        nb_spend = pd.DataFrame({'Day': pd.date_range('2025-11-01', last_complete_day), 'total_spend': 0.0})
     
     sales_2025_full = sales_2025_full.merge(nb_spend, on='Day', how='left', suffixes=('', '_nb'))
     sales_2025_full['total_spend'] = sales_2025_full['total_spend_nb'].fillna(sales_2025_full['total_spend'])
