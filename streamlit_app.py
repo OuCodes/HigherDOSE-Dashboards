@@ -610,9 +610,18 @@ st.subheader("📧 Email Campaign Comparison")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("**📧 2024 Email Campaigns**")
+    st.markdown("**📧 2024 Email Campaigns (November)**")
     if len(emails_2024) > 0:
+        # Filter for sent campaigns
         emails_2024_display = emails_2024[emails_2024.get('status', 'Sent') == 'Sent'].copy() if 'status' in emails_2024.columns else emails_2024.copy()
+        
+        # Filter for November 2024 only
+        if 'send_datetime' in emails_2024_display.columns:
+            emails_2024_display['send_dt'] = pd.to_datetime(emails_2024_display['send_datetime'])
+            emails_2024_display = emails_2024_display[
+                (emails_2024_display['send_dt'] >= '2024-11-01') & 
+                (emails_2024_display['send_dt'] < '2024-12-01')
+            ].copy()
         
         # Format year as string to prevent comma formatting
         if 'year' in emails_2024_display.columns:
@@ -623,7 +632,7 @@ with col1:
         if 'campaign_name' in emails_2024_display.columns:
             display_cols['campaign_name'] = 'Campaign Name'
         if 'send_datetime' in emails_2024_display.columns:
-            emails_2024_display['Date'] = pd.to_datetime(emails_2024_display['send_datetime']).dt.strftime('%b %d, %Y')
+            emails_2024_display['Date'] = emails_2024_display['send_dt'].dt.strftime('%b %d, %Y')
             display_cols['Date'] = 'Date'
         if 'status' in emails_2024_display.columns:
             display_cols['status'] = 'Status'
@@ -634,9 +643,9 @@ with col1:
         # Select only the renamed columns
         final_cols = list(display_cols.values())
         
-        st.caption(f"{len(emails_2024_display)} sent campaigns")
+        st.caption(f"{len(emails_2024_display)} campaigns in November 2024")
         st.dataframe(
-            emails_2024_display[final_cols].head(50) if final_cols else emails_2024_display.head(50),
+            emails_2024_display[final_cols].head(100) if final_cols else emails_2024_display.head(100),
             use_container_width=True,
             hide_index=True,
             height=500
@@ -645,9 +654,18 @@ with col1:
         st.info("No 2024 email campaigns found")
 
 with col2:
-    st.markdown("**📧 2025 Email Campaigns**")
+    st.markdown("**📧 2025 Email Campaigns (November)**")
     if len(emails_2025) > 0:
+        # Filter out cancelled campaigns
         emails_2025_display = emails_2025[emails_2025.get('status', '') != 'Cancelled'].copy() if 'status' in emails_2025.columns else emails_2025.copy()
+        
+        # Filter for November 2025 only
+        if 'send_datetime' in emails_2025_display.columns:
+            emails_2025_display['send_dt'] = pd.to_datetime(emails_2025_display['send_datetime'])
+            emails_2025_display = emails_2025_display[
+                (emails_2025_display['send_dt'] >= '2025-11-01') & 
+                (emails_2025_display['send_dt'] < '2025-12-01')
+            ].copy()
         
         # Format year as string to prevent comma formatting
         if 'year' in emails_2025_display.columns:
@@ -658,7 +676,7 @@ with col2:
         if 'campaign_name' in emails_2025_display.columns:
             display_cols['campaign_name'] = 'Campaign Name'
         if 'send_datetime' in emails_2025_display.columns:
-            emails_2025_display['Date'] = pd.to_datetime(emails_2025_display['send_datetime']).dt.strftime('%b %d, %Y')
+            emails_2025_display['Date'] = emails_2025_display['send_dt'].dt.strftime('%b %d, %Y')
             display_cols['Date'] = 'Date'
         if 'status' in emails_2025_display.columns:
             # Add status emoji
@@ -677,9 +695,9 @@ with col2:
         # Select only the renamed columns
         final_cols = list(display_cols.values())
         
-        st.caption(f"{len(emails_2025_display)} campaigns (sent + scheduled)")
+        st.caption(f"{len(emails_2025_display)} campaigns in November 2025 (sent + scheduled)")
         st.dataframe(
-            emails_2025_display[final_cols].head(50) if final_cols else emails_2025_display.head(50),
+            emails_2025_display[final_cols].head(100) if final_cols else emails_2025_display.head(100),
             use_container_width=True,
             hide_index=True,
             height=500
