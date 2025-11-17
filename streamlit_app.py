@@ -260,16 +260,8 @@ for idx, (start_2024, end_2024, start_2025, end_2025, label) in enumerate(weeks)
         )
     
     fig.update_layout(title=label, height=300)
-    fig.update_yaxes(
-        title_text="Revenue (USD)", 
-        secondary_y=False,
-        tickformat="$,.2f"
-    )
-    fig.update_yaxes(
-        title_text="MER", 
-        secondary_y=True,
-        tickformat=".2f"
-    )
+    fig.update_yaxes(title_text="Revenue", secondary_y=False)
+    fig.update_yaxes(title_text="MER", secondary_y=True)
     
     # Add sale start markers if they fall in this week's range
     # Check if 2024 sale start is in this week
