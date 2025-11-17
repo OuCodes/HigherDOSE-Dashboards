@@ -617,14 +617,21 @@ with col1:
         
         # Filter for November 2024 only
         if 'send_datetime' in emails_2024_display.columns:
-            emails_2024_display['send_dt'] = pd.to_datetime(emails_2024_display['send_datetime'])
-            emails_2024_display = emails_2024_display[
-                (emails_2024_display['send_dt'] >= '2024-11-01') & 
-                (emails_2024_display['send_dt'] < '2024-12-01')
-            ].copy()
-            
-            # Sort by date descending (most recent first)
-            emails_2024_display = emails_2024_display.sort_values('send_dt', ascending=False)
+            try:
+                emails_2024_display['send_dt'] = pd.to_datetime(emails_2024_display['send_datetime'], errors='coerce')
+                # Remove any rows where datetime parsing failed
+                emails_2024_display = emails_2024_display.dropna(subset=['send_dt'])
+                
+                emails_2024_display = emails_2024_display[
+                    (emails_2024_display['send_dt'] >= '2024-11-01') & 
+                    (emails_2024_display['send_dt'] < '2024-12-01')
+                ].copy()
+                
+                # Sort by date descending (most recent first)
+                emails_2024_display = emails_2024_display.sort_values('send_dt', ascending=False)
+            except Exception as e:
+                st.warning(f"Error processing 2024 email dates: {e}")
+                emails_2024_display = pd.DataFrame()  # Empty on error
         
         # Format year as string to prevent comma formatting
         if 'year' in emails_2024_display.columns:
@@ -664,14 +671,21 @@ with col2:
         
         # Filter for November 2025 only
         if 'send_datetime' in emails_2025_display.columns:
-            emails_2025_display['send_dt'] = pd.to_datetime(emails_2025_display['send_datetime'])
-            emails_2025_display = emails_2025_display[
-                (emails_2025_display['send_dt'] >= '2025-11-01') & 
-                (emails_2025_display['send_dt'] < '2025-12-01')
-            ].copy()
-            
-            # Sort by date descending (most recent first)
-            emails_2025_display = emails_2025_display.sort_values('send_dt', ascending=False)
+            try:
+                emails_2025_display['send_dt'] = pd.to_datetime(emails_2025_display['send_datetime'], errors='coerce')
+                # Remove any rows where datetime parsing failed
+                emails_2025_display = emails_2025_display.dropna(subset=['send_dt'])
+                
+                emails_2025_display = emails_2025_display[
+                    (emails_2025_display['send_dt'] >= '2025-11-01') & 
+                    (emails_2025_display['send_dt'] < '2025-12-01')
+                ].copy()
+                
+                # Sort by date descending (most recent first)
+                emails_2025_display = emails_2025_display.sort_values('send_dt', ascending=False)
+            except Exception as e:
+                st.warning(f"Error processing 2025 email dates: {e}")
+                emails_2025_display = pd.DataFrame()  # Empty on error
         
         # Format year as string to prevent comma formatting
         if 'year' in emails_2025_display.columns:

@@ -20,7 +20,7 @@ config/slack/**
 !data/ads/exec-sum/Total*.csv
 !data/ads/weekly-report-2024-ads/*.csv
 !data/ads/northbeam-2025-november.csv
-!data/mail/klaviyo_campaigns_bfcm_*.csv
+!data/mail/klaviyo_campaigns_*.csv
 
 client_secret_*.json
 secrets.json
