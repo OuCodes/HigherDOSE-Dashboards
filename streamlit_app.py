@@ -462,8 +462,6 @@ with col2:
                 mode='lines+markers',
                 line=dict(color='#F59E0B', width=4),
                 marker=dict(size=10, color='#F59E0B'),
-                fill='tozeroy',
-                fillcolor='rgba(245, 158, 11, 0.1)',
                 showlegend=False,
                 hovertemplate='<b>%{x|%b %d}</b><br>MER: %{y:.2f}x<extra></extra>'
             )
@@ -508,12 +506,18 @@ with col2:
             borderpad=8
         )
         
+        # Set y-axis range dynamically based on actual MER values (not starting at 0)
+        min_mer = bfcm_period_2025['MER'].min()
+        max_mer = bfcm_period_2025['MER'].max()
+        y_padding = (max_mer - min_mer) * 0.2  # Add 20% padding
+        
         fig_2025_mer.update_layout(
             height=350,
             xaxis_title="",
             yaxis_title="MER (x)",
             showlegend=False,
-            margin=dict(t=60, b=40, l=40, r=40)
+            margin=dict(t=60, b=40, l=40, r=40),
+            yaxis=dict(range=[max(0, min_mer - y_padding), max_mer + y_padding])  # Dynamic range
         )
         
         st.plotly_chart(fig_2025_mer, use_container_width=True)
@@ -534,6 +538,9 @@ with col1:
     # Format for display
     sales_2024_display = sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
     sales_2024_display['Date'] = sales_2024_display['Day'].dt.strftime('%b %d, %Y')
+    
+    # Format MER to 2 decimal places
+    sales_2024_display['MER'] = sales_2024_display['MER'].apply(lambda x: f"{x:.2f}x")
     
     # Add sale marker
     sales_2024_display[''] = sales_2024_display['Day'].apply(
@@ -559,6 +566,9 @@ with col2:
     # Format for display
     sales_2025_display = sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
     sales_2025_display['Date'] = sales_2025_display['Day'].dt.strftime('%b %d, %Y')
+    
+    # Format MER to 2 decimal places
+    sales_2025_display['MER'] = sales_2025_display['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "TBD")
     
     # Add sale marker
     sales_2025_display[''] = sales_2025_display['Day'].apply(
