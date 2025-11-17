@@ -37,7 +37,7 @@ def load_all_data():
     sales_2024_full = sales_2024[(sales_2024['Day'] >= '2024-11-01') & (sales_2024['Day'] <= '2024-12-02')].copy()
     
     # 2025 Sales - exclude today's partial data
-    file_2025 = DATA_DIR / "exec-sum" / "Total sales over time - OU - 2025-01-01 - 2025-11-16.csv"
+    file_2025 = DATA_DIR / "exec-sum" / "Total sales over time - OU - 2025-01-01 - 2025-11-17.csv"
     sales_2025 = pd.read_csv(file_2025)
     sales_2025['Day'] = pd.to_datetime(sales_2025['Day'])
     
@@ -86,7 +86,7 @@ def load_all_data():
         nb_spend.columns = ['Day', 'total_spend']
     except Exception as e:
         st.warning(f"Could not load Northbeam data: {e}. Using zero spend for 2025.")
-        nb_spend = pd.DataFrame({'Day': pd.date_range('2025-11-01', '2025-11-16'), 'total_spend': 0.0})
+        nb_spend = pd.DataFrame({'Day': pd.date_range('2025-11-01', '2025-11-17'), 'total_spend': 0.0})
     
     sales_2025_full = sales_2025_full.merge(nb_spend, on='Day', how='left', suffixes=('', '_nb'))
     sales_2025_full['total_spend'] = sales_2025_full['total_spend_nb'].fillna(sales_2025_full['total_spend'])
