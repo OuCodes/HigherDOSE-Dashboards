@@ -41,12 +41,12 @@ def load_all_data():
     sales_2025 = pd.read_csv(file_2025)
     sales_2025['Day'] = pd.to_datetime(sales_2025['Day'])
     
-    # Get yesterday's date (last fully completed day)
-    yesterday = pd.Timestamp.now().normalize() - pd.Timedelta(days=1)
+    # Set the last complete day explicitly (Nov 16, 2025)
+    last_complete_day = pd.Timestamp('2025-11-16')
     
     # Filter to Nov 1 onwards, but exclude today's partial data
     sales_2025_full = sales_2025[(sales_2025['Day'] >= '2025-11-01') & 
-                                  (sales_2025['Day'] <= yesterday)].copy()
+                                  (sales_2025['Day'] <= last_complete_day)].copy()
     sales_2025_full['total_spend'] = 0.0
     sales_2025_full['MER'] = 0.0
     
@@ -129,9 +129,9 @@ col1, col2 = st.columns(2)
 with col1:
     st.info("🔥 **2024 Sale Start:** November 8, 2024")
 with col2:
-    # Show last complete day for 2025
-    yesterday = pd.Timestamp.now().normalize() - pd.Timedelta(days=1)
-    st.success(f"🔥 **2025 Sale Start:** November 14, 2025 (6 days later) | Data through {yesterday.strftime('%b %d')}")
+    # Show last complete day for 2025 (from actual data)
+    last_day_2025 = sales_2025_full['Day'].max() if len(sales_2025_full) > 0 and data_loaded else pd.Timestamp('2025-11-16')
+    st.success(f"🔥 **2025 Sale Start:** November 14, 2025 (6 days later) | Data through {last_day_2025.strftime('%b %d')}")
 
 st.markdown("---")
 
