@@ -26,7 +26,7 @@ MAIL_DIR = Path(__file__).parent / "data" / "mail"
 SALE_START_2024 = pd.Timestamp('2024-11-08')  # Sale started Nov 8, 2024
 SALE_START_2025 = pd.Timestamp('2025-11-14')  # Sale started Nov 14, 2025 (6 days later)
 
-@st.cache_data(ttl=3600*6)  # Cache for 6 hours
+@st.cache_data(ttl=1800)  # Cache for 30 minutes (more frequent updates)
 def load_all_data():
     """Load all data sources with caching"""
     
