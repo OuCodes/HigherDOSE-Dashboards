@@ -179,7 +179,7 @@ with col2:
     st.metric(f"2025 First {days_2025} Days", f"${revenue_2025:,.0f}")
 with col3:
     pacing_delta = revenue_2025 - revenue_2024_comparable
-    st.metric("Pacing", f"{pacing_pct:.1f}%", f"${pacing_delta:,.0f}", delta_color="normal" if pacing_pct >= 100 else "inverse")
+    st.metric("Pacing", f"{pacing_pct:.1f}%", f"${pacing_delta:,.0f}")
 
 st.markdown("---")
 

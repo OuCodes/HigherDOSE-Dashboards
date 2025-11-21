@@ -329,8 +329,7 @@ with col2:
     st.metric(
         "Pacing vs 2024", 
         f"{pacing:.1f}%",
-        delta=f"{pacing - 100:.1f}%",
-        delta_color="normal" if pacing >= 100 else "inverse"
+        delta=f"{pacing - 100:.1f}%"
     )
 
 with col3:
