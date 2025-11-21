@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Update northbeam-2025-november.csv with the latest data from the YTD file.
-This keeps the file size manageable for GitHub commits.
+Update northbeam-2025-november.csv with Q4 (Oct–Nov 2025) data from the large YTD file.
+This keeps the file size manageable for GitHub/Streamlit while still giving the app
+access to October + November Northbeam spend.
 """
 
 import pandas as pd
@@ -21,14 +22,14 @@ def main():
     # Convert date column
     df['date'] = pd.to_datetime(df['date'])
     
-    # Filter to November 2025 only
-    november_data = df[(df['date'] >= '2025-11-01') & (df['date'] < '2025-12-01')].copy()
+    # Filter to Q4 window we care about for the dashboard: Oct 1 – Nov 30, 2025
+    q4_data = df[(df['date'] >= '2025-10-01') & (df['date'] < '2025-12-01')].copy()
     
-    print(f"Filtered to {len(november_data)} rows for November 2025")
-    print(f"Date range: {november_data['date'].min()} to {november_data['date'].max()}")
+    print(f"Filtered to {len(q4_data)} rows for Oct–Nov 2025")
+    print(f"Date range: {q4_data['date'].min()} to {q4_data['date'].max()}")
     
     # Save filtered data
-    november_data.to_csv(OUTPUT_FILE, index=False)
+    q4_data.to_csv(OUTPUT_FILE, index=False)
     print(f"✅ Saved to: {OUTPUT_FILE}")
     print(f"File size: {OUTPUT_FILE.stat().st_size / 1024 / 1024:.1f} MB")
 
