@@ -192,13 +192,60 @@ def load_q4_data():
     
     try:
         emails_2024 = pd.read_csv(emails_2024_file, on_bad_lines='skip')
-    except:
+    except Exception:
         emails_2024 = pd.DataFrame()
     
     try:
         emails_2025 = pd.read_csv(emails_2025_file, on_bad_lines='skip')
-    except:
+    except Exception:
         emails_2025 = pd.DataFrame()
+    
+    # ===== SMS MONTHLY (CRM / Attentive summary) =====
+    sms_path = DATA_DIR / "ytd_statistics" / "HigherDOSE CRM Reporting Data - SMS YoY Monthly.csv"
+    if sms_path.exists():
+        try:
+            sms_raw = pd.read_csv(sms_path, skiprows=1)
+            sms_tidy_rows = []
+            for _, row in sms_raw.iterrows():
+                month_2024 = row.get("Conversion Date")
+                if isinstance(month_2024, str) and month_2024.strip():
+                    sms_tidy_rows.append(
+                        {
+                            "year": 2024,
+                            "month": month_2024,
+                            "conversions": pd.to_numeric(
+                                str(row.get("Conversions", "0")).replace(",", ""), errors="coerce"
+                            )
+                            or 0.0,
+                            "revenue": pd.to_numeric(
+                                str(row.get("Total Revenue", "0")).replace("$", "").replace(",", ""),
+                                errors="coerce",
+                            )
+                            or 0.0,
+                        }
+                    )
+                month_2025 = row.get("Conversion Date.1")
+                if isinstance(month_2025, str) and month_2025.strip():
+                    sms_tidy_rows.append(
+                        {
+                            "year": 2025,
+                            "month": month_2025,
+                            "conversions": pd.to_numeric(
+                                str(row.get("Conversions.1", "0")).replace(",", ""), errors="coerce"
+                            )
+                            or 0.0,
+                            "revenue": pd.to_numeric(
+                                str(row.get("Total Revenue.1", "0")).replace("$", "").replace(",", ""),
+                                errors="coerce",
+                            )
+                            or 0.0,
+                        }
+                    )
+            sms_monthly = pd.DataFrame(sms_tidy_rows)
+        except Exception:
+            sms_monthly = pd.DataFrame()
+    else:
+        sms_monthly = pd.DataFrame()
     
     return {
         'sales_2024': sales_2024,
@@ -211,6 +258,7 @@ def load_q4_data():
         'traffic_2025': traffic_2025,
         'emails_2024': emails_2024,
         'emails_2025': emails_2025,
+        'sms_monthly': sms_monthly,
         'last_complete_day': last_complete_day
     }
 
@@ -233,6 +281,7 @@ traffic_2024 = data['traffic_2024']
 traffic_2025 = data['traffic_2025']
 emails_2024 = data['emails_2024']
 emails_2025 = data['emails_2025']
+sms_monthly = data['sms_monthly']
 last_complete_day = data['last_complete_day']
 
 # ===== DASHBOARD TITLE =====
@@ -305,8 +354,9 @@ with col5:
         delta=f"${q4_2025_aov - q4_2024_aov:.0f}"
     )
 
+# Clarify the comparison window (Q4-to-date, not month-to-date)
 st.caption(
-    f"MTD comparison period: 2025 {q4_2025_start.strftime('%b %d')}–{q4_2025_end.strftime('%b %d')} "
+    f"Q4-to-date comparison period: 2025 {q4_2025_start.strftime('%b %d')}–{q4_2025_end.strftime('%b %d')} "
     f"vs 2024 {q4_2024_mtd_start.strftime('%b %d')}–{q4_2024_mtd_end.strftime('%b %d')}"
 )
 
@@ -380,7 +430,6 @@ weekly_2024 = sales_2024.groupby('Week').agg({
     'Day': 'min'
 }).reset_index()
 weekly_2024['MER'] = weekly_2024['Total sales'] / weekly_2024['total_spend']
-
 weekly_2025 = sales_2025.groupby('Week').agg({
     'Total sales': 'sum',
     'Orders': 'sum',
@@ -388,6 +437,10 @@ weekly_2025 = sales_2025.groupby('Week').agg({
     'Day': 'min'
 }).reset_index()
 weekly_2025['MER'] = weekly_2025['Total sales'] / weekly_2025['total_spend']
+
+# Focus on Q4 portion of the year so the chart doesn't zoom out too far
+weekly_2024 = weekly_2024[weekly_2024['Week'] >= 40].copy()
+weekly_2025 = weekly_2025[weekly_2025['Week'] >= 40].copy()
 
 # Create weekly chart (x-axis = ISO week number for clear 2024 vs 2025 comparison)
 fig_weekly = make_subplots(
@@ -492,6 +545,70 @@ with col4:
     bfcm_aov_2025 = bfcm_2025['Total sales'].sum() / bfcm_2025['Orders'].sum() if bfcm_2025['Orders'].sum() > 0 else 0
     st.metric("BFCM AOV (2024)", f"${bfcm_aov_2024:.0f}")
     st.metric("BFCM AOV (2025)", f"${bfcm_aov_2025:.0f}")
+
+st.markdown("---")
+
+# ===== EMAIL & SMS INFLUENCE =====
+st.header("✉️ Email & SMS Influence")
+
+# Simple November-focused summary to support narrative around CRM impact
+col1, col2, col3 = st.columns(3)
+
+# Email campaign counts (November only, for now)
+try:
+    if not emails_2024.empty:
+        emails_2024["send_dt"] = pd.to_datetime(emails_2024["send_datetime"], errors="coerce")
+        emails_2024_nov = emails_2024[
+            (emails_2024["send_dt"] >= "2024-11-01") & (emails_2024["send_dt"] <= "2024-11-30")
+        ].copy()
+        email24_campaigns = len(emails_2024_nov)
+        email24_recipients = (
+            emails_2024_nov["recipients"].sum() if "recipients" in emails_2024_nov.columns else 0
+        )
+        email24_revenue = emails_2024_nov["revenue"].sum() if "revenue" in emails_2024_nov.columns else 0
+    else:
+        email24_campaigns = email24_recipients = email24_revenue = 0
+except Exception:
+    email24_campaigns = email24_recipients = email24_revenue = 0
+
+try:
+    if not emails_2025.empty:
+        emails_2025["send_dt"] = pd.to_datetime(emails_2025["send_datetime"], errors="coerce")
+        emails_2025_nov = emails_2025[
+            (emails_2025["send_dt"] >= "2025-11-01") & (emails_2025["send_dt"] <= "2025-11-30")
+        ].copy()
+        email25_campaigns = len(emails_2025_nov)
+    else:
+        email25_campaigns = 0
+except Exception:
+    email25_campaigns = 0
+
+with col1:
+    st.subheader("Email Campaign Volume (Nov)")
+    st.metric("2024 Campaigns Sent", f"{email24_campaigns:,}")
+    st.metric("2025 Campaigns Sent", f"{email25_campaigns:,}")
+
+with col2:
+    st.subheader("Email Reach & Revenue (Nov 2024)")
+    st.metric("Email Recipients (2024 Nov)", f"{email24_recipients:,}")
+    st.metric("Attributed Email Revenue (2024 Nov)", f"${email24_revenue:,.0f}")
+
+with col3:
+    st.subheader("SMS Revenue (Q4 Months)")
+    if not sms_monthly.empty:
+        # Focus on October & November where BFCM influence is concentrated
+        sms_q4 = sms_monthly[
+            sms_monthly["month"].isin(["October 2024", "November 2024", "October 2025", "November 2025"])
+        ].copy()
+        if not sms_q4.empty:
+            sms_q4_display = sms_q4.copy()
+            sms_q4_display["revenue"] = sms_q4_display["revenue"].apply(lambda x: f"${x:,.0f}")
+            sms_q4_display = sms_q4_display.rename(columns={"month": "Month", "revenue": "SMS Revenue"})
+            st.dataframe(sms_q4_display[["year", "Month", "SMS Revenue"]], hide_index=True, use_container_width=True)
+        else:
+            st.write("No SMS rows for October/November found.")
+    else:
+        st.write("SMS summary data not available.")
 
 st.markdown("---")
 
