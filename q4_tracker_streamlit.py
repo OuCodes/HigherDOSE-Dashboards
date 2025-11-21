@@ -633,6 +633,106 @@ with col3:
 
 st.markdown("---")
 
+# ===== EMAIL CAMPAIGN DETAIL (NOVEMBER) =====
+st.subheader("📬 Email Campaign Timeline – November (2024 vs 2025)")
+
+email_timeline_rows = []
+
+# 2024: full metrics available (recipients, revenue, etc.)
+emails_2024_nov_detail = pd.DataFrame()
+if not emails_2024.empty:
+    try:
+        e24 = emails_2024.copy()
+        e24["send_dt"] = pd.to_datetime(e24["send_datetime"], errors="coerce")
+        emails_2024_nov_detail = e24[
+            (e24["send_dt"] >= "2024-11-01") & (e24["send_dt"] <= "2024-11-30")
+        ].copy()
+        emails_2024_nov_detail["date"] = emails_2024_nov_detail["send_dt"].dt.date
+        daily_24 = (
+            emails_2024_nov_detail.groupby("date")
+            .size()
+            .reset_index(name="campaigns")
+        )
+        daily_24["year"] = 2024
+        email_timeline_rows.append(daily_24)
+    except Exception:
+        emails_2024_nov_detail = pd.DataFrame()
+
+# 2025: cadence only (no revenue in this export)
+emails_2025_nov_detail = pd.DataFrame()
+if not emails_2025.empty:
+    try:
+        e25 = emails_2025.copy()
+        e25["send_dt"] = pd.to_datetime(e25["send_datetime"], errors="coerce")
+        emails_2025_nov_detail = e25[
+            (e25["send_dt"] >= "2025-11-01") & (e25["send_dt"] <= "2025-11-30")
+        ].copy()
+        emails_2025_nov_detail["date"] = emails_2025_nov_detail["send_dt"].dt.date
+        daily_25 = (
+            emails_2025_nov_detail.groupby("date")
+            .size()
+            .reset_index(name="campaigns")
+        )
+        daily_25["year"] = 2025
+        email_timeline_rows.append(daily_25)
+    except Exception:
+        emails_2025_nov_detail = pd.DataFrame()
+
+if email_timeline_rows:
+    email_timeline = pd.concat(email_timeline_rows, ignore_index=True)
+    fig_email = go.Figure()
+    for yr, color in [(2024, "#1f77b4"), (2025, "#ff7f0e")]:
+        df_y = email_timeline[email_timeline["year"] == yr]
+        if not df_y.empty:
+            fig_email.add_trace(
+                go.Bar(
+                    x=df_y["date"],
+                    y=df_y["campaigns"],
+                    name=f"{yr} Campaigns",
+                    marker_color=color,
+                    opacity=0.7,
+                )
+            )
+    fig_email.update_layout(
+        barmode="group",
+        height=400,
+        xaxis_title="Date",
+        yaxis_title="Email campaigns sent",
+        hovermode="x unified",
+    )
+    st.plotly_chart(fig_email, use_container_width=True)
+else:
+    st.write("No November email campaign data found for 2024 or 2025.")
+
+# Side-by-side detail tables for Nov campaigns
+col_e1, col_e2 = st.columns(2)
+with col_e1:
+    st.markdown("**2024 November Campaigns (Klaviyo)**")
+    if not emails_2024_nov_detail.empty:
+        display_24 = emails_2024_nov_detail.copy()
+        display_24["Date"] = display_24["send_dt"].dt.strftime("%b %d, %Y")
+        cols_24 = ["Date", "campaign_name"]
+        if "recipients" in display_24.columns:
+            cols_24.append("recipients")
+        if "revenue" in display_24.columns:
+            cols_24.append("revenue")
+            display_24["revenue"] = display_24["revenue"].apply(lambda x: f"${x:,.0f}")
+        st.dataframe(display_24[cols_24], hide_index=True, use_container_width=True)
+    else:
+        st.write("No detailed November 2024 campaign rows available.")
+
+with col_e2:
+    st.markdown("**2025 November Campaigns (Klaviyo)**")
+    if not emails_2025_nov_detail.empty:
+        display_25 = emails_2025_nov_detail.copy()
+        display_25["Date"] = display_25["send_dt"].dt.strftime("%b %d, %Y")
+        cols_25 = ["Date", "campaign_name"]
+        st.dataframe(display_25[cols_25], hide_index=True, use_container_width=True)
+    else:
+        st.write("No detailed November 2025 campaign rows available.")
+
+st.markdown("---")
+
 # ===== PRODUCT PERFORMANCE =====
 st.header("🛍️ Product Performance")
 
