@@ -634,12 +634,14 @@ with col3:
 st.markdown("---")
 
 # ===== EMAIL CAMPAIGN DETAIL (NOVEMBER) =====
-st.subheader("📬 Email Campaign Timeline – November (2024 vs 2025)")
+st.subheader("📬 Email Campaign Intensity – November (2024 vs 2025)")
 
-email_timeline_rows = []
+# We compare by *day of month* so 2024 and 2025 are on the same x-axis (1–30),
+# which makes side-by-side differences easier to see.
 
 # 2024: full metrics available (recipients, revenue, etc.)
 emails_2024_nov_detail = pd.DataFrame()
+daily_24 = pd.DataFrame()
 if not emails_2024.empty:
     try:
         e24 = emails_2024.copy()
@@ -647,19 +649,19 @@ if not emails_2024.empty:
         emails_2024_nov_detail = e24[
             (e24["send_dt"] >= "2024-11-01") & (e24["send_dt"] <= "2024-11-30")
         ].copy()
-        emails_2024_nov_detail["date"] = emails_2024_nov_detail["send_dt"].dt.date
+        emails_2024_nov_detail["day"] = emails_2024_nov_detail["send_dt"].dt.day
         daily_24 = (
-            emails_2024_nov_detail.groupby("date")
+            emails_2024_nov_detail.groupby("day")
             .size()
-            .reset_index(name="campaigns")
+            .reset_index(name="campaigns_2024")
         )
-        daily_24["year"] = 2024
-        email_timeline_rows.append(daily_24)
     except Exception:
         emails_2024_nov_detail = pd.DataFrame()
+        daily_24 = pd.DataFrame()
 
 # 2025: cadence only (no revenue in this export)
 emails_2025_nov_detail = pd.DataFrame()
+daily_25 = pd.DataFrame()
 if not emails_2025.empty:
     try:
         e25 = emails_2025.copy()
@@ -667,40 +669,59 @@ if not emails_2025.empty:
         emails_2025_nov_detail = e25[
             (e25["send_dt"] >= "2025-11-01") & (e25["send_dt"] <= "2025-11-30")
         ].copy()
-        emails_2025_nov_detail["date"] = emails_2025_nov_detail["send_dt"].dt.date
+        emails_2025_nov_detail["day"] = emails_2025_nov_detail["send_dt"].dt.day
         daily_25 = (
-            emails_2025_nov_detail.groupby("date")
+            emails_2025_nov_detail.groupby("day")
             .size()
-            .reset_index(name="campaigns")
+            .reset_index(name="campaigns_2025")
         )
-        daily_25["year"] = 2025
-        email_timeline_rows.append(daily_25)
     except Exception:
         emails_2025_nov_detail = pd.DataFrame()
+        daily_25 = pd.DataFrame()
 
-if email_timeline_rows:
-    email_timeline = pd.concat(email_timeline_rows, ignore_index=True)
+if not daily_24.empty or not daily_25.empty:
+    email_daily = pd.merge(daily_24, daily_25, on="day", how="outer").fillna(0)
+    email_daily["campaigns_2024"] = email_daily["campaigns_2024"].astype(int)
+    email_daily["campaigns_2025"] = email_daily["campaigns_2025"].astype(int)
+
     fig_email = go.Figure()
-    for yr, color in [(2024, "#1f77b4"), (2025, "#ff7f0e")]:
-        df_y = email_timeline[email_timeline["year"] == yr]
-        if not df_y.empty:
-            fig_email.add_trace(
-                go.Bar(
-                    x=df_y["date"],
-                    y=df_y["campaigns"],
-                    name=f"{yr} Campaigns",
-                    marker_color=color,
-                    opacity=0.7,
-                )
-            )
+    fig_email.add_trace(
+        go.Bar(
+            x=email_daily["day"],
+            y=email_daily["campaigns_2024"],
+            name="2024 Campaigns",
+            marker_color="#1f77b4",
+            opacity=0.7,
+        )
+    )
+    fig_email.add_trace(
+        go.Bar(
+            x=email_daily["day"],
+            y=email_daily["campaigns_2025"],
+            name="2025 Campaigns",
+            marker_color="#ff7f0e",
+            opacity=0.7,
+        )
+    )
     fig_email.update_layout(
         barmode="group",
         height=400,
-        xaxis_title="Date",
+        xaxis_title="Day of November",
         yaxis_title="Email campaigns sent",
         hovermode="x unified",
     )
     st.plotly_chart(fig_email, use_container_width=True)
+
+    # Compact side-by-side comparison table by day
+    compare_table = email_daily.copy()
+    compare_table = compare_table.rename(
+        columns={
+            "day": "Day",
+            "campaigns_2024": "2024 Campaigns",
+            "campaigns_2025": "2025 Campaigns",
+        }
+    )
+    st.dataframe(compare_table.sort_values("Day"), hide_index=True, use_container_width=True)
 else:
     st.write("No November email campaign data found for 2024 or 2025.")
 
@@ -937,6 +958,39 @@ if not traffic_2025.empty:
             hide_index=True,
             use_container_width=True,
         )
+
+        # Visualize sessions side-by-side by channel so differences are obvious
+        st.subheader("Sessions by Channel – 2024 vs 2025 (Top 10 by 2025 Sessions)")
+        sessions_plot = traffic_merged.sort_values("Sessions", ascending=True)
+        fig_sessions = go.Figure()
+        fig_sessions.add_trace(
+            go.Bar(
+                y=sessions_plot["Session default channel group"],
+                x=sessions_plot["Sessions_2024"],
+                name="2024 Sessions",
+                orientation="h",
+                marker_color="#1f77b4",
+                opacity=0.7,
+            )
+        )
+        fig_sessions.add_trace(
+            go.Bar(
+                y=sessions_plot["Session default channel group"],
+                x=sessions_plot["Sessions"],
+                name="2025 Sessions",
+                orientation="h",
+                marker_color="#ff7f0e",
+                opacity=0.7,
+            )
+        )
+        fig_sessions.update_layout(
+            barmode="group",
+            height=500,
+            xaxis_title="Sessions",
+            yaxis_title="Channel",
+            hovermode="y unified",
+        )
+        st.plotly_chart(fig_sessions, use_container_width=True)
     else:
         # Fallback: 2025-only view
         traffic_summary_2025 = traffic_summary_2025.sort_values('Sessions', ascending=False).head(10)
