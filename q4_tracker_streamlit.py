@@ -615,19 +615,77 @@ with col2:
     st.metric("Attributed Email Revenue (2024 Nov)", f"${email24_revenue:,.0f}")
 
 with col3:
-    st.subheader("SMS Revenue (Q4 Months)")
+    st.subheader("SMS Revenue (Pre-BFCM & BFCM Months)")
     if not sms_monthly.empty:
-        # Focus on October & November where BFCM influence is concentrated
-        sms_q4 = sms_monthly[
-            sms_monthly["month"].isin(["October 2024", "November 2024", "October 2025", "November 2025"])
-        ].copy()
-        if not sms_q4.empty:
-            sms_q4_display = sms_q4.copy()
-            sms_q4_display["revenue"] = sms_q4_display["revenue"].apply(lambda x: f"${x:,.0f}")
-            sms_q4_display = sms_q4_display.rename(columns={"month": "Month", "revenue": "SMS Revenue"})
-            st.dataframe(sms_q4_display[["year", "Month", "SMS Revenue"]], hide_index=True, use_container_width=True)
+        # Focus on the lead-up and BFCM period: Aug–Nov for 2024 and 2025
+        target_months = [
+            "August 2024",
+            "September 2024",
+            "October 2024",
+            "November 2024",
+            "August 2025",
+            "September 2025",
+            "October 2025",
+            "November 2025",
+        ]
+        sms_focus = sms_monthly[sms_monthly["month"].isin(target_months)].copy()
+        if not sms_focus.empty:
+            # Extract month name (e.g. 'August') and pivot to 2024 vs 2025 columns
+            sms_focus["MonthName"] = sms_focus["month"].str.extract(r"^(\\w+)", expand=False)
+            pivot = (
+                sms_focus.pivot_table(
+                    index="MonthName",
+                    columns="year",
+                    values="revenue",
+                    aggfunc="sum",
+                )
+                .reindex(["August", "September", "October", "November"])
+                .fillna(0)
+            )
+            pivot = pivot.rename(columns={2024: "Revenue 2024", 2025: "Revenue 2025"})
+
+            # Bar chart: SMS revenue by month, 2024 vs 2025
+            fig_sms = go.Figure()
+            if "Revenue 2024" in pivot.columns:
+                fig_sms.add_trace(
+                    go.Bar(
+                        x=pivot.index,
+                        y=pivot["Revenue 2024"],
+                        name="2024 SMS Revenue",
+                        marker_color="#1f77b4",
+                        opacity=0.7,
+                    )
+                )
+            if "Revenue 2025" in pivot.columns:
+                fig_sms.add_trace(
+                    go.Bar(
+                        x=pivot.index,
+                        y=pivot["Revenue 2025"],
+                        name="2025 SMS Revenue",
+                        marker_color="#ff7f0e",
+                        opacity=0.7,
+                    )
+                )
+            fig_sms.update_layout(
+                barmode="group",
+                height=400,
+                xaxis_title="Month",
+                yaxis_title="SMS Revenue",
+                hovermode="x unified",
+            )
+            st.plotly_chart(fig_sms, use_container_width=True)
+
+            # Numeric table for quick reference
+            sms_table = pivot.copy()
+            sms_table["Revenue 2024"] = sms_table["Revenue 2024"].apply(lambda x: f"${x:,.0f}")
+            sms_table["Revenue 2025"] = sms_table["Revenue 2025"].apply(lambda x: f"${x:,.0f}")
+            st.dataframe(
+                sms_table.reset_index().rename(columns={"MonthName": "Month"}),
+                hide_index=True,
+                use_container_width=True,
+            )
         else:
-            st.write("No SMS rows for October/November found.")
+            st.write("No SMS rows for August–November found.")
     else:
         st.write("SMS summary data not available.")
 
