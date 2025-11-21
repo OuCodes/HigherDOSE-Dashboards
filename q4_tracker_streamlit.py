@@ -179,9 +179,8 @@ def load_q4_data():
         st.warning(f"Could not load Northbeam data: {e}. Using zero spend for 2025.")
         nb_spend = pd.DataFrame({'Day': pd.date_range('2025-10-01', last_complete_day), 'total_spend': 0.0})
     
-    sales_2025 = sales_2025.merge(nb_spend, on='Day', how='left', suffixes=('', '_nb'))
-    sales_2025['total_spend'] = sales_2025['total_spend_nb'].fillna(0)
-    sales_2025.drop(columns=['total_spend_nb'], inplace=True, errors='ignore')
+    sales_2025 = sales_2025.merge(nb_spend, on='Day', how='left')
+    sales_2025['total_spend'] = sales_2025['total_spend'].fillna(0)
     sales_2025['MER'] = sales_2025.apply(
         lambda row: row['Total sales'] / row['total_spend'] if row['total_spend'] > 0 else 0, axis=1
     )
