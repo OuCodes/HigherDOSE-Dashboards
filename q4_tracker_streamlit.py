@@ -168,14 +168,29 @@ def load_q4_data():
     )
     
     # 2025 Northbeam Spend
-    northbeam_file = DATA_DIR / "northbeam-2025-november.csv"
+    # Prefer the full YTD Northbeam export for accurate Q4 MER.
+    # Fallback to the smaller november-only file when YTD isn't available
+    # (e.g., on Streamlit Cloud where large CSVs can't be checked into git).
+    nb_ytd_file = DATA_DIR / "ytd_sales_data-higher_dose_llc-2025_10_07_22_43_36.csv"
+    nb_november_file = DATA_DIR / "northbeam-2025-november.csv"
+    nb_spend = None
     try:
-        nb_2025 = pd.read_csv(northbeam_file, on_bad_lines='skip', engine='python')
-        nb_2025 = nb_2025[nb_2025['accounting_mode'] == 'Cash snapshot'].copy()
-        nb_2025['date'] = pd.to_datetime(nb_2025['date'])
-        nb_spend = nb_2025.groupby('date')['spend'].sum().reset_index()
-        nb_spend.columns = ['Day', 'total_spend']
-        nb_spend = nb_spend[nb_spend['Day'] >= '2025-10-01'].copy()
+        if nb_ytd_file.exists():
+            nb_2025 = pd.read_csv(nb_ytd_file, on_bad_lines='skip', engine='python')
+        elif nb_november_file.exists():
+            nb_2025 = pd.read_csv(nb_november_file, on_bad_lines='skip', engine='python')
+        else:
+            nb_2025 = None
+
+        if nb_2025 is not None:
+            nb_2025 = nb_2025[nb_2025['accounting_mode'] == 'Cash snapshot'].copy()
+            nb_2025['date'] = pd.to_datetime(nb_2025['date'])
+            # Use full Q4 window for 2025 (Oct 1 onward)
+            nb_2025 = nb_2025[nb_2025['date'] >= '2025-10-01'].copy()
+            nb_spend = nb_2025.groupby('date')['spend'].sum().reset_index()
+            nb_spend.columns = ['Day', 'total_spend']
+        else:
+            raise FileNotFoundError("No Northbeam YTD or November file found.")
     except Exception as e:
         st.warning(f"Could not load Northbeam data: {e}. Using zero spend for 2025.")
         nb_spend = pd.DataFrame({'Day': pd.date_range('2025-10-01', last_complete_day), 'total_spend': 0.0})
