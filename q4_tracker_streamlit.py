@@ -318,10 +318,14 @@ q4_2024_mtd_end = sales_2024_mtd['Day'].max()
 col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
+    revenue_delta = q4_2025_revenue - q4_2024_mtd_revenue
     st.metric(
         f"Q4 2025 Revenue ({q4_2025_start.strftime('%b %d')}–{q4_2025_end.strftime('%b %d')})",
         f"${q4_2025_revenue:,.0f}",
-        delta=f"${q4_2025_revenue - q4_2024_mtd_revenue:,.0f} vs '24"
+        delta=revenue_delta,
+    )
+    st.caption(
+        f"Δ vs 2024 Q4-to-date: ${revenue_delta:,.0f}"
     )
     
 with col2:
