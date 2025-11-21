@@ -119,8 +119,9 @@ def load_q4_data():
     # 2024 Traffic
     traffic_2024_file = exec_sum_dir / "daily-traffic_acquisition_Session_default_channel_group-2024-01-01-2024-12-31..csv"
     if traffic_2024_file.exists():
-        traffic_2024 = pd.read_csv(traffic_2024_file)
-        traffic_2024['Date'] = pd.to_datetime(traffic_2024['Date'])
+        # Skip GA4 metadata comment lines that start with '#'
+        traffic_2024 = pd.read_csv(traffic_2024_file, comment="#")
+        traffic_2024['Date'] = pd.to_datetime(traffic_2024['Date'], format="%Y%m%d")
         traffic_2024 = traffic_2024[traffic_2024['Date'] >= '2024-10-01'].copy()
     else:
         traffic_2024 = pd.DataFrame()
@@ -260,13 +261,18 @@ days_2025 = len(sales_2025)
 sales_2024_mtd = sales_2024.head(days_2025)
 q4_2024_mtd_revenue = sales_2024_mtd['Total sales'].sum()
 
+q4_2025_start = sales_2025['Day'].min()
+q4_2025_end = sales_2025['Day'].max()
+q4_2024_mtd_start = sales_2024_mtd['Day'].min()
+q4_2024_mtd_end = sales_2024_mtd['Day'].max()
+
 col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
     st.metric(
-        "Q4 2025 Revenue (MTD)", 
+        f"Q4 2025 Revenue ({q4_2025_start.strftime('%b %d')}–{q4_2025_end.strftime('%b %d')})",
         f"${q4_2025_revenue:,.0f}",
-        delta=f"${q4_2025_revenue - q4_2024_mtd_revenue:,.0f} vs '24 MTD"
+        delta=f"${q4_2025_revenue - q4_2024_mtd_revenue:,.0f} vs '24"
     )
     
 with col2:
@@ -298,6 +304,11 @@ with col5:
         f"${q4_2025_aov:.0f}",
         delta=f"${q4_2025_aov - q4_2024_aov:.0f}"
     )
+
+st.caption(
+    f"MTD comparison period: 2025 {q4_2025_start.strftime('%b %d')}–{q4_2025_end.strftime('%b %d')} "
+    f"vs 2024 {q4_2024_mtd_start.strftime('%b %d')}–{q4_2024_mtd_end.strftime('%b %d')}"
+)
 
 st.markdown("---")
 
@@ -358,7 +369,7 @@ st.markdown("---")
 # ===== WEEKLY TRENDS =====
 st.header("📊 Weekly Trends")
 
-# Add week column
+# Add ISO week-of-year column
 sales_2024['Week'] = sales_2024['Day'].dt.isocalendar().week
 sales_2025['Week'] = sales_2025['Day'].dt.isocalendar().week
 
@@ -369,7 +380,6 @@ weekly_2024 = sales_2024.groupby('Week').agg({
     'Day': 'min'
 }).reset_index()
 weekly_2024['MER'] = weekly_2024['Total sales'] / weekly_2024['total_spend']
-weekly_2024['Week_Label'] = weekly_2024['Day'].dt.strftime('Week of %b %d')
 
 weekly_2025 = sales_2025.groupby('Week').agg({
     'Total sales': 'sum',
@@ -378,9 +388,8 @@ weekly_2025 = sales_2025.groupby('Week').agg({
     'Day': 'min'
 }).reset_index()
 weekly_2025['MER'] = weekly_2025['Total sales'] / weekly_2025['total_spend']
-weekly_2025['Week_Label'] = weekly_2025['Day'].dt.strftime('Week of %b %d')
 
-# Create weekly chart
+# Create weekly chart (x-axis = ISO week number for clear 2024 vs 2025 comparison)
 fig_weekly = make_subplots(
     rows=2, cols=1,
     subplot_titles=("Weekly Revenue Comparison", "Weekly MER Comparison"),
@@ -391,31 +400,31 @@ fig_weekly = make_subplots(
 
 # Revenue bars
 fig_weekly.add_trace(
-    go.Bar(x=weekly_2024['Week_Label'], y=weekly_2024['Total sales'], 
+    go.Bar(x=weekly_2024['Week'], y=weekly_2024['Total sales'], 
            name="2024 Revenue", marker_color='#1f77b4', opacity=0.7),
     row=1, col=1
 )
 fig_weekly.add_trace(
-    go.Bar(x=weekly_2025['Week_Label'], y=weekly_2025['Total sales'], 
+    go.Bar(x=weekly_2025['Week'], y=weekly_2025['Total sales'], 
            name="2025 Revenue", marker_color='#ff7f0e', opacity=0.7),
     row=1, col=1
 )
 
 # MER lines
 fig_weekly.add_trace(
-    go.Scatter(x=weekly_2024['Week_Label'], y=weekly_2024['MER'], 
+    go.Scatter(x=weekly_2024['Week'], y=weekly_2024['MER'], 
                name="2024 MER", mode='lines+markers', line=dict(color='#1f77b4', width=3)),
     row=2, col=1
 )
 fig_weekly.add_trace(
-    go.Scatter(x=weekly_2025['Week_Label'], y=weekly_2025['MER'], 
+    go.Scatter(x=weekly_2025['Week'], y=weekly_2025['MER'], 
                name="2025 MER", mode='lines+markers', line=dict(color='#ff7f0e', width=3)),
     row=2, col=1
 )
 
 fig_weekly.update_yaxes(title_text="Revenue ($)", row=1, col=1)
 fig_weekly.update_yaxes(title_text="MER", row=2, col=1)
-fig_weekly.update_xaxes(title_text="Week", row=2, col=1)
+fig_weekly.update_xaxes(title_text="ISO Week of Year", row=2, col=1)
 
 fig_weekly.update_layout(height=800, showlegend=True, hovermode='x unified')
 st.plotly_chart(fig_weekly, use_container_width=True)
@@ -510,54 +519,88 @@ if not products_2024.empty and not products_2025.empty:
     prod_comparison['Units_2024'] = prod_comparison['Units_2024'].fillna(0)
     prod_comparison['Units_2025'] = prod_comparison['Units_2025'].fillna(0)
     
-    # Calculate growth
-    prod_comparison['Revenue_Growth'] = ((prod_comparison['Revenue_2025'] - prod_comparison['Revenue_2024']) / 
-                                         prod_comparison['Revenue_2024'] * 100)
-    prod_comparison['Revenue_Growth'] = prod_comparison['Revenue_Growth'].replace([np.inf, -np.inf], 0).fillna(0)
+    # Identify products with sales in both years (exclude replacements/new from core YoY tables)
+    core_products = prod_comparison[(prod_comparison['Revenue_2024'] > 0) & (prod_comparison['Revenue_2025'] > 0)].copy()
     
-    # Top products
-    top_2025 = prod_comparison.nlargest(10, 'Revenue_2025')[['Product', 'Revenue_2025', 'Units_2025', 'Revenue_Growth']]
+    # Calculate YoY revenue growth (% vs 2024) for core products
+    core_products['Revenue_Growth_Pct_vs_2024'] = (
+        (core_products['Revenue_2025'] - core_products['Revenue_2024']) / core_products['Revenue_2024'] * 100
+    )
+    core_products['Revenue_Growth_Pct_vs_2024'] = (
+        core_products['Revenue_Growth_Pct_vs_2024']
+        .replace([np.inf, -np.inf], 0)
+        .fillna(0)
+    )
     
-    # Growing products
-    growing = prod_comparison[prod_comparison['Revenue_2024'] > 0].nlargest(10, 'Revenue_Growth')[['Product', 'Revenue_2024', 'Revenue_2025', 'Revenue_Growth']]
+    # Top products (only those that existed in both 2024 and 2025)
+    top_2025 = core_products.nlargest(
+        10, 'Revenue_2025'
+    )[['Product', 'Revenue_2025', 'Units_2025', 'Revenue_Growth_Pct_vs_2024']]
     
-    # Declining products
-    declining = prod_comparison[prod_comparison['Revenue_2024'] > 0].nsmallest(10, 'Revenue_Growth')[['Product', 'Revenue_2024', 'Revenue_2025', 'Revenue_Growth']]
+    # Growing products (YoY % vs 2024, only for core products)
+    growing = core_products.nlargest(
+        10, 'Revenue_Growth_Pct_vs_2024'
+    )[['Product', 'Revenue_2024', 'Revenue_2025', 'Revenue_Growth_Pct_vs_2024']]
     
-    # New products (no 2024 revenue)
-    new_products = prod_comparison[(prod_comparison['Revenue_2024'] == 0) & (prod_comparison['Revenue_2025'] > 0)].nlargest(10, 'Revenue_2025')[['Product', 'Revenue_2025', 'Units_2025']]
+    # Declining products (YoY % vs 2024, only core products with 2024 revenue >= $100k)
+    declining_base = core_products[core_products['Revenue_2024'] >= 100_000]
+    declining = declining_base.nsmallest(
+        10, 'Revenue_Growth_Pct_vs_2024'
+    )[['Product', 'Revenue_2024', 'Revenue_2025', 'Revenue_Growth_Pct_vs_2024']]
+    
+    # New products (no 2024 revenue) – typically includes replacements / new launches
+    new_products = prod_comparison[
+        (prod_comparison['Revenue_2024'] == 0) & (prod_comparison['Revenue_2025'] > 0)
+    ][['Product', 'Revenue_2025', 'Units_2025']].nlargest(10, 'Revenue_2025')
     
     # Display
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("🏆 Top 10 Products (2025 Revenue)")
+        st.subheader("🏆 Top 10 Products (2025 Revenue vs 2024)")
         top_2025_display = top_2025.copy()
         top_2025_display['Revenue_2025'] = top_2025_display['Revenue_2025'].apply(lambda x: f"${x:,.0f}")
-        top_2025_display['Revenue_Growth'] = top_2025_display['Revenue_Growth'].apply(lambda x: f"{x:+.1f}%")
+        top_2025_display['Revenue_Growth_Pct_vs_2024'] = top_2025_display['Revenue_Growth_Pct_vs_2024'].apply(
+            lambda x: f"{x:+.1f}%"
+        )
+        top_2025_display = top_2025_display.rename(
+            columns={'Revenue_Growth_Pct_vs_2024': 'Rev Growth vs 2024 (%)'}
+        )
         st.dataframe(top_2025_display, hide_index=True, use_container_width=True)
         
-        st.subheader("📈 Top 10 Growing Products (YoY %)")
+        st.subheader("📈 Top 10 Growing Products (YoY vs 2024)")
         growing_display = growing.copy()
         growing_display['Revenue_2024'] = growing_display['Revenue_2024'].apply(lambda x: f"${x:,.0f}")
         growing_display['Revenue_2025'] = growing_display['Revenue_2025'].apply(lambda x: f"${x:,.0f}")
-        growing_display['Revenue_Growth'] = growing_display['Revenue_Growth'].apply(lambda x: f"{x:+.1f}%")
+        growing_display['Revenue_Growth_Pct_vs_2024'] = growing_display['Revenue_Growth_Pct_vs_2024'].apply(
+            lambda x: f"{x:+.1f}%"
+        )
+        growing_display = growing_display.rename(
+            columns={'Revenue_Growth_Pct_vs_2024': 'Rev Growth vs 2024 (%)'}
+        )
         st.dataframe(growing_display, hide_index=True, use_container_width=True)
     
     with col2:
         st.subheader("🆕 New Products (No 2024 Sales)")
         if not new_products.empty:
             new_products_display = new_products.copy()
-            new_products_display['Revenue_2025'] = new_products_display['Revenue_2025'].apply(lambda x: f"${x:,.0f}")
+            new_products_display['Revenue_2025'] = new_products_display['Revenue_2025'].apply(
+                lambda x: f"${x:,.0f}"
+            )
             st.dataframe(new_products_display, hide_index=True, use_container_width=True)
         else:
             st.write("No new products detected.")
         
-        st.subheader("📉 Top 10 Declining Products (YoY %)")
+        st.subheader("📉 Top 10 Declining Products (YoY vs 2024, ≥ $100k 2024 Revenue)")
         declining_display = declining.copy()
         declining_display['Revenue_2024'] = declining_display['Revenue_2024'].apply(lambda x: f"${x:,.0f}")
         declining_display['Revenue_2025'] = declining_display['Revenue_2025'].apply(lambda x: f"${x:,.0f}")
-        declining_display['Revenue_Growth'] = declining_display['Revenue_Growth'].apply(lambda x: f"{x:+.1f}%")
+        declining_display['Revenue_Growth_Pct_vs_2024'] = declining_display['Revenue_Growth_Pct_vs_2024'].apply(
+            lambda x: f"{x:+.1f}%"
+        )
+        declining_display = declining_display.rename(
+            columns={'Revenue_Growth_Pct_vs_2024': 'Rev Growth vs 2024 (%)'}
+        )
         st.dataframe(declining_display, hide_index=True, use_container_width=True)
 
 else:
@@ -569,28 +612,106 @@ st.markdown("---")
 st.header("🌐 Traffic by Channel (GA4)")
 
 if not traffic_2025.empty:
-    # Aggregate by channel
+    # 2025: Aggregate by channel
     traffic_summary_2025 = traffic_2025.groupby('Session default channel group').agg({
         'Sessions': 'sum',
         'Total users': 'sum',
         'Ecommerce purchases': 'sum',
         'Purchase revenue': 'sum'
     }).reset_index()
-    traffic_summary_2025['Conversion Rate'] = (traffic_summary_2025['Ecommerce purchases'] / 
-                                                traffic_summary_2025['Sessions'] * 100)
-    traffic_summary_2025['Revenue per Session'] = (traffic_summary_2025['Purchase revenue'] / 
-                                                    traffic_summary_2025['Sessions'])
+    traffic_summary_2025['Rev per Session 2025'] = (
+        traffic_summary_2025['Purchase revenue'] / traffic_summary_2025['Sessions']
+    )
     
-    traffic_summary_2025 = traffic_summary_2025.sort_values('Sessions', ascending=False).head(10)
-    
-    st.subheader("Top 10 Channels by Sessions (2025)")
-    traffic_display = traffic_summary_2025.copy()
-    traffic_display['Sessions'] = traffic_display['Sessions'].apply(lambda x: f"{x:,}")
-    traffic_display['Total users'] = traffic_display['Total users'].apply(lambda x: f"{x:,}")
-    traffic_display['Purchase revenue'] = traffic_display['Purchase revenue'].apply(lambda x: f"${x:,.0f}")
-    traffic_display['Conversion Rate'] = traffic_display['Conversion Rate'].apply(lambda x: f"{x:.2f}%")
-    traffic_display['Revenue per Session'] = traffic_display['Revenue per Session'].apply(lambda x: f"${x:.2f}")
-    st.dataframe(traffic_display, hide_index=True, use_container_width=True)
+    if not traffic_2024.empty:
+        # 2024: Aggregate by channel (Sessions + Total revenue)
+        traffic_summary_2024 = traffic_2024.groupby('Session default channel group').agg({
+            'Sessions': 'sum',
+            'Total revenue': 'sum'
+        }).reset_index()
+        traffic_summary_2024 = traffic_summary_2024.rename(
+            columns={'Sessions': 'Sessions_2024', 'Total revenue': 'Revenue_2024'}
+        )
+        
+        # Merge 2024 + 2025 for side-by-side + deltas
+        traffic_merged = traffic_summary_2025.merge(
+            traffic_summary_2024,
+            on='Session default channel group',
+            how='outer'
+        )
+        traffic_merged['Sessions'] = traffic_merged['Sessions'].fillna(0)
+        traffic_merged['Total users'] = traffic_merged['Total users'].fillna(0)
+        traffic_merged['Ecommerce purchases'] = traffic_merged['Ecommerce purchases'].fillna(0)
+        traffic_merged['Purchase revenue'] = traffic_merged['Purchase revenue'].fillna(0)
+        traffic_merged['Sessions_2024'] = traffic_merged['Sessions_2024'].fillna(0)
+        traffic_merged['Revenue_2024'] = traffic_merged['Revenue_2024'].fillna(0)
+        
+        # Compute 2024 rev/session and deltas
+        traffic_merged['Rev per Session 2024'] = traffic_merged.apply(
+            lambda row: row['Revenue_2024'] / row['Sessions_2024'] if row['Sessions_2024'] > 0 else 0,
+            axis=1,
+        )
+        traffic_merged['Δ Sessions'] = traffic_merged['Sessions'] - traffic_merged['Sessions_2024']
+        traffic_merged['Δ Revenue'] = traffic_merged['Purchase revenue'] - traffic_merged['Revenue_2024']
+        traffic_merged['Δ Rev/Session'] = traffic_merged['Rev per Session 2025'] - traffic_merged['Rev per Session 2024']
+        
+        # Focus on top 10 channels by 2025 sessions
+        traffic_merged = traffic_merged.sort_values('Sessions', ascending=False).head(10)
+        
+        st.subheader("Top 10 Channels by Sessions – 2025 vs 2024")
+        traffic_display = traffic_merged.copy()
+        traffic_display = traffic_display.rename(
+            columns={
+                'Session default channel group': 'Channel',
+                'Sessions': 'Sessions 2025',
+                'Purchase revenue': 'Revenue 2025',
+            }
+        )
+        traffic_display['Sessions 2025'] = traffic_display['Sessions 2025'].apply(lambda x: f"{int(x):,}")
+        traffic_display['Sessions_2024'] = traffic_display['Sessions_2024'].apply(lambda x: f"{int(x):,}")
+        traffic_display['Δ Sessions'] = traffic_display['Δ Sessions'].apply(lambda x: f"{int(x):+ ,}")
+        traffic_display['Revenue 2025'] = traffic_display['Revenue 2025'].apply(lambda x: f"${x:,.0f}")
+        traffic_display['Revenue_2024'] = traffic_display['Revenue_2024'].apply(lambda x: f"${x:,.0f}")
+        traffic_display['Δ Revenue'] = traffic_display['Δ Revenue'].apply(lambda x: f"${x:,.0f}")
+        traffic_display['Rev per Session 2025'] = traffic_display['Rev per Session 2025'].apply(
+            lambda x: f"${x:.2f}"
+        )
+        traffic_display['Rev per Session 2024'] = traffic_display['Rev per Session 2024'].apply(
+            lambda x: f"${x:.2f}"
+        )
+        traffic_display['Δ Rev/Session'] = traffic_display['Δ Rev/Session'].apply(lambda x: f"${x:.2f}")
+        
+        st.dataframe(
+            traffic_display[
+                [
+                    'Channel',
+                    'Sessions 2025',
+                    'Sessions_2024',
+                    'Δ Sessions',
+                    'Revenue 2025',
+                    'Revenue_2024',
+                    'Δ Revenue',
+                    'Rev per Session 2025',
+                    'Rev per Session 2024',
+                    'Δ Rev/Session',
+                ]
+            ],
+            hide_index=True,
+            use_container_width=True,
+        )
+    else:
+        # Fallback: 2025-only view
+        traffic_summary_2025 = traffic_summary_2025.sort_values('Sessions', ascending=False).head(10)
+        
+        st.subheader("Top 10 Channels by Sessions (2025)")
+        traffic_display = traffic_summary_2025.copy()
+        traffic_display['Sessions'] = traffic_display['Sessions'].apply(lambda x: f"{x:,}")
+        traffic_display['Total users'] = traffic_display['Total users'].apply(lambda x: f"{x:,}")
+        traffic_display['Purchase revenue'] = traffic_display['Purchase revenue'].apply(lambda x: f"${x:,.0f}")
+        traffic_display['Rev per Session 2025'] = traffic_display['Rev per Session 2025'].apply(
+            lambda x: f"${x:.2f}"
+        )
+        st.dataframe(traffic_display, hide_index=True, use_container_width=True)
 else:
     st.warning("Traffic channel data not available.")
 
