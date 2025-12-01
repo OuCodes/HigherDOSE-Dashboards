@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="HigherDOSE BFCM Dashboard",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # Paths
@@ -26,9 +26,9 @@ MAIL_DIR = Path(__file__).parent / "data" / "mail"
 SALE_START_2024 = pd.Timestamp('2024-11-08')  # Sale started Nov 8, 2024
 SALE_START_2025 = pd.Timestamp('2025-11-14')  # Sale started Nov 14, 2025 (6 days later)
 
-@st.cache_data(ttl=1800)  # Cache for 30 minutes (more frequent updates)
+@st.cache_data(ttl=60)  # Cache for 1 minute - updated for Nov 30 data refresh
 def load_all_data():
-    """Load all data sources with caching"""
+    """Load all data sources with caching - Updated Nov 30, 2025"""
     
     # 2024 Sales
     file_2024 = DATA_DIR / "exec-sum" / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
@@ -36,20 +36,44 @@ def load_all_data():
     sales_2024['Day'] = pd.to_datetime(sales_2024['Day'])
     sales_2024_full = sales_2024[(sales_2024['Day'] >= '2024-11-01') & (sales_2024['Day'] <= '2024-12-02')].copy()
     
+    # Mark ONLY the last day as partial if it has significantly lower orders than recent trend
+    sales_2024_full['is_partial'] = False
+    if len(sales_2024_full) > 1:
+        last_day_mask = sales_2024_full['Day'] == sales_2024_full['Day'].max()
+        recent_7_days = sales_2024_full[~last_day_mask].tail(7)
+        recent_avg_orders = recent_7_days['Orders'].mean() if len(recent_7_days) > 0 else sales_2024_full['Orders'].mean()
+        last_day_orders = sales_2024_full.loc[last_day_mask, 'Orders'].iloc[0] if last_day_mask.any() else 0
+        # Mark as partial if last day has < 60% of recent average
+        if last_day_orders < (recent_avg_orders * 0.6):
+            sales_2024_full.loc[last_day_mask, 'is_partial'] = True
+    
     # 2025 Sales - automatically find the most recent file and use latest date
     exec_sum_dir = DATA_DIR / "exec-sum"
     files_2025 = sorted(exec_sum_dir.glob("Total sales over time - OU - 2025-*.csv"))
-    file_2025 = files_2025[-1] if files_2025 else exec_sum_dir / "Total sales over time - OU - 2025-01-01 - 2025-11-17.csv"
+    file_2025 = files_2025[-1] if files_2025 else exec_sum_dir / "Total sales over time - OU - 2025-01-01 - 2025-11-24.csv"
     
     sales_2025 = pd.read_csv(file_2025)
     sales_2025['Day'] = pd.to_datetime(sales_2025['Day'])
     
     # Automatically detect the last complete day from the data (max date in file)
     last_complete_day = sales_2025['Day'].max()
+    data_file_name = file_2025.name
     
-    # Filter to Nov 1 onwards through the last complete day in the data
+    # Filter to Nov 1 onwards through the last day in the data (include partial days)
     sales_2025_full = sales_2025[(sales_2025['Day'] >= '2025-11-01') & 
                                   (sales_2025['Day'] <= last_complete_day)].copy()
+    
+    # Mark ONLY the last day as partial if it has significantly lower orders than recent trend
+    # Compare to the average of the previous 7 days (excluding the last day itself)
+    sales_2025_full['is_partial'] = False
+    if len(sales_2025_full) > 1:
+        last_day_mask = sales_2025_full['Day'] == sales_2025_full['Day'].max()
+        recent_7_days = sales_2025_full[~last_day_mask].tail(7)  # Exclude last day, get previous 7
+        recent_avg_orders = recent_7_days['Orders'].mean() if len(recent_7_days) > 0 else sales_2025_full['Orders'].mean()
+        last_day_orders = sales_2025_full.loc[last_day_mask, 'Orders'].iloc[0] if last_day_mask.any() else 0
+        # Mark as partial if last day has < 60% of recent average (suggests incomplete data)
+        if last_day_orders < (recent_avg_orders * 0.6):
+            sales_2025_full.loc[last_day_mask, 'is_partial'] = True
     sales_2025_full['total_spend'] = 0.0
     sales_2025_full['MER'] = 0.0
     
@@ -80,11 +104,13 @@ def load_all_data():
     
     # 2025 Northbeam Spend (November only to keep file size small)
     northbeam_file = DATA_DIR / "northbeam-2025-november.csv"
+    northbeam_date_range = "N/A"
     try:
         # Read with error handling for large multi-column CSVs
         nb_2025 = pd.read_csv(northbeam_file, on_bad_lines='skip', engine='python')
         nb_2025 = nb_2025[nb_2025['accounting_mode'] == 'Cash snapshot'].copy()
         nb_2025['date'] = pd.to_datetime(nb_2025['date'])
+        northbeam_date_range = f"{nb_2025['date'].min().strftime('%b %d')} - {nb_2025['date'].max().strftime('%b %d, %Y')}"
         nb_spend = nb_2025.groupby('date')['spend'].sum().reset_index()  # Column is 'spend', not 'ad_spend'
         nb_spend.columns = ['Day', 'total_spend']
     except Exception as e:
@@ -113,20 +139,44 @@ def load_all_data():
     except:
         emails_2025 = pd.DataFrame()  # Empty fallback
     
-    return sales_2024_full, sales_2025_full, emails_2024, emails_2025
+    return sales_2024_full, sales_2025_full, emails_2024, emails_2025, data_file_name, last_complete_day, northbeam_date_range
 
 # Load data
 try:
-    sales_2024_full, sales_2025_full, emails_2024, emails_2025 = load_all_data()
+    sales_2024_full, sales_2025_full, emails_2024, emails_2025, data_file_name, last_data_date, northbeam_date_range = load_all_data()
     data_loaded = True
     last_updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 except Exception as e:
     st.error(f"Error loading data: {e}")
     data_loaded = False
+    data_file_name = "N/A"
+    last_data_date = None
+    northbeam_date_range = "N/A"
+
+# Sidebar - Refresh Controls
+with st.sidebar:
+    st.header("🔄 Data Controls")
+    if st.button("Clear Cache & Refresh", type="primary"):
+        st.cache_data.clear()
+        st.rerun()
+    st.caption("Click to reload latest data")
+    st.markdown("---")
+    if data_loaded:
+        st.info(f"📁 **Sales Data:**\n{data_file_name}")
+        st.success(f"📅 **Sales Through:**\n{last_data_date.strftime('%B %d, %Y')}")
+        st.warning(f"💰 **Spend Data:**\n{northbeam_date_range}")
+        st.caption(f"⏰ Cache refreshes every 5 min")
 
 # Header
 st.title("📊 HigherDOSE BFCM Dashboard")
-st.markdown(f"**Last Updated:** {last_updated if data_loaded else 'N/A'}")
+col_a, col_b = st.columns(2)
+with col_a:
+    st.markdown(f"**Last Refreshed:** {last_updated if data_loaded else 'N/A'}")
+with col_b:
+    if data_loaded and last_data_date:
+        st.markdown(f"**Data Current Through:** {last_data_date.strftime('%B %d, %Y')}")
+    else:
+        st.markdown(f"**Data Current Through:** N/A")
 
 # Sale Start Date Callout
 col1, col2 = st.columns(2)
@@ -544,10 +594,11 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("**📊 2024 Daily Performance**")
-    st.caption(f"{len(sales_2024_full)} days | Nov 1 - Dec 2")
+    num_partial_2024 = sales_2024_full['is_partial'].sum() if 'is_partial' in sales_2024_full.columns else 0
+    st.caption(f"{len(sales_2024_full)} days | Nov 1 - Dec 2 • ⏳ = partial day")
     
     # Format for display
-    sales_2024_display = sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
+    sales_2024_display = sales_2024_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER', 'is_partial']].copy()
     
     # Sort by Day (datetime) first, descending (most recent first)
     sales_2024_display = sales_2024_display.sort_values('Day', ascending=False)
@@ -562,29 +613,36 @@ with col1:
     # Format MER to 2 decimal places
     sales_2024_display['MER'] = sales_2024_display['MER'].apply(lambda x: f"{x:.2f}x")
     
-    # Add sale marker
-    sales_2024_display[''] = sales_2024_display['Day'].apply(
-        lambda x: '🔥 SALE START' if x == SALE_START_2024 else ''
-    )
+    # Add sale marker and partial day indicator
+    def get_marker_2024(row):
+        if row['Day'] == SALE_START_2024:
+            return '🔥 SALE START'
+        elif row['is_partial']:
+            return '⏳ Partial'
+        else:
+            return ''
     
-    sales_2024_display = sales_2024_display.drop(columns=['Day', 'Total sales', 'total_spend'])
+    sales_2024_display[''] = sales_2024_display.apply(get_marker_2024, axis=1)
+    
+    sales_2024_display = sales_2024_display.drop(columns=['Day', 'Total sales', 'total_spend', 'is_partial'])
     sales_2024_display = sales_2024_display[['', 'Date', 'Sales (USD)', 'Orders', 'Spend (USD)', 'MER']]
     
     st.dataframe(
         sales_2024_display,
         use_container_width=True,
         hide_index=True,
-        height=400
+        height=600  # Increased height to show more rows
     )
 
 with col2:
     st.markdown("**📊 2025 Daily Performance**")
     # Show actual last day with data
     last_day_2025 = sales_2025_full['Day'].max() if len(sales_2025_full) > 0 else pd.Timestamp.now()
-    st.caption(f"{len(sales_2025_full)} days | Nov 1 - {last_day_2025.strftime('%b %d')} (complete days only)")
+    num_partial = sales_2025_full['is_partial'].sum() if 'is_partial' in sales_2025_full.columns else 0
+    st.caption(f"{len(sales_2025_full)} days | Nov 1 - {last_day_2025.strftime('%b %d')} • ⏳ = partial day")
     
     # Format for display
-    sales_2025_display = sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER']].copy()
+    sales_2025_display = sales_2025_full[['Day', 'Total sales', 'Orders', 'total_spend', 'MER', 'is_partial']].copy()
     
     # Sort by Day (datetime) first, descending (most recent first)
     sales_2025_display = sales_2025_display.sort_values('Day', ascending=False)
@@ -599,19 +657,25 @@ with col2:
     # Format MER to 2 decimal places
     sales_2025_display['MER'] = sales_2025_display['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "TBD")
     
-    # Add sale marker
-    sales_2025_display[''] = sales_2025_display['Day'].apply(
-        lambda x: '🔥 SALE START' if x == SALE_START_2025 else ''
-    )
+    # Add sale marker and partial day indicator
+    def get_marker(row):
+        if row['Day'] == SALE_START_2025:
+            return '🔥 SALE START'
+        elif row['is_partial']:
+            return '⏳ Partial'
+        else:
+            return ''
     
-    sales_2025_display = sales_2025_display.drop(columns=['Day', 'Total sales', 'total_spend'])
+    sales_2025_display[''] = sales_2025_display.apply(get_marker, axis=1)
+    
+    sales_2025_display = sales_2025_display.drop(columns=['Day', 'Total sales', 'total_spend', 'is_partial'])
     sales_2025_display = sales_2025_display[['', 'Date', 'Sales (USD)', 'Orders', 'Spend (USD)', 'MER']]
     
     st.dataframe(
         sales_2025_display,
         use_container_width=True,
         hide_index=True,
-        height=400
+        height=600  # Increased height to show more rows
     )
 
 st.markdown("---")
@@ -670,7 +734,7 @@ with col1:
             emails_2024_display[final_cols] if final_cols else emails_2024_display,
             use_container_width=True,
             hide_index=True,
-            height=500
+            height=600  # Increased for better visibility
         )
     else:
         st.info("No 2024 email campaigns found")
@@ -732,12 +796,15 @@ with col2:
             emails_2025_display[final_cols] if final_cols else emails_2025_display,
             use_container_width=True,
             hide_index=True,
-            height=500
+            height=600  # Increased for better visibility
         )
     else:
         st.info("No 2025 email campaigns found")
 
 # Footer
 st.markdown("---")
-st.caption("🔄 Data refreshes every 6 hours • Built with Streamlit")
+if data_loaded:
+    st.caption(f"🔄 Auto-refresh every 5 min • Sales: {data_file_name} • Spend: {northbeam_date_range} • Built with Streamlit")
+else:
+    st.caption("🔄 Auto-refresh every 5 min • Built with Streamlit")
 
