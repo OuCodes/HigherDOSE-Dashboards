@@ -10,7 +10,7 @@ from pathlib import Path
 
 # Paths
 DATA_DIR = Path(__file__).parent.parent / "data" / "ads"
-INPUT_FILE = DATA_DIR / "ytd_sales_data-higher_dose_llc-2025_10_07_22_43_36.csv"
+INPUT_FILE = DATA_DIR / "ytd_sales_data-higher_dose_llc-2025_12_01_00_45_35.csv"
 OUTPUT_FILE = DATA_DIR / "northbeam-2025-november.csv"
 
 def main():
