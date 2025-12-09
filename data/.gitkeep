@@ -1,0 +1,2 @@
+# This file keeps the data directory in git
+# Actual data files are ignored but can be uploaded via Streamlit Cloud secrets or mounted volumes
