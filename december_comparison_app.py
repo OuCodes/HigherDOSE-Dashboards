@@ -80,28 +80,22 @@ def load_core_data():
             df["Day"] = pd.to_datetime(df["Day"])
             df["Month"] = df["Day"].dt.to_period("M")
     
-    # GA4 traffic data
-    ga4_2024_files = sorted(EXEC_SUM_DIR.glob("daily-traffic_acquisition_Session_default_channel_group-2024-*.csv"))
-    ga4_2025_files = sorted(EXEC_SUM_DIR.glob("daily-traffic_acquisition_Session_default_channel_group-2025-*.csv"))
-    
-    if ga4_2024_files:
-        ga4_2024 = pd.read_csv(ga4_2024_files[-1], comment="#")
+    # Shopify Sessions data (replacing GA4)
+    # 2024 sessions - check if we have Shopify sessions file for 2024
+    shopify_sessions_2024_file = EXEC_SUM_DIR / "Sessions over time - 2024-01-01 - 2024-12-31.csv"
+    if shopify_sessions_2024_file.exists():
+        shopify_sessions_2024 = pd.read_csv(shopify_sessions_2024_file)
+        shopify_sessions_2024["Day"] = pd.to_datetime(shopify_sessions_2024["Day"])
     else:
-        ga4_2024 = pd.DataFrame()
+        shopify_sessions_2024 = pd.DataFrame()
     
-    if ga4_2025_files:
-        ga4_2025 = pd.read_csv(ga4_2025_files[-1])
+    # 2025 sessions - find most recent
+    shopify_sessions_2025_files = sorted(EXEC_SUM_DIR.glob("Sessions over time - OU - 2025-*.csv"))
+    if shopify_sessions_2025_files:
+        shopify_sessions_2025 = pd.read_csv(shopify_sessions_2025_files[-1])
+        shopify_sessions_2025["Day"] = pd.to_datetime(shopify_sessions_2025["Day"])
     else:
-        ga4_2025 = pd.DataFrame()
-    
-    # Parse GA4 dates
-    if len(ga4_2024) > 0:
-        ga4_2024["Date"] = pd.to_datetime(ga4_2024["Date"].astype(str), format="%Y%m%d", errors='coerce')
-        ga4_2024["Month"] = ga4_2024["Date"].dt.to_period("M")
-    
-    if len(ga4_2025) > 0:
-        ga4_2025["Date"] = pd.to_datetime(ga4_2025["Date"], errors='coerce')
-        ga4_2025["Month"] = ga4_2025["Date"].dt.to_period("M")
+        shopify_sessions_2025 = pd.DataFrame()
     
     # Meta daily exports
     meta_2024_file = ADS_DIR / "weekly-report-2024-ads" / "meta-daily-export-jan-1-2024-to-dec-31-2024.csv"
@@ -200,8 +194,8 @@ def load_core_data():
     return {
         "sales_2024": sales_2024,
         "sales_2025": sales_2025,
-        "ga4_2024": ga4_2024,
-        "ga4_2025": ga4_2025,
+        "shopify_sessions_2024": shopify_sessions_2024,
+        "shopify_sessions_2025": shopify_sessions_2025,
         "meta_2024": meta_2024,
         "meta_2025": meta_2025,
         "google_2024": google_2024,
@@ -339,19 +333,19 @@ def december_core_metrics(start_date, end_date):
     orders24 = dec24["Orders"].sum()
     orders25 = dec25["Orders"].sum()
     
-    # GA4 Sessions
-    g24 = data["ga4_2024"]
-    g25 = data["ga4_2025"]
+    # Shopify Sessions (replacing GA4)
+    shopify_sess_24 = data.get("shopify_sessions_2024", pd.DataFrame())
+    shopify_sess_25 = data.get("shopify_sessions_2025", pd.DataFrame())
     
-    if len(g24) > 0:
-        ga24 = g24[(g24["Date"] >= start_2024) & (g24["Date"] <= end_2024)]
-        sess24 = ga24["Sessions"].sum() if "Sessions" in ga24.columns else 0
+    if len(shopify_sess_24) > 0:
+        sess_24_filtered = shopify_sess_24[(shopify_sess_24["Day"] >= start_2024) & (shopify_sess_24["Day"] <= end_2024)]
+        sess24 = sess_24_filtered["Sessions"].sum() if "Sessions" in sess_24_filtered.columns else 0
     else:
         sess24 = 0
     
-    if len(g25) > 0:
-        ga25 = g25[(g25["Date"] >= start_2025) & (g25["Date"] <= end_2025)]
-        sess25 = ga25["Sessions"].sum() if "Sessions" in ga25.columns else 0
+    if len(shopify_sess_25) > 0:
+        sess_25_filtered = shopify_sess_25[(shopify_sess_25["Day"] >= start_2025) & (shopify_sess_25["Day"] <= end_2025)]
+        sess25 = sess_25_filtered["Sessions"].sum() if "Sessions" in sess_25_filtered.columns else 0
     else:
         sess25 = 0
     
@@ -480,11 +474,11 @@ with col3:
 
 with col4:
     st.metric(
-        "GA4 Sessions 2024",
+        "Shopify Sessions 2024",
         f"{core['sess24']:,.0f}" if core['sess24'] > 0 else "N/A",
     )
     st.metric(
-        "GA4 Sessions 2025",
+        "Shopify Sessions 2025",
         f"{core['sess25']:,.0f}" if core['sess25'] > 0 else "N/A",
         f"{_pct_change(core['sess25'], core['sess24']):+.1f}% YoY" if core['sess24'] > 0 and core['sess25'] > 0 else "N/A",
     )
