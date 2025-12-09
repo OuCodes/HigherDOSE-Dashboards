@@ -1,0 +1,856 @@
+1
+00:00:00,029 --> 00:00:01,069
+getting to those goals.
+
+2
+00:00:02,490 --> 00:00:03,250
+Is that my sense?
+
+3
+00:00:04,371 --> 00:00:08,152
+And the platform breakdown.
+
+4
+00:00:10,113 --> 00:00:12,073
+That's in historicals.
+
+5
+00:00:12,233 --> 00:00:12,494
+OK.
+
+6
+00:00:12,874 --> 00:00:22,477
+And then would we keep those percentages based off of the historicals or what we're seeing train like because obviously, Google and Meta have been like 50% the last 30 days.
+
+7
+00:00:23,198 --> 00:00:29,200
+Do not do not use the historicals as anything but a spend reference.
+
+8
+00:00:30,827 --> 00:00:39,192
+for like the growth changes and you can that like because that's the whole thing is like I don't want our strategy to be grounded in historical strategy.
+
+9
+00:00:39,212 --> 00:00:41,493
+I don't think we're going to get to where we want to be that way.
+
+10
+00:00:43,754 --> 00:00:50,578
+So once we know where we're going and what we need to happen, then we can sort of fine tune how we get there.
+
+11
+00:00:53,584 --> 00:00:58,405
+And then you'll have like, you know, the actually, let me move these into here.
+
+12
+00:00:59,406 --> 00:01:04,587
+June goes into Q2.
+
+13
+00:01:06,268 --> 00:01:08,268
+And then July gets Q3.
+
+14
+00:01:11,009 --> 00:01:12,309
+Does this make sense of what I'm doing?
+
+15
+00:01:13,590 --> 00:01:15,390
+Yeah.
+
+16
+00:01:15,570 --> 00:01:17,771
+And then you'll basically have one of these
+
+17
+00:01:20,202 --> 00:01:23,303
+You don't need to go into individual month by month unless you want to.
+
+18
+00:01:23,323 --> 00:01:24,403
+It might be helpful.
+
+19
+00:01:24,463 --> 00:01:25,563
+I don't know your processes.
+
+20
+00:01:26,683 --> 00:01:36,805
+And then just so you know, when I build these, I just carry over the direct and organic from the previous year, just as reference, because we don't know what that's going to do.
+
+21
+00:01:39,905 --> 00:01:42,246
+We can build the month by month together if you want to.
+
+22
+00:01:43,346 --> 00:01:48,327
+So yeah, now that you know like what I'm trying to do, what part of it do you feel like you can take on?
+
+23
+00:01:49,417 --> 00:01:54,763
+Yeah, the definitely the Q1 or Q4 summaries, like that all makes sense.
+
+24
+00:01:54,823 --> 00:01:56,725
+I mean, obviously, I'll just be adding the last few.
+
+25
+00:01:59,326 --> 00:02:19,153
+I would say like just the channel breakdown would be the only thing I'm like a little iffy on just cuz I really stab at it don't know like I'm definitely confident and taking a stab at it but I wouldn't want to review it and just see like what you think would be best as well cuz even just getting a glimpse into it the other day when you're coming up with not a spin for the month of July.
+
+26
+00:02:20,613 --> 00:02:24,536
+and just figure out the channel, like what do we want channel performance to be?
+
+27
+00:02:24,556 --> 00:02:28,398
+So that was insightful, but just want to make sure we're aligned there.
+
+28
+00:02:28,538 --> 00:02:31,780
+But yeah, I think the summary is, I'll be able to do it.
+
+29
+00:02:31,800 --> 00:02:39,365
+Yeah, and honestly, I think the part that you're saying you need help with is the part that's the most, is gonna have the most fluctuation.
+
+30
+00:02:39,505 --> 00:02:42,987
+And I also don't think it makes sense for us to do it in a vacuum without Sharma.
+
+31
+00:02:44,088 --> 00:02:47,610
+So what I would do, and actually this is, I think I did this for June, okay.
+
+32
+00:02:49,131 --> 00:02:51,672
+in these individual summaries, and then we can probably do it.
+
+33
+00:02:52,213 --> 00:02:55,054
+Yeah, so like in here, so let's just do this now for July.
+
+34
+00:02:55,074 --> 00:02:59,156
+It's actually paid search is what I'm going to call this.
+
+35
+00:02:59,276 --> 00:03:02,338
+And then this will be, oh, whoops, this is paid social.
+
+36
+00:03:03,799 --> 00:03:05,059
+And then there's paid search.
+
+37
+00:03:06,580 --> 00:03:16,125
+And then actually there should be lead gen or like, what are we calling this?
+
+38
+00:03:16,645 --> 00:03:17,946
+Gen, like,
+
+39
+00:03:22,455 --> 00:03:24,296
+Demand Gen is my brain.
+
+40
+00:03:26,958 --> 00:03:30,000
+So that's like, Demand Gen is all the top of funnel.
+
+41
+00:03:33,242 --> 00:03:33,482
+Right?
+
+42
+00:03:33,502 --> 00:03:38,045
+So for YouTube, right?
+
+43
+00:03:38,165 --> 00:03:39,526
+Like that's paid.
+
+44
+00:03:39,746 --> 00:03:41,347
+That's what they call it on YouTube.
+
+45
+00:03:42,288 --> 00:03:50,554
+But like, we can also use Demand Gen on CTV.
+
+46
+00:03:50,814 --> 00:03:51,114
+That's it.
+
+47
+00:03:54,082 --> 00:04:08,044
+And I would say for me, this whole bucket is like your awareness bucket and like the things that are not strictly tied to like a row as it is meant to like fuel the ecosystem.
+
+48
+00:04:09,245 --> 00:04:13,885
+These two are like the more row as and cack oriented.
+
+49
+00:04:13,905 --> 00:04:16,026
+So that might might help you.
+
+50
+00:04:16,146 --> 00:04:21,827
+Again, I actually don't care that much about you making this perfect like these.
+
+51
+00:04:24,557 --> 00:04:25,718
+separations perfect.
+
+52
+00:04:25,858 --> 00:04:34,765
+It's more like, here's how much money we have to spend, here's how much affiliate gets, and here's how much charmer gets, or we get when we manage the other channels.
+
+53
+00:04:37,007 --> 00:04:37,287
+Okay.
+
+54
+00:04:39,348 --> 00:04:41,910
+Okay, so let's just, yeah, take a stab at this.
+
+55
+00:04:43,752 --> 00:04:46,874
+Let me, want me to input directly.
+
+56
+00:04:48,876 --> 00:04:54,200
+Just here, here, and I'll input.
+
+57
+00:05:02,346 --> 00:05:05,548
+But Chris is going to give me those numbers right now, and then I'll input them.
+
+58
+00:05:14,412 --> 00:05:14,992
+How are you doing?
+
+59
+00:05:15,412 --> 00:05:16,312
+Good, good, good, good.
+
+60
+00:05:16,633 --> 00:05:17,393
+That's something.
+
+61
+00:05:17,493 --> 00:05:19,034
+It won't make sense.
+
+62
+00:05:20,254 --> 00:05:21,475
+Not too overwhelming, so.
+
+63
+00:05:22,495 --> 00:05:22,855
+Okay.
+
+64
+00:05:22,915 --> 00:05:22,995
+Cool.
+
+65
+00:05:23,015 --> 00:05:23,856
+Are you good?
+
+66
+00:05:26,097 --> 00:05:26,237
+Cool.
+
+67
+00:05:28,240 --> 00:05:33,867
+Um, and then I always obviously just like keep track of these efficiencies.
+
+68
+00:05:33,887 --> 00:05:42,578
+Oh, my husband like unplugged my computer.
+
+69
+00:05:54,674 --> 00:06:05,422
+Yeah, let's start here and then I'll create a separate conversation around, around Amazon.
+
+70
+00:06:05,442 --> 00:06:16,310
+Yeah, because I noticed that I was on that weekly report, but I didn't have any like, I didn't have a tool to kind of view that performance or any log ins either.
+
+71
+00:06:17,890 --> 00:06:24,956
+Yeah, so Amazon, just while Chris is doing this, Amazon is interesting because we sell to a reseller.
+
+72
+00:06:25,076 --> 00:06:28,179
+So we basically have like, it's run like a wholesale.
+
+73
+00:06:34,977 --> 00:06:35,397
+partner.
+
+74
+00:06:37,139 --> 00:06:38,220
+That might change.
+
+75
+00:06:38,560 --> 00:06:41,883
+I had a really good conversation with another agency.
+
+76
+00:06:41,903 --> 00:06:43,844
+I like this current one.
+
+77
+00:06:43,904 --> 00:06:49,549
+It's just the unit economics are starting to not make as much sense because it's grown it.
+
+78
+00:06:51,991 --> 00:06:56,835
+So it's possible that we take it in-house but have a sort of 3P
+
+79
+00:06:58,888 --> 00:07:03,230
+partner, how experienced are you on Amazon?
+
+80
+00:07:03,270 --> 00:07:10,795
+So I've always had partners on Amazon, never really directly managing myself, but I'm familiar with the wholesale process through talking through them.
+
+81
+00:07:12,376 --> 00:07:20,360
+But they've all directly managed it and kind of handled logistics, making sure the product and stuff is there.
+
+82
+00:07:20,400 --> 00:07:25,043
+So definitely never manage it, but familiar with how it plays into the ecosystem.
+
+83
+00:07:26,067 --> 00:07:26,367
+Yeah.
+
+84
+00:07:26,788 --> 00:07:30,210
+So I think for now, I can keep just managing it for now.
+
+85
+00:07:30,270 --> 00:07:33,532
+And then I think the D2C one is the one I need the most help with.
+
+86
+00:07:34,292 --> 00:07:35,553
+So we can focus on that.
+
+87
+00:07:35,573 --> 00:07:41,296
+And then I'll add you in if we make a major change or something.
+
+88
+00:07:42,217 --> 00:07:42,797
+OK.
+
+89
+00:07:42,937 --> 00:07:55,645
+And then I can also work on getting those CRM inputs for you for each month, because you're not going to have that.
+
+90
+00:07:56,172 --> 00:07:56,413
+here.
+
+91
+00:07:56,433 --> 00:08:01,123
+Cool CRM and what would the CRM
+
+92
+00:08:02,970 --> 00:08:04,812
+That's just like email and SMS.
+
+93
+00:08:04,872 --> 00:08:11,337
+So we come from claveo and attentive and then we just move to post script, but that won't have any of the historicals.
+
+94
+00:08:11,357 --> 00:08:13,779
+I think a half access to the claveo and attentive.
+
+95
+00:08:14,400 --> 00:08:14,760
+Oh, you do.
+
+96
+00:08:14,820 --> 00:08:15,040
+Okay.
+
+97
+00:08:15,060 --> 00:08:15,301
+Great.
+
+98
+00:08:15,341 --> 00:08:19,064
+So we're going to be good there where I can pull it from Northland to Rural.
+
+99
+00:08:19,084 --> 00:08:22,467
+I mean, we want platform reported revenue, right?
+
+100
+00:08:22,487 --> 00:08:25,189
+So it makes these reports the easiest.
+
+101
+00:08:25,309 --> 00:08:25,810
+Definitely.
+
+102
+00:08:26,210 --> 00:08:26,630
+Definitely.
+
+103
+00:08:26,730 --> 00:08:27,171
+And then, um,
+
+104
+00:08:29,588 --> 00:08:45,059
+The only thing with CRM, you can confirm this, but like for July, I'm pretty sure I used the Shopify reported revenue versus the Clavio because the Shopify one is the most conservative.
+
+105
+00:08:45,119 --> 00:08:46,299
+It's like the last click.
+
+106
+00:08:47,800 --> 00:08:48,741
+But I can't.
+
+107
+00:08:48,781 --> 00:08:51,103
+How's revenue reporting for Clavio?
+
+108
+00:08:52,143 --> 00:08:52,464
+Yes.
+
+109
+00:08:57,011 --> 00:08:59,753
+Let me actually see what I used.
+
+110
+00:09:11,662 --> 00:09:12,783
+I'm wondering if I have it here.
+
+111
+00:09:13,424 --> 00:09:19,328
+There's a marketing channels report and other marketing and attribution.
+
+112
+00:09:20,409 --> 00:09:21,290
+Does that sound familiar?
+
+113
+00:09:22,471 --> 00:09:23,472
+Oh, um, here.
+
+114
+00:09:23,612 --> 00:09:24,693
+Share your screen with me here.
+
+115
+00:09:24,733 --> 00:09:25,253
+I'll stop sharing.
+
+116
+00:09:39,415 --> 00:09:48,162
+Yes, so you can just like do Clavio just make sure that you're using all of the iterations or maybe like more than one.
+
+117
+00:09:48,182 --> 00:09:53,087
+And then there's also in the analytics, there's like sales buy refer.
+
+118
+00:09:53,107 --> 00:09:57,891
+But no, I think you're right with the marketing channel.
+
+119
+00:09:58,091 --> 00:09:59,112
+That's going to be the cleanest.
+
+120
+00:10:04,952 --> 00:10:06,512
+Marking attribution.
+
+121
+00:10:07,233 --> 00:10:17,455
+Yeah, I'm looking at it too on my own thing.
+
+122
+00:10:25,738 --> 00:10:27,378
+There's a few different ones.
+
+123
+00:10:27,398 --> 00:10:34,180
+Yeah, Marking attribution might wrap them all into one so not to filter down to it, but I'll swap in some both.
+
+124
+00:10:35,706 --> 00:10:44,571
+Yeah, you can also just ask Hannah at Sharma who does our CRM.
+
+125
+00:10:50,354 --> 00:10:52,955
+But I'm pretty sure I used the Shopify number.
+
+126
+00:10:54,156 --> 00:10:55,396
+And I think Hannah just gave it to me.
+
+127
+00:10:55,436 --> 00:10:56,637
+So yeah, here's Clevio.
+
+128
+00:11:05,626 --> 00:11:07,548
+Let me actually go out for computers and soul.
+
+129
+00:11:08,649 --> 00:11:17,358
+Hmm, last year.
+
+130
+00:11:31,940 --> 00:11:32,601
+time.
+
+131
+00:11:34,302 --> 00:11:35,422
+So yeah, here we go.
+
+132
+00:11:38,625 --> 00:11:39,465
+Flavio.
+
+133
+00:11:40,846 --> 00:11:42,627
+Oh, see, this is saying 90.
+
+134
+00:11:42,767 --> 00:11:43,048
+Oh, right.
+
+135
+00:11:43,068 --> 00:11:44,889
+It would be clavio and then attentive.
+
+136
+00:11:45,789 --> 00:11:59,158
+So I probably did that 90 plus whatever we can get there.
+
+137
+00:11:59,218 --> 00:11:59,479
+Let's see.
+
+138
+00:11:59,519 --> 00:12:00,059
+Did Christopher
+
+139
+00:12:32,883 --> 00:12:38,006
+Okay, and then for these guys, let me show you guys.
+
+140
+00:12:43,254 --> 00:12:46,317
+You can just use GA4 for the direct and organic.
+
+141
+00:12:46,957 --> 00:12:47,257
+Okay.
+
+142
+00:12:48,979 --> 00:12:52,421
+And I just pull a revenue from those channels from direct and organic.
+
+143
+00:12:53,422 --> 00:12:53,723
+Okay.
+
+144
+00:12:54,944 --> 00:12:55,544
+Perreference.
+
+145
+00:12:55,564 --> 00:12:56,605
+Does that make sense?
+
+146
+00:12:56,705 --> 00:12:57,506
+Yeah, that makes sense.
+
+147
+00:13:05,192 --> 00:13:06,353
+Jordan, you're a mute.
+
+148
+00:13:08,575 --> 00:13:09,695
+Yeah, no, it makes sense.
+
+149
+00:13:09,736 --> 00:13:10,176
+We're good to go.
+
+150
+00:13:11,215 --> 00:13:12,857
+Okay, okay, cool.
+
+151
+00:13:12,897 --> 00:13:15,760
+Chris hasn't gotten back to me, but yeah, this is the exercise.
+
+152
+00:13:16,881 --> 00:13:19,924
+So kind of like look at the last year and then look at this year.
+
+153
+00:13:20,024 --> 00:13:27,231
+And then that's also really good grounding for you too of like what basically drove each month.
+
+154
+00:13:27,251 --> 00:13:31,955
+We've also added a bunch of new channels and stuff like that.
+
+155
+00:13:32,035 --> 00:13:35,339
+So it'll get a little bit more interesting.
+
+156
+00:13:36,280 --> 00:13:41,829
+I also have anesthesia, so I'm going to give the affiliate investment parts here.
+
+157
+00:13:41,849 --> 00:13:46,456
+Anesthesia handles the affiliate relationships.
+
+158
+00:13:46,797 --> 00:13:47,177
+Yeah.
+
+159
+00:13:47,238 --> 00:13:47,338
+OK.
+
+160
+00:13:51,610 --> 00:13:53,072
+Okay, anything else you need for me?
+
+161
+00:13:53,552 --> 00:13:55,934
+I just want to walk through, make sure I understand correctly.
+
+162
+00:13:56,055 --> 00:14:05,944
+So looking at the worksheet or historicals to get historical data to pull in to Q1 through Q4 or Q3 through Q4 summaries.
+
+163
+00:14:07,085 --> 00:14:08,487
+Looking at 2022, 2023 or 23, 24, 25 of the last three years.
+
+164
+00:14:13,271 --> 00:14:20,053
+We want growth from year over year, approximately 20% is kind of what we're projecting for the future months.
+
+165
+00:14:20,473 --> 00:14:26,175
+And then also looking at channel breakdown performance and getting some budgets there too.
+
+166
+00:14:26,255 --> 00:14:34,637
+But what's really important is the overall budget for each quarter so that we know what we're working with.
+
+167
+00:14:34,957 --> 00:14:37,178
+Exactly, so I would start.
+
+168
+00:14:38,286 --> 00:14:39,366
+here, right?
+
+169
+00:14:39,566 --> 00:14:45,367
+I like go into, you'll actually have the historicals all here.
+
+170
+00:14:45,387 --> 00:15:02,151
+And then we just need to, so let me actually, just to stop from being confusing, I'm going to delete this, because we don't have these actuals yet.
+
+171
+00:15:09,761 --> 00:15:18,863
+And you're gonna, I wouldn't even put these actuals in here until we have them.
+
+172
+00:15:19,203 --> 00:15:23,344
+So like leave this sheet just with like what really happened.
+
+173
+00:15:24,544 --> 00:15:33,166
+And then use our Q2 and then the monthlies, you know, Q3, Q4 and then the monthlies for the projections.
+
+174
+00:15:34,952 --> 00:15:35,813
+So you'll have this.
+
+175
+00:15:36,213 --> 00:15:42,478
+I'm going to put in the actuals so that you can determine.
+
+176
+00:15:42,498 --> 00:15:42,538
+OK.
+
+177
+00:15:47,222 --> 00:15:47,502
+Lean.
+
+178
+00:15:47,702 --> 00:15:48,323
+Good, good, good.
+
+179
+00:15:53,947 --> 00:15:56,910
+And this is also set up by PPC and affiliate.
+
+180
+00:15:56,930 --> 00:15:57,750
+This is so annoying.
+
+181
+00:15:57,810 --> 00:15:58,451
+This is old.
+
+182
+00:16:00,853 --> 00:16:03,355
+You're really actually going to do, it's this one.
+
+183
+00:16:04,864 --> 00:16:09,328
+a combined is this breaks up to oops.
+
+184
+00:16:27,046 --> 00:16:28,327
+Because this is really what you need.
+
+185
+00:16:34,821 --> 00:16:37,562
+sales and then combine spend.
+
+186
+00:16:37,582 --> 00:16:49,605
+You may end up wanting to recreate this really.
+
+187
+00:16:50,065 --> 00:16:50,505
+I don't know.
+
+188
+00:16:51,526 --> 00:16:52,866
+Sorry, I'm thinking about this out loud.
+
+189
+00:17:17,785 --> 00:17:19,913
+Chris went in to all these stupid formulas.
+
+190
+00:18:30,098 --> 00:18:38,961
+And then actually what maybe we're missing here is like here to date on these quarterly ones because this will be your summary.
+
+191
+00:18:41,104 --> 00:18:47,128
+sales, spend, percent of gold.
+
+192
+00:18:47,148 --> 00:18:51,911
+Are you filming?
+
+193
+00:18:52,031 --> 00:18:54,713
+Yeah.
+
+194
+00:18:54,733 --> 00:18:59,816
+So you're going to try to fix how close or far are we?
+
+195
+00:19:00,196 --> 00:19:01,717
+You'll need all the summaries.
+
+196
+00:19:08,331 --> 00:19:19,000
+And then just in terms of like projection language versus actuals, whenever you do a projection, just put in a different color or like highlight the cell or something like that.
+
+197
+00:19:19,101 --> 00:19:20,121
+So it just keeps it clean.
+
+198
+00:19:23,624 --> 00:19:31,852
+And then we'll probably just need one of these for each month within that quarter.
+
+199
+00:19:31,872 --> 00:19:34,334
+Let me just make them now.
+
+200
+00:20:11,626 --> 00:20:15,967
+And you for these the individual month ones you just need 24 and there you don't need 23.
+
+201
+00:20:45,489 --> 00:20:47,410
+And then this is what we get to Sharma too.
+
+202
+00:21:25,319 --> 00:21:27,060
+that everything I do is now just make sense.
+
+203
+00:21:38,663 --> 00:21:50,227
+I only started this in June because we were like ramping up and everything was kind of chaotic, but now it'll help.
+
+204
+00:21:52,952 --> 00:21:53,152
+Okay.
+
+205
+00:21:53,873 --> 00:21:54,715
+I think we're good.
+
+206
+00:21:54,735 --> 00:21:55,696
+Let's check if Chris.
+
+207
+00:21:56,097 --> 00:21:56,757
+No, we are all right.
+
+208
+00:21:56,818 --> 00:21:58,139
+I'll just put it in when Chris ends it.
+
+209
+00:21:58,961 --> 00:21:59,842
+Sounds good.
+
+210
+00:21:59,882 --> 00:22:02,205
+Let me know when that's when.
+
+211
+00:22:02,365 --> 00:22:03,387
+Thank you.
+
+212
+00:22:04,228 --> 00:22:04,508
+All right.
+
+213
+00:22:04,669 --> 00:22:05,129
+Talk soon.
+
+214
+00:22:05,209 --> 00:22:05,830
+I'll go.
+

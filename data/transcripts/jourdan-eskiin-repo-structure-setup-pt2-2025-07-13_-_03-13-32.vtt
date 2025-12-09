@@ -1,0 +1,1223 @@
+WEBVTT
+
+00:00.469 --> 00:06.010
+Okay, so this is the process for actually creating a repo, and I'm going to try and do this part from scratch.
+
+00:06.330 --> 00:09.691
+I may run into an issue with the 2FA, I think, and I just thought about it.
+
+00:10.231 --> 00:28.195
+But basically, I have this new repo repository that I've created for easily creating new repos, and I'm going to run Python and say repo underscore new, because that's the Python script I want to run, and then I'll ask Jordan questions on this.
+
+00:28.215 --> 00:28.815
+I want to put it
+
+00:29.435 --> 00:32.917
+It says enter the local parent folder for the repo code.
+
+00:33.097 --> 00:34.178
+This is going to be research.
+
+00:35.239 --> 00:38.841
+Instead of a tool, add the name of the repo.
+
+00:38.901 --> 00:43.604
+So what's the name of the company you're going to be working with?
+
+00:43.664 --> 00:44.465
+Higher Dose.
+
+00:44.485 --> 00:45.665
+H-I-G-H-E-R-D-O-S-E.
+
+00:45.685 --> 00:46.546
+Okay.
+
+00:47.307 --> 00:49.488
+And hire all of them.
+
+00:49.728 --> 00:50.569
+All one word.
+
+00:51.589 --> 00:52.590
+Dose is capitalized.
+
+00:55.228 --> 00:56.372
+Oh, D-O-S-E, okay.
+
+00:56.995 --> 01:00.228
+It doesn't matter, but I'm going to capitalize it that way just because.
+
+01:12.742 --> 01:14.162
+Okay, I'm going to leave it.
+
+01:14.203 --> 01:16.763
+So I have a bunch of defaults here in this script as I'm running it.
+
+01:16.803 --> 01:19.084
+So if you see here in gray, it says default.
+
+01:19.684 --> 01:20.465
+I'm just going to hit enter.
+
+01:21.345 --> 01:23.286
+Is this repo for an organization or a user?
+
+01:23.366 --> 01:30.568
+Right now it's a user, but like you could technically create a new org per project or a new org to house all of these projects.
+
+01:30.668 --> 01:32.369
+I just keep it at the user level if it's simple.
+
+01:32.769 --> 01:35.010
+And then I'll create orgs as things get a little bit more complicated.
+
+01:35.070 --> 01:36.150
+In this case, I'm just going to go user.
+
+01:36.170 --> 01:37.130
+I'm going to leave it private.
+
+01:37.411 --> 01:38.451
+That's the default right now.
+
+01:38.931 --> 01:43.092
+Public means like all the code that you commit will get seen by other people and picked up by bots eventually.
+
+01:45.613 --> 01:57.136
+In your case, it would be OU codes, but I don't have access to your 2FA thing, so I'm just going to put in, in this case, ChrisGHCodes, which is a username I set up specifically for this.
+
+01:57.877 --> 02:05.479
+Same thing for my git name, because this is just every time I make a commit and I hit that git log that I showed you earlier, this is the username that will be associated with that.
+
+02:06.019 --> 02:09.663
+And then same thing, this is the email that will be associated with the commits.
+
+02:09.823 --> 02:16.631
+This is important to know because if you ever make this repo public or try and share the code, this username and email will be shared with whoever it is.
+
+02:16.731 --> 02:20.354
+So if you have like alts that you want to make stuff under, just be mindful as you're making these repos.
+
+02:20.655 --> 02:24.118
+That stuff can be changed later, so it's not a huge deal, but it helps to know.
+
+02:25.819 --> 02:29.622
+Okay, now I have to open the browser associated with this.
+
+02:30.042 --> 02:34.705
+So I'm going to actually close this one, open this one, go to GitHub.
+
+02:34.725 --> 02:35.626
+I may or may not be signed in.
+
+02:35.686 --> 02:36.366
+I am signed in.
+
+02:36.727 --> 02:38.828
+So I go back and hit enter to continue.
+
+02:39.409 --> 02:47.274
+It runs in the background a couple of cool things that basically set up a repo for you, make sure you're logged in, so on and so forth.
+
+02:47.294 --> 02:51.217
+I should be logging out, but I'm not.
+
+02:53.163 --> 02:53.503
+Oh, I did.
+
+02:53.543 --> 02:53.763
+Okay.
+
+02:53.803 --> 02:55.124
+I changed the functionality to some of that.
+
+02:55.144 --> 02:55.544
+Okay.
+
+02:55.744 --> 02:57.305
+So that being said.
+
+02:57.325 --> 03:04.588
+Okay.
+
+03:04.749 --> 03:06.289
+I mean, the one I want is at the top.
+
+03:06.309 --> 03:06.990
+So I'm going to go here.
+
+03:07.010 --> 03:07.570
+Oh, whoops.
+
+03:08.911 --> 03:14.393
+It says open the, press enter to open that link in the browser.
+
+03:14.453 --> 03:16.574
+It just needs to be the relevant browser that you want it to be.
+
+03:16.754 --> 03:19.936
+I'm actually going to move it over to the first desktop just in case, because I don't want no smoke.
+
+03:22.714 --> 03:23.354
+Then hit enter.
+
+03:24.174 --> 03:24.995
+It opens this link.
+
+03:25.075 --> 03:25.955
+I have to hit continue.
+
+03:26.755 --> 03:28.516
+Paste in the code that was from the CLI.
+
+03:28.536 --> 03:30.616
+Hit authorize GitHub.
+
+03:30.696 --> 03:32.677
+And this is where it asked me for my 2FA.
+
+03:32.697 --> 03:35.998
+And nice.
+
+03:36.418 --> 03:36.718
+Okay.
+
+03:36.978 --> 03:38.159
+It looks like I won't have issues.
+
+03:39.419 --> 03:39.899
+Okay, good.
+
+03:40.620 --> 03:42.460
+So that does what it needs to do.
+
+03:42.580 --> 03:43.961
+And then I can go back to the
+
+03:46.923 --> 03:49.585
+Please transcribe in clear, punctuated English, preserving speaker turns.
+
+04:03.246 --> 04:04.907
+It now is creating everything automatically.
+
+04:04.927 --> 04:05.968
+I don't have to touch anything else.
+
+04:06.048 --> 04:12.834
+What that did was create a repository in the cloud on github.com, as well as on my local computer under whatever folder I told it to make.
+
+04:13.194 --> 04:21.041
+So in this case, I can go to code, research, and I should be able to type in HI for higher dose and then autocomplete it.
+
+04:21.241 --> 04:22.202
+And now we're in the repo.
+
+04:22.943 --> 04:26.946
+And the only thing there is a README file, which is automatically created by default.
+
+04:27.567 --> 04:30.809
+This is like the basis for the repo that we kind of like need.
+
+04:33.051 --> 04:37.855
+So now pretty much begins the questions.
+
+04:38.015 --> 04:42.619
+So I go over to Cursor or VS Code or whatever IDE you're using at the moment.
+
+04:43.060 --> 04:47.103
+Again, I think Cursor is probably the best one for the value, but there's lots of other options out there.
+
+04:47.123 --> 04:49.845
+So you don't necessarily need to be confined to Cursor.
+
+04:50.186 --> 04:51.106
+It's just kind of like what I know.
+
+04:51.587 --> 04:57.952
+And I'm going to hit open, go over to my code folder, back to research where you were, and then go to higher dose.
+
+04:58.212 --> 04:59.714
+Once I've selected higher dose, I can hit open.
+
+05:01.698 --> 05:04.320
+And this is where the real work kind of starts to get interesting.
+
+05:04.600 --> 05:10.724
+So the first thing I would probably do is put together a list of questions.
+
+05:12.345 --> 05:14.226
+The README oftentimes comes much later.
+
+05:14.246 --> 05:17.148
+I don't worry about filling in the README until quite a bit of context is here.
+
+05:17.248 --> 05:20.270
+And then you just ask the model to create the README and it does a great job at it.
+
+05:20.770 --> 05:27.755
+But in this case, I think I'm gonna do todo.md to create a to-do list and then a notes folder.
+
+05:30.914 --> 05:42.681
+And oftentimes what I also put in here as kind of like a meta way to keep up with the conversations that I've had over here with the chat bot, I'll create a context.md to kind of get things started.
+
+05:42.701 --> 05:44.722
+It's just like a priming what we want.
+
+05:45.663 --> 05:49.385
+So here I'm just going to put
+
+05:53.092 --> 05:53.813
+Context.
+
+05:54.233 --> 05:57.055
+And then so the header is context in Markdown.
+
+05:57.075 --> 06:01.638
+So I put a hashtag space context and I put a double hashtag to say questions.
+
+06:02.199 --> 06:02.619
+So like.
+
+06:08.143 --> 06:08.603
+And actually.
+
+06:11.746 --> 06:15.388
+Let's start here because I have questions to ask you before we get to the questions you want to ask the repo.
+
+06:15.568 --> 06:17.250
+So I don't get out of order.
+
+06:18.130 --> 06:19.671
+What does higher dose do in your words?
+
+06:23.732 --> 06:26.794
+They sell health and wellness electronic devices.
+
+06:28.675 --> 06:29.615
+Sells health.
+
+06:30.616 --> 06:33.438
+Along with, like, beauty topicals.
+
+06:34.338 --> 06:42.763
+And then, you know, electronic devices in beauty and supplement space.
+
+06:47.086 --> 06:47.326
+Nice.
+
+06:47.666 --> 06:51.108
+Okay, so that already gives me a great idea of, like, what this is going to be about.
+
+06:54.827 --> 06:59.992
+What was the last task that your higher-up asked you?
+
+07:00.032 --> 07:10.002
+Simo asked for a one-pager report on the first half of the year's performance and comparing it to last year.
+
+07:13.125 --> 07:14.667
+So previous year for the same six months.
+
+07:24.517 --> 07:24.857
+Okay.
+
+07:26.038 --> 07:29.400
+And so that was a task that you asked me to do.
+
+07:29.420 --> 07:29.661
+Okay.
+
+07:33.523 --> 07:36.325
+On a day-to-day basis, how often do you get to touch the ads?
+
+07:36.966 --> 07:39.047
+I'm not touching the ads at all.
+
+07:39.147 --> 07:49.915
+I'm communicating with the agency that manages the ads or the vendors that manage our ads across various channels.
+
+07:49.935 --> 07:51.836
+Okay.
+
+07:51.876 --> 07:53.858
+Communicating with the agency that touches the ads.
+
+07:57.346 --> 07:57.706
+Okay.
+
+08:00.428 --> 08:00.808
+Okay.
+
+08:01.549 --> 08:09.294
+Okay, okay, okay.
+
+08:09.354 --> 08:19.740
+And then... For the onboarding, who on the team did they have you meet?
+
+08:19.760 --> 08:21.501
+I mean...
+
+08:27.878 --> 08:35.540
+I had to meet the agencies I met or internal team members that I would be working with.
+
+08:37.740 --> 08:43.162
+Or just like vendors to explain agencies, internal team members.
+
+08:44.502 --> 08:50.083
+And I had already met higher levels of the team through the interview process.
+
+08:50.884 --> 08:53.004
+So I didn't necessarily have to meet with them again.
+
+08:53.544 --> 08:56.845
+But there is one, like he's the, I wouldn't call him like the CFO.
+
+08:57.987 --> 09:02.670
+But he oversees a lot of the tech, finance.
+
+09:03.471 --> 09:07.954
+He's kind of like a multi-hat kind of guy, HR stuff.
+
+09:09.575 --> 09:11.677
+So I deal with him fairly often, but...
+
+09:25.250 --> 09:25.610
+Okay.
+
+09:26.411 --> 09:29.272
+That's funny that it was able to hear your voice in there.
+
+09:31.754 --> 09:35.416
+Um, yeah, the built-in is like, it's like lightweight decent.
+
+09:35.456 --> 09:37.597
+I was thinking about building a tool around that, but it's not worth it.
+
+09:37.997 --> 09:38.597
+Um, okay.
+
+09:39.098 --> 09:41.499
+That's, that's a decent context, at least for initially.
+
+09:41.919 --> 09:47.302
+And then what I'm going to do is actually to give it, feed it this transcript and ask it to ground the context based on what you actually said.
+
+09:47.522 --> 09:48.543
+Cause I missed some stuff.
+
+09:48.583 --> 09:51.785
+I misspelled some stuff on purpose and.
+
+09:54.887 --> 09:58.029
+On a day-to-day basis, what are you trying to automate when dealing with higher dose?
+
+09:58.069 --> 10:00.431
+What actually matters to you the most?
+
+10:01.071 --> 10:04.433
+Compiling the reports and building it.
+
+10:04.453 --> 10:23.466
+A lot of it is replying to vendors and email threads and communicating with the agency to stay on top of the deliverables and action items that they have in order for me to contextualize what's going on on these channels.
+
+10:24.141 --> 10:26.925
+To the CMO who then communicates it to the rest of the team.
+
+10:27.666 --> 10:38.500
+So I guess to interrupt you, like it's somewhat like the middle, like you're playing the middleman that gets on your nerves when you're working with other
+
+10:39.868 --> 10:44.513
+Yeah, I'm pretty much an account manager for the agencies that communicate to the CMO what's going on.
+
+10:44.953 --> 10:48.837
+But it's my job to interpret the data in a way that I can cleanly communicate.
+
+10:48.877 --> 10:57.065
+She's just trying to eliminate the amount of contact she has to have with the outside vendors by placing me as the middle ground.
+
+10:57.465 --> 10:58.847
+But I'm also supposed to be...
+
+11:00.268 --> 11:06.875
+Like budgeting, forecasting, planning for our, she's got, here's our higher initiatives.
+
+11:06.895 --> 11:07.956
+This is what we want to spend.
+
+11:07.976 --> 11:09.598
+This is the efficiency I want.
+
+11:09.618 --> 11:15.985
+It's up to you to determine which channels these go on at what performance metrics.
+
+11:16.545 --> 11:17.746
+Thank you for watching.
+
+11:43.659 --> 11:45.260
+But that's where I'm an interim.
+
+11:45.320 --> 11:47.861
+It's like, okay, we gave them these goals.
+
+11:48.582 --> 11:58.947
+Based on what we're seeing, it's not possible with this channel mix or this budget mix on these channels, so we need to realign, readjust, and go at different channels and scale different ones.
+
+11:58.987 --> 12:00.347
+That's kind of what we're doing now.
+
+12:00.587 --> 12:05.250
+Facebook is shit, so we're shifting more spend to Google because it's outperforming and scaling well.
+
+12:06.450 --> 12:11.673
+But it's my decision to make those calls and to have the insight
+
+12:13.154 --> 12:16.305
+To understand, like, okay, obviously just brute force in Facebook isn't
+
+12:18.464 --> 12:20.165
+Make our advertising more efficient.
+
+12:20.185 --> 12:24.989
+So until we can get that dialed in, we have to allocate resources elsewhere.
+
+12:25.109 --> 12:30.353
+But it's also up to me to get the right resources on Meta to bring CAC down.
+
+12:30.413 --> 12:34.035
+So it's like pushing our creative strategies.
+
+12:34.215 --> 12:37.878
+When you say get the right resources to bring CAC down, what are the resources?
+
+12:37.898 --> 12:43.002
+So like getting the creative strategies to produce more assets for our core products.
+
+12:43.402 --> 12:46.645
+You just like chase them, like, hey, we need you to do your job, basically.
+
+12:46.745 --> 12:55.994
+It's like chasing other people to get and focus on the right products that are going to drive the revenue of the efficiencies we need.
+
+12:56.495 --> 12:57.155
+So, okay.
+
+12:57.476 --> 12:58.937
+It's like being a fucking go-ahead.
+
+12:59.217 --> 13:00.459
+Yeah, yeah, yeah.
+
+13:01.119 --> 13:02.080
+No, people get paid for that.
+
+13:02.120 --> 13:03.321
+That's what blows my mind.
+
+13:03.341 --> 13:07.045
+There's a lot of people in this growth role, and it's always anywhere from $130 to $200.
+
+13:08.546 --> 13:12.347
+That's insane.
+
+13:12.707 --> 13:17.208
+Either you have vendors, like agencies handling it, or you have in-house teams that you're managing.
+
+13:17.248 --> 13:26.490
+So either way, you're goat-hurrying people to execute on these channels and to make sure that they're achieving the KPIs necessary.
+
+13:26.510 --> 13:29.630
+But I'm more technical, whereas the CMO is high-level.
+
+13:30.091 --> 13:31.911
+Here's the overall initiatives that we want.
+
+13:31.951 --> 13:36.812
+The products we want to release, they're more so strategy in that direction, like product development,
+
+13:39.648 --> 13:41.109
+How do we hit our overall goals?
+
+13:41.150 --> 13:46.394
+The founders and leaders like, hey, we want to do 30 or 60 million this year.
+
+13:46.775 --> 13:49.858
+And it's up to the CMO, like, okay, how do we achieve 60 million?
+
+13:49.878 --> 13:50.598
+What's possible?
+
+13:51.179 --> 13:53.001
+She's in that, like playing in that space.
+
+13:53.541 --> 13:56.084
+And then it's like, okay, we need to do 60 million.
+
+13:56.144 --> 13:57.945
+How do you do it from a technical standpoint?
+
+13:57.965 --> 13:59.547
+I see channels we're advertising on.
+
+13:59.867 --> 14:04.491
+That's where the growth guide comes in, and it's like, okay, we need to push these levers here, here, there.
+
+14:04.511 --> 14:13.618
+I'm more technical in my understanding of how each of these channels work, what's possible, what CAC targets do we need to hit in order to back out to 60 million at the efficiency we need.
+
+14:14.659 --> 14:22.405
+Yeah, so I do... One thing I have not focused on, as I did the last tutorial, part one, and then this tutorial, part two, is straight up...
+
+14:25.520 --> 14:33.542
+For lack of a better word, you're building a kind of like a manual in-text CRM, because I have not really focused on the people aspect of it.
+
+14:33.602 --> 14:38.484
+But for the last two classes that I took, actually the first class, that was a huge deal.
+
+14:39.844 --> 14:41.024
+And I think I have those notes here.
+
+14:41.084 --> 14:41.865
+I should be able to pull them up.
+
+14:42.165 --> 14:46.726
+That was a huge deal, like having literally a glossary of the people involved in this particular project.
+
+14:46.986 --> 14:49.227
+So it makes it easier to, I can say by one name.
+
+14:49.447 --> 14:49.747
+So like,
+
+14:50.507 --> 14:56.612
+In the chat assistant, I can say like, yo, Joe told me this or that, and they know exactly who Joe is, what he does, what his role is.
+
+14:57.233 --> 14:58.674
+Stuff like that is actually important.
+
+14:59.115 --> 14:59.935
+I'll stop the timer.
+
+15:00.095 --> 15:00.736
+Dang, we're out of time.
+
+15:01.036 --> 15:02.397
+Yeah, stuff like that is actually important.
+
+15:02.618 --> 15:11.765
+I would say that... As someone who knows a fair bit of open source software, it does kind of like...
+
+15:12.856 --> 15:18.463
+Inspire me to look into the... Because there's two CRMs that I think are open source and would be useful.
+
+15:18.844 --> 15:22.128
+But I see now how these two things can go hand in hand.
+
+15:22.168 --> 15:25.092
+Having an agent that can have access to a CRM that at the very...
+
+15:54.322 --> 16:02.026
+Simply knowing the relationships between the people and who to, like she asked you a question like, hey, this is an initiative we want to push for the next two weeks.
+
+16:02.406 --> 16:07.388
+So you type this into something like the chat bot and it literally pulls up a list of the people that you should be contacting and sending it.
+
+16:07.728 --> 16:09.989
+And then what I would go, I would take it a step further.
+
+16:10.089 --> 16:12.950
+Okay, give me an example of an email I should send this person.
+
+16:13.331 --> 16:14.091
+And then go down the list.
+
+16:14.111 --> 16:18.733
+Like if I got three or four people that you're saying I should contact, what should I be saying to them to like get them to do their job?
+
+16:19.093 --> 16:21.114
+So again, all that context is super helpful in this case.
+
+16:21.334 --> 16:25.236
+This transcript is going to be great because it already kind of gave you a snapshot of where you're at right now.
+
+16:25.556 --> 16:27.858
+And of course, it'll come with a timestamp and all that good stuff.
+
+16:28.258 --> 16:33.001
+But that's what I think the real value in having a repository like this is about.
+
+16:33.101 --> 16:36.963
+It's not only the relationship management, but having the context of like,
+
+16:37.603 --> 16:40.106
+What they want and what you're supposed to do.
+
+16:40.206 --> 16:53.901
+And what I'm hoping is, like, whatever model is doing this transcription or doing this summarizing is able to, like, maybe give us some ideas and some, like, next steps on, like, what we should do to maybe better organize or what Jordan should do to better organize this.
+
+16:54.761 --> 17:01.165
+And it'd be easy if the CRM could just tap into Slack, because a lot of the details are in Slack about people's roles, their emails, who they are.
+
+17:01.185 --> 17:07.928
+And then, like, even if you just API the data out of Slack for all these conversations, for it to have the context, that would be amazing.
+
+17:08.108 --> 17:16.413
+Yeah, I think that's... One thing, I mean, I love Discord because it's, like, so much of a gamer's platform and it's, like, easy to connect with other people.
+
+17:17.674 --> 17:17.914
+On the...
+
+17:20.361 --> 17:35.865
+And that's actually also a huge advantage to Discord because Discord will literally allow you to just export everything in plain text, no code, no JSON, no none of that, like straight up TXT files of entire channels.
+
+17:36.145 --> 17:38.906
+So it's really nice for like providing extra context for this.
+
+17:39.586 --> 17:46.688
+Of the first course that I took, half of it was just like Discord channel chats that I'm like keeping up with and want to provide context to the model.
+
+17:47.188 --> 17:58.736
+So yeah, I definitely have to, I probably should have by now because Slack is such a big deal, but I'll look into like what makes it easier to like export, you know, these conversations from Slack.
+
+17:58.756 --> 17:59.896
+I think that would be helpful.
+
+18:02.458 --> 18:09.482
+What would you say is your number one goal at higher dose for, like, do you think you could, is this a thing, a role where you want to move up and get paid more money?
+
+18:09.603 --> 18:10.943
+Like you're pretty much like sustaining.
+
+18:11.244 --> 18:16.307
+What would make you happy in this situation compared to, and then contrast that with like what they actually want out of the position?
+
+18:16.876 --> 18:19.494
+Yeah, meaning, expectations.
+
+18:20.782 --> 18:25.604
+And being able to, like, exceeding expectations would make me happy.
+
+18:25.744 --> 18:34.707
+What is expected of me is to meet the growth goals of, like, 25% month-on-month growth or year-over-year growth for each month.
+
+18:35.727 --> 18:45.590
+And if we are to accomplish that, then I get a 20% bonus from what she shared, which is only, like, I mean, for a year, I don't know how I feel about it.
+
+18:45.650 --> 18:46.811
+It's only 20 grand, but...
+
+18:48.803 --> 18:53.624
+Which, like, if I can do it through the means of automations, like, that's fire.
+
+18:53.684 --> 18:54.004
+Yes.
+
+18:54.484 --> 18:56.885
+And then you stack these roles and it becomes easy.
+
+18:56.965 --> 19:01.566
+I just become a freelance growth guy and I can charge a higher premium than I am for media buying.
+
+19:02.066 --> 19:08.507
+That's also, like, end goal is, like, being able to leverage your skill set to go manage multiple clients as a growth strategist.
+
+19:09.688 --> 19:09.868
+And...
+
+19:11.568 --> 19:15.791
+Please transcribe in clear, punctuated English, preserving speaker turns.
+
+19:34.102 --> 19:34.823
+Okay, last round.
+
+19:54.059 --> 19:55.240
+Questions off the top of your head.
+
+19:56.462 --> 19:59.225
+Two questions that you would ask the model that would be helpful.
+
+19:59.305 --> 20:00.686
+You get started on this project.
+
+20:01.127 --> 20:01.928
+You're waking up.
+
+20:01.948 --> 20:03.229
+This is one of the first things you attack.
+
+20:03.409 --> 20:04.610
+What's something that you would ask it?
+
+20:05.852 --> 20:11.418
+Because I want the model to give us context on what would be good to add here to answer these questions.
+
+20:12.031 --> 20:27.025
+Yeah, I would basically want to be able to give weekly and daily updates on performance so I can easily slap a message to the CMO and keep her informed on what's going on, either what happened the day before or what happened the last seven days.
+
+20:27.505 --> 20:32.990
+Because every Monday I have to deliver a report over the last week, which is why she asked for the...
+
+20:34.191 --> 20:36.472
+Audio may include technical terms and names.
+
+20:36.532 --> 20:37.813
+Audio may include technical terms and names.
+
+20:50.120 --> 20:51.321
+Oh, so it's not in the ad account.
+
+20:51.341 --> 20:55.883
+You're talking about just, like, what has changed or what have you done in the last day or the last seven days?
+
+20:56.003 --> 20:56.983
+Oh, okay, okay.
+
+20:57.303 --> 20:57.923
+That's a little different.
+
+20:58.003 --> 20:58.424
+Okay.
+
+20:58.604 --> 21:03.606
+Yeah, I mean, some of the data is available in Earthbeam, so it's like, okay, what is the channel performance?
+
+21:03.906 --> 21:06.967
+What is the individual channel performance in the Delzos over the last seven days?
+
+21:07.488 --> 21:11.329
+The year-over-year growth for the primary channels, which is Facebook and Meadow.
+
+21:11.750 --> 21:13.951
+Then what have I been doing on, like, the date?
+
+21:13.971 --> 21:15.951
+Like, what are my daily activities, essentially?
+
+21:16.712 --> 21:18.633
+And, like, kind of where have I been?
+
+21:18.673 --> 21:19.633
+What projects and things?
+
+21:24.901 --> 21:28.862
+Yeah, AI is great for stuff like that because it'll just make up a bunch of shit based on what you tell it.
+
+21:29.222 --> 21:29.742
+Exactly.
+
+21:30.222 --> 21:31.563
+Which is great.
+
+21:32.663 --> 21:34.163
+Let me see others that we can report.
+
+21:34.183 --> 21:34.564
+What else?
+
+21:34.624 --> 21:35.524
+It's literally busy work.
+
+21:35.564 --> 21:36.944
+That's so weird to me that they don't.
+
+21:37.284 --> 21:43.366
+Wins and updates, challenges, opportunities and solutions, task lists and priorities for the month.
+
+21:43.826 --> 21:46.650
+So what would the second question think, you would ask if you think?
+
+21:47.351 --> 21:53.299
+So right now, right now, like what happened the day before, the last seven days in a particular channel or primary channels and daily activities?
+
+21:54.360 --> 21:57.625
+Year-over-year performance for Meta, Google year-over-year performance.
+
+21:59.087 --> 22:01.570
+Any wins and updates for the last seven
+
+22:02.912 --> 22:08.198
+Any challenges and then opportunities and solutions.
+
+22:08.738 --> 22:17.747
+And like this would need context from also my email for any like opportunities and solutions or challenges and also Slack.
+
+22:18.167 --> 22:21.249
+Audio may include technical terms and names.
+
+22:21.289 --> 22:22.750
+Audio may include technical terms and names.
+
+22:43.832 --> 22:44.713
+Audio may include technical terms and names.
+
+22:44.733 --> 22:46.274
+Audio may include technical terms and names.
+
+23:13.601 --> 23:23.640
+Two of these calls that was armed with all the context from like every vendor, all the internal communication so that I can communicate on call.
+
+23:24.090 --> 23:25.751
+And then take those transcripts and give it to her.
+
+23:25.811 --> 23:28.674
+Like my whole role could be automated.
+
+23:28.954 --> 23:30.555
+No human playing in this space.
+
+23:30.976 --> 23:39.743
+But if I can build that, then it's like now I can take on multiple growth roles without really needing to give the mental cognition.
+
+23:39.763 --> 23:48.530
+Because it's like you're just connecting dots for people and like building easier ways for them to contextualize that data.
+
+23:49.588 --> 23:49.949
+For sure.
+
+23:50.070 --> 23:50.651
+To other people.
+
+23:51.434 --> 23:53.981
+Just being a placeholder, like that's honestly what I feel like.
+
+23:54.002 --> 23:57.151
+It reminds me of my first marketing role at Advantage where it's like,
+
+24:00.390 --> 24:02.711
+Audio may include technical terms and names.
+
+24:02.731 --> 24:04.072
+Audio may include technical terms and names.
+
+24:28.740 --> 24:34.423
+The context file in the transcript.
+
+24:34.463 --> 24:37.285
+So I just wrote a to-do in the to-do dot markdown.
+
+24:37.305 --> 24:39.927
+And actually, I'm going to put a header on there.
+
+24:41.208 --> 24:42.328
+To-do list.
+
+24:44.650 --> 24:47.011
+And I'll just put another header and put organizing.
+
+24:47.031 --> 24:51.554
+And then so what I just did is made our first to-do text.
+
+24:53.857 --> 24:58.061
+For kind of like getting this higher dose repository going.
+
+25:00.082 --> 25:07.468
+Actually, I think what I could do is I think I can make you the admin of this repo so you can take it over on your OU codes account and it'll still be private.
+
+25:07.629 --> 25:10.591
+And that way you don't lose any, like you don't have to restart this from scratch.
+
+25:10.931 --> 25:15.495
+But everything I just did and showed on the screen, like you pretty much already have access to, you can do it yourself for like other clients.
+
+25:15.815 --> 25:20.780
+But I think based on everything you told me, this is probably like the ideal client to do something like this for.
+
+25:21.900 --> 25:23.901
+This is like the least clicky.
+
+25:24.101 --> 25:25.322
+There's not a lot of action.
+
+25:25.442 --> 25:27.323
+I'm just following all this stuff.
+
+25:27.383 --> 25:32.665
+It's more just compiling information and data and having the context of everything in order to get it done.
+
+25:32.785 --> 25:34.866
+They're asking humans to do language model work.
+
+25:34.886 --> 25:36.667
+Yes, exactly.
+
+25:36.827 --> 25:40.469
+They just don't know how to get all the data into an LLM to eliminate this role.
+
+25:40.589 --> 25:42.991
+Audio may include technical terms and names.
+
+26:05.697 --> 26:05.917
+Cool.
+
+26:05.997 --> 26:07.959
+Well, I'll wrap it here as far as the tutorial goes.
+
+26:07.999 --> 26:09.420
+But like that's my process.
+
+26:09.440 --> 26:15.586
+And like I said, it's the more dynamic places like the slacks and the emails are the harder ones to bring in.
+
+26:15.746 --> 26:17.788
+But I think also worth that much more.
+
+26:17.828 --> 26:25.655
+Like if I could have access to those things, it's just like especially when it's well labeled, which is why I took the time to make the tutorial for the email thing, because it's like once it has like these.
+
+26:27.296 --> 26:30.718
+The language, the real language of language models is Markdown.
+
+26:31.458 --> 26:32.519
+By default, it's like Markdown.
+
+26:32.999 --> 26:35.120
+I would say the next language below that is probably Python.
+
+26:35.140 --> 26:38.862
+So they're just really familiar with those languages and that syntax, that formatting.
+
+26:39.202 --> 26:46.026
+But if you can get your, I mean, if you just throw in the plain text, like that literally what I'm about to do with the transcript, it does really well.
+
+26:47.028 --> 26:47.729
+Thank you for watching.
+
+27:04.778 --> 27:09.321
+Okay, this is a last piece that I forgot to go over in this particular transcript.
+
+27:09.341 --> 27:10.942
+This is actually an important context.
+
+27:11.463 --> 27:16.106
+To get this stuff in the cloud so other people can have access to it, you have to commit the code.
+
+27:16.446 --> 27:18.828
+And so what I do typically is I commit one file at a time.
+
+27:19.648 --> 27:21.970
+Cursor and VS Code now make this super easy.
+
+27:22.050 --> 27:24.872
+It's not so easy in Windsurf, but I don't think you'll be using Windsurf anyways.
+
+27:25.673 --> 27:28.875
+You basically come here to where this is the file explorer view.
+
+27:29.355 --> 27:30.436
+If you come up here to this...
+
+27:32.276 --> 27:34.517
+Control, I think it's the version control view.
+
+27:35.777 --> 27:44.081
+You'll see here, Git is already initiated because of the way we did the script initially to set these things up at the beginning of the tutorial.
+
+27:45.081 --> 27:53.144
+And basically what you do is like, these are, anytime you see this U, it means that this file is untracked.
+
+27:54.105 --> 27:56.866
+Anytime you see the M, it means that this file has been modified.
+
+27:57.006 --> 28:01.668
+Anytime you see A, that means the file has been added to the Git, the version control.
+
+28:03.188 --> 28:04.401
+To track the changes,
+
+28:07.265 --> 28:11.327
+And make a commit, you have to hit this plus button to stage the changes.
+
+28:11.847 --> 28:15.868
+So I'm going to stage, actually before I stage the context, I'm going to, no, yeah, I'll stage the context first.
+
+28:16.989 --> 28:24.031
+And now it turns to A, this particular file turns to A. You used to have to type in a commit message and like describe what you did and what you added.
+
+28:25.532 --> 28:29.793
+But what I'm going to do is actually hit this generate commit message button.
+
+28:30.314 --> 28:32.074
+You hit that and it fills in the information.
+
+28:32.094 --> 28:35.776
+So it says feature, add context document for health, wellness, and performance reporting.
+
+28:36.696 --> 28:40.800
+So it kind of like picked up on what was written into the file and writes a commit message for you.
+
+28:41.101 --> 28:41.881
+This is nice.
+
+28:42.182 --> 28:50.550
+This makes it great to add context or give good notes on what was committed at what time without you having to do a whole bunch of thinking.
+
+28:50.630 --> 28:52.212
+Basically, you don't even have to think about what was committed.
+
+28:52.592 --> 28:53.772
+So I'll go ahead and hit the commit button.
+
+28:54.112 --> 29:04.515
+There's another little trick that I have here, and I actually commit this here in a second, but there's a utility folder that I have that's default that will actually create commit messages for you.
+
+29:05.195 --> 29:12.676
+If this little button is not working and it doesn't work great, you literally can come over here and ask the model to create a commit message for you based on the text, and it'll do a great job.
+
+29:12.736 --> 29:13.637
+And then you just copy and paste.
+
+29:13.857 --> 29:19.598
+Because sometimes, I don't know why this gets rate limited, but I have had times where like this button stops working for like an hour.
+
+29:20.198 --> 29:22.119
+So I figured out a way around it.
+
+29:22.439 --> 29:25.201
+Anyways, I'm going to take this to-do list, stage the changes.
+
+29:26.422 --> 29:28.002
+Oops, I hit the commit button too early.
+
+29:28.222 --> 29:29.823
+Let me discard the commit message.
+
+29:30.324 --> 29:32.485
+I need to generate the commit message using AI.
+
+29:33.025 --> 29:35.867
+And I was saying there's a feature of adding a to-do list for organizing tasks.
+
+29:35.947 --> 29:36.607
+I hit the commit.
+
+29:36.927 --> 29:37.567
+It's not committed.
+
+29:37.968 --> 29:45.392
+What this means is that these commits have been added to the repository on your local machine.
+
+29:46.499 --> 29:48.761
+So only locally have these commits happened so far.
+
+29:49.141 --> 29:51.762
+If you want to push them up to the cloud, that's what these buttons here are for.
+
+29:52.283 --> 29:53.424
+You can fetch from remote.
+
+29:53.584 --> 29:54.204
+You can pull.
+
+29:54.304 --> 29:57.426
+This is when you open the terminal and type git pull.
+
+29:57.566 --> 29:58.967
+It's basically the same thing as you're hitting this button.
+
+29:59.067 --> 30:02.430
+It just pulls in all the new changes from the repository from the cloud.
+
+30:02.810 --> 30:07.973
+Or you hit the push button, and the push means any local changes that you have on your computer, it gets pushed up to the cloud.
+
+30:08.473 --> 30:09.414
+So we're going to go ahead and push it.
+
+30:09.854 --> 30:11.315
+Or you hit that sync changes button.
+
+30:11.335 --> 30:12.216
+It all does the same thing.
+
+30:12.596 --> 30:13.217
+Sync just does...
+
+30:13.797 --> 30:14.577
+Thank you for watching.
+
+30:29.225 --> 30:32.026
+Adding code to open source repository and trying to contribute.
+
+30:32.486 --> 30:33.386
+For the most part, it doesn't matter.
+
+30:33.406 --> 30:35.627
+I just hit the sync button and it gets the job done.
+
+30:36.307 --> 30:44.290
+Now that we have these things committed, anyone who clones this repository or uses the repository on their own machine sees exactly what we see here.
+
+30:45.030 --> 30:49.852
+If I was to go in and add another here, how about this?
+
+30:51.372 --> 30:51.973
+I'll delete that.
+
+30:52.453 --> 30:56.154
+I'll go in and add another comment onto the to-do list.
+
+30:59.520 --> 31:04.525
+And I'll say, add the transcript to the repo.
+
+31:06.166 --> 31:09.169
+And what you see over here on the left-hand side is that this part turns green.
+
+31:09.549 --> 31:14.774
+And that just means that this line is brand new since the last commit.
+
+31:15.374 --> 31:17.256
+So it'll show you what changes you've made.
+
+31:17.276 --> 31:19.358
+So let's say I go in and like, hey, I don't like organizing anymore.
+
+31:19.378 --> 31:20.058
+Let me just delete it.
+
+31:22.080 --> 31:22.361
+Now,
+
+31:23.604 --> 31:32.468
+It's saying, okay, for this, the next commit that you do, this file has been modified and it's been modified to remove organizing and add a new to-do list item.
+
+31:33.129 --> 31:37.631
+So like it literally just keeps track of all the changes you make to text, which is really nice in my opinion.
+
+31:37.651 --> 31:40.052
+As someone who's like so text-based.
+
+31:40.472 --> 31:42.753
+So I'm going to revert that change because I don't actually like that change.
+
+31:42.893 --> 31:46.535
+Actually, let me keep some of that because I like the new.
+
+31:46.955 --> 31:51.978
+And then again, what I would do is come in here to the version control little piece of the tab.
+
+31:53.979 --> 31:55.520
+Stage the changes by hitting the plus button.
+
+31:56.560 --> 31:57.701
+Hit generate commit message.
+
+31:58.201 --> 31:59.001
+I don't have to think about it.
+
+31:59.021 --> 32:01.903
+It just says update to-do list, because that's exactly what I did, and then hit commit.
+
+32:02.823 --> 32:12.727
+Once that commit is made and all of my local commits have been committed, essentially, to the version control, added to the version control, I can just hit this sync button, which will push my commit up to the main.
+
+32:13.528 --> 32:15.909
+I like to hit okay, don't show again, but it doesn't really matter.
+
+32:18.052 --> 32:18.994
+Okay, now it's up to date.
+
+32:19.074 --> 32:20.977
+Now you have everything I have on this local computer.
+
+32:21.898 --> 32:31.734
+And in that case, I'm going to take this file, add it together with the last one to make one complete part two, and then transcribe it and add it to the repository.
+
