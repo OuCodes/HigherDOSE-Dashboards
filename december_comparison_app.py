@@ -271,6 +271,21 @@ with st.sidebar:
     st.markdown("---")
     
     st.header("📅 Date Range Selection")
+    st.caption("Adjust to compare different date ranges")
+    
+    # Auto-detect the latest 2025 data date
+    s25 = data.get("sales_2025", pd.DataFrame())
+    if len(s25) > 0 and "Day" in s25.columns:
+        s25_copy = s25.copy()
+        s25_copy["Day"] = pd.to_datetime(s25_copy["Day"], errors='coerce')
+        latest_2025_date = s25_copy["Day"].max()
+        if pd.notna(latest_2025_date) and latest_2025_date.month == 12:
+            default_end = latest_2025_date.date()
+        else:
+            default_end = datetime(2025, 12, 9).date()  # Default to Dec 9
+    else:
+        default_end = datetime(2025, 12, 9).date()
+    
     dec_start = st.date_input(
         "December Start Date",
         value=datetime(2024, 12, 1),
@@ -279,10 +294,11 @@ with st.sidebar:
     )
     
     dec_end = st.date_input(
-        "December End Date (2024/2025)",
-        value=datetime(2024, 12, 31),
+        "December End Date",
+        value=default_end,
         min_value=datetime(2024, 12, 1),
-        max_value=datetime(2025, 12, 31)
+        max_value=datetime(2025, 12, 31),
+        help="Compares through this date in both 2024 and 2025"
     )
     
     st.markdown("---")
@@ -295,14 +311,22 @@ def december_core_metrics(start_date, end_date):
     """Compute December 2024 vs 2025 core metrics for the selected date range."""
     
     # Determine the year ranges
-    # For 2024, use Dec 1-31 (or up to end_date if in December 2024)
-    # For 2025, use Dec 1 through the same day-of-month
+    # Compare same day-of-month ranges in both years
+    # Example: If end_date is Dec 9, 2025, compare Dec 1-9 in both years
     
-    start_2024 = "2024-12-01"
-    end_2024 = min(pd.Timestamp("2024-12-31"), pd.Timestamp(end_date))
+    start_2024 = pd.Timestamp("2024-12-01")
+    start_2025 = pd.Timestamp("2025-12-01")
     
-    start_2025 = "2025-12-01"
-    end_2025 = min(pd.Timestamp("2025-12-31"), pd.Timestamp(end_date))
+    # Use the day-of-month from end_date to set comparable endpoints
+    end_date_ts = pd.Timestamp(end_date)
+    if end_date_ts.month == 12:
+        day_of_month = end_date_ts.day
+        end_2024 = pd.Timestamp(f"2024-12-{day_of_month:02d}")
+        end_2025 = pd.Timestamp(f"2025-12-{day_of_month:02d}")
+    else:
+        # If not December, use Dec 31 for both
+        end_2024 = pd.Timestamp("2024-12-31")
+        end_2025 = pd.Timestamp("2025-12-31")
     
     s24 = data["sales_2024"]
     s25 = data["sales_2025"]
