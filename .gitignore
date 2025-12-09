@@ -9,11 +9,20 @@ venv/
 ENV/
 .venv
 
-# Data files (keep structure but ignore actual data)
-data/**/*.csv
+# Data files - Allow essential CSVs for dashboards
+# Only ignore sensitive files
+
+# Allow essential sales and analytics data
+!data/ads/exec-sum/*.csv
+!data/ads/weekly-report-2024-ads/*.csv
+!data/mail/*.csv
+
+# Ignore potentially sensitive files
 data/**/*.json
-data/**/*.md
-!data/.gitkeep
+data/**/rolodex.*
+data/**/*api*
+data/**/*credentials*
+data/**/*secret*
 
 # IDE
 .vscode/
