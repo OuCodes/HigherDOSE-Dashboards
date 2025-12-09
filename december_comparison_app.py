@@ -333,32 +333,35 @@ def december_core_metrics(start_date, end_date):
     orders24 = dec24["Orders"].sum()
     orders25 = dec25["Orders"].sum()
     
-    # Shopify Sessions (replacing GA4)
-    shopify_sess_24 = data.get("shopify_sessions_2024", pd.DataFrame())
+    # Shopify Sessions (2025 file contains both current and previous year data)
     shopify_sess_25 = data.get("shopify_sessions_2025", pd.DataFrame())
     
-    if len(shopify_sess_24) > 0:
-        sess_24_filtered = shopify_sess_24[(shopify_sess_24["Day"] >= start_2024) & (shopify_sess_24["Day"] <= end_2024)]
-        sess24 = sess_24_filtered["Sessions"].sum() if "Sessions" in sess_24_filtered.columns else 0
-        # Calculate average CVR (conversion rate)
-        if "Conversion rate" in sess_24_filtered.columns and len(sess_24_filtered) > 0:
-            cvr24 = sess_24_filtered["Conversion rate"].mean() * 100  # Convert to percentage
-        else:
-            cvr24 = 0
-    else:
-        sess24 = 0
-        cvr24 = 0
-    
     if len(shopify_sess_25) > 0:
+        # Filter to December 2025 date range
         sess_25_filtered = shopify_sess_25[(shopify_sess_25["Day"] >= start_2025) & (shopify_sess_25["Day"] <= end_2025)]
+        
+        # 2025 metrics (current year)
         sess25 = sess_25_filtered["Sessions"].sum() if "Sessions" in sess_25_filtered.columns else 0
-        # Calculate average CVR (conversion rate)
         if "Conversion rate" in sess_25_filtered.columns and len(sess_25_filtered) > 0:
             cvr25 = sess_25_filtered["Conversion rate"].mean() * 100  # Convert to percentage
         else:
             cvr25 = 0
+        
+        # 2024 metrics (from previous_year columns in 2025 file)
+        # The 2025 file has columns like "Sessions (previous_year)", "Conversion rate (previous_year)"
+        if "Sessions (previous_year)" in sess_25_filtered.columns:
+            sess24 = sess_25_filtered["Sessions (previous_year)"].sum()
+        else:
+            sess24 = 0
+        
+        if "Conversion rate (previous_year)" in sess_25_filtered.columns and len(sess_25_filtered) > 0:
+            cvr24 = sess_25_filtered["Conversion rate (previous_year)"].mean() * 100  # Convert to percentage
+        else:
+            cvr24 = 0
     else:
+        sess24 = 0
         sess25 = 0
+        cvr24 = 0
         cvr25 = 0
     
     # Meta + Google spend and revenue
@@ -477,14 +480,15 @@ with col2:
     )
 
 with col3:
+    # Show spend here instead (moved MER to second row)
     st.metric(
-        "MER 2024",
-        f"{core['mer24']:.2f}x" if core['mer24'] > 0 else "N/A",
+        "Total Spend 2024",
+        f"${core['spend24']:,.0f}" if core['spend24'] > 0 else "N/A",
     )
     st.metric(
-        "MER 2025",
-        f"{core['mer25']:.2f}x" if core['mer25'] > 0 else "N/A",
-        f"{_pct_change(core['mer25'], core['mer24']):+.1f}%" if core['mer24'] > 0 and core['mer25'] > 0 else "N/A",
+        "Total Spend 2025",
+        f"${core['spend25']:,.0f}" if core['spend25'] > 0 else "N/A",
+        f"{_pct_change(core['spend25'], core['spend24']):+.1f}% YoY" if core['spend24'] > 0 and core['spend25'] > 0 else "N/A",
     )
 
 with col4:
@@ -513,17 +517,6 @@ with col5:
     )
 
 with col6:
-    st.metric(
-        "Avg MER 2024",
-        f"{core['mer24']:.2f}x" if core['mer24'] > 0 else "N/A",
-    )
-    st.metric(
-        "Avg MER 2025",
-        f"{core['mer25']:.2f}x" if core['mer25'] > 0 else "N/A",
-        f"{_pct_change(core['mer25'], core['mer24']):+.1f}%" if core['mer24'] > 0 and core['mer25'] > 0 else "N/A",
-    )
-
-with col7:
     aov24 = core['shop24'] / core['orders24'] if core['orders24'] > 0 else 0
     aov25 = core['shop25'] / core['orders25'] if core['orders25'] > 0 else 0
     st.metric(
@@ -536,15 +529,15 @@ with col7:
         f"{_pct_change(aov25, aov24):+.1f}% YoY" if aov24 > 0 and aov25 > 0 else "N/A",
     )
 
-with col8:
+with col7:
     st.metric(
-        "Total Spend 2024",
-        f"${core['spend24']:,.0f}" if core['spend24'] > 0 else "N/A",
+        "MER 2024",
+        f"{core['mer24']:.2f}x" if core['mer24'] > 0 else "N/A",
     )
     st.metric(
-        "Total Spend 2025",
-        f"${core['spend25']:,.0f}" if core['spend25'] > 0 else "N/A",
-        f"{_pct_change(core['spend25'], core['spend24']):+.1f}% YoY" if core['spend24'] > 0 and core['spend25'] > 0 else "N/A",
+        "MER 2025",
+        f"{core['mer25']:.2f}x" if core['mer25'] > 0 else "N/A",
+        f"{_pct_change(core['mer25'], core['mer24']):+.1f}%" if core['mer24'] > 0 and core['mer25'] > 0 else "N/A",
     )
 
 st.markdown("---")
