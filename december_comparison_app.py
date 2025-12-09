@@ -45,10 +45,20 @@ def _pct_change(new: float, old: float) -> float:
 def load_core_data():
     """Load all core datasets used in this dashboard."""
     
+    # Check if data directory exists
+    if not EXEC_SUM_DIR.exists():
+        st.error(f"❌ Data directory not found: {EXEC_SUM_DIR}")
+        st.info("📁 Please add data files to the repository or use the file uploader below.")
+        return None
+    
     # Shopify daily sales data
-    sales_2024 = pd.read_csv(
-        EXEC_SUM_DIR / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
-    )
+    sales_2024_file = EXEC_SUM_DIR / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
+    if not sales_2024_file.exists():
+        st.error(f"❌ Missing file: Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv")
+        st.info("📁 Please add this file to: data/ads/exec-sum/")
+        return None
+    
+    sales_2024 = pd.read_csv(sales_2024_file)
     
     # Find the most recent 2025 sales file
     sales_2025_files = sorted(EXEC_SUM_DIR.glob("Total sales over time - OU - 2025-*.csv"))
@@ -56,15 +66,20 @@ def load_core_data():
         sales_2025 = pd.read_csv(sales_2025_files[-1])
         data_file_name = sales_2025_files[-1].name
     else:
-        # Fallback to a default file
-        sales_2025 = pd.read_csv(
-            EXEC_SUM_DIR / "Total sales over time - OU - 2025-01-01 - 2025-11-24.csv"
-        )
-        data_file_name = "Total sales over time - OU - 2025-01-01 - 2025-11-24.csv"
+        # Try fallback file
+        fallback_file = EXEC_SUM_DIR / "Total sales over time - OU - 2025-01-01 - 2025-11-24.csv"
+        if fallback_file.exists():
+            sales_2025 = pd.read_csv(fallback_file)
+            data_file_name = "Total sales over time - OU - 2025-01-01 - 2025-11-24.csv"
+        else:
+            st.warning("⚠️ No 2025 sales data found. Showing 2024 data only.")
+            sales_2025 = pd.DataFrame(columns=["Day", "Total sales", "Orders"])
+            data_file_name = "No 2025 data available"
     
     for df in (sales_2024, sales_2025):
-        df["Day"] = pd.to_datetime(df["Day"])
-        df["Month"] = df["Day"].dt.to_period("M")
+        if len(df) > 0:
+            df["Day"] = pd.to_datetime(df["Day"])
+            df["Month"] = df["Day"].dt.to_period("M")
     
     # GA4 traffic data
     ga4_2024_files = sorted(EXEC_SUM_DIR.glob("daily-traffic_acquisition_Session_default_channel_group-2024-*.csv"))
@@ -184,6 +199,42 @@ def load_core_data():
 # Load data
 with st.spinner("Loading data..."):
     data = load_core_data()
+    
+    # Check if data loaded successfully
+    if data is None:
+        st.error("### ❌ Unable to load data")
+        st.markdown("---")
+        st.markdown("### 📋 Setup Instructions")
+        st.markdown("""
+        To use this dashboard, you need to add data files to the repository:
+        
+        1. **Clone the repository locally:**
+           ```bash
+           git clone https://github.com/OuCodes/HigherDOSE-Dashboards.git
+           cd HigherDOSE-Dashboards
+           ```
+        
+        2. **Copy your data files:**
+           ```bash
+           # From your main HigherDOSE repository
+           cp -r /path/to/HigherDOSE/data ./
+           ```
+        
+        3. **Push to GitHub:**
+           ```bash
+           git add data/
+           git commit -m "Add data files"
+           git push
+           ```
+        
+        4. **Required files:**
+           - `data/ads/exec-sum/Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv`
+           - `data/ads/exec-sum/Total sales over time - OU - 2025-*.csv`
+           - GA4, Meta, Google Ads data files (optional)
+        
+        **Note:** Make sure your data is appropriate for a public repository!
+        """)
+        st.stop()
 
 now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
