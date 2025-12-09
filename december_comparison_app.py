@@ -145,18 +145,36 @@ def load_core_data():
                 if col in df.columns and df[col].dtype == "O":
                     df[col] = df[col].astype(str).str.replace(",", "").astype(float)
     
-    # Northbeam 2025 spend data
-    nb_file = ADS_DIR / "northbeam-2025-november.csv"
+    # Northbeam 2025 spend data (all channels - updated daily)
+    # Try December-filtered file first (faster), then fall back to full file
+    nb_file_dec = DECEMBER_DIR / "northbeam-december-2024-2025.csv"
+    nb_file_full = ADS_DIR / "northbeam-2025-ytd-latest.csv"
+    nb_file_nov = ADS_DIR / "northbeam-2025-november.csv"
+    
     try:
-        if nb_file.exists():
-            nb_2025 = pd.read_csv(nb_file, engine="python", on_bad_lines="skip")
+        if nb_file_dec.exists():
+            # Use pre-filtered December file (much faster)
+            nb_2025 = pd.read_csv(nb_file_dec, engine="python", on_bad_lines="skip")
+            nb_2025["date"] = pd.to_datetime(nb_2025["date"])
+            nb_2025["spend"] = pd.to_numeric(nb_2025["spend"], errors='coerce').fillna(0)
+        elif nb_file_full.exists():
+            # Fall back to full YTD file
+            nb_2025 = pd.read_csv(nb_file_full, engine="python", on_bad_lines="skip")
+            if "accounting_mode" in nb_2025.columns:
+                nb_2025 = nb_2025[nb_2025["accounting_mode"] == "Cash snapshot"].copy()
+            nb_2025["date"] = pd.to_datetime(nb_2025["date"])
+            nb_2025["spend"] = pd.to_numeric(nb_2025["spend"], errors='coerce').fillna(0)
+        elif nb_file_nov.exists():
+            # Last resort: November file
+            nb_2025 = pd.read_csv(nb_file_nov, engine="python", on_bad_lines="skip")
             if "accounting_mode" in nb_2025.columns:
                 nb_2025 = nb_2025[nb_2025["accounting_mode"] == "Cash snapshot"].copy()
             nb_2025["date"] = pd.to_datetime(nb_2025["date"])
             nb_2025["spend"] = pd.to_numeric(nb_2025["spend"], errors='coerce').fillna(0)
         else:
             nb_2025 = pd.DataFrame()
-    except Exception:
+    except Exception as e:
+        st.warning(f"Could not load Northbeam data: {e}")
         nb_2025 = pd.DataFrame()
     
     # Email campaigns (Klaviyo)
@@ -352,12 +370,21 @@ def december_core_metrics(start_date, end_date):
         goog_spend_25 = 0
         goog_rev_25 = 0
     
-    # Total spend with 15% markup for other channels
+    # Total spend calculation
+    # 2024: Meta + Google + 15% markup for other channels (Affiliate, etc.)
     paid_spend_24 = meta_spend_24 + goog_spend_24
     total_spend_24 = paid_spend_24 * 1.15
     
-    paid_spend_25 = meta_spend_25 + goog_spend_25
-    total_spend_25 = paid_spend_25 * 1.15
+    # 2025: Use Northbeam (all channels) if available, otherwise fall back to Meta+Google
+    nb_2025 = data.get("northbeam_2025", pd.DataFrame())
+    if len(nb_2025) > 0:
+        # Northbeam has all channels, no markup needed
+        nb_dec = nb_2025[(nb_2025["date"] >= start_2025) & (nb_2025["date"] <= end_2025)]
+        total_spend_25 = nb_dec["spend"].sum()
+    else:
+        # Fall back to Meta + Google with 15% markup
+        paid_spend_25 = meta_spend_25 + goog_spend_25
+        total_spend_25 = paid_spend_25 * 1.15
     
     # MER calculation
     mer_24 = shop24 / total_spend_24 if total_spend_24 > 0 else 0
@@ -528,13 +555,13 @@ if len(m24) > 0 and len(g24_data) > 0:
         axis=1
     )
 
-# For 2025, use Northbeam or Meta+Google
-m25 = data["meta_2025"]
-g25_data = data["google_2025"]
-nb_2025 = data["northbeam_2025"]
+# For 2025, use Northbeam (all channels) or Meta+Google as fallback
+nb_2025 = data.get("northbeam_2025", pd.DataFrame())
+m25 = data.get("meta_2025", pd.DataFrame())
+g25_data = data.get("google_2025", pd.DataFrame())
 
 if len(nb_2025) > 0:
-    # Use Northbeam
+    # Use Northbeam (all channels - no markup needed)
     nb_dec = nb_2025[(nb_2025["date"] >= "2025-12-01") & (nb_2025["date"] <= "2025-12-31")]
     nb_spend_daily = nb_dec.groupby("date")["spend"].sum().reset_index()
     nb_spend_daily.columns = ["Day", "total_spend"]
@@ -542,7 +569,7 @@ if len(nb_2025) > 0:
     dec25_daily = dec25_daily.merge(nb_spend_daily, on="Day", how="left")
     dec25_daily["total_spend"] = dec25_daily["total_spend"].fillna(0)
 elif len(m25) > 0 and len(g25_data) > 0:
-    # Use Meta + Google
+    # Fallback: Use Meta + Google with 15% markup
     m25_dec = m25[(m25["Day"] >= "2025-12-01") & (m25["Day"] <= "2025-12-31")]
     g25_dec = g25_data[(g25_data["Day"] >= "2025-12-01") & (g25_data["Day"] <= "2025-12-31")]
     
