@@ -31,6 +31,7 @@ st.set_page_config(
 BASE_DIR = Path(__file__).parent
 ADS_DIR = BASE_DIR / "data" / "ads"
 EXEC_SUM_DIR = ADS_DIR / "exec-sum"
+DECEMBER_DIR = ADS_DIR / "december-only"  # Filtered December-only data
 MAIL_DIR = BASE_DIR / "data" / "mail"
 
 
@@ -60,21 +61,19 @@ def load_core_data():
     
     sales_2024 = pd.read_csv(sales_2024_file)
     
-    # Find the most recent 2025 sales file
+    # Find the most recent 2025 sales file (prioritize newer data)
     sales_2025_files = sorted(EXEC_SUM_DIR.glob("Total sales over time - OU - 2025-*.csv"))
+    # Filter to only include files with the expected naming pattern
+    sales_2025_files = [f for f in sales_2025_files if "DECEMBER-ONLY" not in f.name]
+    
     if sales_2025_files:
+        # Get the most recent file (latest date in filename)
         sales_2025 = pd.read_csv(sales_2025_files[-1])
         data_file_name = sales_2025_files[-1].name
     else:
-        # Try fallback file
-        fallback_file = EXEC_SUM_DIR / "Total sales over time - OU - 2025-01-01 - 2025-11-24.csv"
-        if fallback_file.exists():
-            sales_2025 = pd.read_csv(fallback_file)
-            data_file_name = "Total sales over time - OU - 2025-01-01 - 2025-11-24.csv"
-        else:
-            st.warning("⚠️ No 2025 sales data found. Showing 2024 data only.")
-            sales_2025 = pd.DataFrame(columns=["Day", "Total sales", "Orders"])
-            data_file_name = "No 2025 data available"
+        st.warning("⚠️ No 2025 sales data found. Showing 2024 data only.")
+        sales_2025 = pd.DataFrame(columns=["Day", "Total sales", "Orders"])
+        data_file_name = "No 2025 data available"
     
     for df in (sales_2024, sales_2025):
         if len(df) > 0:
