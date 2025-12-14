@@ -191,6 +191,7 @@ now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # Header
 st.title("🎆 HigherDOSE January Performance Dashboard")
 st.caption(f"**Data last loaded:** {now_str} | **Sales file:** {data['data_file_name']}")
+st.caption("📊 Comparing January 2024 vs January 2025 | Version 1.0.1")
 
 # Sidebar controls
 with st.sidebar:
