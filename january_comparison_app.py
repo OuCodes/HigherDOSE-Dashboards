@@ -223,14 +223,14 @@ with st.sidebar:
     st.header("📅 Date Range Selection")
     jan_start = st.date_input(
         "January Start Date",
-        value=datetime(2024, 1, 1),
+        value=datetime(2025, 1, 1),
         min_value=datetime(2024, 1, 1),
         max_value=datetime(2026, 1, 31)
     )
     
     jan_end = st.date_input(
         "January End Date (2024/2025)",
-        value=datetime(2024, 1, 31),
+        value=datetime(2025, 1, 31),
         min_value=datetime(2024, 1, 1),
         max_value=datetime(2026, 1, 31)
     )
@@ -244,15 +244,12 @@ st.markdown("---")
 def january_core_metrics(start_date, end_date):
     """Compute January 2024 vs 2025 core metrics for the selected date range."""
     
-    # Determine the year ranges
-    # For 2024, use Jan 1-31 (or up to end_date if in January 2024)
-    # For 2025, use Jan 1 through the same day-of-month
-    
+    # Determine the year ranges - always compare full January months
     start_2024 = "2024-01-01"
-    end_2024 = min(pd.Timestamp("2024-01-31"), pd.Timestamp(end_date))
+    end_2024 = "2024-01-31"
     
     start_2025 = "2025-01-01"
-    end_2025 = min(pd.Timestamp("2025-01-31"), pd.Timestamp(end_date))
+    end_2025 = "2025-01-31"
     
     s24 = data["sales_2024"]
     s25 = data["sales_2025"]
