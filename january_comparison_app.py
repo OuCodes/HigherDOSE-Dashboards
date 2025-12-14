@@ -364,7 +364,7 @@ core = january_core_metrics(jan_start, jan_end)
 # Key Metrics Row
 st.subheader("📊 January Performance Overview")
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
     st.metric(
@@ -390,6 +390,17 @@ with col2:
 
 with col3:
     st.metric(
+        "Spend 2024",
+        f"${core['spend24']:,.0f}" if core['spend24'] > 0 else "N/A",
+    )
+    st.metric(
+        "Spend 2025",
+        f"${core['spend25']:,.0f}" if core['spend25'] > 0 else "N/A",
+        f"{_pct_change(core['spend25'], core['spend24']):+.1f}% YoY" if core['spend24'] > 0 and core['spend25'] > 0 else "N/A",
+    )
+
+with col4:
+    st.metric(
         "MER 2024",
         f"{core['mer24']:.2f}x" if core['mer24'] > 0 else "N/A",
     )
@@ -399,7 +410,7 @@ with col3:
         f"{_pct_change(core['mer25'], core['mer24']):+.1f}%" if core['mer24'] > 0 and core['mer25'] > 0 else "N/A",
     )
 
-with col4:
+with col5:
     st.metric(
         "GA4 Sessions 2024",
         f"{core['sess24']:,.0f}" if core['sess24'] > 0 else "N/A",
