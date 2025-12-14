@@ -42,7 +42,7 @@ def _pct_change(new: float, old: float) -> float:
     return (new - old) / old * 100.0
 
 
-@st.cache_data(ttl=300)  # Cache for 5 minutes
+@st.cache_data(ttl=60)  # Cache for 1 minute - Updated 2025-12-14
 def load_core_data():
     """Load all core datasets used in this dashboard."""
     
