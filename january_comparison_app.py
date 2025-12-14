@@ -207,7 +207,7 @@ debug_msg = " | ".join(debug_parts)
 # Header
 st.title("🎆 HigherDOSE January Performance Dashboard")
 st.caption(f"**Data last loaded:** {now_str} | **Sales file:** {data['data_file_name']}")
-st.caption(f"📊 Comparing January 2024 vs January 2025 | Version 1.0.2 | {debug_msg}")
+st.caption(f"📊 Comparing January 2024 vs January 2025 | Version 1.0.3 | {debug_msg}")
 
 # Sidebar controls
 with st.sidebar:
