@@ -132,13 +132,12 @@ def load_core_data():
                 if col in df.columns and df[col].dtype == "O":
                     df[col] = df[col].astype(str).str.replace(",", "").astype(float)
     
-    # Northbeam 2025 spend data
-    nb_file = ADS_DIR / "northbeam-2025-november.csv"
+    # Northbeam 2025 spend data - use January file for this dashboard
+    nb_file = ADS_DIR / "northbeam-january-2025.csv"
     try:
         if nb_file.exists():
             nb_2025 = pd.read_csv(nb_file, engine="python", on_bad_lines="skip")
-            if "accounting_mode" in nb_2025.columns:
-                nb_2025 = nb_2025[nb_2025["accounting_mode"] == "Cash snapshot"].copy()
+            # January file already filtered to Cash snapshot
             nb_2025["date"] = pd.to_datetime(nb_2025["date"])
             nb_2025["spend"] = pd.to_numeric(nb_2025["spend"], errors='coerce').fillna(0)
         else:
