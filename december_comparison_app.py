@@ -140,13 +140,19 @@ def load_core_data():
                     df[col] = df[col].astype(str).str.replace(",", "").astype(float)
     
     # Northbeam 2025 spend data (all channels - updated daily)
-    # Try December-filtered file first (faster), then fall back to full file
+    # Try December-filtered daily file first (fastest), then fall back to other sources
+    nb_file_daily_2025 = ADS_DIR / "northbeam-december-2025-daily.csv"
     nb_file_dec = DECEMBER_DIR / "northbeam-december-2024-2025.csv"
     nb_file_full = ADS_DIR / "northbeam-2025-ytd-latest.csv"
     nb_file_nov = ADS_DIR / "northbeam-2025-november.csv"
     
     try:
-        if nb_file_dec.exists():
+        if nb_file_daily_2025.exists():
+            # Use daily aggregated December file (fastest and most accurate)
+            nb_2025 = pd.read_csv(nb_file_daily_2025)
+            nb_2025["date"] = pd.to_datetime(nb_2025["date"])
+            nb_2025["spend"] = pd.to_numeric(nb_2025["spend"], errors='coerce').fillna(0)
+        elif nb_file_dec.exists():
             # Use pre-filtered December file (much faster)
             nb_2025 = pd.read_csv(nb_file_dec, engine="python", on_bad_lines="skip")
             nb_2025["date"] = pd.to_datetime(nb_2025["date"])
