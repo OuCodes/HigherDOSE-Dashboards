@@ -320,12 +320,19 @@ def january_core_metrics(start_date, end_date):
         goog_spend_25 = 0
         goog_rev_25 = 0
     
-    # Total spend with 15% markup for other channels
+    # Total spend with 15% markup for other channels (2024)
     paid_spend_24 = meta_spend_24 + goog_spend_24
     total_spend_24 = paid_spend_24 * 1.15
     
-    paid_spend_25 = meta_spend_25 + goog_spend_25
-    total_spend_25 = paid_spend_25 * 1.15
+    # For 2025, use Northbeam if available (includes all channels)
+    nb_2025 = data["northbeam_2025"]
+    if len(nb_2025) > 0:
+        nb_jan = nb_2025[(nb_2025["date"] >= start_2025) & (nb_2025["date"] <= end_2025)]
+        total_spend_25 = nb_jan["spend"].sum()
+    else:
+        # Fall back to Meta + Google with markup
+        paid_spend_25 = meta_spend_25 + goog_spend_25
+        total_spend_25 = paid_spend_25 * 1.15
     
     # MER calculation
     mer_24 = shop24 / total_spend_24 if total_spend_24 > 0 else 0
