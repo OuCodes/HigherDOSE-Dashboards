@@ -188,10 +188,20 @@ with st.spinner("Loading data..."):
 
 now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+# Debug: Check data loading
+if len(data["sales_2025"]) > 0:
+    jan25_check = data["sales_2025"][
+        (data["sales_2025"]["Day"] >= "2025-01-01") & 
+        (data["sales_2025"]["Day"] <= "2025-01-31")
+    ]
+    debug_msg = f"✓ Loaded {len(jan25_check)} days of January 2025 data"
+else:
+    debug_msg = "⚠️ No 2025 data loaded"
+
 # Header
 st.title("🎆 HigherDOSE January Performance Dashboard")
 st.caption(f"**Data last loaded:** {now_str} | **Sales file:** {data['data_file_name']}")
-st.caption("📊 Comparing January 2024 vs January 2025 | Version 1.0.1")
+st.caption(f"📊 Comparing January 2024 vs January 2025 | Version 1.0.2 | {debug_msg}")
 
 # Sidebar controls
 with st.sidebar:
