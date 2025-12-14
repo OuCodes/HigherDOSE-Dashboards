@@ -189,14 +189,21 @@ with st.spinner("Loading data..."):
 now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Debug: Check data loading
+debug_parts = []
 if len(data["sales_2025"]) > 0:
     jan25_check = data["sales_2025"][
         (data["sales_2025"]["Day"] >= "2025-01-01") & 
         (data["sales_2025"]["Day"] <= "2025-01-31")
     ]
-    debug_msg = f"✓ Loaded {len(jan25_check)} days of January 2025 data"
+    debug_parts.append(f"✓ {len(jan25_check)}d sales")
 else:
-    debug_msg = "⚠️ No 2025 data loaded"
+    debug_parts.append("⚠️ No sales")
+
+meta25_days = len(data["meta_2025"]) if len(data["meta_2025"]) > 0 else 0
+google25_days = len(data["google_2025"]) if len(data["google_2025"]) > 0 else 0
+debug_parts.append(f"Meta:{meta25_days}d")
+debug_parts.append(f"Google:{google25_days}d")
+debug_msg = " | ".join(debug_parts)
 
 # Header
 st.title("🎆 HigherDOSE January Performance Dashboard")
