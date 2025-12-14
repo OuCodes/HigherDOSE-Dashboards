@@ -46,6 +46,9 @@ def _pct_change(new: float, old: float) -> float:
 def load_core_data():
     """Load all core datasets used in this dashboard."""
     
+    # Historical spend data (for 2024 total spend)
+    historical_spend = pd.read_csv(ADS_DIR / "Historical Spend - Historical Spend.csv")
+    
     # Shopify daily sales data
     sales_2024 = pd.read_csv(
         EXEC_SUM_DIR / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
@@ -177,6 +180,7 @@ def load_core_data():
         "northbeam_2025": nb_2025,
         "emails_2024": emails_2024,
         "emails_2025": emails_2025,
+        "historical_spend": historical_spend,
         "data_file_name": data_file_name,
     }
 
@@ -317,9 +321,19 @@ def january_core_metrics(start_date, end_date):
         goog_spend_25 = 0
         goog_rev_25 = 0
     
-    # Total spend with 15% markup for other channels (2024)
-    paid_spend_24 = meta_spend_24 + goog_spend_24
-    total_spend_24 = paid_spend_24 * 1.15
+    # For 2024, use Historical Spend CSV (all channels)
+    hist_spend = data["historical_spend"]
+    jan_24_hist = hist_spend[hist_spend["Month"] == "Jan-24"]
+    if len(jan_24_hist) > 0:
+        total_spend_str = jan_24_hist["Total Spend"].values[0]
+        if isinstance(total_spend_str, str):
+            total_spend_24 = float(total_spend_str.replace('$', '').replace(',', ''))
+        else:
+            total_spend_24 = float(total_spend_str)
+    else:
+        # Fall back to Meta + Google with markup
+        paid_spend_24 = meta_spend_24 + goog_spend_24
+        total_spend_24 = paid_spend_24 * 1.15
     
     # For 2025, use Northbeam if available (includes all channels)
     nb_2025 = data["northbeam_2025"]
