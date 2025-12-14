@@ -1,6 +1,7 @@
 """
 HigherDOSE January Performance Dashboard
 -----------------------------------------
+Version: 1.0.1 (Updated 2025-12-14)
 
 This Streamlit app visualizes January 2024 vs January 2025 performance for:
 - Shopify revenue
