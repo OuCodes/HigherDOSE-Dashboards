@@ -178,8 +178,14 @@ def load_core_data():
         nb_2025 = pd.DataFrame()
     
     # Email campaigns (Klaviyo)
-    emails_2024_file = MAIL_DIR / "klaviyo_campaigns_november_2024.csv"
-    emails_2025_file = MAIL_DIR / "klaviyo_campaigns_november_2025.csv"
+    # Try December files first, fall back to November if not available
+    emails_2024_file = MAIL_DIR / "klaviyo_campaigns_december_2024.csv"
+    if not emails_2024_file.exists():
+        emails_2024_file = MAIL_DIR / "klaviyo_campaigns_november_2024.csv"
+    
+    emails_2025_file = MAIL_DIR / "klaviyo_campaigns_december_2025.csv"
+    if not emails_2025_file.exists():
+        emails_2025_file = MAIL_DIR / "klaviyo_campaigns_november_2025.csv"
     
     try:
         if emails_2024_file.exists():
@@ -282,9 +288,9 @@ with st.sidebar:
         if pd.notna(latest_2025_date) and latest_2025_date.month == 12:
             default_end = latest_2025_date.date()
         else:
-            default_end = datetime(2025, 12, 9).date()  # Default to Dec 9
+            default_end = datetime(2025, 12, 13).date()  # Default to Dec 13 (latest available data)
     else:
-        default_end = datetime(2025, 12, 9).date()
+        default_end = datetime(2025, 12, 13).date()
     
     dec_start = st.date_input(
         "December Start Date",
