@@ -28,11 +28,10 @@ BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 ADS_DIR = DATA_DIR / "ads"
 
-@st.cache_data(ttl=60)
 def load_all_data():
     """Load 2024 + 2025 sales and spend data
     
-    Cache key: 2025-12-19-v3 - Direct load from Historical Spend CSV
+    NO CACHE - Direct load from Historical Spend CSV (temporarily disabled for debugging)
     """
     
     # === 2024 Sales ===
