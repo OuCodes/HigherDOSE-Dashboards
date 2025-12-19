@@ -717,8 +717,15 @@ with tab4:
     try:
         campaigns_2024, campaigns_2025 = load_campaign_data()
         
+        # Debug info
+        st.caption(f"2024 campaigns loaded: {len(campaigns_2024)} records")
+        st.caption(f"2025 campaigns loaded: {len(campaigns_2025)} records")
+        
         if campaigns_2024.empty and campaigns_2025.empty:
-            st.warning("⚠️ No campaign data available. Run `python3 scripts/analyze_q1_campaigns.py` first.")
+            campaign_dir = DATA_DIR / "reports" / "campaign"
+            st.warning(f"⚠️ No campaign data available.")
+            st.info(f"Looking for files in: {campaign_dir}")
+            st.info(f"Expected files: q1_2024_campaigns.csv, q1_2025_campaigns.csv")
         else:
             # Summary metrics
             st.subheader("Platform Spend Summary")
@@ -901,6 +908,8 @@ with tab4:
                 
     except Exception as e:
         st.error(f"Error loading campaign data: {e}")
+        import traceback
+        st.code(traceback.format_exc())
         st.info("Run `python3 scripts/analyze_q1_campaigns.py` to generate campaign data.")
 
 # ===== TAB 5: DATA & METHODOLOGY =====
