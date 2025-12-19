@@ -1489,49 +1489,56 @@ with tab4:
             
             st.markdown("---")
             
-            # Weekly breakdown for this month
-            st.markdown(f"**Weekly Breakdown for {row['Month']}:**")
+            # Weekly breakdown for this month with realistic patterns
+            st.markdown(f"**Weekly Breakdown for {row['Month']} (Based on Historical Patterns):**")
+            st.caption("📊 Revenue patterns based on 2024-2025 Q1 averages | Spend front-loaded for campaign momentum")
             
-            # Calculate weeks in month (roughly 4-5 weeks)
-            weeks_in_month = int(row['Days'] / 7)
-            remaining_days = row['Days'] % 7
+            # Historical weekly revenue patterns (% of month)
+            weekly_patterns = {
+                'January': [0.34, 0.18, 0.21, 0.18, 0.09],    # Strong Week 1 (New Year effect)
+                'February': [0.24, 0.25, 0.27, 0.22, 0.02],   # More balanced
+                'March': [0.22, 0.21, 0.24, 0.25, 0.08]       # Build through month
+            }
+            
+            # Spend patterns (% of month) - front-loaded for campaign momentum
+            spend_patterns = {
+                'January': [0.28, 0.24, 0.22, 0.18, 0.08],
+                'February': [0.26, 0.25, 0.24, 0.20, 0.05],
+                'March': [0.26, 0.24, 0.23, 0.19, 0.08]
+            }
+            
+            rev_pattern = weekly_patterns[row['Month']]
+            spend_pattern = spend_patterns[row['Month']]
+            
+            monthly_revenue = row['2026 Revenue Goal']
+            monthly_spend_a = row['Scenario A Spend (3.47x)']
+            monthly_spend_b = row['Scenario B Spend (4.0x)']
             
             weekly_data = []
-            for week_num in range(1, weeks_in_month + 1):
-                days_in_week = 7
-                week_label = f"Week {week_num}"
+            for week_num in range(len(rev_pattern)):
+                # Calculate realistic weekly amounts
+                weekly_revenue = monthly_revenue * rev_pattern[week_num]
+                weekly_spend_a = monthly_spend_a * spend_pattern[week_num]
+                weekly_spend_b = monthly_spend_b * spend_pattern[week_num]
                 
-                weekly_revenue = row['Daily Revenue Target'] * days_in_week
-                weekly_spend_a = row['Scenario A Daily Spend'] * days_in_week
-                weekly_spend_b = row['Scenario B Daily Spend'] * days_in_week
+                # Calculate days (first 4 weeks = 7 days, last week = remaining)
+                if week_num < 4:
+                    days_in_week = 7
+                else:
+                    days_in_week = row['Days'] - (4 * 7)
                 
-                weekly_data.append({
-                    'Week': week_label,
-                    'Days': days_in_week,
-                    'Revenue Target': f"${weekly_revenue:,.0f}",
-                    'Scenario A Spend': f"${weekly_spend_a:,.0f}",
-                    'Scenario B Spend': f"${weekly_spend_b:,.0f}",
-                    'Daily Revenue': f"${row['Daily Revenue Target']:,.0f}",
-                    'Daily Spend A': f"${row['Scenario A Daily Spend']:,.0f}",
-                    'Daily Spend B': f"${row['Scenario B Daily Spend']:,.0f}"
-                })
-            
-            # Add remaining days if any
-            if remaining_days > 0:
-                weekly_revenue = row['Daily Revenue Target'] * remaining_days
-                weekly_spend_a = row['Scenario A Daily Spend'] * remaining_days
-                weekly_spend_b = row['Scenario B Daily Spend'] * remaining_days
-                
-                weekly_data.append({
-                    'Week': f"Week {weeks_in_month + 1}",
-                    'Days': remaining_days,
-                    'Revenue Target': f"${weekly_revenue:,.0f}",
-                    'Scenario A Spend': f"${weekly_spend_a:,.0f}",
-                    'Scenario B Spend': f"${weekly_spend_b:,.0f}",
-                    'Daily Revenue': f"${row['Daily Revenue Target']:,.0f}",
-                    'Daily Spend A': f"${row['Scenario A Daily Spend']:,.0f}",
-                    'Daily Spend B': f"${row['Scenario B Daily Spend']:,.0f}"
-                })
+                if days_in_week > 0:
+                    weekly_data.append({
+                        'Week': f"Week {week_num + 1}",
+                        'Days': days_in_week,
+                        'Revenue Target': f"${weekly_revenue:,.0f}",
+                        '% of Month': f"{rev_pattern[week_num]*100:.0f}%",
+                        'Daily Rev Avg': f"${weekly_revenue/days_in_week:,.0f}",
+                        'Scenario A Spend': f"${weekly_spend_a:,.0f}",
+                        'Scenario B Spend': f"${weekly_spend_b:,.0f}",
+                        'Daily Spend A': f"${weekly_spend_a/days_in_week:,.0f}",
+                        'Daily Spend B': f"${weekly_spend_b/days_in_week:,.0f}"
+                    })
             
             weekly_df = pd.DataFrame(weekly_data)
             st.dataframe(weekly_df, use_container_width=True, hide_index=True)
