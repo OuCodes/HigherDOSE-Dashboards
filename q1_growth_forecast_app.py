@@ -28,7 +28,7 @@ ADS_DIR = DATA_DIR / "ads"
 def load_campaign_data():
     """Load Q1 campaign-level data for 2024 and 2025"""
     
-    campaign_dir = DATA_DIR.parent / "reports" / "campaign"
+    campaign_dir = DATA_DIR / "reports" / "campaign"
     
     campaigns_2024_file = campaign_dir / "q1_2024_campaigns.csv"
     campaigns_2025_file = campaign_dir / "q1_2025_campaigns.csv"
