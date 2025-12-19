@@ -1413,10 +1413,11 @@ with tab4:
     st.subheader("📅 Monthly Projections: Daily Targets")
     
     st.markdown("""
-    **Hybrid Model Approach:**
-    - **January**: +20% growth to capitalize on New Year momentum
-    - **February**: +15% growth (conservative mid-quarter)
-    - **March**: +20% growth to finish quarter strong
+    **Front-Loaded Growth Strategy:**
+    - **January**: +20% growth (front-load quarter, capitalize on New Year momentum)
+    - **February**: +15% growth (maintain steady performance)
+    - **March**: +15% growth (maintain steady performance)
+    - January's aggressive push enables overall quarter target
     - Both scenarios maintain target MER efficiency
     """)
     
@@ -1439,9 +1440,9 @@ with tab4:
         
         # 2026 projections (growth rate varies by month)
         growth_rates = {
-            'January': 1.20,    # +20%
+            'January': 1.20,    # +20% (Front-loaded to catch up quarter)
             'February': 1.15,   # +15%
-            'March': 1.20       # +20%
+            'March': 1.15       # +15%
         }
         revenue_2026 = revenue_2025 * growth_rates[month_name]
         daily_revenue_2026 = revenue_2026 / days
