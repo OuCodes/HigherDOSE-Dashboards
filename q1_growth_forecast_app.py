@@ -1460,6 +1460,8 @@ with tab4:
             'Month': month_name,
             'Days': days,
             '2025 Revenue': revenue_2025,
+            '2025 Spend': spend_2025,
+            '2025 Daily Spend': spend_2025 / days if days > 0 else 0,
             '2026 Revenue Goal': revenue_2026,
             'Daily Revenue Target': daily_revenue_2026,
             'Scenario A Spend (3.47x)': spend_2026_a,
@@ -1486,15 +1488,29 @@ with tab4:
             
             with col2:
                 st.markdown("### 💰 Scenario A: 3.47x MER")
-                st.metric("Monthly Spend", f"${row['Scenario A Spend (3.47x)']:,.0f}")
-                st.metric("Daily Spend", f"${row['Scenario A Daily Spend']:,.0f}")
-                st.caption("Maintain current efficiency")
+                spend_delta_a = row['Scenario A Spend (3.47x)'] - row['2025 Spend']
+                spend_delta_a_pct = (spend_delta_a / row['2025 Spend'] * 100) if row['2025 Spend'] > 0 else 0
+                st.metric("Monthly Spend", f"${row['Scenario A Spend (3.47x)']:,.0f}",
+                         delta=f"+${spend_delta_a:,.0f} ({spend_delta_a_pct:+.1f}%)")
+                
+                daily_delta_a = row['Scenario A Daily Spend'] - row['2025 Daily Spend']
+                daily_delta_a_pct = (daily_delta_a / row['2025 Daily Spend'] * 100) if row['2025 Daily Spend'] > 0 else 0
+                st.metric("Daily Spend", f"${row['Scenario A Daily Spend']:,.0f}",
+                         delta=f"+${daily_delta_a:,.0f} ({daily_delta_a_pct:+.1f}%)")
+                st.caption(f"vs 2025: ${row['2025 Spend']:,.0f} monthly | ${row['2025 Daily Spend']:,.0f} daily")
             
             with col3:
                 st.markdown("### 🚀 Scenario B: 4.0x MER")
-                st.metric("Monthly Spend", f"${row['Scenario B Spend (4.0x)']:,.0f}")
-                st.metric("Daily Spend", f"${row['Scenario B Daily Spend']:,.0f}")
-                st.caption(f"Saves: ${row['Savings (A vs B)']:,.0f}")
+                spend_delta_b = row['Scenario B Spend (4.0x)'] - row['2025 Spend']
+                spend_delta_b_pct = (spend_delta_b / row['2025 Spend'] * 100) if row['2025 Spend'] > 0 else 0
+                st.metric("Monthly Spend", f"${row['Scenario B Spend (4.0x)']:,.0f}",
+                         delta=f"+${spend_delta_b:,.0f} ({spend_delta_b_pct:+.1f}%)")
+                
+                daily_delta_b = row['Scenario B Daily Spend'] - row['2025 Daily Spend']
+                daily_delta_b_pct = (daily_delta_b / row['2025 Daily Spend'] * 100) if row['2025 Daily Spend'] > 0 else 0
+                st.metric("Daily Spend", f"${row['Scenario B Daily Spend']:,.0f}",
+                         delta=f"+${daily_delta_b:,.0f} ({daily_delta_b_pct:+.1f}%)")
+                st.caption(f"Saves vs A: ${row['Savings (A vs B)']:,.0f}")
             
             st.markdown("---")
             
