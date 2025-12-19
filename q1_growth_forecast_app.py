@@ -4,8 +4,8 @@ Q1 Growth & Forecast Dashboard
 2024 vs 2025 Q1 Analysis with 20% Growth Targets for 2026
 
 Data files: northbeam_style_daily_2024-2025_12_19.csv & northbeam_2025_ytd_spend_daily.csv
-Updated: Dec 19, 2025 - Actual Northbeam Q1 2025 spend data (Jan-Mar)
-Shows both years' MER values with deltas in overview
+Updated: Dec 19, 2025 - Corrected 2024 spend (fixed affiliate double-counting)
+Jan 2024: $761,785 (was $889,928) - All Q1 months corrected
 """
 
 import streamlit as st
