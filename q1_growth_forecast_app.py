@@ -75,11 +75,21 @@ def load_all_data():
     spend_2024 = pd.read_csv(spend_2024_file)
     spend_2024['date'] = pd.to_datetime(spend_2024['date'])
     
+    # Debug: Show what file was loaded
+    st.sidebar.caption(f"📁 2024 spend file: {spend_2024_file.name}")
+    
     # Aggregate to daily brand level
     spend_2024_daily = spend_2024.groupby('date').agg({
         'spend': 'sum'
     }).reset_index()
     spend_2024_daily['year'] = 2024
+    
+    # Debug: Show January total
+    jan_2024_check = spend_2024_daily[
+        (spend_2024_daily['date'] >= '2024-01-01') & 
+        (spend_2024_daily['date'] <= '2024-01-31')
+    ]['spend'].sum()
+    st.sidebar.caption(f"✅ Jan 2024 check: ${jan_2024_check:,.0f}")
     
     # === 2025 Spend (Northbeam YTD) ===
     # Try lightweight daily file first, fallback to full YTD file
