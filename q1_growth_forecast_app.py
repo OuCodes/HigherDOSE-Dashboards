@@ -374,16 +374,16 @@ with tab1:
     spend_delta_pct = (spend_delta / q1_2024_spend * 100) if q1_2024_spend > 0 else 0
     mer_delta = q1_2025_mer - q1_2024_mer
     
-    # Revenue metrics row
-    st.subheader("Revenue Performance")
+    # Total Sales metrics row
+    st.subheader("Total Sales (Shopify)")
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        st.metric("Q1 2024 Revenue", f"${q1_2024_revenue:,.0f}")
+        st.metric("Q1 2024 Total Sales", f"${q1_2024_revenue:,.0f}")
         st.caption(f"{q1_2024_orders:,.0f} orders")
     
     with col2:
-        st.metric("Q1 2025 Revenue", f"${q1_2025_revenue:,.0f}", 
+        st.metric("Q1 2025 Total Sales", f"${q1_2025_revenue:,.0f}",
                  delta=f"{revenue_delta_pct:+.1f}% YoY")
         st.caption(f"{q1_2025_orders:,.0f} orders")
     
@@ -392,7 +392,7 @@ with tab1:
         st.caption(f"Daily target: ${q1_2026_goal_daily:,.0f}")
     
     with col4:
-        st.metric("Revenue YoY", f"{revenue_delta_pct:+.1f}%",
+        st.metric("Total Sales YoY", f"{revenue_delta_pct:+.1f}%",
                  delta=f"${revenue_delta:,.0f}")
         st.caption(f"Δ from 2024 to 2025")
     
@@ -632,11 +632,11 @@ with tab1:
                                                      categories=months_order, ordered=True)
     monthly_display = monthly_display.sort_values(['Year', 'month_name'])
     monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'real_revenue', 'spend', 'MER', 'orders']]
-    monthly_display.columns = ['Year', 'Month', 'Net Revenue', 'Real Revenue', 'Spend', 'MER', 'Orders']
+    monthly_display.columns = ['Year', 'Month', 'Total Sales', 'Real Revenue', 'Spend', 'MER', 'Orders']
     
     st.dataframe(monthly_display, use_container_width=True, hide_index=True)
     
-    st.caption("📊 **Net Revenue** = Total sales (after discounts, excluding shipping) | **Real Revenue** = Gross + Discounts + Shipping")
+    st.caption("📊 **Total Sales** = Shopify total sales (after discounts, excluding shipping) | **Real Revenue** = Gross + Discounts + Shipping")
     
     # Note about missing spend data
     if coverage.get('days_with_spend', 0) < 90:  # Q1 should have ~90 days
