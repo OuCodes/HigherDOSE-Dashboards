@@ -28,10 +28,11 @@ BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 ADS_DIR = DATA_DIR / "ads"
 
-def load_all_data():
-    """Load 2024 + 2025 sales and spend data
+def load_all_data_v2_dec19():
+    """Load 2024 + 2025 sales and spend data - CORRECTED VERSION
     
-    NO CACHE - Direct load from Historical Spend CSV (temporarily disabled for debugging)
+    NO CACHE - Direct load from Historical Spend CSV
+    Version: 2025-12-19 - Fixed affiliate double-counting bug
     """
     
     # === 2024 Sales ===
@@ -236,7 +237,7 @@ def load_all_data():
 
 # Load data
 try:
-    data = load_all_data()
+    data = load_all_data_v2_dec19()
     if data is None:
         st.stop()
     
