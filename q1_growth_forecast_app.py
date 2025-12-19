@@ -55,57 +55,72 @@ def load_all_data():
     sales_2025['year'] = 2025
     
     # === 2024 Spend - Load from Historical Spend CSV directly ===
-    # This avoids dependency on pre-built CSV files
+    st.sidebar.write("🔍 Loading 2024 spend data...")
+    
     historical_file = ADS_DIR / "q4-planning-2025" / "Historical Spend - Historical Spend.csv"
+    st.sidebar.write(f"Looking for: {historical_file}")
+    st.sidebar.write(f"File exists: {historical_file.exists()}")
     
     if not historical_file.exists():
-        st.error(f"❌ Historical Spend CSV not found: {historical_file}")
+        st.error(f"❌ Historical Spend CSV not found at: {historical_file}")
+        st.error(f"ADS_DIR = {ADS_DIR}")
+        st.error(f"Files in q4-planning-2025: {list((ADS_DIR / 'q4-planning-2025').glob('*.csv')) if (ADS_DIR / 'q4-planning-2025').exists() else 'Directory does not exist'}")
         return None
     
-    # Load historical spend data
-    hist_df = pd.read_csv(historical_file)
-    hist_2024 = hist_df[hist_df['Month'].str.contains('24', na=False)].copy()
-    
-    # Parse month to dates
-    hist_2024['month_date'] = pd.to_datetime(hist_2024['Month'], format='%b-%y')
-    
-    def clean_currency(val):
-        if pd.isna(val) or val == '' or val == '–':
-            return 0.0
-        return float(str(val).replace('$', '').replace(',', ''))
-    
-    # Extract ONLY the Total Spend column (to avoid double-counting)
-    # This already includes all channels properly aggregated
-    spend_2024_monthly = []
-    for _, row in hist_2024.iterrows():
-        month_date = row['month_date']
-        total_spend = clean_currency(row.get('Total Spend', 0))
+    try:
+        # Load historical spend data
+        hist_df = pd.read_csv(historical_file)
+        st.sidebar.write(f"✅ Loaded {len(hist_df)} rows from Historical CSV")
         
-        if total_spend > 0:
-            # Distribute monthly spend evenly across days in the month
-            days_in_month = pd.date_range(
-                start=month_date,
-                end=month_date + pd.offsets.MonthEnd(1),
-                freq='D'
-            )
-            daily_spend = total_spend / len(days_in_month)
+        hist_2024 = hist_df[hist_df['Month'].str.contains('24', na=False)].copy()
+        st.sidebar.write(f"✅ Found {len(hist_2024)} months for 2024")
+        
+        # Parse month to dates
+        hist_2024['month_date'] = pd.to_datetime(hist_2024['Month'], format='%b-%y')
+        
+        def clean_currency(val):
+            if pd.isna(val) or val == '' or val == '–':
+                return 0.0
+            return float(str(val).replace('$', '').replace(',', ''))
+        
+        # Extract ONLY the Total Spend column (to avoid double-counting)
+        spend_2024_monthly = []
+        for _, row in hist_2024.iterrows():
+            month_date = row['month_date']
+            total_spend = clean_currency(row.get('Total Spend', 0))
             
-            for day in days_in_month:
-                spend_2024_monthly.append({
-                    'date': day,
-                    'spend': daily_spend
-                })
-    
-    spend_2024_daily = pd.DataFrame(spend_2024_monthly)
-    spend_2024_daily['year'] = 2024
-    
-    # Debug: Show January total
-    jan_2024_check = spend_2024_daily[
-        (spend_2024_daily['date'] >= '2024-01-01') & 
-        (spend_2024_daily['date'] <= '2024-01-31')
-    ]['spend'].sum()
-    st.sidebar.caption(f"✅ 2024 data: Historical Spend CSV")
-    st.sidebar.caption(f"✅ Jan 2024: ${jan_2024_check:,.0f}")
+            if total_spend > 0:
+                # Distribute monthly spend evenly across days in the month
+                days_in_month = pd.date_range(
+                    start=month_date,
+                    end=month_date + pd.offsets.MonthEnd(1),
+                    freq='D'
+                )
+                daily_spend = total_spend / len(days_in_month)
+                
+                for day in days_in_month:
+                    spend_2024_monthly.append({
+                        'date': day,
+                        'spend': daily_spend
+                    })
+        
+        spend_2024_daily = pd.DataFrame(spend_2024_monthly)
+        spend_2024_daily['year'] = 2024
+        
+        # Debug: Show January total
+        jan_2024_check = spend_2024_daily[
+            (spend_2024_daily['date'] >= '2024-01-01') & 
+            (spend_2024_daily['date'] <= '2024-01-31')
+        ]['spend'].sum()
+        
+        st.sidebar.success(f"✅ Historical Spend CSV loaded")
+        st.sidebar.metric("Jan 2024 Spend", f"${jan_2024_check:,.0f}")
+        
+    except Exception as e:
+        st.error(f"❌ ERROR loading Historical Spend CSV: {e}")
+        import traceback
+        st.error(traceback.format_exc())
+        return None
     
     # === 2025 Spend (Northbeam YTD) ===
     # Try lightweight daily file first, fallback to full YTD file
