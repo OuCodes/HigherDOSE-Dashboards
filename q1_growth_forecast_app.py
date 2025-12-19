@@ -367,9 +367,11 @@ with tab1:
     q1_2025_aov = q1_2025_revenue / q1_2025_orders if q1_2025_orders > 0 else 0
     q1_2025_real_aov = q1_2025_real_revenue / q1_2025_real_revenue_orders if q1_2025_real_revenue_orders > 0 else 0
     
-    # 2026 goal (20% growth)
+    # 2026 goals (20% growth)
     q1_2026_goal_revenue = q1_2025_revenue * 1.20
     q1_2026_goal_daily = q1_2026_goal_revenue / 90  # Q1 = 90 days
+    q1_2026_goal_real_revenue = q1_2025_real_revenue * 1.20
+    q1_2026_goal_real_daily = q1_2026_goal_real_revenue / 90
     
     # YoY deltas
     revenue_delta = q1_2025_revenue - q1_2024_revenue
@@ -421,9 +423,8 @@ with tab1:
         st.caption(f"{int(q1_2025_real_revenue_orders):,} orders | AOV: ${q1_2025_real_aov:.2f} ({aov_delta_pct:+.1f}%)")
     
     with col3:
-        st.metric("Real Rev vs Total Sales", f"${q1_2025_real_revenue - q1_2025_revenue:,.0f}")
-        diff_pct_2025 = ((q1_2025_real_revenue - q1_2025_revenue) / q1_2025_real_revenue * 100) if q1_2025_real_revenue > 0 else 0
-        st.caption(f"Shipping & adjustments: {diff_pct_2025:.1f}%")
+        st.metric("Q1 2026 Goal (+20%)", f"${q1_2026_goal_real_revenue:,.0f}")
+        st.caption(f"Daily target: ${q1_2026_goal_real_daily:,.0f}")
     
     with col4:
         st.metric("Real Revenue YoY", f"{real_revenue_delta_pct:+.1f}%",
