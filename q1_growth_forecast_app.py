@@ -553,12 +553,10 @@ with tab1:
     monthly_2024 = q1_2024.groupby('month_name').agg({
         'revenue': 'sum',
         'real_revenue': 'sum',
-        'real_revenue_orders': 'sum',
         'spend': 'sum',
         'orders': 'sum'
     }).reset_index()
     monthly_2024['MER'] = monthly_2024['revenue'] / monthly_2024['spend']
-    monthly_2024['Real AOV'] = monthly_2024['real_revenue'] / monthly_2024['real_revenue_orders']
     monthly_2024['Year'] = 2024
     
     # Debug: Show what we calculated
@@ -568,12 +566,10 @@ with tab1:
     monthly_2025 = q1_2025.groupby('month_name').agg({
         'revenue': 'sum',
         'real_revenue': 'sum',
-        'real_revenue_orders': 'sum',
         'spend': 'sum',
         'orders': 'sum'
     }).reset_index()
     monthly_2025['MER'] = monthly_2025['revenue'] / monthly_2025['spend']
-    monthly_2025['Real AOV'] = monthly_2025['real_revenue'] / monthly_2025['real_revenue_orders']
     monthly_2025['Year'] = 2025
     
     # Helper function for color indicators
@@ -593,7 +589,6 @@ with tab1:
     monthly_2024_display['real_revenue'] = monthly_2024_display['real_revenue'].apply(lambda x: f"${x:,.0f}")
     monthly_2024_display['spend'] = monthly_2024_display['spend'].apply(lambda x: f"${x:,.0f}")
     monthly_2024_display['MER'] = monthly_2024_display['MER'].apply(lambda x: f"{x:.2f}x")
-    monthly_2024_display['Real AOV'] = monthly_2024_display['Real AOV'].apply(lambda x: f"${x:.2f}")
     monthly_2024_display['orders'] = monthly_2024_display['orders'].apply(lambda x: f"{int(x):,}")
     
     # Format 2025 data with YoY deltas
@@ -613,7 +608,6 @@ with tab1:
             real_rev_2024 = monthly_2024_sorted.loc[month, 'real_revenue']
             spend_2024 = monthly_2024_sorted.loc[month, 'spend']
             mer_2024 = monthly_2024_sorted.loc[month, 'MER']
-            real_aov_2024 = monthly_2024_sorted.loc[month, 'Real AOV']
             orders_2024 = monthly_2024_sorted.loc[month, 'orders']
             
             # Calculate deltas
@@ -621,7 +615,6 @@ with tab1:
             real_rev_delta = ((row['real_revenue'] - real_rev_2024) / real_rev_2024 * 100) if real_rev_2024 > 0 else 0
             spend_delta = ((row['spend'] - spend_2024) / spend_2024 * 100) if spend_2024 > 0 else 0
             mer_delta = ((row['MER'] - mer_2024) / mer_2024 * 100) if mer_2024 > 0 else 0
-            real_aov_delta = ((row['Real AOV'] - real_aov_2024) / real_aov_2024 * 100) if real_aov_2024 > 0 else 0
             orders_delta = ((row['orders'] - orders_2024) / orders_2024 * 100) if orders_2024 > 0 else 0
             
             formatted_rows.append({
@@ -631,7 +624,6 @@ with tab1:
                 'real_revenue': f"${row['real_revenue']:,.0f} ({color_delta(real_rev_delta)}{real_rev_delta:+.1f}%)",
                 'spend': f"${row['spend']:,.0f} ({color_delta(spend_delta)}{spend_delta:+.1f}%)",
                 'MER': f"{row['MER']:.2f}x ({color_delta(mer_delta)}{mer_delta:+.1f}%)",
-                'Real AOV': f"${row['Real AOV']:.2f} ({color_delta(real_aov_delta)}{real_aov_delta:+.1f}%)",
                 'orders': f"{int(row['orders']):,} ({color_delta(orders_delta)}{orders_delta:+.1f}%)"
             })
     
@@ -644,8 +636,8 @@ with tab1:
     monthly_display['month_name'] = pd.Categorical(monthly_display['month_name'], 
                                                      categories=months_order, ordered=True)
     monthly_display = monthly_display.sort_values(['Year', 'month_name'])
-    monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'real_revenue', 'spend', 'MER', 'Real AOV', 'orders']]
-    monthly_display.columns = ['Year', 'Month', 'Total Sales', 'Real Revenue', 'Spend', 'MER', 'Real AOV', 'Orders']
+    monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'real_revenue', 'spend', 'MER', 'orders']]
+    monthly_display.columns = ['Year', 'Month', 'Total Sales', 'Real Revenue', 'Spend', 'MER', 'Orders']
     
     st.dataframe(monthly_display, use_container_width=True, hide_index=True)
     
