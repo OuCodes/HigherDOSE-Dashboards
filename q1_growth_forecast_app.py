@@ -2,6 +2,10 @@
 """
 Q1 Growth & Forecast Dashboard
 2024 vs 2025 Q1 Analysis with 20% Growth Targets for 2026
+
+Data files: northbeam_style_daily_2024-2025_12_19.csv & northbeam_2025_ytd_spend_daily.csv
+Updated: Dec 19, 2025 - Actual Northbeam Q1 2025 spend data (Jan-Mar)
+Shows both years' MER values with deltas in overview
 """
 
 import streamlit as st
@@ -23,31 +27,6 @@ st.set_page_config(
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 ADS_DIR = DATA_DIR / "ads"
-
-@st.cache_data(ttl=3600)
-def load_campaign_data():
-    """Load Q1 campaign-level data for 2024 and 2025"""
-    
-    campaign_dir = DATA_DIR / "reports" / "campaign"
-    
-    campaigns_2024_file = campaign_dir / "q1_2024_campaigns.csv"
-    campaigns_2025_file = campaign_dir / "q1_2025_campaigns.csv"
-    
-    campaigns_2024 = pd.DataFrame()
-    campaigns_2025 = pd.DataFrame()
-    
-    if campaigns_2024_file.exists():
-        campaigns_2024 = pd.read_csv(campaigns_2024_file)
-        if 'Day' in campaigns_2024.columns:
-            campaigns_2024['Day'] = pd.to_datetime(campaigns_2024['Day'])
-        elif 'date' in campaigns_2024.columns:
-            campaigns_2024['date'] = pd.to_datetime(campaigns_2024['date'])
-    
-    if campaigns_2025_file.exists():
-        campaigns_2025 = pd.read_csv(campaigns_2025_file)
-        campaigns_2025['date'] = pd.to_datetime(campaigns_2025['date'])
-    
-    return campaigns_2024, campaigns_2025
 
 @st.cache_data(ttl=3600)
 def load_all_data():
@@ -74,9 +53,19 @@ def load_all_data():
     sales_2025['year'] = 2025
     
     # === 2024 Spend (Meta + Google) ===
+    # Debug: Check what files exist
+    if not ADS_DIR.exists():
+        st.error(f"❌ Data directory does not exist: {ADS_DIR}")
+        return None
+    
+    all_files = list(ADS_DIR.glob("*.csv"))
+    st.sidebar.info(f"🔍 Found {len(all_files)} CSV files in {ADS_DIR.name}")
+    
     spend_2024_files = sorted(ADS_DIR.glob("northbeam_style_daily_2024-*.csv"))
     if not spend_2024_files:
-        st.error("No 2024 spend file found. Run scripts/build_2024_spend_file.py first.")
+        st.error(f"❌ No 2024 spend file found in {ADS_DIR}")
+        st.error(f"Looking for pattern: northbeam_style_daily_2024-*.csv")
+        st.error(f"Files in directory: {[f.name for f in all_files[:10]]}")
         return None
     
     spend_2024_file = spend_2024_files[-1]
@@ -240,9 +229,10 @@ st.markdown("**2024 vs 2025 Q1 Analysis with 20% Growth Targets for 2026**")
 st.markdown("---")
 
 # === TAB STRUCTURE ===
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "📊 Overview", 
-    "📈 Q1 YoY Analysis", 
+    "📈 Q1 YoY Analysis",
+    "🛍️ Product Performance", 
     "🎯 2026 Growth Targets",
     "📢 Campaign Analysis",
     "📋 Data & Methodology"
@@ -274,26 +264,105 @@ with tab1:
     spend_delta_pct = (spend_delta / q1_2024_spend * 100) if q1_2024_spend > 0 else 0
     mer_delta = q1_2025_mer - q1_2024_mer
     
-    # Key metrics row
+    # Revenue metrics row
+    st.subheader("Revenue Performance")
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
         st.metric("Q1 2024 Revenue", f"${q1_2024_revenue:,.0f}")
-        st.caption(f"Spend: ${q1_2024_spend:,.0f} | MER: {q1_2024_mer:.2f}x")
+        st.caption(f"{q1_2024_orders:,.0f} orders")
     
     with col2:
         st.metric("Q1 2025 Revenue", f"${q1_2025_revenue:,.0f}", 
                  delta=f"{revenue_delta_pct:+.1f}% YoY")
-        st.caption(f"Spend: ${q1_2025_spend:,.0f} | MER: {q1_2025_mer:.2f}x")
+        st.caption(f"{q1_2025_orders:,.0f} orders")
     
     with col3:
         st.metric("Q1 2026 Goal (+20%)", f"${q1_2026_goal_revenue:,.0f}")
         st.caption(f"Daily target: ${q1_2026_goal_daily:,.0f}")
     
     with col4:
-        st.metric("2025 vs 2024", f"{revenue_delta_pct:+.1f}%", 
+        st.metric("Revenue YoY", f"{revenue_delta_pct:+.1f}%", 
                  delta=f"${revenue_delta:,.0f}")
-        st.caption(f"MER Δ: {mer_delta:+.2f}x")
+        st.caption(f"Δ from 2024 to 2025")
+    
+    # Spend metrics row
+    st.subheader("Spend Performance")
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("Q1 2024 Spend", f"${q1_2024_spend:,.0f}")
+        st.caption(f"Avg daily: ${q1_2024_spend/90:,.0f}")
+    
+    with col2:
+        st.metric("Q1 2025 Spend", f"${q1_2025_spend:,.0f}", 
+                 delta=f"{spend_delta_pct:+.1f}% YoY")
+        st.caption(f"Avg daily: ${q1_2025_spend/90:,.0f}")
+    
+    with col3:
+        # 2026 spend at maintained MER
+        q1_2026_spend_target = q1_2026_goal_revenue / q1_2025_mer if q1_2025_mer > 0 else 0
+        st.metric("Q1 2026 Target (3.47x MER)", f"${q1_2026_spend_target:,.0f}")
+        st.caption(f"Avg daily: ${q1_2026_spend_target/90:,.0f}")
+    
+    with col4:
+        st.metric("Spend YoY", f"{spend_delta_pct:+.1f}%", 
+                 delta=f"${spend_delta:,.0f}")
+        st.caption(f"Δ from 2024 to 2025")
+    
+    # AOV metrics row
+    st.subheader("Average Order Value (AOV)")
+    col1, col2, col3, col4 = st.columns(4)
+    
+    q1_2024_aov = q1_2024_revenue / q1_2024_orders if q1_2024_orders > 0 else 0
+    q1_2025_aov = q1_2025_revenue / q1_2025_orders if q1_2025_orders > 0 else 0
+    aov_delta = q1_2025_aov - q1_2024_aov
+    aov_delta_pct = (aov_delta / q1_2024_aov * 100) if q1_2024_aov > 0 else 0
+    
+    with col1:
+        st.metric("Q1 2024 AOV", f"${q1_2024_aov:,.2f}")
+        st.caption(f"{q1_2024_orders:,.0f} orders")
+    
+    with col2:
+        st.metric("Q1 2025 AOV", f"${q1_2025_aov:,.2f}", 
+                 delta=f"{aov_delta_pct:+.1f}% YoY")
+        st.caption(f"{q1_2025_orders:,.0f} orders")
+    
+    with col3:
+        # 2026 AOV (assume same as 2025 for now, or can project based on revenue/order goals)
+        q1_2026_orders_target = q1_2025_orders * 1.20  # Assume 20% more orders
+        q1_2026_aov_target = q1_2026_goal_revenue / q1_2026_orders_target if q1_2026_orders_target > 0 else q1_2025_aov
+        st.metric("Q1 2026 Target", f"${q1_2026_aov_target:,.2f}")
+        st.caption(f"Est. {q1_2026_orders_target:,.0f} orders")
+    
+    with col4:
+        st.metric("AOV YoY", f"${aov_delta:+,.2f}", 
+                 delta=f"{aov_delta_pct:+.1f}%")
+        st.caption(f"${q1_2024_aov:,.2f} → ${q1_2025_aov:,.2f}")
+    
+    # MER metrics row
+    st.subheader("Marketing Efficiency Ratio (MER)")
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("Q1 2024 MER", f"{q1_2024_mer:.2f}x")
+        st.caption(f"{q1_2024_orders:,.0f} orders")
+    
+    with col2:
+        mer_delta_pct = (mer_delta / q1_2024_mer * 100) if q1_2024_mer > 0 else 0
+        st.metric("Q1 2025 MER", f"{q1_2025_mer:.2f}x", 
+                 delta=f"{mer_delta_pct:+.1f}% YoY")
+        st.caption(f"{q1_2025_orders:,.0f} orders")
+    
+    with col3:
+        # 2026 MER target (assume same as 2025 for now)
+        st.metric("Q1 2026 Target", f"{q1_2025_mer:.2f}x")
+        st.caption("(Maintain efficiency)")
+    
+    with col4:
+        st.metric("MER YoY", f"{mer_delta:+.2f}x", 
+                 delta=f"{mer_delta_pct:+.1f}%")
+        st.caption(f"{q1_2024_mer:.2f}x → {q1_2025_mer:.2f}x")
     
     st.markdown("---")
     
@@ -305,10 +374,12 @@ with tab1:
             st.error(f"**⚠️ Q1 2025 Pullback: {revenue_delta_pct:.1f}%**")
             st.write(f"Q1 2025 revenue was **${abs(revenue_delta):,.0f} lower** than Q1 2024.")
             st.write(f"- Spend: {spend_delta_pct:+.1f}%")
-            st.write(f"- MER: {mer_delta:+.2f}x change")
+            st.write(f"- MER: {q1_2024_mer:.2f}x → {q1_2025_mer:.2f}x ({mer_delta:+.2f}x)")
         else:
             st.success(f"**✅ Q1 2025 Growth: +{revenue_delta_pct:.1f}%**")
             st.write(f"Q1 2025 revenue was **${revenue_delta:,.0f} higher** than Q1 2024.")
+            st.write(f"- Spend: {spend_delta_pct:+.1f}%")
+            st.write(f"- MER: {q1_2024_mer:.2f}x → {q1_2025_mer:.2f}x ({mer_delta:+.2f}x)")
     
     with col2:
         st.info(f"**🎯 To Hit +20% in Q1 2026**")
@@ -329,6 +400,9 @@ with tab1:
     # Monthly summary table
     st.subheader("Q1 Monthly Breakdown")
     
+    # Define month order for sorting
+    months_order = ['January', 'February', 'March']
+    
     # Calculate monthly aggregates
     monthly_2024 = q1_2024.groupby('month_name').agg({
         'revenue': 'sum',
@@ -346,17 +420,68 @@ with tab1:
     monthly_2025['MER'] = monthly_2025['revenue'] / monthly_2025['spend']
     monthly_2025['Year'] = 2025
     
-    # Combine and format
-    monthly_combined = pd.concat([monthly_2024, monthly_2025])
-    monthly_combined = monthly_combined[['Year', 'month_name', 'revenue', 'spend', 'MER', 'orders']]
+    # Helper function for color indicators
+    def color_delta(delta_val):
+        """Return color based on delta value"""
+        if delta_val > 0:
+            return "🟢"  # Green for positive
+        elif delta_val < 0:
+            return "🔴"  # Red for negative
+        else:
+            return "⚪"  # Neutral
     
-    # Format display columns (keep Year as string to control formatting)
-    monthly_display = monthly_combined.copy()
-    monthly_display['Year'] = monthly_display['Year'].astype(int).astype(str)  # Convert to string to prevent comma formatting
-    monthly_display['revenue'] = monthly_display['revenue'].apply(lambda x: f"${x:,.0f}")
-    monthly_display['spend'] = monthly_display['spend'].apply(lambda x: f"${x:,.0f}")
-    monthly_display['MER'] = monthly_display['MER'].apply(lambda x: f"{x:.2f}x")
-    monthly_display['orders'] = monthly_display['orders'].apply(lambda x: f"{int(x):,}")
+    # Format 2024 data (no YoY deltas)
+    monthly_2024_display = monthly_2024.copy()
+    monthly_2024_display['Year'] = '2024'
+    monthly_2024_display['revenue'] = monthly_2024_display['revenue'].apply(lambda x: f"${x:,.0f}")
+    monthly_2024_display['spend'] = monthly_2024_display['spend'].apply(lambda x: f"${x:,.0f}")
+    monthly_2024_display['MER'] = monthly_2024_display['MER'].apply(lambda x: f"{x:.2f}x")
+    monthly_2024_display['orders'] = monthly_2024_display['orders'].apply(lambda x: f"{int(x):,}")
+    
+    # Format 2025 data with YoY deltas
+    monthly_2025_display = monthly_2025.copy()
+    monthly_2025_display['Year'] = '2025'
+    
+    # Set indices for lookup
+    monthly_2024_sorted = monthly_2024.set_index('month_name')
+    
+    # Calculate and format each row for 2025
+    formatted_rows = []
+    for idx, row in monthly_2025.iterrows():
+        month = row['month_name']
+        if month in monthly_2024_sorted.index:
+            # Get 2024 values
+            rev_2024 = monthly_2024_sorted.loc[month, 'revenue']
+            spend_2024 = monthly_2024_sorted.loc[month, 'spend']
+            mer_2024 = monthly_2024_sorted.loc[month, 'MER']
+            orders_2024 = monthly_2024_sorted.loc[month, 'orders']
+            
+            # Calculate deltas
+            rev_delta = ((row['revenue'] - rev_2024) / rev_2024 * 100) if rev_2024 > 0 else 0
+            spend_delta = ((row['spend'] - spend_2024) / spend_2024 * 100) if spend_2024 > 0 else 0
+            mer_delta = ((row['MER'] - mer_2024) / mer_2024 * 100) if mer_2024 > 0 else 0
+            orders_delta = ((row['orders'] - orders_2024) / orders_2024 * 100) if orders_2024 > 0 else 0
+            
+            # Format with deltas
+            formatted_rows.append({
+                'Year': '2025',
+                'month_name': month,
+                'revenue': f"${row['revenue']:,.0f} ({color_delta(rev_delta)}{rev_delta:+.1f}%)",
+                'spend': f"${row['spend']:,.0f} ({color_delta(spend_delta)}{spend_delta:+.1f}%)",
+                'MER': f"{row['MER']:.2f}x ({color_delta(mer_delta)}{mer_delta:+.1f}%)",
+                'orders': f"{int(row['orders']):,} ({color_delta(orders_delta)}{orders_delta:+.1f}%)"
+            })
+    
+    monthly_2025_display = pd.DataFrame(formatted_rows)
+    
+    # Combine 2024 and 2025
+    monthly_display = pd.concat([monthly_2024_display, monthly_2025_display], ignore_index=True)
+    
+    # Sort by month
+    monthly_display['month_name'] = pd.Categorical(monthly_display['month_name'], 
+                                                     categories=months_order, ordered=True)
+    monthly_display = monthly_display.sort_values(['Year', 'month_name'])
+    monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'spend', 'MER', 'orders']]
     monthly_display.columns = ['Year', 'Month', 'Revenue', 'Spend', 'MER', 'Orders']
     
     st.dataframe(monthly_display, use_container_width=True, hide_index=True)
@@ -434,6 +559,16 @@ with tab2:
     # Daily trends - 4 separate graphs (2x2 grid)
     st.subheader("Daily Trends: Revenue & MER by Year")
     
+    # Create normalized dates for comparison (use same year reference)
+    q1_2024_normalized = q1_2024.copy()
+    q1_2025_normalized = q1_2025.copy()
+    
+    # Normalize to show same calendar dates (replace year with 2024 for visual alignment)
+    q1_2024_normalized['display_date'] = q1_2024_normalized['date']
+    q1_2025_normalized['display_date'] = q1_2025_normalized['date'].apply(
+        lambda x: x.replace(year=2024)
+    )
+    
     # Row 1: Revenue charts
     col1, col2 = st.columns(2)
     
@@ -441,13 +576,13 @@ with tab2:
         st.markdown("**2024 Revenue**")
         fig_rev_2024 = go.Figure()
         fig_rev_2024.add_trace(
-            go.Scatter(x=q1_2024['date'], y=q1_2024['revenue'],
+            go.Scatter(x=q1_2024_normalized['display_date'], y=q1_2024_normalized['revenue'],
                       mode='lines', line=dict(color='#4169E1', width=2),
                       fill='tozeroy', fillcolor='rgba(65, 105, 225, 0.1)')
         )
         fig_rev_2024.update_layout(
             height=300,
-            xaxis_title="Date",
+            xaxis_title="Date (Q1)",
             yaxis_title="Revenue ($)",
             showlegend=False
         )
@@ -457,13 +592,13 @@ with tab2:
         st.markdown("**2025 Revenue**")
         fig_rev_2025 = go.Figure()
         fig_rev_2025.add_trace(
-            go.Scatter(x=q1_2025['date'], y=q1_2025['revenue'],
+            go.Scatter(x=q1_2025_normalized['display_date'], y=q1_2025_normalized['revenue'],
                       mode='lines', line=dict(color='#32CD32', width=2),
                       fill='tozeroy', fillcolor='rgba(50, 205, 50, 0.1)')
         )
         fig_rev_2025.update_layout(
             height=300,
-            xaxis_title="Date",
+            xaxis_title="Date (Q1)",
             yaxis_title="Revenue ($)",
             showlegend=False
         )
@@ -474,10 +609,10 @@ with tab2:
     
     with col3:
         st.markdown("**2024 MER**")
-        q1_2024_mer_df = q1_2024[q1_2024['MER'] > 0].copy()
+        q1_2024_mer_df = q1_2024_normalized[q1_2024_normalized['MER'] > 0].copy()
         fig_mer_2024 = go.Figure()
         fig_mer_2024.add_trace(
-            go.Scatter(x=q1_2024_mer_df['date'], y=q1_2024_mer_df['MER'],
+            go.Scatter(x=q1_2024_mer_df['display_date'], y=q1_2024_mer_df['MER'],
                       mode='lines+markers', 
                       line=dict(color='#7C3AED', width=2),
                       marker=dict(size=4))
@@ -486,7 +621,7 @@ with tab2:
                               annotation_text="Target: 3.0x", annotation_position="right")
         fig_mer_2024.update_layout(
             height=300,
-            xaxis_title="Date",
+            xaxis_title="Date (Q1)",
             yaxis_title="MER (x)",
             showlegend=False
         )
@@ -494,10 +629,10 @@ with tab2:
     
     with col4:
         st.markdown("**2025 MER**")
-        q1_2025_mer_df = q1_2025[q1_2025['MER'] > 0].copy()
+        q1_2025_mer_df = q1_2025_normalized[q1_2025_normalized['MER'] > 0].copy()
         fig_mer_2025 = go.Figure()
         fig_mer_2025.add_trace(
-            go.Scatter(x=q1_2025_mer_df['date'], y=q1_2025_mer_df['MER'],
+            go.Scatter(x=q1_2025_mer_df['display_date'], y=q1_2025_mer_df['MER'],
                       mode='lines+markers', 
                       line=dict(color='#F59E0B', width=2),
                       marker=dict(size=4))
@@ -506,7 +641,7 @@ with tab2:
                               annotation_text="Target: 3.0x", annotation_position="right")
         fig_mer_2025.update_layout(
             height=300,
-            xaxis_title="Date",
+            xaxis_title="Date (Q1)",
             yaxis_title="MER (x)",
             showlegend=False
         )
@@ -514,36 +649,242 @@ with tab2:
     
     st.markdown("---")
     
-    # Daily data tables by month
+    # Daily revenue vs spend line charts by month
     st.subheader("Daily Revenue & Spend Patterns by Month")
     
-    # Month selector
-    month_options = ['January', 'February', 'March']
-    selected_month = st.selectbox("Select Month:", month_options)
+    months_order = ['January', 'February', 'March']
+    
+    for month in months_order:
+        st.markdown(f"### {month}")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown(f"**2024 {month}**")
+            month_2024 = q1_2024[q1_2024['month_name'] == month]
+            
+            if len(month_2024) > 0:
+                fig_2024_month = go.Figure()
+                
+                # Revenue line
+                fig_2024_month.add_trace(
+                    go.Scatter(
+                        x=month_2024['date'], 
+                        y=month_2024['revenue'],
+                        mode='lines+markers',
+                        name='Revenue',
+                        line=dict(color='#4169E1', width=2),
+                        marker=dict(size=6),
+                        yaxis='y'
+                    )
+                )
+                
+                # Spend line (on secondary axis)
+                fig_2024_month.add_trace(
+                    go.Scatter(
+                        x=month_2024['date'], 
+                        y=month_2024['spend'],
+                        mode='lines+markers',
+                        name='Spend',
+                        line=dict(color='#FF6B6B', width=2, dash='dash'),
+                        marker=dict(size=6),
+                        yaxis='y2'
+                    )
+                )
+                
+                fig_2024_month.update_layout(
+                    height=350,
+                    xaxis_title="Date",
+                    yaxis=dict(
+                        title="Revenue ($)",
+                        titlefont=dict(color='#4169E1'),
+                        tickfont=dict(color='#4169E1')
+                    ),
+                    yaxis2=dict(
+                        title="Spend ($)",
+                        titlefont=dict(color='#FF6B6B'),
+                        tickfont=dict(color='#FF6B6B'),
+                        overlaying='y',
+                        side='right'
+                    ),
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+                )
+                
+                st.plotly_chart(fig_2024_month, use_container_width=True)
+            else:
+                st.info(f"No data available for {month} 2024")
+        
+        with col2:
+            st.markdown(f"**2025 {month}**")
+            month_2025 = q1_2025[q1_2025['month_name'] == month]
+            
+            if len(month_2025) > 0:
+                fig_2025_month = go.Figure()
+                
+                # Revenue line
+                fig_2025_month.add_trace(
+                    go.Scatter(
+                        x=month_2025['date'], 
+                        y=month_2025['revenue'],
+                        mode='lines+markers',
+                        name='Revenue',
+                        line=dict(color='#32CD32', width=2),
+                        marker=dict(size=6),
+                        yaxis='y'
+                    )
+                )
+                
+                # Spend line (on secondary axis)
+                fig_2025_month.add_trace(
+                    go.Scatter(
+                        x=month_2025['date'], 
+                        y=month_2025['spend'],
+                        mode='lines+markers',
+                        name='Spend',
+                        line=dict(color='#FF6B6B', width=2, dash='dash'),
+                        marker=dict(size=6),
+                        yaxis='y2'
+                    )
+                )
+                
+                fig_2025_month.update_layout(
+                    height=350,
+                    xaxis_title="Date",
+                    yaxis=dict(
+                        title="Revenue ($)",
+                        titlefont=dict(color='#32CD32'),
+                        tickfont=dict(color='#32CD32')
+                    ),
+                    yaxis2=dict(
+                        title="Spend ($)",
+                        titlefont=dict(color='#FF6B6B'),
+                        tickfont=dict(color='#FF6B6B'),
+                        overlaying='y',
+                        side='right'
+                    ),
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+                )
+                
+                st.plotly_chart(fig_2025_month, use_container_width=True)
+            else:
+                st.info(f"No data available for {month} 2025")
+    
+    st.markdown("---")
+    
+    # Daily performance breakdown by month
+    st.subheader("Daily Performance by Month")
+    
+    # Calculate daily averages for each month
+    months_order = ['January', 'February', 'March']
+    
+    daily_breakdown = []
+    for month in months_order:
+        # 2024 data
+        month_2024 = q1_2024[q1_2024['month_name'] == month]
+        if len(month_2024) > 0:
+            avg_daily_revenue_2024 = month_2024['revenue'].mean()
+            avg_daily_spend_2024 = month_2024['spend'].mean()
+            avg_daily_mer_2024 = avg_daily_revenue_2024 / avg_daily_spend_2024 if avg_daily_spend_2024 > 0 else 0
+            days_2024 = len(month_2024)
+        else:
+            avg_daily_revenue_2024 = 0
+            avg_daily_spend_2024 = 0
+            avg_daily_mer_2024 = 0
+            days_2024 = 0
+        
+        # 2025 data
+        month_2025 = q1_2025[q1_2025['month_name'] == month]
+        if len(month_2025) > 0:
+            avg_daily_revenue_2025 = month_2025['revenue'].mean()
+            avg_daily_spend_2025 = month_2025['spend'].mean()
+            avg_daily_mer_2025 = avg_daily_revenue_2025 / avg_daily_spend_2025 if avg_daily_spend_2025 > 0 else 0
+            days_2025 = len(month_2025)
+        else:
+            avg_daily_revenue_2025 = 0
+            avg_daily_spend_2025 = 0
+            avg_daily_mer_2025 = 0
+            days_2025 = 0
+        
+        # Calculate YoY changes
+        if avg_daily_revenue_2024 > 0:
+            revenue_yoy = ((avg_daily_revenue_2025 - avg_daily_revenue_2024) / avg_daily_revenue_2024 * 100)
+        else:
+            revenue_yoy = 0
+            
+        if avg_daily_spend_2024 > 0:
+            spend_yoy = ((avg_daily_spend_2025 - avg_daily_spend_2024) / avg_daily_spend_2024 * 100)
+        else:
+            spend_yoy = 0
+            
+        if avg_daily_mer_2024 > 0:
+            mer_yoy = ((avg_daily_mer_2025 - avg_daily_mer_2024) / avg_daily_mer_2024 * 100)
+        else:
+            mer_yoy = 0
+        
+        daily_breakdown.append({
+            'Month': month,
+            '2024 Avg Daily Revenue': avg_daily_revenue_2024,
+            '2024 Avg Daily Spend': avg_daily_spend_2024,
+            '2024 Avg MER': avg_daily_mer_2024,
+            '2024 Days': days_2024,
+            '2025 Avg Daily Revenue': avg_daily_revenue_2025,
+            '2025 Avg Daily Spend': avg_daily_spend_2025,
+            '2025 Avg MER': avg_daily_mer_2025,
+            '2025 Days': days_2025,
+            'Revenue YoY': revenue_yoy,
+            'Spend YoY': spend_yoy,
+            'MER YoY': mer_yoy
+        })
+    
+    daily_df = pd.DataFrame(daily_breakdown)
+    
+    # Format for display
+    daily_display = daily_df.copy()
+    daily_display['2024 Avg Daily Revenue'] = daily_display['2024 Avg Daily Revenue'].apply(lambda x: f"${x:,.0f}")
+    daily_display['2024 Avg Daily Spend'] = daily_display['2024 Avg Daily Spend'].apply(lambda x: f"${x:,.0f}")
+    daily_display['2024 Avg MER'] = daily_display['2024 Avg MER'].apply(lambda x: f"{x:.2f}x")
+    daily_display['2025 Avg Daily Revenue'] = daily_display['2025 Avg Daily Revenue'].apply(lambda x: f"${x:,.0f}")
+    daily_display['2025 Avg Daily Spend'] = daily_display['2025 Avg Daily Spend'].apply(lambda x: f"${x:,.0f}")
+    daily_display['2025 Avg MER'] = daily_display['2025 Avg MER'].apply(lambda x: f"{x:.2f}x")
+    daily_display['Revenue YoY'] = daily_display['Revenue YoY'].apply(lambda x: f"{x:+.1f}%")
+    daily_display['Spend YoY'] = daily_display['Spend YoY'].apply(lambda x: f"{x:+.1f}%")
+    daily_display['MER YoY'] = daily_display['MER YoY'].apply(lambda x: f"{x:+.1f}%")
+    
+    st.dataframe(daily_display, use_container_width=True, hide_index=True)
+    
+    st.caption("*Note: Averages calculated from actual days with data in each month")
+    
+    st.markdown("---")
+    
+    # Daily data tables by month with dropdown
+    st.subheader("Day-by-Day Revenue, Spend & MER")
+    
+    # Month selector dropdown
+    selected_month = st.selectbox("Select Month:", ['January', 'February', 'March'])
     
     # Filter data for selected month
-    month_2024 = q1_2024[q1_2024['month_name'] == selected_month].copy()
-    month_2025 = q1_2025[q1_2025['month_name'] == selected_month].copy()
+    month_2024_detail = q1_2024[q1_2024['month_name'] == selected_month].copy()
+    month_2025_detail = q1_2025[q1_2025['month_name'] == selected_month].copy()
     
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown(f"**2024 {selected_month} - Daily Performance**")
-        if not month_2024.empty:
-            daily_2024 = month_2024[['day_of_month', 'revenue', 'spend', 'MER']].copy()
-            daily_2024 = daily_2024.sort_values('day_of_month')
-            daily_2024['revenue_fmt'] = daily_2024['revenue'].apply(lambda x: f"${x:,.0f}")
-            daily_2024['spend_fmt'] = daily_2024['spend'].apply(lambda x: f"${x:,.0f}")
-            daily_2024['MER_fmt'] = daily_2024['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
+        if not month_2024_detail.empty:
+            daily_2024_table = month_2024_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
+            daily_2024_table = daily_2024_table.sort_values('day_of_month')
+            daily_2024_table['revenue_fmt'] = daily_2024_table['revenue'].apply(lambda x: f"${x:,.0f}")
+            daily_2024_table['spend_fmt'] = daily_2024_table['spend'].apply(lambda x: f"${x:,.0f}")
+            daily_2024_table['MER_fmt'] = daily_2024_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
             
-            display_2024 = daily_2024[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
-            display_2024.columns = ['Day', 'Revenue', 'Spend', 'MER']
+            display_2024_table = daily_2024_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
+            display_2024_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
             
-            st.dataframe(display_2024, use_container_width=True, hide_index=True, height=500)
+            st.dataframe(display_2024_table, use_container_width=True, hide_index=True, height=500)
             
             # Month summary
-            total_rev = month_2024['revenue'].sum()
-            total_spend = month_2024['spend'].sum()
+            total_rev = month_2024_detail['revenue'].sum()
+            total_spend = month_2024_detail['spend'].sum()
             avg_mer = total_rev / total_spend if total_spend > 0 else 0
             st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
         else:
@@ -551,21 +892,21 @@ with tab2:
     
     with col2:
         st.markdown(f"**2025 {selected_month} - Daily Performance**")
-        if not month_2025.empty:
-            daily_2025 = month_2025[['day_of_month', 'revenue', 'spend', 'MER']].copy()
-            daily_2025 = daily_2025.sort_values('day_of_month')
-            daily_2025['revenue_fmt'] = daily_2025['revenue'].apply(lambda x: f"${x:,.0f}")
-            daily_2025['spend_fmt'] = daily_2025['spend'].apply(lambda x: f"${x:,.0f}")
-            daily_2025['MER_fmt'] = daily_2025['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
+        if not month_2025_detail.empty:
+            daily_2025_table = month_2025_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
+            daily_2025_table = daily_2025_table.sort_values('day_of_month')
+            daily_2025_table['revenue_fmt'] = daily_2025_table['revenue'].apply(lambda x: f"${x:,.0f}")
+            daily_2025_table['spend_fmt'] = daily_2025_table['spend'].apply(lambda x: f"${x:,.0f}")
+            daily_2025_table['MER_fmt'] = daily_2025_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
             
-            display_2025 = daily_2025[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
-            display_2025.columns = ['Day', 'Revenue', 'Spend', 'MER']
+            display_2025_table = daily_2025_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
+            display_2025_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
             
-            st.dataframe(display_2025, use_container_width=True, hide_index=True, height=500)
+            st.dataframe(display_2025_table, use_container_width=True, hide_index=True, height=500)
             
             # Month summary
-            total_rev = month_2025['revenue'].sum()
-            total_spend = month_2025['spend'].sum()
+            total_rev = month_2025_detail['revenue'].sum()
+            total_spend = month_2025_detail['spend'].sum()
             avg_mer = total_rev / total_spend if total_spend > 0 else 0
             st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
             
@@ -647,352 +988,379 @@ with tab3:
             display_losers = top_losers[['product', 'revenue_2024_fmt', 'revenue_2025_fmt', 'change_fmt']].copy()
             display_losers.columns = ['Product', '2024 Revenue', '2025 Revenue', 'Change']
             st.dataframe(display_losers, use_container_width=True, hide_index=True)
+        
+        st.markdown("---")
+        
+        # Top sellers with YoY pullback (products needing focus)
+        st.subheader("⚠️ Priority Focus: Top Sellers with YoY Pullback")
+        
+        st.markdown("""
+        **Strategic Focus Area:** These products are still generating significant revenue in 2025, 
+        but showing declines vs 2024. They represent critical revenue at risk and need immediate attention.
+        """)
+        
+        # Filter for products that:
+        # 1. Are in top 30 by 2025 revenue (still major sellers)
+        # 2. Have negative revenue change (pullback from 2024)
+        # 3. Had revenue in both years (not new products)
+        
+        top_30_threshold = q1_products_2025.head(30)['revenue'].min() if len(q1_products_2025) >= 30 else 0
+        
+        focus_products = product_comparison[
+            (product_comparison['revenue_2025'] >= top_30_threshold) &  # Top 30 seller in 2025
+            (product_comparison['revenue_change'] < 0) &  # Declining revenue
+            (product_comparison['revenue_2024'] > 0) &  # Had revenue in 2024
+            (product_comparison['revenue_2025'] > 0)  # Has revenue in 2025
+        ].copy()
+        
+        # Sort by 2025 revenue (biggest current sellers first)
+        focus_products = focus_products.sort_values('revenue_2025', ascending=False)
+        
+        if not focus_products.empty:
+            # Calculate additional metrics
+            focus_products['units_change'] = focus_products['units_2025'] - focus_products['units_2024']
+            focus_products['units_change_pct'] = (focus_products['units_change'] / focus_products['units_2024'] * 100).replace([float('inf'), -float('inf')], 0)
+            
+            # Format for display
+            focus_display = focus_products.copy()
+            focus_display['2025 Revenue'] = focus_display['revenue_2025'].apply(lambda x: f"${x:,.0f}")
+            focus_display['2024 Revenue'] = focus_display['revenue_2024'].apply(lambda x: f"${x:,.0f}")
+            focus_display['$ Change'] = focus_display['revenue_change'].apply(lambda x: f"${x:,.0f}")
+            focus_display['% Change'] = focus_display['revenue_change_pct'].apply(lambda x: f"{x:.1f}%")
+            focus_display['2025 Units'] = focus_display['units_2025'].apply(lambda x: f"{int(x):,}")
+            focus_display['Units Change %'] = focus_display['units_change_pct'].apply(lambda x: f"{x:.1f}%")
+            
+            # Determine severity (color code later if needed)
+            def get_severity(pct_change):
+                if pct_change < -30:
+                    return "🔴 High Risk"
+                elif pct_change < -15:
+                    return "🟠 Medium Risk"
+                else:
+                    return "🟡 Monitor"
+            
+            focus_display['Priority'] = focus_display['revenue_change_pct'].apply(get_severity)
+            
+            # Reorder columns for display
+            final_display = focus_display[[
+                'product', 
+                'Priority',
+                '2025 Revenue',
+                '2024 Revenue', 
+                '$ Change', 
+                '% Change',
+                '2025 Units',
+                'Units Change %'
+            ]].copy()
+            final_display.columns = [
+                'Product', 
+                'Priority Level',
+                '2025 Revenue',
+                '2024 Revenue', 
+                '$ Change', 
+                '% Change',
+                '2025 Units',
+                'Unit Change %'
+            ]
+            
+            st.dataframe(final_display, use_container_width=True, hide_index=True, height=400)
+            
+            # Summary metrics
+            col1, col2, col3, col4 = st.columns(4)
+            
+            with col1:
+                st.metric(
+                    "Products at Risk",
+                    len(focus_products),
+                    help="Top 30 sellers showing YoY decline"
+                )
+            
+            with col2:
+                total_2025_revenue = focus_products['revenue_2025'].sum()
+                st.metric(
+                    "2025 Revenue at Risk",
+                    f"${total_2025_revenue:,.0f}",
+                    help="Total Q1 2025 revenue from declining products"
+                )
+            
+            with col3:
+                total_revenue_lost = abs(focus_products['revenue_change'].sum())
+                st.metric(
+                    "Revenue Lost vs 2024",
+                    f"${total_revenue_lost:,.0f}",
+                    delta=f"{(total_revenue_lost / focus_products['revenue_2024'].sum() * -100):.1f}%",
+                    delta_color="inverse"
+                )
+            
+            with col4:
+                avg_decline = focus_products['revenue_change_pct'].mean()
+                st.metric(
+                    "Avg Decline Rate",
+                    f"{avg_decline:.1f}%",
+                    help="Average YoY percentage decline"
+                )
+            
+            st.info("""
+            **💡 Recommended Actions:**
+            
+            - **🔴 High Risk (>30% decline):** Immediate intervention required - review pricing, positioning, creative, and promotional strategy
+            - **🟠 Medium Risk (15-30% decline):** Monitor closely and consider targeted promotions or refreshed marketing
+            - **🟡 Monitor (<15% decline):** Track trends and maintain current strategy with minor optimizations
+            
+            These products collectively represent **${:,.0f}** in current revenue that needs protection and revival strategies for 2026.
+            """.format(total_2025_revenue))
+        else:
+            st.success("✅ Great news! All top-performing products are maintaining or growing revenue YoY.")
+            st.info("No major revenue products showing significant pullback from 2024.")
 
 # ===== TAB 4: 2026 GROWTH TARGETS =====
 with tab4:
-    st.header("2026 Q1 Growth Targets (+20% Scenario)")
+    st.header("2026 Q1 Growth Targets: Scenario Planning")
     
-    # Monthly growth targets
-    st.subheader("Monthly Revenue Targets")
+    # Calculate base metrics
+    q1_2026_revenue_goal = q1_2025_revenue * 1.20  # +20% revenue growth
+    q1_2025_daily_revenue = q1_2025_revenue / 90
+    q1_2025_daily_spend = q1_2025_spend / 90
+    q1_2026_daily_revenue = q1_2026_revenue_goal / 90
     
-    # Calculate 2026 goals by month
-    monthly_goals = []
-    for month_name in ['January', 'February', 'March']:
-        rev_2024 = q1_2024[q1_2024['month_name'] == month_name]['revenue'].sum()
-        rev_2025 = q1_2025[q1_2025['month_name'] == month_name]['revenue'].sum()
-        rev_2026_goal = rev_2025 * 1.20
-        
-        spend_2024 = q1_2024[q1_2024['month_name'] == month_name]['spend'].sum()
-        spend_2025 = q1_2025[q1_2025['month_name'] == month_name]['spend'].sum()
-        mer_2025 = rev_2025 / spend_2025 if spend_2025 > 0 else 0
-        
-        monthly_goals.append({
-            'Month': month_name,
-            '2024 Actual': rev_2024,
-            '2025 Actual': rev_2025,
-            '2026 Goal (+20%)': rev_2026_goal,
-            'Gap to 2026': rev_2026_goal - rev_2025,
-            '2025 Spend': spend_2025,
-            '2025 MER': mer_2025
-        })
+    # Scenario A: Maintain 3.47x MER
+    mer_scenario_a = q1_2025_mer  # 3.47x
+    mer_target_a = 4.17  # 20% improvement (3.47 * 1.20)
     
-    goals_df = pd.DataFrame(monthly_goals)
+    # Calculate spend requirements for each scenario
+    spend_scenario_a = q1_2026_revenue_goal / mer_scenario_a  # Maintain current MER
+    spend_scenario_b = q1_2026_revenue_goal / mer_target_a  # Improved MER
     
-    # Display table
-    goals_display = goals_df.copy()
-    for col in ['2024 Actual', '2025 Actual', '2026 Goal (+20%)', 'Gap to 2026', '2025 Spend']:
-        goals_display[col] = goals_display[col].apply(lambda x: f"${x:,.0f}")
-    goals_display['2025 MER'] = goals_display['2025 MER'].apply(lambda x: f"{x:.2f}x")
+    daily_spend_scenario_a = spend_scenario_a / 90
+    daily_spend_scenario_b = spend_scenario_b / 90
     
-    st.dataframe(goals_display, use_container_width=True, hide_index=True)
-    
-    st.markdown("---")
-    
-    # Visualization
-    st.subheader("Revenue Targets by Month")
-    
-    fig_goals = go.Figure()
-    
-    fig_goals.add_trace(
-        go.Bar(name='2024 Actual', x=goals_df['Month'], y=goals_df['2024 Actual'],
-               marker_color='#94A3B8')
-    )
-    
-    fig_goals.add_trace(
-        go.Bar(name='2025 Actual', x=goals_df['Month'], y=goals_df['2025 Actual'],
-               marker_color='#32CD32')
-    )
-    
-    fig_goals.add_trace(
-        go.Bar(name='2026 Goal (+20%)', x=goals_df['Month'], y=goals_df['2026 Goal (+20%)'],
-               marker_color='#F59E0B', marker_pattern_shape="/")
-    )
-    
-    fig_goals.update_layout(
-        height=400,
-        barmode='group',
-        xaxis_title="Month",
-        yaxis_title="Revenue ($)"
-    )
-    
-    st.plotly_chart(fig_goals, use_container_width=True)
-    
-    st.markdown("---")
-    
-    # Scenario analysis
-    st.subheader("Scenario Analysis: How to Hit +20%")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("**Scenario 1: Hold MER Constant**")
-        st.write(f"Current Q1 2025 MER: **{q1_2025_mer:.2f}x**")
-        
-        required_spend_2026 = q1_2026_goal_revenue / q1_2025_mer if q1_2025_mer > 0 else 0
-        spend_increase = required_spend_2026 - q1_2025_spend
-        spend_increase_pct = (spend_increase / q1_2025_spend * 100) if q1_2025_spend > 0 else 0
-        
-        st.metric("Required Q1 2026 Spend", f"${required_spend_2026:,.0f}",
-                 delta=f"+${spend_increase:,.0f} ({spend_increase_pct:+.1f}%)")
-        
-        st.caption(f"To hit +20% revenue at the same MER, increase spend by {spend_increase_pct:.1f}%")
-    
-    with col2:
-        st.markdown("**Scenario 2: Hold Spend Constant**")
-        st.write(f"Current Q1 2025 Spend: **${q1_2025_spend:,.0f}**")
-        
-        required_mer_2026 = q1_2026_goal_revenue / q1_2025_spend if q1_2025_spend > 0 else 0
-        mer_increase = required_mer_2026 - q1_2025_mer
-        mer_increase_pct = (mer_increase / q1_2025_mer * 100) if q1_2025_mer > 0 else 0
-        
-        st.metric("Required Q1 2026 MER", f"{required_mer_2026:.2f}x",
-                 delta=f"+{mer_increase:.2f}x ({mer_increase_pct:+.1f}%)")
-        
-        st.caption(f"To hit +20% revenue at the same spend, improve MER by {mer_increase_pct:.1f}%")
-    
-    st.markdown("---")
-    
-    # Daily pacing
-    st.subheader("Daily Revenue Pacing")
-    
-    q1_2025_daily_avg = q1_2025_revenue / len(q1_2025)
-    q1_2026_daily_target = q1_2026_goal_revenue / 90  # Q1 = 90 days
-    daily_increase = q1_2026_daily_target - q1_2025_daily_avg
-    daily_increase_pct = (daily_increase / q1_2025_daily_avg * 100) if q1_2025_daily_avg > 0 else 0
+    # Summary comparison
+    st.subheader("Scenario Overview")
     
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.metric("Q1 2025 Avg Daily Revenue", f"${q1_2025_daily_avg:,.0f}")
+        st.markdown("### 📊 Q1 2025 Baseline")
+        st.metric("Total Revenue", f"${q1_2025_revenue:,.0f}")
+        st.metric("Total Spend", f"${q1_2025_spend:,.0f}")
+        st.metric("MER", f"{q1_2025_mer:.2f}x")
+        st.caption(f"Avg Daily Revenue: ${q1_2025_daily_revenue:,.0f}")
+        st.caption(f"Avg Daily Spend: ${q1_2025_daily_spend:,.0f}")
     
     with col2:
-        st.metric("Q1 2026 Target Daily Revenue", f"${q1_2026_daily_target:,.0f}",
-                 delta=f"+${daily_increase:,.0f}")
+        st.markdown("### 🎯 Scenario A: Maintain MER")
+        st.metric("Total Revenue (+20%)", f"${q1_2026_revenue_goal:,.0f}", 
+                 delta=f"+${q1_2026_revenue_goal - q1_2025_revenue:,.0f}")
+        st.metric("Required Spend", f"${spend_scenario_a:,.0f}",
+                 delta=f"+${spend_scenario_a - q1_2025_spend:,.0f}")
+        st.metric("MER Target", f"{mer_scenario_a:.2f}x", delta="0.00x (same)")
+        st.caption(f"Avg Daily Revenue: ${q1_2026_daily_revenue:,.0f}")
+        st.caption(f"Avg Daily Spend: ${daily_spend_scenario_a:,.0f}")
     
     with col3:
-        st.metric("Daily Increase Required", f"{daily_increase_pct:+.1f}%")
-
-# ===== TAB 4: CAMPAIGN ANALYSIS =====
-with tab4:
-    st.header("Q1 Campaign Performance: 2024 vs 2025")
+        st.markdown("### 🚀 Scenario B: Improve MER 20%")
+        st.metric("Total Revenue (+20%)", f"${q1_2026_revenue_goal:,.0f}",
+                 delta=f"+${q1_2026_revenue_goal - q1_2025_revenue:,.0f}")
+        st.metric("Required Spend", f"${spend_scenario_b:,.0f}",
+                 delta=f"+${spend_scenario_b - q1_2025_spend:,.0f}")
+        st.metric("MER Target", f"{mer_target_a:.2f}x", 
+                 delta=f"+{mer_target_a - q1_2025_mer:.2f}x")
+        st.caption(f"Avg Daily Revenue: ${q1_2026_daily_revenue:,.0f}")
+        st.caption(f"Avg Daily Spend: ${daily_spend_scenario_b:,.0f}")
     
-    st.info("🔄 Loading campaign data...")
+    st.markdown("---")
     
-    # Check if files exist
-    campaign_dir = DATA_DIR / "reports" / "campaign"
-    file_2024 = campaign_dir / "q1_2024_campaigns.csv"
-    file_2025 = campaign_dir / "q1_2025_campaigns.csv"
+    # Daily pacing projections
+    st.subheader("Daily Pacing Projections")
     
-    st.write(f"**Looking for files in:** `{campaign_dir}`")
-    st.write(f"- 2024 file exists: {file_2024.exists()}")
-    st.write(f"- 2025 file exists: {file_2025.exists()}")
+    # Create comparison table
+    pacing_data = {
+        'Metric': [
+            'Daily Revenue',
+            'Daily Spend',
+            'Daily MER',
+            'Revenue Growth vs 2025',
+            'Spend Growth vs 2025'
+        ],
+        '2025 Actual': [
+            f"${q1_2025_daily_revenue:,.0f}",
+            f"${q1_2025_daily_spend:,.0f}",
+            f"{q1_2025_mer:.2f}x",
+            "-",
+            "-"
+        ],
+        '2026 Scenario A (Maintain MER)': [
+            f"${q1_2026_daily_revenue:,.0f}",
+            f"${daily_spend_scenario_a:,.0f}",
+            f"{mer_scenario_a:.2f}x",
+            f"+{((q1_2026_daily_revenue - q1_2025_daily_revenue) / q1_2025_daily_revenue * 100):.1f}%",
+            f"+{((daily_spend_scenario_a - q1_2025_daily_spend) / q1_2025_daily_spend * 100):.1f}%"
+        ],
+        '2026 Scenario B (4.17x MER)': [
+            f"${q1_2026_daily_revenue:,.0f}",
+            f"${daily_spend_scenario_b:,.0f}",
+            f"{mer_target_a:.2f}x",
+            f"+{((q1_2026_daily_revenue - q1_2025_daily_revenue) / q1_2025_daily_revenue * 100):.1f}%",
+            f"+{((daily_spend_scenario_b - q1_2025_daily_spend) / q1_2025_daily_spend * 100):.1f}%"
+        ]
+    }
     
-    # Load campaign data
-    try:
-        campaigns_2024, campaigns_2025 = load_campaign_data()
-        
-        # Debug info
-        st.success(f"✅ 2024 campaigns loaded: {len(campaigns_2024)} records")
-        st.success(f"✅ 2025 campaigns loaded: {len(campaigns_2025)} records")
-        
-        if not campaigns_2024.empty:
-            st.write("**2024 Sample Data:**")
-            st.dataframe(campaigns_2024.head(3))
-        
-        if not campaigns_2025.empty:
-            st.write("**2025 Sample Data:**")
-            st.dataframe(campaigns_2025.head(3))
-        
-        if campaigns_2024.empty and campaigns_2025.empty:
-            st.error(f"⚠️ Both dataframes are empty after loading!")
+    pacing_df = pd.DataFrame(pacing_data)
+    st.dataframe(pacing_df, use_container_width=True, hide_index=True)
+    
+    st.markdown("---")
+    
+    # Key insights
+    st.info(f"""
+    **💡 Key Insights:**
+    
+    - **Scenario A** requires **${(spend_scenario_a - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_a - q1_2025_spend) / q1_2025_spend * 100):.1f}%) to achieve +20% revenue while maintaining current MER of {q1_2025_mer:.2f}x
+    
+    - **Scenario B** requires **${(spend_scenario_b - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_b - q1_2025_spend) / q1_2025_spend * 100):.1f}%) while improving MER to {mer_target_a:.2f}x
+    
+    - Improving MER by 20% would **save ${(spend_scenario_a - spend_scenario_b):,.0f}** in quarterly spend while achieving the same revenue goal
+    """)
+    
+    st.markdown("---")
+    
+    # Monthly projections with daily breakdown
+    st.subheader("📅 Monthly Projections: Daily Targets")
+    
+    st.markdown("""
+    **Hybrid Model Approach:**
+    - Start conservative in January to validate performance
+    - Scale in February/March based on January results
+    - Both scenarios assume 20% revenue growth over Q1 2025
+    """)
+    
+    months_data = []
+    days_per_month = {'January': 31, 'February': 28, 'March': 31}
+    
+    for month_name, days in days_per_month.items():
+        # 2025 actual data for this month
+        month_2025 = q1_2025[q1_2025['month_name'] == month_name]
+        if len(month_2025) > 0:
+            revenue_2025 = month_2025['revenue'].sum()
+            spend_2025 = month_2025['spend'].sum()
+            orders_2025 = month_2025['orders'].sum()
+            mer_2025 = revenue_2025 / spend_2025 if spend_2025 > 0 else 0
         else:
-            # Summary metrics
-            st.subheader("Platform Spend Summary")
+            revenue_2025 = 0
+            spend_2025 = 0
+            orders_2025 = 0
+            mer_2025 = 0
+        
+        # 2026 projections (+20% revenue)
+        revenue_2026 = revenue_2025 * 1.20
+        daily_revenue_2026 = revenue_2026 / days
+        
+        # Scenario A: Maintain 3.47x MER
+        spend_2026_a = revenue_2026 / mer_scenario_a
+        daily_spend_2026_a = spend_2026_a / days
+        
+        # Scenario B: Improve to 4.17x MER
+        spend_2026_b = revenue_2026 / mer_target_a
+        daily_spend_2026_b = spend_2026_b / days
+        
+        months_data.append({
+            'Month': month_name,
+            'Days': days,
+            '2025 Revenue': revenue_2025,
+            '2026 Revenue Goal': revenue_2026,
+            'Daily Revenue Target': daily_revenue_2026,
+            'Scenario A Spend (3.47x)': spend_2026_a,
+            'Scenario A Daily Spend': daily_spend_2026_a,
+            'Scenario B Spend (4.17x)': spend_2026_b,
+            'Scenario B Daily Spend': daily_spend_2026_b,
+            'Savings (A vs B)': spend_2026_a - spend_2026_b
+        })
+    
+    months_df = pd.DataFrame(months_data)
+    
+    # Display formatted table for each month
+    for idx, row in months_df.iterrows():
+        with st.expander(f"📊 {row['Month']} 2026 - {row['Days']} Days", expanded=(idx == 0)):
             
             col1, col2, col3 = st.columns(3)
             
-            if not campaigns_2024.empty:
-                total_2024 = campaigns_2024['spend'].sum()
-                google_2024 = campaigns_2024[campaigns_2024['platform'] == 'Google']['spend'].sum()
-                meta_2024 = campaigns_2024[campaigns_2024['platform'] == 'Meta']['spend'].sum()
-                
-                with col1:
-                    st.metric("2024 Q1 Total Spend", f"${total_2024:,.0f}")
-                    st.caption(f"Google: ${google_2024:,.0f} ({google_2024/total_2024*100:.1f}%)")
-                    st.caption(f"Meta: ${meta_2024:,.0f} ({meta_2024/total_2024*100:.1f}%)")
-            
-            if not campaigns_2025.empty:
-                total_2025 = campaigns_2025['spend'].sum()
-                google_2025 = campaigns_2025[campaigns_2025['platform'] == 'Google']['spend'].sum()
-                meta_2025 = campaigns_2025[campaigns_2025['platform'] == 'Meta']['spend'].sum()
-                
-                with col2:
-                    st.metric("2025 Q1 Total Spend", f"${total_2025:,.0f}")
-                    st.caption(f"Google: ${google_2025:,.0f} ({google_2025/total_2025*100:.1f}%)")
-                    st.caption(f"Meta: ${meta_2025:,.0f} ({meta_2025/total_2025*100:.1f}%)")
-                    st.caption("⚠️ January only")
-            
-            if not campaigns_2024.empty and not campaigns_2025.empty:
-                # Compare January only (apples to apples)
-                jan_2024 = campaigns_2024[campaigns_2024['month_name'] == 'January']['spend'].sum()
-                jan_2025 = total_2025  # 2025 is January only
-                delta = jan_2025 - jan_2024
-                delta_pct = (delta / jan_2024 * 100) if jan_2024 > 0 else 0
-                
-                with col3:
-                    st.metric("January YoY Change", f"{delta_pct:+.1f}%", 
-                             delta=f"${delta:+,.0f}")
-                    st.caption(f"2024 Jan: ${jan_2024:,.0f}")
-                    st.caption(f"2025 Jan: ${jan_2025:,.0f}")
-            
-            st.markdown("---")
-            
-            # Monthly breakdown by platform
-            st.subheader("Monthly Spend by Platform")
-            
-            # Create comparison chart
-            fig = make_subplots(
-                rows=1, cols=2,
-                subplot_titles=("2024 Q1 Spend by Month", "2025 Q1 Spend by Month"),
-                specs=[[{"type": "bar"}, {"type": "bar"}]]
-            )
-            
-            if not campaigns_2024.empty:
-                monthly_2024 = campaigns_2024.groupby(['month_name', 'platform'])['spend'].sum().reset_index()
-                monthly_2024['month_name'] = pd.Categorical(
-                    monthly_2024['month_name'], 
-                    categories=['January', 'February', 'March'], 
-                    ordered=True
-                )
-                monthly_2024 = monthly_2024.sort_values('month_name')
-                
-                for platform in ['Google', 'Meta']:
-                    platform_data = monthly_2024[monthly_2024['platform'] == platform]
-                    color = '#4285F4' if platform == 'Google' else '#1877F2'
-                    fig.add_trace(
-                        go.Bar(
-                            name=platform,
-                            x=platform_data['month_name'],
-                            y=platform_data['spend'],
-                            marker_color=color,
-                            showlegend=True
-                        ),
-                        row=1, col=1
-                    )
-            
-            if not campaigns_2025.empty:
-                monthly_2025 = campaigns_2025.groupby(['month_name', 'platform'])['spend'].sum().reset_index()
-                monthly_2025['month_name'] = pd.Categorical(
-                    monthly_2025['month_name'], 
-                    categories=['January', 'February', 'March'], 
-                    ordered=True
-                )
-                monthly_2025 = monthly_2025.sort_values('month_name')
-                
-                for platform in ['Google', 'Meta']:
-                    platform_data = monthly_2025[monthly_2025['platform'] == platform]
-                    color = '#4285F4' if platform == 'Google' else '#1877F2'
-                    fig.add_trace(
-                        go.Bar(
-                            name=platform,
-                            x=platform_data['month_name'],
-                            y=platform_data['spend'],
-                            marker_color=color,
-                            showlegend=False
-                        ),
-                        row=1, col=2
-                    )
-            
-            fig.update_xaxes(title_text="Month", row=1, col=1)
-            fig.update_xaxes(title_text="Month", row=1, col=2)
-            fig.update_yaxes(title_text="Spend ($)", row=1, col=1)
-            fig.update_yaxes(title_text="Spend ($)", row=1, col=2)
-            fig.update_layout(height=400, barmode='group')
-            
-            st.plotly_chart(fig, use_container_width=True)
-            
-            st.markdown("---")
-            
-            # Top campaigns by platform
-            st.subheader("Top Campaigns by Spend")
-            
-            col1, col2 = st.columns(2)
-            
             with col1:
-                st.markdown("**🔍 Google Ads - Top 10 Campaigns (2025)**")
-                if not campaigns_2025.empty:
-                    google_campaigns = campaigns_2025[campaigns_2025['platform'] == 'Google'].groupby('campaign_name')['spend'].sum().nlargest(10).reset_index()
-                    google_campaigns['spend_fmt'] = google_campaigns['spend'].apply(lambda x: f"${x:,.0f}")
-                    google_campaigns.columns = ['Campaign Name', 'Spend', 'Formatted']
-                    display_google = google_campaigns[['Campaign Name', 'Formatted']].copy()
-                    display_google.columns = ['Campaign', 'Spend']
-                    st.dataframe(display_google, use_container_width=True, hide_index=True, height=400)
-                else:
-                    st.info("No 2025 Google campaign data available")
+                st.markdown("### 📈 Revenue Targets")
+                st.metric("Monthly Goal (+20%)", f"${row['2026 Revenue Goal']:,.0f}")
+                st.metric("Daily Target", f"${row['Daily Revenue Target']:,.0f}")
+                st.caption(f"vs 2025 Actual: ${row['2025 Revenue']:,.0f}")
             
             with col2:
-                st.markdown("**📘 Meta Ads - Top 10 Campaigns (2025)**")
-                if not campaigns_2025.empty:
-                    meta_campaigns = campaigns_2025[campaigns_2025['platform'] == 'Meta'].groupby('campaign_name')['spend'].sum().nlargest(10).reset_index()
-                    meta_campaigns['spend_fmt'] = meta_campaigns['spend'].apply(lambda x: f"${x:,.0f}")
-                    meta_campaigns.columns = ['Campaign Name', 'Spend', 'Formatted']
-                    display_meta = meta_campaigns[['Campaign Name', 'Formatted']].copy()
-                    display_meta.columns = ['Campaign', 'Spend']
-                    st.dataframe(display_meta, use_container_width=True, hide_index=True, height=400)
-                else:
-                    st.info("No 2025 Meta campaign data available")
+                st.markdown("### 💰 Scenario A: 3.47x MER")
+                st.metric("Monthly Spend", f"${row['Scenario A Spend (3.47x)']:,.0f}")
+                st.metric("Daily Spend", f"${row['Scenario A Daily Spend']:,.0f}")
+                st.caption("Maintain current efficiency")
+            
+            with col3:
+                st.markdown("### 🚀 Scenario B: 4.17x MER")
+                st.metric("Monthly Spend", f"${row['Scenario B Spend (4.17x)']:,.0f}")
+                st.metric("Daily Spend", f"${row['Scenario B Daily Spend']:,.0f}")
+                st.caption(f"Saves: ${row['Savings (A vs B)']:,.0f}")
             
             st.markdown("---")
             
-            # Full campaign list with filters
-            st.subheader("All Campaigns - Detailed View")
+            # Weekly breakdown for this month
+            st.markdown(f"**Weekly Breakdown for {row['Month']}:**")
             
-            year_filter = st.radio("Select Year:", ["2024", "2025", "Both"], horizontal=True)
-            platform_filter = st.multiselect("Filter by Platform:", ["Google", "Meta"], default=["Google", "Meta"])
+            # Calculate weeks in month (roughly 4-5 weeks)
+            weeks_in_month = int(row['Days'] / 7)
+            remaining_days = row['Days'] % 7
             
-            filtered_campaigns = pd.DataFrame()
-            
-            if year_filter in ["2024", "Both"] and not campaigns_2024.empty:
-                df_2024 = campaigns_2024[campaigns_2024['platform'].isin(platform_filter)].copy()
-                df_2024['year'] = 2024
-                filtered_campaigns = pd.concat([filtered_campaigns, df_2024], ignore_index=True)
-            
-            if year_filter in ["2025", "Both"] and not campaigns_2025.empty:
-                df_2025 = campaigns_2025[campaigns_2025['platform'].isin(platform_filter)].copy()
-                df_2025['year'] = 2025
-                filtered_campaigns = pd.concat([filtered_campaigns, df_2025], ignore_index=True)
-            
-            if not filtered_campaigns.empty:
-                # Aggregate by campaign
-                campaign_summary = filtered_campaigns.groupby(['year', 'platform', 'campaign_name', 'month_name'])['spend'].sum().reset_index()
-                campaign_summary = campaign_summary.sort_values(['year', 'platform', 'spend'], ascending=[False, True, False])
+            weekly_data = []
+            for week_num in range(1, weeks_in_month + 1):
+                days_in_week = 7
+                week_label = f"Week {week_num}"
                 
-                # Format for display
-                campaign_summary['spend_fmt'] = campaign_summary['spend'].apply(lambda x: f"${x:,.0f}")
-                display_campaigns = campaign_summary[['year', 'month_name', 'platform', 'campaign_name', 'spend_fmt']].copy()
-                display_campaigns.columns = ['Year', 'Month', 'Platform', 'Campaign', 'Spend']
+                weekly_revenue = row['Daily Revenue Target'] * days_in_week
+                weekly_spend_a = row['Scenario A Daily Spend'] * days_in_week
+                weekly_spend_b = row['Scenario B Daily Spend'] * days_in_week
                 
-                st.dataframe(display_campaigns, use_container_width=True, hide_index=True, height=600)
+                weekly_data.append({
+                    'Week': week_label,
+                    'Days': days_in_week,
+                    'Revenue Target': f"${weekly_revenue:,.0f}",
+                    'Scenario A Spend': f"${weekly_spend_a:,.0f}",
+                    'Scenario B Spend': f"${weekly_spend_b:,.0f}",
+                    'Daily Revenue': f"${row['Daily Revenue Target']:,.0f}",
+                    'Daily Spend A': f"${row['Scenario A Daily Spend']:,.0f}",
+                    'Daily Spend B': f"${row['Scenario B Daily Spend']:,.0f}"
+                })
+            
+            # Add remaining days if any
+            if remaining_days > 0:
+                weekly_revenue = row['Daily Revenue Target'] * remaining_days
+                weekly_spend_a = row['Scenario A Daily Spend'] * remaining_days
+                weekly_spend_b = row['Scenario B Daily Spend'] * remaining_days
                 
-                # Download button
-                csv = campaign_summary.to_csv(index=False)
-                st.download_button(
-                    label="📥 Download Campaign Data (CSV)",
-                    data=csv,
-                    file_name=f"q1_campaigns_{year_filter.lower()}_{datetime.now().strftime('%Y%m%d')}.csv",
-                    mime="text/csv"
-                )
-            else:
-                st.info("No campaigns match the selected filters")
-                
-    except Exception as e:
-        st.error(f"Error loading campaign data: {e}")
-        import traceback
-        st.code(traceback.format_exc())
-        st.info("Run `python3 scripts/analyze_q1_campaigns.py` to generate campaign data.")
+                weekly_data.append({
+                    'Week': f"Week {weeks_in_month + 1}",
+                    'Days': remaining_days,
+                    'Revenue Target': f"${weekly_revenue:,.0f}",
+                    'Scenario A Spend': f"${weekly_spend_a:,.0f}",
+                    'Scenario B Spend': f"${weekly_spend_b:,.0f}",
+                    'Daily Revenue': f"${row['Daily Revenue Target']:,.0f}",
+                    'Daily Spend A': f"${row['Scenario A Daily Spend']:,.0f}",
+                    'Daily Spend B': f"${row['Scenario B Daily Spend']:,.0f}"
+                })
+            
+            weekly_df = pd.DataFrame(weekly_data)
+            st.dataframe(weekly_df, use_container_width=True, hide_index=True)
+    
+    st.markdown("---")
+    st.markdown("""
+    **📋 Implementation Notes:**
+    - Monitor daily performance against these targets
+    - Adjust spend allocation based on actual MER performance
+    - Use January as validation month before scaling February/March
+    - Weekly checkpoints recommended to ensure pacing on track
+    """)
 
-# ===== TAB 5: DATA & METHODOLOGY =====
-with tab5:
+# ===== TAB 6: DATA & METHODOLOGY =====
+with tab6:
     st.header("Data & Methodology")
     
     st.subheader("Data Sources")
