@@ -123,36 +123,24 @@ def load_all_data_v2_dec19():
         st.error(traceback.format_exc())
         return None
     
-    # === 2025 Spend (Northbeam YTD) ===
-    # Try lightweight daily file first, fallback to full YTD file
-    spend_2025_file = ADS_DIR / "northbeam_2025_ytd_spend_daily.csv"
+    # === 2025 Spend (Northbeam Q1) ===
+    # Use Q1-specific pre-processed file
+    spend_2025_file = ADS_DIR / "northbeam_2025_q1_complete_spend_daily.csv"
     
     if not spend_2025_file.exists():
-        # Fallback to full YTD files
-        spend_2025_files = sorted(ADS_DIR.glob("ytd_sales_data-higher_dose_llc-2025_12_18-*.csv"))
-        if not spend_2025_files:
-            st.error("No 2025 Northbeam spend file found.")
-            return None
-        
-        spend_2025_file = spend_2025_files[-1]
-        spend_2025 = pd.read_csv(spend_2025_file)
-        spend_2025['date'] = pd.to_datetime(spend_2025['date'])
-        
-        # Filter to Cash snapshot mode to avoid double counting
-        spend_2025 = spend_2025[spend_2025['accounting_mode'] == 'Cash snapshot'].copy()
-        
-        # Aggregate to daily brand level
-        spend_2025_daily = spend_2025.groupby('date').agg({
-            'spend': 'sum'
-        }).reset_index()
+        st.error(f"❌ 2025 Q1 spend file not found: {spend_2025_file}")
+        st.error(f"Expected file: northbeam_2025_q1_complete_spend_daily.csv")
+        return None
+    
+    # Load Q1 2025 spend data (already aggregated daily)
+    spend_2025_daily = pd.read_csv(spend_2025_file)
+    spend_2025_daily['date'] = pd.to_datetime(spend_2025_daily['date'])
+    
+    # Ensure 'year' column exists
+    if 'year' not in spend_2025_daily.columns:
         spend_2025_daily['year'] = 2025
-    else:
-        # Use lightweight file (already aggregated daily)
-        spend_2025_daily = pd.read_csv(spend_2025_file)
-        spend_2025_daily['date'] = pd.to_datetime(spend_2025_daily['date'])
-        # Ensure 'year' column exists
-        if 'year' not in spend_2025_daily.columns:
-            spend_2025_daily['year'] = 2025
+    
+    st.sidebar.caption(f"✅ 2025 Q1 spend loaded")
     
     # === Merge sales + spend for each year ===
     df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend']], on='date', how='left')
