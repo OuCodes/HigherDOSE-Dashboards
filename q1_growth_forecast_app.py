@@ -481,9 +481,38 @@ with tab1:
         st.caption(f"Est. {q1_2026_orders_target:,.0f} orders")
     
     with col4:
-        st.metric("AOV YoY", f"${aov_delta:+,.2f}", 
+        st.metric("AOV YoY", f"${aov_delta:+,.2f}",
                  delta=f"{aov_delta_pct:+.1f}%")
         st.caption(f"${q1_2024_aov:,.2f} → ${q1_2025_aov:,.2f}")
+    
+    # Real AOV metrics row
+    st.subheader("Real Revenue AOV")
+    st.caption("💡 Real AOV = Real Revenue ÷ Real Revenue Orders")
+    col1, col2, col3, col4 = st.columns(4)
+    
+    real_aov_delta = q1_2025_real_aov - q1_2024_real_aov
+    real_aov_delta_pct = (real_aov_delta / q1_2024_real_aov * 100) if q1_2024_real_aov > 0 else 0
+    
+    with col1:
+        st.metric("Q1 2024 Real AOV", f"${q1_2024_real_aov:,.2f}")
+        st.caption(f"{int(q1_2024_real_revenue_orders):,} orders")
+    
+    with col2:
+        st.metric("Q1 2025 Real AOV", f"${q1_2025_real_aov:,.2f}",
+                 delta=f"{real_aov_delta_pct:+.1f}% YoY")
+        st.caption(f"{int(q1_2025_real_revenue_orders):,} orders")
+    
+    with col3:
+        # 2026 Real AOV target (based on 20% revenue growth)
+        q1_2026_real_orders_target = q1_2025_real_revenue_orders * 1.20
+        q1_2026_real_aov_target = q1_2026_goal_real_revenue / q1_2026_real_orders_target if q1_2026_real_orders_target > 0 else q1_2025_real_aov
+        st.metric("Q1 2026 Target", f"${q1_2026_real_aov_target:,.2f}")
+        st.caption(f"Est. {int(q1_2026_real_orders_target):,} orders")
+    
+    with col4:
+        st.metric("Real AOV YoY", f"${real_aov_delta:+,.2f}",
+                 delta=f"{real_aov_delta_pct:+.1f}%")
+        st.caption(f"${q1_2024_real_aov:,.2f} → ${q1_2025_real_aov:,.2f}")
     
     # MER metrics row
     st.subheader("Marketing Efficiency Ratio (MER)")
