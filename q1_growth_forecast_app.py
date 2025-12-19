@@ -598,19 +598,17 @@ with tab1:
         if month in monthly_2024_sorted.index:
             # Get 2024 values
             rev_2024 = monthly_2024_sorted.loc[month, 'revenue']
+            real_rev_2024 = monthly_2024_sorted.loc[month, 'real_revenue']
             spend_2024 = monthly_2024_sorted.loc[month, 'spend']
             mer_2024 = monthly_2024_sorted.loc[month, 'MER']
             orders_2024 = monthly_2024_sorted.loc[month, 'orders']
             
             # Calculate deltas
             rev_delta = ((row['revenue'] - rev_2024) / rev_2024 * 100) if rev_2024 > 0 else 0
+            real_rev_delta = ((row['real_revenue'] - real_rev_2024) / real_rev_2024 * 100) if real_rev_2024 > 0 else 0
             spend_delta = ((row['spend'] - spend_2024) / spend_2024 * 100) if spend_2024 > 0 else 0
             mer_delta = ((row['MER'] - mer_2024) / mer_2024 * 100) if mer_2024 > 0 else 0
             orders_delta = ((row['orders'] - orders_2024) / orders_2024 * 100) if orders_2024 > 0 else 0
-            
-            # Format with deltas
-            # Calculate real revenue delta
-            real_rev_delta = ((row['real_revenue'] - month_2024['real_revenue']) / month_2024['real_revenue'] * 100) if month_2024['real_revenue'] > 0 else 0
             
             formatted_rows.append({
                 'Year': '2025',
