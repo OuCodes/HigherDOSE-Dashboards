@@ -35,14 +35,33 @@ def load_all_data_v2_dec19():
     Version: 2025-12-19 - Fixed affiliate double-counting bug
     """
     
-    # === 2024 Sales (Total Sales) ===
+    # === 2024 Sales (Total Sales + Real Revenue) ===
     sales_2024_file = ADS_DIR / "exec-sum" / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
     sales_2024 = pd.read_csv(sales_2024_file)
     sales_2024['Day'] = pd.to_datetime(sales_2024['Day'])
     sales_2024 = sales_2024.rename(columns={'Day': 'date', 'Total sales': 'revenue', 'Orders': 'orders'})
     sales_2024['year'] = 2024
     
-    # === 2025 Sales (Total Sales) ===
+    # Load Real Revenue for 2024 from Real Revenue CSV
+    real_rev_2024_file = ADS_DIR / "exec-sum" / "!Real Revenue - OU - 2024-01-01 - 2024-12-31.csv"
+    if real_rev_2024_file.exists():
+        st.sidebar.write(f"📊 Loading 2024 Real Revenue from {real_rev_2024_file.name}")
+        real_2024 = pd.read_csv(real_rev_2024_file)
+        real_2024['Day'] = pd.to_datetime(real_2024['Day'])
+        # Aggregate by day (file has order-level data)
+        real_2024_daily = real_2024.groupby('Day').agg({
+            '"Real sales"': lambda x: pd.to_numeric(x, errors='coerce').sum()
+        }).reset_index()
+        real_2024_daily = real_2024_daily.rename(columns={'Day': 'date', '"Real sales"': 'real_revenue'})
+        # Merge with sales data
+        sales_2024 = sales_2024.merge(real_2024_daily, on='date', how='left')
+        sales_2024['real_revenue'] = sales_2024['real_revenue'].fillna(0)
+        st.sidebar.write(f"✓ Loaded {len(real_2024_daily)} days of Real Revenue data")
+    else:
+        st.sidebar.warning("⚠️ 2024 Real Revenue file not found")
+        sales_2024['real_revenue'] = 0
+    
+    # === 2025 Sales (Total Sales + Real Revenue) ===
     # Find latest 2025 sales file
     sales_2025_files = sorted((ADS_DIR / "exec-sum").glob("Total sales over time - OU - 2025-*.csv"))
     if not sales_2025_files:
@@ -54,6 +73,26 @@ def load_all_data_v2_dec19():
     sales_2025['Day'] = pd.to_datetime(sales_2025['Day'])
     sales_2025 = sales_2025.rename(columns={'Day': 'date', 'Total sales': 'revenue', 'Orders': 'orders'})
     sales_2025['year'] = 2025
+    
+    # Load Real Revenue for 2025 from Real Revenue CSV
+    real_rev_2025_files = sorted((ADS_DIR / "exec-sum").glob("!Real Revenue - OU - 2025-*.csv"))
+    if real_rev_2025_files:
+        real_rev_2025_file = real_rev_2025_files[-1]
+        st.sidebar.write(f"📊 Loading 2025 Real Revenue from {real_rev_2025_file.name}")
+        real_2025 = pd.read_csv(real_rev_2025_file)
+        real_2025['Day'] = pd.to_datetime(real_2025['Day'])
+        # Aggregate by day (file has order-level data)
+        real_2025_daily = real_2025.groupby('Day').agg({
+            '"Real sales"': lambda x: pd.to_numeric(x, errors='coerce').sum()
+        }).reset_index()
+        real_2025_daily = real_2025_daily.rename(columns={'Day': 'date', '"Real sales"': 'real_revenue'})
+        # Merge with sales data
+        sales_2025 = sales_2025.merge(real_2025_daily, on='date', how='left')
+        sales_2025['real_revenue'] = sales_2025['real_revenue'].fillna(0)
+        st.sidebar.write(f"✓ Loaded {len(real_2025_daily)} days of Real Revenue data")
+    else:
+        st.sidebar.warning("⚠️ 2025 Real Revenue file not found")
+        sales_2025['real_revenue'] = 0
     
     # === 2024 & 2025 Spend - Load from Historical Spend CSV directly ===
     st.sidebar.write("🔍 Loading spend data from Historical CSV...")
@@ -78,15 +117,6 @@ def load_all_data_v2_dec19():
                 return 0.0
             return float(str(val).replace('$', '').replace(',', ''))
         
-        # Extract Real Revenue from Historical CSV for both years
-        real_revenue_lookup = {}
-        for _, row in hist_df.iterrows():
-            if pd.notna(row['Month']):
-                month_str = str(row['Month'])
-                real_rev = clean_currency(row.get('Real\nRevenue(1)', 0))
-                if real_rev > 0:
-                    real_revenue_lookup[month_str] = real_rev
-        
         # Process 2024 data
         hist_2024 = hist_df[hist_df['Month'].str.contains('24', na=False)].copy()
         hist_2024['month_date'] = pd.to_datetime(hist_2024['Month'], format='%b-%y')
@@ -95,24 +125,20 @@ def load_all_data_v2_dec19():
         spend_2024_monthly = []
         for _, row in hist_2024.iterrows():
             month_date = row['month_date']
-            month_str = row['Month']
             total_spend = clean_currency(row.get('Total Spend', 0))
-            real_rev_monthly = real_revenue_lookup.get(month_str, 0)
             
-            if total_spend > 0 or real_rev_monthly > 0:
+            if total_spend > 0:
                 days_in_month = pd.date_range(
                     start=month_date,
                     end=month_date + pd.offsets.MonthEnd(1),
                     freq='D'
                 )
                 daily_spend = total_spend / len(days_in_month)
-                daily_real_rev = real_rev_monthly / len(days_in_month)
                 
                 for day in days_in_month:
                     spend_2024_monthly.append({
                         'date': day,
-                        'spend': daily_spend,
-                        'real_revenue_from_hist': daily_real_rev
+                        'spend': daily_spend
                     })
         
         spend_2024_daily = pd.DataFrame(spend_2024_monthly)
@@ -126,24 +152,20 @@ def load_all_data_v2_dec19():
         spend_2025_monthly = []
         for _, row in hist_2025.iterrows():
             month_date = row['month_date']
-            month_str = row['Month']
             total_spend = clean_currency(row.get('Total Spend', 0))
-            real_rev_monthly = real_revenue_lookup.get(month_str, 0)
             
-            if total_spend > 0 or real_rev_monthly > 0:
+            if total_spend > 0:
                 days_in_month = pd.date_range(
                     start=month_date,
                     end=month_date + pd.offsets.MonthEnd(1),
                     freq='D'
                 )
                 daily_spend = total_spend / len(days_in_month)
-                daily_real_rev = real_rev_monthly / len(days_in_month)
                 
                 for day in days_in_month:
                     spend_2025_monthly.append({
                         'date': day,
-                        'spend': daily_spend,
-                        'real_revenue_from_hist': daily_real_rev
+                        'spend': daily_spend
                     })
         
         spend_2025_daily = pd.DataFrame(spend_2025_monthly)
@@ -170,19 +192,19 @@ def load_all_data_v2_dec19():
         st.error(traceback.format_exc())
         return None
     
-    # === Merge sales + spend + real revenue for each year ===
-    df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend', 'real_revenue_from_hist']], on='date', how='left')
+    # === Merge sales + spend for each year ===
+    df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend']], on='date', how='left')
     df_2024['spend'] = df_2024['spend'].fillna(0)
-    df_2024['real_revenue'] = df_2024['real_revenue_from_hist'].fillna(0)
+    # real_revenue already merged from Real Revenue CSV above
     df_2024['MER'] = df_2024.apply(lambda x: x['revenue'] / x['spend'] if x['spend'] > 0 else 0, axis=1)
     
     # Debug: Show 2025 spend info
     total_2025_spend = spend_2025_daily['spend'].sum()
     
-    df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend', 'real_revenue_from_hist']], 
+    df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend']], 
                                on='date', how='left')
     df_2025['spend'] = df_2025['spend'].fillna(0)
-    df_2025['real_revenue'] = df_2025['real_revenue_from_hist'].fillna(0)
+    # real_revenue already merged from Real Revenue CSV above
     df_2025['MER'] = df_2025.apply(lambda x: x['revenue'] / x['spend'] if x['spend'] > 0 else 0, axis=1)
     
     # Show warning if spend data is limited
