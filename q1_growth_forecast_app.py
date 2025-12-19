@@ -399,14 +399,12 @@ with tab1:
     
     with col1:
         st.metric("Q1 2024 Real Revenue", f"${q1_2024_real_revenue:,.0f}")
-        discount_2024 = q1_2024_real_revenue - q1_2024_revenue
-        st.caption(f"Discounts: ${discount_2024:,.0f}")
+        st.caption(f"{q1_2024_orders:,.0f} orders")
     
     with col2:
         st.metric("Q1 2025 Real Revenue", f"${q1_2025_real_revenue:,.0f}",
                  delta=f"{real_revenue_delta_pct:+.1f}% YoY")
-        discount_2025 = q1_2025_real_revenue - q1_2025_revenue
-        st.caption(f"Discounts: ${discount_2025:,.0f}")
+        st.caption(f"{q1_2025_orders:,.0f} orders")
     
     with col3:
         st.metric("Real Revenue vs Net", f"${q1_2025_real_revenue - q1_2025_revenue:,.0f}")
