@@ -270,6 +270,7 @@ with st.sidebar:
 # Header
 st.title("📈 Q1 Growth & Forecast Dashboard")
 st.markdown("**2024 vs 2025 Q1 Analysis with 20% Growth Targets for 2026**")
+st.error("🔄 VERSION: 2025-12-19-FINAL | If you see old spend numbers ($889k), hard refresh and clear browser cache")
 st.markdown("---")
 
 # === TAB STRUCTURE ===
