@@ -957,6 +957,68 @@ with tab2:
     
     st.markdown("---")
     
+    # Daily data tables by month with dropdown
+    st.subheader("Day-by-Day Revenue, Spend & MER")
+    
+    # Month selector dropdown
+    selected_month = st.selectbox("Select Month:", ['January', 'February', 'March'])
+    
+    # Filter data for selected month
+    month_2024_detail = q1_2024[q1_2024['month_name'] == selected_month].copy()
+    month_2025_detail = q1_2025[q1_2025['month_name'] == selected_month].copy()
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown(f"**2024 {selected_month} - Daily Performance**")
+        if not month_2024_detail.empty:
+            daily_2024_table = month_2024_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
+            daily_2024_table = daily_2024_table.sort_values('day_of_month')
+            daily_2024_table['revenue_fmt'] = daily_2024_table['revenue'].apply(lambda x: f"${x:,.0f}")
+            daily_2024_table['spend_fmt'] = daily_2024_table['spend'].apply(lambda x: f"${x:,.0f}")
+            daily_2024_table['MER_fmt'] = daily_2024_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
+            
+            display_2024_table = daily_2024_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
+            display_2024_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
+            
+            st.dataframe(display_2024_table, use_container_width=True, hide_index=True, height=500)
+            
+            # Month summary
+            total_rev = month_2024_detail['revenue'].sum()
+            total_spend = month_2024_detail['spend'].sum()
+            avg_mer = total_rev / total_spend if total_spend > 0 else 0
+            st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
+        else:
+            st.info("No data available for this month")
+    
+    with col2:
+        st.markdown(f"**2025 {selected_month} - Daily Performance**")
+        if not month_2025_detail.empty:
+            daily_2025_table = month_2025_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
+            daily_2025_table = daily_2025_table.sort_values('day_of_month')
+            daily_2025_table['revenue_fmt'] = daily_2025_table['revenue'].apply(lambda x: f"${x:,.0f}")
+            daily_2025_table['spend_fmt'] = daily_2025_table['spend'].apply(lambda x: f"${x:,.0f}")
+            daily_2025_table['MER_fmt'] = daily_2025_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
+            
+            display_2025_table = daily_2025_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
+            display_2025_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
+            
+            st.dataframe(display_2025_table, use_container_width=True, hide_index=True, height=500)
+            
+            # Month summary
+            total_rev = month_2025_detail['revenue'].sum()
+            total_spend = month_2025_detail['spend'].sum()
+            avg_mer = total_rev / total_spend if total_spend > 0 else 0
+            st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
+            
+            # Warning if no spend data
+            if total_spend == 0:
+                st.warning(f"⚠️ No spend data available for {selected_month} 2025")
+        else:
+            st.info("No data available for this month")
+    
+    st.markdown("---")
+    
     # Daily performance breakdown by month
     st.subheader("Daily Performance by Month")
     
@@ -1039,68 +1101,6 @@ with tab2:
     st.dataframe(daily_display, use_container_width=True, hide_index=True)
     
     st.caption("*Note: Averages calculated from actual days with data in each month")
-    
-    st.markdown("---")
-    
-    # Daily data tables by month with dropdown
-    st.subheader("Day-by-Day Revenue, Spend & MER")
-    
-    # Month selector dropdown
-    selected_month = st.selectbox("Select Month:", ['January', 'February', 'March'])
-    
-    # Filter data for selected month
-    month_2024_detail = q1_2024[q1_2024['month_name'] == selected_month].copy()
-    month_2025_detail = q1_2025[q1_2025['month_name'] == selected_month].copy()
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown(f"**2024 {selected_month} - Daily Performance**")
-        if not month_2024_detail.empty:
-            daily_2024_table = month_2024_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
-            daily_2024_table = daily_2024_table.sort_values('day_of_month')
-            daily_2024_table['revenue_fmt'] = daily_2024_table['revenue'].apply(lambda x: f"${x:,.0f}")
-            daily_2024_table['spend_fmt'] = daily_2024_table['spend'].apply(lambda x: f"${x:,.0f}")
-            daily_2024_table['MER_fmt'] = daily_2024_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
-            
-            display_2024_table = daily_2024_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
-            display_2024_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
-            
-            st.dataframe(display_2024_table, use_container_width=True, hide_index=True, height=500)
-            
-            # Month summary
-            total_rev = month_2024_detail['revenue'].sum()
-            total_spend = month_2024_detail['spend'].sum()
-            avg_mer = total_rev / total_spend if total_spend > 0 else 0
-            st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
-        else:
-            st.info("No data available for this month")
-    
-    with col2:
-        st.markdown(f"**2025 {selected_month} - Daily Performance**")
-        if not month_2025_detail.empty:
-            daily_2025_table = month_2025_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
-            daily_2025_table = daily_2025_table.sort_values('day_of_month')
-            daily_2025_table['revenue_fmt'] = daily_2025_table['revenue'].apply(lambda x: f"${x:,.0f}")
-            daily_2025_table['spend_fmt'] = daily_2025_table['spend'].apply(lambda x: f"${x:,.0f}")
-            daily_2025_table['MER_fmt'] = daily_2025_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
-            
-            display_2025_table = daily_2025_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
-            display_2025_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
-            
-            st.dataframe(display_2025_table, use_container_width=True, hide_index=True, height=500)
-            
-            # Month summary
-            total_rev = month_2025_detail['revenue'].sum()
-            total_spend = month_2025_detail['spend'].sum()
-            avg_mer = total_rev / total_spend if total_spend > 0 else 0
-            st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
-            
-            # Warning if no spend data
-            if total_spend == 0:
-                st.warning(f"⚠️ No spend data available for {selected_month} 2025")
-        else:
-            st.info("No data available for this month")
 
 # ===== TAB 3: PRODUCT PERFORMANCE =====
 with tab3:
