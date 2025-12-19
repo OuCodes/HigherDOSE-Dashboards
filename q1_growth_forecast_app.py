@@ -415,9 +415,9 @@ with tab1:
         st.caption(f"{int(q1_2025_real_revenue_orders):,} orders")
     
     with col3:
-        st.metric("Real Revenue vs Net", f"${q1_2025_real_revenue - q1_2025_revenue:,.0f}")
-        discount_rate_2025 = ((q1_2025_real_revenue - q1_2025_revenue) / q1_2025_real_revenue * 100) if q1_2025_real_revenue > 0 else 0
-        st.caption(f"Discount rate: {discount_rate_2025:.1f}%")
+        st.metric("Real Rev vs Total Sales", f"${q1_2025_real_revenue - q1_2025_revenue:,.0f}")
+        diff_pct_2025 = ((q1_2025_real_revenue - q1_2025_revenue) / q1_2025_real_revenue * 100) if q1_2025_real_revenue > 0 else 0
+        st.caption(f"Shipping & adjustments: {diff_pct_2025:.1f}%")
     
     with col4:
         st.metric("Real Revenue YoY", f"{real_revenue_delta_pct:+.1f}%",
