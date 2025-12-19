@@ -212,7 +212,7 @@ def load_all_data_v2_dec19():
         'q1_2024': q1_2024,
         'q1_2025': q1_2025,
         'sales_2025_file': sales_2025_file.name,
-        'spend_2024_file': spend_2024_file.name,
+        'spend_2024_file': 'Historical Spend CSV (Total Spend column)',
         'spend_2025_file': spend_2025_file.name,
         'spend_coverage': {
             'days_with_spend': days_with_spend,
@@ -1406,10 +1406,10 @@ with tab6:
     
     st.markdown("**2024 Data:**")
     st.write("- **Revenue**: Shopify exec summary (Total sales over time - 2024)")
-    st.write("- **Spend**: Meta + Google daily exports")
-    st.write(f"  - File: `{data['spend_2024_file']}`")
-    st.write("  - Platforms: Meta (69.8%), Google (30.2%)")
-    st.write("  - Total 2024 spend: $7,538,825")
+    st.write("- **Spend**: Historical Spend CSV (Total Spend column)")
+    st.write(f"  - Source: `{data['spend_2024_file']}`")
+    st.write("  - All channels included (Meta, Google, TikTok, Affiliates, etc.)")
+    st.write("  - Q1 2024 total: $1,974,535")
     
     st.markdown("**2025 Data:**")
     st.write("- **Revenue**: Shopify exec summary (Total sales over time - OU - 2025)")
@@ -1449,10 +1449,10 @@ with tab6:
     st.subheader("File Locations")
     
     st.code(f"""
-# 2024 spend file
+# 2024 spend source
 {data['spend_2024_file']}
 
-# 2025 Northbeam YTD file
+# 2025 spend file
 {data['spend_2025_file']}
 
 # 2025 sales file
