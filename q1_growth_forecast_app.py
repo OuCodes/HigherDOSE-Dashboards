@@ -58,7 +58,7 @@ def load_all_data_v2_dec19():
     # === 2024 Spend - Load from Historical Spend CSV directly ===
     st.sidebar.write("🔍 Loading 2024 spend data...")
     
-    historical_file = ADS_DIR / "q4-planning-2025" / "Historical Spend - Historical Spend.csv"
+    historical_file = ADS_DIR / "q4-planning-2025" / "Historical Spend.csv"
     st.sidebar.write(f"Looking for: {historical_file}")
     st.sidebar.write(f"File exists: {historical_file.exists()}")
     
