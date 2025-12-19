@@ -32,7 +32,7 @@ ADS_DIR = DATA_DIR / "ads"
 def load_all_data():
     """Load 2024 + 2025 sales and spend data
     
-    Cache key: 2025-12-19-v2 - Fixed affiliate double-counting
+    Cache key: 2025-12-19-v3 - Direct load from Historical Spend CSV
     """
     
     # === 2024 Sales ===
@@ -429,6 +429,7 @@ with tab1:
     
     # Monthly summary table
     st.subheader("Q1 Monthly Breakdown")
+    st.caption("💡 2024 spend loaded from Historical Spend CSV (Total Spend column)")
     
     # Define month order for sorting
     months_order = ['January', 'February', 'March']
@@ -441,6 +442,10 @@ with tab1:
     }).reset_index()
     monthly_2024['MER'] = monthly_2024['revenue'] / monthly_2024['spend']
     monthly_2024['Year'] = 2024
+    
+    # Debug: Show what we calculated
+    jan_spend_2024 = monthly_2024[monthly_2024['month_name'] == 'January']['spend'].values[0] if len(monthly_2024[monthly_2024['month_name'] == 'January']) > 0 else 0
+    st.caption(f"✓ Jan 2024 spend in table: ${jan_spend_2024:,.0f}")
     
     monthly_2025 = q1_2025.groupby('month_name').agg({
         'revenue': 'sum',
