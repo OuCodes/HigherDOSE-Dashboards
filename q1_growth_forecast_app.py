@@ -1414,9 +1414,10 @@ with tab4:
     
     st.markdown("""
     **Hybrid Model Approach:**
-    - Start conservative in January to validate performance
-    - Scale in February/March based on January results
-    - Both scenarios assume 20% revenue growth over Q1 2025
+    - **January**: +20% growth to capitalize on New Year momentum
+    - **February**: +15% growth (conservative mid-quarter)
+    - **March**: +20% growth to finish quarter strong
+    - Both scenarios maintain target MER efficiency
     """)
     
     months_data = []
@@ -1436,8 +1437,13 @@ with tab4:
             orders_2025 = 0
             mer_2025 = 0
         
-        # 2026 projections (+20% revenue)
-        revenue_2026 = revenue_2025 * 1.20
+        # 2026 projections (growth rate varies by month)
+        growth_rates = {
+            'January': 1.20,    # +20%
+            'February': 1.15,   # +15%
+            'March': 1.20       # +20%
+        }
+        revenue_2026 = revenue_2025 * growth_rates[month_name]
         daily_revenue_2026 = revenue_2026 / days
         
         # Scenario A: Maintain 3.47x MER
@@ -1471,7 +1477,8 @@ with tab4:
             
             with col1:
                 st.markdown("### 📈 Revenue Targets")
-                st.metric("Monthly Goal (+20%)", f"${row['2026 Revenue Goal']:,.0f}")
+                growth_pct = ((row['2026 Revenue Goal'] / row['2025 Revenue']) - 1) * 100 if row['2025 Revenue'] > 0 else 0
+                st.metric(f"Monthly Goal (+{growth_pct:.0f}%)", f"${row['2026 Revenue Goal']:,.0f}")
                 st.metric("Daily Target", f"${row['Daily Revenue Target']:,.0f}")
                 st.caption(f"vs 2025 Actual: ${row['2025 Revenue']:,.0f}")
             
