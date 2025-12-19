@@ -713,19 +713,35 @@ with tab4:
 with tab4:
     st.header("Q1 Campaign Performance: 2024 vs 2025")
     
+    st.info("🔄 Loading campaign data...")
+    
+    # Check if files exist
+    campaign_dir = DATA_DIR / "reports" / "campaign"
+    file_2024 = campaign_dir / "q1_2024_campaigns.csv"
+    file_2025 = campaign_dir / "q1_2025_campaigns.csv"
+    
+    st.write(f"**Looking for files in:** `{campaign_dir}`")
+    st.write(f"- 2024 file exists: {file_2024.exists()}")
+    st.write(f"- 2025 file exists: {file_2025.exists()}")
+    
     # Load campaign data
     try:
         campaigns_2024, campaigns_2025 = load_campaign_data()
         
         # Debug info
-        st.caption(f"2024 campaigns loaded: {len(campaigns_2024)} records")
-        st.caption(f"2025 campaigns loaded: {len(campaigns_2025)} records")
+        st.success(f"✅ 2024 campaigns loaded: {len(campaigns_2024)} records")
+        st.success(f"✅ 2025 campaigns loaded: {len(campaigns_2025)} records")
+        
+        if not campaigns_2024.empty:
+            st.write("**2024 Sample Data:**")
+            st.dataframe(campaigns_2024.head(3))
+        
+        if not campaigns_2025.empty:
+            st.write("**2025 Sample Data:**")
+            st.dataframe(campaigns_2025.head(3))
         
         if campaigns_2024.empty and campaigns_2025.empty:
-            campaign_dir = DATA_DIR / "reports" / "campaign"
-            st.warning(f"⚠️ No campaign data available.")
-            st.info(f"Looking for files in: {campaign_dir}")
-            st.info(f"Expected files: q1_2024_campaigns.csv, q1_2025_campaigns.csv")
+            st.error(f"⚠️ Both dataframes are empty after loading!")
         else:
             # Summary metrics
             st.subheader("Platform Spend Summary")
