@@ -1413,11 +1413,12 @@ with tab4:
     st.subheader("📅 Monthly Projections: Daily Targets")
     
     st.markdown("""
-    **Front-Loaded Growth Strategy:**
-    - **January**: +20% growth (front-load quarter, capitalize on New Year momentum)
+    **Front-Loaded Growth Strategy (20% Q1 Target):**
+    - **January**: +27% growth (aggressive front-load, capitalize on New Year momentum)
     - **February**: +15% growth (maintain steady performance)
     - **March**: +15% growth (maintain steady performance)
-    - January's aggressive push enables overall quarter target
+    - **Result**: 20% overall Q1 growth
+    - January's aggressive push enables conservative Feb/Mar while hitting quarter target
     - Both scenarios maintain target MER efficiency
     """)
     
@@ -1440,7 +1441,7 @@ with tab4:
         
         # 2026 projections (growth rate varies by month)
         growth_rates = {
-            'January': 1.20,    # +20% (Front-loaded to catch up quarter)
+            'January': 1.27,    # +27% (Front-loaded to achieve 20% Q1 growth)
             'February': 1.15,   # +15%
             'March': 1.15       # +15%
         }
