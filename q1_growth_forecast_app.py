@@ -355,6 +355,7 @@ with tab1:
     q1_2024_orders = q1_2024['orders'].sum()
     q1_2024_real_revenue_orders = q1_2024['real_revenue_orders'].sum()
     q1_2024_mer = q1_2024_revenue / q1_2024_spend if q1_2024_spend > 0 else 0
+    q1_2024_aov = q1_2024_revenue / q1_2024_orders if q1_2024_orders > 0 else 0
     q1_2024_real_aov = q1_2024_real_revenue / q1_2024_real_revenue_orders if q1_2024_real_revenue_orders > 0 else 0
     
     q1_2025_revenue = q1_2025['revenue'].sum()
@@ -363,6 +364,7 @@ with tab1:
     q1_2025_orders = q1_2025['orders'].sum()
     q1_2025_real_revenue_orders = q1_2025['real_revenue_orders'].sum()
     q1_2025_mer = q1_2025_revenue / q1_2025_spend if q1_2025_spend > 0 else 0
+    q1_2025_aov = q1_2025_revenue / q1_2025_orders if q1_2025_orders > 0 else 0
     q1_2025_real_aov = q1_2025_real_revenue / q1_2025_real_revenue_orders if q1_2025_real_revenue_orders > 0 else 0
     
     # 2026 goal (20% growth)
@@ -382,12 +384,13 @@ with tab1:
     
     with col1:
         st.metric("Q1 2024 Total Sales", f"${q1_2024_revenue:,.0f}")
-        st.caption(f"{q1_2024_orders:,.0f} orders")
+        st.caption(f"{q1_2024_orders:,.0f} orders | AOV: ${q1_2024_aov:.2f}")
     
     with col2:
         st.metric("Q1 2025 Total Sales", f"${q1_2025_revenue:,.0f}",
                  delta=f"{revenue_delta_pct:+.1f}% YoY")
-        st.caption(f"{q1_2025_orders:,.0f} orders")
+        aov_delta = ((q1_2025_aov - q1_2024_aov) / q1_2024_aov * 100) if q1_2024_aov > 0 else 0
+        st.caption(f"{q1_2025_orders:,.0f} orders | AOV: ${q1_2025_aov:.2f} ({aov_delta:+.1f}%)")
     
     with col3:
         st.metric("Q1 2026 Goal (+20%)", f"${q1_2026_goal_revenue:,.0f}")
