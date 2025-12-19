@@ -397,8 +397,8 @@ with tab1:
         st.caption(f"Δ from 2024 to 2025")
     
     # Real Revenue metrics row
-    st.subheader("Real Revenue (Gross Sales)")
-    st.caption("💡 Real Revenue = Gross sales before discounts and fees")
+    st.subheader("Real Revenue")
+    st.caption("💡 Real Revenue = Gross sales + Discounts + Shipping (discounts are negative)")
     
     real_revenue_delta = q1_2025_real_revenue - q1_2024_real_revenue
     real_revenue_delta_pct = (real_revenue_delta / q1_2024_real_revenue * 100) if q1_2024_real_revenue > 0 else 0
@@ -636,7 +636,7 @@ with tab1:
     
     st.dataframe(monthly_display, use_container_width=True, hide_index=True)
     
-    st.caption("📊 **Net Revenue** = Total sales (after discounts) | **Real Revenue** = Gross sales (before discounts)")
+    st.caption("📊 **Net Revenue** = Total sales (after discounts, excluding shipping) | **Real Revenue** = Gross + Discounts + Shipping")
     
     # Note about missing spend data
     if coverage.get('days_with_spend', 0) < 90:  # Q1 should have ~90 days
