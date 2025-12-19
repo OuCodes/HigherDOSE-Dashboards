@@ -28,11 +28,11 @@ BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 ADS_DIR = DATA_DIR / "ads"
 
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=60)
 def load_all_data():
     """Load 2024 + 2025 sales and spend data
     
-    Cache key updated: 2025-12-19 - Fixed affiliate double-counting
+    Cache key: 2025-12-19-v2 - Fixed affiliate double-counting
     """
     
     # === 2024 Sales ===
