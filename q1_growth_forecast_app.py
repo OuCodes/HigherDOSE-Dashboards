@@ -42,19 +42,14 @@ def load_all_data_v2_dec19():
     sales_2024 = sales_2024.rename(columns={'Day': 'date', 'Total sales': 'revenue', 'Orders': 'orders'})
     sales_2024['year'] = 2024
     
-    # Load Real Revenue for 2024 from Real Revenue CSV (or Historical Spend CSV as fallback)
-    real_rev_2024_file = ADS_DIR / "exec-sum" / "!Real Revenue - OU - 2024-01-01 - 2024-12-31.csv"
+    # Load Real Revenue for 2024 from daily aggregated CSV (or Historical Spend CSV as fallback)
+    real_rev_2024_file = ADS_DIR / "exec-sum" / "real-revenue-daily-2024-q1.csv"
     if real_rev_2024_file.exists():
         st.sidebar.write(f"📊 Loading 2024 Real Revenue from {real_rev_2024_file.name}")
-        real_2024 = pd.read_csv(real_rev_2024_file)
-        real_2024['Day'] = pd.to_datetime(real_2024['Day'])
-        # Aggregate by day (file has order-level data)
-        real_2024_daily = real_2024.groupby('Day').agg({
-            '"Real sales"': lambda x: pd.to_numeric(x, errors='coerce').sum()
-        }).reset_index()
-        real_2024_daily = real_2024_daily.rename(columns={'Day': 'date', '"Real sales"': 'real_revenue'})
+        real_2024_daily = pd.read_csv(real_rev_2024_file)
+        real_2024_daily['date'] = pd.to_datetime(real_2024_daily['date'])
         # Merge with sales data
-        sales_2024 = sales_2024.merge(real_2024_daily, on='date', how='left')
+        sales_2024 = sales_2024.merge(real_2024_daily[['date', 'real_revenue']], on='date', how='left')
         sales_2024['real_revenue'] = sales_2024['real_revenue'].fillna(0)
         st.sidebar.write(f"✓ Loaded {len(real_2024_daily)} days of Real Revenue data")
     else:
@@ -74,20 +69,14 @@ def load_all_data_v2_dec19():
     sales_2025 = sales_2025.rename(columns={'Day': 'date', 'Total sales': 'revenue', 'Orders': 'orders'})
     sales_2025['year'] = 2025
     
-    # Load Real Revenue for 2025 from Real Revenue CSV (or Historical Spend CSV as fallback)
-    real_rev_2025_files = sorted((ADS_DIR / "exec-sum").glob("!Real Revenue - OU - 2025-*.csv"))
-    if real_rev_2025_files:
-        real_rev_2025_file = real_rev_2025_files[-1]
+    # Load Real Revenue for 2025 from daily aggregated CSV (or Historical Spend CSV as fallback)
+    real_rev_2025_file = ADS_DIR / "exec-sum" / "real-revenue-daily-2025-q1.csv"
+    if real_rev_2025_file.exists():
         st.sidebar.write(f"📊 Loading 2025 Real Revenue from {real_rev_2025_file.name}")
-        real_2025 = pd.read_csv(real_rev_2025_file)
-        real_2025['Day'] = pd.to_datetime(real_2025['Day'])
-        # Aggregate by day (file has order-level data)
-        real_2025_daily = real_2025.groupby('Day').agg({
-            '"Real sales"': lambda x: pd.to_numeric(x, errors='coerce').sum()
-        }).reset_index()
-        real_2025_daily = real_2025_daily.rename(columns={'Day': 'date', '"Real sales"': 'real_revenue'})
+        real_2025_daily = pd.read_csv(real_rev_2025_file)
+        real_2025_daily['date'] = pd.to_datetime(real_2025_daily['date'])
         # Merge with sales data
-        sales_2025 = sales_2025.merge(real_2025_daily, on='date', how='left')
+        sales_2025 = sales_2025.merge(real_2025_daily[['date', 'real_revenue']], on='date', how='left')
         sales_2025['real_revenue'] = sales_2025['real_revenue'].fillna(0)
         st.sidebar.write(f"✓ Loaded {len(real_2025_daily)} days of Real Revenue data")
     else:
