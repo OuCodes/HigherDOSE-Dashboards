@@ -35,14 +35,14 @@ def load_all_data_v2_dec19():
     Version: 2025-12-19 - Fixed affiliate double-counting bug
     """
     
-    # === 2024 Sales ===
+    # === 2024 Sales (Total Sales) ===
     sales_2024_file = ADS_DIR / "exec-sum" / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
     sales_2024 = pd.read_csv(sales_2024_file)
     sales_2024['Day'] = pd.to_datetime(sales_2024['Day'])
     sales_2024 = sales_2024.rename(columns={'Day': 'date', 'Total sales': 'revenue', 'Orders': 'orders'})
     sales_2024['year'] = 2024
     
-    # === 2025 Sales ===
+    # === 2025 Sales (Total Sales) ===
     # Find latest 2025 sales file
     sales_2025_files = sorted((ADS_DIR / "exec-sum").glob("Total sales over time - OU - 2025-*.csv"))
     if not sales_2025_files:
@@ -78,6 +78,15 @@ def load_all_data_v2_dec19():
                 return 0.0
             return float(str(val).replace('$', '').replace(',', ''))
         
+        # Extract Real Revenue from Historical CSV for both years
+        real_revenue_lookup = {}
+        for _, row in hist_df.iterrows():
+            if pd.notna(row['Month']):
+                month_str = str(row['Month'])
+                real_rev = clean_currency(row.get('Real\nRevenue(1)', 0))
+                if real_rev > 0:
+                    real_revenue_lookup[month_str] = real_rev
+        
         # Process 2024 data
         hist_2024 = hist_df[hist_df['Month'].str.contains('24', na=False)].copy()
         hist_2024['month_date'] = pd.to_datetime(hist_2024['Month'], format='%b-%y')
@@ -86,20 +95,24 @@ def load_all_data_v2_dec19():
         spend_2024_monthly = []
         for _, row in hist_2024.iterrows():
             month_date = row['month_date']
+            month_str = row['Month']
             total_spend = clean_currency(row.get('Total Spend', 0))
+            real_rev_monthly = real_revenue_lookup.get(month_str, 0)
             
-            if total_spend > 0:
+            if total_spend > 0 or real_rev_monthly > 0:
                 days_in_month = pd.date_range(
                     start=month_date,
                     end=month_date + pd.offsets.MonthEnd(1),
                     freq='D'
                 )
                 daily_spend = total_spend / len(days_in_month)
+                daily_real_rev = real_rev_monthly / len(days_in_month)
                 
                 for day in days_in_month:
                     spend_2024_monthly.append({
                         'date': day,
-                        'spend': daily_spend
+                        'spend': daily_spend,
+                        'real_revenue_from_hist': daily_real_rev
                     })
         
         spend_2024_daily = pd.DataFrame(spend_2024_monthly)
@@ -113,20 +126,24 @@ def load_all_data_v2_dec19():
         spend_2025_monthly = []
         for _, row in hist_2025.iterrows():
             month_date = row['month_date']
+            month_str = row['Month']
             total_spend = clean_currency(row.get('Total Spend', 0))
+            real_rev_monthly = real_revenue_lookup.get(month_str, 0)
             
-            if total_spend > 0:
+            if total_spend > 0 or real_rev_monthly > 0:
                 days_in_month = pd.date_range(
                     start=month_date,
                     end=month_date + pd.offsets.MonthEnd(1),
                     freq='D'
                 )
                 daily_spend = total_spend / len(days_in_month)
+                daily_real_rev = real_rev_monthly / len(days_in_month)
                 
                 for day in days_in_month:
                     spend_2025_monthly.append({
                         'date': day,
-                        'spend': daily_spend
+                        'spend': daily_spend,
+                        'real_revenue_from_hist': daily_real_rev
                     })
         
         spend_2025_daily = pd.DataFrame(spend_2025_monthly)
@@ -153,17 +170,19 @@ def load_all_data_v2_dec19():
         st.error(traceback.format_exc())
         return None
     
-    # === Merge sales + spend for each year ===
-    df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend']], on='date', how='left')
+    # === Merge sales + spend + real revenue for each year ===
+    df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend', 'real_revenue_from_hist']], on='date', how='left')
     df_2024['spend'] = df_2024['spend'].fillna(0)
+    df_2024['real_revenue'] = df_2024['real_revenue_from_hist'].fillna(0)
     df_2024['MER'] = df_2024.apply(lambda x: x['revenue'] / x['spend'] if x['spend'] > 0 else 0, axis=1)
     
     # Debug: Show 2025 spend info
     total_2025_spend = spend_2025_daily['spend'].sum()
     
-    df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend']], 
+    df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend', 'real_revenue_from_hist']], 
                                on='date', how='left')
     df_2025['spend'] = df_2025['spend'].fillna(0)
+    df_2025['real_revenue'] = df_2025['real_revenue_from_hist'].fillna(0)
     df_2025['MER'] = df_2025.apply(lambda x: x['revenue'] / x['spend'] if x['spend'] > 0 else 0, axis=1)
     
     # Show warning if spend data is limited
@@ -289,11 +308,13 @@ with tab1:
     
     # Calculate Q1 metrics for both years
     q1_2024_revenue = q1_2024['revenue'].sum()
+    q1_2024_real_revenue = q1_2024['real_revenue'].sum()
     q1_2024_spend = q1_2024['spend'].sum()
     q1_2024_orders = q1_2024['orders'].sum()
     q1_2024_mer = q1_2024_revenue / q1_2024_spend if q1_2024_spend > 0 else 0
     
     q1_2025_revenue = q1_2025['revenue'].sum()
+    q1_2025_real_revenue = q1_2025['real_revenue'].sum()
     q1_2025_spend = q1_2025['spend'].sum()
     q1_2025_orders = q1_2025['orders'].sum()
     q1_2025_mer = q1_2025_revenue / q1_2025_spend if q1_2025_spend > 0 else 0
@@ -327,9 +348,39 @@ with tab1:
         st.caption(f"Daily target: ${q1_2026_goal_daily:,.0f}")
     
     with col4:
-        st.metric("Revenue YoY", f"{revenue_delta_pct:+.1f}%", 
+        st.metric("Revenue YoY", f"{revenue_delta_pct:+.1f}%",
                  delta=f"${revenue_delta:,.0f}")
         st.caption(f"Δ from 2024 to 2025")
+    
+    # Real Revenue metrics row
+    st.subheader("Real Revenue (Gross Sales)")
+    st.caption("💡 Real Revenue = Gross sales before discounts and fees")
+    
+    real_revenue_delta = q1_2025_real_revenue - q1_2024_real_revenue
+    real_revenue_delta_pct = (real_revenue_delta / q1_2024_real_revenue * 100) if q1_2024_real_revenue > 0 else 0
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("Q1 2024 Real Revenue", f"${q1_2024_real_revenue:,.0f}")
+        discount_2024 = q1_2024_real_revenue - q1_2024_revenue
+        st.caption(f"Discounts: ${discount_2024:,.0f}")
+    
+    with col2:
+        st.metric("Q1 2025 Real Revenue", f"${q1_2025_real_revenue:,.0f}",
+                 delta=f"{real_revenue_delta_pct:+.1f}% YoY")
+        discount_2025 = q1_2025_real_revenue - q1_2025_revenue
+        st.caption(f"Discounts: ${discount_2025:,.0f}")
+    
+    with col3:
+        st.metric("Real Revenue vs Net", f"${q1_2025_real_revenue - q1_2025_revenue:,.0f}")
+        discount_rate_2025 = ((q1_2025_real_revenue - q1_2025_revenue) / q1_2025_real_revenue * 100) if q1_2025_real_revenue > 0 else 0
+        st.caption(f"Discount rate: {discount_rate_2025:.1f}%")
+    
+    with col4:
+        st.metric("Real Revenue YoY", f"{real_revenue_delta_pct:+.1f}%",
+                 delta=f"${real_revenue_delta:,.0f}")
+        st.caption("Gross sales growth")
     
     # Spend metrics row
     st.subheader("Spend Performance")
@@ -452,6 +503,7 @@ with tab1:
     # Calculate monthly aggregates
     monthly_2024 = q1_2024.groupby('month_name').agg({
         'revenue': 'sum',
+        'real_revenue': 'sum',
         'spend': 'sum',
         'orders': 'sum'
     }).reset_index()
@@ -464,6 +516,7 @@ with tab1:
     
     monthly_2025 = q1_2025.groupby('month_name').agg({
         'revenue': 'sum',
+        'real_revenue': 'sum',
         'spend': 'sum',
         'orders': 'sum'
     }).reset_index()
@@ -484,6 +537,7 @@ with tab1:
     monthly_2024_display = monthly_2024.copy()
     monthly_2024_display['Year'] = '2024'
     monthly_2024_display['revenue'] = monthly_2024_display['revenue'].apply(lambda x: f"${x:,.0f}")
+    monthly_2024_display['real_revenue'] = monthly_2024_display['real_revenue'].apply(lambda x: f"${x:,.0f}")
     monthly_2024_display['spend'] = monthly_2024_display['spend'].apply(lambda x: f"${x:,.0f}")
     monthly_2024_display['MER'] = monthly_2024_display['MER'].apply(lambda x: f"{x:.2f}x")
     monthly_2024_display['orders'] = monthly_2024_display['orders'].apply(lambda x: f"{int(x):,}")
@@ -513,10 +567,14 @@ with tab1:
             orders_delta = ((row['orders'] - orders_2024) / orders_2024 * 100) if orders_2024 > 0 else 0
             
             # Format with deltas
+            # Calculate real revenue delta
+            real_rev_delta = ((row['real_revenue'] - month_2024['real_revenue']) / month_2024['real_revenue'] * 100) if month_2024['real_revenue'] > 0 else 0
+            
             formatted_rows.append({
                 'Year': '2025',
                 'month_name': month,
                 'revenue': f"${row['revenue']:,.0f} ({color_delta(rev_delta)}{rev_delta:+.1f}%)",
+                'real_revenue': f"${row['real_revenue']:,.0f} ({color_delta(real_rev_delta)}{real_rev_delta:+.1f}%)",
                 'spend': f"${row['spend']:,.0f} ({color_delta(spend_delta)}{spend_delta:+.1f}%)",
                 'MER': f"{row['MER']:.2f}x ({color_delta(mer_delta)}{mer_delta:+.1f}%)",
                 'orders': f"{int(row['orders']):,} ({color_delta(orders_delta)}{orders_delta:+.1f}%)"
@@ -531,10 +589,12 @@ with tab1:
     monthly_display['month_name'] = pd.Categorical(monthly_display['month_name'], 
                                                      categories=months_order, ordered=True)
     monthly_display = monthly_display.sort_values(['Year', 'month_name'])
-    monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'spend', 'MER', 'orders']]
-    monthly_display.columns = ['Year', 'Month', 'Revenue', 'Spend', 'MER', 'Orders']
+    monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'real_revenue', 'spend', 'MER', 'orders']]
+    monthly_display.columns = ['Year', 'Month', 'Net Revenue', 'Real Revenue', 'Spend', 'MER', 'Orders']
     
     st.dataframe(monthly_display, use_container_width=True, hide_index=True)
+    
+    st.caption("📊 **Net Revenue** = Total sales (after discounts) | **Real Revenue** = Gross sales (before discounts)")
     
     # Note about missing spend data
     if coverage.get('days_with_spend', 0) < 90:  # Q1 should have ~90 days
