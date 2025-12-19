@@ -30,7 +30,10 @@ ADS_DIR = DATA_DIR / "ads"
 
 @st.cache_data(ttl=3600)
 def load_all_data():
-    """Load 2024 + 2025 sales and spend data"""
+    """Load 2024 + 2025 sales and spend data
+    
+    Cache key updated: 2025-12-19 - Fixed affiliate double-counting
+    """
     
     # === 2024 Sales ===
     sales_2024_file = ADS_DIR / "exec-sum" / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
