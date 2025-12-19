@@ -48,13 +48,16 @@ def load_all_data_v2_dec19():
         st.sidebar.write(f"📊 Loading 2024 Real Revenue from {real_rev_2024_file.name}")
         real_2024_daily = pd.read_csv(real_rev_2024_file)
         real_2024_daily['date'] = pd.to_datetime(real_2024_daily['date'])
-        # Merge with sales data
-        sales_2024 = sales_2024.merge(real_2024_daily[['date', 'real_revenue']], on='date', how='left')
+        # Merge with sales data - rename orders column to avoid conflict
+        real_2024_daily = real_2024_daily.rename(columns={'orders': 'real_revenue_orders'})
+        sales_2024 = sales_2024.merge(real_2024_daily[['date', 'real_revenue', 'real_revenue_orders']], on='date', how='left')
         sales_2024['real_revenue'] = sales_2024['real_revenue'].fillna(0)
+        sales_2024['real_revenue_orders'] = sales_2024['real_revenue_orders'].fillna(0)
         st.sidebar.write(f"✓ Loaded {len(real_2024_daily)} days of Real Revenue data")
     else:
         st.sidebar.info("ℹ️ Using Historical Spend CSV for 2024 Real Revenue (monthly totals)")
         sales_2024['real_revenue'] = 0  # Will be populated from Historical Spend CSV below
+        sales_2024['real_revenue_orders'] = 0
     
     # === 2025 Sales (Total Sales + Real Revenue) ===
     # Find latest 2025 sales file
@@ -75,13 +78,16 @@ def load_all_data_v2_dec19():
         st.sidebar.write(f"📊 Loading 2025 Real Revenue from {real_rev_2025_file.name}")
         real_2025_daily = pd.read_csv(real_rev_2025_file)
         real_2025_daily['date'] = pd.to_datetime(real_2025_daily['date'])
-        # Merge with sales data
-        sales_2025 = sales_2025.merge(real_2025_daily[['date', 'real_revenue']], on='date', how='left')
+        # Merge with sales data - rename orders column to avoid conflict
+        real_2025_daily = real_2025_daily.rename(columns={'orders': 'real_revenue_orders'})
+        sales_2025 = sales_2025.merge(real_2025_daily[['date', 'real_revenue', 'real_revenue_orders']], on='date', how='left')
         sales_2025['real_revenue'] = sales_2025['real_revenue'].fillna(0)
+        sales_2025['real_revenue_orders'] = sales_2025['real_revenue_orders'].fillna(0)
         st.sidebar.write(f"✓ Loaded {len(real_2025_daily)} days of Real Revenue data")
     else:
         st.sidebar.info("ℹ️ Using Historical Spend CSV for 2025 Real Revenue (monthly totals)")
         sales_2025['real_revenue'] = 0  # Will be populated from Historical Spend CSV below
+        sales_2025['real_revenue_orders'] = 0
     
     # === 2024 & 2025 Spend - Load from Historical Spend CSV directly ===
     st.sidebar.write("🔍 Loading spend data from Historical CSV...")
@@ -347,12 +353,14 @@ with tab1:
     q1_2024_real_revenue = q1_2024['real_revenue'].sum()
     q1_2024_spend = q1_2024['spend'].sum()
     q1_2024_orders = q1_2024['orders'].sum()
+    q1_2024_real_revenue_orders = q1_2024['real_revenue_orders'].sum()
     q1_2024_mer = q1_2024_revenue / q1_2024_spend if q1_2024_spend > 0 else 0
     
     q1_2025_revenue = q1_2025['revenue'].sum()
     q1_2025_real_revenue = q1_2025['real_revenue'].sum()
     q1_2025_spend = q1_2025['spend'].sum()
     q1_2025_orders = q1_2025['orders'].sum()
+    q1_2025_real_revenue_orders = q1_2025['real_revenue_orders'].sum()
     q1_2025_mer = q1_2025_revenue / q1_2025_spend if q1_2025_spend > 0 else 0
     
     # 2026 goal (20% growth)
@@ -399,12 +407,12 @@ with tab1:
     
     with col1:
         st.metric("Q1 2024 Real Revenue", f"${q1_2024_real_revenue:,.0f}")
-        st.caption(f"{q1_2024_orders:,.0f} orders")
+        st.caption(f"{int(q1_2024_real_revenue_orders):,} orders")
     
     with col2:
         st.metric("Q1 2025 Real Revenue", f"${q1_2025_real_revenue:,.0f}",
                  delta=f"{real_revenue_delta_pct:+.1f}% YoY")
-        st.caption(f"{q1_2025_orders:,.0f} orders")
+        st.caption(f"{int(q1_2025_real_revenue_orders):,} orders")
     
     with col3:
         st.metric("Real Revenue vs Net", f"${q1_2025_real_revenue - q1_2025_revenue:,.0f}")
