@@ -99,7 +99,11 @@ def main():
         return 1
     
     # === Load Historical Spend CSV (monthly data for other channels) ===
-    historical_file = ads_dir / "q4-planning-2025" / "Historical Spend - Historical Spend.csv"
+    # Try main location first, then fallback to q4-planning-2025 subdirectory
+    historical_file = ads_dir / "Historical Spend - Historical Spend.csv"
+    if not historical_file.exists():
+        historical_file = ads_dir / "q4-planning-2025" / "Historical Spend - Historical Spend.csv"
+    
     print(f"\n📊 Loading Historical Spend CSV...")
     print(f"   File: {historical_file.name}")
     
@@ -131,7 +135,8 @@ def main():
             'Share-A-Sale\nSpend': 'ShareASale',
             'ShopMy\nSpend': 'ShopMy',
             'Awin\nSpend': 'Awin',
-            'Affiliate\nCommissions(3)': 'Affiliate',
+            # NOTE: 'Affiliate Commissions(3)' is excluded - it's a rollup of ShareASale+ShopMy+Awin
+            # Including it would cause double-counting of affiliate spend
         }
         
         # Extract monthly spend by channel
