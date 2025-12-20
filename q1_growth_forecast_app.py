@@ -1450,8 +1450,9 @@ with tab4:
                                 
                                 with p_col1:
                                     st.markdown("**📊 Revenue**")
-                                    if 'Dec_2025' in prod_row.index and prod_row['Dec_2025'] > 0:
-                                        st.metric("Dec 2025 (Actual)", f"${prod_row['Dec_2025']:,.0f}")
+                                    if 'Last_30_Days' in prod_row.index and prod_row['Last_30_Days'] > 0:
+                                        st.metric("Last 30 Days", f"${prod_row['Last_30_Days']:,.0f}")
+                                        st.caption("Nov 17 - Dec 16, 2025")
                                     if prod_row['Jan_2025'] > 0:
                                         st.metric("Jan 2025", f"${prod_row['Jan_2025']:,.0f}")
                                     st.metric("Jan 2026 Baseline", f"${prod_row['Jan_2026_Projection']:,.0f}")
