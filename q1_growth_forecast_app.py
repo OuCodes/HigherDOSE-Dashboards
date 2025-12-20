@@ -1363,7 +1363,7 @@ with tab4:
                 
                 st.markdown("### 🎯 January 2026 Product Category Breakdown")
                 st.markdown("*Revenue projections by product based on historical performance and trends*")
-                st.info("📝 **Note:** Shower Head product has no sales data in Shopify and is excluded from projections.")
+                st.info("📝 **Note:** Filtered Shower Head projection is modeled from Microcurrent Body Sculptor launch pattern (no sales data available).")
                 
                 # Load January product data
                 jan_proj_file = DATA_DIR / "reports" / "campaign" / "january-2026-revenue-projections-20251219.csv"
