@@ -1455,11 +1455,18 @@ with tab4:
                                         st.caption("Nov 17 - Dec 16, 2025")
                                     if prod_row['Jan_2025'] > 0:
                                         st.metric("Jan 2025", f"${prod_row['Jan_2025']:,.0f}")
-                                    st.metric("Jan 2026 Baseline", f"${prod_row['Jan_2026_Projection']:,.0f}")
+                                        st.caption(f"Daily avg: ${prod_row['Jan_2025']/31:,.0f}")
                                     
+                                    st.markdown("---")
+                                    st.markdown("**Baseline Projection:**")
+                                    st.metric("Monthly", f"${prod_row['Jan_2026_Projection']:,.0f}")
+                                    st.caption(f"📅 Daily: ${prod_row['Jan_2026_Projection']/31:,.0f}")
+                                    
+                                    st.markdown("**Growth Target (+20%):**")
                                     delta_vs_25 = ((prod_row['Jan_2026_Growth_Scenario'] - prod_row['Jan_2025']) / prod_row['Jan_2025'] * 100) if prod_row['Jan_2025'] > 0 else 0
-                                    st.metric("Jan 2026 Growth Target", f"${prod_row['Jan_2026_Growth_Scenario']:,.0f}", 
+                                    st.metric("Monthly", f"${prod_row['Jan_2026_Growth_Scenario']:,.0f}", 
                                              f"{delta_vs_25:+.1f}% vs 2025" if prod_row['Jan_2025'] > 0 else "New Launch")
+                                    st.caption(f"📅 Daily: ${prod_row['Jan_2026_Growth_Scenario']/31:,.0f}")
                                 
                                 with p_col2:
                                     st.markdown("**📈 Performance**")
