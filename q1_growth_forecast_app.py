@@ -1500,12 +1500,50 @@ with tab4:
                             st.markdown("---")  # Separator between products
                     
                     st.markdown("---")
+                    
+                    # Calculate Other Products component
+                    jan_2025_total = 3248059.48  # From Shopify
+                    tracked_jan_2025 = df_jan['Jan_2025'].sum()
+                    other_products_jan_2025 = jan_2025_total - tracked_jan_2025
+                    other_products_needed = target_total - df_jan['Jan_2026_Growth_Scenario'].sum()
+                    other_growth_required = ((other_products_needed / other_products_jan_2025) - 1) * 100 if other_products_jan_2025 > 0 else 0
+                    
+                    st.markdown("### 📊 Revenue Composition Analysis")
+                    
+                    comp_col1, comp_col2 = st.columns(2)
+                    
+                    with comp_col1:
+                        st.markdown("**January 2025 Actual**")
+                        st.metric("Total Revenue", f"${jan_2025_total:,.0f}")
+                        st.metric("Tracked Products", f"${tracked_jan_2025:,.0f}", f"{tracked_jan_2025/jan_2025_total*100:.1f}%")
+                        st.metric("Other Products", f"${other_products_jan_2025:,.0f}", f"{other_products_jan_2025/jan_2025_total*100:.1f}%")
+                    
+                    with comp_col2:
+                        st.markdown("**January 2026 Target (20% Growth)**")
+                        st.metric("Target Revenue", f"${target_total:,.0f}", "+20%")
+                        st.metric("Tracked Products (Projected)", f"${df_jan['Jan_2026_Growth_Scenario'].sum():,.0f}", 
+                                 f"{df_jan['Jan_2026_Growth_Scenario'].sum()/target_total*100:.1f}%")
+                        st.metric("Other Products Needed", f"${other_products_needed:,.0f}", 
+                                 f"{other_growth_required:+.0f}% growth req'd")
+                    
+                    if other_growth_required > 100:
+                        st.warning(f"""
+                        ⚠️ **Other Products Gap:** To hit 20% growth target, "Other Products" would need to grow 
+                        **{other_growth_required:.0f}%** (from ${other_products_jan_2025:,.0f} to ${other_products_needed:,.0f}).
+                        This is unrealistic. Consider:
+                        - Increasing tracked product targets
+                        - Adding more products to tracking
+                        - Adjusting overall growth target
+                        """)
+                    
+                    st.markdown("---")
                     st.markdown(f"""
                     **Summary:**
-                    - **Baseline projection:** ${baseline_total:,.0f} (based on trends)
+                    - **Tracked products baseline:** ${baseline_total:,.0f}
                     - **20% Growth target:** ${target_total:,.0f}
-                    - **Gap to close:** +${growth_needed:,.0f}
-                    - **Strategy:** 50% to winners, 30% to new products, 20% to stabilize core
+                    - **Tracked products with growth allocation:** ${df_jan['Jan_2026_Growth_Scenario'].sum():,.0f}
+                    - **Required from Other Products:** ${other_products_needed:,.0f}
+                    - **Growth allocation strategy:** 50% to winners, 30% to new products, 20% to stabilize core
                     """)
                     
                 else:
