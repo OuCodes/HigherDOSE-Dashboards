@@ -100,9 +100,9 @@ def main():
     
     # === Load Historical Spend CSV (monthly data for other channels) ===
     # Try main location first, then fallback to q4-planning-2025 subdirectory
-    historical_file = ads_dir / "Historical Spend - Historical Spend.csv"
+    historical_file = ads_dir / "Historical Spend.csv"
     if not historical_file.exists():
-        historical_file = ads_dir / "q4-planning-2025" / "Historical Spend - Historical Spend.csv"
+        historical_file = ads_dir / "q4-planning-2025" / "Historical Spend.csv"
     
     print(f"\n📊 Loading Historical Spend CSV...")
     print(f"   File: {historical_file.name}")
@@ -124,6 +124,8 @@ def main():
             return float(str(val).replace('$', '').replace(',', ''))
         
         # Map column names to platform names
+        # NOTE: We EXPLICITLY EXCLUDE 'Affiliate\nCommissions(3)' column
+        # because it's a rollup of ShareASale+ShopMy+Awin and would cause double-counting
         channel_columns = {
             'Facebook\nSpend': 'Meta',
             'TikTok\nSpend': 'TikTok', 
@@ -135,9 +137,15 @@ def main():
             'Share-A-Sale\nSpend': 'ShareASale',
             'ShopMy\nSpend': 'ShopMy',
             'Awin\nSpend': 'Awin',
-            # NOTE: 'Affiliate Commissions(3)' is excluded - it's a rollup of ShareASale+ShopMy+Awin
-            # Including it would cause double-counting of affiliate spend
         }
+        
+        # Columns to explicitly exclude (rollup columns that would cause double-counting)
+        excluded_columns = [
+            'Affiliate\nCommissions(3)',  # Rollup of affiliate channels
+            'Paid\nChannels',  # Rollup of paid channels
+            'Total\nSpend',  # Grand total
+            'Total Spend',  # Grand total (alternate column)
+        ]
         
         # Extract monthly spend by channel
         monthly_spend_by_channel = []
@@ -146,7 +154,7 @@ def main():
             month_date = row['month_date']
             
             for col, platform in channel_columns.items():
-                if col in hist_df.columns:
+                if col in hist_df.columns and col not in excluded_columns:
                     spend = clean_currency(row[col])
                     if spend > 0:
                         monthly_spend_by_channel.append({
