@@ -1437,35 +1437,35 @@ with tab4:
                         high_growth_mask = ((df_jan['Confidence'].isin(['High', 'Medium'])) & 
                                            (df_jan['Status'] == 'Launched Q2-Q4 2025')) | \
                                           ((df_jan['Category'] == 'Sauna Blanket'))
-                    
-                    high_growth_products = df_jan[high_growth_mask]
-                    if len(high_growth_products) > 0:
-                        high_growth_share = growth_needed * 0.50
-                        for i in high_growth_products.index:
-                            weight = df_jan.loc[i, 'Jan_2026_Projection'] / high_growth_products['Jan_2026_Projection'].sum()
-                            df_jan.loc[i, 'Growth_Allocation'] = high_growth_share * weight
-                            df_jan.loc[i, 'Growth_Strategy'] = 'Scale winner'
-                    
-                    # New products get 30%
-                    new_products = df_jan[df_jan['Status'] == 'Launched Q2-Q4 2025']
-                    if len(new_products) > 0:
-                        new_product_boost = growth_needed * 0.30
-                        for i in new_products.index:
-                            weight = df_jan.loc[i, 'Jan_2026_Projection'] / new_products['Jan_2026_Projection'].sum()
-                            df_jan.loc[i, 'Growth_Allocation'] += new_product_boost * weight
-                            if df_jan.loc[i, 'Growth_Strategy']:
-                                df_jan.loc[i, 'Growth_Strategy'] += ' + Accelerate'
-                            else:
-                                df_jan.loc[i, 'Growth_Strategy'] = 'Accelerate'
-                    
-                    # Top 3 get 20%
-                    stabilize_share = growth_needed * 0.20
-                    top_revenue_idx = df_jan.nlargest(3, 'Jan_2026_Projection').index
-                    for i in top_revenue_idx:
-                        if not high_growth_mask[i]:
-                            weight = df_jan.loc[i, 'Jan_2026_Projection'] / df_jan.loc[top_revenue_idx, 'Jan_2026_Projection'].sum()
-                            df_jan.loc[i, 'Growth_Allocation'] += stabilize_share * weight
-                            df_jan.loc[i, 'Growth_Strategy'] = 'Stabilize'
+                        
+                        high_growth_products = df_jan[high_growth_mask]
+                        if len(high_growth_products) > 0:
+                            high_growth_share = growth_needed * 0.50
+                            for i in high_growth_products.index:
+                                weight = df_jan.loc[i, 'Jan_2026_Projection'] / high_growth_products['Jan_2026_Projection'].sum()
+                                df_jan.loc[i, 'Growth_Allocation'] = high_growth_share * weight
+                                df_jan.loc[i, 'Growth_Strategy'] = 'Scale winner'
+                        
+                        # New products get 30%
+                        new_products = df_jan[df_jan['Status'] == 'Launched Q2-Q4 2025']
+                        if len(new_products) > 0:
+                            new_product_boost = growth_needed * 0.30
+                            for i in new_products.index:
+                                weight = df_jan.loc[i, 'Jan_2026_Projection'] / new_products['Jan_2026_Projection'].sum()
+                                df_jan.loc[i, 'Growth_Allocation'] += new_product_boost * weight
+                                if df_jan.loc[i, 'Growth_Strategy']:
+                                    df_jan.loc[i, 'Growth_Strategy'] += ' + Accelerate'
+                                else:
+                                    df_jan.loc[i, 'Growth_Strategy'] = 'Accelerate'
+                        
+                        # Top 3 get 20%
+                        stabilize_share = growth_needed * 0.20
+                        top_revenue_idx = df_jan.nlargest(3, 'Jan_2026_Projection').index
+                        for i in top_revenue_idx:
+                            if not high_growth_mask[i]:
+                                weight = df_jan.loc[i, 'Jan_2026_Projection'] / df_jan.loc[top_revenue_idx, 'Jan_2026_Projection'].sum()
+                                df_jan.loc[i, 'Growth_Allocation'] += stabilize_share * weight
+                                df_jan.loc[i, 'Growth_Strategy'] = 'Stabilize'
                         
                         # Calculate growth scenario
                         df_jan['Jan_2026_Growth_Scenario'] = df_jan['Jan_2026_Projection'] + df_jan['Growth_Allocation']
