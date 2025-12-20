@@ -153,6 +153,10 @@ def load_all_data():
     
     # Debug: Show 2025 spend info
     total_2025_spend = spend_2025_daily['spend'].sum()
+    st.sidebar.success(f"✅ 2025 Spend loaded: ${total_2025_spend:,.2f}")
+    st.sidebar.write(f"📊 Jan: ${spend_2025_daily[spend_2025_daily['date'].dt.month == 1]['spend'].sum():,.2f}")
+    st.sidebar.write(f"📊 Feb: ${spend_2025_daily[spend_2025_daily['date'].dt.month == 2]['spend'].sum():,.2f}")
+    st.sidebar.write(f"📊 Mar: ${spend_2025_daily[spend_2025_daily['date'].dt.month == 3]['spend'].sum():,.2f}")
     
     df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend']], 
                                on='date', how='left')
