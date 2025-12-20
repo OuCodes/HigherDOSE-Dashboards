@@ -1472,10 +1472,60 @@ with tab4:
                         df_jan['Pct_of_Total'] = (df_jan['Jan_2026_Growth_Scenario'] / target_total * 100)
                         df_jan = df_jan.sort_values('Jan_2026_Growth_Scenario', ascending=False)
                     
-                    st.markdown("**Product Revenue Allocation (20% Growth Scenario):**")
+                    st.markdown("---")
+                    st.markdown("### 📊 Product Projections Summary Table")
                     
-                    # Show product cards (using containers instead of nested expanders)
-                    for idx, prod_row in df_jan.iterrows():
+                    # Create comprehensive table view
+                    table_df = df_jan.copy()
+                    
+                    # Calculate key metrics for display
+                    table_df['Jan_2025_Display'] = table_df['Jan_2025'].apply(lambda x: f"${x:,.0f}" if x > 0 else "-")
+                    table_df['Last_30_Display'] = table_df['Last_30_Days'].apply(lambda x: f"${x:,.0f}" if x > 0 else "-")
+                    table_df['Projection_Display'] = table_df['Jan_2026_Projection'].apply(lambda x: f"${x:,.0f}")
+                    table_df['Growth_vs_2025'] = table_df.apply(
+                        lambda row: f"{((row['Jan_2026_Projection'] - row['Jan_2025']) / row['Jan_2025'] * 100):+.0f}%" 
+                        if row['Jan_2025'] > 0 else "New", axis=1
+                    )
+                    table_df['Daily_Goal'] = table_df['Jan_2026_Projection'].apply(lambda x: f"${x/31:,.0f}")
+                    table_df['Pct_Display'] = table_df['Pct_of_Total'].apply(lambda x: f"{x:.1f}%")
+                    
+                    # Select and rename columns for display
+                    display_table = table_df[[
+                        'Category', 'Jan_2025_Display', 'Last_30_Display', 
+                        'Projection_Display', 'Growth_vs_2025', 'Daily_Goal', 'Pct_Display', 'Status'
+                    ]].copy()
+                    
+                    display_table.columns = [
+                        'Product', 'Jan 2025', 'Last 30 Days', 
+                        'Jan 2026 Goal', 'YoY Growth', 'Daily Goal', '% of Total', 'Status'
+                    ]
+                    
+                    # Show only products >$50k
+                    display_table = display_table[df_jan['Jan_2026_Projection'] > 50000].reset_index(drop=True)
+                    
+                    st.dataframe(
+                        display_table,
+                        use_container_width=True,
+                        hide_index=True,
+                        height=500
+                    )
+                    
+                    # Add summary row
+                    st.markdown(f"""
+                    **Summary:**
+                    - **Total Tracked Products:** ${df_jan['Jan_2026_Projection'].sum():,.0f}
+                    - **Average Daily Goal (All Products):** ${df_jan['Jan_2026_Projection'].sum()/31:,.0f}
+                    - **Number of Products:** {len(display_table)}
+                    """)
+                    
+                    st.markdown("---")
+                    
+                    # Make detailed cards collapsible
+                    with st.expander("📋 View Detailed Product Breakdowns", expanded=False):
+                        st.caption("Detailed insights, performance metrics, and strategy for each product")
+                        
+                        # Show product cards (using containers instead of nested expanders)
+                        for idx, prod_row in df_jan.iterrows():
                         if prod_row['Jan_2026_Growth_Scenario'] > 50000:  # Only show products >$50k
                             st.markdown(f"#### {prod_row['Category']} - ${prod_row['Jan_2026_Growth_Scenario']:,.0f} ({prod_row['Pct_of_Total']:.1f}%)")
                             
@@ -1536,13 +1586,13 @@ with tab4:
                                     elif prod_row['Jan_2026_Growth_Scenario'] > 200000:
                                         st.markdown("• 💵 **Major contributor**")
                                 
-                                if prod_row['Notes']:
-                                    st.caption(f"📝 {prod_row['Notes']}")
-                            
-                            st.markdown("---")  # Separator between products
+                                    if prod_row['Notes']:
+                                        st.caption(f"📝 {prod_row['Notes']}")
+
+                                st.markdown("---")  # Separator between products
                     
                     st.markdown("---")
-                    
+
                     # Calculate Other Products component
                     jan_2025_total_actual = 3248059.48  # From Shopify Jan 2025 actual
                     jan_2026_target_30pct = jan_2025_total_actual * 1.30  # 30% growth target
