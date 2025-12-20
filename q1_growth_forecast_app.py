@@ -1377,7 +1377,7 @@ with tab4:
                 
                 st.markdown("### 🎯 January 2026 Product Category Breakdown")
                 st.markdown("*Revenue projections by product based on historical performance and trends*")
-                st.info("📝 **Note:** Filtered Shower Head projection is modeled from Microcurrent Body Sculptor launch pattern (no sales data available).")
+                st.info("📝 **Note:** Filtered Shower Head is launching in January 2026. Projection based on Microcurrent Body Sculptor's first full month (June 2025: $379k) scaled to 60% for conservative estimate.")
                 
                 # Load January product data
                 jan_proj_file = DATA_DIR / "reports" / "campaign" / "january-2026-revenue-projections-20251219.csv"
@@ -1450,13 +1450,15 @@ with tab4:
                                 
                                 with p_col1:
                                     st.markdown("**📊 Revenue**")
+                                    if 'Dec_2025' in prod_row.index and prod_row['Dec_2025'] > 0:
+                                        st.metric("Dec 2025 (Actual)", f"${prod_row['Dec_2025']:,.0f}")
                                     if prod_row['Jan_2025'] > 0:
                                         st.metric("Jan 2025", f"${prod_row['Jan_2025']:,.0f}")
-                                    st.metric("Baseline Proj", f"${prod_row['Jan_2026_Projection']:,.0f}")
+                                    st.metric("Jan 2026 Baseline", f"${prod_row['Jan_2026_Projection']:,.0f}")
                                     
                                     delta_vs_25 = ((prod_row['Jan_2026_Growth_Scenario'] - prod_row['Jan_2025']) / prod_row['Jan_2025'] * 100) if prod_row['Jan_2025'] > 0 else 0
-                                    st.metric("Growth Target", f"${prod_row['Jan_2026_Growth_Scenario']:,.0f}", 
-                                             f"{delta_vs_25:+.1f}% vs 2025" if prod_row['Jan_2025'] > 0 else "New")
+                                    st.metric("Jan 2026 Growth Target", f"${prod_row['Jan_2026_Growth_Scenario']:,.0f}", 
+                                             f"{delta_vs_25:+.1f}% vs 2025" if prod_row['Jan_2025'] > 0 else "New Launch")
                                 
                                 with p_col2:
                                     st.markdown("**📈 Performance**")
