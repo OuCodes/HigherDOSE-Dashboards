@@ -4,8 +4,8 @@ Q1 Growth & Forecast Dashboard
 2024 vs 2025 Q1 Analysis with 20% Growth Targets for 2026
 
 Data files: northbeam_style_daily_2024-2025_12_19.csv & northbeam_2025_ytd_spend_daily.csv
-Updated: Dec 19, 2025 - Corrected 2024 spend (fixed affiliate double-counting)
-Jan 2024: $761,785 (was $889,928) - All Q1 months corrected
+Updated: Dec 19, 2025 - Actual Northbeam Q1 2025 spend data (Jan-Mar)
+Shows both years' MER values with deltas in overview
 """
 
 import streamlit as st
@@ -28,38 +28,18 @@ BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 ADS_DIR = DATA_DIR / "ads"
 
-def load_all_data_v2_dec19():
-    """Load 2024 + 2025 sales and spend data - CORRECTED VERSION
+@st.cache_data(ttl=3600)
+def load_all_data():
+    """Load 2024 + 2025 sales and spend data"""
     
-    NO CACHE - Direct load from Historical Spend CSV
-    Version: 2025-12-19 - Fixed affiliate double-counting bug
-    """
-    
-    # === 2024 Sales (Total Sales + Real Revenue) ===
+    # === 2024 Sales ===
     sales_2024_file = ADS_DIR / "exec-sum" / "Total sales over time - 2024-01-01 - 2024-12-31-DAILY.csv"
     sales_2024 = pd.read_csv(sales_2024_file)
     sales_2024['Day'] = pd.to_datetime(sales_2024['Day'])
     sales_2024 = sales_2024.rename(columns={'Day': 'date', 'Total sales': 'revenue', 'Orders': 'orders'})
     sales_2024['year'] = 2024
     
-    # Load Real Revenue for 2024 from daily aggregated CSV (or Historical Spend CSV as fallback)
-    real_rev_2024_file = ADS_DIR / "exec-sum" / "real-revenue-daily-2024-q1.csv"
-    if real_rev_2024_file.exists():
-        st.sidebar.write(f"📊 Loading 2024 Real Revenue from {real_rev_2024_file.name}")
-        real_2024_daily = pd.read_csv(real_rev_2024_file)
-        real_2024_daily['date'] = pd.to_datetime(real_2024_daily['date'])
-        # Merge with sales data - rename orders column to avoid conflict
-        real_2024_daily = real_2024_daily.rename(columns={'orders': 'real_revenue_orders'})
-        sales_2024 = sales_2024.merge(real_2024_daily[['date', 'real_revenue', 'real_revenue_orders']], on='date', how='left')
-        sales_2024['real_revenue'] = sales_2024['real_revenue'].fillna(0)
-        sales_2024['real_revenue_orders'] = sales_2024['real_revenue_orders'].fillna(0)
-        st.sidebar.write(f"✓ Loaded {len(real_2024_daily)} days of Real Revenue data")
-    else:
-        st.sidebar.info("ℹ️ Using Historical Spend CSV for 2024 Real Revenue (monthly totals)")
-        sales_2024['real_revenue'] = 0  # Will be populated from Historical Spend CSV below
-        sales_2024['real_revenue_orders'] = 0
-    
-    # === 2025 Sales (Total Sales + Real Revenue) ===
+    # === 2025 Sales ===
     # Find latest 2025 sales file
     sales_2025_files = sorted((ADS_DIR / "exec-sum").glob("Total sales over time - OU - 2025-*.csv"))
     if not sales_2025_files:
@@ -72,159 +52,106 @@ def load_all_data_v2_dec19():
     sales_2025 = sales_2025.rename(columns={'Day': 'date', 'Total sales': 'revenue', 'Orders': 'orders'})
     sales_2025['year'] = 2025
     
-    # Load Real Revenue for 2025 from daily aggregated CSV (or Historical Spend CSV as fallback)
-    real_rev_2025_file = ADS_DIR / "exec-sum" / "real-revenue-daily-2025-q1.csv"
-    if real_rev_2025_file.exists():
-        st.sidebar.write(f"📊 Loading 2025 Real Revenue from {real_rev_2025_file.name}")
-        real_2025_daily = pd.read_csv(real_rev_2025_file)
-        real_2025_daily['date'] = pd.to_datetime(real_2025_daily['date'])
-        # Merge with sales data - rename orders column to avoid conflict
-        real_2025_daily = real_2025_daily.rename(columns={'orders': 'real_revenue_orders'})
-        sales_2025 = sales_2025.merge(real_2025_daily[['date', 'real_revenue', 'real_revenue_orders']], on='date', how='left')
-        sales_2025['real_revenue'] = sales_2025['real_revenue'].fillna(0)
-        sales_2025['real_revenue_orders'] = sales_2025['real_revenue_orders'].fillna(0)
-        st.sidebar.write(f"✓ Loaded {len(real_2025_daily)} days of Real Revenue data")
+    # === 2024 Real Revenue ===
+    real_revenue_2024_file = ADS_DIR / "exec-sum" / "real_revenue_daily_2024.csv"
+    if real_revenue_2024_file.exists():
+        real_rev_2024_daily = pd.read_csv(real_revenue_2024_file)
+        real_rev_2024_daily['date'] = pd.to_datetime(real_rev_2024_daily['date'])
+        real_rev_2024_daily['year'] = 2024
     else:
-        st.sidebar.info("ℹ️ Using Historical Spend CSV for 2025 Real Revenue (monthly totals)")
-        sales_2025['real_revenue'] = 0  # Will be populated from Historical Spend CSV below
-        sales_2025['real_revenue_orders'] = 0
+        real_rev_2024_daily = pd.DataFrame(columns=['date', 'real_revenue', 'real_orders', 'year'])
     
-    # === 2024 & 2025 Spend - Load from Historical Spend CSV directly ===
-    st.sidebar.write("🔍 Loading spend data from Historical CSV...")
+    # === 2025 Real Revenue ===
+    real_revenue_2025_file = ADS_DIR / "exec-sum" / "real_revenue_daily_2025.csv"
+    if real_revenue_2025_file.exists():
+        real_rev_2025_daily = pd.read_csv(real_revenue_2025_file)
+        real_rev_2025_daily['date'] = pd.to_datetime(real_rev_2025_daily['date'])
+        real_rev_2025_daily['year'] = 2025
+    else:
+        real_rev_2025_daily = pd.DataFrame(columns=['date', 'real_revenue', 'real_orders', 'year'])
     
-    historical_file = ADS_DIR / "q4-planning-2025" / "Historical Spend.csv"
-    st.sidebar.write(f"Looking for: {historical_file}")
-    st.sidebar.write(f"File exists: {historical_file.exists()}")
-    
-    if not historical_file.exists():
-        st.error(f"❌ Historical Spend CSV not found at: {historical_file}")
-        st.error(f"ADS_DIR = {ADS_DIR}")
-        st.error(f"Files in q4-planning-2025: {list((ADS_DIR / 'q4-planning-2025').glob('*.csv')) if (ADS_DIR / 'q4-planning-2025').exists() else 'Directory does not exist'}")
+    # === 2024 Spend (Meta + Google) ===
+    # Debug: Check what files exist
+    if not ADS_DIR.exists():
+        st.error(f"❌ Data directory does not exist: {ADS_DIR}")
         return None
     
-    try:
-        # Load historical spend data
-        hist_df = pd.read_csv(historical_file)
-        st.sidebar.write(f"✅ Loaded {len(hist_df)} rows from Historical CSV")
+    all_files = list(ADS_DIR.glob("*.csv"))
+    st.sidebar.info(f"🔍 Found {len(all_files)} CSV files in {ADS_DIR.name}")
+    
+    spend_2024_files = sorted(ADS_DIR.glob("northbeam_style_daily_2024-*.csv"))
+    if not spend_2024_files:
+        st.error(f"❌ No 2024 spend file found in {ADS_DIR}")
+        st.error(f"Looking for pattern: northbeam_style_daily_2024-*.csv")
+        st.error(f"Files in directory: {[f.name for f in all_files[:10]]}")
+        return None
+    
+    spend_2024_file = spend_2024_files[-1]
+    spend_2024 = pd.read_csv(spend_2024_file)
+    spend_2024['date'] = pd.to_datetime(spend_2024['date'])
+    
+    # Aggregate to daily brand level
+    spend_2024_daily = spend_2024.groupby('date').agg({
+        'spend': 'sum'
+    }).reset_index()
+    spend_2024_daily['year'] = 2024
+    
+    # === 2025 Spend (Northbeam YTD) ===
+    # Try lightweight daily file first, fallback to full YTD file
+    spend_2025_file = ADS_DIR / "northbeam_2025_ytd_spend_daily.csv"
+    
+    if not spend_2025_file.exists():
+        # Fallback to full YTD files
+        spend_2025_files = sorted(ADS_DIR.glob("ytd_sales_data-higher_dose_llc-2025_12_18-*.csv"))
+        if not spend_2025_files:
+            st.error("No 2025 Northbeam spend file found.")
+            return None
         
-        def clean_currency(val):
-            if pd.isna(val) or val == '' or val == '–':
-                return 0.0
-            return float(str(val).replace('$', '').replace(',', ''))
+        spend_2025_file = spend_2025_files[-1]
+        spend_2025 = pd.read_csv(spend_2025_file)
+        spend_2025['date'] = pd.to_datetime(spend_2025['date'])
         
-        # Extract Real Revenue from Historical CSV (for fallback or supplementing data)
-        real_revenue_lookup = {}
-        for _, row in hist_df.iterrows():
-            if pd.notna(row['Month']):
-                month_str = str(row['Month'])
-                real_rev = clean_currency(row.get('Real\nRevenue(1)', 0))
-                if real_rev > 0:
-                    real_revenue_lookup[month_str] = real_rev
+        # Filter to Cash snapshot mode to avoid double counting
+        spend_2025 = spend_2025[spend_2025['accounting_mode'] == 'Cash snapshot'].copy()
         
-        st.sidebar.write(f"📊 Real Revenue lookup: {len(real_revenue_lookup)} months")
-        
-        # Process 2024 data
-        hist_2024 = hist_df[hist_df['Month'].str.contains('24', na=False)].copy()
-        hist_2024['month_date'] = pd.to_datetime(hist_2024['Month'], format='%b-%y')
-        st.sidebar.write(f"✅ Found {len(hist_2024)} months for 2024")
-        
-        spend_2024_monthly = []
-        for _, row in hist_2024.iterrows():
-            month_date = row['month_date']
-            month_str = row['Month']
-            total_spend = clean_currency(row.get('Total Spend', 0))
-            real_rev_monthly = real_revenue_lookup.get(month_str, 0)
-            
-            if total_spend > 0 or real_rev_monthly > 0:
-                days_in_month = pd.date_range(
-                    start=month_date,
-                    end=month_date + pd.offsets.MonthEnd(1),
-                    freq='D'
-                )
-                daily_spend = total_spend / len(days_in_month)
-                daily_real_rev = real_rev_monthly / len(days_in_month)
-                
-                for day in days_in_month:
-                    spend_2024_monthly.append({
-                        'date': day,
-                        'spend': daily_spend,
-                        'real_revenue_hist': daily_real_rev
-                    })
-        
-        spend_2024_daily = pd.DataFrame(spend_2024_monthly)
-        spend_2024_daily['year'] = 2024
-        
-        # Process 2025 data
-        hist_2025 = hist_df[hist_df['Month'].str.contains('25', na=False)].copy()
-        hist_2025['month_date'] = pd.to_datetime(hist_2025['Month'], format='%b-%y')
-        st.sidebar.write(f"✅ Found {len(hist_2025)} months for 2025")
-        
-        spend_2025_monthly = []
-        for _, row in hist_2025.iterrows():
-            month_date = row['month_date']
-            month_str = row['Month']
-            total_spend = clean_currency(row.get('Total Spend', 0))
-            real_rev_monthly = real_revenue_lookup.get(month_str, 0)
-            
-            if total_spend > 0 or real_rev_monthly > 0:
-                days_in_month = pd.date_range(
-                    start=month_date,
-                    end=month_date + pd.offsets.MonthEnd(1),
-                    freq='D'
-                )
-                daily_spend = total_spend / len(days_in_month)
-                daily_real_rev = real_rev_monthly / len(days_in_month)
-                
-                for day in days_in_month:
-                    spend_2025_monthly.append({
-                        'date': day,
-                        'spend': daily_spend,
-                        'real_revenue_hist': daily_real_rev
-                    })
-        
-        spend_2025_daily = pd.DataFrame(spend_2025_monthly)
+        # Aggregate to daily brand level
+        spend_2025_daily = spend_2025.groupby('date').agg({
+            'spend': 'sum'
+        }).reset_index()
         spend_2025_daily['year'] = 2025
-        
-        # Debug: Show January totals
-        jan_2024_check = spend_2024_daily[
-            (spend_2024_daily['date'] >= '2024-01-01') & 
-            (spend_2024_daily['date'] <= '2024-01-31')
-        ]['spend'].sum()
-        
-        jan_2025_check = spend_2025_daily[
-            (spend_2025_daily['date'] >= '2025-01-01') & 
-            (spend_2025_daily['date'] <= '2025-01-31')
-        ]['spend'].sum()
-        
-        st.sidebar.success(f"✅ Historical Spend CSV loaded")
-        st.sidebar.metric("Jan 2024 Spend", f"${jan_2024_check:,.0f}")
-        st.sidebar.metric("Jan 2025 Spend", f"${jan_2025_check:,.0f}")
-        
-    except Exception as e:
-        st.error(f"❌ ERROR loading Historical Spend CSV: {e}")
-        import traceback
-        st.error(traceback.format_exc())
-        return None
+    else:
+        # Use lightweight file (already aggregated daily)
+        spend_2025_daily = pd.read_csv(spend_2025_file)
+        spend_2025_daily['date'] = pd.to_datetime(spend_2025_daily['date'])
+        # Ensure 'year' column exists
+        if 'year' not in spend_2025_daily.columns:
+            spend_2025_daily['year'] = 2025
     
     # === Merge sales + spend + real revenue for each year ===
-    df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend', 'real_revenue_hist']], on='date', how='left')
+    df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend']], on='date', how='left')
+    if not real_rev_2024_daily.empty:
+        df_2024 = df_2024.merge(real_rev_2024_daily[['date', 'real_revenue', 'real_orders']], on='date', how='left')
+        df_2024['real_revenue'] = df_2024['real_revenue'].fillna(0)
+        df_2024['real_orders'] = df_2024['real_orders'].fillna(0)
+    else:
+        df_2024['real_revenue'] = 0
+        df_2024['real_orders'] = 0
     df_2024['spend'] = df_2024['spend'].fillna(0)
-    # If real_revenue is 0 (file not found), use Historical Spend CSV fallback
-    if df_2024['real_revenue'].sum() == 0:
-        df_2024['real_revenue'] = df_2024['real_revenue_hist'].fillna(0)
-        st.sidebar.info("✓ Using Historical Spend CSV Real Revenue for 2024")
     df_2024['MER'] = df_2024.apply(lambda x: x['revenue'] / x['spend'] if x['spend'] > 0 else 0, axis=1)
     
     # Debug: Show 2025 spend info
     total_2025_spend = spend_2025_daily['spend'].sum()
     
-    df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend', 'real_revenue_hist']], 
+    df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend']], 
                                on='date', how='left')
+    if not real_rev_2025_daily.empty:
+        df_2025 = df_2025.merge(real_rev_2025_daily[['date', 'real_revenue', 'real_orders']], on='date', how='left')
+        df_2025['real_revenue'] = df_2025['real_revenue'].fillna(0)
+        df_2025['real_orders'] = df_2025['real_orders'].fillna(0)
+    else:
+        df_2025['real_revenue'] = 0
+        df_2025['real_orders'] = 0
     df_2025['spend'] = df_2025['spend'].fillna(0)
-    # If real_revenue is 0 (file not found), use Historical Spend CSV fallback
-    if df_2025['real_revenue'].sum() == 0:
-        df_2025['real_revenue'] = df_2025['real_revenue_hist'].fillna(0)
-        st.sidebar.info("✓ Using Historical Spend CSV Real Revenue for 2025")
     df_2025['MER'] = df_2025.apply(lambda x: x['revenue'] / x['spend'] if x['spend'] > 0 else 0, axis=1)
     
     # Show warning if spend data is limited
@@ -284,8 +211,8 @@ def load_all_data_v2_dec19():
         'q1_2024': q1_2024,
         'q1_2025': q1_2025,
         'sales_2025_file': sales_2025_file.name,
-        'spend_2024_file': 'Historical Spend CSV (Total Spend column)',
-        'spend_2025_file': 'Historical Spend CSV (Total Spend column)',
+        'spend_2024_file': spend_2024_file.name,
+        'spend_2025_file': spend_2025_file.name,
         'spend_coverage': {
             'days_with_spend': days_with_spend,
             'total_days': total_days,
@@ -297,7 +224,7 @@ def load_all_data_v2_dec19():
 
 # Load data
 try:
-    data = load_all_data_v2_dec19()
+    data = load_all_data()
     if data is None:
         st.stop()
     
@@ -331,7 +258,6 @@ with st.sidebar:
 # Header
 st.title("📈 Q1 Growth & Forecast Dashboard")
 st.markdown("**2024 vs 2025 Q1 Analysis with 20% Growth Targets for 2026**")
-st.error("🔄 VERSION: 2025-12-19-FINAL | If you see old spend numbers ($889k), hard refresh and clear browser cache")
 st.markdown("---")
 
 # === TAB STRUCTURE ===
@@ -350,28 +276,18 @@ with tab1:
     
     # Calculate Q1 metrics for both years
     q1_2024_revenue = q1_2024['revenue'].sum()
-    q1_2024_real_revenue = q1_2024['real_revenue'].sum()
     q1_2024_spend = q1_2024['spend'].sum()
     q1_2024_orders = q1_2024['orders'].sum()
-    q1_2024_real_revenue_orders = q1_2024['real_revenue_orders'].sum()
     q1_2024_mer = q1_2024_revenue / q1_2024_spend if q1_2024_spend > 0 else 0
-    q1_2024_aov = q1_2024_revenue / q1_2024_orders if q1_2024_orders > 0 else 0
-    q1_2024_real_aov = q1_2024_real_revenue / q1_2024_real_revenue_orders if q1_2024_real_revenue_orders > 0 else 0
     
     q1_2025_revenue = q1_2025['revenue'].sum()
-    q1_2025_real_revenue = q1_2025['real_revenue'].sum()
     q1_2025_spend = q1_2025['spend'].sum()
     q1_2025_orders = q1_2025['orders'].sum()
-    q1_2025_real_revenue_orders = q1_2025['real_revenue_orders'].sum()
     q1_2025_mer = q1_2025_revenue / q1_2025_spend if q1_2025_spend > 0 else 0
-    q1_2025_aov = q1_2025_revenue / q1_2025_orders if q1_2025_orders > 0 else 0
-    q1_2025_real_aov = q1_2025_real_revenue / q1_2025_real_revenue_orders if q1_2025_real_revenue_orders > 0 else 0
     
-    # 2026 goals (20% growth)
+    # 2026 goal (20% growth)
     q1_2026_goal_revenue = q1_2025_revenue * 1.20
     q1_2026_goal_daily = q1_2026_goal_revenue / 90  # Q1 = 90 days
-    q1_2026_goal_real_revenue = q1_2025_real_revenue * 1.20
-    q1_2026_goal_real_daily = q1_2026_goal_real_revenue / 90
     
     # YoY deltas
     revenue_delta = q1_2025_revenue - q1_2024_revenue
@@ -380,56 +296,27 @@ with tab1:
     spend_delta_pct = (spend_delta / q1_2024_spend * 100) if q1_2024_spend > 0 else 0
     mer_delta = q1_2025_mer - q1_2024_mer
     
-    # Total Sales metrics row
-    st.subheader("Total Sales (Shopify)")
+    # Revenue metrics row
+    st.subheader("Revenue Performance")
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        st.metric("Q1 2024 Total Sales", f"${q1_2024_revenue:,.0f}")
-        st.caption(f"{q1_2024_orders:,.0f} orders | AOV: ${q1_2024_aov:.2f}")
+        st.metric("Q1 2024 Revenue", f"${q1_2024_revenue:,.0f}")
+        st.caption(f"{q1_2024_orders:,.0f} orders")
     
     with col2:
-        st.metric("Q1 2025 Total Sales", f"${q1_2025_revenue:,.0f}",
+        st.metric("Q1 2025 Revenue", f"${q1_2025_revenue:,.0f}", 
                  delta=f"{revenue_delta_pct:+.1f}% YoY")
-        aov_delta = ((q1_2025_aov - q1_2024_aov) / q1_2024_aov * 100) if q1_2024_aov > 0 else 0
-        st.caption(f"{q1_2025_orders:,.0f} orders | AOV: ${q1_2025_aov:.2f} ({aov_delta:+.1f}%)")
+        st.caption(f"{q1_2025_orders:,.0f} orders")
     
     with col3:
         st.metric("Q1 2026 Goal (+20%)", f"${q1_2026_goal_revenue:,.0f}")
         st.caption(f"Daily target: ${q1_2026_goal_daily:,.0f}")
     
     with col4:
-        st.metric("Total Sales YoY", f"{revenue_delta_pct:+.1f}%",
+        st.metric("Revenue YoY", f"{revenue_delta_pct:+.1f}%", 
                  delta=f"${revenue_delta:,.0f}")
         st.caption(f"Δ from 2024 to 2025")
-    
-    # Real Revenue metrics row
-    st.subheader("Real Revenue")
-    st.caption("💡 Real Revenue = Gross sales + Discounts + Shipping (discounts are negative)")
-    
-    real_revenue_delta = q1_2025_real_revenue - q1_2024_real_revenue
-    real_revenue_delta_pct = (real_revenue_delta / q1_2024_real_revenue * 100) if q1_2024_real_revenue > 0 else 0
-    
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.metric("Q1 2024 Real Revenue", f"${q1_2024_real_revenue:,.0f}")
-        st.caption(f"{int(q1_2024_real_revenue_orders):,} orders | AOV: ${q1_2024_real_aov:.2f}")
-    
-    with col2:
-        st.metric("Q1 2025 Real Revenue", f"${q1_2025_real_revenue:,.0f}",
-                 delta=f"{real_revenue_delta_pct:+.1f}% YoY")
-        aov_delta_pct = ((q1_2025_real_aov - q1_2024_real_aov) / q1_2024_real_aov * 100) if q1_2024_real_aov > 0 else 0
-        st.caption(f"{int(q1_2025_real_revenue_orders):,} orders | AOV: ${q1_2025_real_aov:.2f} ({aov_delta_pct:+.1f}%)")
-    
-    with col3:
-        st.metric("Q1 2026 Goal (+20%)", f"${q1_2026_goal_real_revenue:,.0f}")
-        st.caption(f"Daily target: ${q1_2026_goal_real_daily:,.0f}")
-    
-    with col4:
-        st.metric("Real Revenue YoY", f"{real_revenue_delta_pct:+.1f}%",
-                 delta=f"${real_revenue_delta:,.0f}")
-        st.caption("Gross sales growth")
     
     # Spend metrics row
     st.subheader("Spend Performance")
@@ -481,36 +368,46 @@ with tab1:
         st.caption(f"Est. {q1_2026_orders_target:,.0f} orders")
     
     with col4:
-        st.metric("AOV YoY", f"${aov_delta:+,.2f}",
+        st.metric("AOV YoY", f"${aov_delta:+,.2f}", 
                  delta=f"{aov_delta_pct:+.1f}%")
         st.caption(f"${q1_2024_aov:,.2f} → ${q1_2025_aov:,.2f}")
     
-    # Real AOV metrics row
-    st.subheader("Real Revenue AOV")
-    st.caption("💡 Real AOV = Real Revenue ÷ Real Revenue Orders")
+    # Real Revenue AOV metrics row
+    st.subheader("Average Order Value (AOV) - Real Revenue")
+    st.caption("*Real Revenue excludes gift cards and other non-product revenue")
+    
     col1, col2, col3, col4 = st.columns(4)
     
+    # Calculate Real Revenue AOV
+    q1_2024_real_revenue = q1_2024['real_revenue'].sum()
+    q1_2025_real_revenue = q1_2025['real_revenue'].sum()
+    q1_2024_real_orders = q1_2024['real_orders'].sum()
+    q1_2025_real_orders = q1_2025['real_orders'].sum()
+    
+    q1_2024_real_aov = q1_2024_real_revenue / q1_2024_real_orders if q1_2024_real_orders > 0 else 0
+    q1_2025_real_aov = q1_2025_real_revenue / q1_2025_real_orders if q1_2025_real_orders > 0 else 0
     real_aov_delta = q1_2025_real_aov - q1_2024_real_aov
     real_aov_delta_pct = (real_aov_delta / q1_2024_real_aov * 100) if q1_2024_real_aov > 0 else 0
     
     with col1:
         st.metric("Q1 2024 Real AOV", f"${q1_2024_real_aov:,.2f}")
-        st.caption(f"{int(q1_2024_real_revenue_orders):,} orders")
+        st.caption(f"{q1_2024_real_orders:,.0f} orders | ${q1_2024_real_revenue:,.0f} revenue")
     
     with col2:
-        st.metric("Q1 2025 Real AOV", f"${q1_2025_real_aov:,.2f}",
+        st.metric("Q1 2025 Real AOV", f"${q1_2025_real_aov:,.2f}", 
                  delta=f"{real_aov_delta_pct:+.1f}% YoY")
-        st.caption(f"{int(q1_2025_real_revenue_orders):,} orders")
+        st.caption(f"{q1_2025_real_orders:,.0f} orders | ${q1_2025_real_revenue:,.0f} revenue")
     
     with col3:
-        # 2026 Real AOV target (based on 20% revenue growth)
-        q1_2026_real_orders_target = q1_2025_real_revenue_orders * 1.20
-        q1_2026_real_aov_target = q1_2026_goal_real_revenue / q1_2026_real_orders_target if q1_2026_real_orders_target > 0 else q1_2025_real_aov
+        # 2026 Real AOV target (assume same order growth as total)
+        q1_2026_real_orders_target = q1_2025_real_orders * 1.20
+        q1_2026_real_revenue_target = q1_2025_real_revenue * 1.20
+        q1_2026_real_aov_target = q1_2026_real_revenue_target / q1_2026_real_orders_target if q1_2026_real_orders_target > 0 else q1_2025_real_aov
         st.metric("Q1 2026 Target", f"${q1_2026_real_aov_target:,.2f}")
-        st.caption(f"Est. {int(q1_2026_real_orders_target):,} orders")
+        st.caption(f"Est. {q1_2026_real_orders_target:,.0f} orders")
     
     with col4:
-        st.metric("Real AOV YoY", f"${real_aov_delta:+,.2f}",
+        st.metric("Real AOV YoY", f"${real_aov_delta:+,.2f}", 
                  delta=f"{real_aov_delta_pct:+.1f}%")
         st.caption(f"${q1_2024_real_aov:,.2f} → ${q1_2025_real_aov:,.2f}")
     
@@ -537,6 +434,37 @@ with tab1:
         st.metric("MER YoY", f"{mer_delta:+.2f}x", 
                  delta=f"{mer_delta_pct:+.1f}%")
         st.caption(f"{q1_2024_mer:.2f}x → {q1_2025_mer:.2f}x")
+    
+    # Real Revenue MER metrics row
+    st.subheader("Marketing Efficiency Ratio (MER) - Real Revenue")
+    st.caption("*Real Revenue MER = Real Revenue / Spend (excludes gift cards)")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    # Calculate Real Revenue MER
+    q1_2024_real_mer = q1_2024_real_revenue / q1_2024_spend if q1_2024_spend > 0 else 0
+    q1_2025_real_mer = q1_2025_real_revenue / q1_2025_spend if q1_2025_spend > 0 else 0
+    real_mer_delta = q1_2025_real_mer - q1_2024_real_mer
+    real_mer_delta_pct = (real_mer_delta / q1_2024_real_mer * 100) if q1_2024_real_mer > 0 else 0
+    
+    with col1:
+        st.metric("Q1 2024 Real MER", f"{q1_2024_real_mer:.2f}x")
+        st.caption(f"${q1_2024_real_revenue:,.0f} / ${q1_2024_spend:,.0f}")
+    
+    with col2:
+        st.metric("Q1 2025 Real MER", f"{q1_2025_real_mer:.2f}x", 
+                 delta=f"{real_mer_delta_pct:+.1f}% YoY")
+        st.caption(f"${q1_2025_real_revenue:,.0f} / ${q1_2025_spend:,.0f}")
+    
+    with col3:
+        # 2026 Real MER target (assume same as 2025 for now)
+        st.metric("Q1 2026 Target", f"{q1_2025_real_mer:.2f}x")
+        st.caption("(Maintain efficiency)")
+    
+    with col4:
+        st.metric("Real MER YoY", f"{real_mer_delta:+.2f}x", 
+                 delta=f"{real_mer_delta_pct:+.1f}%")
+        st.caption(f"{q1_2024_real_mer:.2f}x → {q1_2025_real_mer:.2f}x")
     
     st.markdown("---")
     
@@ -573,7 +501,6 @@ with tab1:
     
     # Monthly summary table
     st.subheader("Q1 Monthly Breakdown")
-    st.caption("💡 2024 spend loaded from Historical Spend CSV (Total Spend column)")
     
     # Define month order for sorting
     months_order = ['January', 'February', 'March']
@@ -581,20 +508,14 @@ with tab1:
     # Calculate monthly aggregates
     monthly_2024 = q1_2024.groupby('month_name').agg({
         'revenue': 'sum',
-        'real_revenue': 'sum',
         'spend': 'sum',
         'orders': 'sum'
     }).reset_index()
     monthly_2024['MER'] = monthly_2024['revenue'] / monthly_2024['spend']
     monthly_2024['Year'] = 2024
     
-    # Debug: Show what we calculated
-    jan_spend_2024 = monthly_2024[monthly_2024['month_name'] == 'January']['spend'].values[0] if len(monthly_2024[monthly_2024['month_name'] == 'January']) > 0 else 0
-    st.caption(f"✓ Jan 2024 spend in table: ${jan_spend_2024:,.0f}")
-    
     monthly_2025 = q1_2025.groupby('month_name').agg({
         'revenue': 'sum',
-        'real_revenue': 'sum',
         'spend': 'sum',
         'orders': 'sum'
     }).reset_index()
@@ -615,7 +536,6 @@ with tab1:
     monthly_2024_display = monthly_2024.copy()
     monthly_2024_display['Year'] = '2024'
     monthly_2024_display['revenue'] = monthly_2024_display['revenue'].apply(lambda x: f"${x:,.0f}")
-    monthly_2024_display['real_revenue'] = monthly_2024_display['real_revenue'].apply(lambda x: f"${x:,.0f}")
     monthly_2024_display['spend'] = monthly_2024_display['spend'].apply(lambda x: f"${x:,.0f}")
     monthly_2024_display['MER'] = monthly_2024_display['MER'].apply(lambda x: f"{x:.2f}x")
     monthly_2024_display['orders'] = monthly_2024_display['orders'].apply(lambda x: f"{int(x):,}")
@@ -634,23 +554,21 @@ with tab1:
         if month in monthly_2024_sorted.index:
             # Get 2024 values
             rev_2024 = monthly_2024_sorted.loc[month, 'revenue']
-            real_rev_2024 = monthly_2024_sorted.loc[month, 'real_revenue']
             spend_2024 = monthly_2024_sorted.loc[month, 'spend']
             mer_2024 = monthly_2024_sorted.loc[month, 'MER']
             orders_2024 = monthly_2024_sorted.loc[month, 'orders']
             
             # Calculate deltas
             rev_delta = ((row['revenue'] - rev_2024) / rev_2024 * 100) if rev_2024 > 0 else 0
-            real_rev_delta = ((row['real_revenue'] - real_rev_2024) / real_rev_2024 * 100) if real_rev_2024 > 0 else 0
             spend_delta = ((row['spend'] - spend_2024) / spend_2024 * 100) if spend_2024 > 0 else 0
             mer_delta = ((row['MER'] - mer_2024) / mer_2024 * 100) if mer_2024 > 0 else 0
             orders_delta = ((row['orders'] - orders_2024) / orders_2024 * 100) if orders_2024 > 0 else 0
             
+            # Format with deltas
             formatted_rows.append({
                 'Year': '2025',
                 'month_name': month,
                 'revenue': f"${row['revenue']:,.0f} ({color_delta(rev_delta)}{rev_delta:+.1f}%)",
-                'real_revenue': f"${row['real_revenue']:,.0f} ({color_delta(real_rev_delta)}{real_rev_delta:+.1f}%)",
                 'spend': f"${row['spend']:,.0f} ({color_delta(spend_delta)}{spend_delta:+.1f}%)",
                 'MER': f"{row['MER']:.2f}x ({color_delta(mer_delta)}{mer_delta:+.1f}%)",
                 'orders': f"{int(row['orders']):,} ({color_delta(orders_delta)}{orders_delta:+.1f}%)"
@@ -665,12 +583,10 @@ with tab1:
     monthly_display['month_name'] = pd.Categorical(monthly_display['month_name'], 
                                                      categories=months_order, ordered=True)
     monthly_display = monthly_display.sort_values(['Year', 'month_name'])
-    monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'real_revenue', 'spend', 'MER', 'orders']]
-    monthly_display.columns = ['Year', 'Month', 'Total Sales', 'Real Revenue', 'Spend', 'MER', 'Orders']
+    monthly_display = monthly_display[['Year', 'month_name', 'revenue', 'spend', 'MER', 'orders']]
+    monthly_display.columns = ['Year', 'Month', 'Revenue', 'Spend', 'MER', 'Orders']
     
     st.dataframe(monthly_display, use_container_width=True, hide_index=True)
-    
-    st.caption("📊 **Total Sales** = Shopify total sales (after discounts, excluding shipping) | **Real Revenue** = Gross + Discounts + Shipping")
     
     # Note about missing spend data
     if coverage.get('days_with_spend', 0) < 90:  # Q1 should have ~90 days
@@ -954,68 +870,6 @@ with tab2:
                 st.plotly_chart(fig_2025_month, use_container_width=True)
             else:
                 st.info(f"No data available for {month} 2025")
-    
-    st.markdown("---")
-    
-    # Daily data tables by month with dropdown
-    st.subheader("Day-by-Day Revenue, Spend & MER")
-    
-    # Month selector dropdown
-    selected_month = st.selectbox("Select Month:", ['January', 'February', 'March'])
-    
-    # Filter data for selected month
-    month_2024_detail = q1_2024[q1_2024['month_name'] == selected_month].copy()
-    month_2025_detail = q1_2025[q1_2025['month_name'] == selected_month].copy()
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown(f"**2024 {selected_month} - Daily Performance**")
-        if not month_2024_detail.empty:
-            daily_2024_table = month_2024_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
-            daily_2024_table = daily_2024_table.sort_values('day_of_month')
-            daily_2024_table['revenue_fmt'] = daily_2024_table['revenue'].apply(lambda x: f"${x:,.0f}")
-            daily_2024_table['spend_fmt'] = daily_2024_table['spend'].apply(lambda x: f"${x:,.0f}")
-            daily_2024_table['MER_fmt'] = daily_2024_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
-            
-            display_2024_table = daily_2024_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
-            display_2024_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
-            
-            st.dataframe(display_2024_table, use_container_width=True, hide_index=True, height=500)
-            
-            # Month summary
-            total_rev = month_2024_detail['revenue'].sum()
-            total_spend = month_2024_detail['spend'].sum()
-            avg_mer = total_rev / total_spend if total_spend > 0 else 0
-            st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
-        else:
-            st.info("No data available for this month")
-    
-    with col2:
-        st.markdown(f"**2025 {selected_month} - Daily Performance**")
-        if not month_2025_detail.empty:
-            daily_2025_table = month_2025_detail[['day_of_month', 'revenue', 'spend', 'MER']].copy()
-            daily_2025_table = daily_2025_table.sort_values('day_of_month')
-            daily_2025_table['revenue_fmt'] = daily_2025_table['revenue'].apply(lambda x: f"${x:,.0f}")
-            daily_2025_table['spend_fmt'] = daily_2025_table['spend'].apply(lambda x: f"${x:,.0f}")
-            daily_2025_table['MER_fmt'] = daily_2025_table['MER'].apply(lambda x: f"{x:.2f}x" if x > 0 else "—")
-            
-            display_2025_table = daily_2025_table[['day_of_month', 'revenue_fmt', 'spend_fmt', 'MER_fmt']].copy()
-            display_2025_table.columns = ['Day', 'Revenue', 'Spend', 'MER']
-            
-            st.dataframe(display_2025_table, use_container_width=True, hide_index=True, height=500)
-            
-            # Month summary
-            total_rev = month_2025_detail['revenue'].sum()
-            total_spend = month_2025_detail['spend'].sum()
-            avg_mer = total_rev / total_spend if total_spend > 0 else 0
-            st.caption(f"**Total:** ${total_rev:,.0f} revenue | ${total_spend:,.0f} spend | {avg_mer:.2f}x MER")
-            
-            # Warning if no spend data
-            if total_spend == 0:
-                st.warning(f"⚠️ No spend data available for {selected_month} 2025")
-        else:
-            st.info("No data available for this month")
     
     st.markdown("---")
     
@@ -1311,11 +1165,11 @@ with tab4:
     
     # Scenario A: Maintain 3.47x MER
     mer_scenario_a = q1_2025_mer  # 3.47x
-    mer_target_b = 4.0  # Target 4.0x MER for Scenario B
+    mer_target_a = 4.17  # 20% improvement (3.47 * 1.20)
     
     # Calculate spend requirements for each scenario
     spend_scenario_a = q1_2026_revenue_goal / mer_scenario_a  # Maintain current MER
-    spend_scenario_b = q1_2026_revenue_goal / mer_target_b  # Target 4.0x MER
+    spend_scenario_b = q1_2026_revenue_goal / mer_target_a  # Improved MER
     
     daily_spend_scenario_a = spend_scenario_a / 90
     daily_spend_scenario_b = spend_scenario_b / 90
@@ -1344,13 +1198,13 @@ with tab4:
         st.caption(f"Avg Daily Spend: ${daily_spend_scenario_a:,.0f}")
     
     with col3:
-        st.markdown("### 🚀 Scenario B: 4.0 MER Target")
+        st.markdown("### 🚀 Scenario B: Improve MER 20%")
         st.metric("Total Revenue (+20%)", f"${q1_2026_revenue_goal:,.0f}",
                  delta=f"+${q1_2026_revenue_goal - q1_2025_revenue:,.0f}")
         st.metric("Required Spend", f"${spend_scenario_b:,.0f}",
                  delta=f"+${spend_scenario_b - q1_2025_spend:,.0f}")
-        st.metric("MER Target", f"{mer_target_b:.2f}x",
-                 delta=f"+{mer_target_b - q1_2025_mer:.2f}x")
+        st.metric("MER Target", f"{mer_target_a:.2f}x", 
+                 delta=f"+{mer_target_a - q1_2025_mer:.2f}x")
         st.caption(f"Avg Daily Revenue: ${q1_2026_daily_revenue:,.0f}")
         st.caption(f"Avg Daily Spend: ${daily_spend_scenario_b:,.0f}")
     
@@ -1382,10 +1236,10 @@ with tab4:
             f"+{((q1_2026_daily_revenue - q1_2025_daily_revenue) / q1_2025_daily_revenue * 100):.1f}%",
             f"+{((daily_spend_scenario_a - q1_2025_daily_spend) / q1_2025_daily_spend * 100):.1f}%"
         ],
-        '2026 Scenario B (4.0x MER)': [
+        '2026 Scenario B (4.17x MER)': [
             f"${q1_2026_daily_revenue:,.0f}",
             f"${daily_spend_scenario_b:,.0f}",
-            f"{mer_target_b:.2f}x",
+            f"{mer_target_a:.2f}x",
             f"+{((q1_2026_daily_revenue - q1_2025_daily_revenue) / q1_2025_daily_revenue * 100):.1f}%",
             f"+{((daily_spend_scenario_b - q1_2025_daily_spend) / q1_2025_daily_spend * 100):.1f}%"
         ]
@@ -1402,7 +1256,7 @@ with tab4:
     
     - **Scenario A** requires **${(spend_scenario_a - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_a - q1_2025_spend) / q1_2025_spend * 100):.1f}%) to achieve +20% revenue while maintaining current MER of {q1_2025_mer:.2f}x
     
-    - **Scenario B** requires **${(spend_scenario_b - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_b - q1_2025_spend) / q1_2025_spend * 100):.1f}%) while improving MER to {mer_target_b:.2f}x
+    - **Scenario B** requires **${(spend_scenario_b - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_b - q1_2025_spend) / q1_2025_spend * 100):.1f}%) while improving MER to {mer_target_a:.2f}x
     
     - Improving MER by 20% would **save ${(spend_scenario_a - spend_scenario_b):,.0f}** in quarterly spend while achieving the same revenue goal
     """)
@@ -1413,13 +1267,10 @@ with tab4:
     st.subheader("📅 Monthly Projections: Daily Targets")
     
     st.markdown("""
-    **Front-Loaded Growth Strategy (20% Q1 Target):**
-    - **January**: +27% growth (aggressive front-load, capitalize on New Year momentum)
-    - **February**: +15% growth (maintain steady performance)
-    - **March**: +15% growth (maintain steady performance)
-    - **Result**: 20% overall Q1 growth
-    - January's aggressive push enables conservative Feb/Mar while hitting quarter target
-    - Both scenarios maintain target MER efficiency
+    **Hybrid Model Approach:**
+    - Start conservative in January to validate performance
+    - Scale in February/March based on January results
+    - Both scenarios assume 20% revenue growth over Q1 2025
     """)
     
     months_data = []
@@ -1439,34 +1290,27 @@ with tab4:
             orders_2025 = 0
             mer_2025 = 0
         
-        # 2026 projections (growth rate varies by month)
-        growth_rates = {
-            'January': 1.27,    # +27% (Front-loaded to achieve 20% Q1 growth)
-            'February': 1.15,   # +15%
-            'March': 1.15       # +15%
-        }
-        revenue_2026 = revenue_2025 * growth_rates[month_name]
+        # 2026 projections (+20% revenue)
+        revenue_2026 = revenue_2025 * 1.20
         daily_revenue_2026 = revenue_2026 / days
         
         # Scenario A: Maintain 3.47x MER
         spend_2026_a = revenue_2026 / mer_scenario_a
         daily_spend_2026_a = spend_2026_a / days
         
-        # Scenario B: Target 4.0x MER
-        spend_2026_b = revenue_2026 / mer_target_b
+        # Scenario B: Improve to 4.17x MER
+        spend_2026_b = revenue_2026 / mer_target_a
         daily_spend_2026_b = spend_2026_b / days
         
         months_data.append({
             'Month': month_name,
             'Days': days,
             '2025 Revenue': revenue_2025,
-            '2025 Spend': spend_2025,
-            '2025 Daily Spend': spend_2025 / days if days > 0 else 0,
             '2026 Revenue Goal': revenue_2026,
             'Daily Revenue Target': daily_revenue_2026,
             'Scenario A Spend (3.47x)': spend_2026_a,
             'Scenario A Daily Spend': daily_spend_2026_a,
-            'Scenario B Spend (4.0x)': spend_2026_b,
+            'Scenario B Spend (4.17x)': spend_2026_b,
             'Scenario B Daily Spend': daily_spend_2026_b,
             'Savings (A vs B)': spend_2026_a - spend_2026_b
         })
@@ -1476,94 +1320,201 @@ with tab4:
     # Display formatted table for each month
     for idx, row in months_df.iterrows():
         with st.expander(f"📊 {row['Month']} 2026 - {row['Days']} Days", expanded=(idx == 0)):
-            
+
             col1, col2, col3 = st.columns(3)
-            
+
             with col1:
                 st.markdown("### 📈 Revenue Targets")
-                growth_pct = ((row['2026 Revenue Goal'] / row['2025 Revenue']) - 1) * 100 if row['2025 Revenue'] > 0 else 0
-                st.metric(f"Monthly Goal (+{growth_pct:.0f}%)", f"${row['2026 Revenue Goal']:,.0f}")
+                st.metric("Monthly Goal (+20%)", f"${row['2026 Revenue Goal']:,.0f}")
                 st.metric("Daily Target", f"${row['Daily Revenue Target']:,.0f}")
                 st.caption(f"vs 2025 Actual: ${row['2025 Revenue']:,.0f}")
-            
+
             with col2:
                 st.markdown("### 💰 Scenario A: 3.47x MER")
-                spend_delta_a = row['Scenario A Spend (3.47x)'] - row['2025 Spend']
-                spend_delta_a_pct = (spend_delta_a / row['2025 Spend'] * 100) if row['2025 Spend'] > 0 else 0
-                st.metric("Monthly Spend", f"${row['Scenario A Spend (3.47x)']:,.0f}",
-                         delta=f"+${spend_delta_a:,.0f} ({spend_delta_a_pct:+.1f}%)")
-                
-                daily_delta_a = row['Scenario A Daily Spend'] - row['2025 Daily Spend']
-                daily_delta_a_pct = (daily_delta_a / row['2025 Daily Spend'] * 100) if row['2025 Daily Spend'] > 0 else 0
-                st.metric("Daily Spend", f"${row['Scenario A Daily Spend']:,.0f}",
-                         delta=f"+${daily_delta_a:,.0f} ({daily_delta_a_pct:+.1f}%)")
-                st.caption(f"vs 2025: ${row['2025 Spend']:,.0f} monthly | ${row['2025 Daily Spend']:,.0f} daily")
-            
+                st.metric("Monthly Spend", f"${row['Scenario A Spend (3.47x)']:,.0f}")
+                st.metric("Daily Spend", f"${row['Scenario A Daily Spend']:,.0f}")
+                st.caption("Maintain current efficiency")
+
             with col3:
-                st.markdown("### 🚀 Scenario B: 4.0x MER")
-                spend_delta_b = row['Scenario B Spend (4.0x)'] - row['2025 Spend']
-                spend_delta_b_pct = (spend_delta_b / row['2025 Spend'] * 100) if row['2025 Spend'] > 0 else 0
-                st.metric("Monthly Spend", f"${row['Scenario B Spend (4.0x)']:,.0f}",
-                         delta=f"+${spend_delta_b:,.0f} ({spend_delta_b_pct:+.1f}%)")
-                
-                daily_delta_b = row['Scenario B Daily Spend'] - row['2025 Daily Spend']
-                daily_delta_b_pct = (daily_delta_b / row['2025 Daily Spend'] * 100) if row['2025 Daily Spend'] > 0 else 0
-                st.metric("Daily Spend", f"${row['Scenario B Daily Spend']:,.0f}",
-                         delta=f"+${daily_delta_b:,.0f} ({daily_delta_b_pct:+.1f}%)")
-                st.caption(f"Saves vs A: ${row['Savings (A vs B)']:,.0f}")
-            
+                st.markdown("### 🚀 Scenario B: 4.17x MER")
+                st.metric("Monthly Spend", f"${row['Scenario B Spend (4.17x)']:,.0f}")
+                st.metric("Daily Spend", f"${row['Scenario B Daily Spend']:,.0f}")
+                st.caption(f"Saves: ${row['Savings (A vs B)']:,.0f}")
+
             st.markdown("---")
             
-            # Weekly breakdown for this month with realistic patterns
-            st.markdown(f"**Weekly Breakdown for {row['Month']} (Based on Historical Patterns):**")
-            st.caption("📊 Revenue patterns based on 2024-2025 Q1 averages | Spend front-loaded for campaign momentum")
+            # === JANUARY PRODUCT BREAKDOWN ===
+            if row['Month'] == 'January':
+                st.markdown("### 🎯 January 2026 Product Category Breakdown")
+                st.markdown("*Revenue projections by product based on historical performance and trends*")
+                
+                # Load January product data
+                jan_proj_file = DATA_DIR / "reports" / "campaign" / "january-2026-revenue-projections-20251219.csv"
+                
+                if jan_proj_file.exists():
+                    df_jan = pd.read_csv(jan_proj_file)
+                    
+                    # Calculate baseline and growth scenario
+                    baseline_total = df_jan['Jan_2026_Projection'].sum()
+                    target_total = row['2026 Revenue Goal']  # Use the 20% growth target from row
+                    growth_needed = target_total - baseline_total
+                    
+                    # Allocate growth to products
+                    df_jan['Growth_Allocation'] = 0
+                    df_jan['Growth_Strategy'] = ''
+                    
+                    # Winners get 50%
+                    high_growth_mask = ((df_jan['Confidence'].isin(['High', 'Medium'])) & 
+                                       (df_jan['Status'] == 'Launched Q2-Q4 2025')) | \
+                                      ((df_jan['Category'] == 'Sauna Blanket'))
+                    
+                    high_growth_products = df_jan[high_growth_mask]
+                    if len(high_growth_products) > 0:
+                        high_growth_share = growth_needed * 0.50
+                        for i in high_growth_products.index:
+                            weight = df_jan.loc[i, 'Jan_2026_Projection'] / high_growth_products['Jan_2026_Projection'].sum()
+                            df_jan.loc[i, 'Growth_Allocation'] = high_growth_share * weight
+                            df_jan.loc[i, 'Growth_Strategy'] = 'Scale winner'
+                    
+                    # New products get 30%
+                    new_products = df_jan[df_jan['Status'] == 'Launched Q2-Q4 2025']
+                    if len(new_products) > 0:
+                        new_product_boost = growth_needed * 0.30
+                        for i in new_products.index:
+                            weight = df_jan.loc[i, 'Jan_2026_Projection'] / new_products['Jan_2026_Projection'].sum()
+                            df_jan.loc[i, 'Growth_Allocation'] += new_product_boost * weight
+                            if df_jan.loc[i, 'Growth_Strategy']:
+                                df_jan.loc[i, 'Growth_Strategy'] += ' + Accelerate'
+                            else:
+                                df_jan.loc[i, 'Growth_Strategy'] = 'Accelerate'
+                    
+                    # Top 3 get 20%
+                    stabilize_share = growth_needed * 0.20
+                    top_revenue_idx = df_jan.nlargest(3, 'Jan_2026_Projection').index
+                    for i in top_revenue_idx:
+                        if not high_growth_mask[i]:
+                            weight = df_jan.loc[i, 'Jan_2026_Projection'] / df_jan.loc[top_revenue_idx, 'Jan_2026_Projection'].sum()
+                            df_jan.loc[i, 'Growth_Allocation'] += stabilize_share * weight
+                            df_jan.loc[i, 'Growth_Strategy'] = 'Stabilize'
+                    
+                    # Calculate growth scenario
+                    df_jan['Jan_2026_Growth_Scenario'] = df_jan['Jan_2026_Projection'] + df_jan['Growth_Allocation']
+                    df_jan['Pct_of_Total'] = (df_jan['Jan_2026_Growth_Scenario'] / target_total * 100)
+                    df_jan = df_jan.sort_values('Jan_2026_Growth_Scenario', ascending=False)
+                    
+                    st.markdown("**Product Revenue Allocation (20% Growth Scenario):**")
+                    
+                    # Show product cards
+                    for _, prod_row in df_jan.iterrows():
+                        if prod_row['Jan_2026_Growth_Scenario'] > 50000:  # Only show products >$50k
+                            with st.expander(f"**{prod_row['Category']}** - ${prod_row['Jan_2026_Growth_Scenario']:,.0f} ({prod_row['Pct_of_Total']:.1f}%)", expanded=False):
+                                
+                                p_col1, p_col2, p_col3 = st.columns(3)
+                                
+                                with p_col1:
+                                    st.markdown("**📊 Revenue**")
+                                    if prod_row['Jan_2025'] > 0:
+                                        st.metric("Jan 2025", f"${prod_row['Jan_2025']:,.0f}")
+                                    st.metric("Baseline Proj", f"${prod_row['Jan_2026_Projection']:,.0f}")
+                                    
+                                    delta_vs_25 = ((prod_row['Jan_2026_Growth_Scenario'] - prod_row['Jan_2025']) / prod_row['Jan_2025'] * 100) if prod_row['Jan_2025'] > 0 else 0
+                                    st.metric("Growth Target", f"${prod_row['Jan_2026_Growth_Scenario']:,.0f}", 
+                                             f"{delta_vs_25:+.1f}% vs 2025" if prod_row['Jan_2025'] > 0 else "New")
+                                
+                                with p_col2:
+                                    st.markdown("**📈 Performance**")
+                                    st.write(f"**Status:** {prod_row['Status']}")
+                                    st.write(f"**Confidence:** {prod_row['Confidence']}")
+                                    if prod_row['Oct_Dec_YoY'] != 0:
+                                        st.write(f"**Q4 Trend:** {prod_row['Oct_Dec_YoY']:+.1f}%")
+                                    if prod_row['Growth_Allocation'] > 0:
+                                        st.write(f"**Growth Add:** +${prod_row['Growth_Allocation']:,.0f}")
+                                        st.write(f"**Strategy:** {prod_row['Growth_Strategy']}")
+                                
+                                with p_col3:
+                                    st.markdown("**💡 Insights**")
+                                    
+                                    # Key insights
+                                    if prod_row['Status'] == 'Established':
+                                        if prod_row['Oct_Dec_YoY'] < -30:
+                                            st.markdown("• ⚠️ **Major Q4 decline** - urgent review")
+                                        elif prod_row['Oct_Dec_YoY'] < -10:
+                                            st.markdown("• 📉 **Declining** - refresh needed")
+                                        elif prod_row['Oct_Dec_YoY'] > 20:
+                                            st.markdown("• ✅ **Strong momentum**")
+                                        else:
+                                            st.markdown("• ➡️ **Stable performance**")
+                                    
+                                    elif prod_row['Status'] == 'Launched Q2-Q4 2025':
+                                        if prod_row['Oct_Dec_2025'] > 300000:
+                                            st.markdown("• 🚀 **Breakout product!**")
+                                        st.markdown(f"• 📦 Q4: {prod_row['Oct_Dec_2025_Units']:,.0f} units")
+                                    
+                                    if prod_row['Jan_2026_Growth_Scenario'] > 500000:
+                                        st.markdown("• 💰 **Top revenue driver**")
+                                    elif prod_row['Jan_2026_Growth_Scenario'] > 200000:
+                                        st.markdown("• 💵 **Major contributor**")
+                                
+                                if prod_row['Notes']:
+                                    st.caption(f"📝 {prod_row['Notes']}")
+                    
+                    st.markdown("---")
+                    st.markdown(f"""
+                    **Summary:**
+                    - **Baseline projection:** ${baseline_total:,.0f} (based on trends)
+                    - **20% Growth target:** ${target_total:,.0f}
+                    - **Gap to close:** +${growth_needed:,.0f}
+                    - **Strategy:** 50% to winners, 30% to new products, 20% to stabilize core
+                    """)
+                    
+                else:
+                    st.warning("Product projection data not available. Run january_2026_revenue_only_projections.py to generate.")
             
-            # Historical weekly revenue patterns (% of month)
-            weekly_patterns = {
-                'January': [0.34, 0.18, 0.21, 0.18, 0.09],    # Strong Week 1 (New Year effect)
-                'February': [0.24, 0.25, 0.27, 0.22, 0.02],   # More balanced
-                'March': [0.22, 0.21, 0.24, 0.25, 0.08]       # Build through month
-            }
+            st.markdown("---")
+
+            # Weekly breakdown for this month
+            st.markdown(f"**Weekly Breakdown for {row['Month']}:**")
             
-            # Spend patterns (% of month) - front-loaded for campaign momentum
-            spend_patterns = {
-                'January': [0.28, 0.24, 0.22, 0.18, 0.08],
-                'February': [0.26, 0.25, 0.24, 0.20, 0.05],
-                'March': [0.26, 0.24, 0.23, 0.19, 0.08]
-            }
-            
-            rev_pattern = weekly_patterns[row['Month']]
-            spend_pattern = spend_patterns[row['Month']]
-            
-            monthly_revenue = row['2026 Revenue Goal']
-            monthly_spend_a = row['Scenario A Spend (3.47x)']
-            monthly_spend_b = row['Scenario B Spend (4.0x)']
+            # Calculate weeks in month (roughly 4-5 weeks)
+            weeks_in_month = int(row['Days'] / 7)
+            remaining_days = row['Days'] % 7
             
             weekly_data = []
-            for week_num in range(len(rev_pattern)):
-                # Calculate realistic weekly amounts
-                weekly_revenue = monthly_revenue * rev_pattern[week_num]
-                weekly_spend_a = monthly_spend_a * spend_pattern[week_num]
-                weekly_spend_b = monthly_spend_b * spend_pattern[week_num]
+            for week_num in range(1, weeks_in_month + 1):
+                days_in_week = 7
+                week_label = f"Week {week_num}"
                 
-                # Calculate days (first 4 weeks = 7 days, last week = remaining)
-                if week_num < 4:
-                    days_in_week = 7
-                else:
-                    days_in_week = row['Days'] - (4 * 7)
+                weekly_revenue = row['Daily Revenue Target'] * days_in_week
+                weekly_spend_a = row['Scenario A Daily Spend'] * days_in_week
+                weekly_spend_b = row['Scenario B Daily Spend'] * days_in_week
                 
-                if days_in_week > 0:
-                    weekly_data.append({
-                        'Week': f"Week {week_num + 1}",
-                        'Days': days_in_week,
-                        'Revenue Target': f"${weekly_revenue:,.0f}",
-                        '% of Month': f"{rev_pattern[week_num]*100:.0f}%",
-                        'Daily Rev Avg': f"${weekly_revenue/days_in_week:,.0f}",
-                        'Scenario A Spend': f"${weekly_spend_a:,.0f}",
-                        'Scenario B Spend': f"${weekly_spend_b:,.0f}",
-                        'Daily Spend A': f"${weekly_spend_a/days_in_week:,.0f}",
-                        'Daily Spend B': f"${weekly_spend_b/days_in_week:,.0f}"
-                    })
+                weekly_data.append({
+                    'Week': week_label,
+                    'Days': days_in_week,
+                    'Revenue Target': f"${weekly_revenue:,.0f}",
+                    'Scenario A Spend': f"${weekly_spend_a:,.0f}",
+                    'Scenario B Spend': f"${weekly_spend_b:,.0f}",
+                    'Daily Revenue': f"${row['Daily Revenue Target']:,.0f}",
+                    'Daily Spend A': f"${row['Scenario A Daily Spend']:,.0f}",
+                    'Daily Spend B': f"${row['Scenario B Daily Spend']:,.0f}"
+                })
+            
+            # Add remaining days if any
+            if remaining_days > 0:
+                weekly_revenue = row['Daily Revenue Target'] * remaining_days
+                weekly_spend_a = row['Scenario A Daily Spend'] * remaining_days
+                weekly_spend_b = row['Scenario B Daily Spend'] * remaining_days
+                
+                weekly_data.append({
+                    'Week': f"Week {weeks_in_month + 1}",
+                    'Days': remaining_days,
+                    'Revenue Target': f"${weekly_revenue:,.0f}",
+                    'Scenario A Spend': f"${weekly_spend_a:,.0f}",
+                    'Scenario B Spend': f"${weekly_spend_b:,.0f}",
+                    'Daily Revenue': f"${row['Daily Revenue Target']:,.0f}",
+                    'Daily Spend A': f"${row['Scenario A Daily Spend']:,.0f}",
+                    'Daily Spend B': f"${row['Scenario B Daily Spend']:,.0f}"
+                })
             
             weekly_df = pd.DataFrame(weekly_data)
             st.dataframe(weekly_df, use_container_width=True, hide_index=True)
@@ -1585,10 +1536,10 @@ with tab6:
     
     st.markdown("**2024 Data:**")
     st.write("- **Revenue**: Shopify exec summary (Total sales over time - 2024)")
-    st.write("- **Spend**: Historical Spend CSV (Total Spend column)")
-    st.write(f"  - Source: `{data['spend_2024_file']}`")
-    st.write("  - All channels included (Meta, Google, TikTok, Affiliates, etc.)")
-    st.write("  - Q1 2024 total: $1,974,535")
+    st.write("- **Spend**: Meta + Google daily exports")
+    st.write(f"  - File: `{data['spend_2024_file']}`")
+    st.write("  - Platforms: Meta (69.8%), Google (30.2%)")
+    st.write("  - Total 2024 spend: $7,538,825")
     
     st.markdown("**2025 Data:**")
     st.write("- **Revenue**: Shopify exec summary (Total sales over time - OU - 2025)")
@@ -1628,10 +1579,10 @@ with tab6:
     st.subheader("File Locations")
     
     st.code(f"""
-# 2024 spend source
+# 2024 spend file
 {data['spend_2024_file']}
 
-# 2025 spend file
+# 2025 Northbeam YTD file
 {data['spend_2025_file']}
 
 # 2025 sales file
