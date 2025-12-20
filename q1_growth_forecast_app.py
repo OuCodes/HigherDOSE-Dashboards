@@ -1413,11 +1413,12 @@ with tab4:
                     
                     st.markdown("**Product Revenue Allocation (20% Growth Scenario):**")
                     
-                    # Show product cards
-                    for _, prod_row in df_jan.iterrows():
+                    # Show product cards (using containers instead of nested expanders)
+                    for idx, prod_row in df_jan.iterrows():
                         if prod_row['Jan_2026_Growth_Scenario'] > 50000:  # Only show products >$50k
-                            with st.expander(f"**{prod_row['Category']}** - ${prod_row['Jan_2026_Growth_Scenario']:,.0f} ({prod_row['Pct_of_Total']:.1f}%)", expanded=False):
-                                
+                            st.markdown(f"#### {prod_row['Category']} - ${prod_row['Jan_2026_Growth_Scenario']:,.0f} ({prod_row['Pct_of_Total']:.1f}%)")
+                            
+                            with st.container():
                                 p_col1, p_col2, p_col3 = st.columns(3)
                                 
                                 with p_col1:
@@ -1466,6 +1467,8 @@ with tab4:
                                 
                                 if prod_row['Notes']:
                                     st.caption(f"📝 {prod_row['Notes']}")
+                            
+                            st.markdown("---")  # Separator between products
                     
                     st.markdown("---")
                     st.markdown(f"""
