@@ -1395,14 +1395,32 @@ with tab4:
                     target_total = row['2026 Revenue Goal']  # Use the 20% growth target from row
                     growth_needed = target_total - baseline_total
                     
-                    # Allocate growth to products
-                    df_jan['Growth_Allocation'] = 0
-                    df_jan['Growth_Strategy'] = ''
-                    
-                    # Winners get 50%
-                    high_growth_mask = ((df_jan['Confidence'].isin(['High', 'Medium'])) & 
-                                       (df_jan['Status'] == 'Launched Q2-Q4 2025')) | \
-                                      ((df_jan['Category'] == 'Sauna Blanket'))
+                    # Check if baseline already exceeds target
+                    if baseline_total > target_total:
+                        st.success(f"""
+                        🎉 **Baseline projections EXCEED 20% growth target!**
+                        - Baseline: ${baseline_total:,.0f}
+                        - Target: ${target_total:,.0f}
+                        - **You're on track for {(baseline_total/target_total - 1)*100:.0f}% growth instead of 20%!**
+                        
+                        Showing baseline projections as growth scenario.
+                        """)
+                        # Use baseline as growth scenario since we're already exceeding target
+                        df_jan['Growth_Allocation'] = 0
+                        df_jan['Growth_Strategy'] = 'Exceeding target'
+                        df_jan['Jan_2026_Growth_Scenario'] = df_jan['Jan_2026_Projection']
+                        df_jan['Pct_of_Total'] = (df_jan['Jan_2026_Growth_Scenario'] / baseline_total * 100)
+                        df_jan = df_jan.sort_values('Jan_2026_Growth_Scenario', ascending=False)
+                    else:
+                        # Normal growth allocation when baseline < target
+                        # Allocate growth to products
+                        df_jan['Growth_Allocation'] = 0
+                        df_jan['Growth_Strategy'] = ''
+                        
+                        # Winners get 50%
+                        high_growth_mask = ((df_jan['Confidence'].isin(['High', 'Medium'])) & 
+                                           (df_jan['Status'] == 'Launched Q2-Q4 2025')) | \
+                                          ((df_jan['Category'] == 'Sauna Blanket'))
                     
                     high_growth_products = df_jan[high_growth_mask]
                     if len(high_growth_products) > 0:
@@ -1432,11 +1450,11 @@ with tab4:
                             weight = df_jan.loc[i, 'Jan_2026_Projection'] / df_jan.loc[top_revenue_idx, 'Jan_2026_Projection'].sum()
                             df_jan.loc[i, 'Growth_Allocation'] += stabilize_share * weight
                             df_jan.loc[i, 'Growth_Strategy'] = 'Stabilize'
-                    
-                    # Calculate growth scenario
-                    df_jan['Jan_2026_Growth_Scenario'] = df_jan['Jan_2026_Projection'] + df_jan['Growth_Allocation']
-                    df_jan['Pct_of_Total'] = (df_jan['Jan_2026_Growth_Scenario'] / target_total * 100)
-                    df_jan = df_jan.sort_values('Jan_2026_Growth_Scenario', ascending=False)
+                        
+                        # Calculate growth scenario
+                        df_jan['Jan_2026_Growth_Scenario'] = df_jan['Jan_2026_Projection'] + df_jan['Growth_Allocation']
+                        df_jan['Pct_of_Total'] = (df_jan['Jan_2026_Growth_Scenario'] / target_total * 100)
+                        df_jan = df_jan.sort_values('Jan_2026_Growth_Scenario', ascending=False)
                     
                     st.markdown("**Product Revenue Allocation (20% Growth Scenario):**")
                     
