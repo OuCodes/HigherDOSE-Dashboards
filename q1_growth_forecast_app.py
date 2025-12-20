@@ -1293,10 +1293,13 @@ with tab4:
     st.subheader("📅 Monthly Projections: Daily Targets")
     
     st.markdown("""
-    **Hybrid Model Approach:**
-    - Start conservative in January to validate performance
-    - Scale in February/March based on January results
-    - Both scenarios assume 20% revenue growth over Q1 2025
+    **Front-Loaded Growth Strategy:**
+    - **January: 30% growth** (aggressive start, capitalize on new product momentum)
+    - **February/March: 15% growth** (pullback months to balance to 20% Q1 average)
+    - **Overall Q1: ~20% growth** (front-loaded to maximize January opportunities)
+    
+    *Rationale: New products launched in Q2-Q4 2025 create opportunity for front-loaded growth.
+    Feb/March historically pullback post-January, so we're being strategic with allocation.*
     """)
     
     months_data = []
@@ -1316,8 +1319,11 @@ with tab4:
             orders_2025 = 0
             mer_2025 = 0
         
-        # 2026 projections (+20% revenue)
-        revenue_2026 = revenue_2025 * 1.20
+        # 2026 projections (front-loaded: Jan 30%, Feb/March 15%)
+        if month_name == 'January':
+            revenue_2026 = revenue_2025 * 1.30  # 30% growth in January
+        else:
+            revenue_2026 = revenue_2025 * 1.15  # 15% growth in Feb/March
         daily_revenue_2026 = revenue_2026 / days
         
         # Scenario A: Maintain 3.47x MER
@@ -1351,7 +1357,9 @@ with tab4:
 
             with col1:
                 st.markdown("### 📈 Revenue Targets")
-                st.metric("Monthly Goal (+20%)", f"${row['2026 Revenue Goal']:,.0f}")
+                # Show growth % based on month
+                growth_pct = "30%" if row['Month'] == 'January' else "15%"
+                st.metric(f"Monthly Goal (+{growth_pct})", f"${row['2026 Revenue Goal']:,.0f}")
                 st.metric("Daily Target", f"${row['Daily Revenue Target']:,.0f}")
                 st.caption(f"vs 2025 Actual: ${row['2025 Revenue']:,.0f}")
 
@@ -1395,19 +1403,27 @@ with tab4:
                     target_total = row['2026 Revenue Goal']  # Use the 20% growth target from row
                     growth_needed = target_total - baseline_total
                     
-                    # Check if baseline already exceeds target
-                    if baseline_total > target_total:
+                    # For January, we're using 30% growth target with "other products" included
+                    # Calculate implied "other products" revenue
+                    jan_2025_total = 3248059.48
+                    jan_2026_total_target = jan_2025_total * 1.30  # 30% growth
+                    other_products_pct = 0.051  # Historical 5.1% from other products
+                    other_products_target = jan_2026_total_target * other_products_pct
+                    tracked_products_target = jan_2026_total_target - other_products_target
+                    
+                    # Check if baseline already exceeds tracked products target
+                    if baseline_total > tracked_products_target:
                         st.success(f"""
-                        🎉 **Baseline projections EXCEED 20% growth target!**
-                        - Baseline: ${baseline_total:,.0f}
-                        - Target: ${target_total:,.0f}
-                        - **You're on track for {(baseline_total/target_total - 1)*100:.0f}% growth instead of 20%!**
+                        🎉 **Tracked products baseline EXCEEDS 30% growth target!**
+                        - Tracked Products Baseline: ${baseline_total:,.0f}
+                        - Tracked Products Target (for 30% overall): ${tracked_products_target:,.0f}
+                        - **Projected Growth: {(baseline_total/jan_2025_total - 1)*100:.0f}%**
                         
-                        Showing baseline projections as growth scenario.
+                        Showing baseline projections. Note: ~${other_products_target:,.0f} will come from other products.
                         """)
                         # Use baseline as growth scenario since we're already exceeding target
                         df_jan['Growth_Allocation'] = 0
-                        df_jan['Growth_Strategy'] = 'Exceeding target'
+                        df_jan['Growth_Strategy'] = 'On track'
                         df_jan['Jan_2026_Growth_Scenario'] = df_jan['Jan_2026_Projection']
                         df_jan['Pct_of_Total'] = (df_jan['Jan_2026_Growth_Scenario'] / baseline_total * 100)
                         df_jan = df_jan.sort_values('Jan_2026_Growth_Scenario', ascending=False)
@@ -1528,48 +1544,66 @@ with tab4:
                     st.markdown("---")
                     
                     # Calculate Other Products component
-                    jan_2025_total = 3248059.48  # From Shopify
+                    jan_2025_total_actual = 3248059.48  # From Shopify Jan 2025 actual
+                    jan_2026_target_30pct = jan_2025_total_actual * 1.30  # 30% growth target
                     tracked_jan_2025 = df_jan['Jan_2025'].sum()
-                    other_products_jan_2025 = jan_2025_total - tracked_jan_2025
-                    other_products_needed = target_total - df_jan['Jan_2026_Growth_Scenario'].sum()
-                    other_growth_required = ((other_products_needed / other_products_jan_2025) - 1) * 100 if other_products_jan_2025 > 0 else 0
+                    other_products_jan_2025 = jan_2025_total_actual - tracked_jan_2025
                     
+                    # Calculate implied other products for Jan 2026 (conservative: same % of total)
+                    other_products_pct_2025 = other_products_jan_2025 / jan_2025_total_actual
+                    other_products_jan_2026 = jan_2026_target_30pct * other_products_pct_2025
+                    other_growth_required = ((other_products_jan_2026 / other_products_jan_2025) - 1) * 100 if other_products_jan_2025 > 0 else 0
+                    
+                    # Total projection = tracked + other
+                    tracked_projection = df_jan['Jan_2026_Growth_Scenario'].sum()
+                    total_projection = tracked_projection + other_products_jan_2026
+
                     st.markdown("### 📊 Revenue Composition Analysis")
-                    
+
                     comp_col1, comp_col2 = st.columns(2)
-                    
+
                     with comp_col1:
                         st.markdown("**January 2025 Actual**")
-                        st.metric("Total Revenue", f"${jan_2025_total:,.0f}")
-                        st.metric("Tracked Products", f"${tracked_jan_2025:,.0f}", f"{tracked_jan_2025/jan_2025_total*100:.1f}%")
-                        st.metric("Other Products", f"${other_products_jan_2025:,.0f}", f"{other_products_jan_2025/jan_2025_total*100:.1f}%")
-                    
+                        st.metric("Total Revenue", f"${jan_2025_total_actual:,.0f}")
+                        st.metric("Tracked Products", f"${tracked_jan_2025:,.0f}", f"{tracked_jan_2025/jan_2025_total_actual*100:.1f}%")
+                        st.metric("Other Products", f"${other_products_jan_2025:,.0f}", f"{other_products_jan_2025/jan_2025_total_actual*100:.1f}%")
+
                     with comp_col2:
-                        st.markdown("**January 2026 Target (20% Growth)**")
-                        st.metric("Target Revenue", f"${target_total:,.0f}", "+20%")
-                        st.metric("Tracked Products (Projected)", f"${df_jan['Jan_2026_Growth_Scenario'].sum():,.0f}", 
-                                 f"{df_jan['Jan_2026_Growth_Scenario'].sum()/target_total*100:.1f}%")
-                        st.metric("Other Products Needed", f"${other_products_needed:,.0f}", 
-                                 f"{other_growth_required:+.0f}% growth req'd")
-                    
-                    if other_growth_required > 100:
+                        st.markdown("**January 2026 Projection (30% Growth)**")
+                        st.metric("Total Projection", f"${total_projection:,.0f}", 
+                                 f"{(total_projection/jan_2025_total_actual - 1)*100:+.0f}%")
+                        st.metric("Tracked Products", f"${tracked_projection:,.0f}",
+                                 f"{tracked_projection/total_projection*100:.1f}%")
+                        st.metric("Other Products (Est)", f"${other_products_jan_2026:,.0f}",
+                                 f"{other_growth_required:+.0f}% vs 2025")
+
+                    if total_projection < jan_2026_target_30pct:
+                        gap = jan_2026_target_30pct - total_projection
                         st.warning(f"""
-                        ⚠️ **Other Products Gap:** To hit 20% growth target, "Other Products" would need to grow 
-                        **{other_growth_required:.0f}%** (from ${other_products_jan_2025:,.0f} to ${other_products_needed:,.0f}).
-                        This is unrealistic. Consider:
-                        - Increasing tracked product targets
-                        - Adding more products to tracking
-                        - Adjusting overall growth target
+                        ⚠️ **Growth Gap:** Projection (${total_projection:,.0f}) is ${gap:,.0f} below 30% target (${jan_2026_target_30pct:,.0f}).
+                        - Consider scaling tracked product targets
+                        - Or accept more conservative {(total_projection/jan_2025_total_actual - 1)*100:.1f}% growth
+                        """)
+                    elif total_projection > jan_2026_target_30pct * 1.05:
+                        st.info(f"""
+                        💡 **Exceeding Target:** Projection suggests **{(total_projection/jan_2025_total_actual - 1)*100:.0f}% growth** 
+                        (above 30% target). This is aggressive but achievable given new product momentum.
                         """)
                     
                     st.markdown("---")
                     st.markdown(f"""
-                    **Summary:**
-                    - **Tracked products baseline:** ${baseline_total:,.0f}
-                    - **20% Growth target:** ${target_total:,.0f}
-                    - **Tracked products with growth allocation:** ${df_jan['Jan_2026_Growth_Scenario'].sum():,.0f}
-                    - **Required from Other Products:** ${other_products_needed:,.0f}
-                    - **Growth allocation strategy:** 50% to winners, 30% to new products, 20% to stabilize core
+                    **Projection Summary:**
+                    - **Jan 2025 Actual:** ${jan_2025_total_actual:,.0f}
+                    - **Jan 2026 Target (30%):** ${jan_2026_target_30pct:,.0f}
+                    - **Jan 2026 Projection:** ${total_projection:,.0f} (**{(total_projection/jan_2025_total_actual - 1)*100:+.0f}%** growth)
+                    
+                    **Breakdown:**
+                    - Tracked Products: ${tracked_projection:,.0f} ({tracked_projection/total_projection*100:.1f}%)
+                    - Other Products: ${other_products_jan_2026:,.0f} ({other_products_jan_2026/total_projection*100:.1f}%)
+                    
+                    *Methodology: Conservative but optimistic. Established products scaled by historical January patterns.
+                    New products (MBS, Red Light Mat, Pet Bed, Shower Head) projected from Q4 trajectories with
+                    January seasonality adjustments. "Other products" assumed to maintain same % of revenue mix.*
                     """)
                     
                 else:
