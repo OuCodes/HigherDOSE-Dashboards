@@ -1344,7 +1344,11 @@ with tab4:
             st.markdown("---")
             
             # === JANUARY PRODUCT BREAKDOWN ===
+            st.write(f"🔍 DEBUG: Current month is '{row['Month']}'")
+            
             if row['Month'] == 'January':
+                st.write("✅ DEBUG: January detected! Loading product breakdown...")
+                
                 st.markdown("### 🎯 January 2026 Product Category Breakdown")
                 st.markdown("*Revenue projections by product based on historical performance and trends*")
                 
@@ -1352,6 +1356,8 @@ with tab4:
                 jan_proj_file = DATA_DIR / "reports" / "campaign" / "january-2026-revenue-projections-20251219.csv"
                 
                 st.info(f"📁 Looking for file: {jan_proj_file}")
+                st.write(f"📂 DATA_DIR: {DATA_DIR}")
+                st.write(f"📄 File exists: {jan_proj_file.exists()}")
                 
                 if jan_proj_file.exists():
                     st.success("✅ File found! Loading product projections...")
@@ -1471,7 +1477,10 @@ with tab4:
                     """)
                     
                 else:
+                    st.error(f"❌ File not found: {jan_proj_file}")
                     st.warning("Product projection data not available. Run january_2026_revenue_only_projections.py to generate.")
+            else:
+                st.write(f"ℹ️ This is {row['Month']}, skipping product breakdown (only available for January)")
             
             st.markdown("---")
 
