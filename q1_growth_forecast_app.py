@@ -142,6 +142,11 @@ def load_all_data():
     # === Merge sales + spend + real revenue for each year ===
     df_2024 = sales_2024.merge(spend_2024_daily[['date', 'spend']], on='date', how='left')
     if not real_rev_2024_daily.empty:
+        # Real revenue files have 'orders' column, not 'real_orders'
+        real_rev_cols = ['date', 'real_revenue']
+        if 'orders' in real_rev_2024_daily.columns:
+            real_rev_cols.append('orders')
+            real_rev_2024_daily = real_rev_2024_daily.rename(columns={'orders': 'real_orders'})
         df_2024 = df_2024.merge(real_rev_2024_daily[['date', 'real_revenue', 'real_orders']], on='date', how='left')
         df_2024['real_revenue'] = df_2024['real_revenue'].fillna(0)
         df_2024['real_orders'] = df_2024['real_orders'].fillna(0)
@@ -161,6 +166,11 @@ def load_all_data():
     df_2025 = sales_2025.merge(spend_2025_daily[['date', 'spend']], 
                                on='date', how='left')
     if not real_rev_2025_daily.empty:
+        # Real revenue files have 'orders' column, not 'real_orders'
+        real_rev_cols = ['date', 'real_revenue']
+        if 'orders' in real_rev_2025_daily.columns:
+            real_rev_cols.append('orders')
+            real_rev_2025_daily = real_rev_2025_daily.rename(columns={'orders': 'real_orders'})
         df_2025 = df_2025.merge(real_rev_2025_daily[['date', 'real_revenue', 'real_orders']], on='date', how='left')
         df_2025['real_revenue'] = df_2025['real_revenue'].fillna(0)
         df_2025['real_orders'] = df_2025['real_orders'].fillna(0)
