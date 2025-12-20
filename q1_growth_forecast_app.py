@@ -100,11 +100,23 @@ def load_all_data():
     # Try lightweight daily file first, fallback to full YTD file
     spend_2025_file = ADS_DIR / "northbeam_2025_ytd_spend_daily.csv"
     
+    st.sidebar.write(f"🔍 Looking for 2025 spend: {spend_2025_file}")
+    st.sidebar.write(f"📂 ADS_DIR: {ADS_DIR}")
+    st.sidebar.write(f"📄 File exists: {spend_2025_file.exists()}")
+    
     if not spend_2025_file.exists():
+        st.sidebar.warning("Lightweight file not found, checking for YTD files...")
+        
+        # List all files in ads directory
+        all_files = list(ADS_DIR.glob("*"))
+        st.sidebar.write(f"📁 Files in ads dir: {len(all_files)}")
+        
         # Fallback to full YTD files
         spend_2025_files = sorted(ADS_DIR.glob("ytd_sales_data-higher_dose_llc-2025_12_18-*.csv"))
         if not spend_2025_files:
-            st.error("No 2025 Northbeam spend file found.")
+            st.error("❌ No 2025 Northbeam spend file found.")
+            st.error(f"Expected file: {spend_2025_file}")
+            st.error(f"ADS_DIR contents: {[f.name for f in all_files[:20]]}")
             return None
         
         spend_2025_file = spend_2025_files[-1]
