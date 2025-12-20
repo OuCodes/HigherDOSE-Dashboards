@@ -1351,7 +1351,10 @@ with tab4:
                 # Load January product data
                 jan_proj_file = DATA_DIR / "reports" / "campaign" / "january-2026-revenue-projections-20251219.csv"
                 
+                st.info(f"📁 Looking for file: {jan_proj_file}")
+                
                 if jan_proj_file.exists():
+                    st.success("✅ File found! Loading product projections...")
                     df_jan = pd.read_csv(jan_proj_file)
                     
                     # Calculate baseline and growth scenario
