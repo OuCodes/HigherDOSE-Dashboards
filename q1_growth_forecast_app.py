@@ -1191,7 +1191,7 @@ with tab4:
     
     # Scenario A: Maintain 3.47x MER
     mer_scenario_a = q1_2025_mer  # 3.47x
-    mer_target_a = 4.17  # 20% improvement (3.47 * 1.20)
+    mer_target_a = 4.0  # Target MER for efficiency improvement
     
     # Calculate spend requirements for each scenario
     spend_scenario_a = q1_2026_revenue_goal / mer_scenario_a  # Maintain current MER
@@ -1224,7 +1224,7 @@ with tab4:
         st.caption(f"Avg Daily Spend: ${daily_spend_scenario_a:,.0f}")
     
     with col3:
-        st.markdown("### 🚀 Scenario B: Improve MER 20%")
+        st.markdown("### 🚀 Scenario B: 4.0x MER Target")
         st.metric("Total Revenue (+20%)", f"${q1_2026_revenue_goal:,.0f}",
                  delta=f"+${q1_2026_revenue_goal - q1_2025_revenue:,.0f}")
         st.metric("Required Spend", f"${spend_scenario_b:,.0f}",
@@ -1262,7 +1262,7 @@ with tab4:
             f"+{((q1_2026_daily_revenue - q1_2025_daily_revenue) / q1_2025_daily_revenue * 100):.1f}%",
             f"+{((daily_spend_scenario_a - q1_2025_daily_spend) / q1_2025_daily_spend * 100):.1f}%"
         ],
-        '2026 Scenario B (4.17x MER)': [
+        '2026 Scenario B (4.0x MER)': [
             f"${q1_2026_daily_revenue:,.0f}",
             f"${daily_spend_scenario_b:,.0f}",
             f"{mer_target_a:.2f}x",
@@ -1279,12 +1279,12 @@ with tab4:
     # Key insights
     st.info(f"""
     **💡 Key Insights:**
-    
+
     - **Scenario A** requires **${(spend_scenario_a - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_a - q1_2025_spend) / q1_2025_spend * 100):.1f}%) to achieve +20% revenue while maintaining current MER of {q1_2025_mer:.2f}x
-    
-    - **Scenario B** requires **${(spend_scenario_b - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_b - q1_2025_spend) / q1_2025_spend * 100):.1f}%) while improving MER to {mer_target_a:.2f}x
-    
-    - Improving MER by 20% would **save ${(spend_scenario_a - spend_scenario_b):,.0f}** in quarterly spend while achieving the same revenue goal
+
+    - **Scenario B** requires **${(spend_scenario_b - q1_2025_spend):,.0f}** more spend (+{((spend_scenario_b - q1_2025_spend) / q1_2025_spend * 100):.1f}%) while targeting {mer_target_a:.2f}x MER (20% revenue growth with improved efficiency)
+
+    - Achieving {mer_target_a:.2f}x MER would **save ${(spend_scenario_a - spend_scenario_b):,.0f}** in quarterly spend while achieving the same revenue goal
     """)
     
     st.markdown("---")
@@ -1329,11 +1329,11 @@ with tab4:
         # Scenario A: Maintain 3.47x MER
         spend_2026_a = revenue_2026 / mer_scenario_a
         daily_spend_2026_a = spend_2026_a / days
-        
-        # Scenario B: Improve to 4.17x MER
+
+        # Scenario B: Target 4.0x MER
         spend_2026_b = revenue_2026 / mer_target_a
         daily_spend_2026_b = spend_2026_b / days
-        
+
         months_data.append({
             'Month': month_name,
             'Days': days,
@@ -1342,7 +1342,7 @@ with tab4:
             'Daily Revenue Target': daily_revenue_2026,
             'Scenario A Spend (3.47x)': spend_2026_a,
             'Scenario A Daily Spend': daily_spend_2026_a,
-            'Scenario B Spend (4.17x)': spend_2026_b,
+            'Scenario B Spend (4.0x)': spend_2026_b,
             'Scenario B Daily Spend': daily_spend_2026_b,
             'Savings (A vs B)': spend_2026_a - spend_2026_b
         })
@@ -1370,8 +1370,8 @@ with tab4:
                 st.caption("Maintain current efficiency")
 
             with col3:
-                st.markdown("### 🚀 Scenario B: 4.17x MER")
-                st.metric("Monthly Spend", f"${row['Scenario B Spend (4.17x)']:,.0f}")
+                st.markdown("### 🚀 Scenario B: 4.0x MER")
+                st.metric("Monthly Spend", f"${row['Scenario B Spend (4.0x)']:,.0f}")
                 st.metric("Daily Spend", f"${row['Scenario B Daily Spend']:,.0f}")
                 st.caption(f"Saves: ${row['Savings (A vs B)']:,.0f}")
 
