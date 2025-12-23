@@ -6,6 +6,28 @@ A Python toolkit that turns Northbeam, Google Ads, Meta Ads, and Google Analytic
 
 ---
 
+## ⚠️ IMPORTANT: Deployment & Repository Structure
+
+**This repository has TWO git remotes:**
+- `origin` → Main research/analysis work
+- `dashboards` → Streamlit Cloud deployments
+
+**🚨 Working on Streamlit dashboards?** → Read **[DEPLOYMENT.md](./DEPLOYMENT.md)** first!
+
+**Quick rule:** Changes to `.py` files that run on Streamlit Cloud (like `q1_growth_forecast_app.py`) MUST be pushed to the `dashboards` remote, not just `origin`.
+
+```bash
+# For Streamlit dashboard changes:
+git push dashboards main    # ← Required for Streamlit Cloud!
+
+# For everything else:
+git push origin main
+```
+
+See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for complete details.
+
+---
+
 ## 1. Quick Start
 
 - Clone the repo & enter it:
