@@ -1520,76 +1520,76 @@ with tab4:
                     
                     st.markdown("---")
                     
-                    # Make detailed cards collapsible
-                    with st.expander("📋 View Detailed Product Breakdowns", expanded=False):
-                        st.caption("Detailed insights, performance metrics, and strategy for each product")
-                        
-                        # Show product cards (using containers instead of nested expanders)
-                        for idx, prod_row in df_jan.iterrows():
-                            if prod_row['Jan_2026_Growth_Scenario'] > 50000:  # Only show products >$50k
-                                st.markdown(f"#### {prod_row['Category']} - ${prod_row['Jan_2026_Growth_Scenario']:,.0f} ({prod_row['Pct_of_Total']:.1f}%)")
+                    # Detailed product breakdowns section (no expander - would be nested)
+                    st.markdown("### 📋 Detailed Product Breakdowns")
+                    st.caption("Detailed insights, performance metrics, and strategy for each product")
+                    
+                    # Show product cards (using containers instead of nested expanders)
+                    for idx, prod_row in df_jan.iterrows():
+                        if prod_row['Jan_2026_Growth_Scenario'] > 50000:  # Only show products >$50k
+                            st.markdown(f"#### {prod_row['Category']} - ${prod_row['Jan_2026_Growth_Scenario']:,.0f} ({prod_row['Pct_of_Total']:.1f}%)")
+                            
+                            with st.container():
+                                p_col1, p_col2, p_col3 = st.columns(3)
                                 
-                                with st.container():
-                                    p_col1, p_col2, p_col3 = st.columns(3)
+                                with p_col1:
+                                    st.markdown("**📊 Revenue**")
+                                    if 'Last_30_Days' in prod_row.index and prod_row['Last_30_Days'] > 0:
+                                        st.metric("Last 30 Days", f"${prod_row['Last_30_Days']:,.0f}")
+                                        st.caption("Nov 17 - Dec 16, 2025")
+                                    if prod_row['Jan_2025'] > 0:
+                                        st.metric("Jan 2025", f"${prod_row['Jan_2025']:,.0f}")
+                                        st.caption(f"Daily avg: ${prod_row['Jan_2025']/31:,.0f}")
                                     
-                                    with p_col1:
-                                        st.markdown("**📊 Revenue**")
-                                        if 'Last_30_Days' in prod_row.index and prod_row['Last_30_Days'] > 0:
-                                            st.metric("Last 30 Days", f"${prod_row['Last_30_Days']:,.0f}")
-                                            st.caption("Nov 17 - Dec 16, 2025")
-                                        if prod_row['Jan_2025'] > 0:
-                                            st.metric("Jan 2025", f"${prod_row['Jan_2025']:,.0f}")
-                                            st.caption(f"Daily avg: ${prod_row['Jan_2025']/31:,.0f}")
-                                        
-                                        st.markdown("---")
-                                        st.markdown("**Baseline Projection:**")
-                                        st.metric("Monthly", f"${prod_row['Jan_2026_Projection']:,.0f}")
-                                        st.caption(f"📅 Daily: ${prod_row['Jan_2026_Projection']/31:,.0f}")
-                                        
-                                        st.markdown("**Growth Target (+20%):**")
-                                        delta_vs_25 = ((prod_row['Jan_2026_Growth_Scenario'] - prod_row['Jan_2025']) / prod_row['Jan_2025'] * 100) if prod_row['Jan_2025'] > 0 else 0
-                                        st.metric("Monthly", f"${prod_row['Jan_2026_Growth_Scenario']:,.0f}", 
-                                                 f"{delta_vs_25:+.1f}% vs 2025" if prod_row['Jan_2025'] > 0 else "New Launch")
-                                        st.caption(f"📅 Daily: ${prod_row['Jan_2026_Growth_Scenario']/31:,.0f}")
+                                    st.markdown("---")
+                                    st.markdown("**Baseline Projection:**")
+                                    st.metric("Monthly", f"${prod_row['Jan_2026_Projection']:,.0f}")
+                                    st.caption(f"📅 Daily: ${prod_row['Jan_2026_Projection']/31:,.0f}")
                                     
-                                    with p_col2:
-                                        st.markdown("**📈 Performance**")
-                                        st.write(f"**Status:** {prod_row['Status']}")
-                                        st.write(f"**Confidence:** {prod_row['Confidence']}")
-                                        if prod_row['Oct_Dec_YoY'] != 0:
-                                            st.write(f"**Q4 Trend:** {prod_row['Oct_Dec_YoY']:+.1f}%")
-                                        if prod_row['Growth_Allocation'] > 0:
-                                            st.write(f"**Growth Add:** +${prod_row['Growth_Allocation']:,.0f}")
-                                            st.write(f"**Strategy:** {prod_row['Growth_Strategy']}")
+                                    st.markdown("**Growth Target (+20%):**")
+                                    delta_vs_25 = ((prod_row['Jan_2026_Growth_Scenario'] - prod_row['Jan_2025']) / prod_row['Jan_2025'] * 100) if prod_row['Jan_2025'] > 0 else 0
+                                    st.metric("Monthly", f"${prod_row['Jan_2026_Growth_Scenario']:,.0f}", 
+                                             f"{delta_vs_25:+.1f}% vs 2025" if prod_row['Jan_2025'] > 0 else "New Launch")
+                                    st.caption(f"📅 Daily: ${prod_row['Jan_2026_Growth_Scenario']/31:,.0f}")
+                                
+                                with p_col2:
+                                    st.markdown("**📈 Performance**")
+                                    st.write(f"**Status:** {prod_row['Status']}")
+                                    st.write(f"**Confidence:** {prod_row['Confidence']}")
+                                    if prod_row['Oct_Dec_YoY'] != 0:
+                                        st.write(f"**Q4 Trend:** {prod_row['Oct_Dec_YoY']:+.1f}%")
+                                    if prod_row['Growth_Allocation'] > 0:
+                                        st.write(f"**Growth Add:** +${prod_row['Growth_Allocation']:,.0f}")
+                                        st.write(f"**Strategy:** {prod_row['Growth_Strategy']}")
+                                
+                                with p_col3:
+                                    st.markdown("**💡 Insights**")
                                     
-                                    with p_col3:
-                                        st.markdown("**💡 Insights**")
-                                        
-                                        # Key insights
-                                        if prod_row['Status'] == 'Established':
-                                            if prod_row['Oct_Dec_YoY'] < -30:
-                                                st.markdown("• ⚠️ **Major Q4 decline** - urgent review")
-                                            elif prod_row['Oct_Dec_YoY'] < -10:
-                                                st.markdown("• 📉 **Declining** - refresh needed")
-                                            elif prod_row['Oct_Dec_YoY'] > 20:
-                                                st.markdown("• ✅ **Strong momentum**")
-                                            else:
-                                                st.markdown("• ➡️ **Stable performance**")
-                                        
-                                        elif prod_row['Status'] == 'Launched Q2-Q4 2025':
-                                            if prod_row['Oct_Dec_2025'] > 300000:
-                                                st.markdown("• 🚀 **Breakout product!**")
-                                            st.markdown(f"• 📦 Q4: {prod_row['Oct_Dec_2025_Units']:,.0f} units")
-                                        
-                                        if prod_row['Jan_2026_Growth_Scenario'] > 500000:
-                                            st.markdown("• 💰 **Top revenue driver**")
-                                        elif prod_row['Jan_2026_Growth_Scenario'] > 200000:
-                                            st.markdown("• 💵 **Major contributor**")
+                                    # Key insights
+                                    if prod_row['Status'] == 'Established':
+                                        if prod_row['Oct_Dec_YoY'] < -30:
+                                            st.markdown("• ⚠️ **Major Q4 decline** - urgent review")
+                                        elif prod_row['Oct_Dec_YoY'] < -10:
+                                            st.markdown("• 📉 **Declining** - refresh needed")
+                                        elif prod_row['Oct_Dec_YoY'] > 20:
+                                            st.markdown("• ✅ **Strong momentum**")
+                                        else:
+                                            st.markdown("• ➡️ **Stable performance**")
                                     
-                                        if prod_row['Notes']:
-                                            st.caption(f"📝 {prod_row['Notes']}")
+                                    elif prod_row['Status'] == 'Launched Q2-Q4 2025':
+                                        if prod_row['Oct_Dec_2025'] > 300000:
+                                            st.markdown("• 🚀 **Breakout product!**")
+                                        st.markdown(f"• 📦 Q4: {prod_row['Oct_Dec_2025_Units']:,.0f} units")
+                                    
+                                    if prod_row['Jan_2026_Growth_Scenario'] > 500000:
+                                        st.markdown("• 💰 **Top revenue driver**")
+                                    elif prod_row['Jan_2026_Growth_Scenario'] > 200000:
+                                        st.markdown("• 💵 **Major contributor**")
+                                
+                                    if prod_row['Notes']:
+                                        st.caption(f"📝 {prod_row['Notes']}")
 
-                                    st.markdown("---")  # Separator between products
+                                st.markdown("---")  # Separator between products
                     
                     st.markdown("---")
 
